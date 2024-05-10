@@ -10,8 +10,3 @@
 	background-color: var(--bg-color-secondary);
 	border-radius: 10px;
 }
-
-/* state */
-.completed {
-	background-color: dodgerblue;
-}

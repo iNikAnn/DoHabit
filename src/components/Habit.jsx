@@ -6,6 +6,7 @@ import Calendar from './Calendar';
 function Habit(props) {
 	const {
 		title,
+		color,
 		completedDays,
 
 		// 'on' functions
@@ -22,6 +23,7 @@ function Habit(props) {
 
 			<div className={styles.content}>
 				<Calendar
+					color={color}
 					completedDays={completedDays}
 				/>
 			</div>

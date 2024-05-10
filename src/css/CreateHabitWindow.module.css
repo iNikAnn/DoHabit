@@ -1,3 +1,66 @@
+.wrapper,
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+/* input */
+.label {
+	display: flex;
+	flex-direction: column;
+}
+
+.labelTitle {
+	margin-bottom: 0.4rem;
+}
+
+.input {
+	height: 2.4rem;
+
+	background-color: var(--bg-color-secondary);
+	color: inherit;
+	border: none;
+	border-radius: var(--border-radius-secondary);
+
+	padding-left: 1rem;
+}
+
+/* colors */
+.colors {
+	display: grid;
+	grid-template-columns: repeat(7, 2rem);
+	grid-auto-rows: 2rem;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.colors label {
+	/* outline: 1px solid red; */
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius-secondary);
+}
+
+.colors input {
+	appearance: none;
+}
+
+.colors input:checked + .outline {
+	outline: 4px solid var(--accent-color);
+}
+
+.outline {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: var(--border-radius-secondary);
+}
+
 /* state */
 .alreadyExist {
 	outline: 2px solid red;

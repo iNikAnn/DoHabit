@@ -5,6 +5,7 @@ import getFormattedDate from '../utils/getFormattedDate';
 
 function Calendar(props) {
 	const {
+		color,
 		completedDays
 	} = props;
 
@@ -17,22 +18,21 @@ function Calendar(props) {
 	const days = new Array(shift + lastDayOfMonth)
 		.fill(null)
 		.map((_, index) => {
-			let completed = false;
+			let isCompleted = false;
 
 			if (index >= shift) {
 				const day = new Date(now.getFullYear(), now.getMonth(), (index - shift + 1));
 
 				if (completedDays) {
-					const isCompleted = completedDays.includes(getFormattedDate(day));
-
-					if (isCompleted) {
-						completed = true;
-					};
+					isCompleted = completedDays.includes(getFormattedDate(day));
 				};
 			};
 
 			return (
-				<span className={`${index < shift ? '' : styles.day} ${completed ? styles.completed : ''}`} />
+				<span
+					style={{ backgroundColor: isCompleted ? color : '' }}
+					className={`${index < shift ? '' : styles.day}`}
+				/>
 			);
 		});
 
