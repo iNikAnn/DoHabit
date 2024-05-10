@@ -7,6 +7,8 @@ import HabitsList from './components/HabitsList';
 import Modal from './components/Modal';
 
 function App() {
+	const [habits, setHabits] = useState([]);
+
 	const [modalIsVisible, setModalIsVisible] = useState(false);
 
 	return (
@@ -14,7 +16,9 @@ function App() {
 			<Header />
 
 			<main>
-				<HabitsList />
+				<HabitsList
+					data={habits}
+				/>
 			</main>
 
 			{modalIsVisible && (

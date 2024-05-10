@@ -1,6 +1,13 @@
 import styles from '../css/Calendar.module.css';
 
-function Calendar() {
+// utils
+import getFormattedDate from '../utils/getFormattedDate';
+
+function Calendar(props) {
+	const {
+		completedDays
+	} = props;
+
 	const now = new Date();
 	const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
 
@@ -10,8 +17,19 @@ function Calendar() {
 	const days = new Array(shift + lastDayOfMonth)
 		.fill(null)
 		.map((_, index) => {
+			let completed = false;
+
+			if (index >= shift) {
+				const day = new Date(now.getFullYear(), now.getMonth(), (index - shift + 1));
+				const isCompleted = completedDays.includes(getFormattedDate(day));
+
+				if (isCompleted) {
+					completed = true;
+				};
+			};
+
 			return (
-				<span className={index < shift ? '' : styles.day} />
+				<span className={`${index < shift ? '' : styles.day} ${completed ? styles.completed : ''}`} />
 			);
 		});
 
