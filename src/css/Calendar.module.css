@@ -1,0 +1,12 @@
+.calendar {
+	display: grid;
+	grid-template-columns: repeat(7, 2rem);
+	grid-auto-rows: 2rem;
+	justify-content: space-between;
+	row-gap: 1rem;
+}
+
+.day {
+	background-color: var(--bg-color-secondary);
+	border-radius: 10px;
+}

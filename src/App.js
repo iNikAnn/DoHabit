@@ -7,7 +7,7 @@ import HabitsList from './components/HabitsList';
 import Modal from './components/Modal';
 
 function App() {
-	const [modalIsVisible, setModalIsVisible] = useState(true);
+	const [modalIsVisible, setModalIsVisible] = useState(false);
 
 	return (
 		<div className="App">

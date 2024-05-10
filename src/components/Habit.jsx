@@ -1,5 +1,8 @@
 import styles from '../css/Habit.module.css';
 
+// components
+import Calendar from './Calendar';
+
 function Habit() {
 	return (
 		<div className={styles.habit}>
@@ -10,7 +13,7 @@ function Habit() {
 			</div>
 
 			<div className={styles.content}>
-				Calendar
+				<Calendar />
 			</div>
 		</div>
 	);
