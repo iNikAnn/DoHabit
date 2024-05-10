@@ -5,13 +5,20 @@ import Habit from "./Habit";
 
 function HabitsList(props) {
 	const {
-		data
+		data,
+
+		// 'on' functions
+		onMarkHabitAsCompleted
 	} = props;
 
 	const habitsList = data.map((habit) => {
 		return (
 			<Habit
+				key={habit.title}
 				{...habit}
+
+				// 'on' functions
+				onMarkHabitAsCompleted={onMarkHabitAsCompleted}
 			/>
 		);
 	});

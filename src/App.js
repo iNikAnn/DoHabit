@@ -11,6 +11,7 @@ import CreateHabitWindow from './components/CreateHabitWindow';
 
 // utils
 import createHabit from './utils/createHabit';
+import markHabitAsCompleted from './utils/markHabitAsCompleted';
 
 function App() {
 	const [habits, setHabits] = useState(() => {
@@ -27,6 +28,11 @@ function App() {
 	const handleCreateHabit = (data) => {
 		setHabits(createHabit(habits, data));
 		handleCloseModal();
+	};
+
+	// mark habit completion for the day
+	const handleMarkHabitAsCompleted = (title) => {
+		setHabits(markHabitAsCompleted(habits, title));
 	};
 
 	// modal
@@ -51,6 +57,9 @@ function App() {
 			<main>
 				<HabitsList
 					data={habits}
+
+					// 'on' functions
+					onMarkHabitAsCompleted={handleMarkHabitAsCompleted}
 				/>
 			</main>
 

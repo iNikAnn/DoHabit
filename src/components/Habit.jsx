@@ -6,7 +6,10 @@ import Calendar from './Calendar';
 function Habit(props) {
 	const {
 		title,
-		completedDays
+		completedDays,
+
+		// 'on' functions
+		onMarkHabitAsCompleted
 	} = props;
 
 	return (
@@ -14,7 +17,7 @@ function Habit(props) {
 			<div className={styles.header}>
 				<span>{title}</span>
 
-				<button>Check</button>
+				<button onClick={() => onMarkHabitAsCompleted(title)}>Check</button>
 			</div>
 
 			<div className={styles.content}>
