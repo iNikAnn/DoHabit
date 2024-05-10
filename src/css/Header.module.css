@@ -3,12 +3,14 @@
 	top: 0;
 	left: 0;
 	width: 100%;
+	height: var(--header-height);
 
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 
 	background-color: black;
 	border-bottom: 1px solid hsl(0, 0%, 20%);
 
-	padding: 1rem;
+	padding: 0 1rem;
 }
