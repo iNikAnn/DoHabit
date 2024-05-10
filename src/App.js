@@ -1,7 +1,7 @@
 import './App.css';
 
 // react
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // components
 import Header from './components/Header';
@@ -13,7 +13,15 @@ import CreateHabitWindow from './components/CreateHabitWindow';
 import createHabit from './utils/createHabit';
 
 function App() {
-	const [habits, setHabits] = useState([]);
+	const [habits, setHabits] = useState(() => {
+		const data = localStorage.getItem('habits');
+		return data ? JSON.parse(data) : [];
+	});
+
+	// save habits to local storage
+	useEffect(() => {
+		localStorage.setItem('habits', JSON.stringify(habits));
+	}, [habits]);
 
 	// create habit
 	const handleCreateHabit = (data) => {
