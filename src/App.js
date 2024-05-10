@@ -63,6 +63,8 @@ function App() {
 						<CreateHabitWindow
 							// 'on' functions
 							onCreate={(data) => handleCreateHabit(data)}
+
+							habits={habits}
 						/>
 					)}
 				</Modal>
