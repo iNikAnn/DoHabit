@@ -21,10 +21,13 @@ function Calendar(props) {
 
 			if (index >= shift) {
 				const day = new Date(now.getFullYear(), now.getMonth(), (index - shift + 1));
-				const isCompleted = completedDays.includes(getFormattedDate(day));
 
-				if (isCompleted) {
-					completed = true;
+				if (completedDays) {
+					const isCompleted = completedDays.includes(getFormattedDate(day));
+
+					if (isCompleted) {
+						completed = true;
+					};
 				};
 			};
 
