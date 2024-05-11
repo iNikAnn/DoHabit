@@ -1,7 +1,8 @@
-function createHabit(currentHabits, newData) {
+function createHabit(currentHabits, data) {
 	const newHabit = {
-		title: newData.title.value,
-		color: newData.color.value,
+		title: data.title.value,
+		color: data.color.value,
+		iconTitle: data.iconTitle.value,
 		completedDays: [],
 	};
 

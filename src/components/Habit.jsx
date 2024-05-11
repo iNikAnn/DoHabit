@@ -7,16 +7,26 @@ function Habit(props) {
 	const {
 		title,
 		color,
+		iconTitle,
 		completedDays,
 
 		// 'on' functions
-		onMarkHabitAsCompleted
+		onMarkHabitAsCompleted,
+
+		// db
+		icons
 	} = props;
+
+	// icon
+	const icon = icons.find((el) => el[0] === iconTitle)[1];
 
 	return (
 		<div className={styles.habit}>
 			<div className={styles.header}>
-				<span>{title}</span>
+				<div className={styles.headerLeft}>
+					{icon}
+					<span><strong>{title}</strong></span>
+				</div>
 
 				<button onClick={() => onMarkHabitAsCompleted(title)}>Check</button>
 			</div>

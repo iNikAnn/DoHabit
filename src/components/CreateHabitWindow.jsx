@@ -11,6 +11,9 @@ function CreateHabitWindow(props) {
 		// 'on' functions
 		onCreate,
 
+		// db
+		icons,
+
 		habits
 	} = props;
 
@@ -38,7 +41,18 @@ function CreateHabitWindow(props) {
 	const colors = dbColors.map((color, index) => {
 		return (
 			<label style={{ backgroundColor: color }}>
-				<input type="radio" name="color" value={color} defaultChecked={!index} />
+				<input type="radio" name="color" id="color" value={color} defaultChecked={!index} />
+				<div className={styles.outline} />
+			</label>
+		);
+	});
+
+	// icons
+	const habitIcons = icons.map(([iconTitle, icon], index) => {
+		return (
+			<label>
+				{icon}
+				<input type="radio" name="iconTitle" id="iconTitle" value={iconTitle} defaultChecked={!index} />
 				<div className={styles.outline} />
 			</label>
 		);
@@ -53,7 +67,7 @@ function CreateHabitWindow(props) {
 				onSubmit={(e) => handleSabmitForm(e)}
 			>
 				<label className={styles.label}>
-					<span className={styles.labelTitle}>Title:</span>
+					<span className={styles.labelTitle}><h3>Title</h3></span>
 
 					<input type="text" name="title" id="title"
 						className={`${styles.input} ${alreadyExist ? styles.alreadyExist : ''}`}
@@ -64,10 +78,18 @@ function CreateHabitWindow(props) {
 				</label>
 
 				<label className={styles.label}>
-					<span className={styles.labelTitle}>Color:</span>
+					<span className={styles.labelTitle}><h3>Color</h3></span>
 
 					<div className={styles.colors}>
 						{colors}
+					</div>
+				</label>
+
+				<label className={styles.label}>
+					<span className={styles.labelTitle}><h3>Icon</h3></span>
+
+					<div className={styles.icons}>
+						{habitIcons}
 					</div>
 				</label>
 

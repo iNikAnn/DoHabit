@@ -8,7 +8,10 @@ function HabitsList(props) {
 		data,
 
 		// 'on' functions
-		onMarkHabitAsCompleted
+		onMarkHabitAsCompleted,
+
+		// db
+		icons
 	} = props;
 
 	const habitsList = data.map((habit) => {
@@ -19,6 +22,9 @@ function HabitsList(props) {
 
 				// 'on' functions
 				onMarkHabitAsCompleted={onMarkHabitAsCompleted}
+
+				// db
+				icons={icons}
 			/>
 		);
 	});

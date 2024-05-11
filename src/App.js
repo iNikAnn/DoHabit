@@ -13,6 +13,9 @@ import CreateHabitWindow from './components/CreateHabitWindow';
 import createHabit from './utils/createHabit';
 import markHabitAsCompleted from './utils/markHabitAsCompleted';
 
+// db
+import icons from './db/dbIcons';
+
 function App() {
 	const [habits, setHabits] = useState(() => {
 		const data = localStorage.getItem('habits');
@@ -60,6 +63,9 @@ function App() {
 
 					// 'on' functions
 					onMarkHabitAsCompleted={handleMarkHabitAsCompleted}
+
+					// db
+					icons={icons}
 				/>
 			</main>
 
@@ -72,6 +78,9 @@ function App() {
 						<CreateHabitWindow
 							// 'on' functions
 							onCreate={(data) => handleCreateHabit(data)}
+
+							//db
+							icons={icons}
 
 							habits={habits}
 						/>

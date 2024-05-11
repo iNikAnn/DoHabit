@@ -27,7 +27,8 @@
 }
 
 /* colors */
-.colors {
+.colors,
+.icons {
 	display: grid;
 	grid-template-columns: repeat(7, 2rem);
 	grid-auto-rows: 2rem;
@@ -35,7 +36,8 @@
 	gap: 1rem;
 }
 
-.colors label {
+.colors label,
+.icons label {
 	/* outline: 1px solid red; */
 	position: relative;
 	display: flex;
@@ -44,12 +46,25 @@
 	border-radius: var(--border-radius-secondary);
 }
 
-.colors input {
+.colors input,
+.icons input {
 	appearance: none;
 }
 
-.colors input:checked + .outline {
+.colors input:checked + .outline,
+.icons input:checked + .outline {
 	outline: 4px solid var(--accent-color);
+}
+
+/* icons */
+.icons label {
+	border: 1px solid var(--bg-color-secondary);
+}
+
+.icons svg {
+	/* outline: 1px solid red; */
+	width: 60%;
+	height: 60%;
 }
 
 .outline {
