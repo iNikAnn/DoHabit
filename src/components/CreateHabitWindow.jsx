@@ -17,15 +17,22 @@ function CreateHabitWindow(props) {
 	const [inputTitle, setInputTitle] = useState('');
 	const [alreadyExist, setAlreadyExist] = useState(false);
 
+	// check for existing habit with the same title
 	useEffect(() => {
-		const match = habits.find((habit) => habit.title === inputTitle) || !inputTitle.length;
-
-		if (match) {
-			setAlreadyExist(true);
-		} else {
-			setAlreadyExist(false);
-		};
+		const match = habits.find((habit) => habit.title === inputTitle);
+		setAlreadyExist(match);
 	}, [inputTitle]);
+
+	// on submit form
+	const handleSabmitForm = (e) => {
+		e.preventDefault();
+
+		if (inputTitle.length) {
+			onCreate(e.target);
+		} else {
+			setAlreadyExist(true);
+		};
+	};
 
 	// colors
 	const colors = dbColors.map((color, index) => {
@@ -43,10 +50,7 @@ function CreateHabitWindow(props) {
 
 			<form
 				className={styles.form}
-				onSubmit={(e) => {
-					e.preventDefault();
-					onCreate(e.target)
-				}}
+				onSubmit={(e) => handleSabmitForm(e)}
 			>
 				<label className={styles.label}>
 					<span className={styles.labelTitle}>Title:</span>
