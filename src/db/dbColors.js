@@ -1,19 +1,8 @@
-const colors = [
-	'#F5F5DC',
-	'#FFD1DC',
-	'#EFA94A',
-	'#7FB5B5',
-	'#77DD77',
-	'#FF8C69',
-	'#FF9BAA',
-	'#FCE883',
-	'#E4717A',
-	'#E6D690',
-	'#3EB489',
-	'#CCCCFF',
-	'#FAE7B5',
-	'#FFCF48'
-];
+const colors = [];
+const colorsCount = 14;
 
+for (let i = 0; i < colorsCount; i++) {
+	colors.push(`hsl(${360 / colorsCount * i}, 60%, 60%)`);
+};
 
 export default colors;

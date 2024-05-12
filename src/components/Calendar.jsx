@@ -6,6 +6,8 @@ import getFormattedDate from '../utils/getFormattedDate';
 function Calendar(props) {
 	const {
 		color,
+		dimmedColor,
+		lightDimmedColor,
 		completedDays
 	} = props;
 
@@ -28,11 +30,19 @@ function Calendar(props) {
 				};
 			};
 
+			// day style
+			const dayStyle = {
+				backgroundColor: isCompleted ? color : (index >= shift) ? dimmedColor : '',
+				color: isCompleted ? 'inherit' : lightDimmedColor,
+			};
+
 			return (
 				<span
-					style={{ backgroundColor: isCompleted ? color : '' }}
+					style={dayStyle}
 					className={`${index < shift ? '' : styles.day}`}
-				/>
+				>
+					{index < shift ? '' : index - shift + 1}
+				</span>
 			);
 		});
 

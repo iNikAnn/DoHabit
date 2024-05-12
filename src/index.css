@@ -13,8 +13,8 @@
 	--bg-color-secondary: hsl(0, 0%, 20%);
 	--bg-color-tertiary: hsl(0, 0%, 30%);
 
-	--border-radius-primary: 20px;
-	--border-radius-secondary: 10px;
+	--border-radius-primary: 1rem;
+	--border-radius-secondary: 0.6rem;
 }
 
 body {
@@ -32,4 +32,8 @@ code {
 html {
 	background-color: hsl(0, 0%, 0%);
 	color: hsl(0, 0%, 90%);
+}
+
+button {
+	border: none;
 }
