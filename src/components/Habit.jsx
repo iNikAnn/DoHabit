@@ -10,6 +10,7 @@ import { FaCheck } from "react-icons/fa";
 import getDimmedColor from '../utils/getDimmedColor';
 import getLightDimmedColor from '../utils/getLightDimmedColor';
 import getFormattedDate from '../utils/getFormattedDate';
+import getCurrentStreak from '../utils/getCurrentStreak';
 
 function Habit(props) {
 	const {
@@ -35,6 +36,9 @@ function Habit(props) {
 	// isTodayCompleted
 	const isTodayCompleted = completedDays.includes(getFormattedDate(new Date()));
 
+	// currentStreak
+	const currentStreak = getCurrentStreak(completedDays);
+
 	const markAsCompletedBtnStyle = {
 		backgroundColor: isTodayCompleted ? color : dimmedColor,
 		color: isTodayCompleted ? 'inherit' : lightDimmedColor
@@ -51,7 +55,15 @@ function Habit(props) {
 						{icon}
 					</span>
 
-					<span><strong>{title}</strong></span>
+					<div className={styles.titleWrapper}>
+						<strong>{title}</strong>
+
+						<small
+							style={{ color: 'gray' }}
+						>
+							Current streak: <strong>{currentStreak}</strong>
+						</small>
+					</div>
 				</div>
 
 				<button

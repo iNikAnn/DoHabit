@@ -51,6 +51,13 @@
 	border-radius: var(--border-radius-secondary);
 }
 
+/* titleWrapper */
+.titleWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
 .content {
 	padding: 0 0.6rem 0.6rem;
 }
