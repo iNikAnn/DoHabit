@@ -1,5 +1,5 @@
 .habit {
-	background-color: hsl(0, 0%, 10%);
+	background-color: var(--bg-color-primary);
 	border-radius: var(--border-radius-primary);
 }
 

@@ -40,10 +40,22 @@ function App() {
 
 	// modal
 	const [modalIsVisible, setModalIsVisible] = useState(false);
+	const [modalTitle, setModalTitle] = useState('');
 	const [modalContent, setModalContent] = useState('');
+
+	useEffect(() => {
+		document.body.style.overflow = modalIsVisible ? 'hidden' : 'auto';
+	}, [modalIsVisible]);
+
+	const handleOpenModal = (title, content) => {
+		setModalTitle(title);
+		setModalContent(content);
+		setModalIsVisible(true);
+	};
 
 	const handleCloseModal = () => {
 		setModalIsVisible(false);
+		setModalTitle('');
 		setModalContent('');
 	};
 
@@ -51,10 +63,7 @@ function App() {
 		<div className="App">
 			<Header
 				// 'on' functions
-				onOpenCreateHabitWindow={() => {
-					setModalContent('createHabitWindow')
-					setModalIsVisible(true);
-				}}
+				onOpenCreateHabitWindow={() => handleOpenModal('Create new habit', 'createHabitWindow')}
 			/>
 
 			<main>
@@ -71,18 +80,20 @@ function App() {
 
 			{modalIsVisible && (
 				<Modal
+					title={modalTitle}
+
 					// 'on' functions
 					onClose={handleCloseModal}
 				>
 					{modalContent === 'createHabitWindow' && (
 						<CreateHabitWindow
+							habits={habits}
+
 							// 'on' functions
 							onCreate={(data) => handleCreateHabit(data)}
 
 							//db
 							icons={icons}
-
-							habits={habits}
 						/>
 					)}
 				</Modal>

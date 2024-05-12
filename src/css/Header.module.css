@@ -10,7 +10,45 @@
 	align-items: center;
 
 	background-color: black;
-	border-bottom: 1px solid hsl(0, 0%, 20%);
+	/* border-bottom: 1px solid hsl(0, 0%, 20%); */
 
-	padding: 0 1rem;
+	padding: 0 1.6rem;
+}
+
+/* logo */
+.logoWrapper {
+	/* outline: 1px solid tomato; */
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.logo {
+	display: block;
+	width: 1.8rem;
+	height: 1.8rem;
+	background: url(../../public/icons/logo192-alpha.png);
+	background-size: contain;
+}
+
+.header h1 {
+	font-size: 1.6rem;
+}
+
+.btn {
+	/* outline: 1px solid red; */
+	width: 2rem;
+	height: 2rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: transparent;
+	color: inherit;
+}
+
+.btn svg {
+	width: 1.4rem;
+	height: 1.4rem;
 }

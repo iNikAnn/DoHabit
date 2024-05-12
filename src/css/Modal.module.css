@@ -5,8 +5,28 @@
 	right: 0;
 	bottom: 0;
 
-	background-color: var(--bg-color-primary);
+	display: flex;
+	flex-direction: column;
+
+	background-color: var(--bg);
 
 	padding: 1rem;
 	z-index: 99;
+}
+
+/* header */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
+.closeBtn {
+	height: 2rem;
+	background-color: tomato;
+	color: inherit;
+	border-radius: var(--border-radius-secondary);
+	font-weight: bold;
+	padding: 0 1rem;
 }

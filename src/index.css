@@ -5,10 +5,11 @@
 }
 
 :root {
-	--header-height: 3rem;
+	--header-height: 4rem;
 
 	--accent-color: dodgerblue;
 
+	--bg: black;
 	--bg-color-primary: hsl(0, 0%, 10%);
 	--bg-color-secondary: hsl(0, 0%, 20%);
 	--bg-color-tertiary: hsl(0, 0%, 30%);

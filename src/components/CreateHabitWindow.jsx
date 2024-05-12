@@ -3,6 +3,9 @@ import styles from '../css/CreateHabitWindow.module.css';
 // react
 import { useEffect, useState } from 'react';
 
+// icons
+import { FaCheck } from "react-icons/fa";
+
 //db
 import dbColors from '../db/dbColors';
 
@@ -42,7 +45,9 @@ function CreateHabitWindow(props) {
 		return (
 			<label style={{ backgroundColor: color }}>
 				<input type="radio" name="color" id="color" value={color} defaultChecked={!index} />
-				<div className={styles.outline} />
+				<div className={styles.checkMark}>
+					<FaCheck />
+				</div>
 			</label>
 		);
 	});
@@ -51,17 +56,15 @@ function CreateHabitWindow(props) {
 	const habitIcons = icons.map(([iconTitle, icon], index) => {
 		return (
 			<label>
-				{icon}
 				<input type="radio" name="iconTitle" id="iconTitle" value={iconTitle} defaultChecked={!index} />
-				<div className={styles.outline} />
+				<div className={styles.iconBg} />
+				{icon}
 			</label>
 		);
 	});
 
 	return (
 		<div className={styles.wrapper}>
-			<h2>Create new habit</h2>
-
 			<form
 				className={styles.form}
 				onSubmit={(e) => handleSabmitForm(e)}
@@ -93,7 +96,11 @@ function CreateHabitWindow(props) {
 					</div>
 				</label>
 
-				<button type='submit' disabled={alreadyExist}>
+				<button
+					className={styles.createBtn}
+					type='submit'
+					disabled={alreadyExist}
+				>
 					Create
 				</button>
 			</form>

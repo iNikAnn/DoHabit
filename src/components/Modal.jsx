@@ -2,6 +2,8 @@ import styles from '../css/Modal.module.css';
 
 function Modal(props) {
 	const {
+		title,
+
 		// 'on' functions
 		onClose,
 
@@ -10,8 +12,17 @@ function Modal(props) {
 
 	return (
 		<div className={styles.modal}>
-			Modal
-			<button onClick={onClose}>close</button>
+			<div className={styles.header}>
+				<h2>{title}</h2>
+
+				<button
+					className={styles.closeBtn}
+					onClick={onClose}
+				>
+					Cancel
+				</button>
+			</div>
+
 			{children}
 		</div>
 	);

@@ -1,4 +1,5 @@
 .App {
 	padding: 1rem;
-	padding-top: calc(var(--header-height) + 1rem);
+	/* padding-top: calc(var(--header-height) + 1rem); */
+	padding-top: var(--header-height);
 }
