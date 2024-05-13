@@ -4,7 +4,7 @@ import styles from '../css/HabitList.module.css';
 import Habit from "./Habit";
 import EmptyHabitsListMessage from './EmptyHabitsListMessage';
 
-function HabitsList(props) {
+function HabitList(props) {
 	const {
 		data,
 
@@ -45,4 +45,4 @@ function HabitsList(props) {
 	);
 }
 
-export default HabitsList;
+export default HabitList;

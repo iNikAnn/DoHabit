@@ -3,6 +3,9 @@ import styles from '../css/CreateHabitWindow.module.css';
 // react
 import { useEffect, useState } from 'react';
 
+// utils
+import generateIconList from '../utils/generateIconList';
+
 // icons
 import { FaCheck } from "react-icons/fa";
 
@@ -53,47 +56,8 @@ function CreateHabitWindow(props) {
 	});
 
 	// icons
-	const habitIcons = [];
-
-	for (let index = 0; index < 14; index++) {
-		const [iconTitle, icon] = icons[index];
-
-		habitIcons.push(
-			<label>
-				<input type="radio" name="iconTitle" id="iconTitle" value={iconTitle} defaultChecked={!index} />
-				<div className={styles.iconBg} />
-				{icon}
-			</label>
-		);
-	};
-
-	// additional habit icons
-	const [isAdditionalIconsVisible, setIsAdditionalIconsVisible] = useState(false);
-	const additionalIcons = [];
-
-	for (let index = 14; index < icons.length; index++) {
-		if (typeof icons[index] === 'string') {
-			additionalIcons.push(
-				<div
-					className={styles.iconCategory}
-				>
-					<small>{icons[index]}</small>
-				</div>
-			);
-
-			continue;
-		};
-
-		const [iconTitle, icon] = icons[index];
-
-		additionalIcons.push(
-			<label>
-				<input type="radio" name="iconTitle" id="iconTitle" value={iconTitle} defaultChecked={!index} />
-				<div className={styles.iconBg} />
-				{icon}
-			</label>
-		);
-	};
+	const [hideAdditionalIcons, setHideAdditionalIcons] = useState(true);
+	const habitIcons = generateIconList(icons, hideAdditionalIcons, styles);
 
 	return (
 		<div className={styles.wrapper}>
@@ -126,18 +90,14 @@ function CreateHabitWindow(props) {
 						<button
 							type='button'
 							className={styles.showMoreIconsBtn}
-							onClick={() => setIsAdditionalIconsVisible((state) => !state)}
+							onClick={() => setHideAdditionalIcons((state) => !state)}
 						>
-							{'Show ' + (isAdditionalIconsVisible ? 'less' : 'more')}
+							{'Show ' + (hideAdditionalIcons ? 'more' : 'less')}
 						</button>
 					</div>
 
 					<div className={styles.icons}>
 						{habitIcons}
-
-						{isAdditionalIconsVisible && (
-							additionalIcons
-						)}
 					</div>
 				</label>
 

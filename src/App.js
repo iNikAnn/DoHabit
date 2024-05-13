@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 // components
 import Header from './components/Header';
-import HabitsList from './components/HabitsList';
+import HabitList from './components/HabitList';
 import Modal from './components/Modal';
 import CreateHabitWindow from './components/CreateHabitWindow';
 
@@ -67,7 +67,7 @@ function App() {
 			/>
 
 			<main>
-				<HabitsList
+				<HabitList
 					data={habits}
 
 					// 'on' functions
