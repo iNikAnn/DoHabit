@@ -70,7 +70,7 @@ function CreateHabitWindow(props) {
 				onSubmit={(e) => handleSabmitForm(e)}
 			>
 				<label className={styles.label}>
-					<span className={styles.labelTitle}><h3>Title</h3></span>
+					<div className={styles.labelHeader}><h3>Title</h3></div>
 
 					<input type="text" name="title" id="title"
 						className={`${styles.input} ${alreadyExist ? styles.alreadyExist : ''}`}
@@ -81,7 +81,7 @@ function CreateHabitWindow(props) {
 				</label>
 
 				<label className={styles.label}>
-					<span className={styles.labelTitle}><h3>Color</h3></span>
+					<div className={styles.labelHeader}><h3>Color</h3></div>
 
 					<div className={styles.colors}>
 						{colors}
@@ -89,7 +89,10 @@ function CreateHabitWindow(props) {
 				</label>
 
 				<label className={styles.label}>
-					<span className={styles.labelTitle}><h3>Icon</h3></span>
+					<div className={styles.labelHeader}>
+						<h3>Icon</h3>
+						<button type='button' className={styles.showMoreIconsBtn}>Show more icons</button>
+					</div>
 
 					<div className={styles.icons}>
 						{habitIcons}
