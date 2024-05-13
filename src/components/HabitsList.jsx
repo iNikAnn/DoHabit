@@ -2,12 +2,14 @@ import styles from '../css/HabitList.module.css';
 
 // components
 import Habit from "./Habit";
+import EmptyHabitsListMessage from './EmptyHabitsListMessage';
 
 function HabitsList(props) {
 	const {
 		data,
 
 		// 'on' functions
+		onOpenCreateHabitWindow,
 		onMarkHabitAsCompleted,
 
 		// db
@@ -30,7 +32,14 @@ function HabitsList(props) {
 	});
 
 	return (
-		<div className={styles.habits}>
+		<div className={styles.habitList}>
+			{!habitsList.length && (
+				<EmptyHabitsListMessage
+					// 'on' functions
+					onOpenCreateHabitWindow={onOpenCreateHabitWindow}
+				/>
+			)}
+
 			{habitsList}
 		</div>
 	);

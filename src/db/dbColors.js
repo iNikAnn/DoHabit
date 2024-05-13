@@ -1,5 +1,5 @@
 const colors = [];
-const colorsCount = 14;
+const colorsCount = 21;
 
 for (let i = 0; i < colorsCount; i++) {
 	colors.push(`hsl(${360 / colorsCount * i}, 40%, 50%)`);

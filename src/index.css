@@ -24,6 +24,7 @@ body {
 		'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	overscroll-behavior: none;
 }
 
 code {
@@ -33,6 +34,7 @@ code {
 html {
 	background-color: hsl(0, 0%, 0%);
 	color: hsl(0, 0%, 90%);
+	user-select: none;
 }
 
 button {

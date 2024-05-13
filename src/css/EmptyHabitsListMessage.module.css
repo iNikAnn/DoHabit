@@ -1,0 +1,28 @@
+.emptyHabitsListMessage {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 75%;
+	text-align: center;
+}
+
+/* message */
+.message {
+	margin-bottom: 1rem;
+}
+
+.message h3 {
+	margin-bottom: 0.4rem;
+}
+
+/* btn */
+.createBtn {
+	height: 2rem;
+
+	background-color: dodgerblue;
+	border-radius: var(--border-radius-secondary);
+	font-weight: bold;
+
+	padding: 0 1rem;
+}

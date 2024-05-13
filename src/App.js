@@ -71,6 +71,7 @@ function App() {
 					data={habits}
 
 					// 'on' functions
+					onOpenCreateHabitWindow={() => handleOpenModal('Create new habit', 'createHabitWindow')}
 					onMarkHabitAsCompleted={handleMarkHabitAsCompleted}
 
 					// db
