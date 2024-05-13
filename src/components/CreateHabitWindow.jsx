@@ -53,15 +53,47 @@ function CreateHabitWindow(props) {
 	});
 
 	// icons
-	const habitIcons = icons.map(([iconTitle, icon], index) => {
-		return (
+	const habitIcons = [];
+
+	for (let index = 0; index < 14; index++) {
+		const [iconTitle, icon] = icons[index];
+
+		habitIcons.push(
 			<label>
 				<input type="radio" name="iconTitle" id="iconTitle" value={iconTitle} defaultChecked={!index} />
 				<div className={styles.iconBg} />
 				{icon}
 			</label>
 		);
-	});
+	};
+
+	// additional habit icons
+	const [isAdditionalIconsVisible, setIsAdditionalIconsVisible] = useState(false);
+	const additionalIcons = [];
+
+	for (let index = 14; index < icons.length; index++) {
+		if (typeof icons[index] === 'string') {
+			additionalIcons.push(
+				<div
+					className={styles.iconCategory}
+				>
+					<small>{icons[index]}</small>
+				</div>
+			);
+
+			continue;
+		};
+
+		const [iconTitle, icon] = icons[index];
+
+		additionalIcons.push(
+			<label>
+				<input type="radio" name="iconTitle" id="iconTitle" value={iconTitle} defaultChecked={!index} />
+				<div className={styles.iconBg} />
+				{icon}
+			</label>
+		);
+	};
 
 	return (
 		<div className={styles.wrapper}>
@@ -91,11 +123,21 @@ function CreateHabitWindow(props) {
 				<label className={styles.label}>
 					<div className={styles.labelHeader}>
 						<h3>Icon</h3>
-						<button type='button' className={styles.showMoreIconsBtn}>Show more icons</button>
+						<button
+							type='button'
+							className={styles.showMoreIconsBtn}
+							onClick={() => setIsAdditionalIconsVisible((state) => !state)}
+						>
+							{'Show ' + (isAdditionalIconsVisible ? 'less' : 'more')}
+						</button>
 					</div>
 
 					<div className={styles.icons}>
 						{habitIcons}
+
+						{isAdditionalIconsVisible && (
+							additionalIcons
+						)}
 					</div>
 				</label>
 

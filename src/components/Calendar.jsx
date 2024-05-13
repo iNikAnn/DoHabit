@@ -38,6 +38,7 @@ function Calendar(props) {
 
 			return (
 				<span
+					key={index}
 					style={dayStyle}
 					className={`${index < shift ? '' : styles.day}`}
 				>

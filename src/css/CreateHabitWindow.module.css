@@ -6,6 +6,10 @@
 	gap: 1.4rem;
 }
 
+.form > .label:nth-child(3) {
+	padding-bottom: 4rem;
+}
+
 .label {
 	display: flex;
 	flex-direction: column;
@@ -69,11 +73,6 @@
 }
 
 /* icons */
-.icons label {
-	/* border: 1px solid var(--bg-color-secondary); */
-	/* background-color: var(--bg-color-primary); */
-}
-
 .icons svg {
 	color: gray;
 }
@@ -89,8 +88,20 @@
 	height: 1.4rem;
 }
 
+.iconCategory {
+	/* outline: 1px solid red; */
+	grid-column: span 7;
+	display: flex;
+	align-items: flex-end;
+	color: gray;
+}
+
 /* createBtn */
 .createBtn {
+	position: absolute;
+	left: 1rem;
+	right: 1rem;
+	bottom: 1rem;
 	height: 3rem;
 
 	background-color: dodgerblue;
