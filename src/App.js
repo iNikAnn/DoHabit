@@ -22,6 +22,22 @@ function App() {
 		return data ? JSON.parse(data) : [];
 	});
 
+	// Database update - to be removed in the next release
+	useEffect(() => {
+		setHabits((habits) => {
+			return habits.map((habit) => {
+				const color = habit.color.replace(/\d+.\d+/, (match) => {
+					return Math.floor(match);
+				});
+
+				return {
+					...habit,
+					color: color
+				};
+			});
+		});
+	}, []);
+
 	// save habits to local storage
 	useEffect(() => {
 		localStorage.setItem('habits', JSON.stringify(habits));

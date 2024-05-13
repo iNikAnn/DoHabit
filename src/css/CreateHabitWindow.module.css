@@ -6,9 +6,9 @@
 	gap: 1.4rem;
 }
 
-.form > .label:nth-child(3) {
+/* .form > .label:nth-child(3) {
 	padding-bottom: 4rem;
-}
+} */
 
 .label {
 	display: flex;
@@ -136,6 +136,12 @@
 
 .icons input:checked ~ .iconBg {
 	background-color: var(--bg-color-secondary);
+}
+
+/* info */
+.info {
+	padding-bottom: 4rem;
+	color: gray;
 }
 
 /* state */

@@ -4,6 +4,7 @@ import styles from '../css/CreateHabitWindow.module.css';
 import { useEffect, useState } from 'react';
 
 // utils
+import generateColorList from '../utils/generateColorList';
 import generateIconList from '../utils/generateIconList';
 
 // icons
@@ -44,20 +45,11 @@ function CreateHabitWindow(props) {
 	};
 
 	// colors
-	const colors = dbColors.map((color, index) => {
-		return (
-			<label style={{ backgroundColor: color }}>
-				<input type="radio" name="color" id="color" value={color} defaultChecked={!index} />
-				<div className={styles.checkMark}>
-					<FaCheck />
-				</div>
-			</label>
-		);
-	});
+	const colors = generateColorList(habits, dbColors, <FaCheck />, styles);
 
 	// icons
 	const [hideAdditionalIcons, setHideAdditionalIcons] = useState(true);
-	const habitIcons = generateIconList(icons, hideAdditionalIcons, styles);
+	const habitIcons = generateIconList(habits, icons, hideAdditionalIcons, styles);
 
 	return (
 		<div className={styles.wrapper}>
@@ -101,12 +93,16 @@ function CreateHabitWindow(props) {
 					</div>
 				</label>
 
+				<small className={styles.info}>
+					"Color" and "Icon" icons in reduced size indicate that they have been previously used (but can be reused).
+				</small>
+
 				<button
 					className={styles.createBtn}
 					type='submit'
 					disabled={alreadyExist}
 				>
-					Create
+					Create Habit
 				</button>
 			</form>
 		</div>
