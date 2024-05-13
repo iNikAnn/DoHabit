@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/DoHabit/static/css/main.88873b29.css",
-    "main.js": "/DoHabit/static/js/main.481dc9e9.js",
+    "main.css": "/DoHabit/static/css/main.ce185d91.css",
+    "main.js": "/DoHabit/static/js/main.a7c2a75c.js",
     "static/js/453.5b299d38.chunk.js": "/DoHabit/static/js/453.5b299d38.chunk.js",
     "service-worker.js": "/DoHabit/service-worker.js",
     "static/media/logo192-alpha.png": "/DoHabit/static/media/logo192-alpha.8533f0ee32bc19d301ce.png",
     "index.html": "/DoHabit/index.html",
-    "main.88873b29.css.map": "/DoHabit/static/css/main.88873b29.css.map",
-    "main.481dc9e9.js.map": "/DoHabit/static/js/main.481dc9e9.js.map",
+    "main.ce185d91.css.map": "/DoHabit/static/css/main.ce185d91.css.map",
+    "main.a7c2a75c.js.map": "/DoHabit/static/js/main.a7c2a75c.js.map",
     "453.5b299d38.chunk.js.map": "/DoHabit/static/js/453.5b299d38.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.88873b29.css",
-    "static/js/main.481dc9e9.js"
+    "static/css/main.ce185d91.css",
+    "static/js/main.a7c2a75c.js"
   ]
 }
