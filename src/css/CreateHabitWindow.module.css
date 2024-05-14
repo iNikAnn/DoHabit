@@ -30,7 +30,8 @@
 }
 
 /* input */
-.input {
+input[type='text'],
+input[type='number'] {
 	height: 3rem;
 
 	background-color: var(--bg-color-primary);

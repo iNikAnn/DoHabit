@@ -57,6 +57,15 @@ function CreateHabitWindow(props) {
 		};
 	};
 
+	// order
+	const [currOrder, setCurrOrder] = useState(() => {
+		if (mode === 'edit') {
+			return habits.indexOf(habit) + 1;
+		};
+
+		return -1;
+	});
+
 	// colors
 	const colors = generateColorList(habits, dbColors, <FaCheck />, styles, mode === 'edit' ? habit.color : '');
 
@@ -80,6 +89,24 @@ function CreateHabitWindow(props) {
 						placeholder="Enter habit title"
 					/>
 				</label>
+
+				{mode === 'edit' && (
+					<label>
+						<div className={styles.labelHeader}><h3>Order</h3></div>
+						<div>
+							<input
+								type="number"
+								name="order"
+								id="order"
+								value={currOrder}
+								readOnly
+							/>
+
+							<button type='button' onClick={() => setCurrOrder((order) => order + 1)}>Move Down</button>
+							<button type='button' onClick={() => setCurrOrder((order) => order - 1)}>Move Up</button>
+						</div>
+					</label>
+				)}
 
 				<label className={styles.label}>
 					<div className={styles.labelHeader}><h3>Color</h3></div>
