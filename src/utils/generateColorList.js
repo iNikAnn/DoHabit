@@ -6,15 +6,17 @@ function generateColorList(habits, colors, icon, styles, currentColor) {
 		const isColorUsed = habits.find((habit) => habit.color === color);
 
 		return (
-			<label style={{
-				backgroundColor: color,
-				transform: isColorUsed ? 'scale(0.75)' : ''
-			}}
+			<label
+				key={color}
+				style={{
+					backgroundColor: color,
+					transform: isColorUsed ? 'scale(0.75)' : ''
+				}}
 			>
 				<input
 					type="radio"
 					name="color"
-					id="color"
+					id={color}
 					value={color}
 					defaultChecked={index === indexOfCurrentColor || !index}
 				/>

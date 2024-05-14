@@ -32,11 +32,14 @@ function generateIconList(habits, icons, end, styles, currentIcon) {
 		const isIconUsed = habits.find((habit) => habit.iconTitle === iconTitle);
 
 		iconList.push(
-			<label style={{ transform: isIconUsed ? 'scale(0.75)' : '' }}>
+			<label
+				key={iconTitle}
+				style={{ transform: isIconUsed ? 'scale(0.75)' : '' }}
+			>
 				<input
 					type="radio"
 					name="iconTitle"
-					id="iconTitle"
+					id={iconTitle}
 					value={iconTitle}
 					defaultChecked={index === indexOfCurrentIcon || (!currentIcon && !index)}
 				/>
