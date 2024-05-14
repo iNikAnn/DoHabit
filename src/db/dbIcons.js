@@ -14,22 +14,26 @@ import { MdNoDrinks } from "react-icons/md";
 
 // additional icons
 //sport
-import { FaWalking, FaHiking, FaSkating, FaSnowboarding, FaBasketballBall } from "react-icons/fa";
+import { FaDumbbell, FaWalking, FaHiking, FaSkating, FaSnowboarding, FaBasketballBall, FaBowlingBall } from "react-icons/fa";
 import { GrYoga } from "react-icons/gr";
 import { GiMeditation } from "react-icons/gi";
+import { PiBoxingGloveFill } from "react-icons/pi";
 
 // education
-import { FaLaptop, FaKeyboard, FaGraduationCap, FaChess, FaDrum, FaMitten, FaPen } from "react-icons/fa";
+import { FaLaptop, FaKeyboard, FaGraduationCap, FaChess, FaDrum, FaMitten, FaPen, FaMoneyBill, FaBtc } from "react-icons/fa";
+import { PiTelevisionSimpleFill } from "react-icons/pi";
 
 // health
-import { FaHeartbeat, FaYinYang, FaCannabis, FaCoffee, FaCookieBite, FaEgg, FaDrumstickBite } from "react-icons/fa";
+import { FaBriefcaseMedical, FaHeartbeat, FaYinYang, FaCannabis, FaCoffee, FaCookieBite, FaEgg, FaDrumstickBite } from "react-icons/fa";
+import { GiOppositeHearts } from "react-icons/gi";
+import { MdMedicationLiquid } from "react-icons/md";
 
 const icons = [
 	// common
 	['default', <MdOutlineFiberManualRecord />],
 
 	// sport
-	['Running', <FaRunning />],
+	['running', <FaRunning />],
 	['bike', <FaBiking />],
 	['swimming', <FaSwimmer />],
 
@@ -49,31 +53,40 @@ const icons = [
 
 	// additional icons
 	'Sport',
+	['dumbbell', <FaDumbbell />],
+	['boxingGlove', <PiBoxingGloveFill />],
 	['walking', <FaWalking />],
 	['hiking', <FaHiking />],
 	['skating', <FaSkating />],
 	['snowboarding', <FaSnowboarding />],
 	['meditation', <GiMeditation />],
 	['basketball', <FaBasketballBall />],
+	['bowling', <FaBowlingBall />],
 	['yoga', <GrYoga />],
 
 	'Education',
-	['Laptop', <FaLaptop />],
+	['laptop', <FaLaptop />],
+	['television', <PiTelevisionSimpleFill />],
 	['keyboard', <FaKeyboard />],
 	['graduationCap', <FaGraduationCap />],
 	['chess', <FaChess />],
 	['drum', <FaDrum />],
 	['mitten', <FaMitten />],
 	['pen', <FaPen />],
+	['money', <FaMoneyBill />],
+	['btc', <FaBtc />],
 
 	'Health',
+	['briefcaseMedical', <FaBriefcaseMedical />],
 	['heartBeat', <FaHeartbeat />],
+	['oppositeHearts', <GiOppositeHearts />],
 	['yinYang', <FaYinYang />],
 	['cannabis', <FaCannabis />],
 	['coffee', <FaCoffee />],
 	['cookieBite', <FaCookieBite />],
 	['egg', <FaEgg />],
 	['drumstickBite', <FaDrumstickBite />],
+	['medicationLiquid', <MdMedicationLiquid />],
 ];
 
 export default icons;

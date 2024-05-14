@@ -19,6 +19,7 @@ function generateIconList(habits, icons, end, styles, currentIcon) {
 		if (typeof icons[index] === 'string') {
 			iconList.push(
 				<div
+					key={icons[index]}
 					className={styles.iconCategory}
 				>
 					<small>{icons[index]}</small>
