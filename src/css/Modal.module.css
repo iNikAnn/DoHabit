@@ -24,7 +24,7 @@
 
 .closeBtn {
 	height: 2rem;
-	background-color: tomato;
+	background-color: gray;
 	color: inherit;
 	border-radius: var(--border-radius-secondary);
 	font-weight: bold;

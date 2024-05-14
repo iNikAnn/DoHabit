@@ -19,7 +19,7 @@ function CreateHabitWindow(props) {
 		habits,
 
 		// 'on' functions
-		onCreate,
+		onUpdate,
 
 		// db
 		icons,
@@ -38,7 +38,7 @@ function CreateHabitWindow(props) {
 
 	// check for existing habit with the same title
 	useEffect(() => {
-		const currentHabitTitle = habit.title;
+		const currentHabitTitle = habit ? habit.title : '';
 		const match = habits.find((habit) => {
 			return habit.title === inputTitle && habit.title !== currentHabitTitle;
 		});
@@ -51,7 +51,7 @@ function CreateHabitWindow(props) {
 		e.preventDefault();
 
 		if (inputTitle.length) {
-			onCreate(e.target, mode, mode === 'edit' ? habit.title : '');
+			onUpdate(e.target, mode, mode === 'edit' ? habit.title : '');
 		} else {
 			setAlreadyExist(true);
 		};
@@ -110,13 +110,30 @@ function CreateHabitWindow(props) {
 					"Color" and "Icon" icons in reduced size indicate that they have been previously used (but can be reused).
 				</small>
 
-				<button
-					className={styles.createBtn}
-					type='submit'
-					disabled={alreadyExist}
-				>
-					{mode === 'edit' ? 'Save Changes' : 'Create Habit'}
-				</button>
+				<div className={styles.btnsWrapper}>
+					{mode === 'edit' && (
+						<button
+							className={styles.deleteBtn}
+							type="button"
+							onClick={() => {
+								const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
+								if (window.confirm(msg)) {
+									onUpdate(null, 'delete', habit.title)
+								}
+							}}
+						>
+							Delete Habit
+						</button>
+					)}
+
+					<button
+						className={styles.createBtn}
+						type="submit"
+						disabled={alreadyExist}
+					>
+						{mode === 'edit' ? 'Save Changes' : 'Create Habit'}
+					</button>
+				</div>
 			</form>
 		</div>
 	);

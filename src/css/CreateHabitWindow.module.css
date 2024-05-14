@@ -96,20 +96,35 @@
 	color: gray;
 }
 
-/* createBtn */
-.createBtn {
+/* bts */
+.btnsWrapper {
+	/* outline: 1px solid red; */
 	position: absolute;
 	left: 1rem;
 	right: 1rem;
 	bottom: 1rem;
 	height: 3rem;
 
-	background-color: dodgerblue;
-	color: inherit;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.deleteBtn,
+.createBtn {
+	width: 100%;
+	flex-grow: 0;
 	border-radius: var(--border-radius-secondary);
 	font-weight: bold;
+	color: inherit;
+}
 
-	margin-top: auto;
+.deleteBtn {
+	background-color: tomato;
+}
+
+.createBtn {
+	background-color: dodgerblue;
 }
 
 /* outline */

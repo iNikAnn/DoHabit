@@ -1,4 +1,10 @@
-function createHabit(currentHabits, data, mode, originalHabitTitle) {
+function getUpdatedHabits(currentHabits, data, mode, originalHabitTitle) {
+	if (mode === 'delete') {
+		return currentHabits.filter((habit) => {
+			return habit.title !== originalHabitTitle;
+		});
+	};
+
 	const newHabit = {
 		title: data.title.value,
 		color: data.color.value,
@@ -22,4 +28,4 @@ function createHabit(currentHabits, data, mode, originalHabitTitle) {
 	return [newHabit, ...currentHabits];
 }
 
-export default createHabit;
+export default getUpdatedHabits;

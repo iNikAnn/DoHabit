@@ -10,7 +10,7 @@ import Modal from './components/Modal';
 import CreateHabitWindow from './components/CreateHabitWindow';
 
 // utils
-import createHabit from './utils/createHabit';
+import getUpdatedHabits from './utils/getUpdatedHabits';
 import markHabitAsCompleted from './utils/markHabitAsCompleted';
 
 // db
@@ -43,9 +43,9 @@ function App() {
 		localStorage.setItem('habits', JSON.stringify(habits));
 	}, [habits]);
 
-	// create habit
-	const handleCreateHabit = (data, mode, originalHabitTitle) => {
-		setHabits(createHabit(habits, data, mode, originalHabitTitle));
+	// update habit
+	const handleUpdateHabits = (data, mode, originalHabitTitle) => {
+		setHabits(getUpdatedHabits(habits, data, mode, originalHabitTitle));
 		handleCloseModal();
 	};
 
@@ -110,7 +110,7 @@ function App() {
 							habits={habits}
 
 							// 'on' functions
-							onCreate={(data, mode, originalHabitTitle) => handleCreateHabit(data, mode, originalHabitTitle)}
+							onUpdate={(data, mode, originalHabitTitle) => handleUpdateHabits(data, mode, originalHabitTitle)}
 
 							//db
 							icons={icons}
