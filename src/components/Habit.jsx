@@ -20,6 +20,7 @@ function Habit(props) {
 		completedDays,
 
 		// 'on' functions
+		onOpenCreateHabitWindow,
 		onMarkHabitAsCompleted,
 
 		// db
@@ -56,7 +57,7 @@ function Habit(props) {
 					</span>
 
 					<div className={styles.titleWrapper}>
-						<strong>{title}</strong>
+						<strong onClick={() => onOpenCreateHabitWindow(title)}>{title}</strong>
 
 						<small
 							style={{ color: 'gray' }}

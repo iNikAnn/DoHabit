@@ -15,21 +15,34 @@ import dbColors from '../db/dbColors';
 
 function CreateHabitWindow(props) {
 	const {
+		modeObj,
+		habits,
+
 		// 'on' functions
 		onCreate,
 
 		// db
 		icons,
-
-		habits
 	} = props;
 
-	const [inputTitle, setInputTitle] = useState('');
+	let mode = '';
+	let habit = '';
+
+	if (modeObj) {
+		mode = modeObj.mode;
+		habit = habits.find((habit) => habit.title === modeObj.habitTitle);
+	};
+
+	const [inputTitle, setInputTitle] = useState(mode === 'edit' ? habit.title : '');
 	const [alreadyExist, setAlreadyExist] = useState(false);
 
 	// check for existing habit with the same title
 	useEffect(() => {
-		const match = habits.find((habit) => habit.title === inputTitle);
+		const currentHabitTitle = habit.title;
+		const match = habits.find((habit) => {
+			return habit.title === inputTitle && habit.title !== currentHabitTitle;
+		});
+
 		setAlreadyExist(match);
 	}, [inputTitle]);
 
@@ -38,18 +51,18 @@ function CreateHabitWindow(props) {
 		e.preventDefault();
 
 		if (inputTitle.length) {
-			onCreate(e.target);
+			onCreate(e.target, mode, mode === 'edit' ? habit.title : '');
 		} else {
 			setAlreadyExist(true);
 		};
 	};
 
 	// colors
-	const colors = generateColorList(habits, dbColors, <FaCheck />, styles);
+	const colors = generateColorList(habits, dbColors, <FaCheck />, styles, mode === 'edit' ? habit.color : '');
 
 	// icons
 	const [hideAdditionalIcons, setHideAdditionalIcons] = useState(true);
-	const habitIcons = generateIconList(habits, icons, hideAdditionalIcons, styles);
+	const habitIcons = generateIconList(habits, icons, hideAdditionalIcons, styles, mode === 'edit' ? habit.iconTitle : '');
 
 	return (
 		<div className={styles.wrapper}>
@@ -102,7 +115,7 @@ function CreateHabitWindow(props) {
 					type='submit'
 					disabled={alreadyExist}
 				>
-					Create Habit
+					{mode === 'edit' ? 'Save Changes' : 'Create Habit'}
 				</button>
 			</form>
 		</div>

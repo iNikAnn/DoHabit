@@ -23,6 +23,7 @@ function HabitList(props) {
 				{...habit}
 
 				// 'on' functions
+				onOpenCreateHabitWindow={(habitTitle) => onOpenCreateHabitWindow({ mode: 'edit', habitTitle: habitTitle })}
 				onMarkHabitAsCompleted={onMarkHabitAsCompleted}
 
 				// db

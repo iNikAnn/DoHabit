@@ -1,4 +1,17 @@
-function generateIconList(habits, icons, end, styles) {
+function generateIconList(habits, icons, end, styles, currentIcon) {
+	// currentIcon is used in habit editing mode
+	if (currentIcon) {
+		currentIcon = icons.find((el) => {
+			if (Array.isArray(el)) {
+				if (el[0] === currentIcon) {
+					return el;
+				};
+			};
+		});
+	};
+
+	const indexOfCurrentIcon = currentIcon ? icons.indexOf(currentIcon) : -1;
+
 	const iconList = [];
 	end = end ? 14 : icons.length;
 
@@ -25,7 +38,7 @@ function generateIconList(habits, icons, end, styles) {
 					name="iconTitle"
 					id="iconTitle"
 					value={iconTitle}
-					defaultChecked={!index}
+					defaultChecked={index === indexOfCurrentIcon || (!currentIcon && !index)}
 				/>
 
 				<div className={styles.iconBg} />

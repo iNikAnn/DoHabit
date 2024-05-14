@@ -1,4 +1,7 @@
-function generateColorList(habits, colors, icon, styles) {
+function generateColorList(habits, colors, icon, styles, currentColor) {
+	// currentColor is used in habit editing mode
+	let indexOfCurrentColor = currentColor ? colors.indexOf(currentColor) : -1;
+
 	return colors.map((color, index) => {
 		const isColorUsed = habits.find((habit) => habit.color === color);
 
@@ -13,7 +16,7 @@ function generateColorList(habits, colors, icon, styles) {
 					name="color"
 					id="color"
 					value={color}
-					defaultChecked={!index}
+					defaultChecked={index === indexOfCurrentColor || !index}
 				/>
 
 				<div className={styles.checkMark}>

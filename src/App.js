@@ -44,8 +44,8 @@ function App() {
 	}, [habits]);
 
 	// create habit
-	const handleCreateHabit = (data) => {
-		setHabits(createHabit(habits, data));
+	const handleCreateHabit = (data, mode, originalHabitTitle) => {
+		setHabits(createHabit(habits, data, mode, originalHabitTitle));
 		handleCloseModal();
 	};
 
@@ -58,14 +58,16 @@ function App() {
 	const [modalIsVisible, setModalIsVisible] = useState(false);
 	const [modalTitle, setModalTitle] = useState('');
 	const [modalContent, setModalContent] = useState('');
+	const [modalContentMode, setModalContentMode] = useState(null);
 
 	useEffect(() => {
 		document.body.style.overflow = modalIsVisible ? 'hidden' : 'auto';
 	}, [modalIsVisible]);
 
-	const handleOpenModal = (title, content) => {
+	const handleOpenModal = (title, content, modeObj) => {
 		setModalTitle(title);
 		setModalContent(content);
+		setModalContentMode(modeObj || null);
 		setModalIsVisible(true);
 	};
 
@@ -87,7 +89,7 @@ function App() {
 					data={habits}
 
 					// 'on' functions
-					onOpenCreateHabitWindow={() => handleOpenModal('Create new habit', 'createHabitWindow')}
+					onOpenCreateHabitWindow={(modeObj) => handleOpenModal(`${modeObj ? 'Edit' : 'Create new'} habit`, 'createHabitWindow', modeObj)}
 					onMarkHabitAsCompleted={handleMarkHabitAsCompleted}
 
 					// db
@@ -104,10 +106,11 @@ function App() {
 				>
 					{modalContent === 'createHabitWindow' && (
 						<CreateHabitWindow
+							modeObj={modalContentMode}
 							habits={habits}
 
 							// 'on' functions
-							onCreate={(data) => handleCreateHabit(data)}
+							onCreate={(data, mode, originalHabitTitle) => handleCreateHabit(data, mode, originalHabitTitle)}
 
 							//db
 							icons={icons}
