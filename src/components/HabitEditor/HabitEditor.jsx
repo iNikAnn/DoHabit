@@ -1,19 +1,22 @@
-import styles from '../css/CreateHabitWindow.module.css';
+import styles from '../../css/HabitEditor.module.css';
 
 // react
 import { useEffect, useState } from 'react';
 
+// components
+import OrderBlock from './OrderBlock';
+
 // utils
-import generateColorList from '../utils/generateColorList';
-import generateIconList from '../utils/generateIconList';
+import generateColorList from '../../utils/generateColorList';
+import generateIconList from '../../utils/generateIconList';
 
 // icons
 import { FaCheck } from "react-icons/fa";
 
 //db
-import dbColors from '../db/dbColors';
+import dbColors from '../../db/dbColors';
 
-function CreateHabitWindow(props) {
+function HabitEditor(props) {
 	const {
 		modeObj,
 		habits,
@@ -91,21 +94,7 @@ function CreateHabitWindow(props) {
 				</label>
 
 				{mode === 'edit' && (
-					<label>
-						<div className={styles.labelHeader}><h3>Order</h3></div>
-						<div>
-							<input
-								type="number"
-								name="order"
-								id="order"
-								value={currOrder}
-								readOnly
-							/>
-
-							<button type='button' onClick={() => setCurrOrder((order) => order + 1)}>Move Down</button>
-							<button type='button' onClick={() => setCurrOrder((order) => order - 1)}>Move Up</button>
-						</div>
-					</label>
+					<OrderBlock habitsCount={habits.length} currOrder={currOrder} setCurrOrder={setCurrOrder} />
 				)}
 
 				<label className={styles.label}>
@@ -166,4 +155,4 @@ function CreateHabitWindow(props) {
 	);
 }
 
-export default CreateHabitWindow;
+export default HabitEditor;

@@ -20,6 +20,8 @@
 
 	--border-radius-primary: 1rem;
 	--border-radius-secondary: 0.6rem;
+
+	--input-height-primary: 3rem;
 }
 
 body {
@@ -43,4 +45,13 @@ html {
 
 button {
 	border: none;
+	color: inherit;
+	font-weight: bold;
+	border-radius: var(--border-radius-secondary);
+}
+
+input {
+	border: none;
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-secondary);
 }

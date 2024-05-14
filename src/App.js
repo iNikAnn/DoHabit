@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import HabitList from './components/HabitList';
 import Modal from './components/Modal';
-import CreateHabitWindow from './components/CreateHabitWindow';
+import HabitEditor from './components/HabitEditor/HabitEditor';
 
 // utils
 import getUpdatedHabits from './utils/getUpdatedHabits';
@@ -105,7 +105,7 @@ function App() {
 					onClose={handleCloseModal}
 				>
 					{modalContent === 'createHabitWindow' && (
-						<CreateHabitWindow
+						<HabitEditor
 							modeObj={modalContentMode}
 							habits={habits}
 
