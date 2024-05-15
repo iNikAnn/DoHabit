@@ -6,30 +6,6 @@
 	gap: 1.4rem;
 }
 
-/* .label {
-	display: flex;
-	flex-direction: column;
-} */
-
-/* label header */
-/* .labelHeader {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 0.6rem;
-} */
-
-/* .showMoreIconsBtn {
-	background-color: transparent;
-	font-weight: bold;
-	color: dodgerblue;
-} */
-
-/* .input {
-	height: var(--input-height-primary);
-	padding-left: 1.2rem;
-} */
-
 /* colors */
 .colors {
 	display: grid;
@@ -114,9 +90,3 @@
 	padding-bottom: 4rem;
 	color: gray;
 }
-
-/* state */
-/* .alreadyExist {
-	outline: 2px solid red;
-	outline-offset: -2px;
-} */

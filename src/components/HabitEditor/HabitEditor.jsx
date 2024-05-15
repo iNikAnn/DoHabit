@@ -52,13 +52,21 @@ function HabitEditor(props) {
 	}, [inputTitle]);
 
 	// on submit form
-	const handleSabmitForm = (e) => {
-		e.preventDefault();
+	const handleSabmitForm = (event) => {
+		event.preventDefault();
 
 		if (inputTitle.length) {
-			onUpdate(e.target, mode, mode === 'edit' ? habit.title : '');
+			onUpdate(event.target, mode, mode === 'edit' ? habit.title : '');
 		} else {
 			setAlreadyExist(true);
+		};
+	};
+
+	// prevents form submission on Enter key press and hides the virtual keyboard
+	const handlePressEnter = (event) => {
+		if (event.key === 'Enter') {
+			event.preventDefault();
+			event.target.blur();
 		};
 	};
 
@@ -86,7 +94,8 @@ function HabitEditor(props) {
 		<div className={styles.wrapper}>
 			<form
 				className={styles.form}
-				onSubmit={(e) => handleSabmitForm(e)}
+				onSubmit={handleSabmitForm}
+				onKeyDown={handlePressEnter}
 			>
 				<TitleBlock input={inputTitle} onChange={(newTitle) => setInputTitle(newTitle)} alreadyExist={alreadyExist} />
 
