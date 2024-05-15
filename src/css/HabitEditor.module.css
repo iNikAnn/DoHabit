@@ -6,10 +6,6 @@
 	gap: 1.4rem;
 }
 
-/* .form > .label:nth-child(3) {
-	padding-bottom: 4rem;
-} */
-
 .label {
 	display: flex;
 	flex-direction: column;
@@ -29,27 +25,13 @@
 	color: dodgerblue;
 }
 
-/* input */
-/* input[type='text'],
-input[type='number'] {
-	height: 3rem;
-
-	background-color: var(--bg-color-primary);
-	color: inherit;
-	border: none;
-	border-radius: var(--border-radius-secondary);
-
-	padding-left: 1rem;
-} */
-
 .input {
 	height: var(--input-height-primary);
 	padding-left: 1.2rem;
 }
 
 /* colors */
-.colors,
-.icons {
+.colors {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	grid-auto-rows: 2rem;
@@ -57,8 +39,7 @@ input[type='number'] {
 	gap: 0.4rem;
 }
 
-.colors label,
-.icons label {
+.colors label {
 	/* outline: 1px solid red; */
 	position: relative;
 	display: flex;
@@ -67,39 +48,19 @@ input[type='number'] {
 	border-radius: var(--border-radius-secondary);
 }
 
-.colors input,
-.icons input {
+.colors input {
 	appearance: none;
 }
 
-.colors input:checked ~ .checkMark,
-.icons input:checked ~ .iconBg {
+.colors input:checked ~ .checkMark {
 	/* outline: 2px solid var(--accent-color); */
 	display: flex;
 }
 
-/* icons */
-.icons svg {
-	color: gray;
-}
-
-.icons input:checked ~ svg {
-	color: inherit;
-}
-
-.icons svg,
 .checkMark svg {
 	/* outline: 1px solid red; */
 	width: 1.4rem;
 	height: 1.4rem;
-}
-
-.iconCategory {
-	/* outline: 1px solid red; */
-	grid-column: span 7;
-	display: flex;
-	align-items: flex-end;
-	color: gray;
 }
 
 /* bts */
@@ -113,7 +74,7 @@ input[type='number'] {
 
 	display: flex;
 	justify-content: space-between;
-	gap: 1rem;
+	gap: 0.4rem;
 }
 
 .deleteBtn,
@@ -134,8 +95,7 @@ input[type='number'] {
 }
 
 /* outline */
-.checkMark,
-.iconBg {
+.checkMark {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -147,16 +107,6 @@ input[type='number'] {
 	align-items: center;
 
 	border-radius: var(--border-radius-secondary);
-}
-
-.iconBg {
-	display: block;
-	background-color: var(--bg-color-primary);
-	z-index: -1;
-}
-
-.icons input:checked ~ .iconBg {
-	background-color: var(--bg-color-secondary);
 }
 
 /* info */

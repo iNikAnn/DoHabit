@@ -1,0 +1,79 @@
+/* header */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	margin-bottom: 0.6rem;
+}
+
+/* showMoreBtn */
+.showMoreBtn {
+	background-color: transparent;
+	color: dodgerblue;
+}
+
+/* iconList */
+.iconList {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-auto-rows: 2rem;
+	justify-content: space-between;
+	gap: 0.4rem;
+}
+
+/* icon category */
+.iconList > div {
+	/* background-color: red; */
+	grid-column: span 7;
+	display: flex;
+	align-items: flex-end;
+	color: gray;
+}
+
+/* label */
+.iconList label {
+	/* outline: 1px solid red; */
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius-secondary);
+}
+
+/* input */
+.iconList input {
+	appearance: none;
+}
+
+/* icon */
+.iconList svg {
+	width: 1.4rem;
+	height: 1.4rem;
+	color: gray;
+}
+
+.iconList input:checked ~ svg {
+	color: inherit;
+}
+
+/* icon bg */
+.iconList label div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-secondary);
+}
+
+.iconList input:checked ~ div {
+	background-color: var(--bg-color-secondary);
+}

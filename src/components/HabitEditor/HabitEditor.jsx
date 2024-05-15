@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 // components
 import OrderBlock from './OrderBlock';
+import IconBlock from './IconBlock';
 
 // utils
 import generateColorList from '../../utils/generateColorList';
@@ -74,7 +75,11 @@ function HabitEditor(props) {
 
 	// icons
 	const [hideAdditionalIcons, setHideAdditionalIcons] = useState(true);
-	const habitIcons = generateIconList(habits, icons, hideAdditionalIcons, styles, mode === 'edit' ? habit.iconTitle : '');
+	const iconList = generateIconList(habits, icons, hideAdditionalIcons, styles, mode === 'edit' ? habit.iconTitle : '');
+
+	const handleToggleIconList = () => {
+		setHideAdditionalIcons((state) => !state);
+	};
 
 	return (
 		<div className={styles.wrapper}>
@@ -105,22 +110,7 @@ function HabitEditor(props) {
 					</div>
 				</label>
 
-				<label className={styles.label}>
-					<div className={styles.labelHeader}>
-						<h3>Icon</h3>
-						<button
-							type='button'
-							className={styles.showMoreIconsBtn}
-							onClick={() => setHideAdditionalIcons((state) => !state)}
-						>
-							{'Show ' + (hideAdditionalIcons ? 'more' : 'less')}
-						</button>
-					</div>
-
-					<div className={styles.icons}>
-						{habitIcons}
-					</div>
-				</label>
+				<IconBlock iconList={iconList} state={hideAdditionalIcons} onToggleState={handleToggleIconList} />
 
 				<small className={styles.info}>
 					"Color" and "Icon" icons in reduced size indicate that they have been previously used (but can be reused).

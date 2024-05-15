@@ -16,7 +16,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 	};
 
 	return (
-		<label>
+		<label style={{ pointerEvents: 'none' }}>
 			<div className={styles.header}>
 				<h3>Order</h3>
 			</div>
@@ -28,6 +28,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 					name="order"
 					id="order"
 					value={currOrder}
+					tabIndex={-1}
 					readOnly
 				/>
 
