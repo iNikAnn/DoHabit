@@ -21,9 +21,7 @@ function generateColorList(habits, colors, icon, styles, currentColor) {
 					defaultChecked={index === indexOfCurrentColor || !index}
 				/>
 
-				<div className={styles.checkMark}>
-					{icon}
-				</div>
+				{icon}
 			</label>
 		);
 	});

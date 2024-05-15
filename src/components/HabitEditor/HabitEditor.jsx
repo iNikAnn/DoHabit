@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 // components
 import TitleBlock from './TitleBlock';
 import OrderBlock from './OrderBlock';
+import ColorBlock from './ColorBlock';
 import IconBlock from './IconBlock';
 
 // utils
@@ -79,8 +80,8 @@ function HabitEditor(props) {
 		return -1;
 	});
 
-	// colors
-	const colors = generateColorList(habits, dbColors, <FaCheck />, styles, mode === 'edit' ? habit.color : '');
+	// colorList
+	const colorList = generateColorList(habits, dbColors, <FaCheck />, styles, mode === 'edit' ? habit.color : '');
 
 	// icons
 	const [hideAdditionalIcons, setHideAdditionalIcons] = useState(true);
@@ -103,13 +104,7 @@ function HabitEditor(props) {
 					<OrderBlock habitsCount={habits.length} currOrder={currOrder} setCurrOrder={setCurrOrder} />
 				)}
 
-				<label className={styles.label}>
-					<div className={styles.labelHeader}><h3>Color</h3></div>
-
-					<div className={styles.colors}>
-						{colors}
-					</div>
-				</label>
+				<ColorBlock colorList={colorList} />
 
 				<IconBlock iconList={iconList} state={hideAdditionalIcons} onToggleState={handleToggleIconList} />
 

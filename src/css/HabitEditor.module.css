@@ -6,39 +6,6 @@
 	gap: 1.4rem;
 }
 
-/* colors */
-.colors {
-	display: grid;
-	grid-template-columns: repeat(7, 1fr);
-	grid-auto-rows: 2rem;
-	justify-content: space-between;
-	gap: 0.4rem;
-}
-
-.colors label {
-	/* outline: 1px solid red; */
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: var(--border-radius-secondary);
-}
-
-.colors input {
-	appearance: none;
-}
-
-.colors input:checked ~ .checkMark {
-	/* outline: 2px solid var(--accent-color); */
-	display: flex;
-}
-
-.checkMark svg {
-	/* outline: 1px solid red; */
-	width: 1.4rem;
-	height: 1.4rem;
-}
-
 /* bts */
 .btnsWrapper {
 	/* outline: 1px solid red; */
@@ -68,21 +35,6 @@
 
 .createBtn {
 	background-color: dodgerblue;
-}
-
-/* outline */
-.checkMark {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-
-	display: none;
-	justify-content: center;
-	align-items: center;
-
-	border-radius: var(--border-radius-secondary);
 }
 
 /* info */

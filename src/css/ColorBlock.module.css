@@ -1,0 +1,38 @@
+/* header */
+.header {
+	margin-bottom: 0.6rem;
+}
+
+/* color list */
+.colorList {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-auto-rows: 2rem;
+	justify-content: space-between;
+	gap: 0.4rem;
+}
+
+.colorList label {
+	/* outline: 1px solid red; */
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius-secondary);
+}
+
+/* input */
+.colorList input {
+	appearance: none;
+}
+
+/* check mark */
+.colorList input + svg {
+	display: none;
+	width: 1.4rem;
+	height: 1.4rem;
+}
+
+.colorList input:checked + svg {
+	display: flex;
+}
