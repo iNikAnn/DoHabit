@@ -1,7 +1,7 @@
 import styles from '../css/HabitList.module.css';
 
 // components
-import Habit from "./Habit";
+import Habit from "././Habit/Habit";
 import EmptyHabitsListMessage from './EmptyHabitsListMessage';
 
 function HabitList(props) {
@@ -9,7 +9,7 @@ function HabitList(props) {
 		data,
 
 		// 'on' functions
-		onOpenCreateHabitWindow,
+		onOpenHabitEditor,
 		onMarkHabitAsCompleted,
 
 		// db
@@ -23,7 +23,7 @@ function HabitList(props) {
 				{...habit}
 
 				// 'on' functions
-				onOpenCreateHabitWindow={(habitTitle) => onOpenCreateHabitWindow({ mode: 'edit', habitTitle: habitTitle })}
+				onOpenHabitEditor={(habitTitle) => onOpenHabitEditor({ mode: 'edit', habitTitle: habitTitle })}
 				onMarkHabitAsCompleted={onMarkHabitAsCompleted}
 
 				// db
@@ -37,7 +37,7 @@ function HabitList(props) {
 			{!habitsList.length && (
 				<EmptyHabitsListMessage
 					// 'on' functions
-					onOpenCreateHabitWindow={onOpenCreateHabitWindow}
+					onOpenHabitEditor={onOpenHabitEditor}
 				/>
 			)}
 

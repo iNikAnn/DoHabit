@@ -1,0 +1,53 @@
+/* header */
+.header {
+	/* outline: 1px solid tomato; */
+	display: flex;
+	justify-content: space-between;
+
+	padding: 0.6rem;
+}
+
+/* header left */
+.headerLeft {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+/* icon */
+.iconWrapper {
+	/* outline: 1px solid tomato; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* background-color: var(--bg-color-tertiary); */
+	border-radius: var(--border-radius-secondary);
+}
+
+.iconWrapper,
+.markAsCompletedBtn {
+	width: 3rem;
+	height: 3rem;
+}
+
+.iconWrapper svg,
+.markAsCompletedBtn svg {
+	width: 1.6rem;
+	height: 1.6rem;
+}
+
+/* btns */
+.markAsCompletedBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: var(--border-radius-secondary);
+}
+
+/* titleWrapper */
+.titleWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}

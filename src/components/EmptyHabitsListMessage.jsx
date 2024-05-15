@@ -1,6 +1,6 @@
 import styles from '../css/EmptyHabitsListMessage.module.css';
 
-function EmptyHabitsListMessage({ onOpenCreateHabitWindow }) {
+function EmptyHabitsListMessage({ onOpenHabitEditor }) {
 	return (
 		<div
 			className={styles.emptyHabitsListMessage}
@@ -12,7 +12,7 @@ function EmptyHabitsListMessage({ onOpenCreateHabitWindow }) {
 
 			<button
 				className={styles.createBtn}
-				onClick={onOpenCreateHabitWindow}
+				onClick={onOpenHabitEditor}
 			>
 				Create New Habit
 			</button>

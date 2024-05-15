@@ -81,7 +81,7 @@ function App() {
 		<div className="App">
 			<Header
 				// 'on' functions
-				onOpenCreateHabitWindow={() => handleOpenModal('Create new habit', 'createHabitWindow')}
+				onOpenHabitEditor={() => handleOpenModal('Create new habit', 'createHabitWindow')}
 			/>
 
 			<main>
@@ -89,7 +89,7 @@ function App() {
 					data={habits}
 
 					// 'on' functions
-					onOpenCreateHabitWindow={(modeObj) => handleOpenModal(`${modeObj ? 'Edit' : 'Create new'} habit`, 'createHabitWindow', modeObj)}
+					onOpenHabitEditor={(modeObj) => handleOpenModal(`${modeObj ? 'Edit' : 'Create new'} habit`, 'createHabitWindow', modeObj)}
 					onMarkHabitAsCompleted={handleMarkHabitAsCompleted}
 
 					// db

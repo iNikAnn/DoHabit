@@ -6,7 +6,7 @@ import { FaPlus } from "react-icons/fa";
 function Header(props) {
 	const {
 		// 'on' functions
-		onOpenCreateHabitWindow
+		onOpenHabitEditor
 	} = props;
 
 	return (
@@ -19,7 +19,7 @@ function Header(props) {
 			<div>
 				<button
 					className={styles.btn}
-					onClick={onOpenCreateHabitWindow}
+					onClick={onOpenHabitEditor}
 				>
 					<FaPlus />
 				</button>
