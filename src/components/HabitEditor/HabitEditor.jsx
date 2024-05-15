@@ -4,6 +4,7 @@ import styles from '../../css/HabitEditor.module.css';
 import { useEffect, useState } from 'react';
 
 // components
+import TitleBlock from './TitleBlock';
 import OrderBlock from './OrderBlock';
 import IconBlock from './IconBlock';
 
@@ -87,16 +88,7 @@ function HabitEditor(props) {
 				className={styles.form}
 				onSubmit={(e) => handleSabmitForm(e)}
 			>
-				<label className={styles.label}>
-					<div className={styles.labelHeader}><h3>Title</h3></div>
-
-					<input type="text" name="title" id="title"
-						className={`${styles.input} ${alreadyExist ? styles.alreadyExist : ''}`}
-						value={inputTitle}
-						onChange={(e) => setInputTitle(e.target.value)}
-						placeholder="Enter habit title"
-					/>
-				</label>
+				<TitleBlock input={inputTitle} onChange={(newTitle) => setInputTitle(newTitle)} alreadyExist={alreadyExist} />
 
 				{mode === 'edit' && (
 					<OrderBlock habitsCount={habits.length} currOrder={currOrder} setCurrOrder={setCurrOrder} />

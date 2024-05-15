@@ -1,0 +1,30 @@
+/* header */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.6rem;
+}
+
+/* input */
+.input {
+	height: var(--input-height-primary);
+	width: 100%;
+	padding-left: 1.2rem;
+}
+
+.input:focus {
+	outline: 2px solid dodgerblue;
+	outline-offset: -2px;
+}
+
+/* alreadyExist */
+.alreadyExist {
+	outline: 2px solid tomato !important;
+	outline-offset: -2px;
+}
+
+/* errorMessage */
+.errorMessage {
+	color: tomato;
+}

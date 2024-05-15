@@ -6,29 +6,29 @@
 	gap: 1.4rem;
 }
 
-.label {
+/* .label {
 	display: flex;
 	flex-direction: column;
-}
+} */
 
 /* label header */
-.labelHeader {
+/* .labelHeader {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 0.6rem;
-}
+} */
 
-.showMoreIconsBtn {
+/* .showMoreIconsBtn {
 	background-color: transparent;
 	font-weight: bold;
 	color: dodgerblue;
-}
+} */
 
-.input {
+/* .input {
 	height: var(--input-height-primary);
 	padding-left: 1.2rem;
-}
+} */
 
 /* colors */
 .colors {
@@ -116,7 +116,7 @@
 }
 
 /* state */
-.alreadyExist {
+/* .alreadyExist {
 	outline: 2px solid red;
 	outline-offset: -2px;
-}
+} */
