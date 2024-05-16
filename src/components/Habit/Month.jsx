@@ -5,16 +5,16 @@ import getFormattedDate from '../../utils/getFormattedDate';
 
 function Month(props) {
 	const {
+		date,
 		color,
 		dimmedColor,
 		lightDimmedColor,
 		completedDays
 	} = props;
 
-	const now = new Date();
-	const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+	const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
-	let shift = new Date(now.getFullYear(), now.getMonth(), 1).getDay();
+	let shift = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
 	shift = shift ? shift - 1 : 6;
 
 	const days = new Array(shift + lastDayOfMonth)
@@ -24,8 +24,8 @@ function Month(props) {
 			let isToday = false;
 
 			if (index >= shift) {
-				const day = new Date(now.getFullYear(), now.getMonth(), (index - shift + 1));
-				isToday = day.toDateString() === new Date(now.getFullYear(), now.getMonth(), now.getDate()).toDateString();
+				const day = new Date(date.getFullYear(), date.getMonth(), (index - shift + 1));
+				isToday = day.toDateString() === new Date().toDateString();
 
 				if (completedDays) {
 					isCompleted = completedDays.includes(getFormattedDate(day));
