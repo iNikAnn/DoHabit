@@ -3,11 +3,16 @@ import styles from '../../css/OrderBlock.module.css';
 function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 	const handleChangeOrder = (dir) => {
 		setCurrOrder((order) => {
-			if (dir === 'down' && order + 1 <= habitsCount) {
+			if (dir === 'bottom') {
+				return habitsCount;
+			}
+			else if (dir === 'top') {
+				return 1;
+			}
+			else if (dir === 'down' && order + 1 <= habitsCount) {
 				return order + 1;
-			};
-
-			if (dir === 'up' && order - 1 >= 1) {
+			}
+			else if (dir === 'up' && order - 1 >= 1) {
 				return order - 1;
 			};
 
@@ -22,31 +27,54 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 			</div>
 
 			<div className={styles.content}>
-				<input
-					className={styles.input}
-					type="number"
-					name="order"
-					id="order"
-					value={currOrder}
-					tabIndex={-1}
-					readOnly
-				/>
+				<div className={styles.top}>
+					<input
+						className={styles.input}
+						type="number"
+						name="order"
+						id="order"
+						value={currOrder}
+						tabIndex={-1}
+						readOnly
+					/>
+					<button
+						className={styles.btn}
+						type="button"
+						onClick={() => handleChangeOrder('down')}
+						disabled={currOrder === habitsCount}
+					>
+						Step Down
+					</button>
 
-				<button
-					className={styles.btn}
-					type='button'
-					onClick={() => handleChangeOrder('down')}
-				>
-					Move Down
-				</button>
+					<button
+						className={styles.btn}
+						type="button"
+						onClick={() => handleChangeOrder('up')}
+						disabled={currOrder === 1}
+					>
+						Steb Up
+					</button>
+				</div>
 
-				<button
-					className={styles.btn}
-					type='button'
-					onClick={() => handleChangeOrder('up')}
-				>
-					Move Up
-				</button>
+				<div className={styles.bottom}>
+					<button
+						className={styles.btn}
+						type="button"
+						onClick={() => handleChangeOrder('bottom')}
+						disabled={currOrder === habitsCount}
+					>
+						{currOrder === habitsCount ? 'Already at' : 'Move to'} Bottom
+					</button>
+
+					<button
+						className={styles.btn}
+						type="button"
+						onClick={() => handleChangeOrder('top')}
+						disabled={currOrder === 1}
+					>
+						{currOrder === 1 ? 'Already at' : 'Move to'} Top
+					</button>
+				</div>
 			</div>
 		</label>
 	);

@@ -6,11 +6,16 @@
 /* content */
 .content {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+/* top */
+.top {
+	display: flex;
 	gap: 0.4rem;
 }
 
-/* input */
 .input {
 	width: var(--input-height-primary);
 	height: var(--input-height-primary);
@@ -18,9 +23,25 @@
 	pointer-events: none;
 }
 
-/* btn */
 .btn {
 	width: 100%;
 	background-color: var(--bg-color-primary);
 	pointer-events: all;
+}
+
+/* bottom */
+.bottom {
+	display: flex;
+	gap: 0.4rem;
+	margin-left: calc(var(--input-height-primary) + 0.4rem);
+}
+
+.bottom button {
+	background-color: transparent;
+	color: dodgerblue;
+}
+
+/* state */
+.btn:disabled {
+	color: gray;
 }
