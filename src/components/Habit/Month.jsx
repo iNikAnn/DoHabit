@@ -1,9 +1,9 @@
-import styles from '../css/Calendar.module.css';
+import styles from '../../css/Month.module.css';
 
 // utils
-import getFormattedDate from '../utils/getFormattedDate';
+import getFormattedDate from '../../utils/getFormattedDate';
 
-function Calendar(props) {
+function Month(props) {
 	const {
 		color,
 		dimmedColor,
@@ -50,10 +50,10 @@ function Calendar(props) {
 		});
 
 	return (
-		<div className={styles.calendar}>
+		<div className={styles.month}>
 			{days}
 		</div>
 	);
 }
 
-export default Calendar;
+export default Month;

@@ -2,7 +2,7 @@ import styles from '../../css/Habit.module.css';
 
 // components
 import HabitHeader from './HabitHeader';
-import Calendar from '../Calendar';
+import Calendar from './Calendar';
 
 // utils
 import getDimmedColor from '../../utils/getDimmedColor';
