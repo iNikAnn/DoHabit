@@ -21,9 +21,11 @@ function Calendar(props) {
 		.fill(null)
 		.map((_, index) => {
 			let isCompleted = false;
+			let isToday = false;
 
 			if (index >= shift) {
 				const day = new Date(now.getFullYear(), now.getMonth(), (index - shift + 1));
+				isToday = day.toDateString() === new Date(now.getFullYear(), now.getMonth(), now.getDate()).toDateString();
 
 				if (completedDays) {
 					isCompleted = completedDays.includes(getFormattedDate(day));
@@ -39,7 +41,7 @@ function Calendar(props) {
 			return (
 				<span
 					key={index}
-					style={dayStyle}
+					style={{ ...dayStyle, border: isToday ? `2px solid ${color}` : '' }}
 					className={`${index < shift ? '' : styles.day}`}
 				>
 					{index < shift ? '' : index - shift + 1}
