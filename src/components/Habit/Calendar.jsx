@@ -25,9 +25,9 @@ function Calendar(props) {
 		? monthsCount
 		: monthsCount > 4 && monthsCount <= 8
 			? 8
-			: 12;
+			: monthsCount;
 
-	const months = [];
+	let months = [];
 
 	// day style
 	const dayGap = Math.max(1, 6 - ((monthsCount - 1) * 2)) + 'px';
@@ -61,7 +61,7 @@ function Calendar(props) {
 			style={calendarStyle}
 			className={styles.calendar}
 		>
-			{months}
+			{months.length <= 12 ? months : months.slice(-12)}
 		</div>
 	);
 }
