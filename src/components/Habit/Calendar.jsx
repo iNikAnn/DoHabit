@@ -37,7 +37,6 @@ function Calendar(props) {
 		const date = new Date(startMonth.getFullYear(), startMonth.getMonth() + index, 1);
 
 		// style
-		const isDayNumVisible = monthsCount === 1;
 		const isDaySquare = monthsCount > 1;
 
 		months.push(
@@ -45,7 +44,7 @@ function Calendar(props) {
 				key={index}
 				{...props}
 				date={date}
-				isDayNumVisible={isDayNumVisible}
+				visibleMonthsCount={visibleMonthsCount}
 				isDaySquare={isDaySquare}
 				dayGap={dayGap}
 				dayBorderRadius={dayBorderRadius}

@@ -6,6 +6,14 @@
 	grid-auto-rows: minmax(auto, min-content);
 }
 
+/* weekday */
+.weekday {
+	/* outline: 1px solid red; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 /* day */
 .day {
 	display: flex;
@@ -13,4 +21,5 @@
 	align-items: center;
 
 	background-color: var(--bg-color-secondary);
+	font-weight: 300;
 }

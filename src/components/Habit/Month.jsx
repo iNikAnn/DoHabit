@@ -10,13 +10,25 @@ function Month(props) {
 		dimmedColor,
 		lightDimmedColor,
 		completedDays,
-		isDayNumVisible,
+		visibleMonthsCount,
 		isDaySquare,
 		dayGap,
 		dayBorderRadius
 	} = props;
 
 	const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+
+	const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+		.map((weekday) => {
+			return (
+				<span
+					style={{ color: dimmedColor }}
+					className={styles.weekday}
+				>
+					{weekday}
+				</span>
+			);
+		});
 
 	let shift = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
 	shift = shift ? shift - 1 : 6;
@@ -53,7 +65,7 @@ function Month(props) {
 					style={dayStyle}
 					className={`${index < shift ? '' : styles.day}`}
 				>
-					{isDayNumVisible && (
+					{visibleMonthsCount === 1 && (
 						dayNum
 					)}
 				</span>
@@ -70,6 +82,10 @@ function Month(props) {
 			style={monthStyle}
 			className={styles.month}
 		>
+			{visibleMonthsCount === 1 && (
+				weekdays
+			)}
+
 			{days}
 		</div>
 	);
