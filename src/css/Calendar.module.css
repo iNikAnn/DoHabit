@@ -1,0 +1,5 @@
+.calendar {
+	/* outline: 1px solid red; */
+	display: grid;
+	gap: 0.4rem;
+}

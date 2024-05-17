@@ -9,7 +9,11 @@ function Month(props) {
 		color,
 		dimmedColor,
 		lightDimmedColor,
-		completedDays
+		completedDays,
+		isDayNumVisible,
+		isDaySquare,
+		dayGap,
+		dayBorderRadius
 	} = props;
 
 	const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -36,21 +40,36 @@ function Month(props) {
 			const dayStyle = {
 				backgroundColor: isCompleted ? color : (index >= shift) ? dimmedColor : '',
 				color: isCompleted ? 'inherit' : lightDimmedColor,
+				border: isToday ? `2px solid ${color}` : '',
+				borderRadius: dayBorderRadius,
+				aspectRatio: isDaySquare ? '1 / 1' : '',
 			};
+
+			const dayNum = index < shift ? '' : index - shift + 1;
 
 			return (
 				<span
 					key={index}
-					style={{ ...dayStyle, border: isToday ? `2px solid ${color}` : '' }}
+					style={dayStyle}
 					className={`${index < shift ? '' : styles.day}`}
 				>
-					{index < shift ? '' : index - shift + 1}
+					{isDayNumVisible && (
+						dayNum
+					)}
 				</span>
 			);
 		});
 
+	const monthStyle = {
+		gap: dayGap,
+		gridAutoRows: isDaySquare ? '' : '2rem'
+	};
+
 	return (
-		<div className={styles.month}>
+		<div
+			style={monthStyle}
+			className={styles.month}
+		>
 			{days}
 		</div>
 	);

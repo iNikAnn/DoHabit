@@ -1,9 +1,9 @@
 /* month */
 .month {
+	/* outline: 1px solid green; */
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	grid-auto-rows: 2rem;
-	gap: 0.4rem;
+	grid-auto-rows: minmax(auto, min-content);
 }
 
 /* day */
@@ -13,5 +13,4 @@
 	align-items: center;
 
 	background-color: var(--bg-color-secondary);
-	border-radius: 10px;
 }
