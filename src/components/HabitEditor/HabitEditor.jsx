@@ -10,14 +10,7 @@ import ColorBlock from './ColorBlock';
 import IconBlock from './IconBlock';
 
 // utils
-import generateColorList from '../../utils/generateColorList';
 import generateIconList from '../../utils/generateIconList';
-
-// icons
-import { FaCheck } from "react-icons/fa";
-
-//db
-import dbColors from '../../db/dbColors';
 
 function HabitEditor(props) {
 	const {
@@ -29,6 +22,7 @@ function HabitEditor(props) {
 
 		// db
 		icons,
+		dbColors
 	} = props;
 
 	let mode = '';
@@ -80,9 +74,6 @@ function HabitEditor(props) {
 		return -1;
 	});
 
-	// colorList
-	const colorList = generateColorList(habits, dbColors, <FaCheck />, mode === 'edit' ? habit.colorIndex : '');
-
 	// icons
 	const [hideAdditionalIcons, setHideAdditionalIcons] = useState(true);
 	const iconList = generateIconList(habits, icons, hideAdditionalIcons, styles, mode === 'edit' ? habit.iconTitle : '');
@@ -104,7 +95,7 @@ function HabitEditor(props) {
 					<OrderBlock habitsCount={habits.length} currOrder={currOrder} setCurrOrder={setCurrOrder} />
 				)}
 
-				<ColorBlock colorList={colorList} />
+				<ColorBlock {...{ habits, dbColors, currentColorIndex: habit.colorIndex }} />
 
 				<IconBlock iconList={iconList} state={hideAdditionalIcons} onToggleState={handleToggleIconList} />
 

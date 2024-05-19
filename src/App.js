@@ -107,6 +107,7 @@ function App() {
 
 							//db
 							icons={icons}
+							dbColors={dbColors}
 						/>
 					)}
 				</Modal>

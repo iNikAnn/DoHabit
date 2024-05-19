@@ -1,8 +1,35 @@
 import styles from '../../css/ColorBlock.module.css';
 
-function ColorBlock({ colorList }) {
+// icon
+import { FaCheck } from "react-icons/fa";
+
+function ColorBlock({ habits, dbColors, currentColorIndex }) {
+	const colorList = dbColors.map((color, index) => {
+		const isColorUsed = habits.find((habit) => Number(habit.colorIndex) === index);
+
+		return (
+			<label
+				key={color}
+				style={{
+					backgroundColor: color,
+					transform: isColorUsed ? 'scale(0.75)' : ''
+				}}
+			>
+				<input
+					type="radio"
+					name="colorIndex"
+					id={color}
+					value={index}
+					defaultChecked={index === Number(currentColorIndex) || !index}
+				/>
+
+				<FaCheck />
+			</label>
+		);
+	});
+
 	return (
-		<label className={styles.label}>
+		<section className={styles.label}>
 			<div className={styles.header}>
 				<h3>Color</h3>
 			</div>
@@ -10,7 +37,7 @@ function ColorBlock({ colorList }) {
 			<div className={styles.colorList}>
 				{colorList}
 			</div>
-		</label>
+		</section>
 	);
 }
 
