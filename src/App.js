@@ -12,31 +12,23 @@ import HabitEditor from './components/HabitEditor/HabitEditor';
 // utils
 import getUpdatedHabits from './utils/getUpdatedHabits';
 import markHabitAsCompleted from './utils/markHabitAsCompleted';
+import updateDB from './utils/updateDB';
 
 // db
 import icons from './db/dbIcons';
+import dbColors from './db/dbColors';
 
 function App() {
 	const [habits, setHabits] = useState(() => {
-		const data = localStorage.getItem('habits');
-		return data ? JSON.parse(data) : [];
+		let data = localStorage.getItem('habits');
+
+		// update db
+		if (data) {
+			data = updateDB(data, dbColors)
+		};;
+
+		return data || [];
 	});
-
-	// Database update - to be removed in the next release
-	useEffect(() => {
-		setHabits((habits) => {
-			return habits.map((habit) => {
-				const color = habit.color.replace(/\d+.\d+/, (match) => {
-					return Math.floor(match);
-				});
-
-				return {
-					...habit,
-					color: color
-				};
-			});
-		});
-	}, []);
 
 	// save habits to local storage
 	useEffect(() => {
@@ -94,6 +86,7 @@ function App() {
 
 					// db
 					icons={icons}
+					dbColors={dbColors}
 				/>
 			</main>
 

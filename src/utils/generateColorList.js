@@ -1,9 +1,6 @@
-function generateColorList(habits, colors, icon, styles, currentColor) {
-	// currentColor is used in habit editing mode
-	let indexOfCurrentColor = currentColor ? colors.indexOf(currentColor) : -1;
-
+function generateColorList(habits, colors, icon, currentColorIndex) {
 	return colors.map((color, index) => {
-		const isColorUsed = habits.find((habit) => habit.color === color);
+		const isColorUsed = habits.find((habit) => Number(habit.colorIndex) === index);
 
 		return (
 			<label
@@ -15,10 +12,10 @@ function generateColorList(habits, colors, icon, styles, currentColor) {
 			>
 				<input
 					type="radio"
-					name="color"
+					name="colorIndex"
 					id={color}
-					value={color}
-					defaultChecked={index === indexOfCurrentColor || !index}
+					value={index}
+					defaultChecked={index === Number(currentColorIndex) || !index}
 				/>
 
 				{icon}

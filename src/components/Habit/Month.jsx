@@ -22,6 +22,7 @@ function Month(props) {
 		.map((weekday) => {
 			return (
 				<span
+					key={weekday}
 					style={{ color: dimmedColor }}
 					className={styles.weekday}
 				>

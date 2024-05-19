@@ -10,7 +10,7 @@ function generateIconList(habits, icons, end, styles, currentIcon) {
 		});
 	};
 
-	const indexOfCurrentIcon = currentIcon ? icons.indexOf(currentIcon) : -1;
+	const indexOfCurrentIcon = icons.indexOf(currentIcon);
 
 	const iconList = [];
 	end = end ? 14 : icons.length;

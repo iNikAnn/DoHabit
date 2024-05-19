@@ -7,7 +7,7 @@ function getUpdatedHabits(currentHabits, data, mode, originalHabitTitle) {
 
 	const newHabit = {
 		title: data.title.value,
-		color: data.color.value,
+		colorIndex: data.colorIndex.value,
 		iconTitle: data.iconTitle.value,
 		completedDays: [],
 	};

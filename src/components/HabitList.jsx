@@ -13,7 +13,8 @@ function HabitList(props) {
 		onMarkHabitAsCompleted,
 
 		// db
-		icons
+		icons,
+		dbColors
 	} = props;
 
 	const habitsList = data.map((habit) => {
@@ -21,6 +22,7 @@ function HabitList(props) {
 			<Habit
 				key={habit.title}
 				{...habit}
+				color={dbColors[habit.colorIndex]}
 
 				// 'on' functions
 				onOpenHabitEditor={(habitTitle) => onOpenHabitEditor({ mode: 'edit', habitTitle: habitTitle })}

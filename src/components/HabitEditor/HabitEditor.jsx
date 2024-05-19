@@ -81,7 +81,7 @@ function HabitEditor(props) {
 	});
 
 	// colorList
-	const colorList = generateColorList(habits, dbColors, <FaCheck />, styles, mode === 'edit' ? habit.color : '');
+	const colorList = generateColorList(habits, dbColors, <FaCheck />, mode === 'edit' ? habit.colorIndex : '');
 
 	// icons
 	const [hideAdditionalIcons, setHideAdditionalIcons] = useState(true);
