@@ -9,9 +9,6 @@ import OrderBlock from './OrderBlock';
 import ColorBlock from './ColorBlock';
 import IconBlock from './IconBlock';
 
-// utils
-import generateIconList from '../../utils/generateIconList';
-
 function HabitEditor(props) {
 	const {
 		modeObj,
@@ -21,7 +18,7 @@ function HabitEditor(props) {
 		onUpdate,
 
 		// db
-		icons,
+		dbIcons,
 		dbColors
 	} = props;
 
@@ -74,14 +71,6 @@ function HabitEditor(props) {
 		return -1;
 	});
 
-	// icons
-	const [hideAdditionalIcons, setHideAdditionalIcons] = useState(true);
-	const iconList = generateIconList(habits, icons, hideAdditionalIcons, styles, mode === 'edit' ? habit.iconTitle : '');
-
-	const handleToggleIconList = () => {
-		setHideAdditionalIcons((state) => !state);
-	};
-
 	return (
 		<div className={styles.wrapper}>
 			<form
@@ -95,9 +84,9 @@ function HabitEditor(props) {
 					<OrderBlock habitsCount={habits.length} currOrder={currOrder} setCurrOrder={setCurrOrder} />
 				)}
 
-				<ColorBlock {...{ habits, dbColors, currentColorIndex: habit.colorIndex }} />
+				<ColorBlock {...{ habits, dbColors, currentColorIndex: habit?.colorIndex }} />
 
-				<IconBlock iconList={iconList} state={hideAdditionalIcons} onToggleState={handleToggleIconList} />
+				<IconBlock {...{ habits, dbIcons, currentIconTitle: habit?.iconTitle }} />
 
 				<small className={styles.info}>
 					"Color" and "Icon" icons in reduced size indicate that they have been previously used (but can be reused).

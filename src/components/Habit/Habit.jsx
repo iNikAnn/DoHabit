@@ -17,11 +17,11 @@ function Habit(props) {
 		completedDays,
 
 		// db
-		icons
+		dbIcons
 	} = props;
 
 	// icon
-	const icon = icons.find((el) => el[0] === iconTitle)?.[1] || '?';
+	const icon = dbIcons.find((el) => el[0] === iconTitle)?.[1] || '?';
 
 	// dimmed color
 	const dimmedColor = getDimmedColor(color);

@@ -15,7 +15,7 @@ import markHabitAsCompleted from './utils/markHabitAsCompleted';
 import updateDB from './utils/updateDB';
 
 // db
-import icons from './db/dbIcons';
+import dbIcons from './db/dbIcons';
 import dbColors from './db/dbColors';
 
 function App() {
@@ -85,7 +85,7 @@ function App() {
 					onMarkHabitAsCompleted={handleMarkHabitAsCompleted}
 
 					// db
-					icons={icons}
+					dbIcons={dbIcons}
 					dbColors={dbColors}
 				/>
 			</main>
@@ -106,7 +106,7 @@ function App() {
 							onUpdate={(data, mode, originalHabitTitle) => handleUpdateHabits(data, mode, originalHabitTitle)}
 
 							//db
-							icons={icons}
+							dbIcons={dbIcons}
 							dbColors={dbColors}
 						/>
 					)}

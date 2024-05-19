@@ -13,7 +13,7 @@ function HabitList(props) {
 		onMarkHabitAsCompleted,
 
 		// db
-		icons,
+		dbIcons,
 		dbColors
 	} = props;
 
@@ -29,7 +29,7 @@ function HabitList(props) {
 				onMarkHabitAsCompleted={onMarkHabitAsCompleted}
 
 				// db
-				icons={icons}
+				dbIcons={dbIcons}
 			/>
 		);
 	});
