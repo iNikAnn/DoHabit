@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/DoHabit/static/css/main.3a930f51.css",
-    "main.js": "/DoHabit/static/js/main.da8202eb.js",
+    "main.js": "/DoHabit/static/js/main.47d846f6.js",
     "static/js/453.5b299d38.chunk.js": "/DoHabit/static/js/453.5b299d38.chunk.js",
     "service-worker.js": "/DoHabit/service-worker.js",
     "static/media/logo192-alpha.png": "/DoHabit/static/media/logo192-alpha.8533f0ee32bc19d301ce.png",
     "index.html": "/DoHabit/index.html",
     "main.3a930f51.css.map": "/DoHabit/static/css/main.3a930f51.css.map",
-    "main.da8202eb.js.map": "/DoHabit/static/js/main.da8202eb.js.map",
+    "main.47d846f6.js.map": "/DoHabit/static/js/main.47d846f6.js.map",
     "453.5b299d38.chunk.js.map": "/DoHabit/static/js/453.5b299d38.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3a930f51.css",
-    "static/js/main.da8202eb.js"
+    "static/js/main.47d846f6.js"
   ]
 }
