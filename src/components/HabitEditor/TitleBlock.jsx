@@ -21,7 +21,7 @@ function TitleBlock({ input, alreadyExist, onChange }) {
 	}, [input, alreadyExist]);
 
 	return (
-		<label className={styles.label}>
+		<section>
 			<div className={styles.header}>
 				<h3>Title</h3>
 
@@ -38,7 +38,7 @@ function TitleBlock({ input, alreadyExist, onChange }) {
 				onChange={(e) => onChange(e.target.value)}
 				placeholder="Enter habit title"
 			/>
-		</label>
+		</section>
 	);
 }
 

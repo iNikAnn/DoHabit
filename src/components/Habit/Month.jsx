@@ -23,7 +23,7 @@ function Month(props) {
 			return (
 				<span
 					key={weekday}
-					style={{ color: dimmedColor }}
+					style={{ color: lightDimmedColor }}
 					className={styles.weekday}
 				>
 					{weekday}

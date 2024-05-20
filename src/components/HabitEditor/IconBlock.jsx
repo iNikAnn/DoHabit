@@ -63,7 +63,7 @@ function IconBlock({ habits, dbIcons, currentIconTitle }) {
 	};
 
 	return (
-		<label className={styles.label}>
+		<section>
 			<div className={styles.header}>
 				<h3>Icon</h3>
 
@@ -79,7 +79,7 @@ function IconBlock({ habits, dbIcons, currentIconTitle }) {
 			<div className={styles.iconList}>
 				{iconList}
 			</div>
-		</label>
+		</section>
 	);
 }
 

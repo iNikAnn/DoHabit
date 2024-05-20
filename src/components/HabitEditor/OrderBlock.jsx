@@ -21,7 +21,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 	};
 
 	return (
-		<label style={{ pointerEvents: 'none' }}>
+		<section style={{ pointerEvents: 'none' }}>
 			<div className={styles.header}>
 				<h3>Order</h3>
 			</div>
@@ -76,7 +76,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 					</button>
 				</div>
 			</div>
-		</label>
+		</section>
 	);
 }
 

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 // components
 import TitleBlock from './TitleBlock';
+import FrequencyBlock from './FrequencyBlock';
 import OrderBlock from './OrderBlock';
 import ColorBlock from './ColorBlock';
 import IconBlock from './IconBlock';
@@ -79,6 +80,8 @@ function HabitEditor(props) {
 				onKeyDown={handlePressEnter}
 			>
 				<TitleBlock input={inputTitle} onChange={(newTitle) => setInputTitle(newTitle)} alreadyExist={alreadyExist} />
+
+				<FrequencyBlock />
 
 				{mode === 'edit' && (
 					<OrderBlock habitsCount={habits.length} currOrder={currOrder} setCurrOrder={setCurrOrder} />

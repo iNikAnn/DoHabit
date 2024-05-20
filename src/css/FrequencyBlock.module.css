@@ -1,0 +1,55 @@
+/* header */
+.header {
+	margin-bottom: 0.6rem;
+}
+
+/* content */
+.content {
+	display: flex;
+	gap: 0.4rem;
+}
+
+/* left */
+.left {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+/* 'per Day' */
+.left div {
+	/* outline: 1px solid tomato; */
+	height: var(--input-height-primary);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: var(--bg-color-primary);
+	border-radius: 0 var(--border-radius-secondary) var(--border-radius-secondary) 0;
+
+	padding-right: 1.2rem;
+}
+
+/* input */
+.input {
+	height: var(--input-height-primary);
+	width: var(--input-height-primary);
+
+	border-radius: var(--border-radius-secondary) 0 0 var(--border-radius-secondary);
+
+	text-align: center;
+	pointer-events: none;
+}
+
+/* btn */
+.btn {
+	width: 100%;
+	background-color: var(--bg-color-primary);
+	/* pointer-events: all; */
+}
+
+/* state */
+.btn:disabled {
+	color: gray;
+}
