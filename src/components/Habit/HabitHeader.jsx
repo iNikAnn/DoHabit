@@ -10,9 +10,12 @@ function HabitHeader(props) {
 	const {
 		title,
 		icon,
+		frequency,
+
 		color,
 		dimmedColor,
 		lightDimmedColor,
+
 		isTodayCompleted,
 		currentStreak,
 
@@ -57,10 +60,12 @@ function HabitHeader(props) {
 				</button>
 			</div>
 
-			<ProgressBar
-				{...{ color, dimmedColor }}
-				segmentCount={3}
-			/>
+			{frequency > 1 && (
+				<ProgressBar
+					{...{ color, dimmedColor }}
+					segmentCount={Number(frequency)}
+				/>
+			)}
 		</div>
 	)
 }

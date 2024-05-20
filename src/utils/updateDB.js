@@ -1,17 +1,21 @@
 function updateDB(data, dbColors) {
 	return JSON.parse(data).map((habit) => {
+		let updatedHabit = { ...habit };
+
+		// update color
 		if (habit.color) {
 			const colorIndex = Math.max(0, dbColors.indexOf(habit.color));
 
-			delete habit.color;
-
-			return {
-				...habit,
-				colorIndex: colorIndex
-			};
+			delete updatedHabit.color;
+			updatedHabit.colorIndex = colorIndex;
 		};
 
-		return { ...habit };
+		// add frequency
+		if (!habit.frequency) {
+			updatedHabit.frequency = 1;
+		};
+
+		return updatedHabit;
 	});
 }
 
