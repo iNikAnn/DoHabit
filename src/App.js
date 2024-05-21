@@ -78,7 +78,7 @@ function App() {
 
 			<main>
 				<HabitList
-					data={habits}
+					habits={habits}
 
 					// 'on' functions
 					onOpenHabitEditor={(modeObj) => handleOpenModal(`${modeObj ? 'Edit' : 'Create new'} habit`, 'createHabitWindow', modeObj)}

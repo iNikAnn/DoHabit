@@ -18,6 +18,7 @@ function HabitHeader(props) {
 
 		isTodayCompleted,
 		currentStreak,
+		todayProgress,
 
 		// 'on' functions
 		onOpenHabitEditor,
@@ -64,6 +65,7 @@ function HabitHeader(props) {
 				<ProgressBar
 					{...{ color, dimmedColor }}
 					segmentCount={Number(frequency)}
+					todayProgress={Number(todayProgress)}
 				/>
 			)}
 		</div>

@@ -9,6 +9,7 @@ import getDimmedColor from '../../utils/getDimmedColor';
 import getLightDimmedColor from '../../utils/getLightDimmedColor';
 import getFormattedDate from '../../utils/getFormattedDate';
 import getCurrentStreak from '../../utils/getCurrentStreak';
+import checkHabitCompletion from '../../utils/checkHabitCompletion';
 
 function Habit(props) {
 	const {
@@ -29,7 +30,10 @@ function Habit(props) {
 	const lightDimmedColor = getLightDimmedColor(dimmedColor);
 
 	// isTodayCompleted
-	const isTodayCompleted = completedDays.includes(getFormattedDate(new Date()));
+	const isTodayCompleted = checkHabitCompletion(completedDays, new Date(), frequency);
+
+	// today progress
+	const todayProgress = completedDays[0] ? completedDays[0].progress : 0;
 
 	// currentStreak
 	const currentStreak = getCurrentStreak(completedDays);
@@ -43,6 +47,7 @@ function Habit(props) {
 				lightDimmedColor={lightDimmedColor}
 				isTodayCompleted={isTodayCompleted}
 				currentStreak={currentStreak}
+				todayProgress={todayProgress}
 			/>
 
 			<div className={styles.content}>
