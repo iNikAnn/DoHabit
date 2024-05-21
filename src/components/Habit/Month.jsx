@@ -7,6 +7,7 @@ function Month(props) {
 	const {
 		date,
 		color,
+		frequency,
 		dimmedColor,
 		lightDimmedColor,
 		completedDays,
@@ -41,11 +42,16 @@ function Month(props) {
 			let isToday = false;
 
 			if (index >= shift) {
-				const day = new Date(date.getFullYear(), date.getMonth(), (index - shift + 1));
-				isToday = day.toDateString() === new Date().toDateString();
+				const thisDay = new Date(date.getFullYear(), date.getMonth(), (index - shift + 1));
+				isToday = thisDay.toDateString() === new Date().toDateString();
 
 				if (completedDays) {
-					isCompleted = completedDays.includes(getFormattedDate(day));
+					isCompleted = completedDays.find((day) => {
+						return (
+							day.date === getFormattedDate(thisDay)
+							&& parseInt(day.progress) === parseInt(frequency)
+						);
+					});
 				};
 			};
 

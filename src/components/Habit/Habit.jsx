@@ -15,6 +15,7 @@ function Habit(props) {
 		color,
 		iconTitle,
 		completedDays,
+		frequency,
 
 		// db
 		dbIcons
@@ -50,6 +51,7 @@ function Habit(props) {
 					dimmedColor={dimmedColor}
 					lightDimmedColor={lightDimmedColor}
 					completedDays={completedDays}
+					frequency={frequency}
 				/>
 			</div>
 		</div>

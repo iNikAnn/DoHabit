@@ -12,11 +12,11 @@ function Calendar(props) {
 		color,
 		dimmedColor,
 		lightDimmedColor,
-		completedDays
+		completedDays,
 	} = props;
 
-	const startMonth = completedDays.length === 0 ? new Date() : getStartMonth(completedDays);
-	const endMonth = completedDays.length === 0 ? new Date() : new Date(completedDays[0]);
+	const startMonth = getStartMonth(completedDays);
+	const endMonth = completedDays.length === 0 ? new Date() : new Date(completedDays[0]?.date);
 
 	const monthsCount = getMonthsDifference(startMonth, endMonth);
 	// const monthsCount = 1;

@@ -15,6 +15,18 @@ function updateDB(data, dbColors) {
 			updatedHabit.frequency = 1;
 		};
 
+		// update completedDays array
+		updatedHabit.completedDays = updatedHabit.completedDays.map((el) => {
+			if (typeof el === 'string') {
+				return {
+					date: el,
+					progress: 1
+				};
+			};
+
+			return { ...el };
+		});
+
 		return updatedHabit;
 	});
 }
