@@ -24,8 +24,8 @@ function App() {
 
 		// update db
 		if (data) {
-			data = updateDB(data, dbColors)
-		};;
+			data = updateDB(data, dbColors);
+		};
 
 		return data || [];
 	});

@@ -1,7 +1,6 @@
 import styles from '../../css/ProgressBar.module.css';
 
 function ProgressBar({ color, dimmedColor, segmentCount, todayProgress }) {
-	console.log(todayProgress);
 	const segmentList = new Array(segmentCount)
 		.fill(null)
 		.map((_, index) => {

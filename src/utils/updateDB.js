@@ -1,3 +1,6 @@
+// utils
+import getFormattedDate from './getFormattedDate';
+
 function updateDB(data, dbColors) {
 	return JSON.parse(data).map((habit) => {
 		let updatedHabit = { ...habit };
@@ -35,6 +38,13 @@ function updateDB(data, dbColors) {
 		if (updatedHabit.frequency && typeof updatedHabit.frequency === 'string') {
 			updatedHabit.frequency = Number(updatedHabit.frequency);
 		};
+
+		// remove incomplete days before today with progress less than habit frequency
+		const today = new Date(getFormattedDate(new Date()));
+
+		updatedHabit.completedDays = updatedHabit.completedDays.filter((day) => {
+			return !(new Date(day.date) < today && day.progress < habit.frequency);
+		});
 
 		return updatedHabit;
 	});

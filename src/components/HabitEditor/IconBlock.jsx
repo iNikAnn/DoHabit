@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function IconBlock({ habits, dbIcons, currentIconTitle }) {
 	const [showMore, setShowMore] = useState(false);
-	const [selectedIcon, setSelectedIcon] = useState(currentIconTitle);
+	const [selectedIcon, setSelectedIcon] = useState(currentIconTitle || 'default');
 
 	const currentIconIndex = dbIcons.findIndex((el) => {
 		return Array.isArray(el) && el[0] === currentIconTitle;
