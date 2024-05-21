@@ -38,7 +38,7 @@ function Habit(props) {
 	})?.progress || 0;
 
 	// currentStreak
-	const currentStreak = getCurrentStreak(completedDays);
+	const currentStreak = getCurrentStreak(completedDays, frequency);
 
 	return (
 		<div className={styles.habit}>

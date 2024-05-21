@@ -1,7 +1,7 @@
 {
 	"name": "dohabit",
 	"description": "Track your habits effortlessly with our habit tracker!",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"homepage": "https://inikann.github.io/DoHabit/",
 	"private": true,
 	"dependencies": {

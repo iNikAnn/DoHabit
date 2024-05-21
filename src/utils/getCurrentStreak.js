@@ -1,15 +1,20 @@
 import getFormattedDate from './getFormattedDate';
 
-function getCurrentStreak(completedDays) {
+function getCurrentStreak(completedDays, frequency) {
 	const today = new Date(getFormattedDate(new Date()));
 	const lastDay = new Date(completedDays[0]?.date);
 	const oneDay = 24 * 60 * 60 * 1000;
 
 	if ((today - lastDay) / oneDay > 1) {
 		return 0;
-	}
+	};
 
-	let streak = 1;
+	let streak = 0;
+	const lastDayProgress = completedDays[0]?.progress;
+
+	if (lastDayProgress === frequency) {
+		streak++;
+	};
 
 	for (let i = 1; i < completedDays.length; i++) {
 		const currDay = new Date(completedDays[i].date);
