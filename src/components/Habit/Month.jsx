@@ -1,7 +1,7 @@
 import styles from '../../css/Month.module.css';
 
 // utils
-import getFormattedDate from '../../utils/getFormattedDate';
+import checkHabitCompletion from '../../utils/checkHabitCompletion';
 
 function Month(props) {
 	const {
@@ -46,12 +46,7 @@ function Month(props) {
 				isToday = thisDay.toDateString() === new Date().toDateString();
 
 				if (completedDays) {
-					isCompleted = completedDays.find((day) => {
-						return (
-							day.date === getFormattedDate(thisDay)
-							&& parseInt(day.progress) === parseInt(frequency)
-						);
-					});
+					isCompleted = checkHabitCompletion(completedDays, thisDay, frequency);
 				};
 			};
 
