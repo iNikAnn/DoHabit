@@ -81,7 +81,7 @@ function HabitEditor(props) {
 			>
 				<TitleBlock input={inputTitle} onChange={(newTitle) => setInputTitle(newTitle)} alreadyExist={alreadyExist} />
 
-				<FrequencyBlock />
+				<FrequencyBlock {...{ currentFrequency: habit?.frequency }} />
 
 				{mode === 'edit' && (
 					<OrderBlock habitsCount={habits.length} currOrder={currOrder} setCurrOrder={setCurrOrder} />

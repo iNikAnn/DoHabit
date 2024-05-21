@@ -27,6 +27,15 @@ function updateDB(data, dbColors) {
 			return { ...el };
 		});
 
+		// convert string to number
+		if (updatedHabit.colorIndex && typeof updatedHabit.colorIndex === 'string') {
+			updatedHabit.colorIndex = Number(updatedHabit.colorIndex);
+		};
+
+		if (updatedHabit.frequency && typeof updatedHabit.frequency === 'string') {
+			updatedHabit.frequency = Number(updatedHabit.frequency);
+		};
+
 		return updatedHabit;
 	});
 }
