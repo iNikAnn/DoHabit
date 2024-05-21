@@ -1,14 +1,14 @@
 function getStartMonth(completedDays) {
 	const today = new Date();
-	const lastDay = new Date(completedDays[0]);
+	const lastDay = new Date(completedDays[0]?.date);
 
-	if (today.toDateString() !== lastDay.toDateString() || completedDays.length === 1) {
+	if (completedDays.length === 1 || today.toDateString() !== lastDay.toDateString()) {
 		return today;
 	};
 
 	for (let i = 1; i <= completedDays.length; i++) {
-		const currDay = new Date(completedDays[i]);
-		const nextDay = new Date(completedDays[i - 1]);
+		const currDay = new Date(completedDays[i]?.date);
+		const nextDay = new Date(completedDays[i - 1]?.date);
 		const oneDay = 24 * 60 * 60 * 1000;
 
 		if ((nextDay - currDay) / oneDay === 1) {

@@ -29,7 +29,7 @@ function ColorBlock({ habits, dbColors, currentColorIndex }) {
 	});
 
 	return (
-		<section className={styles.label}>
+		<section>
 			<div className={styles.header}>
 				<h3>Color</h3>
 			</div>

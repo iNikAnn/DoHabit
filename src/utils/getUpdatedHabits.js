@@ -1,3 +1,6 @@
+// utils
+import getFormattedDate from './getFormattedDate';
+
 function getUpdatedHabits(currentHabits, data, mode, originalHabitTitle) {
 	if (mode === 'delete') {
 		return currentHabits.filter((habit) => {
@@ -7,23 +10,40 @@ function getUpdatedHabits(currentHabits, data, mode, originalHabitTitle) {
 
 	const newHabit = {
 		title: data.title.value,
-		colorIndex: data.colorIndex.value,
+		colorIndex: Number(data.colorIndex.value),
 		iconTitle: data.iconTitle.value,
+		frequency: Number(data.frequency.value),
 		completedDays: [],
 	};
 
 	if (mode === 'edit') {
 		const updatedHabits = currentHabits.map((habit) => {
 			if (habit.title === originalHabitTitle) {
+				// updating the frequency value for completed days
+				const updatedCompletedDays = habit.completedDays.map((day) => {
+					if (day.date === getFormattedDate(new Date())
+						&& day.progress < Number(data.frequency.value)
+					) {
+						return { ...day };
+					};
+
+					return {
+						...day,
+						progress: Number(data.frequency.value)
+					};
+				});
+
 				return {
 					...newHabit,
-					completedDays: [...habit.completedDays]
+					completedDays: updatedCompletedDays
 				};
 			};
 
 			return { ...habit };
 		});
 
+
+		// reorder habits
 		if (data.order && data.order.value) {
 			const newOrder = parseInt(data.order.value, 10) - 1;
 			const currHabitIndex = updatedHabits.findIndex((habit) => {

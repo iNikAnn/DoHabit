@@ -1,12 +1,12 @@
 import styles from '../css/HabitList.module.css';
 
 // components
-import Habit from "././Habit/Habit";
+import Habit from "./Habit/Habit";
 import EmptyHabitsListMessage from './EmptyHabitsListMessage';
 
 function HabitList(props) {
 	const {
-		data,
+		habits,
 
 		// 'on' functions
 		onOpenHabitEditor,
@@ -17,7 +17,7 @@ function HabitList(props) {
 		dbColors
 	} = props;
 
-	const habitsList = data.map((habit) => {
+	const habitsList = habits.map((habit) => {
 		return (
 			<Habit
 				key={habit.title}

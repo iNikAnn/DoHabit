@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function IconBlock({ habits, dbIcons, currentIconTitle }) {
 	const [showMore, setShowMore] = useState(false);
-	const [selectedIcon, setSelectedIcon] = useState(currentIconTitle);
+	const [selectedIcon, setSelectedIcon] = useState(currentIconTitle || 'default');
 
 	const currentIconIndex = dbIcons.findIndex((el) => {
 		return Array.isArray(el) && el[0] === currentIconTitle;
@@ -63,7 +63,7 @@ function IconBlock({ habits, dbIcons, currentIconTitle }) {
 	};
 
 	return (
-		<label className={styles.label}>
+		<section>
 			<div className={styles.header}>
 				<h3>Icon</h3>
 
@@ -79,7 +79,7 @@ function IconBlock({ habits, dbIcons, currentIconTitle }) {
 			<div className={styles.iconList}>
 				{iconList}
 			</div>
-		</label>
+		</section>
 	);
 }
 

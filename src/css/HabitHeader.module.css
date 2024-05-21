@@ -2,9 +2,16 @@
 .header {
 	/* outline: 1px solid tomato; */
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+	gap: 0.6rem;
 
 	padding: 0.6rem;
+}
+
+/* header top */
+.headerTop {
+	display: flex;
+	justify-content: space-between;
 }
 
 /* header left */

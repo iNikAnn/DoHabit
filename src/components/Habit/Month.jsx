@@ -1,12 +1,13 @@
 import styles from '../../css/Month.module.css';
 
 // utils
-import getFormattedDate from '../../utils/getFormattedDate';
+import checkHabitCompletion from '../../utils/checkHabitCompletion';
 
 function Month(props) {
 	const {
 		date,
 		color,
+		frequency,
 		dimmedColor,
 		lightDimmedColor,
 		completedDays,
@@ -23,7 +24,7 @@ function Month(props) {
 			return (
 				<span
 					key={weekday}
-					style={{ color: dimmedColor }}
+					style={{ color: lightDimmedColor }}
 					className={styles.weekday}
 				>
 					{weekday}
@@ -41,11 +42,11 @@ function Month(props) {
 			let isToday = false;
 
 			if (index >= shift) {
-				const day = new Date(date.getFullYear(), date.getMonth(), (index - shift + 1));
-				isToday = day.toDateString() === new Date().toDateString();
+				const thisDay = new Date(date.getFullYear(), date.getMonth(), (index - shift + 1));
+				isToday = thisDay.toDateString() === new Date().toDateString();
 
 				if (completedDays) {
-					isCompleted = completedDays.includes(getFormattedDate(day));
+					isCompleted = checkHabitCompletion(completedDays, thisDay, frequency);
 				};
 			};
 

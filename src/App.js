@@ -24,8 +24,8 @@ function App() {
 
 		// update db
 		if (data) {
-			data = updateDB(data, dbColors)
-		};;
+			data = updateDB(data, dbColors);
+		};
 
 		return data || [];
 	});
@@ -78,7 +78,7 @@ function App() {
 
 			<main>
 				<HabitList
-					data={habits}
+					habits={habits}
 
 					// 'on' functions
 					onOpenHabitEditor={(modeObj) => handleOpenModal(`${modeObj ? 'Edit' : 'Create new'} habit`, 'createHabitWindow', modeObj)}
