@@ -33,7 +33,9 @@ function Habit(props) {
 	const isTodayCompleted = checkHabitCompletion(completedDays, new Date(), frequency);
 
 	// today progress
-	const todayProgress = completedDays[0] ? completedDays[0].progress : 0;
+	const todayProgress = completedDays.find((day) => {
+		return day.date === getFormattedDate(new Date());
+	})?.progress || 0;
 
 	// currentStreak
 	const currentStreak = getCurrentStreak(completedDays);
