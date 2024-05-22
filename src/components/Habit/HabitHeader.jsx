@@ -21,6 +21,8 @@ function HabitHeader(props) {
 		color: isTodayCompleted ? 'inherit' : lightDimmedColor
 	};
 
+	const progress = Math.floor((todayProgress / frequency) * 100);
+
 	return (
 		<div className={styles.header}>
 			<div className={styles.headerTop}>
@@ -48,7 +50,11 @@ function HabitHeader(props) {
 					className={styles.markAsCompletedBtn}
 					onClick={() => onMarkHabitAsCompleted(title)}
 				>
-					<FaCheck />
+					{progress === 100 ? (
+						<FaCheck />
+					) : (
+						<strong>{progress}%</strong>
+					)}
 				</button>
 			</div>
 
