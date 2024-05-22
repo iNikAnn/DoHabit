@@ -52,7 +52,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 						onClick={() => handleChangeOrder('up')}
 						disabled={currOrder === 1}
 					>
-						Steb Up
+						Step Up
 					</button>
 				</div>
 

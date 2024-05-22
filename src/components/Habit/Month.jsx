@@ -6,34 +6,27 @@ import checkHabitCompletion from '../../utils/checkHabitCompletion';
 function Month(props) {
 	const {
 		date,
-		color,
-		frequency,
-		dimmedColor,
-		lightDimmedColor,
-		completedDays,
-		visibleMonthsCount,
-		isDaySquare,
-		dayGap,
-		dayBorderRadius
+
+		color, dimmedColor, lightDimmedColor,
+		completedDays, frequency,
+
+		visibleMonthsCount, isDaySquare, dayGap, dayBorderRadius
 	} = props;
 
 	const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
 	const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-		.map((weekday) => {
-			return (
-				<span
-					key={weekday}
-					style={{ color: lightDimmedColor }}
-					className={styles.weekday}
-				>
-					{weekday}
-				</span>
-			);
-		});
+		.map((weekday) => (
+			<span
+				key={weekday}
+				style={{ color: lightDimmedColor }}
+				className={styles.weekday}
+			>
+				{weekday}
+			</span>
+		));
 
-	let shift = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-	shift = shift ? shift - 1 : 6;
+	let shift = (new Date(date.getFullYear(), date.getMonth(), 1).getDay() || 7) - 1;
 
 	const days = new Array(shift + lastDayOfMonth)
 		.fill(null)

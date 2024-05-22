@@ -1,8 +1,8 @@
-import styles from '../css/EmptyHabitsListMessage.module.css';
+import styles from '../css/EmptyHabitListMessage.module.css';
 
 function EmptyHabitsListMessage({ onOpenHabitEditor }) {
 	return (
-		<div
+		<section
 			className={styles.emptyHabitsListMessage}
 		>
 			<div className={styles.message}>
@@ -16,7 +16,7 @@ function EmptyHabitsListMessage({ onOpenHabitEditor }) {
 			>
 				Create New Habit
 			</button>
-		</div>
+		</section>
 	);
 }
 

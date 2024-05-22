@@ -19,7 +19,7 @@ function Header(props) {
 			<div>
 				<button
 					className={styles.btn}
-					onClick={onOpenHabitEditor}
+					onClick={() => onOpenHabitEditor('Create new habit', 'createHabitWindow')}
 				>
 					<FaPlus />
 				</button>

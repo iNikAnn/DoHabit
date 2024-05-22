@@ -9,45 +9,37 @@ import getMonthsDifference from '../../utils/getMonthsDifference';
 
 function Calendar(props) {
 	const {
-		color,
-		dimmedColor,
-		lightDimmedColor,
 		completedDays,
 	} = props;
 
 	const startMonth = getStartMonth(completedDays);
 	const endMonth = completedDays.length === 0 ? new Date() : new Date(completedDays[0]?.date);
-
 	const monthsCount = getMonthsDifference(startMonth, endMonth);
 	// const monthsCount = 1;
 
-	const visibleMonthsCount = monthsCount <= 4
-		? monthsCount
-		: monthsCount > 4 && monthsCount <= 8
-			? 8
-			: monthsCount;
+	const visibleMonthsCount = Math.max(monthsCount,
+		monthsCount <= 4 ? monthsCount
+			: monthsCount <= 8 ? 8 : 12
+	);
 
 	let months = [];
 
 	// day style
 	const dayGap = Math.max(1, 6 - ((monthsCount - 1) * 2)) + 'px';
 	const dayBorderRadius = Math.max(2, 10 - (monthsCount * 2)) + 'px';
+	const isDaySquare = monthsCount > 1;
 
 	for (let index = 0; index < visibleMonthsCount; index++) {
 		const date = new Date(startMonth.getFullYear(), startMonth.getMonth() + index, 1);
-
-		// style
-		const isDaySquare = monthsCount > 1;
 
 		months.push(
 			<Month
 				key={index}
 				{...props}
-				date={date}
-				visibleMonthsCount={visibleMonthsCount}
-				isDaySquare={isDaySquare}
-				dayGap={dayGap}
-				dayBorderRadius={dayBorderRadius}
+				{...{
+					date, visibleMonthsCount,
+					isDaySquare, dayGap, dayBorderRadius
+				}}
 			/>
 		);
 	};

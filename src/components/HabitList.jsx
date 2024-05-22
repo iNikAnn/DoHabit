@@ -2,48 +2,39 @@ import styles from '../css/HabitList.module.css';
 
 // components
 import Habit from "./Habit/Habit";
-import EmptyHabitsListMessage from './EmptyHabitsListMessage';
+import EmptyHabitListMessage from './EmptyHabitListMessage';
 
 function HabitList(props) {
 	const {
 		habits,
 
 		// 'on' functions
-		onOpenHabitEditor,
-		onMarkHabitAsCompleted,
+		onOpenHabitEditor, onMarkHabitAsCompleted,
 
 		// db
-		dbIcons,
-		dbColors
+		dbIcons, dbColors
 	} = props;
 
-	const habitsList = habits.map((habit) => {
-		return (
-			<Habit
-				key={habit.title}
-				{...habit}
-				color={dbColors[habit.colorIndex]}
+	const habitList = habits.map((habit) => (
+		<Habit
+			key={habit.title}
+			{...habit}
+			icon={dbIcons.find(([iconTitle]) => iconTitle === habit.iconTitle)?.[1] || '?'}
+			color={dbColors[habit.colorIndex]}
 
-				// 'on' functions
-				onOpenHabitEditor={(habitTitle) => onOpenHabitEditor({ mode: 'edit', habitTitle: habitTitle })}
-				onMarkHabitAsCompleted={onMarkHabitAsCompleted}
-
-				// db
-				dbIcons={dbIcons}
-			/>
-		);
-	});
+			// 'on' functions
+			onOpenHabitEditor={(habitTitle) => onOpenHabitEditor({ mode: 'edit', habitTitle: habitTitle })}
+			{...{ onMarkHabitAsCompleted }}
+		/>
+	));
 
 	return (
 		<div className={styles.habitList}>
-			{!habitsList.length && (
-				<EmptyHabitsListMessage
-					// 'on' functions
-					onOpenHabitEditor={onOpenHabitEditor}
-				/>
+			{!habitList.length && (
+				<EmptyHabitListMessage {...{ onOpenHabitEditor }} />
 			)}
 
-			{habitsList}
+			{habitList}
 		</div>
 	);
 }

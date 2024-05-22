@@ -73,20 +73,16 @@ function App() {
 		<div className="App">
 			<Header
 				// 'on' functions
-				onOpenHabitEditor={() => handleOpenModal('Create new habit', 'createHabitWindow')}
+				onOpenHabitEditor={handleOpenModal}
 			/>
 
 			<main>
 				<HabitList
-					habits={habits}
+					{...{ habits, dbIcons, dbColors }}
 
 					// 'on' functions
 					onOpenHabitEditor={(modeObj) => handleOpenModal(`${modeObj ? 'Edit' : 'Create new'} habit`, 'createHabitWindow', modeObj)}
 					onMarkHabitAsCompleted={handleMarkHabitAsCompleted}
-
-					// db
-					dbIcons={dbIcons}
-					dbColors={dbColors}
 				/>
 			</main>
 
@@ -99,15 +95,11 @@ function App() {
 				>
 					{modalContent === 'createHabitWindow' && (
 						<HabitEditor
+							{...{ habits, dbIcons, dbColors }}
 							modeObj={modalContentMode}
-							habits={habits}
 
 							// 'on' functions
 							onUpdate={(data, mode, originalHabitTitle) => handleUpdateHabits(data, mode, originalHabitTitle)}
-
-							//db
-							dbIcons={dbIcons}
-							dbColors={dbColors}
 						/>
 					)}
 				</Modal>

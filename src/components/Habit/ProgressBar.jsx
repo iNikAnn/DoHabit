@@ -18,9 +18,7 @@ function ProgressBar({ color, dimmedColor, segmentCount, todayProgress }) {
 		});
 
 	return (
-		<div
-			className={styles.progressBar}
-		>
+		<div className={styles.progressBar}>
 			{segmentList}
 		</div>
 	);

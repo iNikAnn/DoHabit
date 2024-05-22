@@ -8,21 +8,12 @@ import { FaCheck } from "react-icons/fa";
 
 function HabitHeader(props) {
 	const {
-		title,
-		icon,
-		frequency,
-
-		color,
-		dimmedColor,
-		lightDimmedColor,
-
-		isTodayCompleted,
-		currentStreak,
-		todayProgress,
+		title, icon, frequency,
+		color, dimmedColor, lightDimmedColor,
+		isTodayCompleted, todayProgress, currentStreak,
 
 		// 'on' functions
-		onOpenHabitEditor,
-		onMarkHabitAsCompleted
+		onOpenHabitEditor, onMarkHabitAsCompleted
 	} = props;
 
 	const markAsCompletedBtnStyle = {
@@ -42,11 +33,11 @@ function HabitHeader(props) {
 					</span>
 
 					<div className={styles.titleWrapper}>
-						<strong onClick={() => onOpenHabitEditor(title)}>{title}</strong>
+						<strong onClick={() => onOpenHabitEditor(title)}>
+							{title}
+						</strong>
 
-						<small
-							style={{ color: 'gray' }}
-						>
+						<small style={{ color: 'gray' }}>
 							Current streak: <strong>{currentStreak}</strong>
 						</small>
 					</div>
@@ -63,9 +54,8 @@ function HabitHeader(props) {
 
 			{frequency > 1 && (
 				<ProgressBar
-					{...{ color, dimmedColor }}
+					{...{ color, dimmedColor, todayProgress }}
 					segmentCount={frequency}
-					todayProgress={todayProgress}
 				/>
 			)}
 		</div>

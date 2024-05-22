@@ -13,23 +13,14 @@ import checkHabitCompletion from '../../utils/checkHabitCompletion';
 
 function Habit(props) {
 	const {
-		color,
-		iconTitle,
-		completedDays,
-		frequency,
-
-		// db
-		dbIcons
+		color, completedDays, frequency,
 	} = props;
-
-	// icon
-	const icon = dbIcons.find((el) => el[0] === iconTitle)?.[1] || '?';
 
 	// dimmed color
 	const dimmedColor = getDimmedColor(color);
 	const lightDimmedColor = getLightDimmedColor(dimmedColor);
 
-	// isTodayCompleted
+	// is today completed?
 	const isTodayCompleted = checkHabitCompletion(completedDays, new Date(), frequency);
 
 	// today progress
@@ -37,28 +28,25 @@ function Habit(props) {
 		return day.date === getFormattedDate(new Date());
 	})?.progress || 0;
 
-	// currentStreak
+	// current streak
 	const currentStreak = getCurrentStreak(completedDays, frequency);
 
 	return (
 		<div className={styles.habit}>
 			<HabitHeader
 				{...props}
-				icon={icon}
-				dimmedColor={dimmedColor}
-				lightDimmedColor={lightDimmedColor}
-				isTodayCompleted={isTodayCompleted}
-				currentStreak={currentStreak}
-				todayProgress={todayProgress}
+				{...{
+					dimmedColor, lightDimmedColor,
+					isTodayCompleted, todayProgress, currentStreak
+				}}
 			/>
 
 			<div className={styles.content}>
 				<Calendar
-					color={color}
-					dimmedColor={dimmedColor}
-					lightDimmedColor={lightDimmedColor}
-					completedDays={completedDays}
-					frequency={frequency}
+					{...{
+						color, dimmedColor, lightDimmedColor,
+						completedDays, frequency
+					}}
 				/>
 			</div>
 		</div>
