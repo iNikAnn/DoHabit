@@ -18,10 +18,13 @@ function HabitHeader(props) {
 
 	const markAsCompletedBtnStyle = {
 		backgroundColor: isTodayCompleted ? color : dimmedColor,
-		color: isTodayCompleted ? 'inherit' : lightDimmedColor
+		color: isTodayCompleted ? 'inherit' : lightDimmedColor,
+		borderRadius: frequency === 1
+			? 'var(--border-radius-secondary)'
+			: '0 var(--border-radius-secondary) var(--border-radius-secondary) 0'
 	};
 
-	const progress = Math.floor((todayProgress / frequency) * 100);
+	const progressPercentage = Math.floor((todayProgress / frequency) * 100);
 
 	return (
 		<div className={styles.header}>
@@ -45,27 +48,29 @@ function HabitHeader(props) {
 					</div>
 				</div>
 
-				<button
-					style={markAsCompletedBtnStyle}
-					className={styles.markAsCompletedBtn}
-					onClick={() => onMarkHabitAsCompleted(title)}
-				>
-					{progress === 100 ? (
-						<FaCheck />
-					) : (
-						<strong>{progress}%</strong>
+				<div className={styles.headerRight}>
+					{frequency > 1 && (
+						<ProgressBar
+							{...{ color, dimmedColor, todayProgress }}
+							segmentCount={frequency}
+						/>
 					)}
-				</button>
-			</div>
 
-			{frequency > 1 && (
-				<ProgressBar
-					{...{ color, dimmedColor, todayProgress }}
-					segmentCount={frequency}
-				/>
-			)}
+					<button
+						style={markAsCompletedBtnStyle}
+						className={styles.markAsCompletedBtn}
+						onClick={() => onMarkHabitAsCompleted(title)}
+					>
+						{progressPercentage === 100 ? (
+							<FaCheck />
+						) : (
+							<strong>{progressPercentage}%</strong>
+						)}
+					</button>
+				</div>
+			</div>
 		</div>
-	)
+	);
 }
 
 export default HabitHeader;

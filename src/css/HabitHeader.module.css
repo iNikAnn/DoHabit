@@ -21,13 +21,18 @@
 	gap: 0.6rem;
 }
 
+/* header right */
+.headerRight {
+	display: flex;
+	gap: 2px;
+}
+
 /* icon */
 .iconWrapper {
 	/* outline: 1px solid tomato; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	/* background-color: var(--bg-color-tertiary); */
 	border-radius: var(--border-radius-secondary);
 }
 

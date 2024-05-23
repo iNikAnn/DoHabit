@@ -5,7 +5,12 @@ function ProgressBar({ color, dimmedColor, segmentCount, todayProgress }) {
 		.fill(null)
 		.map((_, index) => {
 			const segmentStyle = {
-				backgroundColor: index + 1 <= todayProgress ? color : dimmedColor
+				backgroundColor: index + 1 <= todayProgress ? color : dimmedColor,
+				borderRadius: !index
+					? '0 0 0 var(--border-radius-secondary)'
+					: index + 1 === segmentCount
+						? 'var(--border-radius-secondary) 0 0 0'
+						: '0'
 			};
 
 			return (
@@ -19,7 +24,7 @@ function ProgressBar({ color, dimmedColor, segmentCount, todayProgress }) {
 
 	return (
 		<div className={styles.progressBar}>
-			{segmentList}
+			{segmentList.reverse()}
 		</div>
 	);
 }
