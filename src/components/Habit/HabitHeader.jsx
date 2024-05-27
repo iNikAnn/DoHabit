@@ -9,7 +9,7 @@ import { FaCheck } from "react-icons/fa";
 function HabitHeader(props) {
 	const {
 		title, icon, frequency,
-		color, dimmedColor, lightDimmedColor,
+		color, dimmedColor,
 		isTodayCompleted, todayProgress, currentStreak,
 
 		// 'on' functions
@@ -18,7 +18,7 @@ function HabitHeader(props) {
 
 	const markAsCompletedBtnStyle = {
 		backgroundColor: isTodayCompleted ? color : dimmedColor,
-		color: isTodayCompleted ? 'inherit' : lightDimmedColor,
+		color: 'inherit',
 		borderRadius: frequency === 1
 			? 'var(--border-radius-secondary)'
 			: '0 var(--border-radius-secondary) var(--border-radius-secondary) 0'
@@ -31,7 +31,7 @@ function HabitHeader(props) {
 			<div className={styles.headerTop}>
 				<div className={styles.headerLeft}>
 					<span
-						style={{ backgroundColor: dimmedColor }}
+						style={{ backgroundColor: dimmedColor, color: color }}
 						className={styles.iconWrapper}
 					>
 						{icon}

@@ -36,7 +36,7 @@ function Habit(props) {
 			<HabitHeader
 				{...props}
 				{...{
-					dimmedColor, lightDimmedColor,
+					dimmedColor,
 					isTodayCompleted, todayProgress, currentStreak
 				}}
 			/>
