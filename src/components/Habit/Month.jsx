@@ -51,8 +51,8 @@ function Month(props) {
 			// day style
 			const dayStyle = {
 				backgroundColor: isCompleted ? color : (index >= shift) ? dimmedColor : '',
-				color: isCompleted ? 'inherit' : lightDimmedColor,
-				border: isToday ? `2px solid ${color}` : '',
+				color: isCompleted || isToday ? 'inherit' : lightDimmedColor,
+				border: isToday ? `2px solid #e6e6e6` : '',
 				borderRadius: dayBorderRadius,
 				aspectRatio: isDaySquare ? '1 / 1' : '',
 			};
