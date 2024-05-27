@@ -14,17 +14,22 @@ function Month(props) {
 	} = props;
 
 	const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+	const today = new Date();
 
 	const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-		.map((weekday) => (
-			<span
-				key={weekday}
-				style={{ color: lightDimmedColor }}
-				className={styles.weekday}
-			>
-				{weekday}
-			</span>
-		));
+		.map((weekday, index) => {
+			const isToday = ((index + 1) % 7) === today.getDay();
+
+			return (
+				<span
+					key={weekday}
+					style={{ color: isToday ? 'inherit' : lightDimmedColor }}
+					className={styles.weekday}
+				>
+					{weekday}
+				</span>
+			)
+		});
 
 	let shift = (new Date(date.getFullYear(), date.getMonth(), 1).getDay() || 7) - 1;
 
@@ -36,7 +41,7 @@ function Month(props) {
 
 			if (index >= shift) {
 				const thisDay = new Date(date.getFullYear(), date.getMonth(), (index - shift + 1));
-				isToday = thisDay.toDateString() === new Date().toDateString();
+				isToday = thisDay.toDateString() === today.toDateString();
 
 				if (completedDays) {
 					isCompleted = checkHabitCompletion(completedDays, thisDay, frequency);
