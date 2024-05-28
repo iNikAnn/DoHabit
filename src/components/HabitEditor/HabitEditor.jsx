@@ -12,26 +12,19 @@ import IconBlock from './IconBlock';
 
 function HabitEditor(props) {
 	const {
-		modeObj,
-		habits,
+		habits, habitTitle,
 
 		// 'on' functions
 		onUpdate,
 
 		// db
-		dbIcons,
-		dbColors
+		dbIcons, dbColors
 	} = props;
 
-	let mode = '';
-	let habit = '';
+	const isEditMode = Boolean(habitTitle);
+	const habit = isEditMode ? habits.find((habit) => habit.title === habitTitle) : null;
 
-	if (modeObj) {
-		mode = modeObj.mode;
-		habit = habits.find((habit) => habit.title === modeObj.habitTitle);
-	};
-
-	const [inputTitle, setInputTitle] = useState(mode === 'edit' ? habit.title : '');
+	const [inputTitle, setInputTitle] = useState(isEditMode ? habit.title : '');
 	const [alreadyExist, setAlreadyExist] = useState(false);
 
 	// check for existing habit with the same title
@@ -49,7 +42,7 @@ function HabitEditor(props) {
 		event.preventDefault();
 
 		if (inputTitle.length) {
-			onUpdate(event.target, mode, mode === 'edit' ? habit.title : '');
+			onUpdate(event.target, isEditMode ? 'edit' : '', isEditMode ? habit.title : '');
 		} else {
 			setAlreadyExist(true);
 		};
@@ -65,11 +58,7 @@ function HabitEditor(props) {
 
 	// order
 	const [currOrder, setCurrOrder] = useState(() => {
-		if (mode === 'edit') {
-			return habits.indexOf(habit) + 1;
-		};
-
-		return -1;
+		return isEditMode ? habits.indexOf(habit) + 1 : -1;
 	});
 
 	return (
@@ -83,7 +72,7 @@ function HabitEditor(props) {
 
 				<FrequencyBlock {...{ currentFrequency: habit?.frequency }} />
 
-				{mode === 'edit' && (
+				{isEditMode && (
 					<OrderBlock habitsCount={habits.length} currOrder={currOrder} setCurrOrder={setCurrOrder} />
 				)}
 
@@ -96,7 +85,7 @@ function HabitEditor(props) {
 				</small>
 
 				<div className={styles.btnsWrapper}>
-					{mode === 'edit' && (
+					{isEditMode && (
 						<button
 							className={styles.deleteBtn}
 							type="button"
@@ -116,7 +105,7 @@ function HabitEditor(props) {
 						type="submit"
 						disabled={alreadyExist}
 					>
-						{mode === 'edit' ? 'Save Changes' : 'Create Habit'}
+						{isEditMode ? 'Save Changes' : 'Create Habit'}
 					</button>
 				</div>
 			</form>

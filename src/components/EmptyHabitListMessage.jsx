@@ -12,7 +12,7 @@ function EmptyHabitsListMessage({ onOpenHabitEditor }) {
 
 			<button
 				className={styles.createBtn}
-				onClick={onOpenHabitEditor}
+				onClick={() => onOpenHabitEditor('Create new habit', 'createHabitWindow')}
 			>
 				Create New Habit
 			</button>
