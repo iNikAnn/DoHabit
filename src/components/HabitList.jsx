@@ -23,7 +23,7 @@ function HabitList(props) {
 			color={dbColors[habit.colorIndex]}
 
 			// 'on' functions
-			onOpenHabitEditor={(habitTitle) => onOpenHabitEditor('Edit habit', 'createHabitWindow', { habitTitle })}
+			onOpenHabitEditor={onOpenHabitEditor}
 			{...{ onMarkHabitAsCompleted }}
 		/>
 	));

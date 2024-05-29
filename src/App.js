@@ -38,7 +38,7 @@ function App() {
 	// update habit
 	const handleUpdateHabits = (data, mode, originalHabitTitle) => {
 		setHabits(getUpdatedHabits(habits, data, mode, originalHabitTitle));
-		handleCloseModal();
+		handleToggleModal();
 	};
 
 	// mark habit completion for the day
@@ -47,34 +47,21 @@ function App() {
 	};
 
 	// modal
-	const [modalIsVisible, setModalIsVisible] = useState(false);
-	const [modalTitle, setModalTitle] = useState('');
-	const [modalContent, setModalContent] = useState('');
-	const [modalProps, setModalProps] = useState({});
+	const [modal, setModal] = useState(null);
 
 	useEffect(() => {
-		document.body.style.overflow = modalIsVisible ? 'hidden' : 'auto';
-	}, [modalIsVisible]);
+		document.body.style.overflow = modal ? 'hidden' : 'auto';
+	}, [modal]);
 
-	const handleOpenModal = (title, content, props) => {
-		setModalTitle(title);
-		setModalContent(content);
-		setModalProps(props || {});
-		setModalIsVisible(true);
-	};
-
-	const handleCloseModal = () => {
-		setModalIsVisible(false);
-		setModalTitle('');
-		setModalContent('');
-		setModalProps({})
+	const handleToggleModal = (props) => {
+		setModal(modal ? null : props);
 	};
 
 	return (
 		<div className="App">
 			<Header
 				// 'on' functions
-				onOpenHabitEditor={handleOpenModal}
+				onOpenHabitEditor={handleToggleModal}
 			/>
 
 			<main>
@@ -82,22 +69,22 @@ function App() {
 					{...{ habits, dbIcons, dbColors }}
 
 					// 'on' functions
-					onOpenHabitEditor={handleOpenModal}
+					onOpenHabitEditor={handleToggleModal}
 					onMarkHabitAsCompleted={handleMarkHabitAsCompleted}
 				/>
 			</main>
 
-			{modalIsVisible && (
+			{modal && (
 				<Modal
-					title={modalTitle}
+					title={modal.modalTitle}
 
 					// 'on' functions
-					onClose={handleCloseModal}
+					onClose={handleToggleModal}
 				>
-					{modalContent === 'createHabitWindow' && (
+					{modal.modalContent === 'habitEditor' && (
 						<HabitEditor
 							{...{ habits, dbIcons, dbColors }}
-							habitTitle={modalProps.habitTitle}
+							habitTitle={modal.habitTitle}
 
 							// 'on' functions
 							onUpdate={(data, mode, originalHabitTitle) => handleUpdateHabits(data, mode, originalHabitTitle)}

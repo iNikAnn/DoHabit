@@ -26,6 +26,12 @@ function HabitHeader(props) {
 
 	const progressPercentage = Math.floor((todayProgress / frequency) * 100);
 
+	const modalProps = {
+		modalContent: 'habitEditor',
+		modalTitle: 'Edit habit',
+		habitTitle: title
+	};
+
 	return (
 		<div className={styles.header}>
 			<div className={styles.headerTop}>
@@ -38,7 +44,7 @@ function HabitHeader(props) {
 					</span>
 
 					<div className={styles.titleWrapper}>
-						<strong onClick={() => onOpenHabitEditor(title)}>
+						<strong onClick={() => onOpenHabitEditor(modalProps)}>
 							{title}
 						</strong>
 

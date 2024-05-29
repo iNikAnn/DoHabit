@@ -9,6 +9,11 @@ function Header(props) {
 		onOpenHabitEditor
 	} = props;
 
+	const modalProps = {
+		modalContent: 'habitEditor',
+		modalTitle: 'Create new habit',
+	};
+
 	return (
 		<header className={styles.header}>
 			<span className={styles.logoWrapper}>
@@ -19,7 +24,7 @@ function Header(props) {
 			<div>
 				<button
 					className={styles.btn}
-					onClick={() => onOpenHabitEditor('Create new habit', 'createHabitWindow')}
+					onClick={() => onOpenHabitEditor(modalProps)}
 				>
 					<FaPlus />
 				</button>
