@@ -13,6 +13,7 @@ import HabitEditor from './components/HabitEditor/HabitEditor';
 import getUpdatedHabits from './utils/getUpdatedHabits';
 import markHabitAsCompleted from './utils/markHabitAsCompleted';
 import updateDB from './utils/updateDB';
+import validateModalProps from './utils/validateModalProps';
 
 // db
 import dbIcons from './db/dbIcons';
@@ -54,6 +55,7 @@ function App() {
 	}, [modal]);
 
 	const handleToggleModal = (props) => {
+		if (!modal) validateModalProps(props);
 		setModal(modal ? null : props);
 	};
 
