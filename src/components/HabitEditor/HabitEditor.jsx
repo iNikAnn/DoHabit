@@ -10,6 +10,9 @@ import OrderBlock from './OrderBlock';
 import ColorBlock from './ColorBlock';
 import IconBlock from './IconBlock';
 
+// utils
+import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
+
 function HabitEditor(props) {
 	const {
 		habits, habitTitle,
@@ -29,13 +32,10 @@ function HabitEditor(props) {
 
 	// check for existing habit with the same title
 	useEffect(() => {
-		const currentHabitTitle = habit ? habit.title : '';
-		const match = habits.find((habit) => {
-			return habit.title === inputTitle && habit.title !== currentHabitTitle;
-		});
-
-		setAlreadyExist(match);
-	}, [inputTitle]);
+		setAlreadyExist(
+			checkHabitTitleExistence(habits, habit, inputTitle)
+		);
+	}, [habit, habits, inputTitle]);
 
 	// on submit form
 	const handleSabmitForm = (event) => {
