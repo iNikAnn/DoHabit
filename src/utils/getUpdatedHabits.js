@@ -1,11 +1,10 @@
 // utils
 import getFormattedDate from './getFormattedDate';
+import deleteHabit from './deleteHabit';
 
-function getUpdatedHabits(currentHabits, data, mode, originalHabitTitle) {
+function getUpdatedHabits(habits, data, mode, originalHabitTitle) {
 	if (mode === 'delete') {
-		return currentHabits.filter((habit) => {
-			return habit.title !== originalHabitTitle;
-		});
+		return deleteHabit(habits, originalHabitTitle);
 	};
 
 	const newHabit = {
@@ -17,7 +16,7 @@ function getUpdatedHabits(currentHabits, data, mode, originalHabitTitle) {
 	};
 
 	if (mode === 'edit') {
-		const updatedHabits = currentHabits.map((habit) => {
+		const updatedHabits = habits.map((habit) => {
 			if (habit.title === originalHabitTitle) {
 				// updating the frequency value for completed days
 				const updatedCompletedDays = habit.completedDays.map((day) => {
@@ -63,7 +62,7 @@ function getUpdatedHabits(currentHabits, data, mode, originalHabitTitle) {
 		return updatedHabits;
 	};
 
-	return [newHabit, ...currentHabits];
+	return [newHabit, ...habits];
 }
 
 export default getUpdatedHabits;

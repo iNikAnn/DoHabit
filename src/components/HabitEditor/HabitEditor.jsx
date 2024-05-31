@@ -38,21 +38,19 @@ function HabitEditor(props) {
 	}, [habit, habits, inputTitle]);
 
 	// on submit form
-	const handleSabmitForm = (event) => {
-		event.preventDefault();
+	const handleSabmitForm = (e) => {
+		e.preventDefault();
 
-		if (inputTitle.length) {
-			onUpdate(event.target, isEditMode ? 'edit' : '', isEditMode ? habit.title : '');
-		} else {
-			setAlreadyExist(true);
-		};
+		inputTitle.length
+			? onUpdate(e.target, isEditMode ? 'edit' : '', habit?.title)
+			: setAlreadyExist(true);
 	};
 
 	// prevents form submission on Enter key press and hides the virtual keyboard
-	const handlePressEnter = (event) => {
-		if (event.key === 'Enter') {
-			event.preventDefault();
-			event.target.blur();
+	const handlePressEnter = (e) => {
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			e.target.blur();
 		};
 	};
 
@@ -92,7 +90,7 @@ function HabitEditor(props) {
 							onClick={() => {
 								const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 								if (window.confirm(msg)) {
-									onUpdate(null, 'delete', habit.title)
+									onUpdate(null, 'delete', habit?.title)
 								}
 							}}
 						>

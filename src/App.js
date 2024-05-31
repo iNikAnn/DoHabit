@@ -89,7 +89,7 @@ function App() {
 							habitTitle={modal.habitTitle}
 
 							// 'on' functions
-							onUpdate={(data, mode, originalHabitTitle) => handleUpdateHabits(data, mode, originalHabitTitle)}
+							onUpdate={handleUpdateHabits}
 						/>
 					)}
 				</Modal>
