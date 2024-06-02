@@ -1,26 +1,27 @@
 // utils
-import getFormattedDate from './getFormattedDate';
+import updateCompletedDays from './updateCompletedDays';
 
-function editHabit(habits, title, newHabit) {
-	return habits.map((habit) => {
-		if (habit.title === title) {
-			// updating the frequency value for completed days
-			const updatedCompletedDays = habit.completedDays.map(
-				(day) => (
-					day.date === getFormattedDate(new Date()) && day.progress < newHabit.frequency
-						? day
-						: { ...day, progress: newHabit.frequency }
-				)
-			);
+function editHabit(habits, title, updatedHabit) {
+	return habits.map(
+		(habit) => {
+			let modifiedHabit = habit;
 
-			return {
-				...newHabit,
-				completedDays: updatedCompletedDays
+			if (habit.title === title) {
+				const frequencyWasChanged = habit.frequency !== updatedHabit.frequency;
+
+				const updatedCompletedDays = frequencyWasChanged
+					? updateCompletedDays(habit.completedDays, updatedHabit.frequency)
+					: habit.completedDays;
+
+				modifiedHabit = {
+					...updatedHabit,
+					completedDays: updatedCompletedDays
+				};
 			};
-		};
 
-		return habit;
-	});
+			return modifiedHabit;
+		}
+	);
 }
 
 export default editHabit;
