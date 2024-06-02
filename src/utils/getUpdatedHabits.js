@@ -1,6 +1,7 @@
 // utils
 import deleteHabit from './deleteHabit';
 import editHabit from './editHabit';
+import reorderHabit from './reorderHabit';
 
 function getUpdatedHabits(habits, { data, mode, habitTitle }) {
 	if (mode === 'delete') {
@@ -20,18 +21,13 @@ function getUpdatedHabits(habits, { data, mode, habitTitle }) {
 
 		// reorder habits
 		if (data.order && data.order.value) {
-			const newOrder = parseInt(data.order.value, 10) - 1;
-			const currHabitIndex = updatedHabits.findIndex((habit) => {
+			const newIndex = Number(data.order.value, 10) - 1;
+			const currIndex = updatedHabits.findIndex((habit) => {
 				return habit.title === data.title.value;
 			});
 
-			if (currHabitIndex !== -1) {
-				const currHabit = updatedHabits[currHabitIndex];
-
-				if (currHabitIndex !== newOrder && newOrder >= 0 && newOrder < updatedHabits.length) {
-					updatedHabits.splice(currHabitIndex, 1);
-					updatedHabits.splice(newOrder, 0, currHabit);
-				};
+			if (currIndex !== -1 && newIndex !== currIndex) {
+				reorderHabit(updatedHabits, newIndex, currIndex);
 			};
 		};
 
