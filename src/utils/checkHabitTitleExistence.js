@@ -1,7 +1,7 @@
 function checkHabitTitleExistence(habits, currHabit, input) {
 	return Boolean(habits.find(
 		(habit) => (
-			habit.title === input && !(currHabit?.title || '')
+			habit.title === input && habit.title !== currHabit?.title
 		)
 	));
 }

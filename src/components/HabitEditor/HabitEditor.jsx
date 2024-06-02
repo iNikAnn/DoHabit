@@ -47,7 +47,6 @@ function HabitEditor(props) {
 		e.preventDefault();
 
 		inputTitle.length
-			// ? onUpdate(e.target, isEditMode ? 'edit' : '', habit?.title)
 			? onUpdate({ ...updateProps, data: e.target, mode: isEditMode ? 'edit' : '' })
 			: setAlreadyExist(true);
 	};
@@ -96,7 +95,6 @@ function HabitEditor(props) {
 							onClick={() => {
 								const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 								if (window.confirm(msg)) {
-									// onUpdate(null, 'delete', habit?.title)
 									onUpdate({ ...updateProps, mode: 'delete' });
 								}
 							}}
@@ -106,6 +104,7 @@ function HabitEditor(props) {
 					)}
 
 					<button
+						style={{ backgroundColor: alreadyExist ? 'gray' : '' }}
 						className={styles.createBtn}
 						type="submit"
 						disabled={alreadyExist}
