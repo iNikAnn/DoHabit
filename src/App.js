@@ -37,8 +37,8 @@ function App() {
 	}, [habits]);
 
 	// update habit
-	const handleUpdateHabits = (data, mode, originalHabitTitle) => {
-		setHabits(getUpdatedHabits(habits, data, mode, originalHabitTitle));
+	const handleUpdateHabits = (props) => {
+		setHabits(getUpdatedHabits(habits, props));
 		handleToggleModal();
 	};
 

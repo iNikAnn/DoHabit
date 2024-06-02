@@ -2,9 +2,9 @@
 import deleteHabit from './deleteHabit';
 import editHabit from './editHabit';
 
-function getUpdatedHabits(habits, data, mode, originalHabitTitle) {
+function getUpdatedHabits(habits, { data, mode, habitTitle }) {
 	if (mode === 'delete') {
-		return deleteHabit(habits, originalHabitTitle);
+		return deleteHabit(habits, habitTitle);
 	};
 
 	const newHabit = {
@@ -16,7 +16,7 @@ function getUpdatedHabits(habits, data, mode, originalHabitTitle) {
 	};
 
 	if (mode === 'edit') {
-		const updatedHabits = editHabit(habits, originalHabitTitle, newHabit);
+		const updatedHabits = editHabit(habits, habitTitle, newHabit);
 
 		// reorder habits
 		if (data.order && data.order.value) {

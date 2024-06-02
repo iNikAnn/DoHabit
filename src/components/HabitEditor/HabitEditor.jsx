@@ -37,12 +37,18 @@ function HabitEditor(props) {
 		);
 	}, [habit, habits, inputTitle]);
 
+	// update props
+	const updateProps = {
+		habitTitle: habit?.title
+	};
+
 	// on submit form
 	const handleSabmitForm = (e) => {
 		e.preventDefault();
 
 		inputTitle.length
-			? onUpdate(e.target, isEditMode ? 'edit' : '', habit?.title)
+			// ? onUpdate(e.target, isEditMode ? 'edit' : '', habit?.title)
+			? onUpdate({ ...updateProps, data: e.target, mode: isEditMode ? 'edit' : '' })
 			: setAlreadyExist(true);
 	};
 
@@ -55,9 +61,9 @@ function HabitEditor(props) {
 	};
 
 	// order
-	const [currOrder, setCurrOrder] = useState(() => {
-		return isEditMode ? habits.indexOf(habit) + 1 : -1;
-	});
+	const [currOrder, setCurrOrder] = useState(() => (
+		isEditMode ? habits.indexOf(habit) + 1 : -1
+	));
 
 	return (
 		<div className={styles.wrapper}>
@@ -90,7 +96,8 @@ function HabitEditor(props) {
 							onClick={() => {
 								const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 								if (window.confirm(msg)) {
-									onUpdate(null, 'delete', habit?.title)
+									// onUpdate(null, 'delete', habit?.title)
+									onUpdate({ ...updateProps, mode: 'delete' });
 								}
 							}}
 						>
