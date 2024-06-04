@@ -2,7 +2,7 @@
 import getFormattedDate from './getFormattedDate';
 import checkHabitCompletion from './checkHabitCompletion';
 
-function markHabitAsCompleted(habits, title) {
+function updateHabitProgress(habits, title) {
 	const today = new Date();
 
 	return habits.map((habit) => {
@@ -52,4 +52,4 @@ function markHabitAsCompleted(habits, title) {
 	});
 }
 
-export default markHabitAsCompleted;
+export default updateHabitProgress;

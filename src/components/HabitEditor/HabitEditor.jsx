@@ -18,7 +18,7 @@ function HabitEditor(props) {
 		habits, habitTitle,
 
 		// 'on' functions
-		onUpdate,
+		onUpdate, onClose,
 
 		// db
 		dbIcons, dbColors
@@ -47,8 +47,13 @@ function HabitEditor(props) {
 		e.preventDefault();
 
 		inputTitle.length
-			? onUpdate({ ...updateProps, data: e.target, mode: isEditMode ? 'edit' : '' })
+			? handleUpdate({ ...updateProps, data: e.target, mode: isEditMode ? 'edit' : '' })
 			: setAlreadyExist(true);
+	};
+
+	const handleUpdate = (props) => {
+		onUpdate(props);
+		onClose();
 	};
 
 	// prevents form submission on Enter key press and hides the virtual keyboard
@@ -95,7 +100,7 @@ function HabitEditor(props) {
 							onClick={() => {
 								const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 								if (window.confirm(msg)) {
-									onUpdate({ ...updateProps, mode: 'delete' });
+									handleUpdate({ ...updateProps, mode: 'delete' });
 								}
 							}}
 						>

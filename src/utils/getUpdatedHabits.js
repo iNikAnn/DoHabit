@@ -2,6 +2,7 @@
 import deleteHabit from './deleteHabit';
 import editHabit from './editHabit';
 import reorderHabit from './reorderHabit';
+import updateHabitProgress from './updateHabitProgress';
 
 function getUpdatedHabits(habits, { data, mode, habitTitle }) {
 	let updatedHabits = [...habits];
@@ -31,6 +32,10 @@ function getUpdatedHabits(habits, { data, mode, habitTitle }) {
 			if (currIndex !== -1 && newIndex !== currIndex) {
 				updatedHabits = reorderHabit(updatedHabits, newIndex, currIndex);
 			};
+			break;
+
+		case 'updateProgress':
+			updatedHabits = updateHabitProgress(updatedHabits, habitTitle);
 			break;
 
 		default:

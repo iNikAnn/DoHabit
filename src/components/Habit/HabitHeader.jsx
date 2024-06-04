@@ -13,7 +13,7 @@ function HabitHeader(props) {
 		isTodayCompleted, todayProgress, currentStreak,
 
 		// 'on' functions
-		onOpenHabitEditor, onMarkHabitAsCompleted
+		onOpenHabitEditor, onUpdateProgress
 	} = props;
 
 	const markAsCompletedBtnStyle = {
@@ -65,7 +65,10 @@ function HabitHeader(props) {
 					<button
 						style={markAsCompletedBtnStyle}
 						className={styles.markAsCompletedBtn}
-						onClick={() => onMarkHabitAsCompleted(title)}
+						onClick={() => onUpdateProgress({
+							mode: 'updateProgress',
+							habitTitle: title
+						})}
 					>
 						{progressPercentage === 100 ? (
 							<FaCheck />

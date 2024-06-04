@@ -11,7 +11,6 @@ import HabitEditor from './components/HabitEditor/HabitEditor';
 
 // utils
 import getUpdatedHabits from './utils/getUpdatedHabits';
-import markHabitAsCompleted from './utils/markHabitAsCompleted';
 import updateDB from './utils/updateDB';
 import validateModalProps from './utils/validateModalProps';
 
@@ -39,12 +38,6 @@ function App() {
 	// update habit
 	const handleUpdateHabits = (props) => {
 		setHabits(getUpdatedHabits(habits, props));
-		handleToggleModal();
-	};
-
-	// mark habit completion for the day
-	const handleMarkHabitAsCompleted = (title) => {
-		setHabits(markHabitAsCompleted(habits, title));
 	};
 
 	// modal
@@ -54,16 +47,20 @@ function App() {
 		document.body.style.overflow = modal ? 'hidden' : 'auto';
 	}, [modal]);
 
-	const handleToggleModal = (props) => {
+	const handleOpenModal = (props) => {
 		if (!modal) validateModalProps(props);
 		setModal(modal ? null : props);
+	};
+
+	const handleCloseModal = () => {
+		setModal(null);
 	};
 
 	return (
 		<div className="App">
 			<Header
 				// 'on' functions
-				onOpenHabitEditor={handleToggleModal}
+				onOpenHabitEditor={handleOpenModal}
 			/>
 
 			<main>
@@ -71,8 +68,8 @@ function App() {
 					{...{ habits, dbIcons, dbColors }}
 
 					// 'on' functions
-					onOpenHabitEditor={handleToggleModal}
-					onMarkHabitAsCompleted={handleMarkHabitAsCompleted}
+					onOpenHabitEditor={handleOpenModal}
+					onUpdateProgress={handleUpdateHabits}
 				/>
 			</main>
 
@@ -81,7 +78,7 @@ function App() {
 					title={modal.modalTitle}
 
 					// 'on' functions
-					onClose={handleToggleModal}
+					onClose={handleCloseModal}
 				>
 					{modal.modalContent === 'habitEditor' && (
 						<HabitEditor
@@ -90,6 +87,7 @@ function App() {
 
 							// 'on' functions
 							onUpdate={handleUpdateHabits}
+							onClose={handleCloseModal}
 						/>
 					)}
 				</Modal>

@@ -6,7 +6,7 @@ import { FaPlus } from "react-icons/fa";
 function Header(props) {
 	const {
 		// 'on' functions
-		onOpenHabitEditor
+		onOpenHabitEditor,
 	} = props;
 
 	const modalProps = {
