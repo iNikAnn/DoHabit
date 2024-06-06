@@ -3,52 +3,39 @@ import getFormattedDate from './getFormattedDate';
 import checkHabitCompletion from './checkHabitCompletion';
 
 function updateHabitProgress(habits, title) {
-	const today = new Date();
+	const today = getFormattedDate(new Date());
 
 	return habits.map((habit) => {
-		if (habit.title === title) {
-			const isCompleted = checkHabitCompletion(habit.completedDays, today, habit.frequency);
+		habit = { ...habit };
 
-			let updatedCompletedDays = [...habit.completedDays];
+		if (habit.title === title) {
+			const isCompleted = checkHabitCompletion(habit.completedDays, new Date(), habit.frequency);
+			let completedDays = [...habit.completedDays];
 
 			if (isCompleted) {
-				updatedCompletedDays = updatedCompletedDays.filter((day) => {
-					return day.date !== getFormattedDate(today);
-				});
+				completedDays = completedDays.filter(
+					(day) => day.date !== today
+				);
 			} else {
-				const haveProgress = Boolean(updatedCompletedDays.find((day) => {
-					return day.date === getFormattedDate(today);
-				}));
+				const todayIndex = completedDays.findIndex(
+					(day) => day.date === today
+				);
 
-				if (haveProgress) {
-					updatedCompletedDays = updatedCompletedDays.map((day) => {
-						if (day.date === getFormattedDate(today)) {
-							return {
-								date: day.date,
-								progress: day.progress + 1
-							};
-						};
-
-						return { ...day };
-					});
-				} else {
-					updatedCompletedDays = [
-						{
-							date: getFormattedDate(today),
-							progress: 1,
-						},
-						...updatedCompletedDays
-					];
-				};
+				todayIndex !== -1
+					? completedDays[todayIndex] = {
+						...completedDays[todayIndex],
+						progress: completedDays[todayIndex].progress + 1
+					}
+					: completedDays.unshift({ date: today, progress: 1, });
 			};
 
-			return {
+			habit = {
 				...habit,
-				completedDays: updatedCompletedDays
+				completedDays: completedDays
 			};
 		};
 
-		return { ...habit };
+		return habit;
 	});
 }
 
