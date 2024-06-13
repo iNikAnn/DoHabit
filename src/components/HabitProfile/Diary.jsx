@@ -20,7 +20,11 @@ function Diary({ diary, handleCreateNote }) {
 			<div className={styles.header}>
 				<span>Diary</span>
 
-				<button onClick={handleCreateNote}>
+				<button
+					type='button'
+					className='text-button'
+					onClick={handleCreateNote}
+				>
 					Create Note
 				</button>
 			</div>

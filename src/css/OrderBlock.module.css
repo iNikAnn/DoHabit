@@ -36,11 +36,6 @@
 	margin-left: calc(var(--input-height-primary) + 0.4rem);
 }
 
-.bottom button {
-	background-color: transparent;
-	color: dodgerblue;
-}
-
 /* state */
 .btn:disabled {
 	color: gray;
