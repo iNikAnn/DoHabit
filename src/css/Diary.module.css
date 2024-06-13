@@ -1,0 +1,15 @@
+/* header */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	margin-bottom: 1rem;
+}
+
+/* diary list */
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}

@@ -3,8 +3,9 @@ import deleteHabit from './deleteHabit';
 import editHabit from './editHabit';
 import reorderHabit from './reorderHabit';
 import updateHabitProgress from './updateHabitProgress';
+import createNote from './createNote';
 
-function getUpdatedHabits(habits, { data, mode, habitTitle }) {
+function getUpdatedHabits(habits, { data, mode, habitTitle, newNote }) {
 	let updatedHabits = [...habits];
 
 	const newHabit = data ? {
@@ -32,6 +33,10 @@ function getUpdatedHabits(habits, { data, mode, habitTitle }) {
 			if (currIndex !== -1 && newIndex !== currIndex) {
 				updatedHabits = reorderHabit(updatedHabits, newIndex, currIndex);
 			};
+			break;
+
+		case 'createNote':
+			updatedHabits = createNote(updatedHabits, habitTitle, newNote)
 			break;
 
 		case 'updateProgress':

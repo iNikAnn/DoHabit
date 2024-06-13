@@ -97,6 +97,9 @@ function App() {
 						<HabitProfile
 							{...{ habits }}
 							habitTitle={modal.habitTitle}
+
+							// 'on' functions
+							onCreateNote={handleUpdateHabits}
 						/>
 					)}
 				</Modal>
