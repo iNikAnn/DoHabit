@@ -1,8 +1,15 @@
 import styles from '../../css/HabitProfile.module.css';
 
-function HabitProfile() {
+// components
+import Diary from './Diary';
+
+function HabitProfile({ habits, habitTitle }) {
+	const habit = habits.find((habit) => habit.title === habitTitle);
+
 	return (
-		<div>HabitProfile</div>
+		<Diary
+			diary={habit.diary}
+		/>
 	);
 }
 

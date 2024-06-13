@@ -23,7 +23,6 @@ function HabitList(props) {
 			color={dbColors[habit.colorIndex]}
 
 			// 'on' functions
-			onOpenHabitEditor={onOpenHabitEditor}
 			{...{ onOpenHabitProfile, onUpdateProgress }}
 		/>
 	));

@@ -94,7 +94,10 @@ function App() {
 					)}
 
 					{modal.modalContent === 'habitProfile' && (
-						<HabitProfile />
+						<HabitProfile
+							{...{ habits }}
+							habitTitle={modal.habitTitle}
+						/>
 					)}
 				</Modal>
 			)}

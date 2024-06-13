@@ -13,7 +13,7 @@ function HabitHeader(props) {
 		isTodayCompleted, todayProgress, currentStreak,
 
 		// 'on' functions
-		onOpenHabitEditor, onOpenHabitProfile, onUpdateProgress
+		onOpenHabitProfile, onUpdateProgress
 	} = props;
 
 	const markAsCompletedBtnStyle = {
