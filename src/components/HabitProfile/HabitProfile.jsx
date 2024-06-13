@@ -20,12 +20,14 @@ function HabitProfile(props) {
 			date: new Date()
 		};
 
+		if (!newNote.text) return;
+
 		onCreateNote({
 			mode: 'createNote',
 			habitTitle: habit.title,
 			newNote
 		});
-	}
+	};
 
 	return (
 		<Diary
