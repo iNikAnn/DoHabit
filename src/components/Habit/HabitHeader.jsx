@@ -13,7 +13,7 @@ function HabitHeader(props) {
 		isTodayCompleted, todayProgress, currentStreak,
 
 		// 'on' functions
-		onOpenHabitEditor, onUpdateProgress
+		onOpenHabitEditor, onOpenHabitProfile, onUpdateProgress
 	} = props;
 
 	const markAsCompletedBtnStyle = {
@@ -27,8 +27,8 @@ function HabitHeader(props) {
 	const progressPercentage = Math.floor((todayProgress / frequency) * 100);
 
 	const modalProps = {
-		modalContent: 'habitEditor',
-		modalTitle: 'Edit habit',
+		modalContent: 'habitProfile',
+		modalTitle: title,
 		habitTitle: title
 	};
 
@@ -43,8 +43,11 @@ function HabitHeader(props) {
 						{icon}
 					</span>
 
-					<div className={styles.titleWrapper}>
-						<strong onClick={() => onOpenHabitEditor(modalProps)}>
+					<div
+						className={styles.titleWrapper}
+						onClick={() => onOpenHabitProfile(modalProps)}
+					>
+						<strong>
 							{title}
 						</strong>
 

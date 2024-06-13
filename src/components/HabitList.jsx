@@ -9,7 +9,7 @@ function HabitList(props) {
 		habits,
 
 		// 'on' functions
-		onOpenHabitEditor, onUpdateProgress,
+		onOpenHabitEditor, onOpenHabitProfile, onUpdateProgress,
 
 		// db
 		dbIcons, dbColors
@@ -24,7 +24,7 @@ function HabitList(props) {
 
 			// 'on' functions
 			onOpenHabitEditor={onOpenHabitEditor}
-			{...{ onUpdateProgress }}
+			{...{ onOpenHabitProfile, onUpdateProgress }}
 		/>
 	));
 
