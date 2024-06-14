@@ -56,3 +56,7 @@ input {
 	background-color: var(--bg-color-primary);
 	border-radius: var(--border-radius-secondary);
 }
+
+li {
+	list-style: none;
+}

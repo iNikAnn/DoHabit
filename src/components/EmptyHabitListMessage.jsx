@@ -1,6 +1,6 @@
 import styles from '../css/EmptyHabitListMessage.module.css';
 
-function EmptyHabitsListMessage({ onOpenHabitEditor }) {
+function EmptyHabitsListMessage({ onOpenModal }) {
 	const modalProps = {
 		modalContent: 'habitEditor',
 		modalTitle: 'Create new habit',
@@ -17,7 +17,7 @@ function EmptyHabitsListMessage({ onOpenHabitEditor }) {
 
 			<button
 				className={styles.createBtn}
-				onClick={() => onOpenHabitEditor(modalProps)}
+				onClick={() => onOpenModal(modalProps)}
 			>
 				Create New Habit
 			</button>

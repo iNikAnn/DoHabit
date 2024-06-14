@@ -13,7 +13,8 @@ function HabitHeader(props) {
 		isTodayCompleted, todayProgress, currentStreak,
 
 		// 'on' functions
-		onOpenHabitProfile, onUpdateProgress
+		// onOpenHabitProfile,
+		onUpdateProgress
 	} = props;
 
 	const markAsCompletedBtnStyle = {
@@ -26,11 +27,20 @@ function HabitHeader(props) {
 
 	const progressPercentage = Math.floor((todayProgress / frequency) * 100);
 
-	const modalProps = {
-		modalContent: 'habitProfile',
-		modalTitle: title,
-		habitTitle: title
+	const handleUpdateProgress = (e) => {
+		e.stopPropagation();
+
+		onUpdateProgress({
+			mode: 'updateProgress',
+			habitTitle: title
+		});
 	};
+
+	// const modalProps = {
+	// 	modalContent: 'habitProfile',
+	// 	modalTitle: title,
+	// 	habitTitle: title
+	// };
 
 	return (
 		<div className={styles.header}>
@@ -45,7 +55,7 @@ function HabitHeader(props) {
 
 					<div
 						className={styles.titleWrapper}
-						onClick={() => onOpenHabitProfile(modalProps)}
+					// onClick={() => onOpenHabitProfile(modalProps)}
 					>
 						<strong>
 							{title}
@@ -68,10 +78,7 @@ function HabitHeader(props) {
 					<button
 						style={markAsCompletedBtnStyle}
 						className={styles.markAsCompletedBtn}
-						onClick={() => onUpdateProgress({
-							mode: 'updateProgress',
-							habitTitle: title
-						})}
+						onClick={handleUpdateProgress}
 					>
 						{progressPercentage === 100 ? (
 							<FaCheck />
