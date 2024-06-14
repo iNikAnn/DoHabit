@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/DoHabit/static/css/main.457f6c9c.css",
+    "main.css": "/DoHabit/static/css/main.a5e83e7b.css",
     "main.js": "/DoHabit/static/js/main.591bd4f8.js",
     "static/js/453.5b299d38.chunk.js": "/DoHabit/static/js/453.5b299d38.chunk.js",
     "service-worker.js": "/DoHabit/service-worker.js",
     "static/media/logo192-alpha.png": "/DoHabit/static/media/logo192-alpha.8533f0ee32bc19d301ce.png",
     "static/media/information.svg": "/DoHabit/static/media/information.abf004e70e1d018ff3a40da4685ae047.svg",
     "index.html": "/DoHabit/index.html",
-    "main.457f6c9c.css.map": "/DoHabit/static/css/main.457f6c9c.css.map",
+    "main.a5e83e7b.css.map": "/DoHabit/static/css/main.a5e83e7b.css.map",
     "main.591bd4f8.js.map": "/DoHabit/static/js/main.591bd4f8.js.map",
     "453.5b299d38.chunk.js.map": "/DoHabit/static/js/453.5b299d38.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.457f6c9c.css",
+    "static/css/main.a5e83e7b.css",
     "static/js/main.591bd4f8.js"
   ]
 }
