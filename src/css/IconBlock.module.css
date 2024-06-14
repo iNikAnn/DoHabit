@@ -7,12 +7,6 @@
 	margin-bottom: 0.6rem;
 }
 
-/* showMoreBtn */
-.showMoreBtn {
-	background-color: transparent;
-	color: dodgerblue;
-}
-
 /* iconList */
 .iconList {
 	display: grid;

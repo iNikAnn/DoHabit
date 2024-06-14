@@ -9,7 +9,7 @@ function HabitList(props) {
 		habits,
 
 		// 'on' functions
-		onOpenHabitEditor, onUpdateProgress,
+		onOpenModal, onUpdateProgress,
 
 		// db
 		dbIcons, dbColors
@@ -23,15 +23,14 @@ function HabitList(props) {
 			color={dbColors[habit.colorIndex]}
 
 			// 'on' functions
-			onOpenHabitEditor={onOpenHabitEditor}
-			{...{ onUpdateProgress }}
+			{...{ onOpenModal, onUpdateProgress }}
 		/>
 	));
 
 	return (
 		<div className={styles.habitList}>
 			{!habitList.length && (
-				<EmptyHabitListMessage {...{ onOpenHabitEditor }} />
+				<EmptyHabitListMessage {...{ onOpenModal }} />
 			)}
 
 			{habitList}

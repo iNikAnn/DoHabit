@@ -11,6 +11,7 @@
 	background-color: var(--bg);
 
 	padding: 1rem;
+	padding-bottom: 0;
 	z-index: 99;
 }
 

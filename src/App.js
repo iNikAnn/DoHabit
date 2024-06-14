@@ -8,6 +8,7 @@ import Header from './components/Header';
 import HabitList from './components/HabitList';
 import Modal from './components/Modal';
 import HabitEditor from './components/HabitEditor/HabitEditor';
+import HabitProfile from './components/HabitProfile/HabitProfile';
 
 // utils
 import getUpdatedHabits from './utils/getUpdatedHabits';
@@ -68,7 +69,7 @@ function App() {
 					{...{ habits, dbIcons, dbColors }}
 
 					// 'on' functions
-					onOpenHabitEditor={handleOpenModal}
+					onOpenModal={handleOpenModal}
 					onUpdateProgress={handleUpdateHabits}
 				/>
 			</main>
@@ -88,6 +89,16 @@ function App() {
 							// 'on' functions
 							onUpdate={handleUpdateHabits}
 							onClose={handleCloseModal}
+						/>
+					)}
+
+					{modal.modalContent === 'habitProfile' && (
+						<HabitProfile
+							{...{ habits }}
+							habitTitle={modal.habitTitle}
+
+							// 'on' functions
+							onUpdate={handleUpdateHabits}
 						/>
 					)}
 				</Modal>

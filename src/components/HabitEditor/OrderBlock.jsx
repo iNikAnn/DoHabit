@@ -37,6 +37,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 						tabIndex={-1}
 						readOnly
 					/>
+
 					<button
 						className={styles.btn}
 						type="button"
@@ -58,7 +59,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 
 				<div className={styles.bottom}>
 					<button
-						className={styles.btn}
+						className='text-button'
 						type="button"
 						onClick={() => handleChangeOrder('bottom')}
 						disabled={currOrder === habitsCount}
@@ -67,7 +68,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 					</button>
 
 					<button
-						className={styles.btn}
+						className='text-button'
 						type="button"
 						onClick={() => handleChangeOrder('top')}
 						disabled={currOrder === 1}

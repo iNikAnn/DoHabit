@@ -69,7 +69,7 @@ function IconBlock({ habits, dbIcons, currentIconTitle }) {
 
 				<button
 					type='button'
-					className={styles.showMoreBtn}
+					className='text-button'
 					onClick={() => setShowMore((state) => !state)}
 				>
 					{'Show ' + (showMore ? 'less' : 'more')}

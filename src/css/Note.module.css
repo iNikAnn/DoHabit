@@ -1,0 +1,21 @@
+/* note */
+.note {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-primary);
+
+	padding: 0.6rem;
+}
+
+/* desc */
+.desc {
+	color: gray;
+}
+
+/* date */
+.date {
+	display: flex;
+	gap: 0.4rem;
+}

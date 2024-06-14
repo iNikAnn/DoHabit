@@ -37,8 +37,7 @@
 }
 
 .bottom button {
-	background-color: transparent;
-	color: dodgerblue;
+	width: 100%;
 }
 
 /* state */
