@@ -9,22 +9,13 @@ function Diary({ diary, handleCreateNote }) {
 		: (
 			<ul className={styles.list}>
 				{[...diary].reverse().map(
-					(note) => {
-						console.log(note.date);
-						const date = new Date(note.date).toLocaleDateString();
-						const time = new Date(note.date).toLocaleTimeString(
-							'en-GB',
-							{ hour: '2-digit', minute: '2-digit' }
-						);
-
-						return (
-							<Note
-								key={note.date}
-								text={note.text}
-								{...{ date, time }}
-							/>
-						)
-					}
+					(note) => (
+						<Note
+							key={note.date}
+							text={note.text}
+							date={note.date}
+						/>
+					)
 				)}
 			</ul>
 		);
