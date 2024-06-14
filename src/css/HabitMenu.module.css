@@ -6,15 +6,33 @@
 	width: 100%;
 	height: 100%;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	backdrop-filter: saturate(0) brightness(0.5);
+	backdrop-filter: grayscale(50%) brightness(0.75);
 }
 
 /* list */
 .list {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 0.6rem;
+
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	gap: 0.4rem;
+
+	background-color: var(--bg-color-primary);
+}
+
+.list li {
+	flex: 1 0;
+}
+
+/* btn */
+.list button {
+	background-color: var(--bg-color-secondary);
+	height: 2rem;
+	padding: 0 1rem;
+	width: 100%;
 }

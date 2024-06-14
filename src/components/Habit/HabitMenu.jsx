@@ -8,16 +8,12 @@ function HabitMenu(props) {
 		onOpenModal
 	} = props;
 
-	const modalProps = {
-		habitTitle: title
-	};
-
 	return (
 		<div className={styles.menu}>
 			<ul className={styles.list}>
 				<li>
 					<button onClick={() => onOpenModal({
-						...modalProps,
+						habitTitle: title,
 						modalTitle: 'Edit habit',
 						modalContent: 'habitEditor'
 					})}>Edit</button>
@@ -25,7 +21,7 @@ function HabitMenu(props) {
 
 				<li>
 					<button onClick={() => onOpenModal({
-						...modalProps,
+						habitTitle: title,
 						modalTitle: title,
 						modalContent: 'habitProfile'
 					})}>Diary</button>
