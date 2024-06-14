@@ -9,7 +9,6 @@ function HabitList(props) {
 		habits,
 
 		// 'on' functions
-		// onOpenHabitEditor, onOpenHabitProfile,
 		onOpenModal, onUpdateProgress,
 
 		// db

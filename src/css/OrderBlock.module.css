@@ -36,6 +36,10 @@
 	margin-left: calc(var(--input-height-primary) + 0.4rem);
 }
 
+.bottom button {
+	width: 100%;
+}
+
 /* state */
 .btn:disabled {
 	color: gray;

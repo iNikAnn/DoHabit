@@ -13,7 +13,6 @@ function HabitHeader(props) {
 		isTodayCompleted, todayProgress, currentStreak,
 
 		// 'on' functions
-		// onOpenHabitProfile,
 		onUpdateProgress
 	} = props;
 
@@ -36,12 +35,6 @@ function HabitHeader(props) {
 		});
 	};
 
-	// const modalProps = {
-	// 	modalContent: 'habitProfile',
-	// 	modalTitle: title,
-	// 	habitTitle: title
-	// };
-
 	return (
 		<div className={styles.header}>
 			<div className={styles.headerTop}>
@@ -55,7 +48,6 @@ function HabitHeader(props) {
 
 					<div
 						className={styles.titleWrapper}
-					// onClick={() => onOpenHabitProfile(modalProps)}
 					>
 						<strong>
 							{title}

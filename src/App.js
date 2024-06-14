@@ -69,8 +69,6 @@ function App() {
 					{...{ habits, dbIcons, dbColors }}
 
 					// 'on' functions
-					// onOpenHabitEditor={handleOpenModal}
-					// onOpenHabitProfile={handleOpenModal}
 					onOpenModal={handleOpenModal}
 					onUpdateProgress={handleUpdateHabits}
 				/>
