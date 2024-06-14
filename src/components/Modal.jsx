@@ -23,7 +23,9 @@ function Modal(props) {
 				</button>
 			</div>
 
-			<div style={{ overflowY: 'scroll' }}>{children}</div>
+			<div style={{ overflowY: 'scroll', paddingBottom: '1rem' }}>
+				{children}
+			</div>
 		</div>
 	);
 }

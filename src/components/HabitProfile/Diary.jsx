@@ -3,9 +3,16 @@ import styles from '../../css/Diary.module.css';
 // components
 import Note from './Note';
 
-function Diary({ diary, handleCreateNote }) {
+import { ReactComponent as InfoSvg } from '../../img/information.svg';
+
+function Diary({ diary, onCreateNote, onDeleteNote }) {
 	const notes = !diary || diary.length === 0
-		? <span>Your diary is empty.</span>
+		? (
+			<span className={styles.emptyDiaryList}>
+				<InfoSvg />
+				<span>Your diary is empty. Start adding notes to keep track of your progress and thoughts.</span>
+			</span>
+		)
 		: (
 			<ul className={styles.list}>
 				{[...diary].reverse().map(
@@ -14,6 +21,7 @@ function Diary({ diary, handleCreateNote }) {
 							key={note.date}
 							text={note.text}
 							date={note.date}
+							{...{ onDeleteNote }}
 						/>
 					)
 				)}
@@ -28,7 +36,7 @@ function Diary({ diary, handleCreateNote }) {
 				<button
 					type='button'
 					className='text-button'
-					onClick={handleCreateNote}
+					onClick={onCreateNote}
 				>
 					Create Note
 				</button>

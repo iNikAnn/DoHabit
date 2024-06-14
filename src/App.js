@@ -98,7 +98,7 @@ function App() {
 							habitTitle={modal.habitTitle}
 
 							// 'on' functions
-							onCreateNote={handleUpdateHabits}
+							onUpdate={handleUpdateHabits}
 						/>
 					)}
 				</Modal>

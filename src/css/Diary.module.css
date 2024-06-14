@@ -1,10 +1,15 @@
 /* header */
 .header {
+	position: sticky;
+	top: 0;
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
-	margin-bottom: 0.6rem;
+	background-color: var(--bg);
+
+	padding-bottom: 0.6rem;
 }
 
 /* diary list */
@@ -12,4 +17,26 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.4rem;
+}
+
+/* emptyDiaryList */
+.emptyDiaryList {
+	/* outline: 1px solid red; */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+
+	text-align: center;
+}
+
+.emptyDiaryList svg {
+	display: block;
+	width: 8rem;
+	height: 8rem;
 }

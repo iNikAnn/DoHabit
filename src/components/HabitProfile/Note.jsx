@@ -1,6 +1,6 @@
 import styles from '../../css/Note.module.css';
 
-function Note({ text, date }) {
+function Note({ text, date, onDeleteNote }) {
 	const dateStr = new Date(date).toLocaleDateString();
 	const timeStr = new Date(date).toLocaleTimeString(
 		'en-GB',
@@ -8,7 +8,10 @@ function Note({ text, date }) {
 	);
 
 	return (
-		<div className={styles.note}>
+		<div
+			className={styles.note}
+			onDoubleClick={() => onDeleteNote(date)}
+		>
 			<div>{text}</div>
 
 			<span className={styles.desc}>

@@ -8,7 +8,7 @@ function HabitProfile(props) {
 		habits, habitTitle,
 
 		// 'on' functions
-		onCreateNote
+		onUpdate
 	} = props;
 
 	const habit = habits.find((habit) => habit.title === habitTitle);
@@ -16,23 +16,35 @@ function HabitProfile(props) {
 	// create new note
 	const handleCreateNote = () => {
 		const newNote = {
-			text: prompt('New note:'),
+			text: window.prompt('New note:'),
 			date: new Date()
 		};
 
 		if (!newNote.text) return;
 
-		onCreateNote({
+		onUpdate({
 			mode: 'createNote',
 			habitTitle: habit.title,
 			newNote
 		});
 	};
 
+	// delete note
+	const handleDeleteNote = (noteCreationDate) => {
+		if (window.confirm('Are you sure you want to delete this note?')) {
+			onUpdate({
+				mode: 'deleteNote',
+				habitTitle: habit.title,
+				noteCreationDate
+			});
+		};
+	};
+
 	return (
 		<Diary
 			diary={habit.diary}
-			{...{ handleCreateNote }}
+			onCreateNote={handleCreateNote}
+			onDeleteNote={handleDeleteNote}
 		/>
 	);
 }

@@ -4,8 +4,9 @@ import editHabit from './editHabit';
 import reorderHabit from './reorderHabit';
 import updateHabitProgress from './updateHabitProgress';
 import createNote from './createNote';
+import deleteNote from './deleteNote';
 
-function getUpdatedHabits(habits, { data, mode, habitTitle, newNote }) {
+function getUpdatedHabits(habits, { data, mode, habitTitle, newNote, noteCreationDate }) {
 	let updatedHabits = [...habits];
 
 	const newHabit = data ? {
@@ -36,7 +37,11 @@ function getUpdatedHabits(habits, { data, mode, habitTitle, newNote }) {
 			break;
 
 		case 'createNote':
-			updatedHabits = createNote(updatedHabits, habitTitle, newNote)
+			updatedHabits = createNote(updatedHabits, habitTitle, newNote);
+			break;
+
+		case 'deleteNote':
+			updatedHabits = deleteNote(updatedHabits, habitTitle, noteCreationDate);
 			break;
 
 		case 'updateProgress':
