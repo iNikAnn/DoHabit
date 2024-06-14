@@ -9,10 +9,10 @@
 	justify-content: space-between;
 	align-items: center;
 
-	background-color: black;
-	/* border-bottom: 1px solid hsl(0, 0%, 20%); */
+	background-color: var(--bg);
 
 	padding: 0 1.6rem;
+	z-index: 99;
 }
 
 /* logo */
