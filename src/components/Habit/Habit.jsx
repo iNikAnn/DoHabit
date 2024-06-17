@@ -11,14 +11,14 @@ import getLightDimmedColor from '../../utils/getLightDimmedColor';
 import getFormattedDate from '../../utils/getFormattedDate';
 import getCurrentStreak from '../../utils/getCurrentStreak';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
-import { useState } from 'react';
 
 function Habit(props) {
 	const {
-		color, completedDays, frequency,
-	} = props;
+		color, completedDays, frequency, isMenuVisible,
 
-	const [isMenuVisible, setIsMenuVisible] = useState(false);
+		// 'on' functions
+		onShowMenu
+	} = props;
 
 	// dimmed color
 	const dimmedColor = getDimmedColor(color);
@@ -38,7 +38,7 @@ function Habit(props) {
 	return (
 		<div
 			className={styles.habit}
-			onClick={() => setIsMenuVisible((state) => !state)}
+			onClick={onShowMenu}
 		>
 			<HabitHeader
 				{...props}
