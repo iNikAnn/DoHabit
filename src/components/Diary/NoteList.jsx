@@ -1,11 +1,11 @@
-import styles from '../../css/Diary.module.css';
+import styles from '../../css/NoteList.module.css';
 
 // components
 import Note from './Note';
 
 import { ReactComponent as InfoSvg } from '../../img/information.svg';
 
-function Diary({ diary, onCreateNote, onDeleteNote }) {
+function NoteList({ diary, onCreateNote, onDeleteNote }) {
 	const notes = !diary || diary.length === 0
 		? (
 			<span className={styles.emptyDiaryList}>
@@ -44,7 +44,7 @@ function Diary({ diary, onCreateNote, onDeleteNote }) {
 
 			{notes}
 		</div>
-	)
+	);
 }
 
-export default Diary;
+export default NoteList;

@@ -8,7 +8,7 @@ import Header from './components/Header';
 import HabitList from './components/HabitList';
 import Modal from './components/Modal';
 import HabitEditor from './components/HabitEditor/HabitEditor';
-import HabitProfile from './components/HabitProfile/HabitProfile';
+import Diary from './components/Diary/Diary';
 
 // utils
 import getUpdatedHabits from './utils/getUpdatedHabits';
@@ -93,7 +93,7 @@ function App() {
 					)}
 
 					{modal.modalContent === 'habitProfile' && (
-						<HabitProfile
+						<Diary
 							{...{ habits }}
 							habitTitle={modal.habitTitle}
 

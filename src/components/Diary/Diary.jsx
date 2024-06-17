@@ -1,9 +1,9 @@
-import styles from '../../css/HabitProfile.module.css';
+import styles from '../../css/Diary.module.css';
 
 // components
-import Diary from './Diary';
+import NoteList from './NoteList';
 
-function HabitProfile(props) {
+function Diary(props) {
 	const {
 		habits, habitTitle,
 
@@ -41,7 +41,7 @@ function HabitProfile(props) {
 	};
 
 	return (
-		<Diary
+		<NoteList
 			diary={habit.diary}
 			onCreateNote={handleCreateNote}
 			onDeleteNote={handleDeleteNote}
@@ -49,4 +49,4 @@ function HabitProfile(props) {
 	);
 }
 
-export default HabitProfile;
+export default Diary;
