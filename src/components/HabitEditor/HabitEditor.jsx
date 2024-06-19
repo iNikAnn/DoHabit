@@ -9,9 +9,14 @@ import FrequencyBlock from './FrequencyBlock';
 import OrderBlock from './OrderBlock';
 import ColorBlock from './ColorBlock';
 import IconBlock from './IconBlock';
+import Button from '../Button';
 
 // utils
 import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
+
+// icons
+import { FaPlusSquare } from "react-icons/fa";
+import { RiDeleteBinFill } from "react-icons/ri";
 
 function HabitEditor(props) {
 	const {
@@ -94,28 +99,25 @@ function HabitEditor(props) {
 
 				<div className={styles.btnsWrapper}>
 					{isEditMode && (
-						<button
-							className={styles.deleteBtn}
-							type="button"
+						<Button
+							icon={<RiDeleteBinFill />}
+							text="Delete Habit"
+							bgColor="IndianRed"
 							onClick={() => {
 								const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 								if (window.confirm(msg)) {
 									handleUpdate({ ...updateProps, mode: 'delete' });
 								}
 							}}
-						>
-							Delete Habit
-						</button>
+						/>
 					)}
 
-					<button
-						style={{ backgroundColor: alreadyExist ? 'gray' : '' }}
-						className={styles.createBtn}
+					<Button
 						type="submit"
+						icon={<FaPlusSquare />}
+						text={isEditMode ? 'Save Changes' : 'Create Habit'}
 						disabled={alreadyExist}
-					>
-						{isEditMode ? 'Save Changes' : 'Create Habit'}
-					</button>
+					/>
 				</div>
 			</form>
 		</div>

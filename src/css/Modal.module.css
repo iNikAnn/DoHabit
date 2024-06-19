@@ -23,13 +23,9 @@
 	margin-bottom: 1rem;
 }
 
-.closeBtn {
-	height: 2rem;
-	background-color: gray;
-	color: inherit;
-	border-radius: var(--border-radius-secondary);
-	font-weight: bold;
-	padding: 0 1rem;
+/* close btn */
+.header button svg {
+	transform: rotate(45deg);
 }
 
 /* childrenWrapper */

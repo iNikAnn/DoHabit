@@ -4,14 +4,22 @@
 	padding: 0 0.6rem;
 
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	gap: 0.4rem;
 
 	background-color: dodgerblue;
+	border-radius: var(--border-radius-secondary);
+	font-weight: bold;
 }
 
 /* icon */
 .button svg {
-	width: 1.2rem;
-	height: 1.2rem;
+	width: 1rem;
+	height: 1rem;
+}
+
+/* disabled */
+.button:disabled {
+	background-color: gray;
 }

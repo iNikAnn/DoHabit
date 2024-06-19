@@ -47,8 +47,6 @@ html {
 button {
 	border: none;
 	color: inherit;
-	font-weight: bold;
-	border-radius: var(--border-radius-secondary);
 }
 
 input {

@@ -8,6 +8,10 @@ import { ReactComponent as Calendar } from '../img/calendar.svg'
 import Habit from "./Habit/Habit";
 import Placeholder from './Placeholder';
 
+// icons
+import { FaPlusSquare } from "react-icons/fa";
+
+
 function HabitList(props) {
 	const {
 		habits,
@@ -45,6 +49,7 @@ function HabitList(props) {
 					title="Looks like you haven't created any habits yet."
 					desc="Why not create one now?"
 					textOnButton="Create First Habit"
+					buttonIcon={<FaPlusSquare />}
 					onClick={() => onOpenModal({
 						modalContent: 'habitEditor',
 						modalTitle: 'Create new habit',

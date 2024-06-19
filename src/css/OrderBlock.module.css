@@ -26,6 +26,7 @@
 .btn {
 	width: 100%;
 	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-secondary);
 	pointer-events: all;
 }
 

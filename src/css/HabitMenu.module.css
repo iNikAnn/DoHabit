@@ -31,8 +31,5 @@
 
 /* btn */
 .list button {
-	background-color: var(--bg-color-secondary);
-	height: 2rem;
-	padding: 0 1rem;
 	width: 100%;
 }

@@ -1,8 +1,16 @@
 import styles from '../../css/HabitMenu.module.css';
 
+// components
+import Button from '../Button';
+
+// icons
+import { FaEdit } from "react-icons/fa";
+import { MdLibraryBooks } from "react-icons/md";
+
+
 function HabitMenu(props) {
 	const {
-		title,
+		title, btnBgColor,
 
 		// 'on' functions
 		onOpenModal
@@ -12,19 +20,29 @@ function HabitMenu(props) {
 		<div className={styles.menu}>
 			<ul className={styles.list}>
 				<li>
-					<button onClick={() => onOpenModal({
-						habitTitle: title,
-						modalTitle: 'Edit habit',
-						modalContent: 'habitEditor'
-					})}>Edit</button>
+					<Button
+						icon={<FaEdit />}
+						text="Edit"
+						bgColor={btnBgColor}
+						onClick={() => onOpenModal({
+							habitTitle: title,
+							modalTitle: 'Edit habit',
+							modalContent: 'habitEditor'
+						})}
+					/>
 				</li>
 
 				<li>
-					<button onClick={() => onOpenModal({
-						habitTitle: title,
-						modalTitle: title,
-						modalContent: 'habitProfile'
-					})}>Diary</button>
+					<Button
+						icon={<MdLibraryBooks />}
+						text="Diary"
+						bgColor={btnBgColor}
+						onClick={() => onOpenModal({
+							habitTitle: title,
+							modalTitle: title,
+							modalContent: 'habitProfile'
+						})}
+					/>
 				</li>
 			</ul>
 		</div>

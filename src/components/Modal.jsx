@@ -1,5 +1,11 @@
 import styles from '../css/Modal.module.css';
 
+// components
+import Button from './Button';
+
+// icons
+import { FaPlusCircle } from "react-icons/fa";
+
 function Modal(props) {
 	const {
 		title,
@@ -15,12 +21,12 @@ function Modal(props) {
 			<div className={styles.header}>
 				<h2>{title}</h2>
 
-				<button
-					className={styles.closeBtn}
+				<Button
+					icon={<FaPlusCircle />}
+					text="Close"
+					bgColor="Gray"
 					onClick={onClose}
-				>
-					Cancel
-				</button>
+				/>
 			</div>
 
 			<div className={styles.childrenWrapper}>

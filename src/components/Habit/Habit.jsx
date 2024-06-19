@@ -58,7 +58,10 @@ function Habit(props) {
 			</div>
 
 			{isMenuVisible && (
-				<HabitMenu {...props} />
+				<HabitMenu
+					{...props}
+					btnBgColor={lightDimmedColor}
+				/>
 			)}
 		</div>
 	);

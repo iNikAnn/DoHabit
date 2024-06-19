@@ -24,22 +24,10 @@
 	padding-top: 0;
 }
 
-.deleteBtn,
-.createBtn {
+.btnsWrapper button {
 	width: 100%;
 	height: 3rem;
 	flex-grow: 0;
-	border-radius: var(--border-radius-secondary);
-	font-weight: bold;
-	color: inherit;
-}
-
-.deleteBtn {
-	background-color: tomato;
-}
-
-.createBtn {
-	background-color: dodgerblue;
 }
 
 /* info */
