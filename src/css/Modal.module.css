@@ -31,3 +31,9 @@
 	font-weight: bold;
 	padding: 0 1rem;
 }
+
+/* childrenWrapper */
+.childrenWrapper {
+	padding-bottom: 1rem;
+	overflow-y: scroll;
+}

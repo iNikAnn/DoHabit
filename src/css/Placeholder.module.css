@@ -1,0 +1,39 @@
+/* placeholder */
+.placeholder {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 75%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+
+	text-align: center;
+}
+
+/* image */
+.placeholder svg {
+	width: 8rem;
+	height: 8rem;
+}
+
+/* textWrapper */
+.textWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.desc {
+	color: gray;
+}
+
+/* button */
+.placeholder button {
+	height: 2rem;
+	background-color: dodgerblue;
+	padding: 0 1rem;
+}
