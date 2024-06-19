@@ -1,14 +1,15 @@
 import styles from '../../css/Diary.module.css';
 
-// react
-import { ReactComponent as InfoSvg } from '../../img/information.svg';
-
 // components
 import NoteList from './NoteList';
 import Placeholder from '../Placeholder';
 
 // db
 import dbColors from '../../db/dbColors';
+
+// icons
+import { ReactComponent as InfoSvg } from '../../img/information.svg';
+import { MdStickyNote2 } from "react-icons/md";
 
 function Diary(props) {
 	const {
@@ -64,6 +65,7 @@ function Diary(props) {
 					title="This habit's diary is empty."
 					desc="Add your first note to start tracking your progress and thoughts."
 					textOnButton="Add First Note"
+					buttonIcon={<MdStickyNote2 />}
 					onClick={handleCreateNote}
 					{...{ accentColor }}
 				/>

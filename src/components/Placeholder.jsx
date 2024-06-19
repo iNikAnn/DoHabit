@@ -1,9 +1,13 @@
 import styles from '../css/Placeholder.module.css';
 
+// componets
+import Button from './Button';
+
 function Placeholder(props) {
 	const {
 		image, title, desc,
-		onClick, textOnButton, accentColor
+		textOnButton, buttonIcon,
+		onClick, accentColor
 	} = props;
 
 	return (
@@ -17,12 +21,12 @@ function Placeholder(props) {
 				</span>
 			</div>
 
-			<button
-				style={{ backgroundColor: accentColor }}
+			<Button
+				icon={buttonIcon}
+				text={textOnButton}
+				bgColor={accentColor}
 				onClick={onClick}
-			>
-				{textOnButton}
-			</button>
+			/>
 		</div>
 	);
 }
