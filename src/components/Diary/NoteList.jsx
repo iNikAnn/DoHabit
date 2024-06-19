@@ -20,7 +20,7 @@ function NoteList({ diary, onCreateNote, onDeleteNote }) {
 
 	return (
 		<div>
-			<div className={styles.header}>
+			{/* <div className={styles.header}>
 				<h3>Diary</h3>
 
 				<button
@@ -30,7 +30,7 @@ function NoteList({ diary, onCreateNote, onDeleteNote }) {
 				>
 					Create Note
 				</button>
-			</div>
+			</div> */}
 
 			<ul className={styles.list}>
 				{notes}

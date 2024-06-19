@@ -1,0 +1,28 @@
+/* form */
+.form {
+	/* outline: 1px solid tomato; */
+	position: absolute;
+	left: 0;
+	bottom: 0;
+
+	display: flex;
+	gap: 0.4rem;
+
+	width: 100%;
+
+	background-color: var(--bg);
+	border-top: 1px solid var(--bg-color-secondary);
+
+	padding: 0.6rem 1rem;
+	z-index: 88;
+}
+
+.form input {
+	width: 100%;
+	height: 2rem;
+	padding: 0 1rem;
+}
+
+.form input:focus {
+	outline: 2px solid dodgerblue;
+}
