@@ -1,9 +1,12 @@
 import styles from '../css/HabitList.module.css';
 
+// react
+import { useState } from 'react';
+import { ReactComponent as Calendar } from '../img/calendar.svg'
+
 // components
 import Habit from "./Habit/Habit";
-import EmptyHabitListMessage from './EmptyHabitListMessage';
-import { useState } from 'react';
+import Placeholder from './Placeholder';
 
 function HabitList(props) {
 	const {
@@ -37,7 +40,16 @@ function HabitList(props) {
 	return (
 		<div className={styles.habitList}>
 			{!habitList.length && (
-				<EmptyHabitListMessage {...{ onOpenModal }} />
+				<Placeholder
+					image={<Calendar />}
+					title="Looks like you haven't created any habits yet."
+					desc="Why not create one now?"
+					textOnButton="Create First Habit"
+					onClick={() => onOpenModal({
+						modalContent: 'habitEditor',
+						modalTitle: 'Create new habit',
+					})}
+				/>
 			)}
 
 			{habitList}
