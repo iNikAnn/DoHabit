@@ -9,7 +9,7 @@ import Button from '../Button';
 // icons
 import { IoSend } from "react-icons/io5";
 
-const AddNoteForm = forwardRef(function AddNoteForm({ onFocus, onBlur, onSubmit }, ref) {
+const AddNoteForm = forwardRef(function AddNoteForm({ onFocus, onBlur, onSubmit, isSendBtnVisible }, ref) {
 	const [input, setInput] = useState('');
 
 	const handleSubmitForm = (e) => {
@@ -37,11 +37,13 @@ const AddNoteForm = forwardRef(function AddNoteForm({ onFocus, onBlur, onSubmit 
 				placeholder="Enter your note here..."
 			/>
 
-			<Button
-				type="submit"
-				icon={<IoSend />}
-				disabled={!input.length}
-			/>
+			{isSendBtnVisible && (
+				<Button
+					type="submit"
+					icon={<IoSend />}
+					disabled={!input.length}
+				/>
+			)}
 		</form>
 	)
 })

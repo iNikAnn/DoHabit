@@ -21,8 +21,6 @@ function Diary(props) {
 		onUpdate
 	} = props;
 
-	const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-
 	const habit = habits.find((habit) => habit.title === habitTitle);
 	const hasNotes = habit.diary && habit.diary.length;
 	const accentColor = dbColors[habit.colorIndex];
@@ -40,7 +38,7 @@ function Diary(props) {
 			newNote
 		});
 
-		setIsOverlayVisible(false);
+		handleFormActivation(false);
 	};
 
 	// delete note
@@ -55,24 +53,20 @@ function Diary(props) {
 	};
 
 	// form
-	const [isFormVisible, setIsFormVisible] = useState(false);
+	const [isFormActive, setIsFormActive] = useState(false);
 	const formRef = useRef(null);
 
-	const handleShowForm = () => {
-		setIsFormVisible(true);
-	};
+	const handleFormActivation = (boolean) => setIsFormActive(boolean);
 
-	useEffect(() => {
-		if (isFormVisible) {
-			formRef.current.focus();
-		};
-	}, [isFormVisible]);
+	useEffect(
+		() => { if (isFormActive) formRef.current.focus(); },
+		[isFormActive]
+	);
 
-	useEffect(() => {
-		if (!hasNotes) {
-			setIsFormVisible(false);
-		};
-	}, [hasNotes]);
+	useEffect(
+		() => { if (!hasNotes) handleFormActivation(false); },
+		[hasNotes]
+	);
 
 	return (
 		<div style={{ paddingBottom: '3rem' }}>
@@ -89,26 +83,24 @@ function Diary(props) {
 					desc="Add your first note to start tracking your progress and thoughts."
 					textOnButton="Add First Note"
 					buttonIcon={<MdStickyNote2 />}
-					onClick={handleShowForm}
+					onClick={() => handleFormActivation(true)}
 					{...{ accentColor }}
 				/>
 			)}
 
-			{(hasNotes || isFormVisible) && (
+			{(hasNotes || isFormActive) && (
 				<AddNoteForm
 					ref={formRef}
-					onFocus={() => setIsOverlayVisible(true)}
+					onFocus={() => handleFormActivation(true)}
 					onSubmit={handleCreateNote}
+					isSendBtnVisible={isFormActive}
 				/>
 			)}
 
-			{isOverlayVisible && (
+			{isFormActive && (
 				<div
 					className={styles.overlay}
-					onClick={() => {
-						setIsFormVisible(false);
-						setIsOverlayVisible(false);
-					}}
+					onClick={() => handleFormActivation(false)}
 				/>
 			)}
 		</div>
