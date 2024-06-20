@@ -26,3 +26,11 @@
 .form input:focus {
 	outline: 2px solid dodgerblue;
 }
+
+.form button {
+	display: none;
+}
+
+.form input:focus ~ button {
+	display: flex;
+}
