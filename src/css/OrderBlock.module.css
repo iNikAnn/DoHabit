@@ -39,9 +39,11 @@
 
 .bottom button {
 	width: 100%;
+	pointer-events: all;
 }
 
 /* state */
-.btn:disabled {
+.btn:disabled,
+.bottom button:disabled {
 	color: gray;
 }
