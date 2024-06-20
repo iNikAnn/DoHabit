@@ -1,7 +1,6 @@
 // utils
 import deleteHabit from './deleteHabit';
 import editHabit from './editHabit';
-import reorderHabit from './reorderHabit';
 import updateHabitProgress from './updateHabitProgress';
 import createNote from './createNote';
 import deleteNote from './deleteNote';
@@ -33,17 +32,7 @@ function habitsReducer(habits, action) {
 			break;
 
 		case 'editHabit':
-			updatedHabits = editHabit(updatedHabits, habitTitle, newHabit);
-
-			// reorder habits
-			const newIndex = Number(data.order.value, 10) - 1;
-			const currIndex = updatedHabits.findIndex((habit) => (
-				habit.title === data.title.value
-			));
-
-			if (currIndex !== -1 && newIndex !== currIndex) {
-				updatedHabits = reorderHabit(updatedHabits, newIndex, currIndex);
-			};
+			updatedHabits = editHabit(updatedHabits, habitTitle, newHabit, data.order.value - 1);
 			break;
 
 		case 'addNote':

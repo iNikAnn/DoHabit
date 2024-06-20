@@ -1,8 +1,9 @@
 // utils
 import updateCompletedDays from './updateCompletedDays';
+import reorderHabit from './reorderHabit';
 
-function editHabit(habits, title, updatedHabit) {
-	return habits.map(
+function editHabit(habits, title, updatedHabit, newIndex) {
+	habits = habits.map(
 		(habit) => {
 			let modifiedHabit = habit;
 
@@ -22,6 +23,16 @@ function editHabit(habits, title, updatedHabit) {
 			return modifiedHabit;
 		}
 	);
+
+	const currIndex = habits.findIndex(
+		(habit) => habit.title === title
+	);
+
+	if (currIndex !== -1 && newIndex !== currIndex) {
+		habits = reorderHabit(habits, newIndex, currIndex);
+	};
+
+	return habits;
 }
 
 export default editHabit;
