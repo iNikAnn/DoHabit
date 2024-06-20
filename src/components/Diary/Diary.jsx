@@ -26,14 +26,14 @@ function Diary(props) {
 	const accentColor = dbColors[habit.colorIndex];
 
 	// create new note
-	const handleCreateNote = (text) => {
+	const handleAddNote = (text) => {
 		const newNote = {
 			text,
 			date: new Date()
 		};
 
 		onUpdate({
-			mode: 'createNote',
+			type: 'addNote',
 			habitTitle: habit.title,
 			newNote
 		});
@@ -45,7 +45,7 @@ function Diary(props) {
 	const handleDeleteNote = (noteCreationDate) => {
 		if (window.confirm('Are you sure you want to delete this note?')) {
 			onUpdate({
-				mode: 'deleteNote',
+				type: 'deleteNote',
 				habitTitle: habit.title,
 				noteCreationDate
 			});
@@ -73,7 +73,6 @@ function Diary(props) {
 			{hasNotes ? (
 				<NoteList
 					diary={habit.diary}
-					onCreateNote={handleCreateNote}
 					onDeleteNote={handleDeleteNote}
 				/>
 			) : (
@@ -92,7 +91,7 @@ function Diary(props) {
 				<AddNoteForm
 					ref={formRef}
 					onFocus={() => handleFormActivation(true)}
-					onSubmit={handleCreateNote}
+					onSubmit={handleAddNote}
 					isSendBtnVisible={isFormActive}
 				/>
 			)}

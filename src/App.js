@@ -1,7 +1,7 @@
 import './App.css';
 
 // react
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 
 // components
 import Header from './components/Header';
@@ -11,7 +11,7 @@ import HabitEditor from './components/HabitEditor/HabitEditor';
 import Diary from './components/Diary/Diary';
 
 // utils
-import getUpdatedHabits from './utils/getUpdatedHabits';
+import habitsReducer from './utils/habitsReducer';
 import updateDB from './utils/updateDB';
 import validateModalProps from './utils/validateModalProps';
 
@@ -20,16 +20,10 @@ import dbIcons from './db/dbIcons';
 import dbColors from './db/dbColors';
 
 function App() {
-	const [habits, setHabits] = useState(() => {
-		let data = localStorage.getItem('habits');
+	let initialHabits = localStorage.getItem('habits');
+	initialHabits = initialHabits ? updateDB(initialHabits, dbColors) : [];
 
-		// update db
-		if (data) {
-			data = updateDB(data, dbColors);
-		};
-
-		return data || [];
-	});
+	const [habits, dispatch] = useReducer(habitsReducer, initialHabits);
 
 	// save habits to local storage
 	useEffect(() => {
@@ -37,9 +31,7 @@ function App() {
 	}, [habits]);
 
 	// update habit
-	const handleUpdateHabits = (props) => {
-		setHabits(getUpdatedHabits(habits, props));
-	};
+	const handleUpdateHabits = (actions) => dispatch(actions);
 
 	// modal
 	const [modal, setModal] = useState(null);
@@ -53,9 +45,7 @@ function App() {
 		setModal(modal ? null : props);
 	};
 
-	const handleCloseModal = () => {
-		setModal(null);
-	};
+	const handleCloseModal = () => setModal(null);
 
 	return (
 		<div className="App">

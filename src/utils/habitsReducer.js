@@ -6,23 +6,33 @@ import updateHabitProgress from './updateHabitProgress';
 import createNote from './createNote';
 import deleteNote from './deleteNote';
 
-function getUpdatedHabits(habits, { data, mode, habitTitle, newNote, noteCreationDate }) {
+function habitsReducer(habits, action) {
+	const {
+		data, habitTitle
+	} = action;
+
 	let updatedHabits = [...habits];
 
-	const newHabit = data ? {
-		title: data.title.value,
-		colorIndex: Number(data.colorIndex.value),
-		iconTitle: data.iconTitle.value,
-		frequency: Number(data.frequency.value),
-		completedDays: [],
-	} : null;
+	const newHabit = data
+		? {
+			title: data.title.value,
+			colorIndex: Number(data.colorIndex.value),
+			iconTitle: data.iconTitle.value,
+			frequency: Number(data.frequency.value),
+			completedDays: [],
+		}
+		: null;
 
-	switch (mode) {
-		case 'delete':
+	switch (action.type) {
+		case 'addHabit':
+			updatedHabits = [newHabit, ...updatedHabits];
+			break;
+
+		case 'deleteHabit':
 			updatedHabits = deleteHabit(updatedHabits, habitTitle);
 			break;
 
-		case 'edit':
+		case 'editHabit':
 			updatedHabits = editHabit(updatedHabits, habitTitle, newHabit);
 
 			// reorder habits
@@ -36,12 +46,12 @@ function getUpdatedHabits(habits, { data, mode, habitTitle, newNote, noteCreatio
 			};
 			break;
 
-		case 'createNote':
-			updatedHabits = createNote(updatedHabits, habitTitle, newNote);
+		case 'addNote':
+			updatedHabits = createNote(updatedHabits, habitTitle, action.newNote);
 			break;
 
 		case 'deleteNote':
-			updatedHabits = deleteNote(updatedHabits, habitTitle, noteCreationDate);
+			updatedHabits = deleteNote(updatedHabits, habitTitle, action.noteCreationDate);
 			break;
 
 		case 'updateProgress':
@@ -49,11 +59,10 @@ function getUpdatedHabits(habits, { data, mode, habitTitle, newNote, noteCreatio
 			break;
 
 		default:
-			updatedHabits = [newHabit, ...updatedHabits];
-			break;
+			throw new Error('Unknown action: ' + action.type);
 	};
 
 	return updatedHabits;
 }
 
-export default getUpdatedHabits;
+export default habitsReducer;
