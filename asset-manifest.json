@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/DoHabit/static/css/main.e67d956e.css",
+    "main.css": "/DoHabit/static/css/main.1d59187c.css",
     "main.js": "/DoHabit/static/js/main.76ec3c64.js",
     "static/js/453.5b299d38.chunk.js": "/DoHabit/static/js/453.5b299d38.chunk.js",
     "service-worker.js": "/DoHabit/service-worker.js",
@@ -8,12 +8,12 @@
     "static/media/calendar.svg": "/DoHabit/static/media/calendar.aea51346c7fac684c0997452d3f9a611.svg",
     "static/media/information.svg": "/DoHabit/static/media/information.abf004e70e1d018ff3a40da4685ae047.svg",
     "index.html": "/DoHabit/index.html",
-    "main.e67d956e.css.map": "/DoHabit/static/css/main.e67d956e.css.map",
+    "main.1d59187c.css.map": "/DoHabit/static/css/main.1d59187c.css.map",
     "main.76ec3c64.js.map": "/DoHabit/static/js/main.76ec3c64.js.map",
     "453.5b299d38.chunk.js.map": "/DoHabit/static/js/453.5b299d38.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e67d956e.css",
+    "static/css/main.1d59187c.css",
     "static/js/main.76ec3c64.js"
   ]
 }
