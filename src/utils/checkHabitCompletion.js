@@ -1,11 +1,11 @@
 // utils
 import getFormattedDate from './getFormattedDate';
 
-function checkHabitCompletion(completedDays, thisDay, frequency) {
+function checkHabitCompletion(completedDays, date, frequency) {
 	return Boolean(
 		completedDays.find(
 			(day) => (
-				day.date === getFormattedDate(thisDay)
+				day.date === getFormattedDate(date)
 				&& day.progress >= frequency
 			)
 		)

@@ -6,7 +6,7 @@ import Button from '../Button';
 // icons
 import { FaEdit } from "react-icons/fa";
 import { MdLibraryBooks } from "react-icons/md";
-
+import { FaCalendarCheck } from "react-icons/fa";
 
 function HabitMenu(props) {
 	const {
@@ -42,6 +42,19 @@ function HabitMenu(props) {
 							modalTitle: title,
 							modalContent: 'habitProfile'
 						})}
+					/>
+				</li>
+
+				<li>
+					<Button
+						icon={<FaCalendarCheck />}
+						text="Complete Yesterday"
+						bgColor={btnBgColor}
+					// onClick={() => onOpenModal({
+					// 	habitTitle: title,
+					// 	modalTitle: title,
+					// 	modalContent: 'habitProfile'
+					// })}
 					/>
 				</li>
 			</ul>

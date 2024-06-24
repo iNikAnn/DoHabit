@@ -17,16 +17,19 @@
 	width: 100%;
 	padding: 0.6rem;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 	gap: 0.4rem;
 
 	background-color: var(--bg-color-primary);
 }
 
 .list li {
-	flex: 1 0;
+	width: 100%;
+}
+
+.list li:nth-child(3) {
+	grid-column: span 2;
 }
 
 /* btn */
