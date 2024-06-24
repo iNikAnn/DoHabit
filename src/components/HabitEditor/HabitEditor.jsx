@@ -15,8 +15,8 @@ import Button from '../Button';
 import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
 
 // icons
-import { FaPlusSquare } from "react-icons/fa";
-import { RiDeleteBinFill } from "react-icons/ri";
+import { MdAddToPhotos } from "react-icons/md";
+import { MdDeleteForever } from "react-icons/md";
 
 function HabitEditor(props) {
 	const {
@@ -114,7 +114,7 @@ function HabitEditor(props) {
 				<div className={styles.btnsWrapper}>
 					{isEditMode && (
 						<Button
-							icon={<RiDeleteBinFill />}
+							icon={<MdDeleteForever />}
 							text="Delete Habit"
 							bgColor="IndianRed"
 							onClick={() => {
@@ -128,7 +128,7 @@ function HabitEditor(props) {
 
 					<Button
 						type="submit"
-						icon={<FaPlusSquare />}
+						icon={<MdAddToPhotos />}
 						text={isEditMode ? 'Save Changes' : 'Create Habit'}
 						disabled={alreadyExist}
 					/>
