@@ -11,12 +11,13 @@ import { FaCalendarTimes } from "react-icons/fa";
 
 function HabitMenu(props) {
 	const {
-		title, btnBgColor, isYesterdayCompleted,
+		title, btnBgColor, isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
 
 		// 'on' functions
-		onOpenModal
+		onOpenModal, onUpdate
 	} = props;
 
+	console.log(props);
 	return (
 		<div className={styles.menu}>
 			<ul className={styles.list}>
@@ -51,11 +52,14 @@ function HabitMenu(props) {
 						icon={isYesterdayCompleted ? <FaCalendarTimes /> : <FaCalendarCheck />}
 						text={(isYesterdayCompleted ? 'Uncomplete' : 'Complete') + ' Yesterday'}
 						bgColor={isYesterdayCompleted ? 'IndianRed' : btnBgColor}
-					// onClick={() => onOpenModal({
-					// 	habitTitle: title,
-					// 	modalTitle: title,
-					// 	modalContent: 'habitProfile'
-					// })}
+						onClick={() => onUpdate({
+							type: 'toggleCompleteYeserday',
+							habitTitle: title,
+							isTodayCompleted,
+							isYesterdayCompleted,
+							todayProgress,
+							frequency
+						})}
 					/>
 				</li>
 			</ul>

@@ -17,7 +17,7 @@ function HabitList(props) {
 		habits,
 
 		// 'on' functions
-		onOpenModal, onUpdateProgress,
+		onOpenModal, onUpdate,
 
 		// db
 		dbIcons, dbColors
@@ -35,7 +35,7 @@ function HabitList(props) {
 				isMenuVisible={visibleMenuIndex === index}
 
 				// 'on' functions
-				{...{ onOpenModal, onUpdateProgress }}
+				{...{ onOpenModal, onUpdate }}
 				onShowMenu={() => setVisibleMenuIndex(index === visibleMenuIndex ? -1 : index)}
 			/>
 		)

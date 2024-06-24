@@ -4,6 +4,7 @@ import editHabit from './editHabit';
 import updateHabitProgress from './updateHabitProgress';
 import addNote from './addNote';
 import deleteNote from './deleteNote';
+import toggleCompleteYeserday from './toggleCompleteYeserday';
 
 function habitsReducer(habits, action) {
 	const {
@@ -45,6 +46,10 @@ function habitsReducer(habits, action) {
 
 		case 'updateProgress':
 			habits = updateHabitProgress(habits, habitTitle);
+			break;
+
+		case 'toggleCompleteYeserday':
+			habits = toggleCompleteYeserday(habits, habitTitle, action.isTodayCompleted, action.isYesterdayCompleted, action.todayProgress, action.frequency);
 			break;
 
 		default:

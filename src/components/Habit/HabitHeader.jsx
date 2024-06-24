@@ -13,7 +13,7 @@ function HabitHeader(props) {
 		isTodayCompleted, todayProgress, currentStreak,
 
 		// 'on' functions
-		onUpdateProgress
+		onUpdate
 	} = props;
 
 	const markAsCompletedBtnStyle = {
@@ -29,7 +29,7 @@ function HabitHeader(props) {
 	const handleUpdateProgress = (e) => {
 		e.stopPropagation();
 
-		onUpdateProgress({
+		onUpdate({
 			type: 'updateProgress',
 			habitTitle: title
 		});

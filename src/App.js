@@ -62,7 +62,7 @@ function App() {
 
 					// 'on' functions
 					onOpenModal={handleOpenModal}
-					onUpdateProgress={handleUpdateHabits}
+					onUpdate={handleUpdateHabits}
 				/>
 			</main>
 

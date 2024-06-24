@@ -28,7 +28,7 @@ function Habit(props) {
 	const yesterday = new Date(today);
 	yesterday.setDate(today.getDate() - 1);
 
-	// is today completed?
+	// is completed
 	const isTodayCompleted = checkHabitCompletion(completedDays, today, frequency);
 	const isYesterdayCompleted = checkHabitCompletion(completedDays, yesterday, frequency);
 
@@ -65,7 +65,7 @@ function Habit(props) {
 			{isMenuVisible && (
 				<HabitMenu
 					{...props}
-					{...{ isYesterdayCompleted }}
+					{...{ isTodayCompleted, isYesterdayCompleted, todayProgress }}
 					btnBgColor={lightDimmedColor}
 				/>
 			)}

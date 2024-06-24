@@ -31,7 +31,7 @@ function updateHabitProgress(habits, title) {
 
 			habit = {
 				...habit,
-				completedDays: completedDays
+				completedDays
 			};
 		};
 
