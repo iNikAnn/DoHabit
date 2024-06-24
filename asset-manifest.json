@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/DoHabit/static/css/main.04a24fd3.css",
-    "main.js": "/DoHabit/static/js/main.fb69f83c.js",
+    "main.css": "/DoHabit/static/css/main.d65b9bff.css",
+    "main.js": "/DoHabit/static/js/main.d6a0b448.js",
     "static/js/453.5b299d38.chunk.js": "/DoHabit/static/js/453.5b299d38.chunk.js",
     "service-worker.js": "/DoHabit/service-worker.js",
     "static/media/logo192-alpha.png": "/DoHabit/static/media/logo192-alpha.8533f0ee32bc19d301ce.png",
     "static/media/calendar.svg": "/DoHabit/static/media/calendar.aea51346c7fac684c0997452d3f9a611.svg",
     "static/media/information.svg": "/DoHabit/static/media/information.abf004e70e1d018ff3a40da4685ae047.svg",
     "index.html": "/DoHabit/index.html",
-    "main.04a24fd3.css.map": "/DoHabit/static/css/main.04a24fd3.css.map",
-    "main.fb69f83c.js.map": "/DoHabit/static/js/main.fb69f83c.js.map",
+    "main.d65b9bff.css.map": "/DoHabit/static/css/main.d65b9bff.css.map",
+    "main.d6a0b448.js.map": "/DoHabit/static/js/main.d6a0b448.js.map",
     "453.5b299d38.chunk.js.map": "/DoHabit/static/js/453.5b299d38.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.04a24fd3.css",
-    "static/js/main.fb69f83c.js"
+    "static/css/main.d65b9bff.css",
+    "static/js/main.d6a0b448.js"
   ]
 }
