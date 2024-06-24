@@ -24,13 +24,18 @@ function Habit(props) {
 	const dimmedColor = getDimmedColor(color);
 	const lightDimmedColor = getLightDimmedColor(dimmedColor);
 
+	const today = new Date();
+	const yesterday = new Date(today);
+	yesterday.setDate(today.getDate() - 1);
+
 	// is today completed?
-	const isTodayCompleted = checkHabitCompletion(completedDays, new Date(), frequency);
+	const isTodayCompleted = checkHabitCompletion(completedDays, today, frequency);
+	const isYesterdayCompleted = checkHabitCompletion(completedDays, yesterday, frequency);
 
 	// today progress
-	const todayProgress = completedDays.find((day) => {
-		return day.date === getFormattedDate(new Date());
-	})?.progress || 0;
+	const todayProgress = completedDays.find(
+		(day) => day.date === getFormattedDate(new Date())
+	)?.progress || 0;
 
 	// current streak
 	const currentStreak = getCurrentStreak(completedDays, frequency);
@@ -60,6 +65,7 @@ function Habit(props) {
 			{isMenuVisible && (
 				<HabitMenu
 					{...props}
+					{...{ isYesterdayCompleted }}
 					btnBgColor={lightDimmedColor}
 				/>
 			)}
