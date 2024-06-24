@@ -5,7 +5,7 @@ import reorderHabit from './reorderHabit';
 function editHabit(habits, title, updatedHabit, newIndex) {
 	habits = habits.map(
 		(habit) => {
-			let modifiedHabit = habit;
+			habit = { ...habit };
 
 			if (habit.title === title) {
 				const frequencyWasChanged = habit.frequency !== updatedHabit.frequency;
@@ -14,13 +14,14 @@ function editHabit(habits, title, updatedHabit, newIndex) {
 					? updateCompletedDays(habit.completedDays, updatedHabit.frequency)
 					: habit.completedDays;
 
-				modifiedHabit = {
+				habit = {
+					...habit,
 					...updatedHabit,
 					completedDays: updatedCompletedDays
 				};
 			};
 
-			return modifiedHabit;
+			return habit;
 		}
 	);
 
