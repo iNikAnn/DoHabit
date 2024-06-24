@@ -2,7 +2,7 @@
 import deleteHabit from './deleteHabit';
 import editHabit from './editHabit';
 import updateHabitProgress from './updateHabitProgress';
-import createNote from './createNote';
+import addNote from './addNote';
 import deleteNote from './deleteNote';
 
 function habitsReducer(habits, action) {
@@ -10,7 +10,7 @@ function habitsReducer(habits, action) {
 		data, habitTitle
 	} = action;
 
-	let updatedHabits = [...habits];
+	habits = [...habits];
 
 	const newHabit = data
 		? {
@@ -24,34 +24,34 @@ function habitsReducer(habits, action) {
 
 	switch (action.type) {
 		case 'addHabit':
-			updatedHabits = [newHabit, ...updatedHabits];
+			habits = [newHabit, ...habits];
 			break;
 
 		case 'deleteHabit':
-			updatedHabits = deleteHabit(updatedHabits, habitTitle);
+			habits = deleteHabit(habits, habitTitle);
 			break;
 
 		case 'editHabit':
-			updatedHabits = editHabit(updatedHabits, habitTitle, newHabit, data.order.value - 1);
+			habits = editHabit(habits, habitTitle, newHabit, data.order.value - 1);
 			break;
 
 		case 'addNote':
-			updatedHabits = createNote(updatedHabits, habitTitle, action.newNote);
+			habits = addNote(habits, habitTitle, action.newNote);
 			break;
 
 		case 'deleteNote':
-			updatedHabits = deleteNote(updatedHabits, habitTitle, action.noteCreationDate);
+			habits = deleteNote(habits, habitTitle, action.noteCreationDate);
 			break;
 
 		case 'updateProgress':
-			updatedHabits = updateHabitProgress(updatedHabits, habitTitle);
+			habits = updateHabitProgress(habits, habitTitle);
 			break;
 
 		default:
 			throw new Error('Unknown action: ' + action.type);
 	};
 
-	return updatedHabits;
+	return habits;
 }
 
 export default habitsReducer;

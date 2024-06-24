@@ -26,9 +26,10 @@ function App() {
 	const [habits, dispatch] = useReducer(habitsReducer, initialHabits);
 
 	// save habits to local storage
-	useEffect(() => {
-		localStorage.setItem('habits', JSON.stringify(habits));
-	}, [habits]);
+	useEffect(
+		() => { localStorage.setItem('habits', JSON.stringify(habits)) },
+		[habits]
+	);
 
 	// update habit
 	const handleUpdateHabits = (actions) => dispatch(actions);
@@ -36,9 +37,10 @@ function App() {
 	// modal
 	const [modal, setModal] = useState(null);
 
-	useEffect(() => {
-		document.body.style.overflow = modal ? 'hidden' : 'auto';
-	}, [modal]);
+	useEffect(
+		() => { document.body.style.overflow = modal ? 'hidden' : 'auto' },
+		[modal]
+	);
 
 	const handleOpenModal = (props) => {
 		if (!modal) validateModalProps(props);
