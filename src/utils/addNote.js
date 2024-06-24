@@ -1,4 +1,4 @@
-function createNote(habits, title, newNote) {
+function addNote(habits, title, newNote) {
 	return habits.map(
 		(habit) => {
 			let modifiedHabit = habit;
@@ -18,4 +18,4 @@ function createNote(habits, title, newNote) {
 	);
 }
 
-export default createNote;
+export default addNote;

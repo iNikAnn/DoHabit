@@ -30,7 +30,7 @@ function HabitHeader(props) {
 		e.stopPropagation();
 
 		onUpdateProgress({
-			mode: 'updateProgress',
+			type: 'updateProgress',
 			habitTitle: title
 		});
 	};

@@ -3,7 +3,7 @@ import styles from '../../css/NoteList.module.css';
 // components
 import Note from './Note';
 
-function NoteList({ diary, onCreateNote, onDeleteNote }) {
+function NoteList({ diary, onDeleteNote }) {
 
 	const notes = [...diary]
 		.reverse()
@@ -20,18 +20,6 @@ function NoteList({ diary, onCreateNote, onDeleteNote }) {
 
 	return (
 		<div>
-			{/* <div className={styles.header}>
-				<h3>Diary</h3>
-
-				<button
-					type='button'
-					className='text-button'
-					onClick={onCreateNote}
-				>
-					Create Note
-				</button>
-			</div> */}
-
 			<ul className={styles.list}>
 				{notes}
 			</ul>

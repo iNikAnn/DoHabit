@@ -42,8 +42,8 @@ function HabitEditor(props) {
 		);
 	}, [habit, habits, inputTitle]);
 
-	// update props
-	const updateProps = {
+	// action object
+	const actionObj = {
 		habitTitle: habit?.title
 	};
 
@@ -52,7 +52,7 @@ function HabitEditor(props) {
 		e.preventDefault();
 
 		inputTitle.length
-			? handleUpdate({ ...updateProps, data: e.target, mode: isEditMode ? 'edit' : '' })
+			? handleUpdate({ ...actionObj, data: e.target, type: isEditMode ? 'editHabit' : 'addHabit' })
 			: setAlreadyExist(true);
 	};
 
@@ -81,17 +81,31 @@ function HabitEditor(props) {
 				onSubmit={handleSabmitForm}
 				onKeyDown={handlePressEnter}
 			>
-				<TitleBlock input={inputTitle} onChange={(newTitle) => setInputTitle(newTitle)} alreadyExist={alreadyExist} />
+				<TitleBlock
+					input={inputTitle}
+					onChange={(newTitle) => setInputTitle(newTitle)}
+					alreadyExist={alreadyExist}
+				/>
 
-				<FrequencyBlock {...{ currentFrequency: habit?.frequency }} />
+				<FrequencyBlock
+					{...{ currentFrequency: habit?.frequency }}
+				/>
 
 				{isEditMode && (
-					<OrderBlock habitsCount={habits.length} currOrder={currOrder} setCurrOrder={setCurrOrder} />
+					<OrderBlock
+						habitsCount={habits.length}
+						currOrder={currOrder}
+						setCurrOrder={setCurrOrder}
+					/>
 				)}
 
-				<ColorBlock {...{ habits, dbColors, currentColorIndex: habit?.colorIndex }} />
+				<ColorBlock
+					{...{ habits, dbColors, currentColorIndex: habit?.colorIndex }}
+				/>
 
-				<IconBlock {...{ habits, dbIcons, currentIconTitle: habit?.iconTitle }} />
+				<IconBlock
+					{...{ habits, dbIcons, currentIconTitle: habit?.iconTitle }}
+				/>
 
 				<small className={styles.info}>
 					"Color" and "Icon" icons in reduced size indicate that they have been previously used (but can be reused).
@@ -106,7 +120,7 @@ function HabitEditor(props) {
 							onClick={() => {
 								const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 								if (window.confirm(msg)) {
-									handleUpdate({ ...updateProps, mode: 'delete' });
+									handleUpdate({ ...actionObj, type: 'deleteHabit' });
 								}
 							}}
 						/>
