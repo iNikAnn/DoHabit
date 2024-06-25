@@ -6,6 +6,7 @@ import Button from '../Button';
 // icons
 import { MdEditSquare } from "react-icons/md";
 import { MdLibraryBooks } from "react-icons/md";
+import { FaShareAltSquare } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
 import { FaCalendarTimes } from "react-icons/fa";
 
@@ -14,12 +15,11 @@ function HabitMenu(props) {
 		title, btnBgColor, isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
 
 		// 'on' functions
-		onOpenModal, onUpdate
+		onOpenModal, onUpdate, onShare
 	} = props;
 
-	console.log(props);
 	return (
-		<div className={styles.menu}>
+		<div data-name="habitMenu" className={styles.menu}>
 			<ul className={styles.list}>
 				<li>
 					<Button
@@ -47,6 +47,15 @@ function HabitMenu(props) {
 							modalTitle: 'Edit habit',
 							modalContent: 'habitEditor'
 						})}
+					/>
+				</li>
+
+				<li>
+					<Button
+						icon={<FaShareAltSquare />}
+						text="Share Habit"
+						bgColor={btnBgColor}
+						onClick={onShare}
 					/>
 				</li>
 

@@ -11,10 +11,11 @@ import getLightDimmedColor from '../../utils/getLightDimmedColor';
 import getFormattedDate from '../../utils/getFormattedDate';
 import getCurrentStreak from '../../utils/getCurrentStreak';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
+import shareHabit from '../../utils/shareHabit';
 
 function Habit(props) {
 	const {
-		color, completedDays, frequency, isMenuVisible,
+		title, color, completedDays, frequency, isMenuVisible,
 
 		// 'on' functions
 		onShowMenu
@@ -40,8 +41,12 @@ function Habit(props) {
 	// current streak
 	const currentStreak = getCurrentStreak(completedDays, frequency);
 
+	// share habit
+	const handleShare = () => shareHabit(title);
+
 	return (
 		<div
+			data-id={title}
 			className={styles.habit}
 			onClick={onShowMenu}
 		>
@@ -67,6 +72,7 @@ function Habit(props) {
 					{...props}
 					{...{ isTodayCompleted, isYesterdayCompleted, todayProgress }}
 					btnBgColor={lightDimmedColor}
+					onShare={handleShare}
 				/>
 			)}
 		</div>
