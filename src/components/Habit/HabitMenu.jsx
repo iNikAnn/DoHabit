@@ -15,11 +15,11 @@ function HabitMenu(props) {
 		title, btnBgColor, isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
 
 		// 'on' functions
-		onOpenModal, onUpdate
+		onOpenModal, onUpdate, onShare
 	} = props;
 
 	return (
-		<div className={styles.menu}>
+		<div data-name="habitMenu" className={styles.menu}>
 			<ul className={styles.list}>
 				<li>
 					<Button
@@ -55,11 +55,7 @@ function HabitMenu(props) {
 						icon={<FaShareAltSquare />}
 						text="Share Habit"
 						bgColor={btnBgColor}
-					// onClick={() => onOpenModal({
-					// 	habitTitle: title,
-					// 	modalTitle: title,
-					// 	modalContent: 'habitProfile'
-					// })}
+						onClick={onShare}
 					/>
 				</li>
 
