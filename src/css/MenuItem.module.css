@@ -1,0 +1,36 @@
+/* menuItem */
+.menuItem {
+	/* outline: 1px solid tomato; */
+	width: 100%;
+	padding: 1rem;
+
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
+	background-color: unset;
+}
+
+/* icon */
+.menuItem svg {
+	width: 1.6rem;
+	height: 1.6rem;
+}
+
+/* textWrapper */
+.textWrapper {
+	/* outline: 1px solid tomato; */
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	text-align: left;
+}
+
+.title {
+	font-size: 1.2rem;
+}
+
+.desc {
+	color: gray;
+	font-size: 0.8rem;
+}
