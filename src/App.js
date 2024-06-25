@@ -92,7 +92,7 @@ function App() {
 						/>
 					)}
 
-					{modal.modalContent === 'habitProfile' && (
+					{modal.modalContent === 'diary' && (
 						<Diary
 							{...{ habits }}
 							habitTitle={modal.habitTitle}

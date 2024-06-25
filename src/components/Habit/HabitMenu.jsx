@@ -67,7 +67,7 @@ function HabitMenu(props) {
 						onClick={() => onOpenModal({
 							habitTitle: title,
 							modalTitle: title,
-							modalContent: 'habitProfile'
+							modalContent: 'diary'
 						})}
 					/>
 				</li>
