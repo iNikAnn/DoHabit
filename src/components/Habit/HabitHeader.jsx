@@ -8,7 +8,7 @@ import { FaCheck } from "react-icons/fa";
 
 function HabitHeader(props) {
 	const {
-		title, icon, frequency,
+		title, icon, frequency, diary,
 		color, dimmedColor,
 		isTodayCompleted, todayProgress, currentStreak,
 
@@ -46,16 +46,22 @@ function HabitHeader(props) {
 						{icon}
 					</span>
 
-					<div
-						className={styles.titleWrapper}
-					>
-						<strong>
+					<div className={styles.titleWrapper} >
+						<h4>
 							{title}
-						</strong>
+						</h4>
 
-						<small style={{ color: 'gray' }}>
-							Current streak: <strong>{currentStreak}</strong>
-						</small>
+						<div className={styles.desc}>
+							<small >
+								Streak: <strong>{currentStreak}</strong>
+							</small>
+
+							{(diary && diary.length) && (
+								<small>
+									Notes: <strong>{diary.length}</strong>
+								</small>
+							)}
+						</div>
 					</div>
 				</div>
 
