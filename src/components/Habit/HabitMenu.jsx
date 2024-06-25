@@ -6,6 +6,7 @@ import Button from '../Button';
 // icons
 import { MdEditSquare } from "react-icons/md";
 import { MdLibraryBooks } from "react-icons/md";
+import { FaShareAltSquare } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
 import { FaCalendarTimes } from "react-icons/fa";
 
@@ -17,7 +18,6 @@ function HabitMenu(props) {
 		onOpenModal, onUpdate
 	} = props;
 
-	console.log(props);
 	return (
 		<div className={styles.menu}>
 			<ul className={styles.list}>
@@ -47,6 +47,19 @@ function HabitMenu(props) {
 							modalTitle: 'Edit habit',
 							modalContent: 'habitEditor'
 						})}
+					/>
+				</li>
+
+				<li>
+					<Button
+						icon={<FaShareAltSquare />}
+						text="Share Habit"
+						bgColor={btnBgColor}
+					// onClick={() => onOpenModal({
+					// 	habitTitle: title,
+					// 	modalTitle: title,
+					// 	modalContent: 'habitProfile'
+					// })}
 					/>
 				</li>
 
