@@ -27,8 +27,8 @@ function Calendar(props) {
 	let months = [];
 
 	// day style
-	const dayGap = Math.max(1, 6 - ((monthsCount - 1) * 2)) + 'px';
-	const dayBorderRadius = Math.max(2, 10 - (monthsCount * 2)) + 'px';
+	const dayGap = Math.max(2, 6 - ((monthsCount - 1) * 2)) + 'px';
+	const dayBorderRadius = Math.max(3, 10 - (monthsCount * 2)) + 'px';
 	const isDaySquare = monthsCount > 1;
 
 	for (let index = 0; index < visibleMonthsCount; index++) {
