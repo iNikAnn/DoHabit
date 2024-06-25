@@ -1,28 +1,18 @@
 /* header */
 .header {
-	/* outline: 1px solid tomato; */
+	/* outline: 1px solid red; */
+	outline-offset: -1px;
+
 	display: flex;
-	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 	gap: 0.6rem;
 
 	padding: 0.6rem;
 }
 
-/* header top */
-.headerTop {
-	display: flex;
-	justify-content: space-between;
-}
-
-/* header left */
-.headerLeft {
-	display: flex;
-	align-items: center;
-	gap: 0.6rem;
-}
-
 /* header right */
-.headerRight {
+.progressWrapper {
 	display: flex;
 	gap: 2px;
 }
@@ -38,6 +28,7 @@
 
 .iconWrapper,
 .markAsCompletedBtn {
+	flex-shrink: 0;
 	width: 3rem;
 	height: 3rem;
 }
@@ -59,9 +50,19 @@
 
 /* titleWrapper */
 .titleWrapper {
+	/* outline: 2px solid greenyellow; */
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-	gap: 0.2rem;
+	gap: 0.4rem;
+	overflow: hidden;
+}
+
+.title {
+	/* outline: 1px solid blue; */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 /* desc */

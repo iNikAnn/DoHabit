@@ -37,54 +37,50 @@ function HabitHeader(props) {
 
 	return (
 		<div className={styles.header}>
-			<div className={styles.headerTop}>
-				<div className={styles.headerLeft}>
-					<span
-						style={{ backgroundColor: dimmedColor, color: color }}
-						className={styles.iconWrapper}
-					>
-						{icon}
-					</span>
+			<div
+				style={{ backgroundColor: dimmedColor, color: color }}
+				className={styles.iconWrapper}
+			>
+				{icon}
+			</div>
 
-					<div className={styles.titleWrapper} >
-						<h4>
-							{title}
-						</h4>
+			<div className={styles.titleWrapper} >
+				<h4 className={styles.title}>
+					{title}
+				</h4>
 
-						<div className={styles.desc}>
-							<small >
-								Streak: <strong>{currentStreak}</strong>
-							</small>
+				<div className={styles.desc}>
+					<small >
+						Streak: <strong>{currentStreak}</strong>
+					</small>
 
-							{(diary && diary.length) && (
-								<small>
-									Notes: <strong>{diary.length}</strong>
-								</small>
-							)}
-						</div>
-					</div>
-				</div>
-
-				<div className={styles.headerRight}>
-					{frequency > 1 && (
-						<ProgressBar
-							{...{ color, dimmedColor, todayProgress }}
-							segmentCount={frequency}
-						/>
+					{(diary && diary.length) && (
+						<small>
+							Notes: <strong>{diary.length}</strong>
+						</small>
 					)}
-
-					<button
-						style={markAsCompletedBtnStyle}
-						className={styles.markAsCompletedBtn}
-						onClick={handleUpdateProgress}
-					>
-						{progressPercentage === 100 ? (
-							<FaCheck />
-						) : (
-							<strong>{progressPercentage}%</strong>
-						)}
-					</button>
 				</div>
+			</div>
+
+			<div className={styles.progressWrapper}>
+				{frequency > 1 && (
+					<ProgressBar
+						{...{ color, dimmedColor, todayProgress }}
+						segmentCount={frequency}
+					/>
+				)}
+
+				<button
+					style={markAsCompletedBtnStyle}
+					className={styles.markAsCompletedBtn}
+					onClick={handleUpdateProgress}
+				>
+					{progressPercentage === 100 ? (
+						<FaCheck />
+					) : (
+						<strong>{progressPercentage}%</strong>
+					)}
+				</button>
 			</div>
 		</div>
 	);
