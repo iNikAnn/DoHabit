@@ -8,6 +8,7 @@ import Header from './components/Header';
 import HabitList from './components/HabitList';
 import Modal from './components/Modal';
 import HabitEditor from './components/HabitEditor/HabitEditor';
+import Menu from './components/Menu/Menu';
 import Diary from './components/Diary/Diary';
 
 // utils
@@ -82,6 +83,12 @@ function App() {
 							// 'on' functions
 							onUpdate={handleUpdateHabits}
 							onClose={handleCloseModal}
+						/>
+					)}
+
+					{modal.modalContent === 'menu' && (
+						<Menu
+
 						/>
 					)}
 

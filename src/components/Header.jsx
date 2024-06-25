@@ -33,7 +33,8 @@ function Header(props) {
 				<button
 					className={styles.btn}
 					onClick={() => onOpenModal({
-						modalTitle: 'Menu'
+						modalTitle: 'Menu',
+						modalContent: 'menu'
 					})}
 				>
 					<FaBurger />
