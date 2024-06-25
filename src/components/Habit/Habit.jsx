@@ -1,5 +1,8 @@
 import styles from '../../css/Habit.module.css';
 
+// react
+import { useRef } from 'react';
+
 // components
 import HabitHeader from './HabitHeader';
 import Calendar from './Calendar';
@@ -15,11 +18,13 @@ import shareHabit from '../../utils/shareHabit';
 
 function Habit(props) {
 	const {
-		title, color, completedDays, frequency, isMenuVisible,
+		color, completedDays, frequency, isMenuVisible,
 
 		// 'on' functions
 		onShowMenu
 	} = props;
+
+	const habitRef = useRef(null);
 
 	// dimmed color
 	const dimmedColor = getDimmedColor(color);
@@ -42,11 +47,11 @@ function Habit(props) {
 	const currentStreak = getCurrentStreak(completedDays, frequency);
 
 	// share habit
-	const handleShare = () => shareHabit(title);
+	const handleShare = () => shareHabit(habitRef.current);
 
 	return (
 		<div
-			data-id={title}
+			ref={habitRef}
 			className={styles.habit}
 			onClick={onShowMenu}
 		>

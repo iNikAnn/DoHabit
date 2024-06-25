@@ -1,21 +1,19 @@
 import html2canvas from 'html2canvas';
 
-async function shareHabit(dataID) {
-	if ('share' in navigator) {
-		const habitElement = document.querySelector(`div[data-id='${dataID}']`);
-
+async function shareHabit(element) {
+	if (navigator?.share) {
 		const options = {
 			backgroundColor: 'black',
 			x: -20,
 			y: -20,
-			width: habitElement.offsetWidth + 40,
-			height: habitElement.offsetHeight + 40,
+			width: element.offsetWidth + 40,
+			height: element.offsetHeight + 40,
 			ignoreElements: (el) => el.getAttribute('data-name') === 'habitMenu'
 		};
 
-		const canvas = await html2canvas(habitElement, options);
+		const canvas = await html2canvas(element, options);
 		const image = canvas.toDataURL("image/jpeg", 1);
-		const fileName = 'DoHabit_' + new Date().toDateString().replace(/ /g, '_');
+		const fileName = 'DoHabit_' + new Date().toLocaleString().replace(/\W/g, '_');
 
 		const blob = await fetch(image).then((res) => res.blob());
 		const file = new File([blob], `${fileName}.jpg`, { type: 'image/jpeg' });
@@ -32,7 +30,7 @@ async function shareHabit(dataID) {
 			console.error('Error sharing data:', error);
 		};
 	} else {
-		window.alert('Sharing is not supported!')
+		window.alert('Sharing is not supported!');
 	};
 }
 
