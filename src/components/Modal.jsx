@@ -19,7 +19,9 @@ function Modal(props) {
 	return (
 		<div className={styles.modal}>
 			<div className={styles.header}>
-				<h2>{title}</h2>
+				<h2 className={styles.title}>
+					{title}
+				</h2>
 
 				<Button
 					icon={<FaPlusCircle />}

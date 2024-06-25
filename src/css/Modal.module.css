@@ -19,8 +19,16 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 1rem;
 	border-bottom: 1px solid var(--bg-color-secondary);
 	padding: 1rem;
+}
+
+/* title */
+.title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 /* close btn */
