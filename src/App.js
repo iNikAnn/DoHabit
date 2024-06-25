@@ -54,6 +54,7 @@ function App() {
 			<Header
 				// 'on' functions
 				onOpenHabitEditor={handleOpenModal}
+				onOpenModal={handleOpenModal}
 			/>
 
 			<main>

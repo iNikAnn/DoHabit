@@ -1,12 +1,13 @@
 import styles from '../css/Header.module.css';
 
 // icons
+import { FaBurger } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 
 function Header(props) {
 	const {
 		// 'on' functions
-		onOpenHabitEditor,
+		onOpenHabitEditor, onOpenModal
 	} = props;
 
 	const modalProps = {
@@ -21,12 +22,21 @@ function Header(props) {
 				<h1>DoHabit</h1>
 			</span>
 
-			<div>
+			<div className={styles.btnsWrapper}>
 				<button
 					className={styles.btn}
 					onClick={() => onOpenHabitEditor(modalProps)}
 				>
 					<FaPlus />
+				</button>
+
+				<button
+					className={styles.btn}
+					onClick={() => onOpenModal({
+						modalTitle: 'Menu'
+					})}
+				>
+					<FaBurger />
 				</button>
 			</div>
 		</header>
