@@ -17,6 +17,7 @@ import habitsReducer from './utils/habitsReducer';
 import updateDB from './utils/updateDB';
 import validateModalProps from './utils/validateModalProps';
 import exportHabits from './utils/exportHabits';
+import importHabits from './utils/importHabits';
 
 // db
 import dbIcons from './db/dbIcons';
@@ -68,6 +69,7 @@ function App() {
 
 	// data transfer
 	const handleExportHabits = () => exportHabits(habits);
+	const handleImportHabits = () => importHabits(handleUpdateHabits);
 
 	return (
 		<div className="App">
@@ -115,6 +117,7 @@ function App() {
 					{modal.modalContent === 'dataTransfer' && (
 						<DataTransfer
 							onExport={handleExportHabits}
+							onImport={handleImportHabits}
 						/>
 					)}
 
