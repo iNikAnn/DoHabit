@@ -27,10 +27,16 @@
 }
 
 .title {
-	font-size: 1.2rem;
+	font-size: 1rem;
 }
 
 .desc {
 	color: gray;
 	font-size: 0.8rem;
+}
+
+/* arrow */
+.textWrapper + svg {
+	color: gray;
+	margin-left: auto;
 }

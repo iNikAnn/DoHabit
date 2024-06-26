@@ -7,7 +7,7 @@ import MenuItem from './MenuItem';
 // icons
 import { BsFillDatabaseFill } from "react-icons/bs";
 
-function Menu() {
+function Menu({ onOpenModal }) {
 	return (
 		<section className={styles.menu}>
 			<ul className={styles.list}>
@@ -15,6 +15,10 @@ function Menu() {
 					icon={<BsFillDatabaseFill />}
 					title="Export/Import Data"
 					desc="Backup or restore your habits"
+					onClick={() => onOpenModal({
+						modalTitle: 'Export/Import Data',
+						modalContent: 'dataTransfer'
+					})}
 				/>
 			</ul>
 

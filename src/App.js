@@ -10,6 +10,7 @@ import Modal from './components/Modal';
 import HabitEditor from './components/HabitEditor/HabitEditor';
 import Menu from './components/Menu/Menu';
 import Diary from './components/Diary/Diary';
+import DataTransfer from './components/DataTransfer/DataTransfer';
 
 // utils
 import habitsReducer from './utils/habitsReducer';
@@ -37,6 +38,7 @@ function App() {
 
 	// modal
 	const [modal, setModal] = useState(null);
+	const [modalHistory, setModalHistory] = useState([]);
 
 	useEffect(
 		() => { document.body.style.overflow = modal ? 'hidden' : 'auto' },
@@ -44,11 +46,24 @@ function App() {
 	);
 
 	const handleOpenModal = (props) => {
-		if (!modal) validateModalProps(props);
-		setModal(modal ? null : props);
+		// if (!modal) validateModalProps(props);
+		validateModalProps(props);
+		// setModal(modal ? null : props);
+
+		if (modal) setModalHistory((mh) => [...mh, modal]);
+
+		setModal(props);
 	};
 
-	const handleCloseModal = () => setModal(null);
+	const handleCloseModal = () => {
+		if (modalHistory.length > 0) {
+			const mh = [...modalHistory];
+			handleOpenModal(mh.pop());
+			setModalHistory(mh);
+		} else {
+			setModal(null);
+		};
+	};
 
 	return (
 		<div className="App">
@@ -88,6 +103,13 @@ function App() {
 
 					{modal.modalContent === 'menu' && (
 						<Menu
+							// 'on' functions
+							onOpenModal={handleOpenModal}
+						/>
+					)}
+
+					{modal.modalContent === 'dataTransfer' && (
+						<DataTransfer
 
 						/>
 					)}
@@ -101,6 +123,7 @@ function App() {
 							onUpdate={handleUpdateHabits}
 						/>
 					)}
+
 				</Modal>
 			)}
 		</div>
