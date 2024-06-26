@@ -45,7 +45,7 @@ function HabitList(props) {
 			{!habitList.length && (
 				<Placeholder
 					image={<Calendar />}
-					title="Looks like you haven't created any habits yet."
+					title="Looks like you haven't created any habits yet"
 					desc="Why not create one now?"
 					textOnButton="Create First Habit"
 					buttonIcon={<MdAddToPhotos />}
