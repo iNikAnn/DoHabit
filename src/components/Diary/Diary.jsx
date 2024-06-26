@@ -78,7 +78,7 @@ function Diary(props) {
 			) : (
 				<Placeholder
 					image={<InfoSvg />}
-					title="This habit's diary is empty."
+					title="This habit's diary is empty"
 					desc="Add your first note to start tracking your progress and thoughts."
 					textOnButton="Add First Note"
 					buttonIcon={<MdStickyNote2 />}

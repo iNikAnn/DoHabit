@@ -24,6 +24,10 @@ function habitsReducer(habits, action) {
 		: null;
 
 	switch (action.type) {
+		case 'importHabit':
+			habits = [...action.importedData];
+			break;
+
 		case 'addHabit':
 			habits = [newHabit, ...habits];
 			break;

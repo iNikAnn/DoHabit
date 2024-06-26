@@ -35,6 +35,13 @@
 	font-size: 1.6rem;
 }
 
+/* btnsWrapper */
+.btnsWrapper {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
 .btn {
 	/* outline: 1px solid red; */
 	width: 2rem;

@@ -8,12 +8,16 @@ import Header from './components/Header';
 import HabitList from './components/HabitList';
 import Modal from './components/Modal';
 import HabitEditor from './components/HabitEditor/HabitEditor';
+import Menu from './components/Menu/Menu';
 import Diary from './components/Diary/Diary';
+import DataTransfer from './components/DataTransfer/DataTransfer';
 
 // utils
 import habitsReducer from './utils/habitsReducer';
 import updateDB from './utils/updateDB';
 import validateModalProps from './utils/validateModalProps';
+import exportHabits from './utils/exportHabits';
+import importHabits from './utils/importHabits';
 
 // db
 import dbIcons from './db/dbIcons';
@@ -36,6 +40,7 @@ function App() {
 
 	// modal
 	const [modal, setModal] = useState(null);
+	const [modalHistory, setModalHistory] = useState([]);
 
 	useEffect(
 		() => { document.body.style.overflow = modal ? 'hidden' : 'auto' },
@@ -43,17 +48,35 @@ function App() {
 	);
 
 	const handleOpenModal = (props) => {
-		if (!modal) validateModalProps(props);
-		setModal(modal ? null : props);
+		// if (!modal) validateModalProps(props);
+		validateModalProps(props);
+		// setModal(modal ? null : props);
+
+		if (modal) setModalHistory((mh) => [...mh, modal]);
+
+		setModal(props);
 	};
 
-	const handleCloseModal = () => setModal(null);
+	const handleCloseModal = () => {
+		if (modalHistory.length > 0) {
+			const mh = [...modalHistory];
+			handleOpenModal(mh.pop());
+			setModalHistory(mh);
+		} else {
+			setModal(null);
+		};
+	};
+
+	// data transfer
+	const handleExportHabits = () => exportHabits(habits);
+	const handleImportHabits = () => importHabits(handleUpdateHabits);
 
 	return (
 		<div className="App">
 			<Header
 				// 'on' functions
 				onOpenHabitEditor={handleOpenModal}
+				onOpenModal={handleOpenModal}
 			/>
 
 			<main>
@@ -84,7 +107,21 @@ function App() {
 						/>
 					)}
 
-					{modal.modalContent === 'habitProfile' && (
+					{modal.modalContent === 'menu' && (
+						<Menu
+							// 'on' functions
+							onOpenModal={handleOpenModal}
+						/>
+					)}
+
+					{modal.modalContent === 'dataTransfer' && (
+						<DataTransfer
+							onExport={handleExportHabits}
+							onImport={handleImportHabits}
+						/>
+					)}
+
+					{modal.modalContent === 'diary' && (
 						<Diary
 							{...{ habits }}
 							habitTitle={modal.habitTitle}
@@ -93,6 +130,7 @@ function App() {
 							onUpdate={handleUpdateHabits}
 						/>
 					)}
+
 				</Modal>
 			)}
 		</div>
