@@ -1,0 +1,27 @@
+/* streaks */
+.streaks {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.card {
+	width: 50%;
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-primary);
+	padding: 1rem;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.streak {
+	/* outline: 1px solid red; */
+	display: flex;
+	justify-content: center;
+	font-size: 2.2rem;
+	font-weight: bold;
+	padding: 1rem 0 0;
+}
