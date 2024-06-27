@@ -70,7 +70,7 @@ function HabitMenu(props) {
 						onClick={() => onOpenModal({
 							habitTitle: title,
 							modalTitle: title,
-							modalContent: 'Statistics'
+							modalContent: 'statistics'
 						})}
 					/>
 				</li>

@@ -10,6 +10,7 @@ import Modal from './components/Modal';
 import HabitEditor from './components/HabitEditor/HabitEditor';
 import Menu from './components/Menu/Menu';
 import Diary from './components/Diary/Diary';
+import Statistics from './components/Statistics/Statistics';
 import DataTransfer from './components/DataTransfer/DataTransfer';
 
 // utils
@@ -131,6 +132,12 @@ function App() {
 						/>
 					)}
 
+					{modal.modalContent === 'statistics' && (
+						<Statistics
+							{...{ habits }}
+							habitTitle={modal.habitTitle}
+						/>
+					)}
 				</Modal>
 			)}
 		</div>
