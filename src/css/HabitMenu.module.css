@@ -1,38 +1,43 @@
 /* menu */
 .menu {
+	/* outline: 2px solid red; */
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 
-	backdrop-filter: grayscale(50%) brightness(0.75);
+	/* backdrop-filter: grayscale(50%) brightness(0.75) blur(4px); */
+	background-color: var(--bg-color-primary);
 }
 
 /* list */
 .list {
+	/* outline: 1px solid green; */
 	position: absolute;
-	bottom: 0;
-	left: 0;
 	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
 	padding: 0.6rem;
 
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.4rem;
-
-	background-color: var(--bg-color-primary);
 }
 
 .list li {
 	width: 100%;
 }
 
-.list li:nth-child(3) {
-	/* grid-column: span 2; */
-}
+/* .list li:nth-child(5) {
+	grid-column: span 2;
+} */
 
 /* btn */
 .list button {
 	width: 100%;
+	height: 3.2rem;
+	border-radius: 2rem;
+	justify-content: unset;
+	padding: 0 1.2rem;
 }

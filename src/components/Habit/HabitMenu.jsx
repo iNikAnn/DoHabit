@@ -42,6 +42,7 @@ function HabitMenu(props) {
 					<Button
 						icon={<MdEditSquare />}
 						text="Edit Habit"
+						arrow
 						bgColor={btnBgColor}
 						onClick={() => onOpenModal({
 							habitTitle: title,
@@ -64,6 +65,7 @@ function HabitMenu(props) {
 					<Button
 						icon={<FaChartSimple />}
 						text="Statistics"
+						arrow
 						bgColor={btnBgColor}
 						onClick={() => onOpenModal({
 							habitTitle: title,
@@ -76,7 +78,8 @@ function HabitMenu(props) {
 				<li>
 					<Button
 						icon={<MdLibraryBooks />}
-						text="Diary Entries"
+						text="Diary"
+						arrow
 						bgColor={btnBgColor}
 						onClick={() => onOpenModal({
 							habitTitle: title,
