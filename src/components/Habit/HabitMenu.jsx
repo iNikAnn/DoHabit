@@ -9,6 +9,7 @@ import { MdLibraryBooks } from "react-icons/md";
 import { FaShareAltSquare } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
 import { FaCalendarTimes } from "react-icons/fa";
+import { FaChartSimple } from "react-icons/fa6";
 
 function HabitMenu(props) {
 	const {
@@ -56,6 +57,19 @@ function HabitMenu(props) {
 						text="Share Habit"
 						bgColor={btnBgColor}
 						onClick={onShare}
+					/>
+				</li>
+
+				<li>
+					<Button
+						icon={<FaChartSimple />}
+						text="Statistics"
+						bgColor={btnBgColor}
+						onClick={() => onOpenModal({
+							habitTitle: title,
+							modalTitle: title,
+							modalContent: 'Statistics'
+						})}
 					/>
 				</li>
 
