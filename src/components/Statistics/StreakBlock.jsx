@@ -8,7 +8,7 @@ function StreakBlock({ habit }) {
 	const currentStreak = getCurrentStreak(habit.completedDays, habit.frequency);
 	const longestStreak = getLongestStreak(habit.completedDays, habit.frequency);
 
-	const percentageDifference = ((currentStreak - longestStreak) / longestStreak) * 100;
+	const percentageDifference = (((currentStreak - longestStreak) / longestStreak) * 100) || 0;
 
 	return (
 		<div className={styles.streaks}>
