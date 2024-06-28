@@ -23,3 +23,8 @@
 .button:disabled {
 	background-color: gray;
 }
+
+.arrow {
+	color: gray;
+	margin-left: auto;
+}

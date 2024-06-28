@@ -1,8 +1,11 @@
 import styles from '../css/Button.module.css';
 
+// icons
+import { IoIosArrowForward } from "react-icons/io";
+
 function Button(props) {
 	const {
-		type, icon, text, bgColor, disabled, onClick
+		type, icon, text, arrow, bgColor, disabled, onClick
 	} = props;
 
 	return (
@@ -15,6 +18,10 @@ function Button(props) {
 		>
 			{icon}
 			{text}
+
+			{arrow && (
+				<IoIosArrowForward className={styles.arrow} />
+			)}
 		</button>
 	);
 }

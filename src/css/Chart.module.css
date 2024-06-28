@@ -1,0 +1,24 @@
+/* chart */
+.chart {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-primary);
+
+	padding: 1rem;
+}
+
+/* header */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* icon */
+.header svg {
+	width: 1.4rem;
+	height: 1.4rem;
+}
