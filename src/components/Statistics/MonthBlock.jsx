@@ -1,18 +1,23 @@
 import styles from '../../css/MonthBlock.module.css';
 
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, layouts } from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, } from "chart.js";
 import { Line } from "react-chartjs-2";
 
 // icons
 import { FaCalendarAlt } from "react-icons/fa";
 
+// utils
+import getCompletionCountPerMonth from '../../utils/getCompletionCountPerMonth';
+
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler);
 
-function MonthBlock({ color, dimmedColor, lightDimmedColor }) {
+function MonthBlock({ habit, color, dimmedColor, lightDimmedColor }) {
 	const MONTHS = [
 		"Jan", "Feb", "Mar", "Apr", "May", "Jun",
 		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 	];
+
+	const data = getCompletionCountPerMonth(habit.completedDays, habit.frequency);
 
 	const config = {
 		type: 'line',
@@ -21,7 +26,7 @@ function MonthBlock({ color, dimmedColor, lightDimmedColor }) {
 			labels: MONTHS,
 			datasets: [{
 				label: 'TEST LABEL',
-				data: [0, 0, 1, 6, 9, 4, 1, 5, 3, 5, 2, 1],
+				data,
 
 				pointBackgroundColor: '#e6e6e6',
 				pointBorderWidth: 0,
@@ -33,7 +38,7 @@ function MonthBlock({ color, dimmedColor, lightDimmedColor }) {
 				backgroundColor: (context) => {
 					if (!context.chart.chartArea) return;
 
-					const { ctx, data, chartArea: { top, bottom } } = context.chart;
+					const { ctx, chartArea: { top, bottom } } = context.chart;
 					const bg = ctx.createLinearGradient(0, top, 0, bottom);
 
 					bg.addColorStop(0, color);
@@ -42,16 +47,11 @@ function MonthBlock({ color, dimmedColor, lightDimmedColor }) {
 					return bg;
 				},
 
-
 				fill: true,
 			}]
 		},
 
 		options: {
-			layout: {
-				margin: 0
-			},
-
 			scales: {
 				x: {
 					grid: { color: dimmedColor, lineWidth: 0.4 },
@@ -64,8 +64,6 @@ function MonthBlock({ color, dimmedColor, lightDimmedColor }) {
 				}
 			}
 		},
-
-		plugins: []
 	};
 
 	return (
@@ -77,7 +75,7 @@ function MonthBlock({ color, dimmedColor, lightDimmedColor }) {
 
 			<Line {...config} />
 		</div>
-	)
+	);
 }
 
 export default MonthBlock;

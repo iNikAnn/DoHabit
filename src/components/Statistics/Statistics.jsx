@@ -32,7 +32,9 @@ function Statistics(props) {
 				{...{ habit, color, dimmedColor, lightDimmedColor }}
 			/>
 
-			<MonthBlock {...{ color, dimmedColor, lightDimmedColor }} />
+			<MonthBlock
+				{...{ habit, color, dimmedColor, lightDimmedColor }}
+			/>
 		</div>
 	);
 }
