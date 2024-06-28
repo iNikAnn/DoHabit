@@ -1,0 +1,6 @@
+/* monthBlock */
+.monthBlock {
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-primary);
+	padding: 1rem;
+}

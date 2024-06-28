@@ -1,13 +1,18 @@
 import styles from '../../css/Statistics.module.css';
 
 // components
+import Chart from './Chart';
 import StreakBlock from './StreakBlock';
-import WeekdayBlock from './WeekdayBlock';
-import MonthBlock from './MonthBlock';
+import WeekdayChart from './WeekdayChart';
+import MonthlyChart from './MonthlyChart';
 
 // utils
 import getDimmedColor from '../../utils/getDimmedColor';
 import getLightDimmedColor from '../../utils/getLightDimmedColor';
+
+// icons
+import { FaCalendarWeek } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
 
 // db
 import dbColors from '../../db/dbColors';
@@ -24,17 +29,43 @@ function Statistics(props) {
 	const dimmedColor = getDimmedColor(color);
 	const lightDimmedColor = getLightDimmedColor(dimmedColor);
 
+	const chartOptions = {
+		scales: {
+			x: {
+				grid: { color: dimmedColor, lineWidth: 0.4 },
+				ticks: { color: lightDimmedColor }
+			},
+
+			y: {
+				grid: { color: dimmedColor, lineWidth: 0.4 },
+				ticks: { color: lightDimmedColor }
+			}
+		}
+	};
+
 	return (
 		<div className={styles.statistics}>
 			<StreakBlock {...{ habit }} />
 
-			<WeekdayBlock
-				{...{ habit, color, dimmedColor, lightDimmedColor }}
-			/>
+			<Chart
+				title="Weekday Habit Performance"
+				icon={<FaCalendarWeek style={{ color: color }} />}
+			>
+				<WeekdayChart
+					{...{ habit, color }}
+					options={chartOptions}
+				/>
+			</Chart>
 
-			<MonthBlock
-				{...{ habit, color, dimmedColor, lightDimmedColor }}
-			/>
+			<Chart
+				title="Monthly Habit Completion"
+				icon={<FaCalendarAlt style={{ color: color }} />}
+			>
+				<MonthlyChart
+					{...{ habit, color }}
+					options={chartOptions}
+				/>
+			</Chart>
 		</div>
 	);
 }

@@ -7,7 +7,7 @@ function getCompletionCountPerDay(completedDays, frequency) {
 		days[dayOfWeek] = (days[dayOfWeek] || 0) + 1;
 	};
 
-	return days;
+	return Object.values(days);
 }
 
 export default getCompletionCountPerDay;

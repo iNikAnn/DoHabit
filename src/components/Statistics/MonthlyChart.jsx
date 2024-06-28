@@ -1,17 +1,14 @@
-import styles from '../../css/MonthBlock.module.css';
+import styles from '../../css/MonthlyChart.module.css';
 
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, } from "chart.js";
 import { Line } from "react-chartjs-2";
-
-// icons
-import { FaCalendarAlt } from "react-icons/fa";
 
 // utils
 import getCompletionCountPerMonth from '../../utils/getCompletionCountPerMonth';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler);
 
-function MonthBlock({ habit, color, dimmedColor, lightDimmedColor }) {
+function MonthlyChart({ options, habit, color }) {
 	const MONTHS = [
 		"Jan", "Feb", "Mar", "Apr", "May", "Jun",
 		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -20,12 +17,10 @@ function MonthBlock({ habit, color, dimmedColor, lightDimmedColor }) {
 	const data = getCompletionCountPerMonth(habit.completedDays, habit.frequency);
 
 	const config = {
-		type: 'line',
-
 		data: {
 			labels: MONTHS,
 			datasets: [{
-				label: 'TEST LABEL',
+				label: 'MonthlyChart',
 				data,
 
 				pointBackgroundColor: '#e6e6e6',
@@ -51,31 +46,12 @@ function MonthBlock({ habit, color, dimmedColor, lightDimmedColor }) {
 			}]
 		},
 
-		options: {
-			scales: {
-				x: {
-					grid: { color: dimmedColor, lineWidth: 0.4 },
-					ticks: { color: lightDimmedColor }
-				},
-
-				y: {
-					grid: { color: dimmedColor, lineWidth: 0.4 },
-					ticks: { color: lightDimmedColor }
-				}
-			}
-		},
+		options
 	};
 
 	return (
-		<div className={styles.monthBlock}>
-			<div className={styles.header}>
-				<h3>Weekly Completion Stats</h3>
-				<FaCalendarAlt style={{ color }} />
-			</div>
-
-			<Line {...config} />
-		</div>
+		<Line {...config} />
 	);
 }
 
-export default MonthBlock;
+export default MonthlyChart;
