@@ -1,10 +1,11 @@
 import styles from '../../css/WeekdayChart.module.css';
 
-import { BarElement, Chart as ChartJS } from "chart.js";
-import { Bar } from "react-chartjs-2";
-
 // utils
 import getCompletionCountPerDay from '../../utils/getCompletionCountPerDay';
+
+// chart js
+import { BarElement, Chart as ChartJS } from "chart.js";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(BarElement);
 

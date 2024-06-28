@@ -3,6 +3,7 @@ import styles from '../../css/Statistics.module.css';
 // components
 import Chart from './Chart';
 import StreakBlock from './StreakBlock';
+import StreakChart from './StreakChart';
 import WeekdayChart from './WeekdayChart';
 import MonthlyChart from './MonthlyChart';
 
@@ -11,6 +12,7 @@ import getDimmedColor from '../../utils/getDimmedColor';
 import getLightDimmedColor from '../../utils/getLightDimmedColor';
 
 // icons
+import { FaChartBar } from "react-icons/fa6";
 import { FaCalendarWeek } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 
@@ -45,10 +47,20 @@ function Statistics(props) {
 
 	return (
 		<div className={styles.statistics}>
-			<StreakBlock {...{ habit }} />
+			{/* <StreakBlock {...{ habit }} /> */}
 
 			<Chart
-				title="Weekday Habit Performance"
+				title="Streaks"
+				icon={<FaChartBar style={{ color: color }} />}
+			>
+				<StreakChart
+					{...{ habit, color }}
+					options={chartOptions}
+				/>
+			</Chart>
+
+			<Chart
+				title="Completion / Weekday"
 				icon={<FaCalendarWeek style={{ color: color }} />}
 			>
 				<WeekdayChart
@@ -58,7 +70,7 @@ function Statistics(props) {
 			</Chart>
 
 			<Chart
-				title="Monthly Habit Completion"
+				title="Completion / Month"
 				icon={<FaCalendarAlt style={{ color: color }} />}
 			>
 				<MonthlyChart

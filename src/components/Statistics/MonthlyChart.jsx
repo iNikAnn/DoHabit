@@ -1,10 +1,11 @@
 import styles from '../../css/MonthlyChart.module.css';
 
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, } from "chart.js";
-import { Line } from "react-chartjs-2";
-
 // utils
 import getCompletionCountPerMonth from '../../utils/getCompletionCountPerMonth';
+
+// chart js
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, } from "chart.js";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler);
 
