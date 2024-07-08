@@ -60,7 +60,7 @@ function Statistics(props) {
 			</Chart>
 
 			<Chart
-				title="Completion / Weekday"
+				title="Completions / Weekday"
 				icon={<FaCalendarWeek style={{ color: color }} />}
 			>
 				<WeekdayChart
@@ -70,7 +70,7 @@ function Statistics(props) {
 			</Chart>
 
 			<Chart
-				title="Completion / Month"
+				title="Completions / Month"
 				icon={<FaCalendarAlt style={{ color: color }} />}
 			>
 				<MonthlyChart

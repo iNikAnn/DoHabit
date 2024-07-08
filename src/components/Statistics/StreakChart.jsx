@@ -29,11 +29,11 @@ function StreakChart({ options, habit, color }) {
 			...options,
 			indexAxis: 'y'
 		}
-	}
+	};
 
 	return (
 		<Bar {...config} />
-	)
+	);
 }
 
 export default StreakChart;
