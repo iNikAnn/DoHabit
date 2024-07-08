@@ -35,12 +35,12 @@ function Statistics(props) {
 		scales: {
 			x: {
 				grid: { color: dimmedColor, lineWidth: 0.4 },
-				ticks: { color: lightDimmedColor }
+				ticks: { color: 'gray' }
 			},
 
 			y: {
 				grid: { color: dimmedColor, lineWidth: 0.4 },
-				ticks: { color: lightDimmedColor }
+				ticks: { color: 'gray' }
 			}
 		}
 	};

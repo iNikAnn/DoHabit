@@ -5,6 +5,7 @@ import Button from './Button';
 
 // icons
 import { FaPlusCircle } from "react-icons/fa";
+import { IoIosArrowForward } from "react-icons/io";
 
 function Modal(props) {
 	const {
@@ -19,16 +20,18 @@ function Modal(props) {
 	return (
 		<div className={styles.modal}>
 			<div className={styles.header}>
-				<h2 className={styles.title}>
-					{title}
-				</h2>
-
-				<Button
+				{/* <Button
 					icon={<FaPlusCircle />}
 					text="Close"
 					bgColor="Gray"
 					onClick={onClose}
-				/>
+				/> */}
+
+				<IoIosArrowForward onClick={onClose} />
+
+				<h2 className={styles.title}>
+					{title}
+				</h2>
 			</div>
 
 			<div className={styles.childrenWrapper}>

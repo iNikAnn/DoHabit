@@ -16,12 +16,15 @@
 
 /* header */
 .header {
+	height: var(--header-height);
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	align-items: center;
 	gap: 1rem;
-	border-bottom: 1px solid var(--bg-color-secondary);
-	padding: 1rem;
+	flex-shrink: 0;
+
+	/* border-bottom: 1px solid var(--bg-color-secondary); */
+	padding: 0 1rem;
 }
 
 /* title */
@@ -32,13 +35,21 @@
 }
 
 /* close btn */
-.header button svg {
+/* .header button svg {
 	transform: rotate(45deg);
+} */
+
+.header svg {
+	width: 1.6rem;
+	height: 1.6rem;
+	transform: rotate(180deg);
+	stroke-width: 20;
 }
 
 /* childrenWrapper */
 .childrenWrapper {
 	height: 100%;
 	padding: 1rem;
+	padding-top: 0;
 	overflow-y: scroll;
 }
