@@ -2,8 +2,9 @@ import styles from '../../css/MenuItem.module.css';
 
 // icons
 import { IoIosArrowForward } from "react-icons/io";
+import { LuExternalLink } from "react-icons/lu";
 
-function MenuItem({ icon, title, desc, onClick }) {
+function MenuItem({ icon, title, desc, onClick, arrow, link }) {
 	return (
 		<li>
 			<button
@@ -22,7 +23,13 @@ function MenuItem({ icon, title, desc, onClick }) {
 					</small>
 				</div>
 
-				<IoIosArrowForward />
+				{arrow && (
+					<IoIosArrowForward />
+				)}
+
+				{link && (
+					<LuExternalLink />
+				)}
 			</button>
 		</li>
 	)
