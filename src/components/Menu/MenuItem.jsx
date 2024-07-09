@@ -4,14 +4,16 @@ import styles from '../../css/MenuItem.module.css';
 import { IoIosArrowForward } from "react-icons/io";
 import { LuExternalLink } from "react-icons/lu";
 
-function MenuItem({ icon, title, desc, onClick, arrow, link }) {
+function MenuItem({ icon, iconColor, title, desc, onClick, arrow, link }) {
 	return (
 		<li>
 			<button
 				className={styles.menuItem}
 				onClick={onClick}
 			>
-				{icon}
+				<div style={{ color: iconColor }}>
+					{icon}
+				</div>
 
 				<div className={styles.textWrapper}>
 					<h3 className={styles.title}>
