@@ -17,7 +17,7 @@ import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
 // icons
 import { MdAddToPhotos } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
-import { HiMiniArchiveBoxArrowDown } from "react-icons/hi2";
+import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 
 function HabitEditor(props) {
 	const {
@@ -134,7 +134,7 @@ function HabitEditor(props) {
 							/>
 
 							<Button
-								icon={<HiMiniArchiveBoxArrowDown />}
+								icon={<HiArchiveBoxArrowDown />}
 								text="Archive Habit"
 								// bgColor="#7b68ee"
 								bgColor="var(--bg-color-primary)"

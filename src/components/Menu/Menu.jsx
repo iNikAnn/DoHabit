@@ -9,10 +9,29 @@ import { BsFillDatabaseFill } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { ImFire } from "react-icons/im";
+import { HiArchiveBox } from "react-icons/hi2";
 
 function Menu({ onOpenModal }) {
 	return (
 		<section className={styles.menu}>
+			<div className={styles.category}>
+				<h4>App</h4>
+
+				<ul className={styles.list}>
+					<MenuItem
+						icon={<HiArchiveBox />}
+						iconColor="#7b68ee"
+						title="Archive"
+						desc="View or manage archived habits"
+						onClick={() => onOpenModal({
+							modalTitle: 'Archive',
+							modalContent: 'archive'
+						})}
+						arrow
+					/>
+				</ul>
+			</div>
+
 			<div className={styles.category}>
 				<h4>General</h4>
 
