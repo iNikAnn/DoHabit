@@ -5,12 +5,14 @@ import ProgressBar from './ProgressBar';
 
 // icons
 import { FaCheck } from "react-icons/fa";
+import { HiArchiveBoxXMark } from "react-icons/hi2";
 
 function HabitHeader(props) {
 	const {
 		title, icon, frequency, diary,
 		color, dimmedColor,
 		isTodayCompleted, todayProgress, currentStreak,
+		archive,
 
 		// 'on' functions
 		onUpdate
@@ -62,26 +64,42 @@ function HabitHeader(props) {
 				</div>
 			</div>
 
-			<div className={styles.progressWrapper}>
-				{frequency > 1 && (
-					<ProgressBar
-						{...{ color, dimmedColor, todayProgress }}
-						segmentCount={frequency}
-					/>
-				)}
-
-				<button
-					style={markAsCompletedBtnStyle}
-					className={styles.markAsCompletedBtn}
-					onClick={handleUpdateProgress}
-				>
-					{progressPercentage === 100 ? (
-						<FaCheck />
-					) : (
-						<strong>{progressPercentage}%</strong>
+			{!archive && (
+				<div className={styles.progressWrapper}>
+					{frequency > 1 && (
+						<ProgressBar
+							{...{ color, dimmedColor, todayProgress }}
+							segmentCount={frequency}
+						/>
 					)}
-				</button>
-			</div>
+
+					<button
+						style={markAsCompletedBtnStyle}
+						className={styles.markAsCompletedBtn}
+						onClick={handleUpdateProgress}
+					>
+						{progressPercentage === 100 ? (
+							<FaCheck />
+						) : (
+							<strong>{progressPercentage}%</strong>
+						)}
+					</button>
+				</div>
+			)}
+
+			{archive && (
+				<HiArchiveBoxXMark
+					className={styles.restoreIcon}
+					onClick={() => {
+						if (window.confirm('Are you sure you want to restore this habit')) {
+							onUpdate({
+								type: 'archiveHabit',
+								habitTitle: title
+							})
+						};
+					}}
+				/>
+			)}
 		</div>
 	);
 }

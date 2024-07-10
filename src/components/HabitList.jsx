@@ -8,7 +8,7 @@ import Habit from "./Habit/Habit";
 
 function HabitList(props) {
 	const {
-		habits,
+		habits, archive,
 
 		// 'on' functions
 		onOpenModal, onUpdate,
@@ -27,6 +27,7 @@ function HabitList(props) {
 				icon={dbIcons.find(([iconTitle]) => iconTitle === habit.iconTitle)?.[1] || '?'}
 				color={dbColors[habit.colorIndex]}
 				isMenuVisible={visibleMenuIndex === index}
+				archive={archive}
 
 				// 'on' functions
 				{...{ onOpenModal, onUpdate }}

@@ -139,6 +139,7 @@ function App() {
 					{modal.modalContent === 'archive' && (
 						<Archive
 							{...{ habits, dbIcons, dbColors }}
+							onUpdate={handleUpdateHabits}
 						/>
 					)}
 

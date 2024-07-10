@@ -18,7 +18,7 @@ import shareHabit from '../../utils/shareHabit';
 
 function Habit(props) {
 	const {
-		color, completedDays, frequency, isMenuVisible,
+		color, completedDays, frequency, isMenuVisible, archive,
 
 		// 'on' functions
 		onShowMenu
@@ -63,16 +63,18 @@ function Habit(props) {
 				}}
 			/>
 
-			<div className={styles.content}>
-				<Calendar
-					{...{
-						color, dimmedColor, lightDimmedColor,
-						completedDays, frequency
-					}}
-				/>
-			</div>
+			{!archive && (
+				<div className={styles.content}>
+					<Calendar
+						{...{
+							color, dimmedColor, lightDimmedColor,
+							completedDays, frequency
+						}}
+					/>
+				</div>
+			)}
 
-			{isMenuVisible && (
+			{(isMenuVisible && !archive) && (
 				<HabitMenu
 					{...props}
 					{...{ isTodayCompleted, isYesterdayCompleted, todayProgress }}
