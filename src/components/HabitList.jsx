@@ -24,21 +24,23 @@ function HabitList(props) {
 
 	const [visibleMenuIndex, setVisibleMenuIndex] = useState(-1);
 
-	const habitList = habits.map(
-		(habit, index) => (
-			<Habit
-				key={habit.title}
-				{...habit}
-				icon={dbIcons.find(([iconTitle]) => iconTitle === habit.iconTitle)?.[1] || '?'}
-				color={dbColors[habit.colorIndex]}
-				isMenuVisible={visibleMenuIndex === index}
+	const habitList = habits
+		.filter(habit => !habit.isArchived)
+		.map(
+			(habit, index) => (
+				<Habit
+					key={habit.title}
+					{...habit}
+					icon={dbIcons.find(([iconTitle]) => iconTitle === habit.iconTitle)?.[1] || '?'}
+					color={dbColors[habit.colorIndex]}
+					isMenuVisible={visibleMenuIndex === index}
 
-				// 'on' functions
-				{...{ onOpenModal, onUpdate }}
-				onShowMenu={() => setVisibleMenuIndex(index === visibleMenuIndex ? -1 : index)}
-			/>
-		)
-	);
+					// 'on' functions
+					{...{ onOpenModal, onUpdate }}
+					onShowMenu={() => setVisibleMenuIndex(index === visibleMenuIndex ? -1 : index)}
+				/>
+			)
+		);
 
 	return (
 		<div className={styles.habitList}>
