@@ -4,6 +4,7 @@ import editHabit from './editHabit';
 import updateHabitProgress from './updateHabitProgress';
 import addNote from './addNote';
 import deleteNote from './deleteNote';
+import archiveHabit from './archiveHabit';
 import toggleCompleteYeserday from './toggleCompleteYeserday';
 
 function habitsReducer(habits, action) {
@@ -34,6 +35,10 @@ function habitsReducer(habits, action) {
 
 		case 'deleteHabit':
 			habits = deleteHabit(habits, habitTitle);
+			break;
+
+		case 'archiveHabit':
+			habits = archiveHabit(habits, habitTitle);
 			break;
 
 		case 'editHabit':

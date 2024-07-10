@@ -2,18 +2,13 @@ import styles from '../css/HabitList.module.css';
 
 // react
 import { useState } from 'react';
-import { ReactComponent as Calendar } from '../img/calendar.svg'
 
 // components
 import Habit from "./Habit/Habit";
-import Placeholder from './Placeholder';
-
-// icons
-import { MdAddToPhotos } from "react-icons/md";
 
 function HabitList(props) {
 	const {
-		habits,
+		habits, archive,
 
 		// 'on' functions
 		onOpenModal, onUpdate,
@@ -32,6 +27,7 @@ function HabitList(props) {
 				icon={dbIcons.find(([iconTitle]) => iconTitle === habit.iconTitle)?.[1] || '?'}
 				color={dbColors[habit.colorIndex]}
 				isMenuVisible={visibleMenuIndex === index}
+				archive={archive}
 
 				// 'on' functions
 				{...{ onOpenModal, onUpdate }}
@@ -42,20 +38,6 @@ function HabitList(props) {
 
 	return (
 		<div className={styles.habitList}>
-			{!habitList.length && (
-				<Placeholder
-					image={<Calendar />}
-					title="Looks like you haven't created any habits yet"
-					desc="Why not create one now?"
-					textOnButton="Create First Habit"
-					buttonIcon={<MdAddToPhotos />}
-					onClick={() => onOpenModal({
-						modalContent: 'habitEditor',
-						modalTitle: 'Create new habit',
-					})}
-				/>
-			)}
-
 			{habitList}
 		</div>
 	);

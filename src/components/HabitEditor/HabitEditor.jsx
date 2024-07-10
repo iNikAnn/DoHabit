@@ -17,6 +17,7 @@ import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
 // icons
 import { MdAddToPhotos } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
+import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 
 function HabitEditor(props) {
 	const {
@@ -107,23 +108,45 @@ function HabitEditor(props) {
 					{...{ habits, dbIcons, currentIconTitle: habit?.iconTitle }}
 				/>
 
-				<small className={styles.info}>
+				<small
+					style={{ paddingBottom: isEditMode ? '8rem' : '5rem' }}
+					className={styles.info}
+				>
 					"Color" and "Icon" icons in reduced size indicate that they have been previously used (but can be reused).
 				</small>
 
 				<div className={styles.btnsWrapper}>
 					{isEditMode && (
-						<Button
-							icon={<MdDeleteForever />}
-							text="Delete Habit"
-							bgColor="IndianRed"
-							onClick={() => {
-								const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
-								if (window.confirm(msg)) {
-									handleUpdate({ ...actionObj, type: 'deleteHabit' });
-								}
-							}}
-						/>
+						<div className={styles.extraBtnsWrapper}>
+							<Button
+								icon={<MdDeleteForever />}
+								text="Delete Habit"
+								color="IndianRed"
+								// bgColor="IndianRed"
+								bgColor="var(--bg-color-primary)"
+								onClick={() => {
+									const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
+
+									if (window.confirm(msg)) {
+										handleUpdate({ ...actionObj, type: 'deleteHabit' });
+									};
+								}}
+							/>
+
+							<Button
+								icon={<HiArchiveBoxArrowDown />}
+								text="Archive Habit"
+								// bgColor="#7b68ee"
+								bgColor="var(--bg-color-primary)"
+								onClick={() => {
+									const msg = 'Are you sure you want to archive this habit? Archived habits can be found in the menu under the "Archive" section.';
+
+									if (window.confirm(msg)) {
+										handleUpdate({ ...actionObj, type: 'archiveHabit' });
+									};
+								}}
+							/>
+						</div>
 					)}
 
 					<Button

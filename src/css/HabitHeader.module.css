@@ -71,3 +71,11 @@
 	gap: 0.6rem;
 	color: gray;
 }
+
+/* restoreIcon */
+.restoreIcon {
+	width: 1.4rem;
+	height: 1.4rem;
+	flex-shrink: 0;
+	margin-right: 1rem;
+}

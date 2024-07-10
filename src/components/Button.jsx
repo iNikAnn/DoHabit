@@ -5,13 +5,13 @@ import { IoIosArrowForward } from "react-icons/io";
 
 function Button(props) {
 	const {
-		type, icon, text, arrow, bgColor, disabled, onClick
+		type, icon, text, arrow, color, bgColor, disabled, onClick
 	} = props;
 
 	return (
 		<button
 			type={type || 'button'}
-			style={{ backgroundColor: bgColor }}
+			style={{ color: color, backgroundColor: bgColor }}
 			className={styles.button}
 			onClick={onClick}
 			disabled={disabled}

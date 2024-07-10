@@ -21,12 +21,14 @@ function Placeholder(props) {
 				</span>
 			</div>
 
-			<Button
-				icon={buttonIcon}
-				text={textOnButton}
-				bgColor={accentColor}
-				onClick={onClick}
-			/>
+			{textOnButton && (
+				<Button
+					icon={buttonIcon}
+					text={textOnButton}
+					bgColor={accentColor}
+					onClick={onClick}
+				/>
+			)}
 		</div>
 	);
 }

@@ -8,9 +8,11 @@ import Header from './components/Header';
 import HabitList from './components/HabitList';
 import Modal from './components/Modal';
 import HabitEditor from './components/HabitEditor/HabitEditor';
+import Placeholder from './components/Placeholder';
 import Menu from './components/Menu/Menu';
 import Diary from './components/Diary/Diary';
 import Statistics from './components/Statistics/Statistics';
+import Archive from './components/Archive/Archive';
 import DataTransfer from './components/DataTransfer/DataTransfer';
 
 // utils
@@ -19,6 +21,10 @@ import updateDB from './utils/updateDB';
 import validateModalProps from './utils/validateModalProps';
 import exportHabits from './utils/exportHabits';
 import importHabits from './utils/importHabits';
+
+// icons
+import { ReactComponent as Calendar } from './img/calendar.svg'
+import { MdAddToPhotos } from "react-icons/md";
 
 // db
 import dbIcons from './db/dbIcons';
@@ -82,12 +88,27 @@ function App() {
 
 			<main>
 				<HabitList
-					{...{ habits, dbIcons, dbColors }}
+					habits={habits.filter(h => !h.isArchived)}
+					{...{ dbIcons, dbColors }}
 
 					// 'on' functions
 					onOpenModal={handleOpenModal}
 					onUpdate={handleUpdateHabits}
 				/>
+
+				{!habits.filter(h => !h.isArchived).length && (
+					<Placeholder
+						image={<Calendar />}
+						title="No active habits found"
+						desc="Why not create one now?"
+						textOnButton="Create First Habit"
+						buttonIcon={<MdAddToPhotos />}
+						onClick={() => handleOpenModal({
+							modalContent: 'habitEditor',
+							modalTitle: 'Create new habit',
+						})}
+					/>
+				)}
 			</main>
 
 			{modal && (
@@ -112,6 +133,13 @@ function App() {
 						<Menu
 							// 'on' functions
 							onOpenModal={handleOpenModal}
+						/>
+					)}
+
+					{modal.modalContent === 'archive' && (
+						<Archive
+							{...{ habits, dbIcons, dbColors }}
+							onUpdate={handleUpdateHabits}
 						/>
 					)}
 
