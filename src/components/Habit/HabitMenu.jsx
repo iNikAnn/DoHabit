@@ -5,7 +5,7 @@ import Button from '../Button';
 
 // icons
 import { MdEditSquare } from "react-icons/md";
-import { MdLibraryBooks } from "react-icons/md";
+import { MdLibraryBooks } from "react-icons/md"; // diary
 import { FaShareAltSquare } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
 import { FaCalendarTimes } from "react-icons/fa";
