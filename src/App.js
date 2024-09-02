@@ -42,6 +42,17 @@ function App() {
 		[habits]
 	);
 
+	// main diary
+	const [mainDiary, setDiary] = useState(() => {
+		const storedDiary = localStorage.getItem('mainDiary');
+		return storedDiary ? JSON.parse(storedDiary) : [];
+	});
+
+	useEffect(
+		() => { localStorage.setItem('mainDiary', JSON.stringify(mainDiary)) },
+		[mainDiary]
+	);
+
 	// update habit
 	const handleUpdateHabits = (actions) => dispatch(actions);
 
@@ -152,8 +163,13 @@ function App() {
 
 					{modal.modalContent === 'diary' && (
 						<Diary
-							{...{ habits }}
 							habitTitle={modal.habitTitle}
+							accentColor={dbColors[modal.colorIndex]}
+							diary={
+								modal.habitTitle
+									? habits.find((h) => h.title === modal.habitTitle).diary
+									: mainDiary
+							}
 
 							// 'on' functions
 							onUpdate={handleUpdateHabits}

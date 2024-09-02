@@ -13,7 +13,8 @@ import { FaChartSimple } from "react-icons/fa6";
 
 function HabitMenu(props) {
 	const {
-		title, btnBgColor, isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
+		title, btnBgColor, colorIndex,
+		isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
 
 		// 'on' functions
 		onOpenModal, onUpdate, onShare
@@ -83,6 +84,7 @@ function HabitMenu(props) {
 						bgColor={btnBgColor}
 						onClick={() => onOpenModal({
 							habitTitle: title,
+							colorIndex: colorIndex,
 							modalTitle: title,
 							modalContent: 'diary'
 						})}

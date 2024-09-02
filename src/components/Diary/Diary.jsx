@@ -5,9 +5,6 @@ import NoteList from './NoteList';
 import Placeholder from '../Placeholder';
 import AddNoteForm from './AddNoteForm';
 
-// db
-import dbColors from '../../db/dbColors';
-
 // icons
 import { ReactComponent as InfoSvg } from '../../img/information.svg';
 import { MdStickyNote2 } from "react-icons/md";
@@ -15,15 +12,13 @@ import { useEffect, useRef, useState } from 'react';
 
 function Diary(props) {
 	const {
-		habits, habitTitle,
+		habitTitle, diary, accentColor,
 
 		// 'on' functions
 		onUpdate
 	} = props;
 
-	const habit = habits.find((habit) => habit.title === habitTitle);
-	const hasNotes = habit.diary && habit.diary.length;
-	const accentColor = dbColors[habit.colorIndex];
+	const hasNotes = diary && typeof diary === 'object' && diary.length;
 
 	// create new note
 	const handleAddNote = (text) => {
@@ -34,7 +29,7 @@ function Diary(props) {
 
 		onUpdate({
 			type: 'addNote',
-			habitTitle: habit.title,
+			habitTitle: habitTitle,
 			newNote
 		});
 
@@ -46,7 +41,7 @@ function Diary(props) {
 		if (window.confirm('Are you sure you want to delete this note?')) {
 			onUpdate({
 				type: 'deleteNote',
-				habitTitle: habit.title,
+				habitTitle: habitTitle,
 				noteCreationDate
 			});
 		};
@@ -72,7 +67,7 @@ function Diary(props) {
 		<div style={{ paddingBottom: '3rem' }}>
 			{hasNotes ? (
 				<NoteList
-					diary={habit.diary}
+					diary={diary}
 					onDeleteNote={handleDeleteNote}
 				/>
 			) : (

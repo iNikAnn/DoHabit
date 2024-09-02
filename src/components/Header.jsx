@@ -33,7 +33,10 @@ function Header(props) {
 
 				<button
 					className={styles.btn}
-					onClick={() => { }}
+					onClick={() => onOpenModal({
+						modalTitle: 'Main Diary',
+						modalContent: 'diary'
+					})}
 				>
 					<MdLibraryBooks />
 				</button>
