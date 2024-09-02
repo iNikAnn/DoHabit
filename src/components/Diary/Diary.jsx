@@ -15,7 +15,7 @@ function Diary(props) {
 		habitTitle, diary, accentColor,
 
 		// 'on' functions
-		onUpdate
+		onUpdate, onUpdateMainDiary
 	} = props;
 
 	const hasNotes = diary && typeof diary === 'object' && diary.length;
@@ -27,11 +27,18 @@ function Diary(props) {
 			date: new Date()
 		};
 
-		onUpdate({
-			type: 'addNote',
-			habitTitle: habitTitle,
-			newNote
-		});
+		if (habitTitle) {
+			onUpdate({
+				type: 'addNote',
+				habitTitle: habitTitle,
+				newNote
+			});
+		} else {
+			onUpdateMainDiary({
+				type: 'addNote',
+				newNote
+			});
+		};
 
 		handleFormActivation(false);
 	};

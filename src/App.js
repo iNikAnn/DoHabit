@@ -42,8 +42,11 @@ function App() {
 		[habits]
 	);
 
+	// update habit
+	const handleUpdateHabits = (actions) => dispatch(actions);
+
 	// main diary
-	const [mainDiary, setDiary] = useState(() => {
+	const [mainDiary, setMainDiary] = useState(() => {
 		const storedDiary = localStorage.getItem('mainDiary');
 		return storedDiary ? JSON.parse(storedDiary) : [];
 	});
@@ -53,8 +56,19 @@ function App() {
 		[mainDiary]
 	);
 
-	// update habit
-	const handleUpdateHabits = (actions) => dispatch(actions);
+	const handleUpdateMainDiary = (actions) => {
+		switch (actions.type) {
+			case 'addNote':
+				setMainDiary((prevMainDiary) => [
+					...prevMainDiary,
+					actions.newNote
+				]);
+				break;
+
+			default:
+				break;
+		};
+	};
 
 	// modal
 	const [modal, setModal] = useState(null);
@@ -173,6 +187,7 @@ function App() {
 
 							// 'on' functions
 							onUpdate={handleUpdateHabits}
+							onUpdateMainDiary={handleUpdateMainDiary}
 						/>
 					)}
 
