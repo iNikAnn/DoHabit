@@ -18,6 +18,7 @@ import DataTransfer from './components/DataTransfer/DataTransfer';
 // utils
 import habitsReducer from './utils/habitsReducer';
 import updateDB from './utils/updateDB';
+import mainDiaryReducer from './utils/mainDiaryReducer';
 import validateModalProps from './utils/validateModalProps';
 import exportHabits from './utils/exportHabits';
 import importHabits from './utils/importHabits';
@@ -34,7 +35,7 @@ function App() {
 	let initialHabits = localStorage.getItem('habits');
 	initialHabits = initialHabits ? updateDB(initialHabits, dbColors) : [];
 
-	const [habits, dispatch] = useReducer(habitsReducer, initialHabits);
+	const [habits, habitsDispatch] = useReducer(habitsReducer, initialHabits);
 
 	// save habits to local storage
 	useEffect(
@@ -43,38 +44,24 @@ function App() {
 	);
 
 	// update habit
-	const handleUpdateHabits = (actions) => dispatch(actions);
+	const handleUpdateHabits = (actions) => habitsDispatch(actions);
 
 	// main diary
-	const [mainDiary, setMainDiary] = useState(() => {
-		const storedDiary = localStorage.getItem('mainDiary');
-		return storedDiary ? JSON.parse(storedDiary) : [];
-	});
+	const [mainDiary, mainDiaryDispatch] = useReducer(
+		mainDiaryReducer,
+		null,
+		() => {
+			const storedDiary = localStorage.getItem('mainDiary');
+			return storedDiary ? JSON.parse(storedDiary) : [];
+		}
+	);
 
 	useEffect(
 		() => { localStorage.setItem('mainDiary', JSON.stringify(mainDiary)) },
 		[mainDiary]
 	);
 
-	const handleUpdateMainDiary = (actions) => {
-		switch (actions.type) {
-			case 'addNote':
-				setMainDiary((prevMainDiary) => [
-					...prevMainDiary,
-					actions.newNote
-				]);
-				break;
-
-			case 'deleteNote':
-				setMainDiary((prevMainDiary) => prevMainDiary.filter(
-					(n) => n.date !== actions.noteCreationDate
-				));
-				break;
-
-			default:
-				break;
-		};
-	};
+	const handleUpdateMainDiary = (actions) => mainDiaryDispatch(actions);
 
 	// modal
 	const [modal, setModal] = useState(null);

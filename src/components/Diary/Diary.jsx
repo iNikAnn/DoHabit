@@ -27,17 +27,16 @@ function Diary(props) {
 			date: new Date()
 		};
 
+		const actions = {
+			type: 'addNote',
+			habitTitle: habitTitle,
+			newNote
+		}
+
 		if (habitTitle) {
-			onUpdate({
-				type: 'addNote',
-				habitTitle: habitTitle,
-				newNote
-			});
+			onUpdate(actions);
 		} else {
-			onUpdateMainDiary({
-				type: 'addNote',
-				newNote
-			});
+			onUpdateMainDiary(actions);
 		};
 
 		handleFormActivation(false);
@@ -46,17 +45,16 @@ function Diary(props) {
 	// delete note
 	const handleDeleteNote = (noteCreationDate) => {
 		if (window.confirm('Are you sure you want to delete this note?')) {
+			const actions = {
+				type: 'deleteNote',
+				habitTitle: habitTitle,
+				noteCreationDate
+			};
+
 			if (habitTitle) {
-				onUpdate({
-					type: 'deleteNote',
-					habitTitle: habitTitle,
-					noteCreationDate
-				});
+				onUpdate(actions);
 			} else {
-				onUpdateMainDiary({
-					type: 'deleteNote',
-					noteCreationDate
-				});
+				onUpdateMainDiary(actions);
 			};
 		};
 	};
