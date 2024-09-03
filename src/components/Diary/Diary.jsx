@@ -46,11 +46,18 @@ function Diary(props) {
 	// delete note
 	const handleDeleteNote = (noteCreationDate) => {
 		if (window.confirm('Are you sure you want to delete this note?')) {
-			onUpdate({
-				type: 'deleteNote',
-				habitTitle: habitTitle,
-				noteCreationDate
-			});
+			if (habitTitle) {
+				onUpdate({
+					type: 'deleteNote',
+					habitTitle: habitTitle,
+					noteCreationDate
+				});
+			} else {
+				onUpdateMainDiary({
+					type: 'deleteNote',
+					noteCreationDate
+				});
+			};
 		};
 	};
 

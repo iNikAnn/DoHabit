@@ -65,6 +65,12 @@ function App() {
 				]);
 				break;
 
+			case 'deleteNote':
+				setMainDiary((prevMainDiary) => prevMainDiary.filter(
+					(n) => n.date !== actions.noteCreationDate
+				));
+				break;
+
 			default:
 				break;
 		};
