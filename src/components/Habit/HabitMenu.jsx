@@ -5,7 +5,7 @@ import Button from '../Button';
 
 // icons
 import { MdEditSquare } from "react-icons/md";
-import { MdLibraryBooks } from "react-icons/md";
+import { MdLibraryBooks } from "react-icons/md"; // diary
 import { FaShareAltSquare } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
 import { FaCalendarTimes } from "react-icons/fa";
@@ -13,7 +13,8 @@ import { FaChartSimple } from "react-icons/fa6";
 
 function HabitMenu(props) {
 	const {
-		title, btnBgColor, isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
+		title, btnBgColor, colorIndex,
+		isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
 
 		// 'on' functions
 		onOpenModal, onUpdate, onShare
@@ -83,6 +84,7 @@ function HabitMenu(props) {
 						bgColor={btnBgColor}
 						onClick={() => onOpenModal({
 							habitTitle: title,
+							colorIndex: colorIndex,
 							modalTitle: title,
 							modalContent: 'diary'
 						})}

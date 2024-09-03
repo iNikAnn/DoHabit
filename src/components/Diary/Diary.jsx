@@ -5,9 +5,6 @@ import NoteList from './NoteList';
 import Placeholder from '../Placeholder';
 import AddNoteForm from './AddNoteForm';
 
-// db
-import dbColors from '../../db/dbColors';
-
 // icons
 import { ReactComponent as InfoSvg } from '../../img/information.svg';
 import { MdStickyNote2 } from "react-icons/md";
@@ -15,15 +12,13 @@ import { useEffect, useRef, useState } from 'react';
 
 function Diary(props) {
 	const {
-		habits, habitTitle,
+		habitTitle, diary, accentColor,
 
 		// 'on' functions
-		onUpdate
+		onUpdate, onUpdateMainDiary
 	} = props;
 
-	const habit = habits.find((habit) => habit.title === habitTitle);
-	const hasNotes = habit.diary && habit.diary.length;
-	const accentColor = dbColors[habit.colorIndex];
+	const hasNotes = diary && typeof diary === 'object' && diary.length;
 
 	// create new note
 	const handleAddNote = (text) => {
@@ -32,11 +27,18 @@ function Diary(props) {
 			date: new Date()
 		};
 
-		onUpdate({
-			type: 'addNote',
-			habitTitle: habit.title,
-			newNote
-		});
+		if (habitTitle) {
+			onUpdate({
+				type: 'addNote',
+				habitTitle: habitTitle,
+				newNote
+			});
+		} else {
+			onUpdateMainDiary({
+				type: 'addNote',
+				newNote
+			});
+		};
 
 		handleFormActivation(false);
 	};
@@ -44,11 +46,18 @@ function Diary(props) {
 	// delete note
 	const handleDeleteNote = (noteCreationDate) => {
 		if (window.confirm('Are you sure you want to delete this note?')) {
-			onUpdate({
-				type: 'deleteNote',
-				habitTitle: habit.title,
-				noteCreationDate
-			});
+			if (habitTitle) {
+				onUpdate({
+					type: 'deleteNote',
+					habitTitle: habitTitle,
+					noteCreationDate
+				});
+			} else {
+				onUpdateMainDiary({
+					type: 'deleteNote',
+					noteCreationDate
+				});
+			};
 		};
 	};
 
@@ -72,13 +81,13 @@ function Diary(props) {
 		<div style={{ paddingBottom: '3rem' }}>
 			{hasNotes ? (
 				<NoteList
-					diary={habit.diary}
+					diary={diary}
 					onDeleteNote={handleDeleteNote}
 				/>
 			) : (
 				<Placeholder
 					image={<InfoSvg />}
-					title="This habit's diary is empty"
+					title={(habitTitle ? "This habit's" : 'Main') + ' diary is empty'}
 					desc="Add your first note to start tracking your progress and thoughts."
 					textOnButton="Add First Note"
 					buttonIcon={<MdStickyNote2 />}

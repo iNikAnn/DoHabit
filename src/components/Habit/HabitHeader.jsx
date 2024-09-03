@@ -56,7 +56,7 @@ function HabitHeader(props) {
 						Streak: <strong>{currentStreak}</strong>
 					</small>
 
-					{(diary && diary.length) && (
+					{(diary?.length > 0) && (
 						<small>
 							Notes: <strong>{diary.length}</strong>
 						</small>
@@ -91,7 +91,7 @@ function HabitHeader(props) {
 				<HiArchiveBoxXMark
 					className={styles.restoreIcon}
 					onClick={() => {
-						if (window.confirm('Are you sure you want to restore this habit')) {
+						if (window.confirm('Are you sure you want to restore this habit?')) {
 							onUpdate({
 								type: 'archiveHabit',
 								habitTitle: title

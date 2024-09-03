@@ -3,6 +3,7 @@ import styles from '../css/Header.module.css';
 // icons
 import { FaBurger } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
+import { MdLibraryBooks } from "react-icons/md"; // diary
 
 function Header(props) {
 	const {
@@ -28,6 +29,16 @@ function Header(props) {
 					onClick={() => onOpenHabitEditor(modalProps)}
 				>
 					<FaPlus />
+				</button>
+
+				<button
+					className={styles.btn}
+					onClick={() => onOpenModal({
+						modalTitle: 'Main Diary',
+						modalContent: 'diary'
+					})}
+				>
+					<MdLibraryBooks />
 				</button>
 
 				<button

@@ -45,6 +45,37 @@ function App() {
 	// update habit
 	const handleUpdateHabits = (actions) => dispatch(actions);
 
+	// main diary
+	const [mainDiary, setMainDiary] = useState(() => {
+		const storedDiary = localStorage.getItem('mainDiary');
+		return storedDiary ? JSON.parse(storedDiary) : [];
+	});
+
+	useEffect(
+		() => { localStorage.setItem('mainDiary', JSON.stringify(mainDiary)) },
+		[mainDiary]
+	);
+
+	const handleUpdateMainDiary = (actions) => {
+		switch (actions.type) {
+			case 'addNote':
+				setMainDiary((prevMainDiary) => [
+					...prevMainDiary,
+					actions.newNote
+				]);
+				break;
+
+			case 'deleteNote':
+				setMainDiary((prevMainDiary) => prevMainDiary.filter(
+					(n) => n.date !== actions.noteCreationDate
+				));
+				break;
+
+			default:
+				break;
+		};
+	};
+
 	// modal
 	const [modal, setModal] = useState(null);
 	const [modalHistory, setModalHistory] = useState([]);
@@ -152,11 +183,17 @@ function App() {
 
 					{modal.modalContent === 'diary' && (
 						<Diary
-							{...{ habits }}
 							habitTitle={modal.habitTitle}
+							accentColor={dbColors[modal.colorIndex]}
+							diary={
+								modal.habitTitle
+									? habits.find((h) => h.title === modal.habitTitle).diary
+									: mainDiary
+							}
 
 							// 'on' functions
 							onUpdate={handleUpdateHabits}
+							onUpdateMainDiary={handleUpdateMainDiary}
 						/>
 					)}
 

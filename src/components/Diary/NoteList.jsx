@@ -4,7 +4,6 @@ import styles from '../../css/NoteList.module.css';
 import Note from './Note';
 
 function NoteList({ diary, onDeleteNote }) {
-
 	const notes = [...diary]
 		.reverse()
 		.map(
