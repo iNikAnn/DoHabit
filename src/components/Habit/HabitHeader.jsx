@@ -56,7 +56,7 @@ function HabitHeader(props) {
 						Streak: <strong>{currentStreak}</strong>
 					</small>
 
-					{(diary && diary.length) && (
+					{(diary?.length > 0) && (
 						<small>
 							Notes: <strong>{diary.length}</strong>
 						</small>

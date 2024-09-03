@@ -10,8 +10,7 @@ function Note({ text, date, onDeleteNote }) {
 	return (
 		<div
 			className={styles.note}
-			// onDoubleClick={() => onDeleteNote(date)}
-			onClick={() => onDeleteNote(date)}
+			onDoubleClick={() => onDeleteNote(date)}
 		>
 			<div>{text}</div>
 
