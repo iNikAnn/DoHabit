@@ -6,6 +6,7 @@ import addNote from './addNote';
 import deleteNote from './deleteNote';
 import archiveHabit from './archiveHabit';
 import toggleCompleteYeserday from './toggleCompleteYeserday';
+import scrollToTop from './scrollToTop';
 
 function habitsReducer(habits, action) {
 	const {
@@ -31,6 +32,7 @@ function habitsReducer(habits, action) {
 
 		case 'addHabit':
 			habits = [newHabit, ...habits];
+			scrollToTop();
 			break;
 
 		case 'deleteHabit':
