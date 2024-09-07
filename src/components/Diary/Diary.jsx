@@ -31,13 +31,21 @@ function Diary(props) {
 			type: 'addNote',
 			habitTitle: habitTitle,
 			newNote
-		}
+		};
 
 		if (habitTitle) {
 			onUpdate(actions);
 		} else {
 			onUpdateMainDiary(actions);
 		};
+
+
+		document.body
+			.querySelector('#modalChildrenWrapper')
+			.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
 
 		handleFormActivation(false);
 	};

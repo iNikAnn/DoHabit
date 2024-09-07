@@ -23,7 +23,10 @@ function Modal(props) {
 				</h2>
 			</div>
 
-			<div className={styles.childrenWrapper}>
+			<div
+				id="modalChildrenWrapper"
+				className={styles.childrenWrapper}
+			>
 				{children}
 			</div>
 		</div>
