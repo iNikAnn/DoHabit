@@ -7,4 +7,6 @@
 .text-button {
 	background-color: transparent;
 	color: dodgerblue;
+	font-size: inherit;
+	font-family: inherit;
 }
