@@ -7,12 +7,17 @@ function Note({ text, date, onDeleteNote }) {
 		{ hour: '2-digit', minute: '2-digit' }
 	);
 
+	const maxTextLength = 90;
+	const shortText = text.length > maxTextLength
+		? text.slice(0, 90).trim() + '...'
+		: text;
+
 	return (
 		<div
 			className={styles.note}
 			onDoubleClick={() => onDeleteNote(date)}
 		>
-			<div>{text}</div>
+			<div>{shortText}</div>
 
 			<span className={styles.desc}>
 				<div className={styles.date}>

@@ -39,7 +39,6 @@ function Diary(props) {
 			onUpdateMainDiary(actions);
 		};
 
-
 		document.body
 			.querySelector('#modalChildrenWrapper')
 			.scrollTo({
