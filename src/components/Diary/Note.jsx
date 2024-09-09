@@ -3,6 +3,10 @@ import styles from '../../css/Note.module.css';
 // react
 import { useState } from 'react';
 
+// icons
+import { MdEditSquare } from "react-icons/md"; // edit
+import { MdDeleteForever } from "react-icons/md"; // delete
+
 function Note({ text, date, onDeleteNote }) {
 	const dateStr = new Date(date).toLocaleDateString();
 	const timeStr = new Date(date).toLocaleTimeString(
@@ -41,6 +45,18 @@ function Note({ text, date, onDeleteNote }) {
 				<div className={styles.date}>
 					<small>{dateStr}</small>
 					<small>{timeStr}</small>
+				</div>
+
+				<div className={styles.actions}>
+					<button className={styles.actionBtn}>
+						<MdEditSquare />
+						Edit
+					</button>
+
+					<button className={styles.actionBtn}>
+						<MdDeleteForever />
+						Delete
+					</button>
 				</div>
 			</span>
 		</div>

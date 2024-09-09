@@ -4,7 +4,7 @@ import styles from '../../css/HabitMenu.module.css';
 import Button from '../Button';
 
 // icons
-import { MdEditSquare } from "react-icons/md";
+import { MdEditSquare } from "react-icons/md"; // edit
 import { MdLibraryBooks } from "react-icons/md"; // diary
 import { FaShareAltSquare } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
