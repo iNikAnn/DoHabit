@@ -49,6 +49,31 @@ function Diary(props) {
 		handleFormActivation(false);
 	};
 
+	// edit note
+	const handleStartEdit = (noteCreationDate, text) => {
+		setIsEditing(noteCreationDate);
+		setInput(text);
+		formRef.current.focus();
+	};
+
+	const handleEditNote = (newText) => {
+		const actions = {
+			type: 'editNote',
+			habitTitle: habitTitle,
+			noteCreationDate: isEditing,
+			newText
+		};
+
+		if (habitTitle) {
+			onUpdate(actions);
+		} else {
+			onUpdateMainDiary(actions);
+		};
+
+		setIsEditing(false);
+		handleFormActivation(false);
+	};
+
 	// delete note
 	const handleDeleteNote = (noteCreationDate) => {
 		if (window.confirm('Are you sure you want to delete this note?')) {
@@ -67,7 +92,9 @@ function Diary(props) {
 	};
 
 	// form
+	const [input, setInput] = useState('');
 	const [isFormActive, setIsFormActive] = useState(false);
+	const [isEditing, setIsEditing] = useState(false);
 	const formRef = useRef(null);
 
 	const handleFormActivation = (boolean) => setIsFormActive(boolean);
@@ -87,6 +114,7 @@ function Diary(props) {
 			{hasNotes ? (
 				<NoteList
 					diary={diary}
+					onStartEditNote={handleStartEdit}
 					onDeleteNote={handleDeleteNote}
 				/>
 			) : (
@@ -104,8 +132,10 @@ function Diary(props) {
 			{(hasNotes || isFormActive) && (
 				<AddNoteForm
 					ref={formRef}
+					input={input}
+					setInput={setInput}
 					onFocus={() => handleFormActivation(true)}
-					onSubmit={handleAddNote}
+					onSubmit={isEditing ? handleEditNote : handleAddNote}
 					isSendBtnVisible={isFormActive}
 				/>
 			)}

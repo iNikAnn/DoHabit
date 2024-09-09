@@ -9,8 +9,8 @@ import Button from '../Button';
 // icons
 import { IoSend } from "react-icons/io5";
 
-const AddNoteForm = forwardRef(function AddNoteForm({ onFocus, onBlur, onSubmit, isSendBtnVisible }, ref) {
-	const [input, setInput] = useState('');
+const AddNoteForm = forwardRef(function AddNoteForm({ input, setInput, onFocus, onBlur, onSubmit, isSendBtnVisible }, ref) {
+	// const [input, setInput] = useState('');
 
 	const handleSubmitForm = (e) => {
 		e.preventDefault();

@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { MdEditSquare } from "react-icons/md"; // edit
 import { MdDeleteForever } from "react-icons/md"; // delete
 
-function Note({ text, date, onDeleteNote }) {
+function Note({ text, date, onStartEditNote, onDeleteNote }) {
 	const dateStr = new Date(date).toLocaleDateString();
 	const timeStr = new Date(date).toLocaleTimeString(
 		'en-GB',
@@ -25,7 +25,6 @@ function Note({ text, date, onDeleteNote }) {
 	return (
 		<div
 			className={styles.note}
-			onDoubleClick={() => onDeleteNote(date)}
 		>
 			<div>
 				{displayedText}
@@ -48,13 +47,19 @@ function Note({ text, date, onDeleteNote }) {
 				</div>
 
 				<div className={styles.actions}>
-					<button className={styles.actionBtn}>
-						<MdEditSquare />
+					<button
+						className={styles.actionBtn}
+						onClick={() => onStartEditNote(date, text)}
+					>
+						{/* <MdEditSquare /> */}
 						Edit
 					</button>
 
-					<button className={styles.actionBtn}>
-						<MdDeleteForever />
+					<button
+						className={styles.actionBtn}
+						onClick={() => onDeleteNote(date)}
+					>
+						{/* <MdDeleteForever /> */}
 						Delete
 					</button>
 				</div>

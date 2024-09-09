@@ -3,7 +3,7 @@ import styles from '../../css/NoteList.module.css';
 // components
 import Note from './Note';
 
-function NoteList({ diary, onDeleteNote }) {
+function NoteList({ diary, onStartEditNote, onDeleteNote }) {
 	const notes = [...diary]
 		.reverse()
 		.map(
@@ -12,7 +12,7 @@ function NoteList({ diary, onDeleteNote }) {
 					key={note.date}
 					text={note.text}
 					date={note.date}
-					{...{ onDeleteNote }}
+					{...{ onStartEditNote, onDeleteNote }}
 				/>
 			)
 		);
