@@ -1,7 +1,7 @@
 import styles from '../../css/AddNoteForm.module.css';
 
 // react
-import { forwardRef, useState } from 'react';
+import { forwardRef } from 'react';
 
 // components
 import Button from '../Button';
@@ -9,8 +9,13 @@ import Button from '../Button';
 // icons
 import { IoSend } from "react-icons/io5";
 
-const AddNoteForm = forwardRef(function AddNoteForm({ input, setInput, onFocus, onBlur, onSubmit, isSendBtnVisible }, ref) {
-	// const [input, setInput] = useState('');
+const AddNoteForm = forwardRef((props, ref) => {
+	const {
+		input, setInput, isSendBtnVisible,
+
+		// 'on' functions
+		onFocus, onBlur, onSubmit
+	} = props;
 
 	const handleSubmitForm = (e) => {
 		e.preventDefault();
@@ -45,7 +50,7 @@ const AddNoteForm = forwardRef(function AddNoteForm({ input, setInput, onFocus, 
 				/>
 			)}
 		</form>
-	)
-})
+	);
+});
 
 export default AddNoteForm;
