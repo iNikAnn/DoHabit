@@ -11,6 +11,7 @@
 	align-items: flex-end;
 
 	backdrop-filter: grayscale(50%) brightness(0.75) blur(4px);
+	z-index: 149;
 }
 
 /* content */
@@ -33,7 +34,7 @@
 	text-wrap: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	margin: 0 1.2rem;
+	margin: 0.4rem 1.2rem;
 }
 
 /* list */

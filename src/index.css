@@ -14,9 +14,9 @@
 	--accent-color: dodgerblue;
 
 	--bg: black;
-	--bg-color-primary: hsl(0, 0%, 10%);
-	--bg-color-secondary: hsl(0, 0%, 15%);
-	--bg-color-tertiary: hsl(0, 0%, 25%);
+	--bg-color-primary: hsl(0, 0%, 8%);
+	--bg-color-secondary: hsl(0, 0%, 12%);
+	--bg-color-tertiary: hsl(0, 0%, 20%);
 
 	--border-radius-primary: 1rem;
 	--border-radius-secondary: 0.6rem;

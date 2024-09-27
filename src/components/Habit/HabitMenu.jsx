@@ -17,15 +17,21 @@ function HabitMenu(props) {
 		isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
 
 		// 'on' functions
-		onOpenModal, onUpdate, onShare
+		onShowMenu, onOpenModal, onUpdate, onShare
 	} = props;
 
 	return (
 		<div data-name="habitMenu" className={styles.menu}>
-			<div className={styles.content}>
+			<div
+				className={styles.content}
+				onClick={(e) => e.stopPropagation()}
+			>
 				<h3 className={styles.title}>{title}</h3>
 
-				<ul className={styles.list}>
+				<ul
+					className={styles.list}
+					onClick={() => onShowMenu(-1)}
+				>
 					<li>
 						<Button
 							icon={isYesterdayCompleted ? <FaCalendarTimes /> : <FaCalendarCheck />}
@@ -92,7 +98,7 @@ function HabitMenu(props) {
 				</ul>
 			</div>
 		</div>
-	)
+	);
 }
 
 export default HabitMenu;

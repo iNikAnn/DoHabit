@@ -29,6 +29,7 @@ function HabitList(props) {
 		(habit, index) => (
 			<Habit
 				key={habit.title}
+				index={index}
 				{...habit}
 				icon={dbIcons.find(([iconTitle]) => iconTitle === habit.iconTitle)?.[1] || '?'}
 				color={dbColors[habit.colorIndex]}
@@ -37,7 +38,9 @@ function HabitList(props) {
 
 				// 'on' functions
 				{...{ onOpenModal, onUpdate }}
-				onShowMenu={() => setVisibleMenuIndex(index === visibleMenuIndex ? -1 : index)}
+				onShowMenu={(i) => {
+					setVisibleMenuIndex(i === visibleMenuIndex ? -1 : i)
+				}}
 			/>
 		)
 	);
