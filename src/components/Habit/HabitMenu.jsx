@@ -22,75 +22,75 @@ function HabitMenu(props) {
 
 	return (
 		<div data-name="habitMenu" className={styles.menu}>
-			<ul className={styles.list}>
-				<li>
-					<Button
-						icon={isYesterdayCompleted ? <FaCalendarTimes /> : <FaCalendarCheck />}
-						text={(isYesterdayCompleted ? 'Uncomp.' : 'Comp.') + ' Y\'day'}
-						bgColor={isYesterdayCompleted ? 'IndianRed' : btnBgColor}
-						onClick={() => onUpdate({
-							type: 'toggleCompleteYeserday',
-							habitTitle: title,
-							isTodayCompleted,
-							isYesterdayCompleted,
-							todayProgress,
-							frequency
-						})}
-					/>
-				</li>
+			<div className={styles.content}>
+				<h3 className={styles.title}>{title}</h3>
 
-				<li>
-					<Button
-						icon={<MdEditSquare />}
-						text="Edit Habit"
-						arrow
-						bgColor={btnBgColor}
-						onClick={() => onOpenModal({
-							habitTitle: title,
-							modalTitle: 'Edit habit',
-							modalContent: 'habitEditor'
-						})}
-					/>
-				</li>
-
-				<li>
-					<Button
-						icon={<FaShareAltSquare />}
-						text="Share Habit"
-						bgColor={btnBgColor}
-						onClick={onShare}
-					/>
-				</li>
-
-				<li>
-					<Button
-						icon={<FaChartSimple />}
-						text="Statistics"
-						arrow
-						bgColor={btnBgColor}
-						onClick={() => onOpenModal({
-							habitTitle: title,
-							modalTitle: title,
-							modalContent: 'statistics'
-						})}
-					/>
-				</li>
-
-				<li>
-					<Button
-						icon={<MdLibraryBooks />}
-						text="Diary"
-						arrow
-						bgColor={btnBgColor}
-						onClick={() => onOpenModal({
-							habitTitle: title,
-							colorIndex: colorIndex,
-							modalTitle: title,
-							modalContent: 'diary'
-						})}
-					/>
-				</li>
-			</ul>
+				<ul className={styles.list}>
+					<li>
+						<Button
+							icon={isYesterdayCompleted ? <FaCalendarTimes /> : <FaCalendarCheck />}
+							text={(isYesterdayCompleted ? 'Uncomp.' : 'Comp.') + ' Y\'day'}
+							bgColor={isYesterdayCompleted ? 'IndianRed' : btnBgColor}
+							onClick={() => onUpdate({
+								type: 'toggleCompleteYeserday',
+								habitTitle: title,
+								isTodayCompleted,
+								isYesterdayCompleted,
+								todayProgress,
+								frequency
+							})}
+						/>
+					</li>
+					<li>
+						<Button
+							icon={<MdEditSquare />}
+							text="Edit Habit"
+							arrow
+							bgColor={btnBgColor}
+							onClick={() => onOpenModal({
+								habitTitle: title,
+								modalTitle: 'Edit habit',
+								modalContent: 'habitEditor'
+							})}
+						/>
+					</li>
+					<li>
+						<Button
+							icon={<FaShareAltSquare />}
+							text="Share Habit"
+							bgColor={btnBgColor}
+							onClick={onShare}
+						/>
+					</li>
+					<li>
+						<Button
+							icon={<FaChartSimple />}
+							text="Statistics"
+							arrow
+							bgColor={btnBgColor}
+							onClick={() => onOpenModal({
+								habitTitle: title,
+								modalTitle: title,
+								modalContent: 'statistics'
+							})}
+						/>
+					</li>
+					<li>
+						<Button
+							icon={<MdLibraryBooks />}
+							text="Diary"
+							arrow
+							bgColor={btnBgColor}
+							onClick={() => onOpenModal({
+								habitTitle: title,
+								colorIndex: colorIndex,
+								modalTitle: title,
+								modalContent: 'diary'
+							})}
+						/>
+					</li>
+				</ul>
+			</div>
 		</div>
 	)
 }
