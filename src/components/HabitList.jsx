@@ -19,6 +19,12 @@ function HabitList(props) {
 
 	const [visibleMenuIndex, setVisibleMenuIndex] = useState(-1);
 
+	// disable scrolling on the body when the habit menu is open
+	useEffect(
+		() => { document.body.style.overflow = visibleMenuIndex !== -1 ? 'hidden' : 'auto' },
+		[visibleMenuIndex]
+	);
+
 	const habitList = habits.map(
 		(habit, index) => (
 			<Habit
