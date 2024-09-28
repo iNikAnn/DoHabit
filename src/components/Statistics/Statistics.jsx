@@ -1,6 +1,10 @@
 import styles from '../../css/Statistics.module.css';
 
+// react
+import { useState } from 'react';
+
 // components
+import YearPicker from './YearPicker';
 import Chart from './Chart';
 import StreakBlock from './StreakBlock';
 import StreakChart from './StreakChart';
@@ -26,6 +30,12 @@ function Statistics(props) {
 
 	const habit = habits.find((h) => h.title === habitTitle);
 
+	// selected year
+	const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+
+	const handleIncreaseYear = () => setSelectedYear((c) => c + 1);
+	const handleDecreaseYear = () => setSelectedYear((c) => c - 1);
+
 	// dimmed color
 	const color = dbColors[habit.colorIndex];
 	const dimmedColor = getDimmedColor(color);
@@ -47,6 +57,11 @@ function Statistics(props) {
 
 	return (
 		<div className={styles.statistics}>
+			<YearPicker
+				year={selectedYear}
+				increase={handleIncreaseYear}
+				decrease={handleDecreaseYear}
+			/>
 			{/* <StreakBlock {...{ habit }} /> */}
 
 			<Chart
