@@ -32,10 +32,14 @@ function Statistics(props) {
 
 	// selected year
 	const currYear = new Date().getFullYear();
+	const earliestYear = new Date(
+		habit.completedDays[habit.completedDays.length - 1].date
+	).getFullYear();
+
 	const [selectedYear, setSelectedYear] = useState(currYear);
 
 	const handleIncreaseYear = () => setSelectedYear((c) => c === currYear ? c : c + 1);
-	const handleDecreaseYear = () => setSelectedYear((c) => c - 1);
+	const handleDecreaseYear = () => setSelectedYear((c) => c === earliestYear ? c : c - 1);
 
 	// dimmed color
 	const color = dbColors[habit.colorIndex];
