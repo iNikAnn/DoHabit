@@ -67,9 +67,10 @@ function Statistics(props) {
 				increase={handleIncreaseYear}
 				decrease={handleDecreaseYear}
 			/>
-			{/* <StreakBlock {...{ habit }} /> */}
 
-			<Chart
+			<StreakBlock {...{ habit, color, selectedYear }} />
+
+			{/* <Chart
 				title="Streaks"
 				icon={<FaChartBar style={{ color: color }} />}
 			>
@@ -77,7 +78,7 @@ function Statistics(props) {
 					{...{ habit, color }}
 					options={chartOptions}
 				/>
-			</Chart>
+			</Chart> */}
 
 			<Chart
 				title="Completions / Weekday"
