@@ -1,7 +1,7 @@
 import styles from '../css/HabitList.module.css';
 
 // react
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // components
 import Habit from "./Habit/Habit";
@@ -19,10 +19,17 @@ function HabitList(props) {
 
 	const [visibleMenuIndex, setVisibleMenuIndex] = useState(-1);
 
+	// disable scrolling on the body when the habit menu is open
+	useEffect(
+		() => { document.body.style.overflow = visibleMenuIndex !== -1 ? 'hidden' : 'auto' },
+		[visibleMenuIndex]
+	);
+
 	const habitList = habits.map(
 		(habit, index) => (
 			<Habit
 				key={habit.title}
+				index={index}
 				{...habit}
 				icon={dbIcons.find(([iconTitle]) => iconTitle === habit.iconTitle)?.[1] || '?'}
 				color={dbColors[habit.colorIndex]}
@@ -31,7 +38,9 @@ function HabitList(props) {
 
 				// 'on' functions
 				{...{ onOpenModal, onUpdate }}
-				onShowMenu={() => setVisibleMenuIndex(index === visibleMenuIndex ? -1 : index)}
+				onShowMenu={(i) => {
+					setVisibleMenuIndex(i === visibleMenuIndex ? -1 : i)
+				}}
 			/>
 		)
 	);

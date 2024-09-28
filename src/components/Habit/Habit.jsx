@@ -18,7 +18,7 @@ import shareHabit from '../../utils/shareHabit';
 
 function Habit(props) {
 	const {
-		color, completedDays, frequency, isMenuVisible, archive,
+		index, color, completedDays, frequency, isMenuVisible, archive,
 
 		// 'on' functions
 		onShowMenu
@@ -53,7 +53,7 @@ function Habit(props) {
 		<div
 			ref={habitRef}
 			className={styles.habit}
-			onClick={onShowMenu}
+			onClick={() => onShowMenu(index)}
 		>
 			<HabitHeader
 				{...props}
@@ -79,6 +79,7 @@ function Habit(props) {
 					{...props}
 					{...{ isTodayCompleted, isYesterdayCompleted, todayProgress }}
 					btnBgColor={lightDimmedColor}
+					onShowMenu={onShowMenu}
 					onShare={handleShare}
 				/>
 			)}
