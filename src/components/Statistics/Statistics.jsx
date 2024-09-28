@@ -63,7 +63,7 @@ function Statistics(props) {
 	return (
 		<div className={styles.statistics}>
 			<YearPicker
-				year={selectedYear}
+				{...{ earliestYear, currYear, selectedYear }}
 				increase={handleIncreaseYear}
 				decrease={handleDecreaseYear}
 			/>

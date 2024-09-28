@@ -10,9 +10,24 @@
 	padding: 1rem;
 }
 
+/* button */
+.btn {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	background-color: var(--bg-color-secondary);
+	border-radius: var(--border-radius-secondary);
+
+	padding: 0.4rem;
+}
+
+.btn:disabled svg {
+	color: gray;
+}
+
 /* svg */
 .yearPicker svg {
-	margin: 0 0.4rem;
 	width: 1.4rem;
 	height: 1.4rem;
 }
