@@ -31,9 +31,10 @@ function Statistics(props) {
 	const habit = habits.find((h) => h.title === habitTitle);
 
 	// selected year
-	const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+	const currYear = new Date().getFullYear();
+	const [selectedYear, setSelectedYear] = useState(currYear);
 
-	const handleIncreaseYear = () => setSelectedYear((c) => c + 1);
+	const handleIncreaseYear = () => setSelectedYear((c) => c === currYear ? c : c + 1);
 	const handleDecreaseYear = () => setSelectedYear((c) => c - 1);
 
 	// dimmed color
