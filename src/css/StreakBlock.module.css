@@ -12,17 +12,6 @@
 	padding: 1rem;
 }
 
-.header {
-	display: flex;
-	justify-content: space-between;
-}
-
-/* svg */
-.header svg {
-	width: 1.4rem;
-	height: 1.4rem;
-}
-
 .streak {
 	/* outline: 1px solid red; */
 	display: flex;

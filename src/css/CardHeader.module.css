@@ -1,0 +1,18 @@
+/* header */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* iconWrapper */
+.iconWrapper {
+	display: flex;
+	align-items: center;
+}
+
+/* svg */
+.header svg {
+	width: 1.4rem;
+	height: 1.4rem;
+}

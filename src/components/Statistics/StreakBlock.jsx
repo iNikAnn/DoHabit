@@ -1,5 +1,8 @@
 import styles from '../../css/StreakBlock.module.css';
 
+// components
+import CardHeader from './CardHeader';
+
 // utils
 import getCurrentStreak from '../../utils/getCurrentStreak';
 import getLongestStreak from '../../utils/getLongestStreak';
@@ -22,12 +25,11 @@ function StreakBlock({ habit, color, selectedYear }) {
 	return (
 		<div className={styles.streaks}>
 			<div className={styles.card}>
-				<div className={styles.header}>
-					<h4>Current</h4>
-					<span style={{ color: percentageDifference < 0 ? 'IndianRed' : '#57a639' }}>
-						{percentageDifference + '%'}
-					</span>
-				</div>
+				<CardHeader
+					title="Current"
+					icon={percentageDifference + '%'}
+					iconColor={percentageDifference < 0 ? 'IndianRed' : '#57a639'}
+				/>
 
 				<div className={styles.streak}>
 					{currentStreak}
@@ -35,10 +37,11 @@ function StreakBlock({ habit, color, selectedYear }) {
 			</div>
 
 			<div className={styles.card}>
-				<div className={styles.header}>
-					<h4>Longest</h4>
-					<FaAward color={color} />
-				</div>
+				<CardHeader
+					title="Longest"
+					icon={<FaAward />}
+					iconColor={color}
+				/>
 
 				<div className={styles.streak}>
 					{longestStreak}
