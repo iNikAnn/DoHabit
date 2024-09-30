@@ -10,7 +10,7 @@
 	display: flex;
 	align-items: flex-end;
 
-	/* backdrop-filter: grayscale(50%) brightness(0.75) blur(4px); */
+	backdrop-filter: grayscale(50%) brightness(0.75) blur(4px);
 	z-index: 149;
 }
 

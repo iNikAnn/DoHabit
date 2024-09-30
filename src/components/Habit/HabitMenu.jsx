@@ -24,21 +24,16 @@ function HabitMenu(props) {
 	} = props;
 
 	// --- Animation parameters ---
-	const initialVariant = {
-		opacity: 0,
-		y: '100%'
+	const bgVariants = {
+		initial: { opacity: 0 },
+		animate: { opacity: 100 },
+		exit: { opacity: 0 }
 	};
 
-	const variants = {
-		initial: initialVariant,
-
-		animate: {
-			opacity: 1,
-			y: 0,
-			translateY: '60px'
-		},
-
-		exit: initialVariant
+	const contentVariants = {
+		initial: { y: '100%' },
+		animate: { y: 0, translateY: '60px' },
+		exit: { y: '100%' }
 	};
 
 	const handleDragEnd = (_, info) => {
@@ -50,10 +45,14 @@ function HabitMenu(props) {
 	//
 
 	return (
-		<div data-name="habitMenu" className={styles.menu}>
+		<motion.div
+			data-name="habitMenu"
+			className={styles.menu}
+			{...bgVariants}
+		>
 			<motion.div
 				className={styles.content}
-				{...variants}
+				{...contentVariants}
 
 				drag="y"
 				dragConstraints={{ top: 0, bottom: 0 }}
@@ -141,7 +140,7 @@ function HabitMenu(props) {
 					</li>
 				</ul>
 			</motion.div>
-		</div >
+		</motion.div >
 	);
 }
 
