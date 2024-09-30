@@ -10,7 +10,7 @@
 	display: flex;
 	align-items: flex-end;
 
-	backdrop-filter: grayscale(50%) brightness(0.75) blur(4px);
+	/* backdrop-filter: grayscale(50%) brightness(0.75) blur(4px); */
 	z-index: 149;
 }
 
@@ -26,7 +26,7 @@
 	background-color: var(--bg-color-secondary);
 	border-radius: 2rem 2rem 0 0;
 
-	padding: 1rem;
+	padding: 1rem 1rem 4rem;
 }
 
 /* title */

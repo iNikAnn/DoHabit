@@ -1,5 +1,8 @@
 import styles from '../../css/HabitMenu.module.css';
 
+// framer
+import { motion } from "framer-motion"
+
 // components
 import Button from '../Button';
 
@@ -20,9 +23,28 @@ function HabitMenu(props) {
 		onShowMenu, onOpenModal, onUpdate, onShare
 	} = props;
 
+	// --- Animation parameters ---
+	const initialVariant = {
+		opacity: 0,
+		y: '100%'
+	};
+
+	const variants = {
+		initial: initialVariant,
+
+		animate: {
+			opacity: 1,
+			y: '3rem'
+		},
+
+		exit: initialVariant
+	};
+	//
+
 	return (
 		<div data-name="habitMenu" className={styles.menu}>
-			<div
+			<motion.div
+				{...variants}
 				className={styles.content}
 				onClick={(e) => e.stopPropagation()}
 			>
@@ -47,6 +69,7 @@ function HabitMenu(props) {
 							})}
 						/>
 					</li>
+
 					<li>
 						<Button
 							icon={<MdEditSquare />}
@@ -60,6 +83,7 @@ function HabitMenu(props) {
 							})}
 						/>
 					</li>
+
 					<li>
 						<Button
 							icon={<FaShareAltSquare />}
@@ -68,6 +92,7 @@ function HabitMenu(props) {
 							onClick={onShare}
 						/>
 					</li>
+
 					<li>
 						<Button
 							icon={<FaChartSimple />}
@@ -83,6 +108,7 @@ function HabitMenu(props) {
 							})}
 						/>
 					</li>
+
 					<li>
 						<Button
 							icon={<MdLibraryBooks />}
@@ -98,8 +124,8 @@ function HabitMenu(props) {
 						/>
 					</li>
 				</ul>
-			</div>
-		</div>
+			</motion.div>
+		</div >
 	);
 }
 

@@ -3,6 +3,9 @@ import styles from '../../css/Habit.module.css';
 // react
 import { useRef } from 'react';
 
+// framer
+import { AnimatePresence } from 'framer-motion';
+
 // components
 import HabitHeader from './HabitHeader';
 import Calendar from './Calendar';
@@ -74,15 +77,18 @@ function Habit(props) {
 				</div>
 			)}
 
-			{(isMenuVisible && !archive) && (
-				<HabitMenu
-					{...props}
-					{...{ isTodayCompleted, isYesterdayCompleted, todayProgress }}
-					btnBgColor={lightDimmedColor}
-					onShowMenu={onShowMenu}
-					onShare={handleShare}
-				/>
-			)}
+			<AnimatePresence>
+				{(isMenuVisible && !archive) && (
+					<HabitMenu
+						key="habitMenu"
+						{...props}
+						{...{ isTodayCompleted, isYesterdayCompleted, todayProgress }}
+						btnBgColor={lightDimmedColor}
+						onShowMenu={onShowMenu}
+						onShare={handleShare}
+					/>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 }
