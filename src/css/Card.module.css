@@ -1,5 +1,7 @@
 /* chart */
 .chart {
+	width: 100%;
+
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
@@ -21,4 +23,11 @@
 .header svg {
 	width: 1.4rem;
 	height: 1.4rem;
+}
+
+/* childrenWrapepr */
+.childrenWrapepr {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

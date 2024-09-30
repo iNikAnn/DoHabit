@@ -9,13 +9,13 @@ import { Line } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler);
 
-function MonthlyChart({ options, habit, color }) {
+function MonthlyChart({ options, days, frequency, color }) {
 	const MONTHS = [
 		"Jan", "Feb", "Mar", "Apr", "May", "Jun",
 		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 	];
 
-	const data = getCompletionCountPerMonth(habit.completedDays, habit.frequency);
+	const data = getCompletionCountPerMonth(days, frequency);
 
 	const config = {
 		data: {

@@ -5,46 +5,51 @@ import { useState } from 'react';
 
 // components
 import YearPicker from './YearPicker';
-import Chart from './Chart';
-import StreakBlock from './StreakBlock';
-import StreakChart from './StreakChart';
+import Card from './Card';
 import WeekdayChart from './WeekdayChart';
 import MonthlyChart from './MonthlyChart';
 
 // utils
 import getDimmedColor from '../../utils/getDimmedColor';
-import getLightDimmedColor from '../../utils/getLightDimmedColor';
+import getCurrentStreak from '../../utils/getCurrentStreak';
+import getLongestStreak from '../../utils/getLongestStreak';
 
 // icons
-import { FaChartBar } from "react-icons/fa6";
-import { FaCalendarWeek } from "react-icons/fa";
-import { FaCalendarAlt } from "react-icons/fa";
-
-// db
-import dbColors from '../../db/dbColors';
+import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag } from "react-icons/fa";
 
 function Statistics(props) {
 	const {
-		habits, habitTitle,
+		completedDays, frequency, color
 	} = props;
 
-	const habit = habits.find((h) => h.title === habitTitle);
-
-	// selected year
+	// --- Selected Year ---
 	const currYear = new Date().getFullYear();
 	const earliestYear = new Date(
-		habit.completedDays[habit.completedDays.length - 1].date
+		completedDays[completedDays.length - 1].date
 	).getFullYear();
 
 	const [selectedYear, setSelectedYear] = useState(currYear);
 
 	const handleIncreaseYear = () => setSelectedYear((c) => c === currYear ? c : c + 1);
 	const handleDecreaseYear = () => setSelectedYear((c) => c === earliestYear ? c : c - 1);
+	//
 
-	// dimmed color
-	const color = dbColors[habit.colorIndex];
+	const selectedDays = completedDays.filter(
+		(day) => new Date(day.date).getFullYear() === selectedYear
+	);
+
+	// --- Streaks ---
+	const currentStreak = getCurrentStreak(completedDays, frequency);
+	const longestStreak = getLongestStreak(selectedDays, frequency);
+
+	const percentageDifference = Math.floor(
+		((currentStreak - longestStreak) / (longestStreak || 1)) * 100
+	);
+	//
+
+	// --- Dimmed color ---
 	const dimmedColor = getDimmedColor(color);
-	const lightDimmedColor = getLightDimmedColor(dimmedColor);
+	//
 
 	const chartOptions = {
 		scales: {
@@ -68,37 +73,56 @@ function Statistics(props) {
 				decrease={handleDecreaseYear}
 			/>
 
-			<StreakBlock {...{ habit, color, selectedYear }} />
+			<div style={{ display: 'flex', gap: '1rem' }}>
+				<Card
+					title="Current"
+					icon={percentageDifference + '%'}
+					accentColor={percentageDifference < 0 ? 'IndianRed' : '#57a639'}
+					contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
+				>
+					{currentStreak}
+				</Card>
 
-			{/* <Chart
-				title="Streaks"
-				icon={<FaChartBar style={{ color: color }} />}
-			>
-				<StreakChart
-					{...{ habit, color }}
-					options={chartOptions}
-				/>
-			</Chart> */}
+				<Card
+					title="Longest"
+					icon={<FaAward style={{ color: color }} />}
+					contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
+				>
+					{longestStreak}
+				</Card>
+			</div>
 
-			<Chart
+			<Card
 				title="Completions / Weekday"
 				icon={<FaCalendarWeek style={{ color: color }} />}
 			>
 				<WeekdayChart
-					{...{ habit, color }}
+					{...{ color }}
+					days={selectedDays}
+					frequency={frequency}
 					options={chartOptions}
 				/>
-			</Chart>
+			</Card>
 
-			<Chart
+			<Card
+				title="Total Completed"
+				icon={<FaHashtag style={{ color: color }} />}
+				contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
+			>
+				{selectedDays.length}
+			</Card>
+
+			<Card
 				title="Completions / Month"
 				icon={<FaCalendarAlt style={{ color: color }} />}
 			>
 				<MonthlyChart
-					{...{ habit, color }}
+					{...{ color }}
+					days={selectedDays}
+					frequency={frequency}
 					options={chartOptions}
 				/>
-			</Chart>
+			</Card>
 		</div>
 	);
 }
