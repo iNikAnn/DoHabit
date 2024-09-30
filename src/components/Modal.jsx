@@ -1,7 +1,10 @@
 import styles from '../css/Modal.module.css';
 
+// framer
+import { motion } from 'framer-motion'
+
 // icons
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowForward } from 'react-icons/io';
 
 function Modal(props) {
 	const {
@@ -13,8 +16,20 @@ function Modal(props) {
 		children
 	} = props;
 
+	// --- Animation parameters ---
+	const modalVariants = {
+		initial: { opacity: 0, x: '50%' },
+		animate: { opacity: 1, x: 0 },
+		exit: { opacity: 0, x: '50%' },
+		transition: { duration: .2 }
+	};
+	//
+
 	return (
-		<div className={styles.modal}>
+		<motion.div
+			{...modalVariants}
+			className={styles.modal}
+		>
 			<div className={styles.header}>
 				<IoIosArrowForward onClick={onClose} />
 
@@ -29,7 +44,7 @@ function Modal(props) {
 			>
 				{children}
 			</div>
-		</div>
+		</motion.div>
 	);
 }
 
