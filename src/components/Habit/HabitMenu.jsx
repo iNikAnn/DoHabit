@@ -34,20 +34,36 @@ function HabitMenu(props) {
 
 		animate: {
 			opacity: 1,
-			y: '3rem'
+			y: 0,
+			translateY: '60px'
 		},
 
 		exit: initialVariant
+	};
+
+	const handleDragEnd = (_, info) => {
+		if (info.offset.y >= 100) {
+			onShowMenu(-1);
+			navigator.vibrate?.(10);
+		};
 	};
 	//
 
 	return (
 		<div data-name="habitMenu" className={styles.menu}>
 			<motion.div
-				{...variants}
 				className={styles.content}
+				{...variants}
+
+				drag="y"
+				dragConstraints={{ top: 0, bottom: 0 }}
+				dragElastic={{ top: 0.1, bottom: 1 }}
+				onDragEnd={handleDragEnd}
+
 				onClick={(e) => e.stopPropagation()}
 			>
+				<div className={styles.handle} />
+
 				<h3 className={styles.title}>{title}</h3>
 
 				<ul

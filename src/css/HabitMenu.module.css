@@ -26,7 +26,18 @@
 	background-color: var(--bg-color-secondary);
 	border-radius: 2rem 2rem 0 0;
 
-	padding: 1rem 1rem 4rem;
+	padding: 1rem 1rem calc(1rem + 60px);
+}
+
+/* handle */
+.handle {
+	width: 80px;
+	height: 8px;
+
+	align-self: center;
+
+	background-color: var(--bg-color-tertiary);
+	border-radius: var(--border-radius-secondary);
 }
 
 /* title */
@@ -35,6 +46,7 @@
 	text-overflow: ellipsis;
 	overflow: hidden;
 	margin: 0.4rem 1.2rem;
+	/* margin: 0 1.2rem; */
 }
 
 /* list */
