@@ -29,12 +29,24 @@
 	padding: 1rem;
 }
 
+/* handle */
+.handle {
+	width: 80px;
+	height: 8px;
+
+	align-self: center;
+
+	background-color: var(--bg-color-tertiary);
+	border-radius: var(--border-radius-secondary);
+}
+
 /* title */
 .title {
 	text-wrap: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	margin: 0.4rem 1.2rem;
+	/* margin: 0 1.2rem; */
 }
 
 /* list */

@@ -3,7 +3,11 @@ import './App.css';
 // react
 import React, { useEffect, useReducer, useState } from 'react';
 
+// framer
+import { AnimatePresence } from 'framer-motion';
+
 // components
+import Overlay from './components/Overlay';
 import Header from './components/Header';
 import HabitList from './components/HabitList';
 import Modal from './components/Modal';
@@ -129,71 +133,79 @@ function App() {
 				)}
 			</main>
 
-			{modal && (
-				<Modal
-					title={modal.modalTitle}
+			<AnimatePresence>
+				{modal && (
+					<>
+						<Overlay key='overlay' />
 
-					// 'on' functions
-					onClose={handleCloseModal}
-				>
-					{modal.modalContent === 'habitEditor' && (
-						<HabitEditor
-							{...{ habits, dbIcons, dbColors }}
-							habitTitle={modal.habitTitle}
+						<Modal
+							key={modal.modalTitle}
+							modalHistory={modalHistory}
+							title={modal.modalTitle}
 
 							// 'on' functions
-							onUpdate={handleUpdateHabits}
 							onClose={handleCloseModal}
-						/>
-					)}
+						>
+							{modal.modalContent === 'habitEditor' && (
+								<HabitEditor
+									{...{ habits, dbIcons, dbColors }}
+									habitTitle={modal.habitTitle}
 
-					{modal.modalContent === 'menu' && (
-						<Menu
-							// 'on' functions
-							onOpenModal={handleOpenModal}
-						/>
-					)}
+									// 'on' functions
+									onUpdate={handleUpdateHabits}
+									onClose={handleCloseModal}
+								/>
+							)}
 
-					{modal.modalContent === 'archive' && (
-						<Archive
-							{...{ habits, dbIcons, dbColors }}
-							onUpdate={handleUpdateHabits}
-						/>
-					)}
+							{modal.modalContent === 'menu' && (
+								<Menu
+									// 'on' functions
+									onOpenModal={handleOpenModal}
+								/>
+							)}
 
-					{modal.modalContent === 'dataTransfer' && (
-						<DataTransfer
-							onExport={handleExportHabits}
-							onImport={handleImportHabits}
-						/>
-					)}
+							{modal.modalContent === 'archive' && (
+								<Archive
+									{...{ habits, dbIcons, dbColors }}
+									onUpdate={handleUpdateHabits}
+								/>
+							)}
 
-					{modal.modalContent === 'diary' && (
-						<Diary
-							habitTitle={modal.habitTitle}
-							accentColor={dbColors[modal.colorIndex]}
-							diary={
-								modal.habitTitle
-									? habits.find((h) => h.title === modal.habitTitle).diary
-									: mainDiary
-							}
+							{modal.modalContent === 'dataTransfer' && (
+								<DataTransfer
+									onExport={handleExportHabits}
+									onImport={handleImportHabits}
+								/>
+							)}
 
-							// 'on' functions
-							onUpdate={handleUpdateHabits}
-							onUpdateMainDiary={handleUpdateMainDiary}
-						/>
-					)}
+							{modal.modalContent === 'diary' && (
+								<Diary
+									habitTitle={modal.habitTitle}
+									accentColor={dbColors[modal.colorIndex]}
+									diary={
+										modal.habitTitle
+											? habits.find((h) => h.title === modal.habitTitle).diary
+											: mainDiary
+									}
 
-					{modal.modalContent === 'statistics' && (
-						<Statistics
-							{...{ habits }}
-							completedDays={modal.completedDays}
-							color={dbColors[modal.colorIndex]}
-							frequency={modal.frequency}
-						/>
-					)}
-				</Modal>
-			)}
+									// 'on' functions
+									onUpdate={handleUpdateHabits}
+									onUpdateMainDiary={handleUpdateMainDiary}
+								/>
+							)}
+
+							{modal.modalContent === 'statistics' && (
+								<Statistics
+									{...{ habits }}
+									completedDays={modal.completedDays}
+									color={dbColors[modal.colorIndex]}
+									frequency={modal.frequency}
+								/>
+							)}
+						</Modal>
+					</>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 }
