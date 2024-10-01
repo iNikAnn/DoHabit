@@ -1,5 +1,8 @@
 import styles from '../../css/NoteList.module.css';
 
+// framer
+import { AnimatePresence } from 'framer-motion';
+
 // components
 import Note from './Note';
 
@@ -20,7 +23,9 @@ function NoteList({ diary, onStartEditNote, onDeleteNote }) {
 	return (
 		<div>
 			<ul className={styles.list}>
-				{notes}
+				<AnimatePresence initial={false}>
+					{notes}
+				</AnimatePresence>
 			</ul>
 		</div>
 	);
