@@ -1,5 +1,8 @@
 import styles from '../../css/HabitHeader.module.css';
 
+// react
+import { useEffect, useRef } from 'react';
+
 // components
 import ProgressBar from './ProgressBar';
 
@@ -37,6 +40,32 @@ function HabitHeader(props) {
 		});
 	};
 
+	const progressWrapperRef = useRef(null);
+	const isFirstRender = useRef(true);
+
+	useEffect(
+		() => {
+			if (!isFirstRender.current) {
+				const el = progressWrapperRef.current;
+
+				if (el) {
+					el.classList.toggle(styles.completed, isTodayCompleted);
+					el.classList.toggle(styles.uncompleted, !isTodayCompleted);
+
+					setTimeout(
+						() => el.classList.remove(styles.uncompleted),
+						300
+					);
+
+					navigator.vibrate?.(isTodayCompleted ? [10, 10, 10, 10, 10] : 10);
+				};
+			};
+
+			isFirstRender.current = false;
+		},
+		[isTodayCompleted, todayProgress]
+	);
+
 	return (
 		<div className={styles.header}>
 			<div
@@ -65,7 +94,10 @@ function HabitHeader(props) {
 			</div>
 
 			{!archive && (
-				<div className={styles.progressWrapper}>
+				<div
+					ref={progressWrapperRef}
+					className={styles.progressWrapper}
+				>
 					{frequency > 1 && (
 						<ProgressBar
 							{...{ color, dimmedColor, todayProgress }}

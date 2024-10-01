@@ -17,6 +17,14 @@
 	gap: 2px;
 }
 
+.progressWrapper.completed {
+	animation: scaleIn 0.3s ease-in;
+}
+
+.progressWrapper.uncompleted {
+	animation: scaleOut 0.3s ease-in;
+}
+
 /* icon */
 .iconWrapper {
 	/* outline: 1px solid tomato; */
@@ -78,4 +86,33 @@
 	height: 1.4rem;
 	flex-shrink: 0;
 	margin-right: 1rem;
+}
+
+/* animation */
+@keyframes scaleIn {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes scaleOut {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(0.9);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }

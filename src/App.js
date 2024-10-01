@@ -4,7 +4,7 @@ import './App.css';
 import React, { useEffect, useReducer, useState } from 'react';
 
 // framer
-import { AnimatePresence, m } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 // components
 import Overlay from './components/Overlay';
