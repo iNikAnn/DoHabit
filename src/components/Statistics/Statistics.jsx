@@ -25,8 +25,8 @@ function Statistics(props) {
 	// --- Selected Year ---
 	const currYear = new Date().getFullYear();
 	const earliestYear = new Date(
-		completedDays[completedDays.length - 1].date
-	).getFullYear();
+		completedDays[completedDays.length - 1]?.date
+	).getFullYear() || currYear;
 
 	const [selectedYear, setSelectedYear] = useState(currYear);
 

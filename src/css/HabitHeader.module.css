@@ -18,11 +18,11 @@
 }
 
 .progressWrapper.completed {
-	animation: scaleIn 0.3s ease-in;
+	animation: scaleIn 0.2s ease-in;
 }
 
 .progressWrapper.uncompleted {
-	animation: scaleOut 0.3s ease-in;
+	animation: scaleOut 0.2s ease-in;
 }
 
 /* icon */

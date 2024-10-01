@@ -27,13 +27,15 @@ function HabitMenu(props) {
 	const bgVariants = {
 		initial: { opacity: 0 },
 		animate: { opacity: 100 },
-		exit: { opacity: 0 }
+		exit: { opacity: 0 },
+		transition: { duration: .2, ease: 'easeOut' }
 	};
 
 	const contentVariants = {
 		initial: { y: '100%' },
-		animate: { y: 0, translateY: '60px' },
-		exit: { y: '100%' }
+		animate: { y: 0 },
+		exit: { y: '100%' },
+		transition: { duration: .2, ease: 'easeOut' }
 	};
 
 	const handleDragEnd = (_, info) => {

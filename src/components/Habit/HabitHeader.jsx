@@ -54,7 +54,7 @@ function HabitHeader(props) {
 
 					setTimeout(
 						() => el.classList.remove(styles.uncompleted),
-						300
+						200
 					);
 
 					navigator.vibrate?.(isTodayCompleted ? [10, 10, 10, 10, 10] : 10);
