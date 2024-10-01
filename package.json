@@ -1,6 +1,6 @@
 {
 	"name": "dohabit",
-	"description": "Track your habits effortlessly with our habit tracker!",
+	"description": "DoHabit is a straightforward habit tracker that doesn’t require registration. Easily mark your completed days, track your progress, and keep a journal for each habit.",
 	"version": "0.15.0",
 	"homepage": "https://inikann.github.io/DoHabit/",
 	"private": true,
