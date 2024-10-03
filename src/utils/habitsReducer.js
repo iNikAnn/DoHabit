@@ -11,6 +11,8 @@ import archiveHabit from './archiveHabit';
 import toggleCompleteYeserday from './toggleCompleteYeserday';
 import scrollToTop from './scrollToTop';
 
+import saveToLocalStorage from './saveToLocalStorage';
+
 function habitsReducer(habits, action) {
 	const {
 		data, habitTitle
@@ -75,6 +77,8 @@ function habitsReducer(habits, action) {
 		default:
 			throw new Error('Unknown action: ' + action.type);
 	};
+
+	saveToLocalStorage('habits', habits);
 
 	return habits;
 }

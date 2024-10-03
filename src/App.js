@@ -41,12 +41,6 @@ function App() {
 
 	const [habits, habitsDispatch] = useReducer(habitsReducer, initialHabits);
 
-	// save habits to local storage
-	useEffect(
-		() => { localStorage.setItem('habits', JSON.stringify(habits)) },
-		[habits]
-	);
-
 	// update habit
 	const handleUpdateHabits = (actions) => habitsDispatch(actions);
 
