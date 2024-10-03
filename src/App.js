@@ -20,6 +20,7 @@ import Archive from './components/Archive/Archive';
 import DataTransfer from './components/DataTransfer/DataTransfer';
 
 // utils
+import initHabits from './utils/initHabits';
 import habitsReducer from './utils/habitsReducer';
 import updateDB from './utils/updateDB';
 import mainDiaryReducer from './utils/mainDiaryReducer';
@@ -28,7 +29,7 @@ import exportHabits from './utils/exportHabits';
 import importHabits from './utils/importHabits';
 
 // icons
-import { ReactComponent as Calendar } from './img/calendar.svg'
+import { ReactComponent as Calendar } from './img/calendar.svg';
 import { MdAddToPhotos } from "react-icons/md";
 
 // db
@@ -36,12 +37,7 @@ import dbIcons from './db/dbIcons';
 import dbColors from './db/dbColors';
 
 function App() {
-	let initialHabits = localStorage.getItem('habits');
-	initialHabits = initialHabits ? updateDB(initialHabits, dbColors) : [];
-
-	const [habits, habitsDispatch] = useReducer(habitsReducer, initialHabits);
-
-	// update habit
+	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 	const handleUpdateHabits = (actions) => habitsDispatch(actions);
 
 	// main diary
