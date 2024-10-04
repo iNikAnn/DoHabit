@@ -22,7 +22,6 @@ import DataTransfer from './components/DataTransfer/DataTransfer';
 // utils
 import initHabits from './utils/initHabits';
 import habitsReducer from './utils/habitsReducer';
-import updateDB from './utils/updateDB';
 import mainDiaryReducer from './utils/mainDiaryReducer';
 import validateModalProps from './utils/validateModalProps';
 import exportHabits from './utils/exportHabits';
