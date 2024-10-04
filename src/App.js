@@ -37,30 +37,26 @@ import dbIcons from './db/dbIcons';
 import dbColors from './db/dbColors';
 
 function App() {
-	// --- Habits: START ---
+	// --- Habits:START ---
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 	const handleUpdateHabits = (actions) => habitsDispatch(actions);
-	// --- Habits:   END ---
+	// --- Habits:END ---
 
-	// --- Main Diary: START ---
+	// --- Main Diary:START ---
 	const [mainDiary, mainDiaryDispatch] = useReducer(mainDiaryReducer, null, initMainDiary);
 	const handleUpdateMainDiary = (actions) => mainDiaryDispatch(actions);
-	// --- Main Diary:   END ---
+	// --- Main Diary:END ---
 
-	// modal
+	// --- Modal:START ---
 	const [modal, setModal] = useState(null);
 	const [modalHistory, setModalHistory] = useState([]);
-
-	useEffect(
-		() => { document.body.style.overflow = modal ? 'hidden' : 'auto' },
-		[modal]
-	);
 
 	const handleOpenModal = (props) => {
 		// if (!modal) validateModalProps(props);
 		validateModalProps(props);
 		// setModal(modal ? null : props);
 
+		document.body.classList.add('no-scroll');
 		if (modal) setModalHistory((mh) => [...mh, modal]);
 
 		setModal(props);
@@ -72,9 +68,11 @@ function App() {
 			handleOpenModal(mh.pop());
 			setModalHistory(mh);
 		} else {
+			document.body.classList.remove('no-scroll');
 			setModal(null);
 		};
 	};
+	// --- Modal:END ---
 
 	// data transfer
 	const handleExportHabits = () => exportHabits(habits);
