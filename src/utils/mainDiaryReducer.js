@@ -1,3 +1,6 @@
+// utils
+import saveToLocalStorage from './saveToLocalStorage';
+
 function mainDiaryReducer(diary, actions) {
 	let newDiary = [...diary];
 
@@ -29,6 +32,8 @@ function mainDiaryReducer(diary, actions) {
 		default:
 			break;
 	};
+
+	saveToLocalStorage('mainDiary', newDiary);
 
 	return newDiary;
 }

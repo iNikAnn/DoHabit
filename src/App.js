@@ -37,18 +37,15 @@ import dbIcons from './db/dbIcons';
 import dbColors from './db/dbColors';
 
 function App() {
+	// --- Habits: START ---
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 	const handleUpdateHabits = (actions) => habitsDispatch(actions);
+	// --- Habits:   END ---
 
-	// main diary
+	// --- Main Diary: START ---
 	const [mainDiary, mainDiaryDispatch] = useReducer(mainDiaryReducer, null, initMainDiary);
-
-	useEffect(
-		() => { localStorage.setItem('mainDiary', JSON.stringify(mainDiary)) },
-		[mainDiary]
-	);
-
 	const handleUpdateMainDiary = (actions) => mainDiaryDispatch(actions);
+	// --- Main Diary:   END ---
 
 	// modal
 	const [modal, setModal] = useState(null);
