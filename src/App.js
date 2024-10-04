@@ -21,6 +21,7 @@ import DataTransfer from './components/DataTransfer/DataTransfer';
 
 // utils
 import initHabits from './utils/initHabits';
+import initMainDiary from './utils/initMainDiary';
 import habitsReducer from './utils/habitsReducer';
 import mainDiaryReducer from './utils/mainDiaryReducer';
 import validateModalProps from './utils/validateModalProps';
@@ -40,14 +41,7 @@ function App() {
 	const handleUpdateHabits = (actions) => habitsDispatch(actions);
 
 	// main diary
-	const [mainDiary, mainDiaryDispatch] = useReducer(
-		mainDiaryReducer,
-		null,
-		() => {
-			const storedDiary = localStorage.getItem('mainDiary');
-			return storedDiary ? JSON.parse(storedDiary) : [];
-		}
-	);
+	const [mainDiary, mainDiaryDispatch] = useReducer(mainDiaryReducer, null, initMainDiary);
 
 	useEffect(
 		() => { localStorage.setItem('mainDiary', JSON.stringify(mainDiary)) },
