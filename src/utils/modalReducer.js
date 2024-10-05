@@ -2,25 +2,21 @@
 import validateModalProps from './validateModalProps';
 
 function modalReducer(modal, actions) {
-	let newModal = { history: [...modal.history], ...actions };
-	const isOpen = modal.modalContent;
+	let newModal;
 
 	switch (actions.type) {
 		case 'open':
 			validateModalProps(actions);
+			newModal = { ...actions, prev: modal };
 			document.body.classList.add('no-scroll');
-
-			if (isOpen) {
-				newModal.history = [...newModal.history, modal];
-			};
 			break;
 
 		case 'close':
-			if (modal.history.length > 0) {
-				newModal = { ...modal.history.pop() };
+			if (modal.prev) {
+				newModal = modal.prev;
 			} else {
 				document.body.classList.remove('no-scroll');
-				newModal = { history: [] };
+				newModal = null;
 			};
 			break;
 

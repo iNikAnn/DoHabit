@@ -49,7 +49,7 @@ function App() {
 	// --- Main Diary:END ---
 
 	// --- Modal:START ---
-	const [modal, modalDispatch] = useReducer(modalReducer, { history: [] });
+	const [modal, modalDispatch] = useReducer(modalReducer, null);
 	const handleUpdateModal = (actions) => modalDispatch(actions);
 	// --- Modal:END ---
 
@@ -91,7 +91,7 @@ function App() {
 			</main>
 
 			<AnimatePresence>
-				{modal.modalContent && (
+				{modal && (
 					<>
 						<Overlay key='overlay' />
 
