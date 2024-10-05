@@ -8,12 +8,16 @@ import { MdLibraryBooks } from "react-icons/md"; // diary
 function Header(props) {
 	const {
 		// 'on' functions
-		onOpenHabitEditor, onOpenModal
+		onOpenModal
 	} = props;
 
-	const modalProps = {
-		modalContent: 'habitEditor',
-		modalTitle: 'Create new habit',
+	// const modalProps = {
+	// 	modalContent: 'habitEditor',
+	// 	modalTitle: 'Create new habit',
+	// };
+
+	const actions = {
+		type: 'open'
 	};
 
 	return (
@@ -26,7 +30,11 @@ function Header(props) {
 			<div className={styles.btnsWrapper}>
 				<button
 					className={styles.btn}
-					onClick={() => onOpenHabitEditor(modalProps)}
+					onClick={() => onOpenModal({
+						...actions,
+						modalContent: 'habitEditor',
+						modalTitle: 'Create new habit',
+					})}
 				>
 					<FaPlus />
 				</button>
@@ -34,8 +42,9 @@ function Header(props) {
 				<button
 					className={styles.btn}
 					onClick={() => onOpenModal({
-						modalTitle: 'Main Diary',
-						modalContent: 'diary'
+						...actions,
+						modalContent: 'diary',
+						modalTitle: 'Main Diary'
 					})}
 				>
 					<MdLibraryBooks />
@@ -44,8 +53,9 @@ function Header(props) {
 				<button
 					className={styles.btn}
 					onClick={() => onOpenModal({
-						modalTitle: 'Menu',
-						modalContent: 'menu'
+						...actions,
+						modalContent: 'menu',
+						modalTitle: 'Menu'
 					})}
 				>
 					<FaBurger />

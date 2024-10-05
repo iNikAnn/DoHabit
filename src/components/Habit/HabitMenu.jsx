@@ -23,6 +23,10 @@ function HabitMenu(props) {
 		onShowMenu, onOpenModal, onUpdate, onShare
 	} = props;
 
+	const actions = {
+		type: 'open'
+	}
+
 	// --- Animation parameters ---
 	const bgVariants = {
 		initial: { opacity: 0 },
@@ -94,6 +98,7 @@ function HabitMenu(props) {
 							arrow
 							bgColor={btnBgColor}
 							onClick={() => onOpenModal({
+								...actions,
 								habitTitle: title,
 								modalTitle: 'Edit habit',
 								modalContent: 'habitEditor'
@@ -117,6 +122,7 @@ function HabitMenu(props) {
 							arrow
 							bgColor={btnBgColor}
 							onClick={() => onOpenModal({
+								...actions,
 								completedDays,
 								colorIndex,
 								frequency,
@@ -133,6 +139,7 @@ function HabitMenu(props) {
 							arrow
 							bgColor={btnBgColor}
 							onClick={() => onOpenModal({
+								...actions,
 								habitTitle: title,
 								colorIndex: colorIndex,
 								modalTitle: title,

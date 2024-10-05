@@ -24,6 +24,7 @@ function Menu({ onOpenModal }) {
 						title="Archive"
 						desc="View or manage archived habits"
 						onClick={() => onOpenModal({
+							type: 'open',
 							modalTitle: 'Archive',
 							modalContent: 'archive'
 						})}
@@ -42,8 +43,9 @@ function Menu({ onOpenModal }) {
 						title="Export/Import Data"
 						desc="Backup or restore your habits"
 						onClick={() => onOpenModal({
-							modalTitle: 'Export/Import Data',
-							modalContent: 'dataTransfer'
+							type: 'open',
+							modalContent: 'dataTransfer',
+							modalTitle: 'Export/Import Data'
 						})}
 						arrow
 					/>

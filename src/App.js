@@ -1,7 +1,7 @@
 import './App.css';
 
 // react
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useReducer, useState } from 'react';
 
 // framer
 import { AnimatePresence } from 'framer-motion';
@@ -24,6 +24,7 @@ import initHabits from './utils/initHabits';
 import initMainDiary from './utils/initMainDiary';
 import habitsReducer from './utils/habitsReducer';
 import mainDiaryReducer from './utils/mainDiaryReducer';
+import modalReducer from './utils/modalReducer';
 import validateModalProps from './utils/validateModalProps';
 import exportHabits from './utils/exportHabits';
 import importHabits from './utils/importHabits';
@@ -48,30 +49,8 @@ function App() {
 	// --- Main Diary:END ---
 
 	// --- Modal:START ---
-	const [modal, setModal] = useState(null);
-	const [modalHistory, setModalHistory] = useState([]);
-
-	const handleOpenModal = (props) => {
-		// if (!modal) validateModalProps(props);
-		validateModalProps(props);
-		// setModal(modal ? null : props);
-
-		document.body.classList.add('no-scroll');
-		if (modal) setModalHistory((mh) => [...mh, modal]);
-
-		setModal(props);
-	};
-
-	const handleCloseModal = () => {
-		if (modalHistory.length > 0) {
-			const mh = [...modalHistory];
-			handleOpenModal(mh.pop());
-			setModalHistory(mh);
-		} else {
-			document.body.classList.remove('no-scroll');
-			setModal(null);
-		};
-	};
+	const [modal, modalDispatch] = useReducer(modalReducer, { history: [] });
+	const handleUpdateModal = (actions) => modalDispatch(actions);
 	// --- Modal:END ---
 
 	// data transfer
@@ -82,8 +61,7 @@ function App() {
 		<div className="App">
 			<Header
 				// 'on' functions
-				onOpenHabitEditor={handleOpenModal}
-				onOpenModal={handleOpenModal}
+				onOpenModal={handleUpdateModal}
 			/>
 
 			<main>
@@ -92,7 +70,7 @@ function App() {
 					{...{ dbIcons, dbColors }}
 
 					// 'on' functions
-					onOpenModal={handleOpenModal}
+					onOpenModal={handleUpdateModal}
 					onUpdate={handleUpdateHabits}
 				/>
 
@@ -103,26 +81,26 @@ function App() {
 						desc="Why not create one now?"
 						textOnButton="Create First Habit"
 						buttonIcon={<MdAddToPhotos />}
-						onClick={() => handleOpenModal({
+						onClick={() => handleUpdateModal({
+							type: 'open',
 							modalContent: 'habitEditor',
-							modalTitle: 'Create new habit',
+							modalTitle: 'Create new habit'
 						})}
 					/>
 				)}
 			</main>
 
 			<AnimatePresence>
-				{modal && (
+				{modal.modalContent && (
 					<>
 						<Overlay key='overlay' />
 
 						<Modal
 							key={modal.modalTitle}
-							modalHistory={modalHistory}
 							title={modal.modalTitle}
 
 							// 'on' functions
-							onClose={handleCloseModal}
+							onClose={() => handleUpdateModal({ type: 'close' })}
 						>
 							{modal.modalContent === 'habitEditor' && (
 								<HabitEditor
@@ -131,14 +109,14 @@ function App() {
 
 									// 'on' functions
 									onUpdate={handleUpdateHabits}
-									onClose={handleCloseModal}
+									onClose={() => handleUpdateModal({ type: 'close' })}
 								/>
 							)}
 
 							{modal.modalContent === 'menu' && (
 								<Menu
 									// 'on' functions
-									onOpenModal={handleOpenModal}
+									onOpenModal={handleUpdateModal}
 								/>
 							)}
 
