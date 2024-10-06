@@ -52,9 +52,10 @@ function App() {
 	const handleUpdateModal = (actions) => modalDispatch(actions);
 	// --- Modal:END ---
 
-	// data transfer
+	// --- Data Transfer:START ---
 	const handleExportHabits = () => exportHabits(habits);
 	const handleImportHabits = () => importHabits(handleUpdateHabits);
+	// --- Data Transfer:END ---
 
 	return (
 		<div className="App">

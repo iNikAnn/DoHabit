@@ -16,8 +16,10 @@ function importHabits(onUpdate) {
 				importedData
 			});
 
-			window.alert('Habits imported successfully!');
+			window.alert('Habits imported successfully! The application will now reload.');
+			window.location.reload();
 		} catch (error) {
+			window.alert('Error reading the file.');
 			console.error('Error reading the file:', error);
 		};
 	};
