@@ -1,66 +1,44 @@
 import styles from '../css/Header.module.css';
 
 // icons
-import { FaBurger } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa";
-import { MdLibraryBooks } from "react-icons/md"; // diary
+import { FaPlus, FaBars } from "react-icons/fa";
+import { MdLibraryBooks } from "react-icons/md";
 
-function Header(props) {
-	const {
-		// 'on' functions
-		onOpenModal
-	} = props;
+function Header({ onOpenModal }) {
 
-	// const modalProps = {
-	// 	modalContent: 'habitEditor',
-	// 	modalTitle: 'Create new habit',
-	// };
-
-	const actions = {
-		type: 'open'
+	const handleClick = (modalContent, modalTitle) => {
+		onOpenModal({ type: 'open', modalContent, modalTitle });
 	};
+
+	const navItems = [
+		['habitEditor', 'Create new habit', <FaPlus />],
+		['diary', 'Main Diary', <MdLibraryBooks />],
+		['menu', 'Menu', <FaBars />]
+	].map(
+		([content, title, icon]) => (
+			<li key={content}>
+				<button
+					className={styles.btn}
+					onClick={() => handleClick(content, title)}
+				>
+					{icon}
+				</button>
+			</li>
+		)
+	);
 
 	return (
 		<header className={styles.header}>
-			<span className={styles.logoWrapper}>
+			<div className={styles.logoWrapper}>
 				<span className={styles.logo} />
 				<h1>DoHabit</h1>
-			</span>
-
-			<div className={styles.btnsWrapper}>
-				<button
-					className={styles.btn}
-					onClick={() => onOpenModal({
-						...actions,
-						modalContent: 'habitEditor',
-						modalTitle: 'Create new habit',
-					})}
-				>
-					<FaPlus />
-				</button>
-
-				<button
-					className={styles.btn}
-					onClick={() => onOpenModal({
-						...actions,
-						modalContent: 'diary',
-						modalTitle: 'Main Diary'
-					})}
-				>
-					<MdLibraryBooks />
-				</button>
-
-				<button
-					className={styles.btn}
-					onClick={() => onOpenModal({
-						...actions,
-						modalContent: 'menu',
-						modalTitle: 'Menu'
-					})}
-				>
-					<FaBurger />
-				</button>
 			</div>
+
+			<nav>
+				<ul className={styles.navList}>
+					{navItems}
+				</ul>
+			</nav>
 		</header>
 	);
 }
