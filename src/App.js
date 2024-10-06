@@ -40,6 +40,7 @@ function App() {
 	// --- Habits:START ---
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 	const handleUpdateHabits = (actions) => habitsDispatch(actions);
+	const filteredHabits = habits.filter((h) => !h.isArchived);
 	// --- Habits:END ---
 
 	// --- Main Diary:START ---
@@ -63,15 +64,13 @@ function App() {
 
 			<main>
 				<HabitList
-					habits={habits.filter(h => !h.isArchived)}
-					{...{ dbIcons, dbColors }}
+					{...{ habits: filteredHabits, dbIcons, dbColors }}
 
-					// 'on' functions
 					onOpenModal={handleUpdateModal}
 					onUpdate={handleUpdateHabits}
 				/>
 
-				{!habits.filter(h => !h.isArchived).length && (
+				{filteredHabits.length === 0 && (
 					<Placeholder
 						image={<Calendar />}
 						title="No active habits found"
