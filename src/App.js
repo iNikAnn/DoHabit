@@ -1,7 +1,7 @@
 import './App.css';
 
 // react
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 
 // framer
 import { AnimatePresence } from 'framer-motion';
@@ -25,7 +25,6 @@ import initMainDiary from './utils/initMainDiary';
 import habitsReducer from './utils/habitsReducer';
 import mainDiaryReducer from './utils/mainDiaryReducer';
 import modalReducer from './utils/modalReducer';
-import validateModalProps from './utils/validateModalProps';
 import exportHabits from './utils/exportHabits';
 import importHabits from './utils/importHabits';
 
@@ -59,10 +58,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<Header
-				// 'on' functions
-				onOpenModal={handleUpdateModal}
-			/>
+			<Header onOpenModal={handleUpdateModal} />
 
 			<main>
 				<HabitList
