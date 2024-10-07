@@ -13,40 +13,32 @@ import HabitMenu from './HabitMenu';
 
 // utils
 import getColorPalette from '../../utils/getColorPalette';
-import getFormattedDate from '../../utils/getFormattedDate';
+import getTodayProgress from '../../utils//getTodayProgress';
 import getCurrentStreak from '../../utils/getCurrentStreak';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
 import shareHabit from '../../utils/shareHabit';
 
 function Habit(props) {
 	const {
-		index, color, completedDays, frequency, isMenuVisible,
-		archive,
+		index, color, completedDays, frequency,
+		isMenuVisible, archive,
 		onShowMenu
 	} = props;
 
 	const habitRef = useRef(null);
 	const colorPalette = getColorPalette(color);
+	const todayProgress = getTodayProgress(completedDays);
+	const currentStreak = getCurrentStreak(completedDays, frequency);
 
 	const today = new Date();
 	const yesterday = new Date(today);
 	yesterday.setDate(today.getDate() - 1);
 
-	// is completed
 	const [
 		isTodayCompleted,
 		isYesterdayCompleted
 	] = checkHabitCompletion(completedDays, frequency, today, yesterday);
 
-	// today progress
-	const todayProgress = completedDays.find(
-		(day) => day.date === getFormattedDate(new Date())
-	)?.progress || 0;
-
-	// current streak
-	const currentStreak = getCurrentStreak(completedDays, frequency);
-
-	// share habit
 	const handleShare = () => shareHabit(habitRef.current);
 
 	return (
