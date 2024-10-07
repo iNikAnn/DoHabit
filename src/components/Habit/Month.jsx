@@ -7,11 +7,13 @@ function Month(props) {
 	const {
 		date,
 
-		color, dimmedColor, lightDimmedColor,
+		colorPalette,
 		completedDays, frequency,
 
 		visibleMonthsCount, isDaySquare, dayGap, dayBorderRadius
 	} = props;
+
+	const { baseColor, darkenedColor, softenedColor } = colorPalette;
 
 	const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 	const today = new Date();
@@ -23,7 +25,7 @@ function Month(props) {
 			return (
 				<span
 					key={weekday}
-					style={{ color: isToday ? 'inherit' : lightDimmedColor }}
+					style={{ color: isToday ? 'inherit' : softenedColor }}
 					className={styles.weekday}
 				>
 					{weekday}
@@ -50,8 +52,8 @@ function Month(props) {
 
 			// day style
 			const dayStyle = {
-				backgroundColor: isCompleted ? color : (index >= shift) ? dimmedColor : '',
-				color: isCompleted || isToday ? 'inherit' : lightDimmedColor,
+				backgroundColor: isCompleted ? baseColor : (index >= shift) ? darkenedColor : '',
+				color: isCompleted || isToday ? 'inherit' : softenedColor,
 				border: isToday ? `2px solid #e6e6e6` : '',
 				borderRadius: dayBorderRadius,
 				aspectRatio: isDaySquare ? '1 / 1' : '',

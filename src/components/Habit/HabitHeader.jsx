@@ -12,8 +12,7 @@ import { HiArchiveBoxXMark } from "react-icons/hi2";
 
 function HabitHeader(props) {
 	const {
-		title, icon, frequency, diary,
-		color, dimmedColor,
+		title, icon, frequency, diary, colorPalette,
 		isTodayCompleted, todayProgress, currentStreak,
 		archive,
 
@@ -21,8 +20,10 @@ function HabitHeader(props) {
 		onUpdate
 	} = props;
 
+	const { baseColor, darkenedColor } = colorPalette;
+
 	const markAsCompletedBtnStyle = {
-		backgroundColor: isTodayCompleted ? color : dimmedColor,
+		backgroundColor: isTodayCompleted ? baseColor : darkenedColor,
 		color: 'inherit',
 		borderRadius: frequency === 1
 			? 'var(--border-radius-secondary)'
@@ -69,7 +70,7 @@ function HabitHeader(props) {
 	return (
 		<div className={styles.header}>
 			<div
-				style={{ backgroundColor: dimmedColor, color: color }}
+				style={{ backgroundColor: darkenedColor, color: baseColor }}
 				className={styles.iconWrapper}
 			>
 				{icon}
@@ -100,7 +101,7 @@ function HabitHeader(props) {
 				>
 					{frequency > 1 && (
 						<ProgressBar
-							{...{ color, dimmedColor, todayProgress }}
+							{...{ baseColor, darkenedColor, todayProgress }}
 							segmentCount={frequency}
 						/>
 					)}

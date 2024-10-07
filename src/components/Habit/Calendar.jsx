@@ -9,7 +9,7 @@ import getMonthsDifference from '../../utils/getMonthsDifference';
 
 function Calendar(props) {
 	const {
-		completedDays,
+		completedDays
 	} = props;
 
 	// const startMonth = getStartMonth(completedDays);

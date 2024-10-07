@@ -12,8 +12,7 @@ import Calendar from './Calendar';
 import HabitMenu from './HabitMenu';
 
 // utils
-import getDimmedColor from '../../utils/getDimmedColor';
-import getLightDimmedColor from '../../utils/getLightDimmedColor';
+import getColorPalette from '../../utils/getColorPalette';
 import getFormattedDate from '../../utils/getFormattedDate';
 import getCurrentStreak from '../../utils/getCurrentStreak';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
@@ -21,17 +20,13 @@ import shareHabit from '../../utils/shareHabit';
 
 function Habit(props) {
 	const {
-		index, color, completedDays, frequency, isMenuVisible, archive,
-
-		// 'on' functions
+		index, color, completedDays, frequency, isMenuVisible,
+		archive,
 		onShowMenu
 	} = props;
 
 	const habitRef = useRef(null);
-
-	// dimmed color
-	const dimmedColor = getDimmedColor(color);
-	const lightDimmedColor = getLightDimmedColor(dimmedColor);
+	const colorPalette = getColorPalette(color);
 
 	const today = new Date();
 	const yesterday = new Date(today);
@@ -59,20 +54,14 @@ function Habit(props) {
 			onClick={() => onShowMenu(index)}
 		>
 			<HabitHeader
-				{...props}
-				{...{
-					dimmedColor,
-					isTodayCompleted, todayProgress, currentStreak
-				}}
+				{...{ ...props, colorPalette }}
+				{...{ isTodayCompleted, todayProgress, currentStreak }}
 			/>
 
 			{!archive && (
 				<div className={styles.content}>
 					<Calendar
-						{...{
-							color, dimmedColor, lightDimmedColor,
-							completedDays, frequency
-						}}
+						{...{ colorPalette, completedDays, frequency }}
 					/>
 				</div>
 			)}
@@ -83,7 +72,7 @@ function Habit(props) {
 						key="habitMenu"
 						{...props}
 						{...{ isTodayCompleted, isYesterdayCompleted, todayProgress }}
-						btnBgColor={lightDimmedColor}
+						btnBgColor={colorPalette.softenedColor}
 						onShowMenu={onShowMenu}
 						onShare={handleShare}
 					/>

@@ -1,8 +1,8 @@
-function lightDimmedColor(hsl) {
+function softenedColor(hsl) {
 	return hsl.replace(
 		/\d{2}%\)/,
 		(num) => `${parseInt(num) + 10}%)`
 	);
 }
 
-export default lightDimmedColor;
+export default softenedColor;

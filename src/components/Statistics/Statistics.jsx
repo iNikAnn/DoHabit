@@ -48,18 +48,18 @@ function Statistics(props) {
 	//
 
 	// --- Dimmed color ---
-	const dimmedColor = getDimmedColor(color);
+	const darkenedColor = getDimmedColor(color);
 	//
 
 	const chartOptions = {
 		scales: {
 			x: {
-				grid: { color: dimmedColor, lineWidth: 0.4 },
+				grid: { color: darkenedColor, lineWidth: 0.4 },
 				ticks: { color: 'gray' }
 			},
 
 			y: {
-				grid: { color: dimmedColor, lineWidth: 0.4 },
+				grid: { color: darkenedColor, lineWidth: 0.4 },
 				ticks: { color: 'gray' }
 			}
 		}
