@@ -33,8 +33,10 @@ function Habit(props) {
 	yesterday.setDate(today.getDate() - 1);
 
 	// is completed
-	const isTodayCompleted = checkHabitCompletion(completedDays, today, frequency);
-	const isYesterdayCompleted = checkHabitCompletion(completedDays, yesterday, frequency);
+	const [
+		isTodayCompleted,
+		isYesterdayCompleted
+	] = checkHabitCompletion(completedDays, frequency, today, yesterday);
 
 	// today progress
 	const todayProgress = completedDays.find(

@@ -46,7 +46,7 @@ function Month(props) {
 				isToday = thisDay.toDateString() === today.toDateString();
 
 				if (completedDays) {
-					isCompleted = checkHabitCompletion(completedDays, thisDay, frequency);
+					isCompleted = checkHabitCompletion(completedDays, frequency, thisDay);
 				};
 			};
 
