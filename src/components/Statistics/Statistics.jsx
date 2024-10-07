@@ -10,7 +10,6 @@ import WeekdayChart from './WeekdayChart';
 import MonthlyChart from './MonthlyChart';
 
 // utils
-import getDimmedColor from '../../utils/getDimmedColor';
 import getCurrentStreak from '../../utils/getCurrentStreak';
 import getLongestStreak from '../../utils/getLongestStreak';
 
@@ -19,8 +18,10 @@ import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag } from "react-icons/f
 
 function Statistics(props) {
 	const {
-		completedDays, frequency, color
+		completedDays, frequency, colorPalette
 	} = props;
+
+	const { baseColor, darkenedColor } = colorPalette;
 
 	// --- Selected Year ---
 	const currYear = new Date().getFullYear();
@@ -45,10 +46,6 @@ function Statistics(props) {
 	const percentageDifference = Math.floor(
 		((currentStreak - longestStreak) / (longestStreak || 1)) * 100
 	);
-	//
-
-	// --- Dimmed color ---
-	const darkenedColor = getDimmedColor(color);
 	//
 
 	const chartOptions = {
@@ -85,7 +82,7 @@ function Statistics(props) {
 
 				<Card
 					title="Longest"
-					icon={<FaAward style={{ color: color }} />}
+					icon={<FaAward style={{ color: baseColor }} />}
 					contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
 				>
 					{longestStreak}
@@ -94,10 +91,10 @@ function Statistics(props) {
 
 			<Card
 				title="Completions / Weekday"
-				icon={<FaCalendarWeek style={{ color: color }} />}
+				icon={<FaCalendarWeek style={{ color: baseColor }} />}
 			>
 				<WeekdayChart
-					{...{ color }}
+					{...{ color: baseColor }}
 					days={selectedDays}
 					frequency={frequency}
 					options={chartOptions}
@@ -106,7 +103,7 @@ function Statistics(props) {
 
 			<Card
 				title="Total Completed"
-				icon={<FaHashtag style={{ color: color }} />}
+				icon={<FaHashtag style={{ color: baseColor }} />}
 				contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
 			>
 				{selectedDays.length}
@@ -114,10 +111,10 @@ function Statistics(props) {
 
 			<Card
 				title="Completions / Month"
-				icon={<FaCalendarAlt style={{ color: color }} />}
+				icon={<FaCalendarAlt style={{ color: baseColor }} />}
 			>
 				<MonthlyChart
-					{...{ color }}
+					{...{ color: baseColor }}
 					days={selectedDays}
 					frequency={frequency}
 					options={chartOptions}
