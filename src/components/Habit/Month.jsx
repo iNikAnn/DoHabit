@@ -35,19 +35,20 @@ function Month(props) {
 
 	let shift = (new Date(date.getFullYear(), date.getMonth(), 1).getDay() || 7) - 1;
 
-	const days = new Array(shift + lastDayOfMonth)
-		.fill(null)
-		.map((_, index) => {
-			let isCompleted = false;
+	const dates = Array.from(
+		{ length: shift + lastDayOfMonth },
+		(_, i) => new Date(date.getFullYear(), date.getMonth(), (i - shift + 1))
+	);
+
+	const checkedDates = checkHabitCompletion(completedDays, frequency, ...dates);
+
+	const days = checkedDates
+		.map((isCompleted, index) => {
 			let isToday = false;
 
 			if (index >= shift) {
 				const thisDay = new Date(date.getFullYear(), date.getMonth(), (index - shift + 1));
 				isToday = thisDay.toDateString() === today.toDateString();
-
-				if (completedDays) {
-					isCompleted = checkHabitCompletion(completedDays, frequency, thisDay);
-				};
 			};
 
 			// day style
