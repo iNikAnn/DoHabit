@@ -1,7 +1,7 @@
 import styles from '../../css/HabitHeader.module.css';
 
 // react
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 // components
 import ProgressBar from './ProgressBar';
@@ -19,42 +19,37 @@ function HabitHeader(props) {
 	} = props;
 
 	const { baseColor, darkenedColor } = colorPalette;
+
 	const progressPercentage = Math.floor((todayProgress / frequency) * 100);
+	const progressWrapperRef = useRef(null);
 
 	const handleUpdateProgress = (e) => {
 		e.stopPropagation();
+
+		const el = progressWrapperRef.current;
+
+		if (!el) {
+			console.error('Element not found');
+			return;
+		};
+
+		const isCompleted = frequency - todayProgress === 1;
+
+		el.classList.toggle(styles.completed, isCompleted);
+		el.classList.toggle(styles.uncompleted, !isCompleted);
+
+		setTimeout(
+			() => el.classList.remove(styles.uncompleted),
+			200
+		);
+
+		navigator?.vibrate(isCompleted ? [10, 10, 10, 10, 10] : 10);
 
 		onUpdate({
 			type: 'updateProgress',
 			habitTitle: title
 		});
 	};
-
-	const progressWrapperRef = useRef(null);
-	const isFirstRender = useRef(true);
-
-	useEffect(
-		() => {
-			if (!isFirstRender.current) {
-				const el = progressWrapperRef.current;
-
-				if (el) {
-					el.classList.toggle(styles.completed, isTodayCompleted);
-					el.classList.toggle(styles.uncompleted, !isTodayCompleted);
-
-					setTimeout(
-						() => el.classList.remove(styles.uncompleted),
-						200
-					);
-
-					navigator.vibrate?.(isTodayCompleted ? [10, 10, 10, 10, 10] : 10);
-				};
-			};
-
-			isFirstRender.current = false;
-		},
-		[isTodayCompleted, todayProgress]
-	);
 
 	return (
 		<div className={styles.header}>
