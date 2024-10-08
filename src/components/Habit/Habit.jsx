@@ -14,6 +14,7 @@ import HabitMenu from './HabitMenu';
 // utils
 import getColorPalette from '../../utils/getColorPalette';
 import getTodayProgress from '../../utils//getTodayProgress';
+import getStreaks from '../../utils/getStreaks';
 import getCurrentStreak from '../../utils/getCurrentStreak';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
 import shareHabit from '../../utils/shareHabit';
@@ -28,7 +29,8 @@ function Habit(props) {
 	const habitRef = useRef(null);
 	const colorPalette = getColorPalette(color);
 	const todayProgress = getTodayProgress(completedDays);
-	const currentStreak = getCurrentStreak(completedDays, frequency);
+	// const currentStreak = getCurrentStreak(completedDays, frequency);
+	const { currentStreak } = getStreaks(completedDays, frequency);
 
 	const today = new Date();
 	const yesterday = new Date(today);
