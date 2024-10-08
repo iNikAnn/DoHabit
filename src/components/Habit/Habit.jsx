@@ -66,7 +66,6 @@ function Habit(props) {
 						key="habitMenu"
 						{...props}
 						{...{ colorPalette, isTodayCompleted, isYesterdayCompleted, todayProgress }}
-						btnBgColor={colorPalette.softenedColor}
 						onShowMenu={onShowMenu}
 						onShare={handleShare}
 					/>

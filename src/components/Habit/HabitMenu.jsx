@@ -16,16 +16,12 @@ import { FaChartSimple } from "react-icons/fa6";
 
 function HabitMenu(props) {
 	const {
-		title, btnBgColor, completedDays, colorIndex, colorPalette,
+		title, completedDays, colorIndex, colorPalette,
 		isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
-
-		// 'on' functions
 		onShowMenu, onOpenModal, onUpdate, onShare
 	} = props;
 
-	const actions = {
-		type: 'open'
-	}
+	const { darkenedColor } = colorPalette;
 
 	// --- Animation parameters ---
 	const bgVariants = {
@@ -50,6 +46,91 @@ function HabitMenu(props) {
 	};
 	//
 
+	const handleClick = (action) => {
+		switch (action) {
+			case 'toggleCompleteYeserday':
+				onUpdate({
+					type: 'toggleCompleteYeserday',
+					habitTitle: title,
+					isTodayCompleted,
+					isYesterdayCompleted,
+					todayProgress,
+					frequency
+				});
+				break;
+
+			case 'editHabit':
+				onOpenModal({
+					type: 'open',
+					habitTitle: title,
+					modalTitle: 'Edit habit',
+					modalContent: 'habitEditor'
+				});
+				break;
+
+			case 'openStatistics':
+				onOpenModal({
+					type: 'open',
+					completedDays,
+					colorPalette,
+					colorIndex,
+					frequency,
+					modalTitle: title,
+					modalContent: 'statistics'
+				});
+				break;
+
+			case 'openDiary':
+				onOpenModal({
+					type: 'open',
+					habitTitle: title,
+					colorIndex: colorIndex,
+					modalTitle: title,
+					modalContent: 'diary'
+				});
+				break;
+
+			default:
+				break;
+		};
+	};
+
+	const buttons = [[
+		isYesterdayCompleted ? <FaCalendarTimes /> : <FaCalendarCheck />,
+		(isYesterdayCompleted ? 'Uncomp.' : 'Comp.') + ' Y\'day',
+		isYesterdayCompleted ? 'IndianRed' : darkenedColor,
+		() => handleClick('toggleCompleteYeserday')
+	], [
+		<MdEditSquare />,
+		'Edit Habit',
+		darkenedColor,
+		() => handleClick('editHabit'),
+		true
+	], [
+		<FaShareAltSquare />,
+		'Share Habit',
+		darkenedColor,
+		() => onShare()
+	], [
+		<FaChartSimple />,
+		'Statistics',
+		darkenedColor,
+		() => handleClick('openStatistics'),
+		true
+	], [
+		<MdLibraryBooks />,
+		'Diary',
+		darkenedColor,
+		() => handleClick('openDiary'),
+		true
+	]].map(
+		([icon, text, bgColor, onClick, arrow]) => (
+			<li key={text}>
+				<Button {...{ icon, text, bgColor, onClick, arrow }} />
+			</li>
+		)
+	);
+
 	return (
 		<motion.div
 			data-name="habitMenu"
@@ -68,86 +149,13 @@ function HabitMenu(props) {
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className={styles.handle} />
-
 				<h3 className={styles.title}>{title}</h3>
 
 				<ul
 					className={styles.list}
 					onClick={() => onShowMenu(-1)}
 				>
-					<li>
-						<Button
-							icon={isYesterdayCompleted ? <FaCalendarTimes /> : <FaCalendarCheck />}
-							text={(isYesterdayCompleted ? 'Uncomp.' : 'Comp.') + ' Y\'day'}
-							bgColor={isYesterdayCompleted ? 'IndianRed' : btnBgColor}
-							onClick={() => onUpdate({
-								type: 'toggleCompleteYeserday',
-								habitTitle: title,
-								isTodayCompleted,
-								isYesterdayCompleted,
-								todayProgress,
-								frequency
-							})}
-						/>
-					</li>
-
-					<li>
-						<Button
-							icon={<MdEditSquare />}
-							text="Edit Habit"
-							arrow
-							bgColor={btnBgColor}
-							onClick={() => onOpenModal({
-								...actions,
-								habitTitle: title,
-								modalTitle: 'Edit habit',
-								modalContent: 'habitEditor'
-							})}
-						/>
-					</li>
-
-					<li>
-						<Button
-							icon={<FaShareAltSquare />}
-							text="Share Habit"
-							bgColor={btnBgColor}
-							onClick={onShare}
-						/>
-					</li>
-
-					<li>
-						<Button
-							icon={<FaChartSimple />}
-							text="Statistics"
-							arrow
-							bgColor={btnBgColor}
-							onClick={() => onOpenModal({
-								...actions,
-								completedDays,
-								colorPalette,
-								colorIndex,
-								frequency,
-								modalTitle: title,
-								modalContent: 'statistics'
-							})}
-						/>
-					</li>
-
-					<li>
-						<Button
-							icon={<MdLibraryBooks />}
-							text="Diary"
-							arrow
-							bgColor={btnBgColor}
-							onClick={() => onOpenModal({
-								...actions,
-								habitTitle: title,
-								colorIndex: colorIndex,
-								modalTitle: title,
-								modalContent: 'diary'
-							})}
-						/>
-					</li>
+					{buttons}
 				</ul>
 			</motion.div>
 		</motion.div >
