@@ -35,9 +35,6 @@ function getStreaks(completedDays, frequency) {
 	const today = new Date(getFormattedDate(new Date()));
 	const lastDay = new Date(completedDays[0]?.date);
 
-	console.log(allStreaks);
-
-
 	return {
 		allStreaks,
 		longestStreak: Math.max(...allStreaks),
