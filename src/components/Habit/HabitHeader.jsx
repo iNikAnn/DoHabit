@@ -15,21 +15,10 @@ function HabitHeader(props) {
 		title, icon, frequency, diary, colorPalette,
 		isTodayCompleted, todayProgress, currentStreak,
 		archive,
-
-		// 'on' functions
 		onUpdate
 	} = props;
 
 	const { baseColor, darkenedColor } = colorPalette;
-
-	const markAsCompletedBtnStyle = {
-		backgroundColor: isTodayCompleted ? baseColor : darkenedColor,
-		color: 'inherit',
-		borderRadius: frequency === 1
-			? 'var(--border-radius-secondary)'
-			: '0 var(--border-radius-secondary) var(--border-radius-secondary) 0'
-	};
-
 	const progressPercentage = Math.floor((todayProgress / frequency) * 100);
 
 	const handleUpdateProgress = (e) => {
@@ -107,8 +96,8 @@ function HabitHeader(props) {
 					)}
 
 					<button
-						style={markAsCompletedBtnStyle}
-						className={styles.markAsCompletedBtn}
+						style={{ backgroundColor: isTodayCompleted ? baseColor : darkenedColor }}
+						className={`${styles.progressBtn} ${frequency > 1 ? styles.multiFrequency : ''}`}
 						onClick={handleUpdateProgress}
 					>
 						{progressPercentage === 100 ? (
