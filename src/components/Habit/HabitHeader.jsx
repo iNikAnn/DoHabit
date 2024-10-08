@@ -8,7 +8,7 @@ import ProgressBar from './ProgressBar';
 
 // icons
 import { FaCheck } from "react-icons/fa";
-import { HiArchiveBoxXMark } from "react-icons/hi2";
+import { MdOutlineSettingsBackupRestore } from "react-icons/md";
 
 function HabitHeader(props) {
 	const {
@@ -85,8 +85,7 @@ function HabitHeader(props) {
 				>
 					{frequency > 1 && (
 						<ProgressBar
-							{...{ colorPalette, todayProgress }}
-							segmentCount={frequency}
+							{...{ segmentCount: frequency, colorPalette, todayProgress }}
 						/>
 					)}
 
@@ -105,7 +104,7 @@ function HabitHeader(props) {
 			)}
 
 			{archive && (
-				<HiArchiveBoxXMark
+				<MdOutlineSettingsBackupRestore
 					className={styles.restoreIcon}
 					onClick={() => {
 						if (window.confirm('Are you sure you want to restore this habit?')) {

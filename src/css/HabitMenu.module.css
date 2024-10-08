@@ -17,6 +17,9 @@
 /* content */
 .content {
 	/* outline: 1px solid tomato; */
+	position: absolute;
+	left: 0;
+	bottom: -4rem;
 	width: 100%;
 
 	display: flex;
@@ -26,7 +29,7 @@
 	background-color: var(--bg-color-secondary);
 	border-radius: 2rem 2rem 0 0;
 
-	padding: 1rem;
+	padding: 1rem 1rem calc(1rem + 4rem);
 }
 
 /* handle */
