@@ -85,7 +85,7 @@ function HabitHeader(props) {
 				>
 					{frequency > 1 && (
 						<ProgressBar
-							{...{ baseColor, darkenedColor, todayProgress }}
+							{...{ colorPalette, todayProgress }}
 							segmentCount={frequency}
 						/>
 					)}

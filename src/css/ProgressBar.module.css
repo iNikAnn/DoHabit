@@ -1,15 +1,23 @@
 /* propgress bar */
 .progressBar {
 	/* outline: 1px solid tomato; */
-	/* height: 100%; */
 	width: 1rem;
 
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 	gap: 2px;
 }
 
+/* segment */
 .segment {
 	height: 100%;
 	width: 100%;
+}
+
+.segment.first {
+	border-radius: 0 0 0 var(--border-radius-secondary);
+}
+
+.segment.last {
+	border-radius: var(--border-radius-secondary) 0 0 0;
 }
