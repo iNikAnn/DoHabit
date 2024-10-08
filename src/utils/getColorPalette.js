@@ -1,6 +1,6 @@
 function getColorPalette(hsl) {
 	return {
-		baseColor: hsl,
+		baseColor: String(hsl),
 		darkenedColor: `color-mix(in hsl, ${hsl}, black 65%)`,
 		softenedColor: `color-mix(in hsl, ${hsl}, dimgray 80%)`
 	};
