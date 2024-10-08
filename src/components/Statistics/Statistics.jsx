@@ -10,8 +10,7 @@ import WeekdayChart from './WeekdayChart';
 import MonthlyChart from './MonthlyChart';
 
 // utils
-import getCurrentStreak from '../../utils/getCurrentStreak';
-import getLongestStreak from '../../utils/getLongestStreak';
+import getStreaks from '../../utils/getStreaks';
 
 // icons
 import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag } from "react-icons/fa";
@@ -40,8 +39,8 @@ function Statistics(props) {
 	);
 
 	// --- Streaks ---
-	const currentStreak = getCurrentStreak(completedDays, frequency);
-	const longestStreak = getLongestStreak(selectedDays, frequency);
+	const { currentStreak } = getStreaks(completedDays, frequency);
+	const { longestStreak } = getStreaks(selectedDays, frequency);
 
 	const percentageDifference = Math.floor(
 		((currentStreak - longestStreak) / (longestStreak || 1)) * 100
