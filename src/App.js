@@ -48,15 +48,63 @@ function App() {
 	const handleUpdateMainDiary = (actions) => mainDiaryDispatch(actions);
 	// --- Main Diary:END ---
 
-	// --- Modal:START ---
-	const [modal, modalDispatch] = useReducer(modalReducer, null);
-	const handleUpdateModal = (actions) => modalDispatch(actions);
-	// --- Modal:END ---
-
 	// --- Data Transfer:START ---
 	const handleExportHabits = () => exportHabits(habits);
 	const handleImportHabits = () => importHabits(handleUpdateHabits);
 	// --- Data Transfer:END ---
+
+	// --- Modal:START ---
+	const [modal, modalDispatch] = useReducer(modalReducer, null);
+	const handleUpdateModal = (actions) => modalDispatch(actions);
+
+	const modalComponents = {
+		'habitEditor': (
+			<HabitEditor
+				{...{ habits, dbIcons, dbColors }}
+				habitTitle={modal?.habitTitle}
+				onUpdate={handleUpdateHabits}
+				onClose={() => handleUpdateModal({ type: 'close' })}
+			/>
+		),
+		'menu': (
+			<Menu onOpenModal={handleUpdateModal} />
+		),
+		'archive': (
+			<Archive
+				{...{ habits, dbIcons, dbColors }}
+				onUpdate={handleUpdateHabits}
+			/>
+		),
+		'dataTransfer': (
+			<DataTransfer
+				onExport={handleExportHabits}
+				onImport={handleImportHabits}
+			/>
+		),
+		'diary': (
+			<Diary
+				habitTitle={modal?.habitTitle}
+				accentColor={dbColors[modal?.colorIndex]}
+				diary={
+					modal?.habitTitle
+						? habits.find((h) => h.title === modal?.habitTitle).diary
+						: mainDiary
+				}
+				onUpdate={handleUpdateHabits}
+				onUpdateMainDiary={handleUpdateMainDiary}
+			/>
+		),
+		'statistics': (
+			<Statistics
+				{...{ habits }}
+				colorPalette={modal?.colorPalette}
+				completedDays={modal?.completedDays}
+				color={dbColors[modal?.colorIndex]}
+				frequency={modal?.frequency}
+			/>
+		)
+	}
+	// --- Modal:END ---
 
 	return (
 		<div className="App">
@@ -96,56 +144,7 @@ function App() {
 							title={modal.modalTitle}
 							onClose={() => handleUpdateModal({ type: 'close' })}
 						>
-							{modal.modalContent === 'habitEditor' && (
-								<HabitEditor
-									{...{ habits, dbIcons, dbColors }}
-									habitTitle={modal.habitTitle}
-									onUpdate={handleUpdateHabits}
-									onClose={() => handleUpdateModal({ type: 'close' })}
-								/>
-							)}
-
-							{modal.modalContent === 'menu' && (
-								<Menu onOpenModal={handleUpdateModal} />
-							)}
-
-							{modal.modalContent === 'archive' && (
-								<Archive
-									{...{ habits, dbIcons, dbColors }}
-									onUpdate={handleUpdateHabits}
-								/>
-							)}
-
-							{modal.modalContent === 'dataTransfer' && (
-								<DataTransfer
-									onExport={handleExportHabits}
-									onImport={handleImportHabits}
-								/>
-							)}
-
-							{modal.modalContent === 'diary' && (
-								<Diary
-									habitTitle={modal.habitTitle}
-									accentColor={dbColors[modal.colorIndex]}
-									diary={
-										modal.habitTitle
-											? habits.find((h) => h.title === modal.habitTitle).diary
-											: mainDiary
-									}
-									onUpdate={handleUpdateHabits}
-									onUpdateMainDiary={handleUpdateMainDiary}
-								/>
-							)}
-
-							{modal.modalContent === 'statistics' && (
-								<Statistics
-									{...{ habits }}
-									colorPalette={modal.colorPalette}
-									completedDays={modal.completedDays}
-									color={dbColors[modal.colorIndex]}
-									frequency={modal.frequency}
-								/>
-							)}
+							{modalComponents[modal.modalContent]}
 						</Modal>
 					</>
 				)}
