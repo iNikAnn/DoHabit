@@ -94,26 +94,19 @@ function App() {
 						<Modal
 							key={modal.modalTitle}
 							title={modal.modalTitle}
-
-							// 'on' functions
 							onClose={() => handleUpdateModal({ type: 'close' })}
 						>
 							{modal.modalContent === 'habitEditor' && (
 								<HabitEditor
 									{...{ habits, dbIcons, dbColors }}
 									habitTitle={modal.habitTitle}
-
-									// 'on' functions
 									onUpdate={handleUpdateHabits}
 									onClose={() => handleUpdateModal({ type: 'close' })}
 								/>
 							)}
 
 							{modal.modalContent === 'menu' && (
-								<Menu
-									// 'on' functions
-									onOpenModal={handleUpdateModal}
-								/>
+								<Menu onOpenModal={handleUpdateModal} />
 							)}
 
 							{modal.modalContent === 'archive' && (
@@ -139,8 +132,6 @@ function App() {
 											? habits.find((h) => h.title === modal.habitTitle).diary
 											: mainDiary
 									}
-
-									// 'on' functions
 									onUpdate={handleUpdateHabits}
 									onUpdateMainDiary={handleUpdateMainDiary}
 								/>
