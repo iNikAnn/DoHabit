@@ -54,16 +54,17 @@
 /* label */
 .label {
 	border-radius: var(--border-radius-tertiary);
-	color: var(--bg-color-secondary);
-	padding: 0.1rem 0.2rem;
+	padding: 0.2rem 0.4rem;
 }
 
 .label.start {
-	background-color: mediumseagreen;
+	background-color: color-mix(in srgb, mediumseagreen, black 50%);
+	color: mediumseagreen;
 }
 
 .label.end {
-	background-color: indianred;
+	background-color: color-mix(in srgb, indianred, black 50%);
+	color: indianred;
 }
 
 /* showMoreBtn */
