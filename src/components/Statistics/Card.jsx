@@ -3,11 +3,11 @@ import styles from '../../css/Card.module.css';
 // components
 import CardHeader from './CardHeader';
 
-function Card({ title, icon, accentColor, children, contentStyle }) {
+function Card({ title, desc, icon, accentColor, children, contentStyle }) {
 	return (
 		<div className={styles.chart}>
 			<CardHeader
-				{...{ title, icon }}
+				{...{ title, desc, icon }}
 				iconColor={accentColor}
 			/>
 

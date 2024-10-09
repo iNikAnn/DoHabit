@@ -1,8 +1,14 @@
-/* header */
-.header {
+/* top */
+.top {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+/* desc */
+.desc {
+	width: 100%;
+	color: gray;
 }
 
 /* iconWrapper */
@@ -12,7 +18,7 @@
 }
 
 /* svg */
-.header svg {
+.top svg {
 	width: 1.4rem;
 	height: 1.4rem;
 }
