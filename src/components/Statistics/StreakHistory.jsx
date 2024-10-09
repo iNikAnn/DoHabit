@@ -8,14 +8,17 @@ function StreakHistory({ streaks, colorPalette }) {
 	const { darkenedColor } = colorPalette;
 	const [listLength, setListLength] = useState(5);
 
+	const filteredStreaks = streaks.filter((s) => s.length > 1);
+	const streakList = filteredStreaks.slice(0, listLength);
+
 	return (
 		<div className={styles.history}>
 			<ul className={styles.streaks}>
-				{streaks.slice(0, listLength).map(
+				{streakList.map(
 					(s, i) => (
 						<li
 							style={{ borderColor: darkenedColor }}
-							className={`${styles.card} ${i === streaks.length - 1 ? styles.isLast : ''}`}
+							className={`${styles.card} ${i === filteredStreaks.length - 1 ? styles.isLast : ''}`}
 						>
 							<div className={styles.length}>
 								{s.length}
@@ -41,7 +44,7 @@ function StreakHistory({ streaks, colorPalette }) {
 				)}
 			</ul>
 
-			{listLength < streaks.length && (
+			{listLength < filteredStreaks.length && (
 				<button
 					className={`text-button ${styles.showMoreBtn}`}
 					onClick={() => setListLength((curr) => curr + 5)}
