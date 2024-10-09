@@ -8,12 +8,13 @@ import YearPicker from './YearPicker';
 import Card from './Card';
 import WeekdayChart from './WeekdayChart';
 import MonthlyChart from './MonthlyChart';
+import StreakHistory from './StreakHistory';
 
 // utils
 import getStreaks from '../../utils/getStreaks';
 
 // icons
-import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag } from "react-icons/fa";
+import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag, FaBinoculars } from "react-icons/fa";
 
 function Statistics(props) {
 	const {
@@ -40,7 +41,7 @@ function Statistics(props) {
 
 	// --- Streaks ---
 	const { currentStreak } = getStreaks(completedDays, frequency);
-	const { longestStreak } = getStreaks(selectedDays, frequency);
+	const { allStreaks, longestStreak } = getStreaks(selectedDays, frequency);
 
 	const percentageDifference = Math.floor(
 		((currentStreak - longestStreak) / (longestStreak || 1)) * 100
@@ -119,6 +120,18 @@ function Statistics(props) {
 					options={chartOptions}
 				/>
 			</Card>
+
+			{allStreaks.length > 0 && (
+				<Card
+					title="Streak History"
+					desc="Shows streaks of 2 days or more."
+					icon={<FaBinoculars style={{ color: baseColor }} />}
+				>
+					<StreakHistory
+						{...{ colorPalette, streaks: allStreaks }}
+					/>
+				</Card>
+			)}
 		</div>
 	);
 }
