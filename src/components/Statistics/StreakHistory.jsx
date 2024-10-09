@@ -29,14 +29,14 @@ function StreakHistory({ streaks, colorPalette }) {
 									<small className={`${styles.label} ${styles.start}`}>
 										Start:
 									</small>
-									<small>{s.start}</small>
+									<small>{new Date(s.start).toLocaleDateString()}</small>
 								</div>
 
 								<div className={styles.dateWrapper}>
 									<small className={`${styles.label} ${styles.end}`}>
 										End:
 									</small>
-									<small>{s.end}</small>
+									<small>{new Date(s.end).toLocaleDateString()}</small>
 								</div>
 							</div>
 						</li>

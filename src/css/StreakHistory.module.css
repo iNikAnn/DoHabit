@@ -40,7 +40,9 @@
 
 /* desc */
 .desc {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	/* display: flex; */
 	gap: 1rem;
 }
 
