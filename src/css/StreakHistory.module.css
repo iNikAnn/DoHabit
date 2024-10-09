@@ -1,0 +1,62 @@
+/* streaks */
+.streaks {
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+}
+
+/* card */
+.card {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.card:not(:last-child) {
+	padding-bottom: 0.6rem;
+	border-bottom: 1px solid;
+}
+
+/* length */
+.length {
+	width: 3rem;
+	height: 3rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: var(--bg-color-secondary);
+	border-radius: var(--border-radius-secondary);
+	font-weight: bold;
+}
+
+/* desc */
+.desc {
+	display: flex;
+	gap: 1rem;
+}
+
+/* dateWrapper */
+.dateWrapper {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+/* label */
+.label {
+	border-radius: var(--border-radius-tertiary);
+	color: var(--bg-color-secondary);
+	padding: 0.1rem 0.2rem;
+}
+
+.label.start {
+	background-color: mediumseagreen;
+}
+
+.label.end {
+	background-color: indianred;
+}
