@@ -1,7 +1,10 @@
+/* history */
+.history {
+	width: 100%;
+}
+
 /* streaks */
 .streaks {
-	width: 100%;
-
 	display: flex;
 	flex-direction: column;
 	gap: 0.6rem;
@@ -12,11 +15,13 @@
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-}
-
-.card:not(:last-child) {
 	padding-bottom: 0.6rem;
 	border-bottom: 1px solid;
+}
+
+.card.isLast {
+	padding-bottom: unset;
+	border-bottom: unset;
 }
 
 /* length */
@@ -59,4 +64,10 @@
 
 .label.end {
 	background-color: indianred;
+}
+
+/* showMoreBtn */
+.showMoreBtn {
+	display: block;
+	margin: 1rem auto 0;
 }
