@@ -1,12 +1,16 @@
 import styles from '../../css/StreakHistory.module.css';
 
+// react
+import { useState } from 'react';
+
 function StreakHistory({ streaks, colorPalette }) {
 
 	const { darkenedColor } = colorPalette;
+	const [listLength, setListLength] = useState(5);
 
 	return (
 		<div className={styles.streaks}>
-			{streaks.map(
+			{streaks.slice(0, listLength).map(
 				(s) => (
 					<div
 						style={{ borderColor: darkenedColor }}
@@ -33,6 +37,15 @@ function StreakHistory({ streaks, colorPalette }) {
 						</div>
 					</div>
 				)
+			)}
+
+			{listLength < streaks.length && (
+				<button
+					className='text-button'
+					onClick={() => setListLength((curr) => curr + 5)}
+				>
+					Show more
+				</button>
 			)}
 		</div>
 	);
