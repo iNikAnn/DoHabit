@@ -23,7 +23,7 @@ function Statistics(props) {
 
 	const { baseColor, darkenedColor } = colorPalette;
 
-	// --- Selected Year ---
+	// --- Selected Year:START ---
 	const currYear = new Date().getFullYear();
 	const earliestYear = new Date(
 		completedDays[completedDays.length - 1]?.date
@@ -33,20 +33,21 @@ function Statistics(props) {
 
 	const handleIncreaseYear = () => setSelectedYear((c) => c === currYear ? c : c + 1);
 	const handleDecreaseYear = () => setSelectedYear((c) => c === earliestYear ? c : c - 1);
-	//
+	// --- Selected Year:END ---
 
 	const selectedDays = completedDays.filter(
 		(day) => new Date(day.date).getFullYear() === selectedYear
 	);
 
-	// --- Streaks ---
+	// --- Streaks:START ---
 	const { currentStreak } = getStreaks(completedDays, frequency);
 	const { allStreaks, longestStreak } = getStreaks(selectedDays, frequency);
+	const filteredStreaks = allStreaks.filter((s) => s.length > 1);
+	// --- Streaks:END ---
 
 	const percentageDifference = Math.floor(
 		((currentStreak - longestStreak) / (longestStreak || 1)) * 100
 	);
-	//
 
 	const chartOptions = {
 		scales: {
@@ -121,14 +122,14 @@ function Statistics(props) {
 				/>
 			</Card>
 
-			{allStreaks.length > 0 && (
+			{filteredStreaks.length > 0 && (
 				<Card
 					title="Streak History"
 					desc="Shows streaks of 2 days or more."
 					icon={<FaBinoculars style={{ color: baseColor }} />}
 				>
 					<StreakHistory
-						{...{ colorPalette, streaks: allStreaks }}
+						{...{ colorPalette, streaks: filteredStreaks }}
 					/>
 				</Card>
 			)}
