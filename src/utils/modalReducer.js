@@ -2,6 +2,14 @@
 import validateModalProps from './validateModalProps';
 
 function modalReducer(modal, actions) {
+	const actionsIsObj = typeof actions === 'object'
+		&& !Array.isArray(actions)
+		&& actions !== null;
+
+	if (!actionsIsObj) {
+		throw new Error('Actions must be an object');
+	};
+
 	let newModal;
 
 	switch (actions.type) {
