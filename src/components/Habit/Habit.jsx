@@ -4,7 +4,7 @@ import styles from '../../css/Habit.module.css';
 import { useRef } from 'react';
 
 // framer
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // components
 import HabitHeader from './HabitHeader';
@@ -41,10 +41,40 @@ function Habit(props) {
 
 	const handleShare = () => shareHabit(habitRef.current);
 
+	// --- Animation Parameters:START ---
+	const habitVariants = {
+		initial: { opacity: 0, scale: .75 },
+
+		animate: {
+			opacity: 1,
+			scale: 1,
+
+			transition: {
+				duration: .3,
+				ease: 'easeOut',
+				opacity: { duration: .3, ease: 'easeOut', delay: .3 },
+				scale: { duration: .3, ease: 'easeOut', delay: .3 }
+			}
+		},
+
+		exit: {
+			opacity: 0,
+			scale: .75,
+
+			transition: {
+				duration: .3,
+				ease: 'easeOut',
+			}
+		},
+	}
+	// --- Animation Parameters:END ---
+
 	return (
-		<div
+		<motion.div
 			ref={habitRef}
 			className={styles.habit}
+			{...habitVariants}
+			layout
 			onClick={() => onShowMenu(index)}
 		>
 			<HabitHeader
@@ -71,7 +101,7 @@ function Habit(props) {
 					/>
 				)}
 			</AnimatePresence>
-		</div>
+		</motion.div>
 	);
 }
 

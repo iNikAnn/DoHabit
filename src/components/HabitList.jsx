@@ -3,6 +3,9 @@ import styles from '../css/HabitList.module.css';
 // react
 import { useState } from 'react';
 
+// framer
+import { AnimatePresence } from 'framer-motion';
+
 // components
 import Habit from "./Habit/Habit";
 
@@ -37,7 +40,9 @@ function HabitList(props) {
 
 	return (
 		<div className={styles.habitList}>
-			{habitList}
+			<AnimatePresence initial={false}>
+				{habitList}
+			</AnimatePresence>
 		</div>
 	);
 }
