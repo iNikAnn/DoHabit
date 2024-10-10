@@ -32,6 +32,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-shrink: 0;
 
 	background-color: var(--bg-color-secondary);
 	border-radius: var(--border-radius-secondary);
@@ -40,9 +41,9 @@
 
 /* desc */
 .desc {
+	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	/* display: flex; */
 	gap: 1rem;
 }
 
