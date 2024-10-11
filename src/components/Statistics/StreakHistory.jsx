@@ -15,6 +15,7 @@ function StreakHistory({ streaks, colorPalette }) {
 				{streakList.map(
 					(s, i) => (
 						<li
+							key={s.length + s.start + s.end}
 							style={{ borderColor: darkenedColor }}
 							className={`${styles.card} ${i === streaks.length - 1 ? styles.isLast : ''}`}
 						>
