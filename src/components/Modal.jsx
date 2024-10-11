@@ -15,6 +15,13 @@ function Modal({ title, children, onClose }) {
 		transition: { duration: .2, ease: 'easeOut' }
 	};
 
+	const handleDragEnd = (_, info) => {
+		if (info.offset.x >= 100) {
+			onClose();
+			navigator.vibrate?.(10);
+		};
+	};
+
 	return (
 		<motion.div
 			{...modalVariants}
@@ -28,12 +35,16 @@ function Modal({ title, children, onClose }) {
 				</h2>
 			</header>
 
-			<div
+			<motion.div
 				id="modalChildrenWrapper"
 				className={styles.childrenWrapper}
+				drag="x"
+				dragConstraints={{ left: 0, right: 0 }}
+				dragElastic={{ left: 0.1, right: 1 }}
+				onDragEnd={handleDragEnd}
 			>
 				{children}
-			</div>
+			</motion.div>
 		</motion.div>
 	);
 }
