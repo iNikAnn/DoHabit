@@ -6,6 +6,9 @@ import { useState } from 'react';
 // framer
 import { motion } from 'framer-motion';
 
+// utils
+import getListAnimationVariants from '../../utils/getListAnimationVariants';
+
 // icons
 import { MdEditSquare } from "react-icons/md"; // edit
 import { MdDeleteForever } from "react-icons/md"; // delete
@@ -25,79 +28,52 @@ function Note({ text, date, onStartEditNote, onDeleteNote }) {
 		? text.slice(0, MAX_TEXT_LENGTH - 10).trim() + '...'
 		: text;
 
-	// --- Animation parameters ---
-	const noteVariants = {
-		initial: { opacity: 0, height: 0, scale: .75 },
-
-		animate: {
-			opacity: 1,
-			height: 'auto',
-			scale: 1,
-
-			transition: {
-				duration: .3,
-				ease: 'easeOut',
-				opacity: { duration: .3, ease: 'easeOut', delay: .1 },
-				scale: { duration: .3, ease: 'easeOut', delay: .1 }
-			}
-		},
-
-		exit: {
-			opacity: 0,
-			height: 0,
-			scale: .75,
-
-			transition: {
-				duration: .3,
-				ease: 'easeOut',
-				height: { duration: .3, ease: 'easeOut', delay: .1 }
-			}
-		},
-	}
-	//
+	const noteVariants = getListAnimationVariants(0.3);
 
 	return (
-		<motion.div {...noteVariants} style={{ willChange: 'height' }}>
-			<div className={styles.note}>
-				<div>
-					{displayedText}
+		<motion.div
+			className={styles.note}
+			{...noteVariants}
+			layout
+		>
+			<div>
+				{displayedText}
 
-					{(isTextExceeded && isCollapsed) && (
-						<button
-							style={{ marginLeft: '0.6rem' }}
-							className="text-button"
-							onClick={() => setIsCollapsed((prev) => !prev)}
-						>
-							Expand
-						</button>
-					)}
+				{(isTextExceeded && isCollapsed) && (
+					<button
+						style={{ marginLeft: '0.6rem' }}
+						className="text-button"
+						onClick={() => setIsCollapsed((prev) => !prev)}
+					>
+						Expand
+					</button>
+				)}
+			</div>
+
+			<span className={styles.desc}>
+				<div className={styles.date}>
+					<small>{dateStr}</small>
+					<small>{timeStr}</small>
 				</div>
 
-				<span className={styles.desc}>
-					<div className={styles.date}>
-						<small>{dateStr}</small>
-						<small>{timeStr}</small>
-					</div>
+				<div className={styles.actions}>
+					<button
+						className={styles.actionBtn}
+						onClick={() => onStartEditNote(date, text)}
+					>
+						{/* <MdEditSquare /> */}
+						Edit
+					</button>
 
-					<div className={styles.actions}>
-						<button
-							className={styles.actionBtn}
-							onClick={() => onStartEditNote(date, text)}
-						>
-							{/* <MdEditSquare /> */}
-							Edit
-						</button>
-
-						<button
-							className={styles.actionBtn}
-							onClick={() => onDeleteNote(date)}
-						>
-							{/* <MdDeleteForever /> */}
-							Delete
-						</button>
-					</div>
-				</span>
-			</div>
+					<button
+						className={styles.actionBtn}
+						onClick={() => onDeleteNote(date)}
+					>
+						{/* <MdDeleteForever /> */}
+						Delete
+					</button>
+				</div>
+			</span>
 		</motion.div>
 	);
 }
