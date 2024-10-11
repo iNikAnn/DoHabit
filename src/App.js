@@ -4,7 +4,7 @@ import './App.css';
 import React, { useReducer } from 'react';
 
 // framer
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // components
 import Header from './components/Header';
@@ -105,9 +105,16 @@ function App() {
 	}
 	// --- Modal:END ---
 
+	const mainVariants = {
+		initial: { opacity: 0 },
+		animate: { opacity: 1 },
+		exit: { opacity: 0 },
+		transition: { duration: .2, ease: 'easeOut' }
+	};
+
 	return (
 		<main className="App">
-			<AnimatePresence>
+			<AnimatePresence initial={false}>
 				{modal ? (
 					<Modal
 						{...{ key: modal.modalTitle, title: modal.modalTitle }}
@@ -116,7 +123,10 @@ function App() {
 						{modalComponents[modal.modalContent]}
 					</Modal>
 				) : (
-					<div key="mainContent">
+					<motion.div
+						key="mainContent"
+						{...mainVariants}
+					>
 						<Header onOpenModal={handleUpdateModal} />
 
 						<HabitList
@@ -140,7 +150,7 @@ function App() {
 								})}
 							/>
 						)}
-					</div>
+					</motion.div>
 				)}
 			</AnimatePresence>
 		</main>
