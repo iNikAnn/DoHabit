@@ -17,6 +17,7 @@ import getTodayProgress from '../../utils//getTodayProgress';
 import getStreaks from '../../utils/getStreaks';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
 import shareHabit from '../../utils/shareHabit';
+import getListAnimationVariants from '../../utils/getListAnimationVariants';
 
 function Habit(props) {
 	const {
@@ -41,33 +42,7 @@ function Habit(props) {
 
 	const handleShare = () => shareHabit(habitRef.current);
 
-	// --- Animation Parameters:START ---
-	const habitVariants = {
-		initial: { opacity: 0, scale: .75 },
-
-		animate: {
-			opacity: 1,
-			scale: 1,
-
-			transition: {
-				duration: .3,
-				ease: 'easeOut',
-				opacity: { duration: .3, ease: 'easeOut', delay: .3 },
-				scale: { duration: .3, ease: 'easeOut', delay: .3 }
-			}
-		},
-
-		exit: {
-			opacity: 0,
-			scale: .75,
-
-			transition: {
-				duration: .3,
-				ease: 'easeOut',
-			}
-		},
-	}
-	// --- Animation Parameters:END ---
+	const habitVariants = getListAnimationVariants(0.3);
 
 	return (
 		<motion.div
