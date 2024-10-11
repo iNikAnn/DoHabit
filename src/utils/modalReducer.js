@@ -16,14 +16,12 @@ function modalReducer(modal, actions) {
 		case 'open':
 			validateModalProps(actions);
 			newModal = { ...actions, prev: modal };
-			document.body.classList.add('no-scroll');
 			break;
 
 		case 'close':
 			if (modal.prev) {
 				newModal = modal.prev;
 			} else {
-				document.body.classList.remove('no-scroll');
 				newModal = null;
 			};
 			break;
