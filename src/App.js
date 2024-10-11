@@ -7,7 +7,6 @@ import React, { useReducer } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 // components
-import Overlay from './components/Overlay';
 import Header from './components/Header';
 import HabitList from './components/HabitList';
 import Modal from './components/Modal';
@@ -107,49 +106,44 @@ function App() {
 	// --- Modal:END ---
 
 	return (
-		<div className="App">
-			<Header onOpenModal={handleUpdateModal} />
-
-			<main>
-				<HabitList
-					{...{ habits: filteredHabits, dbIcons, dbColors }}
-
-					onOpenModal={handleUpdateModal}
-					onUpdate={handleUpdateHabits}
-				/>
-
-				{filteredHabits.length === 0 && (
-					<Placeholder
-						image={<Calendar />}
-						title="No active habits found"
-						desc="Why not create one now?"
-						textOnButton="Create First Habit"
-						buttonIcon={<MdAddToPhotos />}
-						onClick={() => handleUpdateModal({
-							type: 'open',
-							modalContent: 'habitEditor',
-							modalTitle: 'Create new habit'
-						})}
-					/>
-				)}
-			</main>
-
+		<main className="App">
 			<AnimatePresence>
-				{modal && (
-					<>
-						<Overlay key='overlay' />
+				{modal ? (
+					<Modal
+						{...{ key: modal.modalTitle, title: modal.modalTitle }}
+						onClose={() => handleUpdateModal({ type: 'close' })}
+					>
+						{modalComponents[modal.modalContent]}
+					</Modal>
+				) : (
+					<div key="mainContent">
+						<Header onOpenModal={handleUpdateModal} />
 
-						<Modal
-							key={modal.modalTitle}
-							title={modal.modalTitle}
-							onClose={() => handleUpdateModal({ type: 'close' })}
-						>
-							{modalComponents[modal.modalContent]}
-						</Modal>
-					</>
+						<HabitList
+							{...{ habits: filteredHabits, dbIcons, dbColors }}
+
+							onOpenModal={handleUpdateModal}
+							onUpdate={handleUpdateHabits}
+						/>
+
+						{filteredHabits.length === 0 && (
+							<Placeholder
+								image={<Calendar />}
+								title="No active habits found"
+								desc="Why not create one now?"
+								textOnButton="Create First Habit"
+								buttonIcon={<MdAddToPhotos />}
+								onClick={() => handleUpdateModal({
+									type: 'open',
+									modalContent: 'habitEditor',
+									modalTitle: 'Create new habit'
+								})}
+							/>
+						)}
+					</div>
 				)}
 			</AnimatePresence>
-		</div>
+		</main>
 	);
 }
 
