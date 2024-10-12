@@ -15,6 +15,7 @@
 	border-top: 1px solid var(--bg-color-secondary);
 
 	padding: 0.6rem 1rem;
+	margin-top: auto;
 	z-index: 88;
 }
 

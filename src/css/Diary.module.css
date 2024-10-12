@@ -1,3 +1,11 @@
+/* diary */
+.diary {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* overlay */
 .overlay {
 	position: absolute;
 	top: 0;
