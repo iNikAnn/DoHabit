@@ -11,14 +11,14 @@ function Archive({ habits, dbIcons, dbColors, onUpdate }) {
 	const filteredHabits = habits.filter(h => h.isArchived);
 
 	return (
-		<div>
-			<HabitList
-				archive
-				habits={filteredHabits}
-				{...{ dbIcons, dbColors, onUpdate }}
-			/>
-
-			{!filteredHabits.length && (
+		<div className={styles.archive}>
+			{filteredHabits.length > 0 ? (
+				<HabitList
+					archive
+					habits={filteredHabits}
+					{...{ dbIcons, dbColors, onUpdate }}
+				/>
+			) : (
 				<Placeholder
 					image={<Table />}
 					title="No archived habits found"
