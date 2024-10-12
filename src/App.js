@@ -117,7 +117,8 @@ function App() {
 			<AnimatePresence initial={false}>
 				{modal ? (
 					<Modal
-						{...{ key: modal.modalTitle, title: modal.modalTitle }}
+						key={modal.modalTitle}
+						title={modal.modalTitle}
 						onClose={() => handleUpdateModal({ type: 'close' })}
 					>
 						{modalComponents[modal.modalContent]}
