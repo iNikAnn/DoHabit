@@ -1,19 +1,21 @@
 /* form */
 .form {
 	/* outline: 1px solid tomato; */
-	position: absolute;
+	position: sticky;
 	left: 0;
 	bottom: 0;
+	transform: translate(-1rem, 1rem);
 
 	display: flex;
 	gap: 0.4rem;
 
-	width: 100%;
+	width: calc(100% + 2rem);
 
 	background-color: var(--bg);
 	border-top: 1px solid var(--bg-color-secondary);
 
 	padding: 0.6rem 1rem;
+	margin-top: auto;
 	z-index: 88;
 }
 

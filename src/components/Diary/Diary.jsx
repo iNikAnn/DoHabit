@@ -110,7 +110,7 @@ function Diary(props) {
 	);
 
 	return (
-		<div style={{ paddingBottom: '3rem' }}>
+		<div className={styles.diary}>
 			{hasNotes ? (
 				<NoteList
 					diary={diary}
