@@ -109,7 +109,7 @@ function HabitEditor(props) {
 				/>
 
 				<small
-					style={{ paddingBottom: isEditMode ? '8rem' : '5rem' }}
+					// style={{ paddingBottom: isEditMode ? '8rem' : '5rem' }}
 					className={styles.info}
 				>
 					"Color" and "Icon" icons in reduced size indicate that they have been previously used (but can be reused).

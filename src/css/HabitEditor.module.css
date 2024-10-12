@@ -9,10 +9,11 @@
 /* bts */
 .btnsWrapper {
 	/* outline: 1px solid red; */
-	position: absolute;
-	left: 0rem;
-	right: 0rem;
-	bottom: 0rem;
+	position: sticky;
+	left: 0;
+	bottom: 0;
+	width: calc(100% + 2rem);
+	transform: translate(-1rem, 1rem);
 
 	display: flex;
 	/* justify-content: space-between; */
@@ -24,6 +25,7 @@
 	border-top: 1px solid var(--bg-color-secondary);
 
 	padding: 0.6rem 1rem;
+	margin-top: auto;
 	/* padding-top: 0; */
 }
 
