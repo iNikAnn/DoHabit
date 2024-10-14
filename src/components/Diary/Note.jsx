@@ -1,7 +1,7 @@
 import styles from '../../css/Note.module.css';
 
 // react
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 // framer
 import { motion } from 'framer-motion';
@@ -20,13 +20,29 @@ function Note({ text, date, onStartEditNote, onDeleteNote }) {
 		{ hour: '2-digit', minute: '2-digit' }
 	);
 
-	const [isCollapsed, setIsCollapsed] = useState(true);
+	const textRef = useRef(null);
+	const [displayText, setDisplayText] = useState(text);
 
-	const MAX_TEXT_LENGTH = 100;
-	const isTextExceeded = text.length > MAX_TEXT_LENGTH;
-	const displayedText = isTextExceeded && isCollapsed
-		? text.slice(0, MAX_TEXT_LENGTH - 10).trim() + '...'
-		: text;
+	useLayoutEffect(
+		() => {
+			const el = textRef.current;
+			const elLineHeight = parseFloat(getComputedStyle(el).lineHeight);
+			const maxHeight = elLineHeight * 3;
+
+			if (el.offsetHeight > maxHeight) {
+				let currText = text + '...';
+				el.textContent = currText;
+
+				while (el.offsetHeight > maxHeight && currText.length > 0) {
+					currText = currText.replace(/.{4}$/, '...');
+					el.textContent = currText;
+				};
+
+				setDisplayText(currText);
+			};
+		},
+		[text]
+	);
 
 	const noteVariants = getListAnimationVariants(0.3);
 
@@ -36,18 +52,11 @@ function Note({ text, date, onStartEditNote, onDeleteNote }) {
 			{...noteVariants}
 			layout
 		>
-			<div>
-				{displayedText}
-
-				{(isTextExceeded && isCollapsed) && (
-					<button
-						style={{ marginLeft: '0.6rem' }}
-						className="text-button"
-						onClick={() => setIsCollapsed((prev) => !prev)}
-					>
-						Expand
-					</button>
-				)}
+			<div
+				ref={textRef}
+				className={styles.text}
+			>
+				{displayText}
 			</div>
 
 			<span className={styles.desc}>
@@ -57,6 +66,16 @@ function Note({ text, date, onStartEditNote, onDeleteNote }) {
 				</div>
 
 				<div className={styles.actions}>
+					{displayText !== text && (
+						<button
+							style={{ color: 'dodgerblue' }}
+							className={styles.actionBtn}
+							onClick={() => setDisplayText(text)}
+						>
+							Expand
+						</button>
+					)}
+
 					<button
 						className={styles.actionBtn}
 						onClick={() => onStartEditNote(date, text)}

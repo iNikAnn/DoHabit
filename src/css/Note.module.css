@@ -13,6 +13,13 @@
 	padding-bottom: 0.8rem;
 }
 
+/* text */
+.text {
+	/* outline: 1px solid tomato; */
+	line-height: 1.4rem;
+	overflow: hidden;
+}
+
 /* desc */
 .desc {
 	/* outline: 1px solid tomato; */
