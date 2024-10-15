@@ -1,5 +1,8 @@
 import styles from '../../css/Diary.module.css';
 
+// react
+import { useEffect, useRef, useState } from 'react';
+
 // components
 import NoteList from './NoteList';
 import Placeholder from '../Placeholder';
@@ -8,7 +11,6 @@ import AddNoteForm from './AddNoteForm';
 // icons
 import { ReactComponent as InfoSvg } from '../../img/information.svg';
 import { MdStickyNote2 } from "react-icons/md";
-import { useEffect, useRef, useState } from 'react';
 
 function Diary(props) {
 	const {
@@ -102,11 +104,6 @@ function Diary(props) {
 	useEffect(
 		() => { if (isFormActive) formRef.current.focus(); },
 		[isFormActive]
-	);
-
-	useEffect(
-		() => { if (!hasNotes) handleFormActivation(false); },
-		[hasNotes]
 	);
 
 	return (
