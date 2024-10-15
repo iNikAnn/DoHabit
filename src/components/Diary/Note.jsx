@@ -20,26 +20,34 @@ function Note({ text, date, onStartEditNote, onDeleteNote }) {
 		{ hour: '2-digit', minute: '2-digit' }
 	);
 
+	const isFirstRender = useRef(true);
 	const textRef = useRef(null);
 	const [displayText, setDisplayText] = useState(text);
 
 	useLayoutEffect(
 		() => {
-			const el = textRef.current;
-			const elLineHeight = parseFloat(getComputedStyle(el).lineHeight);
-			const maxHeight = elLineHeight * 3;
+			let currText = text;
 
-			if (el.offsetHeight > maxHeight) {
-				let currText = text + '...';
+			if (isFirstRender.current) {
+				const el = textRef.current;
+				if (!el) return;
+
+				const elLineHeight = parseFloat(getComputedStyle(el).lineHeight);
+				const maxHeight = elLineHeight * 3;
+
 				el.textContent = currText;
 
+				let isFirst = true;
 				while (el.offsetHeight > maxHeight && currText.length > 0) {
-					currText = currText.replace(/.{4}$/, '...');
+					currText = currText.slice(0, isFirst ? -1 : -4) + '...';
 					el.textContent = currText;
+					if (isFirst) isFirst = false;
 				};
 
-				setDisplayText(currText);
+				isFirstRender.current = false;
 			};
+
+			setDisplayText(currText);
 		},
 		[text]
 	);
