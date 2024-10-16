@@ -1,17 +1,17 @@
 :root {
 	--indicator-width: 22px;
-	--switch-padding: 0.4rem;
+	--switch-padding: 6px;
 }
 
 .switch {
 	/* outline: 1px solid tomato; */
 	position: relative;
-	width: calc((var(--indicator-width) * 3));
-	height: calc((var(--indicator-width)) + var(--switch-padding) * 2);
+	width: calc(var(--indicator-width) * 3);
+	height: calc(var(--indicator-width) + var(--switch-padding) * 2);
 
 	border: 2px solid var(--bg-color-tertiary);
-	background-color: unset;
-	border-radius: 2rem;
+	background-color: var(--bg-color-primary);
+	border-radius: 40px;
 }
 
 .indicator {
@@ -22,7 +22,7 @@
 	aspect-ratio: 1;
 	transform: translateY(-50%);
 
-	background-color: var(--bg-color-secondary);
+	background-color: var(--bg-color-tertiary);
 	border-radius: 50%;
 
 	transition: left 0.2s ease-in-out;
