@@ -1,0 +1,34 @@
+:root {
+	--indicator-width: 22px;
+	--switch-padding: 0.4rem;
+}
+
+.switch {
+	/* outline: 1px solid tomato; */
+	position: relative;
+	width: calc((var(--indicator-width) * 3));
+	height: calc((var(--indicator-width)) + var(--switch-padding) * 2);
+
+	border: 2px solid var(--bg-color-tertiary);
+	background-color: unset;
+	border-radius: 2rem;
+}
+
+.indicator {
+	position: absolute;
+	top: 50%;
+	left: var(--switch-padding);
+	width: var(--indicator-width);
+	aspect-ratio: 1;
+	transform: translateY(-50%);
+
+	background-color: var(--bg-color-secondary);
+	border-radius: 50%;
+
+	transition: left 0.2s ease-in-out;
+}
+
+.indicator.active {
+	background-color: dodgerblue;
+	left: calc(100% - var(--indicator-width) - var(--switch-padding));
+}

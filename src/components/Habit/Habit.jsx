@@ -1,14 +1,18 @@
 import styles from '../../css/Habit.module.css';
 
 // react
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 
 // framer
 import { AnimatePresence, motion } from 'framer-motion';
 
+// context
+import { SettingsContext } from '../../context/settingsContext';
+
 // components
 import HabitHeader from './HabitHeader';
 import Calendar from './Calendar';
+import CompactCalendar from './CompactCalendar';
 import HabitMenu from './HabitMenu';
 
 // utils
@@ -26,6 +30,7 @@ function Habit(props) {
 		onShowMenu
 	} = props;
 
+	const settings = useContext(SettingsContext);
 	const habitRef = useRef(null);
 	const colorPalette = getColorPalette(color);
 	const todayProgress = getTodayProgress(completedDays);
@@ -59,9 +64,15 @@ function Habit(props) {
 
 			{!archive && (
 				<div className={styles.content}>
-					<Calendar
-						{...{ colorPalette, completedDays, frequency }}
-					/>
+					{settings.calendarView === 'compact' ? (
+						<CompactCalendar
+							{...{ colorPalette, completedDays, frequency }}
+						/>
+					) : (
+						<Calendar
+							{...{ colorPalette, completedDays, frequency }}
+						/>
+					)}
 				</div>
 			)}
 

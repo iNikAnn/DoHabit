@@ -3,7 +3,7 @@ import getFromLocalStorage from './getFromLocalStorage';
 import saveToLocalStorage from './saveToLocalStorage';
 import removeIncompleteDays from './removeIncompleteDays';
 
-function initializeHabits() {
+function initHabits() {
 	let habits = getFromLocalStorage('habits');
 
 	if (!Array.isArray(habits)) {
@@ -28,4 +28,4 @@ function initializeHabits() {
 	return habits;
 }
 
-export default initializeHabits;
+export default initHabits;

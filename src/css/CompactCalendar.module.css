@@ -1,0 +1,21 @@
+.calendar {
+	display: grid;
+	gap: 0.2rem;
+}
+
+.week {
+	/* outline: 1px solid tomato; */
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.day {
+	/* outline: 1px solid green; */
+	aspect-ratio: 1;
+	border-radius: 2px;
+}
+
+.day.today {
+	border: 2px solid #e6e6e6;
+}

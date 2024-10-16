@@ -6,7 +6,7 @@ import MenuItem from './MenuItem';
 
 // icons
 import { BsFillDatabaseFill } from "react-icons/bs";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaPaintBrush } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { ImFire } from "react-icons/im";
 import { HiArchiveBox } from "react-icons/hi2";
@@ -27,6 +27,19 @@ function Menu({ onOpenModal }) {
 							type: 'open',
 							modalTitle: 'Archive',
 							modalContent: 'archive'
+						})}
+						arrow
+					/>
+
+					<MenuItem
+						icon={<FaPaintBrush />}
+						iconColor="#ffa420"
+						title="Appearance"
+						desc="Customize the app's look"
+						onClick={() => onOpenModal({
+							type: 'open',
+							modalTitle: 'Appearance',
+							modalContent: 'appearanceSettings'
 						})}
 						arrow
 					/>
