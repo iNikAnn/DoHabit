@@ -4,16 +4,18 @@ import styles from '../../css/MenuItem.module.css';
 import { IoIosArrowForward } from "react-icons/io";
 import { LuExternalLink } from "react-icons/lu";
 
-function MenuItem({ icon, iconColor, title, desc, onClick, arrow, link }) {
+function MenuItem({ icon, iconColor, title, desc, onClick, arrow, link, other }) {
 	return (
 		<li>
 			<button
 				className={styles.menuItem}
 				onClick={onClick}
 			>
-				<div style={{ color: iconColor }}>
-					{icon}
-				</div>
+				{icon && (
+					<div style={{ color: iconColor }}>
+						{icon}
+					</div>
+				)}
 
 				<div className={styles.textWrapper}>
 					<h3 className={styles.title}>
@@ -32,9 +34,15 @@ function MenuItem({ icon, iconColor, title, desc, onClick, arrow, link }) {
 				{link && (
 					<LuExternalLink />
 				)}
+
+				{other && (
+					<div className={styles.other}>
+						{other}
+					</div>
+				)}
 			</button>
 		</li>
-	)
+	);
 }
 
 export default MenuItem;
