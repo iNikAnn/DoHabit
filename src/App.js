@@ -17,6 +17,7 @@ import Menu from './components/Menu/Menu';
 import Diary from './components/Diary/Diary';
 import Statistics from './components/Statistics/Statistics';
 import Archive from './components/Archive/Archive';
+import AppearanceSettings from './components/Appearance Settings/AppearanceSettings';
 import DataTransfer from './components/DataTransfer/DataTransfer';
 
 // utils
@@ -102,6 +103,9 @@ function App() {
 				color={dbColors[modal?.colorIndex]}
 				frequency={modal?.frequency}
 			/>
+		),
+		'appearanceSettings': (
+			<AppearanceSettings />
 		)
 	}
 	// --- Modal:END ---
