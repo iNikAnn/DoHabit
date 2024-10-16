@@ -64,7 +64,7 @@ function Habit(props) {
 
 			{!archive && (
 				<div className={styles.content}>
-					{settings.calendar === 'compact' ? (
+					{settings.calendarView === 'compact' ? (
 						<CompactCalendar
 							{...{ colorPalette, completedDays, frequency }}
 						/>

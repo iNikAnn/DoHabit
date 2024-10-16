@@ -40,16 +40,20 @@ function CompactCalendar({ colorPalette, completedDays, frequency }) {
 		>
 			{weeks.map((w, weekIndex) => (
 				<div key={weekIndex} className={styles.week}>
-					{w.map((isCompleted, dayIndex) => (
-						<div
-							key={dayIndex}
-							style={{
-								border: weekIndex * dayIndex === weeks.length - 1 ? '2px solid #e6e6e6' : '',
-								backgroundColor: isCompleted ? baseColor : darkenedColor
-							}}
-							className={styles.day}
-						/>
-					))}
+					{w.map((isCompleted, dayIndex) => {
+
+						const isToday = weekIndex === weeks.length - 1 && dayIndex === w.length - 1;
+
+						return (
+							<div
+								key={dayIndex}
+								style={{
+									backgroundColor: isCompleted ? baseColor : darkenedColor
+								}}
+								className={`${styles.day} ${isToday ? styles.today : ''}`}
+							/>
+						);
+					})}
 				</div>
 			))}
 		</div>

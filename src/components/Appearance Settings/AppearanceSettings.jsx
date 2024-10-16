@@ -23,14 +23,13 @@ function AppearanceSettings() {
 					<li className={styles.item}>
 						<div>
 							<h3>Compact Calendar View</h3>
-							<small>{`Currently enabled: ${settings.calendar ?? 'default'}`}</small>
+							<small>{`Currently enabled: ${settings.calendarView ?? 'default'}`}</small>
 						</div>
 
 						<Switch
-							isActive={settings.calendar === 'compact'}
+							isActive={settings.calendarView === 'compact'}
 							onClick={() => updateSettings({
-								type: 'calendar',
-								value: settings.calendar === 'compact' ? 'default' : 'compact'
+								calendarView: settings.calendarView === 'compact' ? 'default' : 'compact'
 							})}
 						/>
 					</li>

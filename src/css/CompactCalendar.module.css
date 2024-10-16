@@ -15,3 +15,7 @@
 	aspect-ratio: 1;
 	border-radius: 2px;
 }
+
+.day.today {
+	border: 2px solid #e6e6e6;
+}
