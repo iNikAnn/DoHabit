@@ -8,6 +8,7 @@ import { SettingsContext, SettingsDispatchContext } from '../../context/settings
 
 // components
 import Switch from '../Selection/Switch';
+import MenuItem from '../Menu/MenuItem';
 
 function AppearanceSettings() {
 
@@ -20,38 +21,33 @@ function AppearanceSettings() {
 				<h4>Calendar</h4>
 
 				<ul className={styles.list}>
-					<li className={styles.item}>
-						<div>
-							<h3>Compact Calendar View</h3>
-							<small>{`Currently enabled: ${settings.calendarView ?? 'default'}`}</small>
-						</div>
+					<MenuItem
+						title="Compact Calendar View"
+						desc={`Currently enabled: ${settings.calendarView ?? 'default'}`}
+						other={
+							<Switch
+								isActive={settings.calendarView === 'compact'}
+								onClick={() => updateSettings({
+									calendarView: settings.calendarView === 'compact' ? 'default' : 'compact'
+								})}
+							/>
+						}
+					/>
 
-						<Switch
-							isActive={settings.calendarView === 'compact'}
-							onClick={() => updateSettings({
-								calendarView: settings.calendarView === 'compact' ? 'default' : 'compact'
-							})}
-						/>
-					</li>
-
-					<li className={styles.item}>
-						<div>
-							<h3>Highlight Today's Date</h3>
-							<small>
-								{(settings.calendarHighlightToday ?? true)
-									? 'Today is highlighted'
-									: 'Today is not highlighted'}
-							</small>
-						</div>
-
-						<Switch
-							isActive={settings.calendarHighlightToday ?? true}
-							onClick={() => updateSettings({
-								calendarHighlightToday: !(settings.calendarHighlightToday ?? true)
-							})}
-						/>
-					</li>
-
+					<MenuItem
+						title="Highlight Today's Date"
+						desc={(settings.calendarHighlightToday ?? true)
+							? 'Today is highlighted'
+							: 'Today is not highlighted'}
+						other={
+							<Switch
+								isActive={settings.calendarHighlightToday ?? true}
+								onClick={() => updateSettings({
+									calendarHighlightToday: !(settings.calendarHighlightToday ?? true)
+								})}
+							/>
+						}
+					/>
 				</ul>
 			</div>
 		</section>
