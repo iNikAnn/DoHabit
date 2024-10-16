@@ -1,0 +1,36 @@
+.appearance {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.category {
+	/* outline: 1px solid tomato; */
+}
+
+.category h4 {
+	margin-left: 1rem;
+	margin-bottom: 1rem;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.item {
+	/* outline: 1px solid gray; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* item */
+.item h3 {
+	font-size: 1rem;
+}
+
+.item small {
+	color: gray;
+}
