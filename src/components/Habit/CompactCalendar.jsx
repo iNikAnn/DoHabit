@@ -1,9 +1,18 @@
 import styles from '../../css/CompactCalendar.module.css';
 
+// react
+import { useContext } from 'react';
+
+// context
+import { SettingsContext } from '../../context/settingsContext';
+
 // utils
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
 
 function CompactCalendar({ colorPalette, completedDays, frequency }) {
+
+	const settings = useContext(SettingsContext);
+	const highlightToday = settings.calendarHighlightToday ?? true;
 
 	const { baseColor, darkenedColor } = colorPalette;
 	const months = 6;
@@ -50,7 +59,7 @@ function CompactCalendar({ colorPalette, completedDays, frequency }) {
 								style={{
 									backgroundColor: isCompleted ? baseColor : darkenedColor
 								}}
-								className={`${styles.day} ${isToday ? styles.today : ''}`}
+								className={`${styles.day} ${(highlightToday) && isToday ? styles.today : ''}`}
 							/>
 						);
 					})}

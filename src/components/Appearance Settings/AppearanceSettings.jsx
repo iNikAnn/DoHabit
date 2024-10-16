@@ -33,6 +33,25 @@ function AppearanceSettings() {
 							})}
 						/>
 					</li>
+
+					<li className={styles.item}>
+						<div>
+							<h3>Highlight Today's Date</h3>
+							<small>
+								{(settings.calendarHighlightToday ?? true)
+									? 'Today is highlighted'
+									: 'Today is not highlighted'}
+							</small>
+						</div>
+
+						<Switch
+							isActive={settings.calendarHighlightToday ?? true}
+							onClick={() => updateSettings({
+								calendarHighlightToday: !(settings.calendarHighlightToday ?? true)
+							})}
+						/>
+					</li>
+
 				</ul>
 			</div>
 		</section>

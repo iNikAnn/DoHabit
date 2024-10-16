@@ -1,5 +1,12 @@
 import styles from '../../css/Month.module.css';
 
+
+// react
+import { useContext } from 'react';
+
+// context
+import { SettingsContext } from '../../context/settingsContext';
+
 // utils
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
 
@@ -12,6 +19,9 @@ function Month(props) {
 
 		visibleMonthsCount, isDaySquare, dayGap, dayBorderRadius
 	} = props;
+
+	const settings = useContext(SettingsContext);
+	const highlightToday = settings.calendarHighlightToday ?? true;
 
 	const { baseColor, darkenedColor, softenedColor } = colorPalette;
 
@@ -55,9 +65,9 @@ function Month(props) {
 			const dayStyle = {
 				backgroundColor: index >= shift ? isCompleted ? baseColor : darkenedColor : '',
 				color: isCompleted || isToday ? 'inherit' : softenedColor,
-				border: isToday ? `2px solid #e6e6e6` : '',
+				border: highlightToday && isToday ? `2px solid #e6e6e6` : '',
 				borderRadius: dayBorderRadius,
-				aspectRatio: isDaySquare ? '1 / 1' : '',
+				aspectRatio: isDaySquare ? 1 : '',
 			};
 
 			const dayNum = index < shift ? '' : index - shift + 1;
