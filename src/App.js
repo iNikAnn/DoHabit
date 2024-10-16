@@ -6,6 +6,9 @@ import React, { useReducer } from 'react';
 // framer
 import { AnimatePresence, motion } from 'framer-motion';
 
+// context
+import { SettingsContext, SettingsDispatchContext } from './context/settingsContext';
+
 // components
 import Header from './components/Header';
 import HabitList from './components/HabitList';
@@ -21,6 +24,7 @@ import DataTransfer from './components/DataTransfer/DataTransfer';
 // utils
 import initHabits from './utils/initHabits';
 import initMainDiary from './utils/initMainDiary';
+import settingsReducer from './utils/settingsReducer';
 import habitsReducer from './utils/habitsReducer';
 import mainDiaryReducer from './utils/mainDiaryReducer';
 import modalReducer from './utils/modalReducer';
@@ -36,6 +40,10 @@ import dbIcons from './db/dbIcons';
 import dbColors from './db/dbColors';
 
 function App() {
+	// --- Settigns:START ---
+	const [settings, settingsDispatch] = useReducer(settingsReducer, {});
+	// --- Settings:END ---
+
 	// --- Habits:START ---
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 	const handleUpdateHabits = (actions) => habitsDispatch(actions);
@@ -113,48 +121,52 @@ function App() {
 	};
 
 	return (
-		<main className="App">
-			<AnimatePresence initial={false}>
-				{modal ? (
-					<Modal
-						key={modal.modalTitle}
-						title={modal.modalTitle}
-						onClose={() => handleUpdateModal({ type: 'close' })}
-					>
-						{modalComponents[modal.modalContent]}
-					</Modal>
-				) : (
-					<motion.div
-						key="mainContent"
-						{...mainVariants}
-					>
-						<Header onOpenModal={handleUpdateModal} />
+		<SettingsContext.Provider value={settings}>
+			<SettingsDispatchContext.Provider value={settingsDispatch}>
+				<main className="App">
+					<AnimatePresence initial={false}>
+						{modal ? (
+							<Modal
+								key={modal.modalTitle}
+								title={modal.modalTitle}
+								onClose={() => handleUpdateModal({ type: 'close' })}
+							>
+								{modalComponents[modal.modalContent]}
+							</Modal>
+						) : (
+							<motion.div
+								key="mainContent"
+								{...mainVariants}
+							>
+								<Header onOpenModal={handleUpdateModal} />
 
-						<HabitList
-							{...{ habits: filteredHabits, dbIcons, dbColors }}
+								<HabitList
+									{...{ habits: filteredHabits, dbIcons, dbColors }}
 
-							onOpenModal={handleUpdateModal}
-							onUpdate={handleUpdateHabits}
-						/>
+									onOpenModal={handleUpdateModal}
+									onUpdate={handleUpdateHabits}
+								/>
 
-						{filteredHabits.length === 0 && (
-							<Placeholder
-								image={<Calendar />}
-								title="No active habits found"
-								desc="Why not create one now?"
-								textOnButton="Create First Habit"
-								buttonIcon={<MdAddToPhotos />}
-								onClick={() => handleUpdateModal({
-									type: 'open',
-									modalContent: 'habitEditor',
-									modalTitle: 'Create new habit'
-								})}
-							/>
+								{filteredHabits.length === 0 && (
+									<Placeholder
+										image={<Calendar />}
+										title="No active habits found"
+										desc="Why not create one now?"
+										textOnButton="Create First Habit"
+										buttonIcon={<MdAddToPhotos />}
+										onClick={() => handleUpdateModal({
+											type: 'open',
+											modalContent: 'habitEditor',
+											modalTitle: 'Create new habit'
+										})}
+									/>
+								)}
+							</motion.div>
 						)}
-					</motion.div>
-				)}
-			</AnimatePresence>
-		</main>
+					</AnimatePresence>
+				</main>
+			</SettingsDispatchContext.Provider>
+		</SettingsContext.Provider>
 	);
 }
 
