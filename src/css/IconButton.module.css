@@ -1,0 +1,21 @@
+.btn {
+	width: 2rem;
+	aspect-ratio: 1;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: transparent;
+	border-radius: var(--border-radius-secondary);
+	color: inherit;
+}
+
+.btn:disabled {
+	filter: brightness(0.5);
+}
+
+.btn svg {
+	width: 1.4rem;
+	height: 1.4rem;
+}
