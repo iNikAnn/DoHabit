@@ -7,8 +7,9 @@ import { useContext } from 'react';
 import { SettingsContext, SettingsDispatchContext } from '../../context/settingsContext';
 
 // components
-import Switch from '../Selection/Switch';
+import MenuItemList from '../Menu/MenuItemList';
 import MenuItem from '../Menu/MenuItem';
+import Switch from '../Selection/Switch';
 
 function AppearanceSettings() {
 
@@ -17,39 +18,37 @@ function AppearanceSettings() {
 
 	return (
 		<section className={styles.appearance}>
-			<div className={styles.category}>
-				<h4>Calendar</h4>
+			<MenuItemList title="Calendar">
+				<MenuItem
+					title="Compact Calendar View"
+					desc={`Currently enabled: ${settings.calendarView ?? 'default'}`}
+					other={
+						<Switch
+							isActive={settings.calendarView === 'compact'}
+							onClick={() => updateSettings({
+								calendarView: settings.calendarView === 'compact'
+									? 'default'
+									: 'compact'
+							})}
+						/>
+					}
+				/>
 
-				<ul className={styles.list}>
-					<MenuItem
-						title="Compact Calendar View"
-						desc={`Currently enabled: ${settings.calendarView ?? 'default'}`}
-						other={
-							<Switch
-								isActive={settings.calendarView === 'compact'}
-								onClick={() => updateSettings({
-									calendarView: settings.calendarView === 'compact' ? 'default' : 'compact'
-								})}
-							/>
-						}
-					/>
-
-					<MenuItem
-						title="Highlight Today's Date"
-						desc={(settings.calendarHighlightToday ?? true)
-							? 'Today is highlighted'
-							: 'Today is not highlighted'}
-						other={
-							<Switch
-								isActive={settings.calendarHighlightToday ?? true}
-								onClick={() => updateSettings({
-									calendarHighlightToday: !(settings.calendarHighlightToday ?? true)
-								})}
-							/>
-						}
-					/>
-				</ul>
-			</div>
+				<MenuItem
+					title="Highlight Today's Date"
+					desc={(settings.calendarHighlightToday ?? true)
+						? 'Today is highlighted'
+						: 'Today is not highlighted'}
+					other={
+						<Switch
+							isActive={settings.calendarHighlightToday ?? true}
+							onClick={() => updateSettings({
+								calendarHighlightToday: !(settings.calendarHighlightToday ?? true)
+							})}
+						/>
+					}
+				/>
+			</MenuItemList>
 		</section>
 	);
 }
