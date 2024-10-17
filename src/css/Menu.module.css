@@ -8,27 +8,6 @@
 	gap: 1rem;
 }
 
-/* category */
-.category:not(:last-child),
-.category h4 {
-	margin-bottom: 1rem;
-}
-
-.category h4 {
-	margin-left: 1rem;
-}
-
-/* list */
-.list {
-	background-color: var(--bg-color-primary);
-	border-radius: var(--border-radius-primary);
-	/* padding: 1rem 0; */
-}
-
-.list li:not(:last-child) {
-	border-bottom: 1px solid var(--bg-color-secondary);
-}
-
 /* footer */
 .footer {
 	text-align: center;
