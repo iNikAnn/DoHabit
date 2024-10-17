@@ -1,13 +1,22 @@
 import styles from '../../css/MenuItemList.module.css';
 
-function MenuItemList({ title, children }) {
+function MenuItemList({ categoryStyle, title, titleStyle, listStyle, children }) {
 	return (
-		<div className={styles.category}>
-			<h4 className={styles.title}>
+		<div
+			style={categoryStyle}
+			className={styles.category}
+		>
+			<h4
+				style={titleStyle}
+				className={styles.title}
+			>
 				{title}
 			</h4>
 
-			<ul className={styles.list}>
+			<ul
+				style={listStyle}
+				className={styles.list}
+			>
 				{children}
 			</ul>
 		</div>
