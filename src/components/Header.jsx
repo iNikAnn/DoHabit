@@ -1,5 +1,8 @@
 import styles from '../css/Header.module.css';
 
+// components
+import IconButton from './Actions/IconButton';
+
 // icons
 import { FaPlus, FaBars } from "react-icons/fa";
 import { MdLibraryBooks } from "react-icons/md";
@@ -17,12 +20,10 @@ function Header({ onOpenModal }) {
 	].map(
 		([content, title, icon]) => (
 			<li key={content}>
-				<button
-					className={styles.btn}
+				<IconButton
+					{...{ icon, title }}
 					onClick={() => handleClick(content, title)}
-				>
-					{icon}
-				</button>
+				/>
 			</li>
 		)
 	);
