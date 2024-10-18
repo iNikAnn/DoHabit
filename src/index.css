@@ -9,7 +9,6 @@
 }
 
 :root {
-	color-scheme: light;
 	--header-height: 4rem;
 
 	--accent-color: dodgerblue;
@@ -40,6 +39,7 @@ code {
 }
 
 html {
+	color-scheme: light dark;
 	background-color: var(--bg);
 	color: light-dark(black, hsl(0, 0%, 90%));
 	user-select: none;

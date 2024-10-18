@@ -18,10 +18,25 @@ function AppearanceSettings() {
 
 	return (
 		<section className={styles.appearance}>
+			<MenuItemList title="Color Theme">
+				<MenuItem
+					title="Force Dark Mode"
+					desc={`Current: ${settings.isDarkSchemeForced ? 'Dark' : 'System'}`}
+					other={
+						<Switch
+							isActive={settings.isDarkSchemeForced}
+							onClick={() => updateSettings({
+								isDarkSchemeForced: !settings.isDarkSchemeForced
+							})}
+						/>
+					}
+				/>
+			</MenuItemList>
+
 			<MenuItemList title="Calendar">
 				<MenuItem
 					title="Compact Calendar View"
-					desc={`Currently enabled: ${settings.calendarView ?? 'default'}`}
+					desc={`Current: ${settings.calendarView ?? 'default'}`}
 					other={
 						<Switch
 							isActive={settings.calendarView === 'compact'}
