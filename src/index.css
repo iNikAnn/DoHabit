@@ -13,10 +13,10 @@
 
 	--accent-color: dodgerblue;
 
-	--bg: black;
-	--bg-color-primary: hsl(0, 0%, 8%);
-	--bg-color-secondary: hsl(0, 0%, 12%);
-	--bg-color-tertiary: hsl(0, 0%, 20%);
+	--bg: light-dark(hsl(0, 0%, 95%), black);
+	--bg-color-primary: light-dark(hsl(0, 0%, 100%), hsl(0, 0%, 8%));
+	--bg-color-secondary: light-dark(hsl(0, 0%, 90%), hsl(0, 0%, 12%));
+	--bg-color-tertiary: light-dark(hsl(0, 0%, 80%), hsl(0, 0%, 20%));
 
 	--border-radius-primary: 1rem;
 	--border-radius-secondary: 0.6rem;
@@ -39,8 +39,9 @@ code {
 }
 
 html {
-	background-color: hsl(0, 0%, 0%);
-	color: hsl(0, 0%, 90%);
+	color-scheme: light dark;
+	background-color: var(--bg);
+	color: light-dark(black, hsl(0, 0%, 90%));
 	user-select: none;
 }
 
