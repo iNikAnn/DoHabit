@@ -2,13 +2,14 @@ import styles from '../../css/Switch.module.css';
 
 function Switch({ isActive, onClick }) {
 	return (
-		<button
+		<div
+			role='button'
 			type='button'
 			className={styles.switch}
 			onClick={onClick}
 		>
 			<div className={`${styles.indicator} ${isActive ? styles.active : ''}`} />
-		</button>
+		</div>
 	);
 }
 

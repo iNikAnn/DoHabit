@@ -23,7 +23,9 @@
 
 /* input */
 .colorList input {
+	-webkit-appearance: none;
 	appearance: none;
+	visibility: hidden;
 }
 
 /* check mark */

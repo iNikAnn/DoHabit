@@ -153,6 +153,7 @@ function HabitEditor(props) {
 						type="submit"
 						icon={<MdAddToPhotos />}
 						text={isEditMode ? 'Save Changes' : 'Create Habit'}
+						color="#e6e6e6"
 						disabled={alreadyExist}
 					/>
 				</div>

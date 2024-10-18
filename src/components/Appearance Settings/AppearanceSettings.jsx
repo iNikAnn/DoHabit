@@ -36,7 +36,7 @@ function AppearanceSettings() {
 			<MenuItemList title="Calendar">
 				<MenuItem
 					title="Compact Calendar View"
-					desc={`Current: ${settings.calendarView ?? 'default'}`}
+					desc={`Current: ${settings.calendarView === 'compact' ? 'Compact' : 'Default'}`}
 					other={
 						<Switch
 							isActive={settings.calendarView === 'compact'}
