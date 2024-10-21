@@ -1,7 +1,7 @@
 import styles from '../../css/Habit.module.css';
 
 // react
-import { useContext, useRef } from 'react';
+import { useContext, useMemo, useRef } from 'react';
 
 // framer
 import { AnimatePresence, motion } from 'framer-motion';
@@ -32,7 +32,7 @@ function Habit(props) {
 
 	const settings = useContext(SettingsContext);
 	const habitRef = useRef(null);
-	const colorPalette = getColorPalette(color);
+	const colorPalette = useMemo(() => getColorPalette(color), [color]);
 	const todayProgress = getTodayProgress(completedDays);
 	const { currentStreak } = getStreaks(completedDays, frequency);
 
@@ -46,6 +46,19 @@ function Habit(props) {
 	] = checkHabitCompletion(completedDays, frequency, today, yesterday);
 
 	const handleShare = () => shareHabit(habitRef.current);
+
+	const calendar = useMemo(
+		() => {
+			const props = { colorPalette, completedDays, frequency };
+
+			return settings.calendarView === 'compact' ? (
+				<CompactCalendar {...props} />
+			) : (
+				<Calendar {...props} />
+			);
+		},
+		[colorPalette, completedDays, frequency, settings.calendarView]
+	);
 
 	const habitVariants = getListAnimationVariants(0.3);
 
@@ -64,15 +77,7 @@ function Habit(props) {
 
 			{!archive && (
 				<div className={styles.content}>
-					{settings.calendarView === 'compact' ? (
-						<CompactCalendar
-							{...{ colorPalette, completedDays, frequency }}
-						/>
-					) : (
-						<Calendar
-							{...{ colorPalette, completedDays, frequency }}
-						/>
-					)}
+					{calendar}
 				</div>
 			)}
 
