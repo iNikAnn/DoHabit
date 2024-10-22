@@ -4,11 +4,9 @@ import saveToLocalStorage from './saveToLocalStorage';
 import removeIncompleteDays from './removeIncompleteDays';
 
 function initHabits() {
-	let habits = getFromLocalStorage('habits');
+	let habits = getFromLocalStorage('habits', []);
 
-	if (!Array.isArray(habits)) {
-		return [];
-	};
+	if (!habits.length) return habits;
 
 	habits = habits.map(
 		(h) => {
