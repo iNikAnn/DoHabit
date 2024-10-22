@@ -1,12 +1,13 @@
-function getFromLocalStorage(key) {
+function getFromLocalStorage(key, initialValue) {
 	let data;
 
 	try {
 		const json = localStorage.getItem(key);
-		data = JSON.parse(json);
+		data = json ? JSON.parse(json) : initialValue;
 	}
 	catch (error) {
 		console.error('Error retrieving data from localStorage:', error);
+		data = initialValue;
 	};
 
 	return data;
