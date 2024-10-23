@@ -7,14 +7,11 @@ import React, { useContext, useReducer } from 'react';
 import { SettingsContext } from './context/settingsContext';
 
 // framer
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 // components
-import Header from './components/Header';
-import HabitList from './components/HabitList';
 import Modal from './components/Modal';
 import HabitEditor from './components/HabitEditor/HabitEditor';
-import Placeholder from './components/Placeholder';
 import Menu from './components/Menu/Menu';
 import Diary from './components/Diary/Diary';
 import Statistics from './components/Statistics/Statistics';
@@ -32,12 +29,9 @@ import modalReducer from './utils/modalReducer';
 import exportHabits from './utils/exportHabits';
 import importHabits from './utils/importHabits';
 
-// icons
-import { ReactComponent as Calendar } from './img/calendar.svg';
-import { MdAddToPhotos } from "react-icons/md";
-
 // db
 import dbIcons from './db/dbIcons';
+import MainPage from './components/MainPage';
 
 function App() {
 	const settings = useContext(SettingsContext);
@@ -53,7 +47,6 @@ function App() {
 	// --- Habits:START ---
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 	const handleUpdateHabits = (actions) => habitsDispatch(actions);
-	const filteredHabits = habits.filter((h) => !h.isArchived);
 	// --- Habits:END ---
 
 	// --- Main Diary:START ---
@@ -122,13 +115,6 @@ function App() {
 	}
 	// --- Modal:END ---
 
-	const mainVariants = {
-		initial: { opacity: 0 },
-		animate: { opacity: 1 },
-		exit: { opacity: 0 },
-		transition: { duration: .2, ease: 'easeOut' }
-	};
-
 	return (
 		<main className="App">
 			<AnimatePresence initial={false}>
@@ -141,34 +127,11 @@ function App() {
 						{modalComponents[modal.modalContent]}
 					</Modal>
 				) : (
-					<motion.div
-						key="mainContent"
-						{...mainVariants}
-					>
-						<Header onOpenModal={handleUpdateModal} />
-
-						<HabitList
-							{...{ habits: filteredHabits, dbIcons, dbColors }}
-
-							onOpenModal={handleUpdateModal}
-							onUpdate={handleUpdateHabits}
-						/>
-
-						{filteredHabits.length === 0 && (
-							<Placeholder
-								image={<Calendar />}
-								title="No active habits found"
-								desc="Why not create one now?"
-								textOnButton="Create First Habit"
-								buttonIcon={<MdAddToPhotos />}
-								onClick={() => handleUpdateModal({
-									type: 'open',
-									modalContent: 'habitEditor',
-									modalTitle: 'Create new habit'
-								})}
-							/>
-						)}
-					</motion.div>
+					<MainPage
+						{...{ habits, dbIcons, dbColors }}
+						onUpdate={handleUpdateHabits}
+						onOpenModal={handleUpdateModal}
+					/>
 				)}
 			</AnimatePresence>
 		</main>
