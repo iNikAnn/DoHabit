@@ -21,10 +21,10 @@ function Menu({ onOpenModal }) {
 					iconColor="#7b68ee"
 					title="Archive"
 					desc="View or manage archived habits"
+					to="/modal/archive"
 					onClick={() => onOpenModal({
 						type: 'open',
 						modalTitle: 'Archive',
-						modalContent: 'archive'
 					})}
 					arrow
 				/>
@@ -34,10 +34,10 @@ function Menu({ onOpenModal }) {
 					iconColor="#ffa420"
 					title="Appearance"
 					desc="Customize the app's look"
+					to="/modal/appearance"
 					onClick={() => onOpenModal({
 						type: 'open',
 						modalTitle: 'Appearance',
-						modalContent: 'appearanceSettings'
 					})}
 					arrow
 				/>
@@ -49,9 +49,9 @@ function Menu({ onOpenModal }) {
 					iconColor="#77dd77"
 					title="Export/Import Data"
 					desc="Backup or restore your habits"
+					to="/modal/dataTransfer"
 					onClick={() => onOpenModal({
 						type: 'open',
-						modalContent: 'dataTransfer',
 						modalTitle: 'Export/Import Data'
 					})}
 					arrow
