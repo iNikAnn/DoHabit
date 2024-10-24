@@ -45,6 +45,11 @@ html {
 	user-select: none;
 }
 
+a {
+	color: unset;
+	text-decoration: none;
+}
+
 button {
 	border: none;
 	color: inherit;

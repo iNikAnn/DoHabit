@@ -33,7 +33,7 @@ function HabitEditor(props) {
 	const isEditMode = Boolean(habitTitle);
 	const habit = isEditMode ? habits.find((habit) => habit.title === habitTitle) : null;
 
-	const [inputTitle, setInputTitle] = useState(isEditMode ? habit.title : '');
+	const [inputTitle, setInputTitle] = useState(isEditMode ? habit?.title : '');
 	const [alreadyExist, setAlreadyExist] = useState(false);
 
 	// check for existing habit with the same title
