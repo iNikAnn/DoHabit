@@ -13,6 +13,23 @@ import { FaShareAltSquare } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
 import { FaCalendarTimes } from "react-icons/fa";
 import { FaChartSimple } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
+
+// --- Variants:START ---
+const bgVariants = {
+	initial: { opacity: 0 },
+	animate: { opacity: 100 },
+	exit: { opacity: 0 },
+	transition: { duration: .2, ease: 'easeOut' }
+};
+
+const contentVariants = {
+	initial: { y: '100%' },
+	animate: { y: 0 },
+	exit: { y: '100%' },
+	transition: { duration: .2, ease: 'easeOut' }
+};
+// --- Variants:END ---
 
 function HabitMenu(props) {
 	const {
@@ -23,28 +40,12 @@ function HabitMenu(props) {
 
 	const { darkenedColor } = colorPalette;
 
-	// --- Animation parameters ---
-	const bgVariants = {
-		initial: { opacity: 0 },
-		animate: { opacity: 100 },
-		exit: { opacity: 0 },
-		transition: { duration: .2, ease: 'easeOut' }
-	};
-
-	const contentVariants = {
-		initial: { y: '100%' },
-		animate: { y: 0 },
-		exit: { y: '100%' },
-		transition: { duration: .2, ease: 'easeOut' }
-	};
-
 	const handleDragEnd = (_, info) => {
 		if (info.offset.y >= 100) {
 			onShowMenu(-1);
 			navigator.vibrate?.(10);
 		};
 	};
-	//
 
 	const handleClick = (action) => {
 		switch (action) {
@@ -64,7 +65,6 @@ function HabitMenu(props) {
 					type: 'open',
 					habitTitle: title,
 					modalTitle: 'Edit habit',
-					modalContent: 'habitEditor'
 				});
 				break;
 
@@ -76,7 +76,6 @@ function HabitMenu(props) {
 					colorIndex,
 					frequency,
 					modalTitle: title,
-					modalContent: 'statistics'
 				});
 				break;
 
@@ -86,7 +85,6 @@ function HabitMenu(props) {
 					habitTitle: title,
 					colorIndex: colorIndex,
 					modalTitle: title,
-					modalContent: 'diary'
 				});
 				break;
 
@@ -99,34 +97,41 @@ function HabitMenu(props) {
 		isYesterdayCompleted ? <FaCalendarTimes /> : <FaCalendarCheck />,
 		(isYesterdayCompleted ? 'Uncomp.' : 'Comp.') + ' Y\'day',
 		isYesterdayCompleted ? 'IndianRed' : darkenedColor,
+		null,
 		() => handleClick('toggleCompleteYeserday')
 	], [
 		<MdEditSquare />,
 		'Edit Habit',
 		darkenedColor,
+		'/modal/habitEditor',
 		() => handleClick('editHabit'),
 		true
 	], [
 		<FaShareAltSquare />,
 		'Share Habit',
 		darkenedColor,
+		null,
 		() => onShare()
 	], [
 		<FaChartSimple />,
 		'Statistics',
 		darkenedColor,
+		'/modal/statistics',
 		() => handleClick('openStatistics'),
 		true
 	], [
 		<MdLibraryBooks />,
 		'Diary',
 		darkenedColor,
+		'/modal/diary',
 		() => handleClick('openDiary'),
 		true
 	]].map(
-		([icon, text, bgColor, onClick, arrow]) => (
+		([icon, text, bgColor, to, onClick, arrow]) => (
 			<li key={text}>
-				<Button {...{ icon, text, bgColor, onClick, arrow }} />
+				<Link to={to}>
+					<Button {...{ icon, text, bgColor, onClick, arrow }} />
+				</Link>
 			</li>
 		)
 	);
