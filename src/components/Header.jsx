@@ -1,5 +1,8 @@
 import styles from '../css/Header.module.css';
 
+// router
+import { Link } from 'react-router-dom';
+
 // components
 import IconButton from './Actions/IconButton';
 
@@ -9,21 +12,21 @@ import { MdLibraryBooks } from "react-icons/md";
 
 function Header({ onOpenModal }) {
 
-	const handleClick = (modalContent, modalTitle) => {
-		onOpenModal({ type: 'open', modalContent, modalTitle });
-	};
+	const publicUrl = process.env.PUBLIC_URL;
 
 	const navItems = [
-		['habitEditor', 'Create new habit', <FaPlus />],
-		['diary', 'Main Diary', <MdLibraryBooks />],
-		['menu', 'Menu', <FaBars />]
+		['/modal/habitEditor', 'Create new habit', <FaPlus />],
+		['/modal/diary', 'Main Diary', <MdLibraryBooks />],
+		['/modal/menu', 'Menu', <FaBars />]
 	].map(
-		([content, title, icon]) => (
-			<li key={content}>
-				<IconButton
-					{...{ icon, title }}
-					onClick={() => handleClick(content, title)}
-				/>
+		([path, title, icon]) => (
+			<li key={path}>
+				<Link to={publicUrl + path}>
+					<IconButton
+						{...{ icon, title }}
+						onClick={() => onOpenModal({ type: 'open', modalTitle: title })}
+					/>
+				</Link>
 			</li>
 		)
 	);

@@ -1,20 +1,20 @@
 import './App.css';
 
 // react
-import React, { useContext, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 
 // context
 import { SettingsContext } from './context/settingsContext';
 
+// router
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+
 // framer
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 // components
-import Header from './components/Header';
-import HabitList from './components/HabitList';
 import Modal from './components/Modal';
 import HabitEditor from './components/HabitEditor/HabitEditor';
-import Placeholder from './components/Placeholder';
 import Menu from './components/Menu/Menu';
 import Diary from './components/Diary/Diary';
 import Statistics from './components/Statistics/Statistics';
@@ -32,14 +32,29 @@ import modalReducer from './utils/modalReducer';
 import exportHabits from './utils/exportHabits';
 import importHabits from './utils/importHabits';
 
-// icons
-import { ReactComponent as Calendar } from './img/calendar.svg';
-import { MdAddToPhotos } from "react-icons/md";
-
 // db
 import dbIcons from './db/dbIcons';
+import MainPage from './components/MainPage';
 
 function App() {
+	const publicUrl = process.env.PUBLIC_URL;
+
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	useEffect(
+		() => {
+			const handleGoBack = () => {
+				handleUpdateModal({ type: 'close' });
+			};
+
+			window.addEventListener('popstate', handleGoBack);
+
+			return () => window.removeEventListener('popstate', handleGoBack);
+		},
+		[]
+	);
+
 	const settings = useContext(SettingsContext);
 
 	const dbColors = getColors(
@@ -53,7 +68,6 @@ function App() {
 	// --- Habits:START ---
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 	const handleUpdateHabits = (actions) => habitsDispatch(actions);
-	const filteredHabits = habits.filter((h) => !h.isArchived);
 	// --- Habits:END ---
 
 	// --- Main Diary:START ---
@@ -70,106 +84,121 @@ function App() {
 	const [modal, modalDispatch] = useReducer(modalReducer, null);
 	const handleUpdateModal = (actions) => modalDispatch(actions);
 
-	const modalComponents = {
-		'habitEditor': (
-			<HabitEditor
-				{...{ habits, dbIcons, dbColors }}
-				habitTitle={modal?.habitTitle}
-				onUpdate={handleUpdateHabits}
-				onClose={() => handleUpdateModal({ type: 'close' })}
-			/>
-		),
-		'menu': (
-			<Menu onOpenModal={handleUpdateModal} />
-		),
-		'archive': (
-			<Archive
-				{...{ habits, dbIcons, dbColors }}
-				onUpdate={handleUpdateHabits}
-			/>
-		),
-		'dataTransfer': (
-			<DataTransfer
-				onExport={handleExportHabits}
-				onImport={handleImportHabits}
-			/>
-		),
-		'diary': (
-			<Diary
-				habitTitle={modal?.habitTitle}
-				accentColor={dbColors[modal?.colorIndex]}
-				diary={
-					modal?.habitTitle
-						? habits.find((h) => h.title === modal?.habitTitle).diary
-						: mainDiary
-				}
-				onUpdate={handleUpdateHabits}
-				onUpdateMainDiary={handleUpdateMainDiary}
-			/>
-		),
-		'statistics': (
-			<Statistics
-				{...{ habits }}
-				colorPalette={modal?.colorPalette}
-				completedDays={modal?.completedDays}
-				color={dbColors[modal?.colorIndex]}
-				frequency={modal?.frequency}
-			/>
-		),
-		'appearanceSettings': (
-			<AppearanceSettings />
-		)
-	}
+	const modalComponents = [
+		<Route
+			key="habitEditor"
+			path="habitEditor"
+			element={
+				<HabitEditor
+					{...{ habits, dbIcons, dbColors }}
+					habitTitle={modal?.habitTitle}
+					onUpdate={handleUpdateHabits}
+					onClose={() => {
+						// handleUpdateModal({ type: 'close' });
+						navigate(-1);
+					}}
+				/>
+			}
+		/>,
+		<Route
+			key="menu"
+			path="menu"
+			element={
+				<Menu onOpenModal={handleUpdateModal} />
+			}
+		/>,
+		<Route
+			key="diary"
+			path="diary"
+			element={
+				<Diary
+					habitTitle={modal?.habitTitle}
+					accentColor={dbColors[modal?.colorIndex]}
+					diary={
+						modal?.habitTitle
+							? habits.find((h) => h.title === modal?.habitTitle)?.diary
+							: mainDiary
+					}
+					onUpdate={handleUpdateHabits}
+					onUpdateMainDiary={handleUpdateMainDiary}
+				/>
+			}
+		/>,
+		<Route
+			key="archive"
+			path='archive'
+			element={
+				<Archive
+					{...{ habits, dbIcons, dbColors }}
+					onUpdate={handleUpdateHabits}
+				/>
+			}
+		/>,
+		<Route
+			key="dataTransfer"
+			path="dataTransfer"
+			element={
+				<DataTransfer
+					onExport={handleExportHabits}
+					onImport={handleImportHabits}
+				/>
+			}
+		/>,
+		<Route
+			key="statistics"
+			path="statistics"
+			element={
+				<Statistics
+					{...{ habits }}
+					colorPalette={modal?.colorPalette}
+					completedDays={modal?.completedDays}
+					color={dbColors[modal?.colorIndex]}
+					frequency={modal?.frequency}
+				/>
+			}
+		/>,
+		<Route
+			key="appearance"
+			path="appearance"
+			element={
+				<AppearanceSettings />
+			}
+		/>
+	];
 	// --- Modal:END ---
-
-	const mainVariants = {
-		initial: { opacity: 0 },
-		animate: { opacity: 1 },
-		exit: { opacity: 0 },
-		transition: { duration: .2, ease: 'easeOut' }
-	};
 
 	return (
 		<main className="App">
 			<AnimatePresence initial={false}>
-				{modal ? (
-					<Modal
-						key={modal.modalTitle}
-						title={modal.modalTitle}
-						onClose={() => handleUpdateModal({ type: 'close' })}
-					>
-						{modalComponents[modal.modalContent]}
-					</Modal>
-				) : (
-					<motion.div
-						key="mainContent"
-						{...mainVariants}
-					>
-						<Header onOpenModal={handleUpdateModal} />
-
-						<HabitList
-							{...{ habits: filteredHabits, dbIcons, dbColors }}
-
-							onOpenModal={handleUpdateModal}
-							onUpdate={handleUpdateHabits}
-						/>
-
-						{filteredHabits.length === 0 && (
-							<Placeholder
-								image={<Calendar />}
-								title="No active habits found"
-								desc="Why not create one now?"
-								textOnButton="Create First Habit"
-								buttonIcon={<MdAddToPhotos />}
-								onClick={() => handleUpdateModal({
-									type: 'open',
-									modalContent: 'habitEditor',
-									modalTitle: 'Create new habit'
-								})}
+				<Routes location={location} key={location.pathname}>
+					<Route
+						path={publicUrl}
+						element={
+							<MainPage
+								key="mainPage"
+								{...{ habits, dbIcons, dbColors }}
+								onUpdate={handleUpdateHabits}
+								onOpenModal={handleUpdateModal}
 							/>
-						)}
-					</motion.div>
-				)}
+						}
+					/>
+
+					<Route
+						path={`${publicUrl}/modal`}
+						element={
+							<Modal
+								key={modal?.modalTitle}
+								title={modal?.modalTitle}
+								onClose={() => {
+									// handleUpdateModal({ type: 'close' })
+									navigate(-1);
+								}}
+							/>
+						}
+					>
+						{modalComponents}
+					</Route>
+				</Routes>
 			</AnimatePresence>
 		</main>
 	);

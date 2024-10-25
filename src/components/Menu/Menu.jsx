@@ -13,6 +13,9 @@ import { ImFire } from "react-icons/im";
 import { HiArchiveBox } from "react-icons/hi2";
 
 function Menu({ onOpenModal }) {
+
+	const publicUrl = process.env.PUBLIC_URL;
+
 	return (
 		<section className={styles.menu}>
 			<MenuItemList title="App">
@@ -21,10 +24,10 @@ function Menu({ onOpenModal }) {
 					iconColor="#7b68ee"
 					title="Archive"
 					desc="View or manage archived habits"
+					to={`${publicUrl}/modal/archive`}
 					onClick={() => onOpenModal({
 						type: 'open',
 						modalTitle: 'Archive',
-						modalContent: 'archive'
 					})}
 					arrow
 				/>
@@ -34,10 +37,10 @@ function Menu({ onOpenModal }) {
 					iconColor="#ffa420"
 					title="Appearance"
 					desc="Customize the app's look"
+					to={`${publicUrl}/modal/appearance`}
 					onClick={() => onOpenModal({
 						type: 'open',
 						modalTitle: 'Appearance',
-						modalContent: 'appearanceSettings'
 					})}
 					arrow
 				/>
@@ -49,9 +52,9 @@ function Menu({ onOpenModal }) {
 					iconColor="#77dd77"
 					title="Export/Import Data"
 					desc="Backup or restore your habits"
+					to={`${publicUrl}/modal/dataTransfer`}
 					onClick={() => onOpenModal({
 						type: 'open',
-						modalContent: 'dataTransfer',
 						modalTitle: 'Export/Import Data'
 					})}
 					arrow

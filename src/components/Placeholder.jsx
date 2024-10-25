@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from '../css/Placeholder.module.css';
 
 // componets
@@ -7,7 +8,7 @@ function Placeholder(props) {
 	const {
 		image, title, desc,
 		textOnButton, buttonIcon,
-		onClick, accentColor
+		to, onClick, accentColor
 	} = props;
 
 	return (
@@ -22,12 +23,14 @@ function Placeholder(props) {
 			</div>
 
 			{textOnButton && (
-				<Button
-					icon={buttonIcon}
-					text={textOnButton}
-					bgColor={accentColor}
-					onClick={onClick}
-				/>
+				<Link to={to}>
+					<Button
+						icon={buttonIcon}
+						text={textOnButton}
+						bgColor={accentColor}
+						onClick={onClick}
+					/>
+				</Link>
 			)}
 		</div>
 	);

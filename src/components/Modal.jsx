@@ -1,21 +1,25 @@
 import styles from '../css/Modal.module.css';
 
+// router
+import { Outlet } from 'react-router-dom';
+
 // framer
 import { motion, useAnimate, useMotionValue } from 'framer-motion'
 
 // icons
 import { IoIosArrowForward } from 'react-icons/io';
 
-function Modal({ title, children, onClose }) {
+// variants
+const modalVariants = {
+	initial: { opacity: 0, x: '50%' },
+	animate: { opacity: 1, x: 0 },
+	exit: { opacity: 0, x: '10%' },
+	transition: { duration: .2, ease: 'easeOut' }
+};
+
+function Modal({ title, onClose }) {
 	const [scope, animate] = useAnimate();
 	const x = useMotionValue(0);
-
-	const modalVariants = {
-		initial: { opacity: 0, x: '50%' },
-		animate: { opacity: 1, x: 0 },
-		exit: { opacity: 0, x: '50%' },
-		transition: { duration: .3, ease: 'easeOut' }
-	};
 
 	const handleDragEnd = async () => {
 		const startX = x.get();
@@ -36,9 +40,7 @@ function Modal({ title, children, onClose }) {
 			className={styles.modal}
 			{...modalVariants}
 		>
-			<motion.header
-				className={styles.header}
-			>
+			<motion.header className={styles.header}>
 				<IoIosArrowForward onClick={onClose} />
 
 				<h2 className={styles.title}>
@@ -56,7 +58,7 @@ function Modal({ title, children, onClose }) {
 				dragElastic={{ left: 0.1, right: 0.5 }}
 				onDragEnd={handleDragEnd}
 			>
-				{children}
+				<Outlet />
 			</motion.div>
 		</motion.div>
 	);
