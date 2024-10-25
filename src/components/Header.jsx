@@ -12,6 +12,8 @@ import { MdLibraryBooks } from "react-icons/md";
 
 function Header({ onOpenModal }) {
 
+	const publicUrl = process.env.PUBLIC_URL;
+
 	const navItems = [
 		['/modal/habitEditor', 'Create new habit', <FaPlus />],
 		['/modal/diary', 'Main Diary', <MdLibraryBooks />],
@@ -19,7 +21,7 @@ function Header({ onOpenModal }) {
 	].map(
 		([path, title, icon]) => (
 			<li key={path}>
-				<Link to={path}>
+				<Link to={publicUrl + path}>
 					<IconButton
 						{...{ icon, title }}
 						onClick={() => onOpenModal({ type: 'open', modalTitle: title })}

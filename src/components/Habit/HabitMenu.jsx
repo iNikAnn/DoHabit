@@ -129,7 +129,7 @@ function HabitMenu(props) {
 	]].map(
 		([icon, text, bgColor, to, onClick, arrow]) => (
 			<li key={text}>
-				<Link to={to}>
+				<Link to={to ? (process.env.PUBLIC_URL + to) : null}>
 					<Button {...{ icon, text, bgColor, onClick, arrow }} />
 				</Link>
 			</li>

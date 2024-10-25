@@ -40,7 +40,7 @@ function MainPage({ habits, dbIcons, dbColors, onUpdate, onOpenModal }) {
 					desc="Why not create one now?"
 					textOnButton="Create First Habit"
 					buttonIcon={<MdAddToPhotos />}
-					to="/modal/habitEditor"
+					to={`${process.env.PUBLIC_URL}/modal/habitEditor`}
 					onClick={() => onOpenModal({
 						type: 'open',
 						modalTitle: 'Create new habit'
