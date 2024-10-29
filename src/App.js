@@ -77,7 +77,7 @@ function App() {
 
 	// --- Data Transfer:START ---
 	const handleExportHabits = () => exportHabits(habits);
-	const handleImportHabits = () => importHabits(handleUpdateHabits);
+	const handleImportHabits = () => importHabits(handleUpdateHabits, publicUrl);
 	// --- Data Transfer:END ---
 
 	// --- Modal:START ---

@@ -35,7 +35,7 @@ function DataTransfer({ onExport, onImport }) {
 				/>
 			</div>
 		</div>
-	)
+	);
 }
 
 export default DataTransfer;

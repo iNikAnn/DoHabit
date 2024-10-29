@@ -1,4 +1,4 @@
-function importHabits(onUpdate) {
+function importHabits(onUpdate, url) {
 	const input = document.createElement('input');
 	input.type = 'file';
 	input.accept = '.json';
@@ -17,7 +17,7 @@ function importHabits(onUpdate) {
 			});
 
 			window.alert('Habits imported successfully! The application will now reload.');
-			window.location.reload();
+			window.location.href = url;
 		} catch (error) {
 			window.alert('Error reading the file.');
 			console.error('Error reading the file:', error);
