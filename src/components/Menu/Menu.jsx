@@ -5,6 +5,9 @@ import packageJson from '../../../package.json';
 import MenuItemList from './MenuItemList';
 import MenuItem from './MenuItem';
 
+// utils
+import clearLocalStorage from '../../utils/clearLocalStorage';
+
 // icons
 import { BsFillDatabaseFill } from "react-icons/bs";
 import { FaGithub, FaPaintBrush } from "react-icons/fa";
@@ -88,19 +91,7 @@ function Menu({ onOpenModal }) {
 					icon={<ImFire style={{ color: 'IndianRed' }} />}
 					title="Clear Data"
 					desc="Delete all application data"
-					onClick={() => {
-						if (window.confirm('Are you sure you want to delete all application data?')) {
-							const input = window.prompt('Enter the phrase "Delete all data".');
-
-							if (input && input.toLowerCase() === 'delete all data') {
-								localStorage.clear();
-								alert('All data has been successfully removed. The application will now reload.');
-								window.location.reload();
-							} else {
-								alert('You entered the wrong phrase, operation canceled.');
-							};
-						};
-					}}
+					onClick={() => clearLocalStorage(publicUrl)}
 				/>
 			</MenuItemList>
 
