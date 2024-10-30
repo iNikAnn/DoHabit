@@ -149,10 +149,8 @@ function App() {
 			path="statistics"
 			element={
 				<Statistics
-					{...{ habits }}
 					colorPalette={modal?.colorPalette}
 					completedDays={modal?.completedDays}
-					color={dbColors[modal?.colorIndex]}
 					frequency={modal?.frequency}
 				/>
 			}
