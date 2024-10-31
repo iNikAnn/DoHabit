@@ -1,11 +1,11 @@
 import styles from '../../css/IconButton.module.css';
 
-function IconButton({ style, icon, title, onClick, disabled }) {
+function IconButton({ style, icon, text, onClick, disabled }) {
 	return (
 		<button
 			style={style}
 			className={styles.btn}
-			aria-label={title}
+			aria-label={text}
 			onClick={onClick}
 			disabled={disabled}
 		>
