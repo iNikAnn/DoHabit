@@ -7,7 +7,7 @@ import IconButton from '../Actions/IconButton';
 // utils
 import getCapitalizedText from '../../utils/getCapitalizedText';
 
-function SectionHeader({ title, btn, btnText, btnIcon, btnOnClick }) {
+function SectionHeader({ title, titleStyle, btn, btnText, btnIcon, btnOnClick }) {
 
 	const capitalizedTitle = getCapitalizedText(title);
 
@@ -24,7 +24,10 @@ function SectionHeader({ title, btn, btnText, btnIcon, btnOnClick }) {
 
 	return (
 		<div className={styles.header}>
-			<h4 className={styles.title}>
+			<h4
+				style={titleStyle}
+				className={styles.title}
+			>
 				{capitalizedTitle}
 			</h4>
 
