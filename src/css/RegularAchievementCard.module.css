@@ -1,0 +1,27 @@
+/* card */
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.4rem;
+
+	background-color: var(--bg-color-secondary);
+	border-radius: var(--border-radius-primary);
+
+	padding: 1rem;
+}
+
+.card.unlocked {
+	background-color: var(--bg-color-primary);
+}
+
+/* img */
+.img {
+	width: 75%;
+	aspect-ratio: 1;
+}
+
+/* title */
+.title {
+	color: gray;
+}
