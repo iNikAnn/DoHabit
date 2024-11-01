@@ -1,5 +1,8 @@
 import styles from '../../css/HabitMenu.module.css';
 
+// router
+import { Link } from 'react-router-dom';
+
 // framer
 import { motion } from "framer-motion"
 
@@ -13,7 +16,6 @@ import { FaShareAltSquare } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
 import { FaCalendarTimes } from "react-icons/fa";
 import { FaChartSimple } from "react-icons/fa6";
-import { Link } from 'react-router-dom';
 
 // --- Variants:START ---
 const bgVariants = {
