@@ -16,7 +16,8 @@ function initAchievements() {
 			if (existingAchievement) {
 				return {
 					...a,
-					isUnlocked: existingAchievement.isUnlocked
+					isUnlocked: existingAchievement.isUnlocked,
+					unlockDate: existingAchievement.unlockDate
 				};
 			};
 
