@@ -21,13 +21,16 @@ import Statistics from './components/Statistics/Statistics';
 import Archive from './components/Archive/Archive';
 import AppearanceSettings from './components/Appearance Settings/AppearanceSettings';
 import DataTransfer from './components/DataTransfer/DataTransfer';
+import Achievements from './components/Achievements/Achievements';
 
 // utils
 import getColors from './utils/getColors';
 import initHabits from './utils/initHabits';
-import initMainDiary from './utils/initMainDiary';
 import habitsReducer from './utils/habitsReducer';
+import initMainDiary from './utils/initMainDiary';
 import mainDiaryReducer from './utils/mainDiaryReducer';
+import initAchievements from './utils/initAchievements';
+import achievementsReducer from './utils/achievementsReducer';
 import modalReducer from './utils/modalReducer';
 import exportHabits from './utils/exportHabits';
 import importHabits from './utils/importHabits';
@@ -74,6 +77,15 @@ function App() {
 	const [mainDiary, mainDiaryDispatch] = useReducer(mainDiaryReducer, null, initMainDiary);
 	const handleUpdateMainDiary = (actions) => mainDiaryDispatch(actions);
 	// --- Main Diary:END ---
+
+	// --- Achievements:START ---
+	const [achievements, achievementsDispatch] = useReducer(achievementsReducer, null, initAchievements);
+
+	useEffect(
+		() => { achievementsDispatch({ habits }); },
+		[habits]
+	);
+	// --- Achievements:END ---
 
 	// --- Data Transfer:START ---
 	const handleExportHabits = () => exportHabits(habits);
@@ -160,6 +172,15 @@ function App() {
 			path="appearance"
 			element={
 				<AppearanceSettings />
+			}
+		/>,
+		<Route
+			key="achievements"
+			path="achievements"
+			element={
+				<Achievements
+					{...{ achievements }}
+				/>
 			}
 		/>
 	];
