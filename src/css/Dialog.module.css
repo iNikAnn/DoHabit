@@ -1,0 +1,28 @@
+/* dialog */
+.dialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/* transform: translate(-50%, -50%); */
+
+	width: 75%;
+
+	background-color: var(--bg-color-secondary);
+	border-radius: var(--border-radius-primary);
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+
+	padding: 1rem;
+	z-index: 999;
+}
+
+/* btnsWrapper */
+.btnsWrapper {
+	display: flex;
+	gap: 1rem;
+	justify-content: flex-end;
+
+	border-top: 1px solid var(--bg-color-tertiary);
+
+	margin-top: 1rem;
+	padding-top: 1rem;
+}
