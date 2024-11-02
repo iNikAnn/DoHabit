@@ -9,7 +9,6 @@ const achievements = [
 		criteria: {
 			streak: 7
 		},
-		isUnlocked: false,
 		isSecret: false
 	},
 	{
@@ -19,7 +18,6 @@ const achievements = [
 		criteria: {
 			streak: 15
 		},
-		isUnlocked: false,
 		isSecret: false
 	},
 	{
@@ -29,7 +27,6 @@ const achievements = [
 		criteria: {
 			streak: 30
 		},
-		isUnlocked: false,
 		isSecret: false
 	},
 	{
@@ -39,7 +36,6 @@ const achievements = [
 		criteria: {
 			streak: 90
 		},
-		isUnlocked: false,
 		isSecret: false
 	},
 	{
@@ -49,7 +45,6 @@ const achievements = [
 		criteria: {
 			streak: 180
 		},
-		isUnlocked: false,
 		isSecret: false,
 	},
 	{
@@ -59,9 +54,17 @@ const achievements = [
 		criteria: {
 			streak: 365
 		},
-		isUnlocked: false,
 		isSecret: false
 	},
+	{
+		id: 6,
+		title: 'Oops, I Did It Again!',
+		desc: 'Complete a day after a 30-day break.',
+		criteria: {
+			gap: 30
+		},
+		isSecret: true
+	}
 ];
 
 export default achievements;
