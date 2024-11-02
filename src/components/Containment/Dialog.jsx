@@ -19,7 +19,7 @@ const dialogVariants = {
 	}
 };
 
-function Dialog({ title, imgSrc, text, onClose }) {
+function Dialog({ title, subTitle, imgSrc, text, onClose }) {
 	return (
 		<>
 			<Overlay onClick={onClose} />
@@ -30,7 +30,15 @@ function Dialog({ title, imgSrc, text, onClose }) {
 			>
 				<div className={styles.content}>
 					{title && (
-						<h3>{title}</h3>
+						<div>
+							<h3>{title}</h3>
+
+							{subTitle && (
+								<small className={styles.subTitle}>
+									{subTitle}
+								</small>
+							)}
+						</div>
 					)}
 
 					{imgSrc && (
@@ -38,7 +46,11 @@ function Dialog({ title, imgSrc, text, onClose }) {
 					)}
 
 					{text && (
-						<span>{text}</span>
+						<div className={styles.text}>
+							{text.split('\n').map((line) => (
+								<div>{line}</div>
+							))}
+						</div>
 					)}
 				</div>
 

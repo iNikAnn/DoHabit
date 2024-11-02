@@ -5,7 +5,7 @@
 	left: 50%;
 	/* transform: translate(-50%, -50%); */
 
-	width: 75%;
+	width: 85%;
 
 	background-color: var(--bg-color-secondary);
 	border-radius: var(--border-radius-primary);
@@ -23,10 +23,22 @@
 	gap: 1rem;
 }
 
+/* subTitle */
+.subTitle {
+	color: gray;
+}
+
 /* img */
 .img {
 	width: 50%;
 	align-self: center;
+}
+
+/* text */
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
 }
 
 /* btnsWrapper */
