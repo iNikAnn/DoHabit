@@ -1,7 +1,7 @@
 import './App.css';
 
 // react
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 
 // context
 import { SettingsContext } from './context/settingsContext';
@@ -14,6 +14,7 @@ import { AnimatePresence } from 'framer-motion';
 
 // components
 import Modal from './components/Modal';
+import Dialog from './components/Containment/Dialog';
 import HabitEditor from './components/HabitEditor/HabitEditor';
 import Menu from './components/Menu/Menu';
 import Diary from './components/Diary/Diary';
@@ -44,6 +45,8 @@ function App() {
 
 	const navigate = useNavigate();
 	const location = useLocation();
+
+	const [dialog, setDialog] = useState(false);
 
 	useEffect(
 		() => {
@@ -82,7 +85,12 @@ function App() {
 	const [achievements, achievementsDispatch] = useReducer(achievementsReducer, null, initAchievements);
 
 	useEffect(
-		() => { achievementsDispatch({ habits }); },
+		() => {
+			achievementsDispatch({
+				habits,
+				onOpenDialog: setDialog
+			});
+		},
 		[habits]
 	);
 	// --- Achievements:END ---
@@ -180,6 +188,7 @@ function App() {
 			element={
 				<Achievements
 					{...{ achievements }}
+					onOpenDialog={setDialog}
 				/>
 			}
 		/>
@@ -218,6 +227,14 @@ function App() {
 						{modalComponents}
 					</Route>
 				</Routes>
+
+				{dialog && (
+					<Dialog
+						key="dialog"
+						content={dialog}
+						onClose={() => setDialog(false)}
+					/>
+				)}
 			</AnimatePresence>
 		</main>
 	);
