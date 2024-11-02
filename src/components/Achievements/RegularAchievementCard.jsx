@@ -1,8 +1,11 @@
 import styles from '../../css/RegularAchievementCard.module.css';
 
-function RegularAchievementCard({ achievement, imgSrc }) {
+function RegularAchievementCard({ achievement, imgSrc, onClick }) {
 	return (
-		<li className={`${styles.card} ${achievement.isUnlocked ? styles.unlocked : ''}`}>
+		<li
+			className={`${styles.card} ${achievement.isUnlocked ? styles.unlocked : ''}`}
+			onClick={onClick}
+		>
 			<img
 				style={{ filter: `saturate(${achievement.isUnlocked ? 1 : 0})` }}
 				className={styles.img}

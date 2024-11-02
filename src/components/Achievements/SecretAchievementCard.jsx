@@ -1,8 +1,11 @@
 import styles from '../../css/SecretAchievementCard.module.css';
 
-function SecretAchievementCard({ achievement, imgSrc }) {
+function SecretAchievementCard({ achievement, imgSrc, onClick }) {
 	return (
-		<li className={styles.card}>
+		<li
+			className={styles.card}
+			onClick={onClick}
+		>
 			<img
 				src={imgSrc}
 				alt={achievement.title}
