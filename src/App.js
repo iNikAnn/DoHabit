@@ -231,7 +231,7 @@ function App() {
 				{dialog && (
 					<Dialog
 						key="dialog"
-						content={dialog}
+						{...dialog}
 						onClose={() => setDialog(false)}
 					/>
 				)}

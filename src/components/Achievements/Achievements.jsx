@@ -19,9 +19,9 @@ function Achievements({ achievements, onOpenDialog }) {
 					title="Streaks"
 					btn="textButton"
 					btnText="Show info"
-					btnOnClick={() => onOpenDialog(
-						'To unlock an achievement, complete a streak of the required number of days in any of your habits.'
-					)}
+					btnOnClick={() => onOpenDialog({
+						text: 'To unlock an achievement, complete a streak of the required number of days in any of your habits.'
+					})}
 				/>
 
 				<ul className={styles.regularAchievements}>
@@ -42,9 +42,9 @@ function Achievements({ achievements, onOpenDialog }) {
 					title="Secret achievements"
 					btn="textButton"
 					btnText="Show info"
-					btnOnClick={() => onOpenDialog(
-						'Surprise! These achievements are like unicorns — rare and totally unexpected! Use the app regularly, and you might just unlock some hidden achievements along the way!'
-					)}
+					btnOnClick={() => onOpenDialog({
+						text: 'Surprise! These achievements are like unicorns — rare and totally unexpected! Use the app regularly, and you might just unlock some hidden achievements along the way!'
+					})}
 				/>
 
 				{sortedSecretAchievements.length ? (

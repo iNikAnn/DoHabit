@@ -1,18 +1,21 @@
-import { Link } from 'react-router-dom';
 import styles from '../css/Placeholder.module.css';
+
+// router
+import { Link } from 'react-router-dom';
 
 // componets
 import Button from './Button';
 
 function Placeholder(props) {
 	const {
+		style,
 		image, title, desc,
 		textOnButton, buttonIcon,
 		to, onClick, accentColor
 	} = props;
 
 	return (
-		<div className={styles.placeholder}>
+		<div style={style} className={styles.placeholder}>
 			{image}
 
 			<div className={styles.textWrapper}>
