@@ -64,7 +64,16 @@ const achievements = [
 			gap: 30
 		},
 		isSecret: true
-	}
+	},
+	{
+		id: 7,
+		title: 'Habit Formation',
+		desc: 'You\'ve returned to your habit after a 21-day break. Just a little reminder: the idea was to stick with it for 21 days straight to form a habit, not to take a vacation from it! But hey, at least you\'re back!',
+		criteria: {
+			gap: 21
+		},
+		isSecret: true
+	},
 ];
 
 export default achievements;
