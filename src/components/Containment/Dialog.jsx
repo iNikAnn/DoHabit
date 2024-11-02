@@ -19,7 +19,7 @@ const dialogVariants = {
 	}
 };
 
-function Dialog({ content, onClose }) {
+function Dialog({ title, imgSrc, text, onClose }) {
 	return (
 		<>
 			<Overlay onClick={onClose} />
@@ -28,8 +28,18 @@ function Dialog({ content, onClose }) {
 				className={styles.dialog}
 				{...dialogVariants}
 			>
-				<div>
-					{content}
+				<div className={styles.content}>
+					{title && (
+						<h3>{title}</h3>
+					)}
+
+					{imgSrc && (
+						<img src={imgSrc} alt={title} className={styles.img} />
+					)}
+
+					{text && (
+						<span>{text}</span>
+					)}
 				</div>
 
 				<div className={styles.btnsWrapper}>
