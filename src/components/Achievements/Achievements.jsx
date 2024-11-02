@@ -6,11 +6,24 @@ import Placeholder from '../Placeholder';
 import RegularAchievementCard from './RegularAchievementCard';
 import SecretAchievementCard from './SecretAchievementCard';
 
+const publicUrl = process.env.PUBLIC_URL;
+
 function Achievements({ achievements, onOpenDialog }) {
 
 	const regularAchievements = achievements.filter((a) => !a.isSecret);
 	const secretAchievements = achievements.filter((a) => a.isSecret && a.isUnlocked);
 	const sortedSecretAchievements = secretAchievements.toSorted((a, b) => b.unlockDate - a.unlockDate);
+
+	const handleShowDetails = (a) => {
+		if (!a.isUnlocked) return;
+
+		onOpenDialog({
+			title: a.title,
+			subTitle: 'Unlock Date: ' + new Date(a.unlockDate).toLocaleDateString(),
+			imgSrc: `${publicUrl}/img/achievements/${a.id}.png`,
+			text: a.desc
+		});
+	};
 
 	return (
 		<div className={styles.achievements}>
@@ -30,7 +43,8 @@ function Achievements({ achievements, onOpenDialog }) {
 							<RegularAchievementCard
 								key={a.id}
 								achievement={a}
-								imgSrc={`${process.env.PUBLIC_URL}/img/achievements/${a.id}.png`}
+								imgSrc={`${publicUrl}/img/achievements/${a.id}.png`}
+								onClick={() => handleShowDetails(a)}
 							/>
 						)
 					)}
@@ -43,7 +57,7 @@ function Achievements({ achievements, onOpenDialog }) {
 					btn="textButton"
 					btnText="Show info"
 					btnOnClick={() => onOpenDialog({
-						text: 'Surprise! These achievements are like unicorns — rare and totally unexpected! Use the app regularly, and you might just unlock some hidden achievements along the way!'
+						text: 'Surprise! These achievements are like unicorns — rare and totally unexpected!\nUse the app regularly, and you might just unlock some hidden achievements along the way!'
 					})}
 				/>
 
@@ -54,7 +68,8 @@ function Achievements({ achievements, onOpenDialog }) {
 								<SecretAchievementCard
 									key={a.id}
 									achievement={a}
-									imgSrc={`${process.env.PUBLIC_URL}/img/achievements/${a.id}.png`}
+									imgSrc={`${publicUrl}/img/achievements/${a.id}.png`}
+									onClick={() => handleShowDetails(a)}
 								/>
 							)
 						)}
