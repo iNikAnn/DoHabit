@@ -11,13 +11,13 @@ function initAchievements() {
 	// preserving the unlocked status from local storage
 	const updatedAchievements = dbAchievements.map(
 		(a) => {
-			const existingAchievement = storedAchievements.find((localA) => a.id === localA.id);
+			const unlockedAchievement = storedAchievements.find((localA) => a.id === localA.id);
 
-			if (existingAchievement) {
+			if (unlockedAchievement) {
 				return {
 					...a,
-					isUnlocked: existingAchievement.isUnlocked,
-					unlockDate: existingAchievement.unlockDate
+					isUnlocked: unlockedAchievement.isUnlocked,
+					unlockDate: unlockedAchievement.unlockDate
 				};
 			};
 

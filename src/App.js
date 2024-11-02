@@ -200,7 +200,7 @@ function App() {
 	// --- Modal:END ---
 
 	// End of initial render
-	useEffect(() => isInitialRender.current = false, []);
+	useEffect(() => { isInitialRender.current = false }, []);
 
 	return (
 		<main className="App">
