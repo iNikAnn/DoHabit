@@ -1,7 +1,7 @@
 import './App.css';
 
 // react
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useRef, useState } from 'react';
 
 // context
 import { SettingsContext } from './context/settingsContext';
@@ -40,8 +40,11 @@ import importHabits from './utils/importHabits';
 import dbIcons from './db/dbIcons';
 import MainPage from './components/MainPage';
 
+const publicUrl = process.env.PUBLIC_URL;
+
 function App() {
-	const publicUrl = process.env.PUBLIC_URL;
+	// The value will be changed to false later in the code
+	const isInitialRender = useRef(true);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -88,7 +91,8 @@ function App() {
 		() => {
 			achievementsDispatch({
 				habits,
-				onOpenDialog: setDialog
+				onOpenDialog: setDialog,
+				isInitialRender: isInitialRender.current
 			});
 		},
 		[habits]
@@ -194,6 +198,9 @@ function App() {
 		/>
 	];
 	// --- Modal:END ---
+
+	// End of initial render
+	useEffect(() => isInitialRender.current = false, []);
 
 	return (
 		<main className="App">
