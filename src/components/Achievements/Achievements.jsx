@@ -6,7 +6,7 @@ import Placeholder from '../Placeholder';
 import RegularAchievementCard from './RegularAchievementCard';
 import SecretAchievementCard from './SecretAchievementCard';
 
-function Achievements({ achievements }) {
+function Achievements({ achievements, onOpenDialog }) {
 
 	const regularAchievements = achievements.filter((a) => !a.isSecret);
 	const secretAchievements = achievements.filter((a) => a.isSecret && a.isUnlocked);
@@ -19,7 +19,7 @@ function Achievements({ achievements }) {
 					title="Streaks"
 					btn="textButton"
 					btnText="Show info"
-					btnOnClick={() => window.alert(
+					btnOnClick={() => onOpenDialog(
 						'To unlock an achievement, complete a streak of the required number of days in any of your habits.'
 					)}
 				/>
@@ -42,7 +42,7 @@ function Achievements({ achievements }) {
 					title="Secret achievements"
 					btn="textButton"
 					btnText="Show info"
-					btnOnClick={() => window.alert(
+					btnOnClick={() => onOpenDialog(
 						'Surprise! These achievements are like unicorns — rare and totally unexpected! Use the app regularly, and you might just unlock some hidden achievements along the way!'
 					)}
 				/>
