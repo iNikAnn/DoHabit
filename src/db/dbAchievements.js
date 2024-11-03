@@ -83,6 +83,14 @@ const achievements = [
 		},
 		isSecret: true
 	},
+	{
+		id: 9,
+		title: 'One Day Wonder',
+		desc: 'Create a habit on January 1st and actually complete it on the same day.',
+		criteria: {
+		},
+		isSecret: true
+	}
 ];
 
 export default achievements;
