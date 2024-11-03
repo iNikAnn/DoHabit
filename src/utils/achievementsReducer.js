@@ -4,6 +4,7 @@ import getStreaks from './getStreaks';
 import getDayGap from './getDayGap';
 import getCompletionGaps from './getCompletionGaps';
 import getFormattedDate from './getFormattedDate';
+import checkHabitCompletion from './checkHabitCompletion';
 
 const todayDateStr = getFormattedDate(new Date());
 
@@ -24,7 +25,7 @@ function achievementsReducer(achievements, actions) {
 			onOpenDialog({
 				title: 'Achievement Unlocked!',
 				imgSrc: `${process.env.PUBLIC_URL}/img/achievements/${achievement.id}.svg`,
-				text: `${achievement.title}\n${achievement.desc}`
+				text: `"${achievement.title}"\n${achievement.desc}`
 			});
 		};
 	};
@@ -80,6 +81,24 @@ function achievementsReducer(achievements, actions) {
 							);
 
 							return gap >= a.criteria.gap;
+						}
+					);
+					break;
+
+				case 9:
+					shouldUnlock = habits.some(
+						(h) => {
+							if (!h.creationDate || !h.completedDays.length) return false;
+
+							const creationDate = new Date(h.creationDate);
+							const day = creationDate.getDate();
+							const month = creationDate.getMonth();
+
+							if (day === 1 && month === 0) {
+								return checkHabitCompletion(h.completedDays, h.frequency, creationDate);
+							};
+
+							return false;
 						}
 					);
 					break;
