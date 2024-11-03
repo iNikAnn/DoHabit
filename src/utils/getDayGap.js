@@ -6,7 +6,7 @@ function getDayGap(dateObj1, dateObj2) {
 
 	const oneDay = 86_400_000;
 
-	return Math.abs((dateObj1 - dateObj2) / oneDay - 1);
+	return Math.abs((dateObj1 - dateObj2) / oneDay) - 1;
 }
 
 export default getDayGap;

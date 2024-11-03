@@ -27,6 +27,7 @@ function habitsReducer(habits, action) {
 			iconTitle: data.iconTitle.value,
 			frequency: Number(data.frequency.value),
 			completedDays: [],
+			creationDate: new Date()
 		}
 		: null;
 

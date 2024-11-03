@@ -47,8 +47,8 @@ function Dialog({ title, subTitle, imgSrc, text, onClose }) {
 
 					{text && (
 						<div className={styles.text}>
-							{text.split('\n').map((line) => (
-								<div>{line}</div>
+							{text.split('\n').map((line, i) => (
+								<div key={i}>{line}</div>
 							))}
 						</div>
 					)}
