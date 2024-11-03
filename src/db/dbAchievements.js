@@ -59,7 +59,7 @@ const achievements = [
 	{
 		id: 6,
 		title: 'Oops, I Did It Again!',
-		desc: 'Complete a day after a 30-day break.',
+		desc: 'Complete a day after a 30-day or longer break.',
 		criteria: {
 			gap: 30
 		},
@@ -71,6 +71,15 @@ const achievements = [
 		desc: 'You\'ve returned to your habit after a 21-day break. Just a little reminder: the idea was to stick with it for 21 days straight to form a habit, not to take a vacation from it! But hey, at least you\'re back!',
 		criteria: {
 			gap: 21
+		},
+		isSecret: true
+	},
+	{
+		id: 8,
+		title: 'I Swear I\'ll Start... Eventually',
+		desc: 'You\'ve created a habit but haven\'t completed it in 7 or more days. A reminder that starting is often the hardest part!',
+		criteria: {
+			gap: 5
 		},
 		isSecret: true
 	},
