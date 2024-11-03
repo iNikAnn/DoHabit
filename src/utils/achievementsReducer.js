@@ -8,13 +8,19 @@ import getFormattedDate from './getFormattedDate';
 const todayDateStr = getFormattedDate(new Date());
 
 function achievementsReducer(achievements, actions) {
+
 	const { habits, onOpenDialog, isInitialRender } = actions;
 
 	const handleUnlockAchievement = (achievement) => {
 		achievement.isUnlocked = true;
 		achievement.unlockDate = new Date();
 
-		if (!isInitialRender) {
+		if (isInitialRender) {
+			onOpenDialog({
+				title: 'Achievement Unlocked!',
+				text: 'It seems that new achievements have been unlocked!\nYou can check them in the achievements section.'
+			});
+		} else {
 			onOpenDialog({
 				title: 'Achievement Unlocked!',
 				imgSrc: `${process.env.PUBLIC_URL}/img/achievements/${achievement.id}.svg`,
