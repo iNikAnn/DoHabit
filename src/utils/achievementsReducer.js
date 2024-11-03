@@ -1,7 +1,11 @@
 // utils
 import saveToLocalStorage from './saveToLocalStorage';
 import getStreaks from './getStreaks';
+import getDayGap from './getDayGap';
 import getCompletionGaps from './getCompletionGaps';
+import getFormattedDate from './getFormattedDate';
+
+const todayDateStr = getFormattedDate(new Date());
 
 function achievementsReducer(achievements, actions) {
 	const { habits, onOpenDialog, isInitialRender } = actions;
@@ -60,6 +64,21 @@ function achievementsReducer(achievements, actions) {
 					};
 
 					shouldUnlock = gaps.includes(a.criteria.gap);
+				};
+					break;
+
+				case 8: {
+					const gaps = [];
+					for (const h of habits) {
+						if (!h.creationDate || h.completedDays.length) continue;
+
+						gaps.push(getDayGap(
+							new Date(getFormattedDate(new Date(h.creationDate))),
+							new Date(todayDateStr)
+						));
+					};
+
+					shouldUnlock = gaps.some((g) => g >= a.criteria.gap);
 				};
 					break;
 
