@@ -87,10 +87,17 @@ const achievements = [
 		id: 9,
 		title: 'One Day Wonder',
 		desc: 'Create a habit on January 1st and actually complete it on the same day.',
+		isSecret: true
+	},
+	{
+		id: 10,
+		title: 'Stubborn as a Mule',
+		desc: 'Complete your habit 500 times! Sure, it\'s not a streak, but who cares? Just think of it as 500 reminders that you\'re really, really committed... or just really stubborn!',
 		criteria: {
+			count: 500
 		},
 		isSecret: true
-	}
+	},
 ];
 
 export default achievements;
