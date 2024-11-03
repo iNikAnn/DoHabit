@@ -36,50 +36,46 @@ function achievementsReducer(achievements, actions) {
 				case 2:
 				case 3:
 				case 4:
-				case 5: {
-					const streaks = [];
-					for (const h of habits) {
-						const { longestStreak } = getStreaks(h.completedDays, h.frequency);
-						streaks.push(longestStreak);
-					};
-
-					shouldUnlock = streaks.some((s) => s >= a.criteria.streak);
-				};
+				case 5:
+					shouldUnlock = habits.some(
+						(h) => {
+							const { longestStreak } = getStreaks(h.completedDays, h.frequency);
+							return longestStreak >= a.criteria.streak;
+						}
+					);
 					break;
 
-				case 6: {
-					const gaps = [];
-					for (const h of habits) {
-						gaps.push(...getCompletionGaps(h.completedDays, h.frequency));
-					};
-
-					shouldUnlock = Math.max(...gaps) >= a.criteria.gap;
-				};
+				case 6:
+					shouldUnlock = habits.some(
+						(h) => {
+							const maxGap = Math.max(...getCompletionGaps(h.completedDays, h.frequency));
+							return maxGap >= a.criteria.gap;
+						}
+					);
 					break;
 
-				case 7: {
-					const gaps = [];
-					for (const h of habits) {
-						gaps.push(...getCompletionGaps(h.completedDays, h.frequency));
-					};
-
-					shouldUnlock = gaps.includes(a.criteria.gap);
-				};
+				case 7:
+					shouldUnlock = habits.some(
+						(h) => {
+							const gaps = getCompletionGaps(h.completedDays, h.frequency);
+							return gaps.includes(a.criteria.gap);
+						}
+					);
 					break;
 
-				case 8: {
-					const gaps = [];
-					for (const h of habits) {
-						if (!h.creationDate || h.completedDays.length) continue;
+				case 8:
+					shouldUnlock = habits.some(
+						(h) => {
+							if (!h.creationDate || h.completedDays.length) return false;
 
-						gaps.push(getDayGap(
-							new Date(getFormattedDate(new Date(h.creationDate))),
-							new Date(todayDateStr)
-						));
-					};
+							const gap = getDayGap(
+								new Date(getFormattedDate(new Date(h.creationDate))),
+								new Date(todayDateStr)
+							);
 
-					shouldUnlock = gaps.some((g) => g >= a.criteria.gap);
-				};
+							return gap >= a.criteria.gap;
+						}
+					);
 					break;
 
 				default:
