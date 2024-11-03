@@ -103,6 +103,22 @@ function achievementsReducer(achievements, actions) {
 					);
 					break;
 
+				case 10:
+					shouldUnlock = habits.some(
+						(h) => {
+							const count = h.completedDays.length;
+
+							if (count >= a.criteria.count) {
+								return count === a.criteria.count
+									? h.completedDays[0].progress >= h.frequency
+									: true;
+							};
+
+							return false;
+						}
+					);
+					break;
+
 				default:
 					break;
 			};
