@@ -104,6 +104,15 @@ const achievements = [
 		desc: 'Complete a full year of daily tasks, starting from January 1st. You\'ve mastered the calendar!',
 		isSecret: true
 	},
+	{
+		id: 12,
+		title: 'Living the Dream',
+		desc: 'You\'ve got 5 or more habits, and you\'ve accomplished every single one!',
+		criteria: {
+			count: 5
+		},
+		isSecret: true
+	},
 ];
 
 export default achievements;
