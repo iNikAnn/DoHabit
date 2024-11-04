@@ -98,6 +98,12 @@ const achievements = [
 		},
 		isSecret: true
 	},
+	{
+		id: 11,
+		title: 'Calendar Conqueror',
+		desc: 'Complete a full year of daily tasks, starting from January 1st. You\'ve mastered the calendar!',
+		isSecret: true
+	},
 ];
 
 export default achievements;
