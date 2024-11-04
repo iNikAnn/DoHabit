@@ -183,6 +183,10 @@ function achievementsReducer(achievements, actions) {
 					);
 					break;
 
+				case 14:
+					shouldUnlock = habits.filter((h) => h.isArchived).length >= a.criteria.count;
+					break;
+
 				default:
 					break;
 			};
