@@ -187,6 +187,27 @@ function achievementsReducer(achievements, actions) {
 					shouldUnlock = habits.filter((h) => h.isArchived).length >= a.criteria.count;
 					break;
 
+				case 15:
+					shouldUnlock = habits.some(
+						(h) => {
+							const { allStreaks } = getStreaks(h.completedDays, h.frequency);
+
+							for (let i = 0; i < allStreaks.length - 2; i++) {
+								if (
+									allStreaks[i].length === a.criteria.streak &&
+									allStreaks[i + 1].length === a.criteria.streak &&
+									allStreaks[i + 2].length === a.criteria.streak
+								) {
+									const gap = getDayGap(new Date(todayDateStr), new Date(allStreaks[i].end));
+									if (gap > 1) return true;
+								};
+							};
+
+							return false;
+						}
+					);
+					break;
+
 				default:
 					break;
 			};
