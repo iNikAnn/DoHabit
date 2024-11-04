@@ -164,6 +164,25 @@ function achievementsReducer(achievements, actions) {
 				};
 					break;
 
+				case 13:
+					shouldUnlock = habits.some(
+						(h) => {
+							const { allStreaks } = getStreaks(h.completedDays, h.frequency);
+
+							return allStreaks.some(
+								(s) => {
+									if (s.length === a.criteria.streak) {
+										const gap = getDayGap(new Date(todayDateStr), new Date(s.end));
+										return gap > 1;
+									};
+
+									return false;
+								}
+							);
+						}
+					);
+					break;
+
 				default:
 					break;
 			};
