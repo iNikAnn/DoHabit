@@ -119,6 +119,28 @@ function achievementsReducer(achievements, actions) {
 					);
 					break;
 
+				case 11:
+					shouldUnlock = habits.some(
+						(h) => {
+							const { allStreaks } = getStreaks(h.completedDays, h.frequency);
+
+							return allStreaks.some(
+								(s) => {
+									const startDate = new Date(s.start);
+									const endDate = new Date(s.end);
+									const isStartedOnJan1 = startDate.getMonth() === 0 && startDate.getDate() === 1;
+
+									if (isStartedOnJan1) {
+										return endDate >= new Date(`${startDate.getFullYear()}-12-31`);
+									};
+
+									return false;
+								}
+							);
+						}
+					);
+					break;
+
 				default:
 					break;
 			};
