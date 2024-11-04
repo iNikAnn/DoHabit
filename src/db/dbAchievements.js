@@ -122,6 +122,15 @@ const achievements = [
 		},
 		isSecret: true
 	},
+	{
+		id: 14,
+		title: 'I\'ll Be Back',
+		desc: 'You\'ve archived 5 habits — because why actually do them when you can just collect?',
+		criteria: {
+			count: 5
+		},
+		isSecret: true
+	},
 ];
 
 export default achievements;
