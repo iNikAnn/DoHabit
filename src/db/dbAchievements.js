@@ -131,6 +131,15 @@ const achievements = [
 		},
 		isSecret: true
 	},
+	{
+		id: 15,
+		title: 'What the Heck?!',
+		desc: 'You\'ve unlocked the devil\'s favorite achievement with three streaks of six days each. Who knew consistency could be so... sinister?',
+		criteria: {
+			streak: 6
+		},
+		isSecret: true
+	},
 ];
 
 export default achievements;
