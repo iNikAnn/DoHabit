@@ -113,6 +113,15 @@ const achievements = [
 		},
 		isSecret: true
 	},
+	{
+		id: 13,
+		title: 'Cursed by 13',
+		desc: 'You\'ve hit the unlucky 13! Your streak ends here!',
+		criteria: {
+			streak: 13
+		},
+		isSecret: true
+	},
 ];
 
 export default achievements;
