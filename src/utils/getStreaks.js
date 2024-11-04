@@ -1,11 +1,10 @@
+// utils
 import getFormattedDate from './getFormattedDate';
+import removeIncompleteFirstDay from './removeIncompleteFirstDay';
 
 function getStreaks(completedDays, frequency) {
 
-	// Remove the first day if it is not completed
-	if (completedDays[0]?.progress < frequency) {
-		completedDays = completedDays.slice(1);
-	};
+	completedDays = removeIncompleteFirstDay(completedDays, frequency);
 
 	// Return "zero streaks" if the input array is empty
 	if (completedDays.length === 0) {
