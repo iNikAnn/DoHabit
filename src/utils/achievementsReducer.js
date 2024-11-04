@@ -5,6 +5,7 @@ import getDayGap from './getDayGap';
 import getCompletionGaps from './getCompletionGaps';
 import getFormattedDate from './getFormattedDate';
 import checkHabitCompletion from './checkHabitCompletion';
+import removeIncompleteFirstDay from './removeIncompleteFirstDay';
 
 const todayDateStr = getFormattedDate(new Date());
 
@@ -139,6 +140,28 @@ function achievementsReducer(achievements, actions) {
 							);
 						}
 					);
+					break;
+
+				case 12: {
+					if (habits.length < a.criteria.count) {
+						shouldUnlock = false;
+						break;
+					};
+
+					const datesMap = {};
+					for (const h of habits) {
+						const completedDays = removeIncompleteFirstDay(h.completedDays, h.frequency);
+
+						for (const d of completedDays) {
+							const date = d.date
+							datesMap[date] = (datesMap[date] || 0) + 1;
+						};
+					};
+
+					const maxCount = Math.max(...Object.values(datesMap));
+
+					shouldUnlock = maxCount === habits.length;
+				};
 					break;
 
 				default:
