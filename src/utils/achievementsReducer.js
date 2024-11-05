@@ -287,6 +287,53 @@ function achievementsReducer(achievements, actions) {
 				};
 					break;
 
+				case 20:
+					shouldUnlock = habits.some(
+						(h) => {
+							const completedDays = removeIncompleteFirstDay(h.completedDays, h.frequency);
+							const completedWeekends = completedDays.filter(
+								(d) => {
+									const day = new Date(d.date).getDay();
+									return day === 0 || day === 6;
+								}
+							);
+
+							const streaks = [];
+							let currWeekendStreak = 0;
+
+							for (let i = 0; i < completedWeekends.length - 1; i++) {
+								const currDate = new Date(completedWeekends[i].date);
+								const nextDate = new Date(completedWeekends[i + 1]?.date);
+								const gap = getDayGap(currDate, nextDate);
+
+								if (currWeekendStreak === 0 && currDate.getDay() === 6) continue;
+
+								if (currDate.getDay() === 0) {
+									if (gap === 0) {
+										currWeekendStreak++;
+									} else {
+										streaks.push(currWeekendStreak);
+										currWeekendStreak = 0;
+									};
+								};
+
+								if (currDate.getDay() === 6 && gap > 5) {
+									streaks.push(currWeekendStreak);
+									currWeekendStreak = 0
+								};
+
+								if (i === completedWeekends.length - 2) {
+									streaks.push(currWeekendStreak);
+								};
+							};
+
+							const maxStreak = Math.max(...Object.values(streaks));
+
+							return maxStreak >= a.criteria.streak;
+						}
+					);
+					break;
+
 				default:
 					break;
 			};
