@@ -140,7 +140,8 @@ const achievements = [
 		},
 		isSecret: true
 	},
-	{	// Marks yesterday as complete using the "Complete Y'day" button
+	{
+		// Marks yesterday as complete using the "Complete Y'day" button
 		id: 16,
 		title: 'I Swear I Did It!',
 		desc: 'You\'ve officially mastered the art of pretending to be productive — five times!',
@@ -149,7 +150,8 @@ const achievements = [
 		},
 		isSecret: true
 	},
-	{	// Complete all habits (3 or more) on Halloween
+	{
+		// Complete all habits (3 or more) on Halloween
 		id: 17,
 		title: 'Hauntingly Productive!',
 		desc: 'You\'ve managed to be productive on the spookiest day of the year. Who knew ghosts could inspire such motivation?',
@@ -175,6 +177,16 @@ const achievements = [
 		desc: 'Wow, three habits in one day! Who knew you had this much free time? Procrastination looks good on you!',
 		criteria: {
 			count: 3
+		},
+		isSecret: true
+	},
+	{
+		// Сomplete the habit on weekends for 4 consecutive weeks
+		id: 20,
+		title: 'Weekend Warrior',
+		desc: 'You\'ve managed to stick to your habit on weekends for 4 weeks straight. Impressive dedication to doing just enough!',
+		criteria: {
+			streak: 4
 		},
 		isSecret: true
 	}
