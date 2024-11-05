@@ -218,7 +218,32 @@ function achievementsReducer(achievements, actions) {
 
 					shouldUnlock = compYdayBtnUsageCount >= a.criteria.count;
 				};
+					break;
 
+				case 17: {
+					if (habits.length < a.criteria.count) {
+						shouldUnlock = false;
+						break;
+					};
+
+					const datesMap = {};
+					for (const h of habits) {
+						const completedDays = removeIncompleteFirstDay(h.completedDays, h.frequency);
+
+						for (const d of completedDays) {
+							const date = new Date(d.date);
+
+							const isHalloween = date.getMonth() === 9 && date.getDate() === 31;
+							if (isHalloween) {
+								datesMap[d.date] = (datesMap[d.date] || 0) + 1;
+							};
+						};
+					};
+
+					const maxCount = Math.max(...Object.values(datesMap));
+
+					shouldUnlock = maxCount === habits.length;
+				};
 					break;
 
 				default:
