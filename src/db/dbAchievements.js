@@ -167,8 +167,17 @@ const achievements = [
 			count: 3
 		},
 		isSecret: true
+	},
+	{
+		// Create 3 or more habits in one day
+		id: 19,
+		title: 'Overachiever of the Day!',
+		desc: 'Wow, three habits in one day! Who knew you had this much free time? Procrastination looks good on you!',
+		criteria: {
+			count: 3
+		},
+		isSecret: true
 	}
-
 ];
 
 export default achievements;
