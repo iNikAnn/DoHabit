@@ -208,6 +208,19 @@ function achievementsReducer(achievements, actions) {
 					);
 					break;
 
+				case 16: {
+					const compYdayBtnUsageCount = habits.reduce(
+						(acc, h) => (
+							acc += h.completedDays.filter((d) => d.isCompYdayBtnUsed).length
+						),
+						0
+					);
+
+					shouldUnlock = compYdayBtnUsageCount >= a.criteria.count;
+				};
+
+					break;
+
 				default:
 					break;
 			};
