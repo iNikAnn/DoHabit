@@ -272,6 +272,21 @@ function achievementsReducer(achievements, actions) {
 				};
 					break;
 
+				case 19: {
+					const creationDateMap = {};
+					for (const h of habits) {
+						if (!h.creationDate) continue;
+
+						const cd = getFormattedDate(new Date(h.creationDate));
+						creationDateMap[cd] = (creationDateMap[cd] || 0) + 1;
+					};
+
+					const maxCount = Math.max(...Object.values(creationDateMap));
+
+					shouldUnlock = maxCount >= a.criteria.count;
+				};
+					break;
+
 				default:
 					break;
 			};
