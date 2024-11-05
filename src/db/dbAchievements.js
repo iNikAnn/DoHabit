@@ -140,6 +140,15 @@ const achievements = [
 		},
 		isSecret: true
 	},
+	{	// Marks yesterday as complete using the "Complete Y'day" button
+		id: 16,
+		title: 'I Swear I Did It!',
+		desc: 'You\'ve officially mastered the art of pretending to be productive — five times!',
+		criteria: {
+			count: 5
+		},
+		isSecret: true
+	},
 ];
 
 export default achievements;
