@@ -149,6 +149,15 @@ const achievements = [
 		},
 		isSecret: true
 	},
+	{	// Complete all habits (3 or more) on Halloween
+		id: 17,
+		title: 'Hauntingly Productive!',
+		desc: 'You\'ve managed to be productive on the spookiest day of the year. Who knew ghosts could inspire such motivation?',
+		criteria: {
+			count: 3
+		},
+		isSecret: true
+	},
 ];
 
 export default achievements;
