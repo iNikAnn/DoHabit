@@ -246,6 +246,32 @@ function achievementsReducer(achievements, actions) {
 				};
 					break;
 
+				case 18: {
+					if (habits.length < a.criteria.count) {
+						shouldUnlock = false;
+						break;
+					};
+
+					const datesMap = {};
+					for (const h of habits) {
+						const completedDays = removeIncompleteFirstDay(h.completedDays, h.frequency);
+
+						for (const d of completedDays) {
+							const date = new Date(d.date);
+
+							const isLastDay = date.getMonth() === 11 && date.getDate() === 31;
+							if (isLastDay) {
+								datesMap[d.date] = (datesMap[d.date] || 0) + 1;
+							};
+						};
+					};
+
+					const maxCount = Math.max(...Object.values(datesMap));
+
+					shouldUnlock = maxCount === habits.length;
+				};
+					break;
+
 				default:
 					break;
 			};
