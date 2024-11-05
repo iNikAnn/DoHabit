@@ -158,6 +158,17 @@ const achievements = [
 		},
 		isSecret: true
 	},
+	{
+		// Complete all habits (3 or more) on the last day of the year
+		id: 18,
+		title: 'New Year, New Victories!',
+		desc: 'You\'ve wrapped up the year by completing all your habits! Cheers to new beginnings and endless possibilities ahead!',
+		criteria: {
+			count: 3
+		},
+		isSecret: true
+	}
+
 ];
 
 export default achievements;
