@@ -370,6 +370,19 @@ function achievementsReducer(achievements, actions) {
 				};
 					break;
 
+				case 25: {
+					const notes = [...habits.flatMap((h) => h.diary || []), ...mainDiary];
+
+					shouldUnlock = notes.some(
+						(n) => {
+							const hours = new Date(n.date).getHours();
+
+							return hours >= 5 && hours < a.criteria.hours;
+						}
+					);
+				};
+					break;
+
 				default:
 					break;
 			};
