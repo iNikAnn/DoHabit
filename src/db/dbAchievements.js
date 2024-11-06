@@ -189,6 +189,16 @@ const achievements = [
 			streak: 4
 		},
 		isSecret: true
+	},
+	{
+		// Total number of notes has exceeded a certain amount
+		id: 21,
+		title: 'The Notes Parade',
+		desc: 'You\'ve written 7 notes! Not quite a wizarding world, but at least you\'ve conjured up some thoughts!',
+		criteria: {
+			count: 7
+		},
+		isSecret: true
 	}
 ];
 
