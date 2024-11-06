@@ -11,7 +11,7 @@ const todayDateStr = getFormattedDate(new Date());
 
 function achievementsReducer(achievements, actions) {
 
-	const { habits, onOpenDialog, isInitialRender } = actions;
+	const { habits, mainDiary, onOpenDialog, isInitialRender } = actions;
 
 	const handleUnlockAchievement = (achievement) => {
 		achievement.isUnlocked = true;
@@ -332,6 +332,13 @@ function achievementsReducer(achievements, actions) {
 							return maxStreak >= a.criteria.streak;
 						}
 					);
+					break;
+
+				case 21: {
+					const notes = [...habits.flatMap((h) => h.diary || []), ...mainDiary];
+
+					shouldUnlock = notes.length >= a.criteria.count;
+				};
 					break;
 
 				default:

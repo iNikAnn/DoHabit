@@ -91,11 +91,12 @@ function App() {
 		() => {
 			achievementsDispatch({
 				habits,
+				mainDiary,
 				onOpenDialog: setDialog,
 				isInitialRender: isInitialRender.current
 			});
 		},
-		[habits]
+		[habits, mainDiary]
 	);
 	// --- Achievements:END ---
 
