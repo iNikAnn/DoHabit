@@ -341,6 +341,13 @@ function achievementsReducer(achievements, actions) {
 				};
 					break;
 
+				case 22: {
+					const notes = [...habits.flatMap((h) => h.diary || []), ...mainDiary];
+
+					shouldUnlock = notes.some((n) => n.text.length >= a.criteria.length);
+				}
+					break;
+
 				default:
 					break;
 			};
