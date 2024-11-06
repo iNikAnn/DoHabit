@@ -221,13 +221,12 @@ const achievements = [
 		isSecret: true
 	},
 	{
-		// There is a note longer than a certain number of characters and created after 10 PM
-		id: 24,
-		title: 'Night Owl Novelist',
-		desc: 'You\'ve managed to write a novel-length note after 10 in the evening. Who needs sleep when you can document your thoughts at the witching hour?',
+		// Achievement for writing a note in the morning before 9 AM
+		id: 25,
+		title: 'Thoughts on the Run',
+		desc: 'Bravo! You\'ve written a note before 9 AM. Better hurry — those brilliant ideas have a tendency to vanish before breakfast!',
 		criteria: {
-			length: 200,
-			hours: 22
+			hours: 9
 		},
 		isSecret: true
 	}
