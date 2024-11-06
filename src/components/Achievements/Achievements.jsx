@@ -12,7 +12,9 @@ function Achievements({ achievements, onOpenDialog }) {
 
 	const regularAchievements = achievements.filter((a) => !a.isSecret);
 	const secretAchievements = achievements.filter((a) => a.isSecret && a.isUnlocked);
-	const sortedSecretAchievements = secretAchievements.toSorted((a, b) => b.unlockDate - a.unlockDate);
+	const sortedSecretAchievements = secretAchievements.toSorted(
+		(a, b) => new Date(b.unlockDate) - new Date(a.unlockDate)
+	);
 
 	const handleShowDetails = (a) => {
 		if (!a.isUnlocked) return;
@@ -20,7 +22,7 @@ function Achievements({ achievements, onOpenDialog }) {
 		onOpenDialog({
 			title: a.title,
 			subTitle: 'Unlock Date: ' + new Date(a.unlockDate).toLocaleDateString(),
-			imgSrc: `${publicUrl}/img/achievements/${a.id}.png`,
+			imgSrc: `${publicUrl}/img/achievements/${a.id}.svg`,
 			text: a.desc
 		});
 	};
@@ -43,7 +45,7 @@ function Achievements({ achievements, onOpenDialog }) {
 							<RegularAchievementCard
 								key={a.id}
 								achievement={a}
-								imgSrc={`${publicUrl}/img/achievements/${a.id}.png`}
+								imgSrc={`${publicUrl}/img/achievements/${a.id}.svg`}
 								onClick={() => handleShowDetails(a)}
 							/>
 						)
@@ -68,7 +70,7 @@ function Achievements({ achievements, onOpenDialog }) {
 								<SecretAchievementCard
 									key={a.id}
 									achievement={a}
-									imgSrc={`${publicUrl}/img/achievements/${a.id}.png`}
+									imgSrc={`${publicUrl}/img/achievements/${a.id}.svg`}
 									onClick={() => handleShowDetails(a)}
 								/>
 							)
