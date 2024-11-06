@@ -201,12 +201,22 @@ const achievements = [
 		isSecret: true
 	},
 	{
-		// A note longer than a certain length exists!
+		// A note longer than a certain length exists
 		id: 22,
 		title: 'Not Twitter-Approved',
 		desc: 'Kudos! You\'ve crafted a note longer than 140 characters. Apparently, you have a lot more to say than what fits in a tweet!',
 		criteria: {
 			length: 140
+		},
+		isSecret: true
+	},
+	{
+		// The total character count in notes has exceeded a certain number
+		id: 23,
+		title: 'War and More',
+		desc: 'Impressive! Your notes have reached a character count that could give Tolstoy a run for his money. Who knew you were such a wordsmith?',
+		criteria: {
+			count: 2500
 		},
 		isSecret: true
 	}
