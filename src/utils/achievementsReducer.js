@@ -356,6 +356,20 @@ function achievementsReducer(achievements, actions) {
 				};
 					break;
 
+				case 24: {
+					const notes = [...habits.flatMap((h) => h.diary || []), ...mainDiary];
+
+					shouldUnlock = notes.some(
+						(n) => {
+							const length = n.text.length;
+							const hours = new Date(n.date).getHours();
+
+							return length >= a.criteria.length && hours >= a.criteria.hours;
+						}
+					);
+				};
+					break;
+
 				default:
 					break;
 			};
