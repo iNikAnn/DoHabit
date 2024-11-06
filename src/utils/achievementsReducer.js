@@ -345,7 +345,15 @@ function achievementsReducer(achievements, actions) {
 					const notes = [...habits.flatMap((h) => h.diary || []), ...mainDiary];
 
 					shouldUnlock = notes.some((n) => n.text.length >= a.criteria.length);
-				}
+				};
+					break;
+
+				case 23: {
+					const notes = [...habits.flatMap((h) => h.diary || []), ...mainDiary];
+					const totalCharacterCount = notes.reduce((acc, n) => acc + n.text.length, 0);
+
+					shouldUnlock = totalCharacterCount >= a.criteria.count;
+				};
 					break;
 
 				default:
