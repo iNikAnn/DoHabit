@@ -1,9 +1,9 @@
 .overlay {
-	position: absolute;
+	position: fixed;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background-color: var(--bg);
-	z-index: 119;
+	backdrop-filter: blur(4px) saturate(0.5) brightness(0.75);
+	z-index: 888;
 }

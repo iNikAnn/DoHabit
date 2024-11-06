@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import IconButton from './Actions/IconButton';
 
 // icons
-import { FaPlus, FaBars } from "react-icons/fa";
+import { FaPlus, FaBars, FaAward } from "react-icons/fa";
 import { MdLibraryBooks } from "react-icons/md";
 
 function Header({ onOpenModal }) {
@@ -17,6 +17,7 @@ function Header({ onOpenModal }) {
 	const navItems = [
 		['/modal/habitEditor', 'Create new habit', <FaPlus />],
 		['/modal/diary', 'Main Diary', <MdLibraryBooks />],
+		['/modal/achievements', 'Achievements', <FaAward />],
 		['/modal/menu', 'Menu', <FaBars />]
 	].map(
 		([path, title, icon]) => (

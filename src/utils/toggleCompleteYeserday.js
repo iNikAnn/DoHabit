@@ -1,6 +1,7 @@
 import getFormattedDate from './getFormattedDate';
 
 function toggleCompleteYeserday(habits, habitTitle, isTodayCompleted, isYesterdayCompleted, todayProgress, frequency) {
+
 	const today = new Date();
 	const yesterday = new Date(today);
 	yesterday.setDate(today.getDate() - 1);
@@ -19,7 +20,8 @@ function toggleCompleteYeserday(habits, habitTitle, isTodayCompleted, isYesterda
 				} else {
 					const completedYesterday = {
 						date: getFormattedDate(yesterday),
-						progress: frequency
+						progress: frequency,
+						isCompYdayBtnUsed: true
 					};
 
 					isTodayCompleted || todayProgress
