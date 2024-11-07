@@ -10,6 +10,7 @@ DoHabit is a straightforward habit tracker that doesn’t require registration. 
 - Mark completed days
 - Track your progress
 - Maintain a journal for each habit
+- Achievements to motivate and celebrate your progress
 
 ## 📲 Usage
 
