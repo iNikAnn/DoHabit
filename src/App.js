@@ -33,8 +33,6 @@ import mainDiaryReducer from './utils/mainDiaryReducer';
 import initAchievements from './utils/initAchievements';
 import achievementsReducer from './utils/achievementsReducer';
 import modalReducer from './utils/modalReducer';
-import exportHabits from './utils/exportHabits';
-import importHabits from './utils/importHabits';
 
 // db
 import dbIcons from './db/dbIcons';
@@ -100,11 +98,6 @@ function App() {
 	);
 	// --- Achievements:END ---
 
-	// --- Data Transfer:START ---
-	const handleExportHabits = () => exportHabits(habits);
-	const handleImportHabits = () => importHabits(handleUpdateHabits, publicUrl);
-	// --- Data Transfer:END ---
-
 	// --- Modal:START ---
 	const [modal, modalDispatch] = useReducer(modalReducer, null);
 	const handleUpdateModal = (actions) => modalDispatch(actions);
@@ -163,10 +156,7 @@ function App() {
 			key="dataTransfer"
 			path="dataTransfer"
 			element={
-				<DataTransfer
-					onExport={handleExportHabits}
-					onImport={handleImportHabits}
-				/>
+				<DataTransfer />
 			}
 		/>,
 		<Route
