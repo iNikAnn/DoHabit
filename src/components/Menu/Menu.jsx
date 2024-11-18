@@ -47,14 +47,12 @@ function Menu({ onOpenModal }) {
 					})}
 					arrow
 				/>
-			</MenuItemList>
 
-			<MenuItemList title="General">
 				<MenuItem
 					icon={<BsFillDatabaseFill />}
 					iconColor="#77dd77"
-					title="Export/Import Data"
-					desc="Backup or restore your habits"
+					title="Export / Import Data"
+					desc="Backup or restore your data"
 					to={`${publicUrl}/modal/dataTransfer`}
 					onClick={() => onOpenModal({
 						type: 'open',
@@ -62,7 +60,9 @@ function Menu({ onOpenModal }) {
 					})}
 					arrow
 				/>
+			</MenuItemList>
 
+			<MenuItemList title="Other">
 				<MenuItem
 					icon={<FaGithub />}
 					iconColor="#7fc7ff"
