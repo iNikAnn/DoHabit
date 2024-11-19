@@ -10,7 +10,7 @@ import IconButton from './Actions/IconButton';
 import { FaPlus, FaBars, FaAward } from "react-icons/fa";
 import { MdLibraryBooks } from "react-icons/md";
 
-function Header({ onOpenModal }) {
+function Header() {
 
 	const publicUrl = process.env.PUBLIC_URL;
 
@@ -22,11 +22,8 @@ function Header({ onOpenModal }) {
 	].map(
 		([path, title, icon]) => (
 			<li key={path}>
-				<Link to={publicUrl + path}>
-					<IconButton
-						{...{ icon, title }}
-						onClick={() => onOpenModal({ type: 'open', modalTitle: title })}
-					/>
+				<Link to={publicUrl + path} state={{ modalTitle: title }}>
+					<IconButton {...{ icon, title }} />
 				</Link>
 			</li>
 		)
