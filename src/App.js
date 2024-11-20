@@ -7,12 +7,13 @@ import React, { useContext, useEffect, useReducer, useRef, useState } from 'reac
 import { SettingsContext } from './context/settingsContext';
 
 // router
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 // framer
 import { AnimatePresence } from 'framer-motion';
 
 // components
+import MainPage from './components/MainPage';
 import Modal from './components/Modal';
 import Dialog from './components/Containment/Dialog';
 import HabitEditor from './components/HabitEditor/HabitEditor';
@@ -35,7 +36,6 @@ import achievementsReducer from './utils/achievementsReducer';
 
 // db
 import dbIcons from './db/dbIcons';
-import MainPage from './components/MainPage';
 
 const publicUrl = process.env.PUBLIC_URL;
 
@@ -136,6 +136,11 @@ function App() {
 		<main className="App">
 			<AnimatePresence initial={false}>
 				<Routes location={location} key={location.pathname}>
+					<Route
+						path='*'
+						element={<Navigate to={publicUrl} />}
+					/>
+
 					<Route
 						path={publicUrl}
 						element={
