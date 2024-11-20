@@ -3,6 +3,9 @@ import styles from '../../css/Statistics.module.css';
 // react
 import { useState } from 'react';
 
+// router
+import { useLocation } from 'react-router-dom';
+
 // components
 import YearPicker from './YearPicker';
 import Card from './Card';
@@ -16,10 +19,13 @@ import getStreaks from '../../utils/getStreaks';
 // icons
 import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag, FaBinoculars } from "react-icons/fa";
 
-function Statistics(props) {
+function Statistics() {
+
+	const location = useLocation();
+
 	const {
 		completedDays, frequency, colorPalette
-	} = props;
+	} = location.state;
 
 	const { baseColor, darkenedColor } = colorPalette;
 
