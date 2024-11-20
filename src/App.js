@@ -42,10 +42,12 @@ const publicUrl = process.env.PUBLIC_URL;
 function App() {
 	// The value will be changed to false later in the code
 	const isInitialRender = useRef(true);
+
 	const settings = useContext(SettingsContext);
 	const location = useLocation();
 	const [dialog, setDialog] = useState(false);
 
+	// Get colors from database based on settings or system theme
 	const dbColors = getColors(
 		settings.isDarkSchemeForced
 			? 'dark'
@@ -54,19 +56,11 @@ function App() {
 				: 'light'
 	);
 
-	// --- Habits:START ---
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
-	const handleUpdateHabits = (actions) => habitsDispatch(actions);
-	// --- Habits:END ---
-
-	// --- Main Diary:START ---
 	const [mainDiary, mainDiaryDispatch] = useReducer(mainDiaryReducer, null, initMainDiary);
-	const handleUpdateMainDiary = (actions) => mainDiaryDispatch(actions);
-	// --- Main Diary:END ---
-
-	// --- Achievements:START ---
 	const [achievements, achievementsDispatch] = useReducer(achievementsReducer, null, initAchievements);
 
+	// Check achievements when dependencies change
 	useEffect(
 		() => {
 			achievementsDispatch({
@@ -78,16 +72,14 @@ function App() {
 		},
 		[habits, mainDiary]
 	);
-	// --- Achievements:END ---
 
-	// --- Modal:START ---
 	const modalComponents = [
 		{
 			path: 'habitEditor',
 			element: (
 				<HabitEditor
 					{...{ habits, dbIcons, dbColors }}
-					onUpdate={handleUpdateHabits}
+					onUpdate={habitsDispatch}
 				/>
 			)
 		},
@@ -100,8 +92,8 @@ function App() {
 			element: (
 				<Diary
 					{...{ habits, mainDiary, dbColors }}
-					onUpdate={handleUpdateHabits}
-					onUpdateMainDiary={handleUpdateMainDiary}
+					onUpdate={habitsDispatch}
+					onUpdateMainDiary={mainDiaryDispatch}
 				/>
 			)
 		},
@@ -110,7 +102,7 @@ function App() {
 			element: (
 				<Archive
 					{...{ habits, dbIcons, dbColors }}
-					onUpdate={handleUpdateHabits}
+					onUpdate={habitsDispatch}
 				/>
 			)
 		},
@@ -136,7 +128,6 @@ function App() {
 			)
 		}
 	];
-	// --- Modal:END ---
 
 	// End of initial render
 	useEffect(() => { isInitialRender.current = false }, []);
@@ -151,7 +142,7 @@ function App() {
 							<MainPage
 								key="mainPage"
 								{...{ habits, dbIcons, dbColors }}
-								onUpdate={handleUpdateHabits}
+								onUpdate={habitsDispatch}
 							/>
 						}
 					/>
