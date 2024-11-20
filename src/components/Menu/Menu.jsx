@@ -15,7 +15,7 @@ import { IoIosMail } from "react-icons/io";
 import { ImFire } from "react-icons/im";
 import { HiArchiveBox } from "react-icons/hi2";
 
-function Menu({ onOpenModal }) {
+function Menu() {
 
 	const publicUrl = process.env.PUBLIC_URL;
 
@@ -28,10 +28,7 @@ function Menu({ onOpenModal }) {
 					title="Archive"
 					desc="View or manage archived habits"
 					to={`${publicUrl}/modal/archive`}
-					onClick={() => onOpenModal({
-						type: 'open',
-						modalTitle: 'Archive',
-					})}
+					state={{ modalTitle: 'Archive' }}
 					arrow
 				/>
 
@@ -41,10 +38,7 @@ function Menu({ onOpenModal }) {
 					title="Appearance"
 					desc="Customize the app's look"
 					to={`${publicUrl}/modal/appearance`}
-					onClick={() => onOpenModal({
-						type: 'open',
-						modalTitle: 'Appearance',
-					})}
+					state={{ modalTitle: 'Appearance' }}
 					arrow
 				/>
 
@@ -54,10 +48,7 @@ function Menu({ onOpenModal }) {
 					title="Export / Import Data"
 					desc="Backup or restore your data"
 					to={`${publicUrl}/modal/dataTransfer`}
-					onClick={() => onOpenModal({
-						type: 'open',
-						modalTitle: 'Export/Import Data'
-					})}
+					state={{ modalTitle: 'Export/Import Data' }}
 					arrow
 				/>
 			</MenuItemList>

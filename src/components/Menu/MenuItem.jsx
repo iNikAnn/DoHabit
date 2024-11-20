@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 import { IoIosArrowForward } from "react-icons/io";
 import { LuExternalLink } from "react-icons/lu";
 
-function MenuItem({ icon, iconColor, title, desc, onClick, to, arrow, link, other }) {
+function MenuItem({ icon, iconColor, title, desc, onClick, to, state, arrow, link, other }) {
 	return (
 		<li>
-			<Link to={to}>
+			<Link to={to} state={state}>
 				<button
 					className={styles.menuItem}
 					onClick={onClick}
