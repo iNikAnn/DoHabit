@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useReducer, useRef, useState } from 'reac
 import { SettingsContext } from './context/settingsContext';
 
 // router
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 // framer
 import { AnimatePresence } from 'framer-motion';
@@ -32,7 +32,6 @@ import initMainDiary from './utils/initMainDiary';
 import mainDiaryReducer from './utils/mainDiaryReducer';
 import initAchievements from './utils/initAchievements';
 import achievementsReducer from './utils/achievementsReducer';
-import modalReducer from './utils/modalReducer';
 
 // db
 import dbIcons from './db/dbIcons';
@@ -43,26 +42,9 @@ const publicUrl = process.env.PUBLIC_URL;
 function App() {
 	// The value will be changed to false later in the code
 	const isInitialRender = useRef(true);
-
-	const navigate = useNavigate();
-	const location = useLocation();
-
-	const [dialog, setDialog] = useState(false);
-
-	useEffect(
-		() => {
-			const handleGoBack = () => {
-				handleUpdateModal({ type: 'close' });
-			};
-
-			window.addEventListener('popstate', handleGoBack);
-
-			return () => window.removeEventListener('popstate', handleGoBack);
-		},
-		[]
-	);
-
 	const settings = useContext(SettingsContext);
+	const location = useLocation();
+	const [dialog, setDialog] = useState(false);
 
 	const dbColors = getColors(
 		settings.isDarkSchemeForced
@@ -99,94 +81,60 @@ function App() {
 	// --- Achievements:END ---
 
 	// --- Modal:START ---
-	const [modal, modalDispatch] = useReducer(modalReducer, null);
-	const handleUpdateModal = (actions) => modalDispatch(actions);
-
 	const modalComponents = [
-		<Route
-			key="habitEditor"
-			path="habitEditor"
-			element={
+		{
+			path: 'habitEditor',
+			element: (
 				<HabitEditor
 					{...{ habits, dbIcons, dbColors }}
-					habitTitle={modal?.habitTitle}
 					onUpdate={handleUpdateHabits}
-					onClose={() => {
-						// handleUpdateModal({ type: 'close' });
-						navigate(-1);
-					}}
 				/>
-			}
-		/>,
-		<Route
-			key="menu"
-			path="menu"
-			element={
-				<Menu onOpenModal={handleUpdateModal} />
-			}
-		/>,
-		<Route
-			key="diary"
-			path="diary"
-			element={
+			)
+		},
+		{
+			path: 'menu',
+			element: <Menu />
+		},
+		{
+			path: 'diary',
+			element: (
 				<Diary
-					habitTitle={modal?.habitTitle}
-					accentColor={dbColors[modal?.colorIndex]}
-					diary={
-						modal?.habitTitle
-							? habits.find((h) => h.title === modal?.habitTitle)?.diary
-							: mainDiary
-					}
+					{...{ habits, mainDiary, dbColors }}
 					onUpdate={handleUpdateHabits}
 					onUpdateMainDiary={handleUpdateMainDiary}
 				/>
-			}
-		/>,
-		<Route
-			key="archive"
-			path='archive'
-			element={
+			)
+		},
+		{
+			path: 'archive',
+			element: (
 				<Archive
 					{...{ habits, dbIcons, dbColors }}
 					onUpdate={handleUpdateHabits}
 				/>
-			}
-		/>,
-		<Route
-			key="dataTransfer"
-			path="dataTransfer"
-			element={
-				<DataTransfer />
-			}
-		/>,
-		<Route
-			key="statistics"
-			path="statistics"
-			element={
-				<Statistics
-					colorPalette={modal?.colorPalette}
-					completedDays={modal?.completedDays}
-					frequency={modal?.frequency}
-				/>
-			}
-		/>,
-		<Route
-			key="appearance"
-			path="appearance"
-			element={
-				<AppearanceSettings />
-			}
-		/>,
-		<Route
-			key="achievements"
-			path="achievements"
-			element={
+			)
+		},
+		{
+			path: 'dataTransfer',
+			element: <DataTransfer />
+		},
+		{
+			path: 'statistics',
+			element: <Statistics />
+		},
+		{
+			path: 'appearance',
+			element: <AppearanceSettings />
+		},
+		{
+			path: 'achievements',
+			element: (
 				<Achievements
 					{...{ achievements }}
 					onOpenDialog={setDialog}
 				/>
-			}
-		/>
+			)
+		}
 	];
 	// --- Modal:END ---
 
@@ -204,25 +152,17 @@ function App() {
 								key="mainPage"
 								{...{ habits, dbIcons, dbColors }}
 								onUpdate={handleUpdateHabits}
-								onOpenModal={handleUpdateModal}
 							/>
 						}
 					/>
 
 					<Route
 						path={`${publicUrl}/modal`}
-						element={
-							<Modal
-								key={modal?.modalTitle}
-								title={modal?.modalTitle}
-								onClose={() => {
-									// handleUpdateModal({ type: 'close' })
-									navigate(-1);
-								}}
-							/>
-						}
+						element={<Modal key={location.pathname} />}
 					>
-						{modalComponents}
+						{modalComponents.map((r) => (
+							<Route key={r.path} path={r.path} element={r.element} />
+						))}
 					</Route>
 				</Routes>
 

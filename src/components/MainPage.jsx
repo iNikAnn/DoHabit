@@ -19,18 +19,16 @@ const mainVariants = {
 	transition: { duration: .3, ease: 'easeOut' }
 };
 
-function MainPage({ habits, dbIcons, dbColors, onUpdate, onOpenModal }) {
+function MainPage({ habits, dbIcons, dbColors, onUpdate }) {
 
 	const filteredHabits = habits.filter((h) => !h.isArchived);
 
 	return (
 		<motion.div {...mainVariants}>
-			<Header {...{ onOpenModal }} />
+			<Header />
 
 			<HabitList
-				{...{ habits: filteredHabits, dbIcons, dbColors }}
-
-				{...{ onOpenModal, onUpdate }}
+				{...{ habits: filteredHabits, dbIcons, dbColors, onUpdate }}
 			/>
 
 			{filteredHabits.length === 0 && (
@@ -41,10 +39,7 @@ function MainPage({ habits, dbIcons, dbColors, onUpdate, onOpenModal }) {
 					textOnButton="Create First Habit"
 					buttonIcon={<MdAddToPhotos />}
 					to={`${process.env.PUBLIC_URL}/modal/habitEditor`}
-					onClick={() => onOpenModal({
-						type: 'open',
-						modalTitle: 'Create new habit'
-					})}
+					state={{ modalTitle: 'Create new habit' }}
 				/>
 			)}
 		</motion.div>
