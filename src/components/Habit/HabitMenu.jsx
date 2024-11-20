@@ -37,7 +37,7 @@ function HabitMenu(props) {
 	const {
 		title, completedDays, colorIndex, colorPalette,
 		isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
-		onShowMenu, onOpenModal, onUpdate, onShare
+		onShowMenu, onUpdate, onShare
 	} = props;
 
 	const { darkenedColor } = colorPalette;
@@ -49,50 +49,15 @@ function HabitMenu(props) {
 		};
 	};
 
-	const handleClick = (action) => {
-		switch (action) {
-			case 'toggleCompleteYeserday':
-				onUpdate({
-					type: 'toggleCompleteYeserday',
-					habitTitle: title,
-					isTodayCompleted,
-					isYesterdayCompleted,
-					todayProgress,
-					frequency
-				});
-				break;
-
-			case 'editHabit':
-				onOpenModal({
-					type: 'open',
-					habitTitle: title,
-					modalTitle: 'Edit habit',
-				});
-				break;
-
-			case 'openStatistics':
-				onOpenModal({
-					type: 'open',
-					completedDays,
-					colorPalette,
-					colorIndex,
-					frequency,
-					modalTitle: title,
-				});
-				break;
-
-			case 'openDiary':
-				onOpenModal({
-					type: 'open',
-					habitTitle: title,
-					colorIndex: colorIndex,
-					modalTitle: title,
-				});
-				break;
-
-			default:
-				break;
-		};
+	const handleCompleteYeserday = () => {
+		onUpdate({
+			type: 'toggleCompleteYeserday',
+			habitTitle: title,
+			isTodayCompleted,
+			isYesterdayCompleted,
+			todayProgress,
+			frequency
+		});
 	};
 
 	const buttons = [[
@@ -100,18 +65,24 @@ function HabitMenu(props) {
 		(isYesterdayCompleted ? 'Uncomp.' : 'Comp.') + ' Y\'day',
 		isYesterdayCompleted ? 'IndianRed' : darkenedColor,
 		null,
-		() => handleClick('toggleCompleteYeserday')
+		null,
+		() => handleCompleteYeserday()
 	], [
 		<MdEditSquare />,
 		'Edit Habit',
 		darkenedColor,
 		'/modal/habitEditor',
-		() => handleClick('editHabit'),
+		{
+			habitTitle: title,
+			modalTitle: 'Edit habit',
+		},
+		null,
 		true
 	], [
 		<FaShareAltSquare />,
 		'Share Habit',
 		darkenedColor,
+		null,
 		null,
 		() => onShare()
 	], [
@@ -119,19 +90,31 @@ function HabitMenu(props) {
 		'Statistics',
 		darkenedColor,
 		'/modal/statistics',
-		() => handleClick('openStatistics'),
+		{
+			completedDays,
+			colorPalette,
+			colorIndex,
+			frequency,
+			modalTitle: title,
+		},
+		null,
 		true
 	], [
 		<MdLibraryBooks />,
 		'Diary',
 		darkenedColor,
 		'/modal/diary',
-		() => handleClick('openDiary'),
+		{
+			habitTitle: title,
+			colorIndex: colorIndex,
+			modalTitle: title,
+		},
+		null,
 		true
 	]].map(
-		([icon, text, bgColor, to, onClick, arrow]) => (
+		([icon, text, bgColor, to, state, onClick, arrow]) => (
 			<li key={text}>
-				<Link to={to ? (process.env.PUBLIC_URL + to) : null}>
+				<Link to={to ? (process.env.PUBLIC_URL + to) : null} state={state}>
 					<Button {...{ icon, text, bgColor, onClick, arrow }} />
 				</Link>
 			</li>
