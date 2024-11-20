@@ -12,25 +12,31 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 // framer
 import { AnimatePresence } from 'framer-motion';
 
-// components
+// main components
 import MainPage from './components/MainPage';
-import Modal from './components/Modal';
 import Dialog from './components/Containment/Dialog';
-import HabitEditor from './components/HabitEditor/HabitEditor';
-import Menu from './components/Menu/Menu';
-import Diary from './components/Diary/Diary';
-import Statistics from './components/Statistics/Statistics';
+
+// modal-related components
+import Modal from './components/Modal';
+import Achievements from './components/Achievements/Achievements';
 import Archive from './components/Archive/Archive';
 import AppearanceSettings from './components/Appearance Settings/AppearanceSettings';
 import DataTransfer from './components/DataTransfer/DataTransfer';
-import Achievements from './components/Achievements/Achievements';
+import Diary from './components/Diary/Diary';
+import HabitEditor from './components/HabitEditor/HabitEditor';
+import Menu from './components/Menu/Menu';
+import Statistics from './components/Statistics/Statistics';
+
 
 // utils
 import getColors from './utils/getColors';
+
 import initHabits from './utils/initHabits';
 import habitsReducer from './utils/habitsReducer';
+
 import initMainDiary from './utils/initMainDiary';
 import mainDiaryReducer from './utils/mainDiaryReducer';
+
 import initAchievements from './utils/initAchievements';
 import achievementsReducer from './utils/achievementsReducer';
 
