@@ -3,6 +3,9 @@ import styles from '../../css/Diary.module.css';
 // react
 import { useEffect, useRef, useState } from 'react';
 
+// router
+import { useLocation } from 'react-router-dom';
+
 // components
 import NoteList from './NoteList';
 import Placeholder from '../Placeholder';
@@ -13,12 +16,21 @@ import { ReactComponent as InfoSvg } from '../../img/information.svg';
 import { MdStickyNote2 } from "react-icons/md";
 
 function Diary(props) {
-	const {
-		habitTitle, diary, accentColor,
 
-		// 'on' functions
-		onUpdate, onUpdateMainDiary
+	const location = useLocation();
+
+	const {
+		habits, mainDiary,
+		onUpdate, onUpdateMainDiary,
+		dbColors
 	} = props;
+
+	const [habitTitle] = useState(location.state?.habitTitle);
+	const [accentColor] = useState(dbColors[location.state?.colorIndex]);
+
+	const diary = habitTitle
+		? habits.find((h) => h.title === habitTitle)?.diary
+		: mainDiary;
 
 	const hasNotes = diary && typeof diary === 'object' && diary.length;
 
