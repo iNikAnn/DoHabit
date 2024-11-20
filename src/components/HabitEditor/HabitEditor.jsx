@@ -3,6 +3,9 @@ import styles from '../../css/HabitEditor.module.css';
 // react
 import { useEffect, useState } from 'react';
 
+// router
+import { useLocation, useNavigate } from 'react-router-dom';
+
 // components
 import TitleBlock from './TitleBlock';
 import FrequencyBlock from './FrequencyBlock';
@@ -20,16 +23,21 @@ import { MdDeleteForever } from "react-icons/md";
 import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 
 function HabitEditor(props) {
+
+	const location = useLocation();
+	const navigate = useNavigate();
+
 	const {
-		habits, habitTitle,
+		habits,
 
 		// 'on' functions
-		onUpdate, onClose,
+		onUpdate,
 
 		// db
 		dbIcons, dbColors
 	} = props;
 
+	const habitTitle = location.state?.habitTitle;
 	const isEditMode = Boolean(habitTitle);
 	const habit = isEditMode ? habits.find((habit) => habit.title === habitTitle) : null;
 
@@ -59,7 +67,7 @@ function HabitEditor(props) {
 
 	const handleUpdate = (props) => {
 		onUpdate(props);
-		onClose();
+		navigate(-1);
 	};
 
 	// prevents form submission on Enter key press and hides the virtual keyboard
