@@ -1,7 +1,10 @@
 import styles from '../css/Modal.module.css';
 
+// react
+import { useState } from 'react';
+
 // router
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 // framer
 import { motion, useAnimate, useMotionValue } from 'framer-motion'
@@ -17,7 +20,15 @@ const modalVariants = {
 	transition: { duration: .2, ease: 'easeOut' }
 };
 
-function Modal({ title, onClose }) {
+function Modal() {
+
+	const location = useLocation();
+	const navigate = useNavigate();
+
+	const handleClose = () => navigate(-1);
+
+	const [title] = useState(location.state?.modalTitle);
+
 	const [scope, animate] = useAnimate();
 	const x = useMotionValue(0);
 
@@ -30,7 +41,7 @@ function Modal({ title, onClose }) {
 				{ opacity: [1, 0], x: [startX, startX + 100] },
 				{ duration: .1, ease: 'easeOut' }
 			);
-			onClose();
+			handleClose();
 			navigator.vibrate?.(10);
 		};
 	};
@@ -41,10 +52,10 @@ function Modal({ title, onClose }) {
 			{...modalVariants}
 		>
 			<motion.header className={styles.header}>
-				<IoIosArrowForward onClick={onClose} />
+				<IoIosArrowForward onClick={handleClose} />
 
 				<h2 className={styles.title}>
-					{title}
+					{title ?? ''}
 				</h2>
 			</motion.header>
 
