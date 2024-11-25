@@ -39,6 +39,7 @@ function HabitEditor(props) {
 
 	const habitTitle = location.state?.habitTitle;
 	const isEditMode = Boolean(habitTitle);
+	const filteredHabits = isEditMode ? habits.filter((h) => !h.isArchived) : [];
 	const habit = isEditMode ? habits.find((habit) => habit.title === habitTitle) : null;
 
 	const [inputTitle, setInputTitle] = useState(isEditMode ? habit?.title : '');
@@ -80,7 +81,7 @@ function HabitEditor(props) {
 
 	// order
 	const [currOrder, setCurrOrder] = useState(() => (
-		isEditMode ? habits.indexOf(habit) + 1 : -1
+		isEditMode ? filteredHabits.indexOf(habit) + 1 : -1
 	));
 
 	return (
@@ -102,7 +103,7 @@ function HabitEditor(props) {
 
 				{isEditMode && (
 					<OrderBlock
-						habitsCount={habits.length}
+						habitsCount={filteredHabits.length}
 						currOrder={currOrder}
 						setCurrOrder={setCurrOrder}
 					/>
