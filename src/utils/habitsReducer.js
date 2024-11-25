@@ -18,18 +18,13 @@ function habitsReducer(habits, action) {
 		data, habitTitle
 	} = action;
 
-	habits = [...habits];
-
-	const newHabit = data
-		? {
-			title: data.title.value,
-			colorIndex: Number(data.colorIndex.value),
-			iconTitle: data.iconTitle.value,
-			frequency: Number(data.frequency.value),
-			completedDays: [],
-			creationDate: new Date()
-		}
-		: null;
+	const newHabit = data && {
+		title: data.title.value,
+		colorIndex: Number(data.colorIndex.value),
+		iconTitle: data.iconTitle.value,
+		frequency: Number(data.frequency.value),
+		completedDays: [],
+	};
 
 	switch (action.type) {
 		case 'importHabit':
@@ -38,7 +33,7 @@ function habitsReducer(habits, action) {
 
 		// habits
 		case 'addHabit':
-			habits = [newHabit, ...habits];
+			habits = [{ ...newHabit, creationDate: new Date() }, ...habits];
 			scrollToTop();
 			break;
 
@@ -76,7 +71,7 @@ function habitsReducer(habits, action) {
 			break;
 
 		default:
-			throw new Error('Unknown action: ' + action.type);
+			console.error('Unknown action: ' + action.type);
 	};
 
 	saveToLocalStorage('habits', habits);
