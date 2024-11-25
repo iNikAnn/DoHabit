@@ -11,7 +11,7 @@ function Placeholder(props) {
 		style,
 		image, title, desc,
 		textOnButton, buttonIcon,
-		to, onClick, accentColor
+		to, state, onClick, accentColor
 	} = props;
 
 	return (
@@ -26,7 +26,7 @@ function Placeholder(props) {
 			</div>
 
 			{textOnButton && (
-				<Link to={to}>
+				<Link to={to} state={state}>
 					<Button
 						icon={buttonIcon}
 						text={textOnButton}
