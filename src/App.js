@@ -5,6 +5,7 @@ import React, { useEffect, useReducer, useRef, useState } from 'react';
 
 // stores
 import { useSettingsStore } from './stores/settingsStore';
+import { useMainDiaryStore } from './stores/mainDiaryStore';
 
 // router
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
@@ -34,9 +35,6 @@ import useColors from './hooks/useColors';
 import initHabits from './utils/initHabits';
 import habitsReducer from './utils/habitsReducer';
 
-import initMainDiary from './utils/initMainDiary';
-import mainDiaryReducer from './utils/mainDiaryReducer';
-
 import initAchievements from './utils/initAchievements';
 import achievementsReducer from './utils/achievementsReducer';
 
@@ -50,6 +48,8 @@ function App() {
 	const isInitialRender = useRef(true);
 
 	const settings = useSettingsStore((s) => s.settings);
+	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
+
 	const location = useLocation();
 	const [dialog, setDialog] = useState(false);
 
@@ -57,7 +57,6 @@ function App() {
 	const dbColors = useColors(settings);
 
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
-	const [mainDiary, mainDiaryDispatch] = useReducer(mainDiaryReducer, null, initMainDiary);
 	const [achievements, achievementsDispatch] = useReducer(achievementsReducer, null, initAchievements);
 
 	// Check achievements when dependencies change
@@ -93,7 +92,6 @@ function App() {
 				<Diary
 					{...{ habits, mainDiary, dbColors }}
 					onUpdate={habitsDispatch}
-					onUpdateMainDiary={mainDiaryDispatch}
 				/>
 			)
 		},

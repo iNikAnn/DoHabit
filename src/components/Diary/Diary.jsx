@@ -6,6 +6,9 @@ import { useEffect, useRef, useState } from 'react';
 // router
 import { useLocation } from 'react-router-dom';
 
+// stores
+import { useMainDiaryStore } from '../../stores/mainDiaryStore';
+
 // components
 import NoteList from './NoteList';
 import Placeholder from '../Placeholder';
@@ -21,9 +24,11 @@ function Diary(props) {
 
 	const {
 		habits, mainDiary,
-		onUpdate, onUpdateMainDiary,
+		onUpdate,
 		dbColors
 	} = props;
+
+	const mainDiaryDispatch = useMainDiaryStore((s) => s.mainDiaryDispatch);
 
 	const [habitTitle] = useState(location.state?.habitTitle);
 	const [accentColor] = useState(dbColors[location.state?.colorIndex]);
@@ -50,7 +55,7 @@ function Diary(props) {
 		if (habitTitle) {
 			onUpdate(actions);
 		} else {
-			onUpdateMainDiary(actions);
+			mainDiaryDispatch(actions);
 		};
 
 		document.body
@@ -81,7 +86,7 @@ function Diary(props) {
 		if (habitTitle) {
 			onUpdate(actions);
 		} else {
-			onUpdateMainDiary(actions);
+			mainDiaryDispatch(actions);
 		};
 
 		setIsEditing(false);
@@ -100,7 +105,7 @@ function Diary(props) {
 			if (habitTitle) {
 				onUpdate(actions);
 			} else {
-				onUpdateMainDiary(actions);
+				mainDiaryDispatch(actions);
 			};
 		};
 	};
