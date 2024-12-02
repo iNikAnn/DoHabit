@@ -23,11 +23,12 @@ function Diary(props) {
 	const location = useLocation();
 
 	const {
-		habits, mainDiary,
+		habits,
 		onUpdate,
 		dbColors
 	} = props;
 
+	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
 	const mainDiaryDispatch = useMainDiaryStore((s) => s.mainDiaryDispatch);
 
 	const [habitTitle] = useState(location.state?.habitTitle);

@@ -1,10 +1,7 @@
 import './App.css';
 
 // react
-import React, { useEffect, useReducer, useRef, useState } from 'react';
-
-// stores
-import { useMainDiaryStore } from './stores/mainDiaryStore';
+import React, { useReducer, useState } from 'react';
 
 // router
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
@@ -29,13 +26,11 @@ import Statistics from './components/Statistics/Statistics';
 
 // hooks
 import useColors from './hooks/useColors';
+import useAchievementsCheck from './hooks/useAchievementsCheck';
 
 // utils
 import initHabits from './utils/initHabits';
 import habitsReducer from './utils/habitsReducer';
-
-import initAchievements from './utils/initAchievements';
-import achievementsReducer from './utils/achievementsReducer';
 
 // db
 import dbIcons from './db/dbIcons';
@@ -43,10 +38,6 @@ import dbIcons from './db/dbIcons';
 const publicUrl = process.env.PUBLIC_URL;
 
 function App() {
-	// The value will be changed to false later in the code
-	const isInitialRender = useRef(true);
-
-	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
 
 	const location = useLocation();
 	const [dialog, setDialog] = useState(false);
@@ -55,20 +46,9 @@ function App() {
 	const dbColors = useColors();
 
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
-	const [achievements, achievementsDispatch] = useReducer(achievementsReducer, null, initAchievements);
 
 	// Check achievements when dependencies change
-	useEffect(
-		() => {
-			achievementsDispatch({
-				habits,
-				mainDiary,
-				onOpenDialog: setDialog,
-				isInitialRender: isInitialRender.current
-			});
-		},
-		[habits, mainDiary]
-	);
+	useAchievementsCheck(habits, setDialog);
 
 	const modalComponents = [
 		{
@@ -88,7 +68,7 @@ function App() {
 			path: 'diary',
 			element: (
 				<Diary
-					{...{ habits, mainDiary, dbColors }}
+					{...{ habits, dbColors }}
 					onUpdate={habitsDispatch}
 				/>
 			)
@@ -118,15 +98,11 @@ function App() {
 			path: 'achievements',
 			element: (
 				<Achievements
-					{...{ achievements }}
 					onOpenDialog={setDialog}
 				/>
 			)
 		}
 	];
-
-	// End of initial render
-	useEffect(() => { isInitialRender.current = false }, []);
 
 	return (
 		<main className="App">

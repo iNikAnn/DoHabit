@@ -1,5 +1,8 @@
 import styles from '../../css/Achievements.module.css';
 
+// stores
+import { useAchievementsStore } from '../../stores/achievementsStore';
+
 // components
 import SectionHeader from '../Containment/SectionHeader';
 import Placeholder from '../Placeholder';
@@ -8,8 +11,9 @@ import SecretAchievementCard from './SecretAchievementCard';
 
 const publicUrl = process.env.PUBLIC_URL;
 
-function Achievements({ achievements, onOpenDialog }) {
+function Achievements({ onOpenDialog }) {
 
+	const achievements = useAchievementsStore((s) => s.achievements);
 	const regularAchievements = achievements.filter((a) => !a.isSecret);
 	const secretAchievements = achievements.filter((a) => a.isSecret && a.isUnlocked);
 	const sortedSecretAchievements = secretAchievements.toSorted(
