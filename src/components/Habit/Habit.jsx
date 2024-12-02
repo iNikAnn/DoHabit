@@ -1,13 +1,13 @@
 import styles from '../../css/Habit.module.css';
 
 // react
-import { useContext, useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 
 // framer
 import { AnimatePresence, motion } from 'framer-motion';
 
-// context
-import { SettingsContext } from '../../context/settingsContext';
+// stores
+import { useSettingsStore } from '../../stores/settingsStore';
 
 // components
 import HabitHeader from './HabitHeader';
@@ -30,7 +30,7 @@ function Habit(props) {
 		onShowMenu
 	} = props;
 
-	const settings = useContext(SettingsContext);
+	const settings = useSettingsStore((s) => s.settings);
 	const habitRef = useRef(null);
 	const colorPalette = useMemo(() => getColorPalette(color), [color]);
 	const todayProgress = getTodayProgress(completedDays);

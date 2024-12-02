@@ -1,10 +1,7 @@
 import styles from '../../css/appearanceSettings.module.css';
 
-// react
-import { useContext } from 'react';
-
-// context
-import { SettingsContext, SettingsDispatchContext } from '../../context/settingsContext';
+// stores
+import { useSettingsStore } from '../../stores/settingsStore';
 
 // components
 import MenuItemList from '../Menu/MenuItemList';
@@ -13,8 +10,8 @@ import Switch from '../Selection/Switch';
 
 function AppearanceSettings() {
 
-	const settings = useContext(SettingsContext);
-	const updateSettings = useContext(SettingsDispatchContext);
+	const settings = useSettingsStore((s) => s.settings);
+	const settingsDispatch = useSettingsStore((s) => s.settingsDispatch);
 
 	return (
 		<section className={styles.appearance}>
@@ -25,7 +22,7 @@ function AppearanceSettings() {
 					other={
 						<Switch
 							isActive={settings.isDarkSchemeForced}
-							onClick={() => updateSettings({
+							onClick={() => settingsDispatch({
 								isDarkSchemeForced: !settings.isDarkSchemeForced
 							})}
 						/>
@@ -40,7 +37,7 @@ function AppearanceSettings() {
 					other={
 						<Switch
 							isActive={settings.calendarView === 'compact'}
-							onClick={() => updateSettings({
+							onClick={() => settingsDispatch({
 								calendarView: settings.calendarView === 'compact'
 									? 'default'
 									: 'compact'
@@ -57,7 +54,7 @@ function AppearanceSettings() {
 					other={
 						<Switch
 							isActive={settings.calendarHighlightToday ?? true}
-							onClick={() => updateSettings({
+							onClick={() => settingsDispatch({
 								calendarHighlightToday: !(settings.calendarHighlightToday ?? true)
 							})}
 						/>

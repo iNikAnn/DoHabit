@@ -1,11 +1,7 @@
 import styles from '../../css/Month.module.css';
 
-
-// react
-import { useContext } from 'react';
-
-// context
-import { SettingsContext } from '../../context/settingsContext';
+// stores
+import { useSettingsStore } from '../../stores/settingsStore';
 
 // utils
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
@@ -20,7 +16,7 @@ function Month(props) {
 		visibleMonthsCount, isDaySquare, dayGap, dayBorderRadius
 	} = props;
 
-	const settings = useContext(SettingsContext);
+	const settings = useSettingsStore((s) => s.settings);
 	const highlightToday = settings.calendarHighlightToday ?? true;
 
 	const { baseColor, darkenedColor, softenedColor } = colorPalette;
