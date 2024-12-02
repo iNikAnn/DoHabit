@@ -1,10 +1,10 @@
 import './App.css';
 
 // react
-import React, { useContext, useEffect, useReducer, useRef, useState } from 'react';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
 
-// context
-import { SettingsContext } from './context/settingsContext';
+// stores
+import { useSettingsStore } from './stores/settingsStore';
 
 // router
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
@@ -27,10 +27,10 @@ import HabitEditor from './components/HabitEditor/HabitEditor';
 import Menu from './components/Menu/Menu';
 import Statistics from './components/Statistics/Statistics';
 
+// hooks
+import useColors from './hooks/useColors';
 
 // utils
-import getColors from './utils/getColors';
-
 import initHabits from './utils/initHabits';
 import habitsReducer from './utils/habitsReducer';
 
@@ -49,18 +49,12 @@ function App() {
 	// The value will be changed to false later in the code
 	const isInitialRender = useRef(true);
 
-	const settings = useContext(SettingsContext);
+	const settings = useSettingsStore((s) => s.settings);
 	const location = useLocation();
 	const [dialog, setDialog] = useState(false);
 
 	// Get colors from database based on settings or system theme
-	const dbColors = getColors(
-		settings.isDarkSchemeForced
-			? 'dark'
-			: matchMedia('(prefers-color-scheme: dark)').matches
-				? 'dark'
-				: 'light'
-	);
+	const dbColors = useColors(settings);
 
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 	const [mainDiary, mainDiaryDispatch] = useReducer(mainDiaryReducer, null, initMainDiary);
