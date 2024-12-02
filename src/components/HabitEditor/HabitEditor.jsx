@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 // router
 import { useLocation, useNavigate } from 'react-router-dom';
 
+// stores
+import { useHabitsStore } from '../../stores/habitsStore';
+
 // components
 import TitleBlock from './TitleBlock';
 import FrequencyBlock from './FrequencyBlock';
@@ -18,24 +21,17 @@ import Button from '../Button';
 import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
 
 // icons
-import { MdAddToPhotos } from "react-icons/md";
-import { MdDeleteForever } from "react-icons/md";
-import { HiArchiveBoxArrowDown } from "react-icons/hi2";
+import { MdAddToPhotos } from 'react-icons/md';
+import { MdDeleteForever } from 'react-icons/md';
+import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
 
-function HabitEditor(props) {
+function HabitEditor({ dbIcons, dbColors }) {
 
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	const {
-		habits,
-
-		// 'on' functions
-		onUpdate,
-
-		// db
-		dbIcons, dbColors
-	} = props;
+	const habits = useHabitsStore((s) => s.habits);
+	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 
 	const habitTitle = location.state?.habitTitle;
 	const isEditMode = Boolean(habitTitle);
@@ -67,7 +63,7 @@ function HabitEditor(props) {
 	};
 
 	const handleUpdate = (props) => {
-		onUpdate(props);
+		habitsDispatch(props);
 		navigate(-1);
 	};
 
@@ -121,7 +117,7 @@ function HabitEditor(props) {
 					// style={{ paddingBottom: isEditMode ? '8rem' : '5rem' }}
 					className={styles.info}
 				>
-					"Color" and "Icon" icons in reduced size indicate that they have been previously used (but can be reused).
+					'Color' and 'Icon' icons in reduced size indicate that they have been previously used (but can be reused).
 				</small>
 
 				<div className={styles.btnsWrapper}>
@@ -129,10 +125,10 @@ function HabitEditor(props) {
 						<div className={styles.extraBtnsWrapper}>
 							<Button
 								icon={<MdDeleteForever />}
-								text="Delete Habit"
-								color="IndianRed"
-								// bgColor="IndianRed"
-								bgColor="var(--bg-color-primary)"
+								text='Delete Habit'
+								color='IndianRed'
+								// bgColor='IndianRed'
+								bgColor='var(--bg-color-primary)'
 								onClick={() => {
 									const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 
@@ -144,11 +140,11 @@ function HabitEditor(props) {
 
 							<Button
 								icon={<HiArchiveBoxArrowDown />}
-								text="Archive Habit"
-								// bgColor="#7b68ee"
-								bgColor="var(--bg-color-primary)"
+								text='Archive Habit'
+								// bgColor='#7b68ee'
+								bgColor='var(--bg-color-primary)'
 								onClick={() => {
-									const msg = 'Are you sure you want to archive this habit? Archived habits can be found in the menu under the "Archive" section.';
+									const msg = 'Are you sure you want to archive this habit? Archived habits can be found in the menu under the \'Archive\' section.';
 
 									if (window.confirm(msg)) {
 										handleUpdate({ ...actionObj, type: 'archiveHabit' });
@@ -159,10 +155,10 @@ function HabitEditor(props) {
 					)}
 
 					<Button
-						type="submit"
+						type='submit'
 						icon={<MdAddToPhotos />}
 						text={isEditMode ? 'Save Changes' : 'Create Habit'}
-						color="#e6e6e6"
+						color='#e6e6e6'
 						disabled={alreadyExist}
 					/>
 				</div>

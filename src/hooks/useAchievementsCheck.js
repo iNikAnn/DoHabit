@@ -1,15 +1,17 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { useMainDiaryStore } from "../stores/mainDiaryStore";
-import { useAchievementsStore } from "../stores/achievementsStore";
-import { useDialog } from "../stores/dialogStore";
+import { useAchievementsStore } from '../stores/achievementsStore';
+import { useHabitsStore } from '../stores/habitsStore';
+import { useMainDiaryStore } from '../stores/mainDiaryStore';
+import { useDialog } from '../stores/dialogStore';
 
-import useIsInitialRender from "./useIsInitialRender";
+import useIsInitialRender from './useIsInitialRender';
 
-function useAchievementsCheck(habits) {
+function useAchievementsCheck() {
 
 	const isInitialRender = useIsInitialRender();
 	const achievementsDispatch = useAchievementsStore((s) => s.achievementsDispatch);
+	const habits = useHabitsStore((s) => s.habits);
 	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
 	const openDialog = useDialog((s) => s.openDialog);
 

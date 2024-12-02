@@ -12,7 +12,7 @@ import Habit from "./Habit/Habit";
 function HabitList(props) {
 	const {
 		habits, archive,
-		onOpenModal, onUpdate,
+		onOpenModal,
 		dbIcons, dbColors
 	} = props;
 
@@ -32,7 +32,7 @@ function HabitList(props) {
 				color={dbColors[h.colorIndex]}
 				isMenuVisible={visibleMenuIndex === index}
 
-				{...{ onOpenModal, onUpdate }}
+				{...{ onOpenModal }}
 				onShowMenu={(i) => handleToggleMenu(i)}
 			/>
 		)

@@ -3,6 +3,9 @@ import styles from '../../css/HabitHeader.module.css';
 // react
 import { useRef } from 'react';
 
+// stores
+import { useHabitsStore } from '../../stores/habitsStore';
+
 // components
 import ProgressBar from './ProgressBar';
 
@@ -15,9 +18,9 @@ function HabitHeader(props) {
 		title, icon, frequency, diary, colorPalette,
 		isTodayCompleted, todayProgress, currentStreak,
 		archive,
-		onUpdate
 	} = props;
 
+	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 	const { baseColor, darkenedColor } = colorPalette;
 
 	const progressPercentage = Math.floor((todayProgress / frequency) * 100);
@@ -45,7 +48,7 @@ function HabitHeader(props) {
 
 		navigator?.vibrate(isCompleted ? [10, 10, 10, 10, 10] : 10);
 
-		onUpdate({
+		habitsDispatch({
 			type: 'updateProgress',
 			habitTitle: title
 		});
@@ -108,7 +111,7 @@ function HabitHeader(props) {
 					className={styles.restoreIcon}
 					onClick={() => {
 						if (window.confirm('Are you sure you want to restore this habit?')) {
-							onUpdate({
+							habitsDispatch({
 								type: 'archiveHabit',
 								habitTitle: title
 							})

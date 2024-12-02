@@ -1,13 +1,13 @@
 import './App.css';
 
-// react
-import React, { useReducer } from 'react';
-
 // router
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 // framer
 import { AnimatePresence } from 'framer-motion';
+
+// stores
+import { useDialog } from './stores/dialogStore';
 
 // main components
 import MainPage from './components/MainPage';
@@ -28,13 +28,8 @@ import Statistics from './components/Statistics/Statistics';
 import useColors from './hooks/useColors';
 import useAchievementsCheck from './hooks/useAchievementsCheck';
 
-// utils
-import initHabits from './utils/initHabits';
-import habitsReducer from './utils/habitsReducer';
-
 // db
 import dbIcons from './db/dbIcons';
-import { useDialog } from './stores/dialogStore';
 
 const publicUrl = process.env.PUBLIC_URL;
 
@@ -46,20 +41,13 @@ function App() {
 	// Get colors from database based on settings or system theme
 	const dbColors = useColors();
 
-	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
-
 	// Check achievements when dependencies change
-	useAchievementsCheck(habits);
+	useAchievementsCheck();
 
 	const modalComponents = [
 		{
 			path: 'habitEditor',
-			element: (
-				<HabitEditor
-					{...{ habits, dbIcons, dbColors }}
-					onUpdate={habitsDispatch}
-				/>
-			)
+			element: <HabitEditor {...{ dbIcons, dbColors }} />
 		},
 		{
 			path: 'menu',
@@ -67,21 +55,11 @@ function App() {
 		},
 		{
 			path: 'diary',
-			element: (
-				<Diary
-					{...{ habits, dbColors }}
-					onUpdate={habitsDispatch}
-				/>
-			)
+			element: <Diary {...{ dbColors }} />
 		},
 		{
 			path: 'archive',
-			element: (
-				<Archive
-					{...{ habits, dbIcons, dbColors }}
-					onUpdate={habitsDispatch}
-				/>
-			)
+			element: <Archive {...{ dbIcons, dbColors }} />
 		},
 		{
 			path: 'dataTransfer',
@@ -115,8 +93,7 @@ function App() {
 						element={
 							<MainPage
 								key="mainPage"
-								{...{ habits, dbIcons, dbColors }}
-								onUpdate={habitsDispatch}
+								{...{ dbIcons, dbColors }}
 							/>
 						}
 					/>

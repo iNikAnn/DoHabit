@@ -1,5 +1,8 @@
 import styles from '../../css/Archive.module.css';
 
+// stores
+import { useHabitsStore } from '../../stores/habitsStore';
+
 // components
 import HabitList from '../HabitList';
 import Placeholder from '../Placeholder';
@@ -7,7 +10,9 @@ import Placeholder from '../Placeholder';
 // icons
 import { ReactComponent as Table } from '../../img/table-of-contents.svg'
 
-function Archive({ habits, dbIcons, dbColors, onUpdate }) {
+function Archive({ dbIcons, dbColors }) {
+
+	const habits = useHabitsStore((s) => s.habits);
 	const filteredHabits = habits.filter(h => h.isArchived);
 
 	return (
@@ -16,7 +21,7 @@ function Archive({ habits, dbIcons, dbColors, onUpdate }) {
 				<HabitList
 					archive
 					habits={filteredHabits}
-					{...{ dbIcons, dbColors, onUpdate }}
+					{...{ dbIcons, dbColors }}
 				/>
 			) : (
 				<Placeholder
