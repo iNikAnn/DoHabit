@@ -4,7 +4,6 @@ import './App.css';
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 
 // stores
-import { useSettingsStore } from './stores/settingsStore';
 import { useMainDiaryStore } from './stores/mainDiaryStore';
 
 // router
@@ -47,14 +46,13 @@ function App() {
 	// The value will be changed to false later in the code
 	const isInitialRender = useRef(true);
 
-	const settings = useSettingsStore((s) => s.settings);
 	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
 
 	const location = useLocation();
 	const [dialog, setDialog] = useState(false);
 
 	// Get colors from database based on settings or system theme
-	const dbColors = useColors(settings);
+	const dbColors = useColors();
 
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 	const [achievements, achievementsDispatch] = useReducer(achievementsReducer, null, initAchievements);
