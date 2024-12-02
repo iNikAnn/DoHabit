@@ -1,24 +1,28 @@
 import { useEffect } from "react";
+
 import { useMainDiaryStore } from "../stores/mainDiaryStore";
 import { useAchievementsStore } from "../stores/achievementsStore";
+import { useDialog } from "../stores/dialogStore";
+
 import useIsInitialRender from "./useIsInitialRender";
 
-function useAchievementsCheck(habits, setDialog) {
+function useAchievementsCheck(habits) {
 
-	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
-	const achievementsDispatch = useAchievementsStore((s) => s.achievementsDispatch);
 	const isInitialRender = useIsInitialRender();
+	const achievementsDispatch = useAchievementsStore((s) => s.achievementsDispatch);
+	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
+	const openDialog = useDialog((s) => s.openDialog);
 
 	useEffect(
 		() => {
 			achievementsDispatch({
 				habits,
 				mainDiary,
-				onOpenDialog: setDialog,
+				onOpenDialog: openDialog,
 				isInitialRender: isInitialRender.current
 			});
 		},
-		[achievementsDispatch, habits, isInitialRender, mainDiary, setDialog]
+		[achievementsDispatch, habits, isInitialRender, mainDiary, openDialog]
 	);
 }
 
