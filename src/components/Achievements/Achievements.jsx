@@ -1,6 +1,7 @@
 import styles from '../../css/Achievements.module.css';
 
 // stores
+import { useDialog } from '../../stores/dialogStore';
 import { useAchievementsStore } from '../../stores/achievementsStore';
 
 // components
@@ -11,7 +12,9 @@ import SecretAchievementCard from './SecretAchievementCard';
 
 const publicUrl = process.env.PUBLIC_URL;
 
-function Achievements({ onOpenDialog }) {
+function Achievements() {
+
+	const openDialog = useDialog((s) => s.open);
 
 	const achievements = useAchievementsStore((s) => s.achievements);
 	const regularAchievements = achievements.filter((a) => !a.isSecret);
@@ -23,7 +26,7 @@ function Achievements({ onOpenDialog }) {
 	const handleShowDetails = (a) => {
 		if (!a.isUnlocked) return;
 
-		onOpenDialog({
+		openDialog({
 			title: a.title,
 			subTitle: 'Unlock Date: ' + new Date(a.unlockDate).toLocaleDateString(),
 			imgSrc: `${publicUrl}/img/achievements/${a.id}.svg`,
@@ -38,7 +41,7 @@ function Achievements({ onOpenDialog }) {
 					title="Streaks"
 					btn="textButton"
 					btnText="Show info"
-					btnOnClick={() => onOpenDialog({
+					btnOnClick={() => openDialog({
 						text: 'To unlock an achievement, complete a streak of the required number of days in any of your habits.'
 					})}
 				/>
@@ -62,7 +65,7 @@ function Achievements({ onOpenDialog }) {
 					title="Secret achievements"
 					btn="textButton"
 					btnText="Show info"
-					btnOnClick={() => onOpenDialog({
+					btnOnClick={() => openDialog({
 						text: 'Surprise! These achievements are like unicorns — rare and totally unexpected!\nUse the app regularly, and you might just unlock some hidden achievements along the way!'
 					})}
 				/>

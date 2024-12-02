@@ -1,7 +1,7 @@
 import './App.css';
 
 // react
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 
 // router
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
@@ -34,13 +34,14 @@ import habitsReducer from './utils/habitsReducer';
 
 // db
 import dbIcons from './db/dbIcons';
+import { useDialog } from './stores/dialogStore';
 
 const publicUrl = process.env.PUBLIC_URL;
 
 function App() {
 
 	const location = useLocation();
-	const [dialog, setDialog] = useState(false);
+	const isDialogVisible = useDialog((s) => s.isVisible);
 
 	// Get colors from database based on settings or system theme
 	const dbColors = useColors();
@@ -48,7 +49,7 @@ function App() {
 	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
 
 	// Check achievements when dependencies change
-	useAchievementsCheck(habits, setDialog);
+	useAchievementsCheck(habits);
 
 	const modalComponents = [
 		{
@@ -96,11 +97,7 @@ function App() {
 		},
 		{
 			path: 'achievements',
-			element: (
-				<Achievements
-					onOpenDialog={setDialog}
-				/>
-			)
+			element: <Achievements />
 		}
 	];
 
@@ -134,12 +131,8 @@ function App() {
 					</Route>
 				</Routes>
 
-				{dialog && (
-					<Dialog
-						key="dialog"
-						{...dialog}
-						onClose={() => setDialog(false)}
-					/>
+				{isDialogVisible && (
+					<Dialog key="dialog" />
 				)}
 			</AnimatePresence>
 		</main>
