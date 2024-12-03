@@ -1,7 +1,7 @@
 import styles from '../../css/Achievements.module.css';
 
 // stores
-import { useDialog } from '../../stores/dialogStore';
+import { useDialogStore } from '../../stores/dialogStore';
 import { useAchievementsStore } from '../../stores/achievementsStore';
 
 // components
@@ -14,7 +14,7 @@ const publicUrl = process.env.PUBLIC_URL;
 
 function Achievements() {
 
-	const openDialog = useDialog((s) => s.open);
+	const openDialog = useDialogStore((s) => s.open);
 
 	const achievements = useAchievementsStore((s) => s.achievements);
 	const regularAchievements = achievements.filter((a) => !a.isSecret);

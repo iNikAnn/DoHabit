@@ -4,7 +4,7 @@ import styles from '../../css/Dialog.module.css';
 import { motion } from 'framer-motion';
 
 // stores
-import { useDialog } from '../../stores/dialogStore';
+import { useDialogStore } from '../../stores/dialogStore';
 
 // components
 import Overlay from '../Overlay';
@@ -24,8 +24,8 @@ const dialogVariants = {
 
 function Dialog() {
 
-	const { title, subTitle, imgSrc, text } = useDialog((s) => s.content) ?? {};
-	const closeDialog = useDialog((s) => s.close);
+	const { title, subTitle, imgSrc, text } = useDialogStore((s) => s.content) ?? {};
+	const closeDialog = useDialogStore((s) => s.close);
 
 	return (
 		<>

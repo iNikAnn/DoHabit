@@ -7,33 +7,26 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // stores
-import { useDialog } from './stores/dialogStore';
+import { useDialogStore } from './stores/dialogStore';
 
 // main components
 import MainPage from './components/MainPage';
-import Dialog from './components/Containment/Dialog';
-
-// modal-related components
 import Modal from './components/Modal';
-import Achievements from './components/Achievements/Achievements';
-import Archive from './components/Archive/Archive';
-import AppearanceSettings from './components/Appearance Settings/AppearanceSettings';
-import DataTransfer from './components/DataTransfer/DataTransfer';
-import Diary from './components/Diary/Diary';
-import HabitEditor from './components/HabitEditor/HabitEditor';
-import Menu from './components/Menu/Menu';
-import Statistics from './components/Statistics/Statistics';
+import Dialog from './components/Containment/Dialog';
 
 // hooks
 import useColorScheme from './hooks/useColorScheme';
 import useAchievementsCheck from './hooks/useAchievementsCheck';
 
-const publicUrl = process.env.PUBLIC_URL;
+// db
+import dbModalRoutes from './db/dbModalRoutes';
+
+const PUBLIC_URL = process.env.PUBLIC_URL;
 
 function App() {
 
 	const location = useLocation();
-	const isDialogVisible = useDialog((s) => s.isVisible);
+	const isDialogVisible = useDialogStore((s) => s.isVisible);
 
 	// Get colors from database based on settings or system theme
 	useColorScheme();
@@ -41,60 +34,25 @@ function App() {
 	// Check achievements when dependencies change
 	useAchievementsCheck();
 
-	const modalComponents = [
-		{
-			path: 'habitEditor',
-			element: <HabitEditor />
-		},
-		{
-			path: 'menu',
-			element: <Menu />
-		},
-		{
-			path: 'diary',
-			element: <Diary />
-		},
-		{
-			path: 'archive',
-			element: <Archive />
-		},
-		{
-			path: 'dataTransfer',
-			element: <DataTransfer />
-		},
-		{
-			path: 'statistics',
-			element: <Statistics />
-		},
-		{
-			path: 'appearance',
-			element: <AppearanceSettings />
-		},
-		{
-			path: 'achievements',
-			element: <Achievements />
-		}
-	];
-
 	return (
 		<main className="App">
 			<AnimatePresence initial={false}>
 				<Routes location={location} key={location.pathname}>
 					<Route
 						path='*'
-						element={<Navigate to={publicUrl} />}
+						element={<Navigate to={PUBLIC_URL} />}
 					/>
 
 					<Route
-						path={publicUrl}
-						element={<MainPage key="mainPage" />}
+						path={PUBLIC_URL}
+						element={<MainPage />}
 					/>
 
 					<Route
-						path={`${publicUrl}/modal`}
-						element={<Modal key={location.pathname} />}
+						path={`${PUBLIC_URL}/modal`}
+						element={<Modal />}
 					>
-						{modalComponents.map((r) => (
+						{dbModalRoutes.map((r) => (
 							<Route key={r.path} path={r.path} element={r.element} />
 						))}
 					</Route>
