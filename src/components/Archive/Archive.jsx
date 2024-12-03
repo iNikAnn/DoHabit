@@ -10,7 +10,7 @@ import Placeholder from '../Placeholder';
 // icons
 import { ReactComponent as Table } from '../../img/table-of-contents.svg'
 
-function Archive({ dbIcons, dbColors }) {
+function Archive() {
 
 	const habits = useHabitsStore((s) => s.habits);
 	const filteredHabits = habits.filter(h => h.isArchived);
@@ -21,7 +21,6 @@ function Archive({ dbIcons, dbColors }) {
 				<HabitList
 					archive
 					habits={filteredHabits}
-					{...{ dbIcons, dbColors }}
 				/>
 			) : (
 				<Placeholder

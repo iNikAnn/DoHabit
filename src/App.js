@@ -28,9 +28,6 @@ import Statistics from './components/Statistics/Statistics';
 import useColorScheme from './hooks/useColorScheme';
 import useAchievementsCheck from './hooks/useAchievementsCheck';
 
-// db
-import dbIcons from './db/dbIcons';
-
 const publicUrl = process.env.PUBLIC_URL;
 
 function App() {
@@ -47,7 +44,7 @@ function App() {
 	const modalComponents = [
 		{
 			path: 'habitEditor',
-			element: <HabitEditor {...{ dbIcons }} />
+			element: <HabitEditor />
 		},
 		{
 			path: 'menu',
@@ -59,7 +56,7 @@ function App() {
 		},
 		{
 			path: 'archive',
-			element: <Archive {...{ dbIcons }} />
+			element: <Archive />
 		},
 		{
 			path: 'dataTransfer',
@@ -90,12 +87,7 @@ function App() {
 
 					<Route
 						path={publicUrl}
-						element={
-							<MainPage
-								key="mainPage"
-								{...{ dbIcons }}
-							/>
-						}
+						element={<MainPage key="mainPage" />}
 					/>
 
 					<Route

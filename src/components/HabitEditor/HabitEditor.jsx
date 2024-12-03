@@ -25,7 +25,7 @@ import { MdAddToPhotos } from 'react-icons/md';
 import { MdDeleteForever } from 'react-icons/md';
 import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
 
-function HabitEditor({ dbIcons }) {
+function HabitEditor() {
 
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -110,7 +110,7 @@ function HabitEditor({ dbIcons }) {
 				/>
 
 				<IconBlock
-					{...{ habits, dbIcons, currentIconTitle: habit?.iconTitle }}
+					{...{ habits, currentIconTitle: habit?.iconTitle }}
 				/>
 
 				<small

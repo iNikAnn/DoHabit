@@ -20,7 +20,7 @@ const mainVariants = {
 	transition: { duration: .3, ease: 'easeOut' }
 };
 
-function MainPage({ dbIcons }) {
+function MainPage() {
 
 	const habits = useHabitsStore((s) => s.habits);
 	const filteredHabits = habits.filter((h) => !h.isArchived);
@@ -30,7 +30,7 @@ function MainPage({ dbIcons }) {
 			<Header />
 
 			<HabitList
-				{...{ habits: filteredHabits, dbIcons }}
+				{...{ habits: filteredHabits }}
 			/>
 
 			{filteredHabits.length === 0 && (

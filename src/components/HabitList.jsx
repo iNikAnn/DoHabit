@@ -12,11 +12,13 @@ import { useColorsStore } from '../stores/colorsStore';
 // components
 import Habit from "./Habit/Habit";
 
+// db
+import dbIcons from '../db/dbIcons';
+
 function HabitList(props) {
 	const {
 		habits, archive,
 		onOpenModal,
-		dbIcons
 	} = props;
 
 	const dbColors = useColorsStore((s) => s.colors);
