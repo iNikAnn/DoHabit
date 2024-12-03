@@ -1,142 +1,38 @@
 import './App.css';
 
-// react
-import React, { useContext, useEffect, useReducer, useRef, useState } from 'react';
-
-// context
-import { SettingsContext } from './context/settingsContext';
-
 // router
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 // framer
 import { AnimatePresence } from 'framer-motion';
 
+// stores
+import { useDialogStore } from './stores/dialogStore';
+
 // main components
 import MainPage from './components/MainPage';
+import Modal from './components/Modal';
 import Dialog from './components/Containment/Dialog';
 
-// modal-related components
-import Modal from './components/Modal';
-import Achievements from './components/Achievements/Achievements';
-import Archive from './components/Archive/Archive';
-import AppearanceSettings from './components/Appearance Settings/AppearanceSettings';
-import DataTransfer from './components/DataTransfer/DataTransfer';
-import Diary from './components/Diary/Diary';
-import HabitEditor from './components/HabitEditor/HabitEditor';
-import Menu from './components/Menu/Menu';
-import Statistics from './components/Statistics/Statistics';
-
-
-// utils
-import getColors from './utils/getColors';
-
-import initHabits from './utils/initHabits';
-import habitsReducer from './utils/habitsReducer';
-
-import initMainDiary from './utils/initMainDiary';
-import mainDiaryReducer from './utils/mainDiaryReducer';
-
-import initAchievements from './utils/initAchievements';
-import achievementsReducer from './utils/achievementsReducer';
+// hooks
+import useColorScheme from './hooks/useColorScheme';
+import useAchievementsCheck from './hooks/useAchievementsCheck';
 
 // db
-import dbIcons from './db/dbIcons';
+import dbModalRoutes from './db/dbModalRoutes';
 
-const publicUrl = process.env.PUBLIC_URL;
+const PUBLIC_URL = process.env.PUBLIC_URL;
 
 function App() {
-	// The value will be changed to false later in the code
-	const isInitialRender = useRef(true);
 
-	const settings = useContext(SettingsContext);
 	const location = useLocation();
-	const [dialog, setDialog] = useState(false);
+	const isDialogVisible = useDialogStore((s) => s.isVisible);
 
 	// Get colors from database based on settings or system theme
-	const dbColors = getColors(
-		settings.isDarkSchemeForced
-			? 'dark'
-			: matchMedia('(prefers-color-scheme: dark)').matches
-				? 'dark'
-				: 'light'
-	);
-
-	const [habits, habitsDispatch] = useReducer(habitsReducer, null, initHabits);
-	const [mainDiary, mainDiaryDispatch] = useReducer(mainDiaryReducer, null, initMainDiary);
-	const [achievements, achievementsDispatch] = useReducer(achievementsReducer, null, initAchievements);
+	useColorScheme();
 
 	// Check achievements when dependencies change
-	useEffect(
-		() => {
-			achievementsDispatch({
-				habits,
-				mainDiary,
-				onOpenDialog: setDialog,
-				isInitialRender: isInitialRender.current
-			});
-		},
-		[habits, mainDiary]
-	);
-
-	const modalComponents = [
-		{
-			path: 'habitEditor',
-			element: (
-				<HabitEditor
-					{...{ habits, dbIcons, dbColors }}
-					onUpdate={habitsDispatch}
-				/>
-			)
-		},
-		{
-			path: 'menu',
-			element: <Menu />
-		},
-		{
-			path: 'diary',
-			element: (
-				<Diary
-					{...{ habits, mainDiary, dbColors }}
-					onUpdate={habitsDispatch}
-					onUpdateMainDiary={mainDiaryDispatch}
-				/>
-			)
-		},
-		{
-			path: 'archive',
-			element: (
-				<Archive
-					{...{ habits, dbIcons, dbColors }}
-					onUpdate={habitsDispatch}
-				/>
-			)
-		},
-		{
-			path: 'dataTransfer',
-			element: <DataTransfer />
-		},
-		{
-			path: 'statistics',
-			element: <Statistics />
-		},
-		{
-			path: 'appearance',
-			element: <AppearanceSettings />
-		},
-		{
-			path: 'achievements',
-			element: (
-				<Achievements
-					{...{ achievements }}
-					onOpenDialog={setDialog}
-				/>
-			)
-		}
-	];
-
-	// End of initial render
-	useEffect(() => { isInitialRender.current = false }, []);
+	useAchievementsCheck();
 
 	return (
 		<main className="App">
@@ -144,36 +40,26 @@ function App() {
 				<Routes location={location} key={location.pathname}>
 					<Route
 						path='*'
-						element={<Navigate to={publicUrl} />}
+						element={<Navigate to={PUBLIC_URL} />}
 					/>
 
 					<Route
-						path={publicUrl}
-						element={
-							<MainPage
-								key="mainPage"
-								{...{ habits, dbIcons, dbColors }}
-								onUpdate={habitsDispatch}
-							/>
-						}
+						path={PUBLIC_URL}
+						element={<MainPage />}
 					/>
 
 					<Route
-						path={`${publicUrl}/modal`}
-						element={<Modal key={location.pathname} />}
+						path={`${PUBLIC_URL}/modal`}
+						element={<Modal />}
 					>
-						{modalComponents.map((r) => (
+						{dbModalRoutes.map((r) => (
 							<Route key={r.path} path={r.path} element={r.element} />
 						))}
 					</Route>
 				</Routes>
 
-				{dialog && (
-					<Dialog
-						key="dialog"
-						{...dialog}
-						onClose={() => setDialog(false)}
-					/>
+				{isDialogVisible && (
+					<Dialog key="dialog" />
 				)}
 			</AnimatePresence>
 		</main>

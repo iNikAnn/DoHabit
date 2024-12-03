@@ -6,6 +6,11 @@ import { useEffect, useRef, useState } from 'react';
 // router
 import { useLocation } from 'react-router-dom';
 
+// stores
+import { useColorsStore } from '../../stores/colorsStore';
+import { useHabitsStore } from '../../stores/habitsStore';
+import { useMainDiaryStore } from '../../stores/mainDiaryStore';
+
 // components
 import NoteList from './NoteList';
 import Placeholder from '../Placeholder';
@@ -13,17 +18,19 @@ import AddNoteForm from './AddNoteForm';
 
 // icons
 import { ReactComponent as InfoSvg } from '../../img/information.svg';
-import { MdStickyNote2 } from "react-icons/md";
+import { MdStickyNote2 } from 'react-icons/md';
 
-function Diary(props) {
+function Diary() {
 
 	const location = useLocation();
 
-	const {
-		habits, mainDiary,
-		onUpdate, onUpdateMainDiary,
-		dbColors
-	} = props;
+	const dbColors = useColorsStore((s) => s.colors);
+
+	const habits = useHabitsStore((s) => s.habits);
+	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
+
+	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
+	const mainDiaryDispatch = useMainDiaryStore((s) => s.mainDiaryDispatch);
 
 	const [habitTitle] = useState(location.state?.habitTitle);
 	const [accentColor] = useState(dbColors[location.state?.colorIndex]);
@@ -48,9 +55,9 @@ function Diary(props) {
 		};
 
 		if (habitTitle) {
-			onUpdate(actions);
+			habitsDispatch(actions);
 		} else {
-			onUpdateMainDiary(actions);
+			mainDiaryDispatch(actions);
 		};
 
 		document.body
@@ -79,9 +86,9 @@ function Diary(props) {
 		};
 
 		if (habitTitle) {
-			onUpdate(actions);
+			habitsDispatch(actions);
 		} else {
-			onUpdateMainDiary(actions);
+			mainDiaryDispatch(actions);
 		};
 
 		setIsEditing(false);
@@ -98,9 +105,9 @@ function Diary(props) {
 			};
 
 			if (habitTitle) {
-				onUpdate(actions);
+				habitsDispatch(actions);
 			} else {
-				onUpdateMainDiary(actions);
+				mainDiaryDispatch(actions);
 			};
 		};
 	};

@@ -3,7 +3,11 @@ import styles from '../../css/IconBlock.module.css';
 // react
 import { useState } from 'react';
 
-function IconBlock({ habits, dbIcons, currentIconTitle }) {
+// db
+import dbIcons from '../../db/dbIcons';
+
+function IconBlock({ habits, currentIconTitle }) {
+
 	const [showMore, setShowMore] = useState(false);
 	const [selectedIcon, setSelectedIcon] = useState(currentIconTitle || 'default');
 

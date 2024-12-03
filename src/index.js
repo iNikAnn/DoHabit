@@ -6,15 +6,12 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
-import { SettingsProvider } from './context/settingsContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	// <React.StrictMode>
 	<BrowserRouter>
-		<SettingsProvider>
-			<App />
-		</SettingsProvider>
+		<App />
 	</BrowserRouter>
 	// </React.StrictMode>
 );

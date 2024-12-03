@@ -3,6 +3,9 @@ import styles from '../../css/Dialog.module.css';
 // motion
 import { motion } from 'framer-motion';
 
+// stores
+import { useDialogStore } from '../../stores/dialogStore';
+
 // components
 import Overlay from '../Overlay';
 import TextButton from '../Actions/TextButton';
@@ -19,10 +22,14 @@ const dialogVariants = {
 	}
 };
 
-function Dialog({ title, subTitle, imgSrc, text, onClose }) {
+function Dialog() {
+
+	const { title, subTitle, imgSrc, text } = useDialogStore((s) => s.content) ?? {};
+	const closeDialog = useDialogStore((s) => s.close);
+
 	return (
 		<>
-			<Overlay onClick={onClose} />
+			<Overlay onClick={closeDialog} />
 
 			<motion.div
 				className={styles.dialog}
@@ -57,7 +64,7 @@ function Dialog({ title, subTitle, imgSrc, text, onClose }) {
 				<div className={styles.btnsWrapper}>
 					<TextButton
 						text="Close"
-						onClick={onClose}
+						onClick={closeDialog}
 					/>
 				</div>
 			</motion.div>

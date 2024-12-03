@@ -11,6 +11,7 @@ import Placeholder from './Placeholder';
 // icons
 import { ReactComponent as Calendar } from '../img/calendar.svg';
 import { MdAddToPhotos } from "react-icons/md";
+import { useHabitsStore } from '../stores/habitsStore';
 
 const mainVariants = {
 	initial: { opacity: 0 },
@@ -19,8 +20,9 @@ const mainVariants = {
 	transition: { duration: .3, ease: 'easeOut' }
 };
 
-function MainPage({ habits, dbIcons, dbColors, onUpdate }) {
+function MainPage() {
 
+	const habits = useHabitsStore((s) => s.habits);
 	const filteredHabits = habits.filter((h) => !h.isArchived);
 
 	return (
@@ -28,7 +30,7 @@ function MainPage({ habits, dbIcons, dbColors, onUpdate }) {
 			<Header />
 
 			<HabitList
-				{...{ habits: filteredHabits, dbIcons, dbColors, onUpdate }}
+				{...{ habits: filteredHabits }}
 			/>
 
 			{filteredHabits.length === 0 && (

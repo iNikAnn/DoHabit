@@ -4,18 +4,21 @@ import styles from '../../css/HabitMenu.module.css';
 import { Link } from 'react-router-dom';
 
 // framer
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion'
+
+// stores
+import { useHabitsStore } from '../../stores/habitsStore';
 
 // components
 import Button from '../Button';
 
 // icons
-import { MdEditSquare } from "react-icons/md"; // edit
-import { MdLibraryBooks } from "react-icons/md"; // diary
-import { FaShareAltSquare } from "react-icons/fa";
-import { FaCalendarCheck } from "react-icons/fa";
-import { FaCalendarTimes } from "react-icons/fa";
-import { FaChartSimple } from "react-icons/fa6";
+import { MdEditSquare } from 'react-icons/md'; // edit
+import { MdLibraryBooks } from 'react-icons/md'; // diary
+import { FaShareAltSquare } from 'react-icons/fa';
+import { FaCalendarCheck } from 'react-icons/fa';
+import { FaCalendarTimes } from 'react-icons/fa';
+import { FaChartSimple } from 'react-icons/fa6';
 
 // --- Variants:START ---
 const bgVariants = {
@@ -37,9 +40,10 @@ function HabitMenu(props) {
 	const {
 		title, completedDays, colorIndex, colorPalette,
 		isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
-		onShowMenu, onUpdate, onShare
+		onShowMenu, onShare
 	} = props;
 
+	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 	const { darkenedColor } = colorPalette;
 
 	const handleDragEnd = (_, info) => {
@@ -50,7 +54,7 @@ function HabitMenu(props) {
 	};
 
 	const handleCompleteYeserday = () => {
-		onUpdate({
+		habitsDispatch({
 			type: 'toggleCompleteYeserday',
 			habitTitle: title,
 			isTodayCompleted,
@@ -123,7 +127,7 @@ function HabitMenu(props) {
 
 	return (
 		<motion.div
-			data-name="habitMenu"
+			data-name='habitMenu'
 			className={styles.menu}
 			{...bgVariants}
 		>
@@ -131,7 +135,7 @@ function HabitMenu(props) {
 				className={styles.content}
 				{...contentVariants}
 
-				drag="y"
+				drag='y'
 				dragConstraints={{ top: 0, bottom: 0 }}
 				dragElastic={{ top: 0.1, bottom: 1 }}
 				onDragEnd={handleDragEnd}
