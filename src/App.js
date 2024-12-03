@@ -25,7 +25,7 @@ import Menu from './components/Menu/Menu';
 import Statistics from './components/Statistics/Statistics';
 
 // hooks
-import useColors from './hooks/useColors';
+import useColorScheme from './hooks/useColorScheme';
 import useAchievementsCheck from './hooks/useAchievementsCheck';
 
 // db
@@ -39,7 +39,7 @@ function App() {
 	const isDialogVisible = useDialog((s) => s.isVisible);
 
 	// Get colors from database based on settings or system theme
-	const dbColors = useColors();
+	useColorScheme();
 
 	// Check achievements when dependencies change
 	useAchievementsCheck();
@@ -47,7 +47,7 @@ function App() {
 	const modalComponents = [
 		{
 			path: 'habitEditor',
-			element: <HabitEditor {...{ dbIcons, dbColors }} />
+			element: <HabitEditor {...{ dbIcons }} />
 		},
 		{
 			path: 'menu',
@@ -55,11 +55,11 @@ function App() {
 		},
 		{
 			path: 'diary',
-			element: <Diary {...{ dbColors }} />
+			element: <Diary />
 		},
 		{
 			path: 'archive',
-			element: <Archive {...{ dbIcons, dbColors }} />
+			element: <Archive {...{ dbIcons }} />
 		},
 		{
 			path: 'dataTransfer',
@@ -93,7 +93,7 @@ function App() {
 						element={
 							<MainPage
 								key="mainPage"
-								{...{ dbIcons, dbColors }}
+								{...{ dbIcons }}
 							/>
 						}
 					/>

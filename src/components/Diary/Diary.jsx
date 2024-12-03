@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 // stores
+import { useColorsStore } from '../../stores/colorsStore';
 import { useHabitsStore } from '../../stores/habitsStore';
 import { useMainDiaryStore } from '../../stores/mainDiaryStore';
 
@@ -19,9 +20,11 @@ import AddNoteForm from './AddNoteForm';
 import { ReactComponent as InfoSvg } from '../../img/information.svg';
 import { MdStickyNote2 } from 'react-icons/md';
 
-function Diary({ dbColors }) {
+function Diary() {
 
 	const location = useLocation();
+
+	const dbColors = useColorsStore((s) => s.colors);
 
 	const habits = useHabitsStore((s) => s.habits);
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);

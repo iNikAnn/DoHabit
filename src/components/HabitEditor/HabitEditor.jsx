@@ -25,7 +25,7 @@ import { MdAddToPhotos } from 'react-icons/md';
 import { MdDeleteForever } from 'react-icons/md';
 import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
 
-function HabitEditor({ dbIcons, dbColors }) {
+function HabitEditor({ dbIcons }) {
 
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -106,7 +106,7 @@ function HabitEditor({ dbIcons, dbColors }) {
 				)}
 
 				<ColorBlock
-					{...{ habits, dbColors, currentColorIndex: habit?.colorIndex }}
+					{...{ habits, currentColorIndex: habit?.colorIndex }}
 				/>
 
 				<IconBlock

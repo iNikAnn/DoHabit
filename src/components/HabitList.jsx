@@ -6,6 +6,9 @@ import { useState } from 'react';
 // framer
 import { AnimatePresence } from 'framer-motion';
 
+// stores
+import { useColorsStore } from '../stores/colorsStore';
+
 // components
 import Habit from "./Habit/Habit";
 
@@ -13,9 +16,10 @@ function HabitList(props) {
 	const {
 		habits, archive,
 		onOpenModal,
-		dbIcons, dbColors
+		dbIcons
 	} = props;
 
+	const dbColors = useColorsStore((s) => s.colors);
 	const [visibleMenuIndex, setVisibleMenuIndex] = useState(-1);
 
 	const handleToggleMenu = (i) => {
