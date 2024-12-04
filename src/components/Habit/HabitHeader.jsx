@@ -17,7 +17,7 @@ function HabitHeader(props) {
 	const {
 		title, icon, frequency, diary, colorPalette,
 		isTodayCompleted, todayProgress, currentStreak,
-		archive,
+		isArchive,
 	} = props;
 
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
@@ -81,7 +81,7 @@ function HabitHeader(props) {
 				</div>
 			</div>
 
-			{!archive && (
+			{!isArchive && (
 				<div
 					ref={progressWrapperRef}
 					className={styles.progressWrapper}
@@ -106,7 +106,7 @@ function HabitHeader(props) {
 				</div>
 			)}
 
-			{archive && (
+			{isArchive && (
 				<MdOutlineSettingsBackupRestore
 					className={styles.restoreIcon}
 					onClick={() => {

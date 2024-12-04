@@ -13,7 +13,7 @@ function useAchievementsCheck() {
 	const achievementsDispatch = useAchievementsStore((s) => s.achievementsDispatch);
 	const habits = useHabitsStore((s) => s.habits);
 	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
-	const openDialog = useDialogStore((s) => s.openDialog);
+	const openDialog = useDialogStore((s) => s.open);
 
 	useEffect(
 		() => {

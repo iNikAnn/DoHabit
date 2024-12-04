@@ -15,11 +15,7 @@ import Habit from "./Habit/Habit";
 // db
 import dbIcons from '../db/dbIcons';
 
-function HabitList(props) {
-	const {
-		habits, archive,
-		onOpenModal,
-	} = props;
+function HabitList({ habits, isArchive = false }) {
 
 	const dbColors = useColorsStore((s) => s.colors);
 	const [visibleMenuIndex, setVisibleMenuIndex] = useState(-1);
@@ -33,12 +29,10 @@ function HabitList(props) {
 		(h, index) => (
 			<Habit
 				key={h.title}
-				{...{ ...h, index, archive }}
+				{...{ ...h, index, isArchive }}
 				icon={dbIcons.find(([iconTitle]) => iconTitle === h.iconTitle)?.[1] ?? '?'}
 				color={dbColors[h.colorIndex]}
 				isMenuVisible={visibleMenuIndex === index}
-
-				{...{ onOpenModal }}
 				onShowMenu={(i) => handleToggleMenu(i)}
 			/>
 		)

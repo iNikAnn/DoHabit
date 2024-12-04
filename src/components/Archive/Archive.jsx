@@ -19,7 +19,7 @@ function Archive() {
 		<div className={styles.archive}>
 			{filteredHabits.length > 0 ? (
 				<HabitList
-					archive
+					isArchive
 					habits={filteredHabits}
 				/>
 			) : (

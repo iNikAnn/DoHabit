@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 import IconButton from './Actions/IconButton';
 
 // icons
-import { FaPlus, FaBars, FaAward } from "react-icons/fa";
-import { MdLibraryBooks } from "react-icons/md";
+import { FaPlus, FaBars, FaAward } from 'react-icons/fa';
+import { MdLibraryBooks } from 'react-icons/md';
+
+const publicUrl = process.env.PUBLIC_URL;
 
 function Header() {
-
-	const publicUrl = process.env.PUBLIC_URL;
 
 	const navItems = [
 		['/modal/habitEditor', 'Create new habit', <FaPlus />],

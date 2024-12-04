@@ -26,7 +26,7 @@ import getListAnimationVariants from '../../utils/getListAnimationVariants';
 function Habit(props) {
 	const {
 		index, color, completedDays, frequency,
-		isMenuVisible, archive,
+		isMenuVisible, isArchive,
 		onShowMenu
 	} = props;
 
@@ -75,14 +75,14 @@ function Habit(props) {
 				{...{ isTodayCompleted, todayProgress, currentStreak }}
 			/>
 
-			{!archive && (
+			{!isArchive && (
 				<div className={styles.content}>
 					{calendar}
 				</div>
 			)}
 
 			<AnimatePresence>
-				{(isMenuVisible && !archive) && (
+				{(isMenuVisible && !isArchive) && (
 					<HabitMenu
 						key="habitMenu"
 						{...props}

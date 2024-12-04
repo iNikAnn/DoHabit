@@ -29,9 +29,7 @@ function MainPage() {
 		<motion.div {...mainVariants}>
 			<Header />
 
-			<HabitList
-				{...{ habits: filteredHabits }}
-			/>
+			<HabitList habits={filteredHabits} />
 
 			{filteredHabits.length === 0 && (
 				<Placeholder
