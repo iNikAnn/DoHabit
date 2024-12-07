@@ -13,8 +13,7 @@ function NoteList({ diary, onStartEditNote, onDeleteNote }) {
 			(note) => (
 				<Note
 					key={note.date}
-					text={note.text}
-					date={note.date}
+					{...note}
 					{...{ onStartEditNote, onDeleteNote }}
 				/>
 			)

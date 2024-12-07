@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import getListAnimationVariants from '../../utils/getListAnimationVariants';
 import getTruncatedText from '../../utils/getTruncatedText';
 
-function Note({ text, date, onStartEditNote, onDeleteNote }) {
+function Note({ text, date, streak, onStartEditNote, onDeleteNote }) {
 
 	const dateStr = new Date(date).toLocaleDateString();
 	const timeStr = new Date(date).toLocaleTimeString(
@@ -51,10 +51,14 @@ function Note({ text, date, onStartEditNote, onDeleteNote }) {
 				{displayText}
 			</div>
 
-			<span className={styles.desc}>
+			<div className={styles.desc}>
 				<div className={styles.date}>
 					<small>{dateStr}</small>
 					<small>{timeStr}</small>
+
+					{streak > 0 && (
+						<small>{'Streak: ' + streak}</small>
+					)}
 				</div>
 
 				<div className={styles.actions}>
@@ -84,7 +88,7 @@ function Note({ text, date, onStartEditNote, onDeleteNote }) {
 						Delete
 					</button>
 				</div>
-			</span>
+			</div>
 		</motion.div>
 	);
 }

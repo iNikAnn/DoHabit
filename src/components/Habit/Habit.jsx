@@ -86,7 +86,7 @@ function Habit(props) {
 					<HabitMenu
 						key="habitMenu"
 						{...props}
-						{...{ colorPalette, isTodayCompleted, isYesterdayCompleted, todayProgress }}
+						{...{ colorPalette, isTodayCompleted, isYesterdayCompleted, todayProgress, currentStreak }}
 						onShowMenu={onShowMenu}
 						onShare={handleShare}
 					/>

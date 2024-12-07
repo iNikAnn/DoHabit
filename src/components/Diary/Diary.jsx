@@ -35,6 +35,8 @@ function Diary() {
 	const [habitTitle] = useState(location.state?.habitTitle);
 	const [accentColor] = useState(dbColors[location.state?.colorIndex]);
 
+	const currentStreak = location.state?.currentStreak ?? 0;
+
 	const diary = habitTitle
 		? habits.find((h) => h.title === habitTitle)?.diary
 		: mainDiary;
@@ -45,7 +47,8 @@ function Diary() {
 	const handleAddNote = (text) => {
 		const newNote = {
 			text,
-			date: new Date()
+			date: new Date(),
+			streak: currentStreak || undefined
 		};
 
 		const actions = {

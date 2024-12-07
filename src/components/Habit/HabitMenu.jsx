@@ -39,7 +39,7 @@ const contentVariants = {
 function HabitMenu(props) {
 	const {
 		title, completedDays, colorIndex, colorPalette,
-		isTodayCompleted, isYesterdayCompleted, todayProgress, frequency,
+		isTodayCompleted, isYesterdayCompleted, todayProgress, frequency, currentStreak,
 		onShowMenu, onShare
 	} = props;
 
@@ -109,6 +109,7 @@ function HabitMenu(props) {
 		darkenedColor,
 		'/modal/diary',
 		{
+			currentStreak,
 			habitTitle: title,
 			colorIndex: colorIndex,
 			modalTitle: title,
