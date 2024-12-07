@@ -8,7 +8,7 @@ export const useAchievementsStore = create(
 		achievements: initAchievements(),
 
 		achievementsDispatch: (actions) => set(
-			(s) => achievementsReducer(s.achievements, actions)
+			(s) => ({ achievements: achievementsReducer(s.achievements, actions) })
 		)
 	})
 );
