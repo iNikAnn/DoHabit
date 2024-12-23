@@ -1,6 +1,6 @@
 import styles from '../../css/IconButton.module.css';
 
-function IconButton({ style, icon, text, onClick, disabled }) {
+function IconButton({ style = {}, icon, text, onClick, disabled = false }) {
 	return (
 		<button
 			style={style}
