@@ -1,8 +1,10 @@
 {
 	"compilerOptions": {
-		"target": "ES2024",
-		"module": "ES2022",
 		"checkJs": true,
+		"target": "ES2024",
+		"module": "Node16",
+		"moduleResolution": "node16",
+		"resolveJsonModule": true,
 		"jsx": "preserve"
 	},
 	"exclude": ["node_modules"]
