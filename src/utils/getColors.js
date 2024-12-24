@@ -1,4 +1,16 @@
+/**
+ * Generates an array of colors based on the specified color scheme.
+ *
+ * @param {string} scheme - The color scheme to use. Should be either 'dark' or 'light'.
+ * @returns {string[]} - An array of color strings in HSL format.
+ * @throws {Error} - If the scheme is not 'dark' or 'light'.
+ */
+
 function getColors(scheme) {
+	if (scheme !== 'dark' && scheme !== 'light') {
+		throw new Error("Invalid scheme. Must be 'dark' or 'light'.");
+	};
+
 	const colors = [];
 	const colorsCount = 21;
 
