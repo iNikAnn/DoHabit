@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		// "checkJs": true,
 		"target": "ES2024",
 		"module": "Node16",
 		"moduleResolution": "node16",
