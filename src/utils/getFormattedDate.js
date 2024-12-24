@@ -11,7 +11,11 @@ function getFormattedDate(dateObj) {
 		throw new TypeError('Argument must be a Date object.');
 	};
 
-	return dateObj.toISOString().split('T')[0];
+	const year = dateObj.getFullYear();
+	const month = String(dateObj.getMonth() + 1).padStart(2, 0);
+	const day = String(dateObj.getDate()).padStart(2, 0);
+
+	return year + '-' + month + '-' + day;
 }
 
 export default getFormattedDate;

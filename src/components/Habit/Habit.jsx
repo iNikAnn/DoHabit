@@ -23,6 +23,10 @@ import checkHabitCompletion from '../../utils/checkHabitCompletion';
 import shareHabit from '../../utils/shareHabit';
 import getListAnimationVariants from '../../utils/getListAnimationVariants';
 
+const today = new Date();
+const yesterday = new Date(today);
+yesterday.setDate(today.getDate() - 1);
+
 function Habit(props) {
 	const {
 		index, color, completedDays, frequency,
@@ -36,14 +40,13 @@ function Habit(props) {
 	const todayProgress = getTodayProgress(completedDays);
 	const { currentStreak } = getStreaks(completedDays, frequency);
 
-	const today = new Date();
-	const yesterday = new Date(today);
-	yesterday.setDate(today.getDate() - 1);
-
 	const [
 		isTodayCompleted,
 		isYesterdayCompleted
-	] = checkHabitCompletion(completedDays, frequency, today, yesterday);
+	] = useMemo(
+		() => checkHabitCompletion(completedDays, frequency, today, yesterday),
+		[completedDays, frequency]
+	);
 
 	const handleShare = () => shareHabit(habitRef.current);
 
