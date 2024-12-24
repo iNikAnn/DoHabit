@@ -15,10 +15,9 @@ import { IoIosMail } from "react-icons/io";
 import { ImFire } from "react-icons/im";
 import { HiArchiveBox } from "react-icons/hi2";
 
+const PUBLIC_URL = process.env.PUBLIC_URL;
+
 function Menu() {
-
-	const publicUrl = process.env.PUBLIC_URL;
-
 	return (
 		<section className={styles.menu}>
 			<MenuItemList title="App">
@@ -27,7 +26,7 @@ function Menu() {
 					iconColor="#7b68ee"
 					title="Archive"
 					desc="View or manage archived habits"
-					to={`${publicUrl}/modal/archive`}
+					to={`${PUBLIC_URL}/modal/archive`}
 					state={{ modalTitle: 'Archive' }}
 					arrow
 				/>
@@ -37,7 +36,7 @@ function Menu() {
 					iconColor="#ffa420"
 					title="Appearance"
 					desc="Customize the app's look"
-					to={`${publicUrl}/modal/appearance`}
+					to={`${PUBLIC_URL}/modal/appearance`}
 					state={{ modalTitle: 'Appearance' }}
 					arrow
 				/>
@@ -47,7 +46,7 @@ function Menu() {
 					iconColor="#77dd77"
 					title="Export / Import Data"
 					desc="Backup or restore your data"
-					to={`${publicUrl}/modal/dataTransfer`}
+					to={`${PUBLIC_URL}/modal/dataTransfer`}
 					state={{ modalTitle: 'Export/Import Data' }}
 					arrow
 				/>
@@ -82,7 +81,7 @@ function Menu() {
 					icon={<ImFire style={{ color: 'IndianRed' }} />}
 					title="Clear Data"
 					desc="Delete all application data"
-					onClick={() => clearLocalStorage(publicUrl)}
+					onClick={() => clearLocalStorage(PUBLIC_URL)}
 				/>
 			</MenuItemList>
 
