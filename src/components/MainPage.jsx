@@ -26,7 +26,7 @@ function MainPage() {
 	const filteredHabits = habits.filter((h) => !h.isArchived);
 
 	return (
-		<motion.div {...mainVariants}>
+		<motion.div className={styles.mainPage} {...mainVariants}>
 			<Header />
 
 			<HabitList habits={filteredHabits} />

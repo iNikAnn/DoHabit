@@ -52,3 +52,9 @@
 	margin-top: 1rem;
 	padding-top: 1rem;
 }
+
+@media screen and (min-width: 576px) {
+	.dialog {
+		width: 600px;
+	}
+}

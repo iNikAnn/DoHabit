@@ -3,3 +3,15 @@
 	flex-direction: column;
 	gap: 1rem;
 }
+
+@media screen and (min-width: 576px) {
+	.habitList {
+		/* outline: 2px solid green; */
+		width: var(--app-width);
+
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		margin: 0 auto;
+	}
+}

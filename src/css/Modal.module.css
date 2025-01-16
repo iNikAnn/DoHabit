@@ -54,3 +54,10 @@
 	padding-top: 0;
 	overflow-y: scroll;
 }
+
+@media screen and (min-width: 576px) {
+	.modal {
+		width: var(--app-width);
+		margin: 0 auto;
+	}
+}

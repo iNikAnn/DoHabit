@@ -41,3 +41,12 @@
 	align-items: center;
 	gap: 1rem;
 }
+
+@media screen and (min-width: 576px) {
+	.header {
+		/* outline: 1px solid tomato; */
+		width: var(--app-width);
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}

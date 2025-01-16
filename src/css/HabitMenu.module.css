@@ -82,3 +82,15 @@
 	padding: 0 1.2rem;
 	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 }
+
+@media screen and (min-width: 576px) {
+	.menu {
+		outline: 1px solid tomato;
+		justify-content: center;
+	}
+
+	.content {
+		width: calc(var(--app-width) / 1.4);
+		position: relative;
+	}
+}

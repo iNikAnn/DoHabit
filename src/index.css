@@ -9,6 +9,7 @@
 }
 
 :root {
+	--app-width: 760px;
 	--header-height: 4rem;
 
 	--accent-color: dodgerblue;
