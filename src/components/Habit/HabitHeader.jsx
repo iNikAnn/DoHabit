@@ -46,7 +46,11 @@ function HabitHeader(props) {
 			200
 		);
 
-		navigator?.vibrate(isCompleted ? [10, 10, 10, 10, 10] : 10);
+		try {
+			navigator?.vibrate(isCompleted ? [10, 10, 10, 10, 10] : 10);
+		} catch (e) {
+			console.error(e);
+		}
 
 		habitsDispatch({
 			type: 'updateProgress',
