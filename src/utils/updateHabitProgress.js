@@ -1,42 +1,42 @@
-// utils
+// src/utils/updateHabitProgress.js
 import getFormattedDate from './getFormattedDate';
 import checkHabitCompletion from './checkHabitCompletion';
 
 function updateHabitProgress(habits, title) {
-	const today = getFormattedDate(new Date());
+  const today = getFormattedDate(new Date());
 
-	return habits.map((habit) => {
-		habit = { ...habit };
+  return habits.map((habit) => {
+    if (habit.title !== title) return habit;
 
-		if (habit.title === title) {
-			const isCompleted = checkHabitCompletion(habit.completedDays, habit.frequency, new Date());
-			let completedDays = [...habit.completedDays];
+    // Ensure completedDays is always an array
+    let completedDays = Array.isArray(habit.completedDays)
+      ? [...habit.completedDays]
+      : [];
 
-			if (isCompleted) {
-				completedDays = completedDays.filter(
-					(day) => day.date !== today
-				);
-			} else {
-				const todayIndex = completedDays.findIndex(
-					(day) => day.date === today
-				);
+    const isCompleted = checkHabitCompletion(
+      completedDays,
+      habit.frequency,
+      new Date()
+    );
 
-				todayIndex !== -1
-					? completedDays[todayIndex] = {
-						...completedDays[todayIndex],
-						progress: completedDays[todayIndex].progress + 1
-					}
-					: completedDays.unshift({ date: today, progress: 1, });
-			};
+    if (isCompleted) {
+      // remove today's entry
+      completedDays = completedDays.filter((d) => d.date !== today);
+    } else {
+      const index = completedDays.findIndex((d) => d.date === today);
 
-			habit = {
-				...habit,
-				completedDays
-			};
-		};
+      if (index !== -1) {
+        completedDays[index] = {
+          ...completedDays[index],
+          progress: (completedDays[index].progress || 0) + 1,
+        };
+      } else {
+        completedDays.unshift({ date: today, progress: 1 });
+      }
+    }
 
-		return habit;
-	});
+    return { ...habit, completedDays };
+  });
 }
 
 export default updateHabitProgress;

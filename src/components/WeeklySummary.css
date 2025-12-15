@@ -1,0 +1,73 @@
+/* src/components/WeeklySummary.css */
+.ws-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff;
+  max-width: 720px;
+  margin-bottom: 12px;
+}
+
+.ws-left h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.ws-stats {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.stat {
+  text-align: left;
+}
+.stat-num {
+  font-weight: 700;
+  font-size: 16px;
+}
+.stat-label {
+  font-size: 12px;
+  color: #666;
+}
+
+.ws-right {
+  min-width: 240px;
+}
+
+.ws-day-grid {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.ws-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+  border-radius: 6px;
+  min-width: 36px;
+  border: 1px solid transparent;
+  background: #fafafa;
+  font-size: 12px;
+}
+
+.ws-day.active {
+  background: #e8f8e8;
+  border-color: #d0f0d0;
+}
+
+.day-label {
+  font-size: 11px;
+  color: #444;
+}
+.day-count {
+  font-weight: 700;
+  margin-top: 4px;
+}

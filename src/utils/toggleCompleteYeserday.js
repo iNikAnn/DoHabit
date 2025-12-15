@@ -1,43 +1,57 @@
+// src/utils/toggleCompleteeYeseray.js
 import getFormattedDate from './getFormattedDate';
 
-function toggleCompleteYeserday(habits, habitTitle, isTodayCompleted, isYesterdayCompleted, todayProgress, frequency) {
+function toggleCompleteYeserday(
+  habits,
+  habitTitle,
+  isTodayCompleted,
+  isYesterdayCompleted,
+  todayProgress,
+  frequency
+) {
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
 
-	const today = new Date();
-	const yesterday = new Date(today);
-	yesterday.setDate(today.getDate() - 1);
+  const yDayStr = getFormattedDate(yesterday);
 
-	return habits.map(
-		(habit) => {
-			habit = { ...habit };
+  return habits.map((habit) => {
+    let nextHabit = { ...habit };
 
-			if (habit.title === habitTitle) {
-				let completedDays = [...habit.completedDays];
+    if (nextHabit.title === habitTitle) {
+      // Ensure completedDays is always an array
+      let completedDays = Array.isArray(nextHabit.completedDays)
+        ? [...nextHabit.completedDays]
+        : [];
 
-				if (isYesterdayCompleted) {
-					completedDays = completedDays.filter(
-						(day) => day.date !== getFormattedDate(yesterday)
-					);
-				} else {
-					const completedYesterday = {
-						date: getFormattedDate(yesterday),
-						progress: frequency,
-						isCompYdayBtnUsed: true
-					};
+      if (isYesterdayCompleted) {
+        // Remove yesterday entry
+        completedDays = completedDays.filter((day) => day.date !== yDayStr);
+      } else {
+        // Add / insert yesterday entry
+        const completedYesterday = {
+          date: yDayStr,
+          progress: frequency,
+          isCompYdayBtnUsed: true,
+        };
 
-					isTodayCompleted || todayProgress
-						? completedDays.splice(1, 0, completedYesterday)
-						: completedDays.unshift(completedYesterday);
-				};
+        if (isTodayCompleted || todayProgress) {
+          // Insert after today's record if present
+          completedDays.splice(1, 0, completedYesterday);
+        } else {
+          // Put yesterday at the front
+          completedDays.unshift(completedYesterday);
+        }
+      }
 
-				habit = {
-					...habit,
-					completedDays
-				};
-			};
+      nextHabit = {
+        ...nextHabit,
+        completedDays,
+      };
+    }
 
-			return habit;
-		}
-	);
+    return nextHabit;
+  });
 }
 
 export default toggleCompleteYeserday;

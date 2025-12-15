@@ -1,82 +1,29 @@
-// utils
-import deleteHabit from './deleteHabit';
-import editHabit from './editHabit';
+// src/utils/habitsReducer.js
 import updateHabitProgress from './updateHabitProgress';
 
-import addNote from './addNote';
-import deleteNote from './deleteNote';
-import editNote from './editNote';
+export default function habitsReducer(state, action) {
+  switch (action.type) {
+    case 'ADD_HABIT':
+      return [
+        ...state,
+        {
+          id: Date.now(),
+          title: action.title,
+          frequency: action.frequency,
+          completedDays: [], // always an array
+        },
+      ];
 
-import archiveHabit from './archiveHabit';
-import toggleCompleteYeserday from './toggleCompleteYeserday';
-import scrollToTop from './scrollToTop';
+    case 'DELETE_HABIT':
+      return state.filter((h) => h.id !== action.id);
 
-import saveToLocalStorage from './saveToLocalStorage';
+    case 'TOGGLE_HABIT':
+      return updateHabitProgress(state, action.title);
 
-function habitsReducer(habits, action) {
-	const {
-		data, habitTitle
-	} = action;
+    case 'RESET_ALL':
+      return [];
 
-	const newHabit = data && {
-		title: data.title.value,
-		colorIndex: Number(data.colorIndex.value),
-		iconTitle: data.iconTitle.value,
-		frequency: Number(data.frequency.value),
-		completedDays: [],
-	};
-
-	switch (action.type) {
-		case 'importHabit':
-			habits = [...action.importedData];
-			break;
-
-		// habits
-		case 'addHabit':
-			habits = [{ ...newHabit, creationDate: new Date() }, ...habits];
-			scrollToTop();
-			break;
-
-		case 'deleteHabit':
-			habits = deleteHabit(habits, habitTitle);
-			break;
-
-		case 'archiveHabit':
-			habits = archiveHabit(habits, habitTitle);
-			break;
-
-		case 'editHabit':
-			habits = editHabit(habits, habitTitle, newHabit, data.order.value - 1);
-			break;
-
-		case 'toggleCompleteYeserday':
-			habits = toggleCompleteYeserday(habits, habitTitle, action.isTodayCompleted, action.isYesterdayCompleted, action.todayProgress, action.frequency);
-			break;
-
-		case 'updateProgress':
-			habits = updateHabitProgress(habits, habitTitle);
-			break;
-
-		// diary
-		case 'addNote':
-			habits = addNote(habits, habitTitle, action.newNote);
-			break;
-
-		case 'editNote':
-			habits = editNote(habits, action.habitTitle, action.noteCreationDate, action.newText);
-			break;
-
-		case 'deleteNote':
-			habits = deleteNote(habits, habitTitle, action.noteCreationDate);
-			break;
-
-		default:
-			console.error('Unknown action: ' + action.type);
-	};
-
-	saveToLocalStorage('habits', habits);
-
-	return habits;
+    default:
+      return state;
+  }
 }
-
-export default habitsReducer;
