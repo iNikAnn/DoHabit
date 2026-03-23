@@ -5,7 +5,7 @@ function useIsInitialRender() {
 
 	useEffect(() => { isFirstRender.current = false }, []);
 
-	return isFirstRender.current;
+	return isFirstRender;
 }
 
 export default useIsInitialRender;
