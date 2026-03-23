@@ -17,7 +17,7 @@ import HabitMenu from './HabitMenu';
 
 // utils
 import getColorPalette from '../../utils/getColorPalette';
-import getTodayProgress from '../../utils//getTodayProgress';
+import getTodayProgress from '../../utils/getTodayProgress';
 import getStreaks from '../../utils/getStreaks';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
 import shareHabit from '../../utils/shareHabit';
