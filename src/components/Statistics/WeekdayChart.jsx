@@ -1,5 +1,3 @@
-import styles from '../../css/WeekdayChart.module.css';
-
 // utils
 import getCompletionCountPerDay from '../../utils/getCompletionCountPerDay';
 
