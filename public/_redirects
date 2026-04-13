@@ -1,1 +1,3 @@
+# Following the https://docs.netlify.com/manage/routing/redirects/overview/ definition - allows for Netlify-compliant servers to serve this app (with little to no extra config), like CloudFlare pages, Vercel, GitHub Pages, etc.
+# Maps "/" to the "index.html"
 /* /index.html 200

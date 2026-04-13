@@ -21,7 +21,7 @@ function useAchievementsCheck() {
 				habits,
 				mainDiary,
 				onOpenDialog: openDialog,
-				isInitialRender: isInitialRender.current
+				isInitialRender: isInitialRender
 			});
 		},
 		[achievementsDispatch, habits, isInitialRender, mainDiary, openDialog]
