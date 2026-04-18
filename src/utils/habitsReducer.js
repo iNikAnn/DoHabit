@@ -33,7 +33,7 @@ function habitsReducer(habits, action) {
 
 		// habits
 		case 'addHabit':
-			habits = [{ ...newHabit, creationDate: getFormattedDate(new Date()) }, ...habits];
+			habits = [{ ...newHabit, creationDate: new Date() }, ...habits];
 			scrollToTop();
 			break;
 
