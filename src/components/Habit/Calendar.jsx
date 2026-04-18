@@ -4,7 +4,6 @@ import styles from '../../css/Calendar.module.css';
 import Month from './Month';
 
 // utils
-import getStartMonth from '../../utils/getStartMonth';
 import getMonthsCount from '../../utils/getMonthsCount';
 
 function Calendar(props) {

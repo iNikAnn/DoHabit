@@ -1,5 +1,3 @@
-import styles from '../../css/MonthlyChart.module.css';
-
 // utils
 import getCompletionCountPerMonth from '../../utils/getCompletionCountPerMonth';
 
