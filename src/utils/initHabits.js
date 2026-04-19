@@ -1,29 +1,21 @@
-// utils
-import getFromLocalStorage from './getFromLocalStorage';
-import saveToLocalStorage from './saveToLocalStorage';
-import removeIncompleteDays from './removeIncompleteDays';
+// src/utils/initHabits.js
+export default function initHabits() {
+  const saved = localStorage.getItem('habits');
 
-function initHabits() {
-	let habits = getFromLocalStorage('habits', []);
+  if (!saved) return [];
 
-	if (!habits.length) return habits;
+  try {
+    const habits = JSON.parse(saved);
 
-	habits = habits.map(
-		(h) => {
-			const newH = { ...h };
-
-			if (newH.frequency && Array.isArray(newH.completedDays)) {
-				// remove incomplete days before today with progress less than habit frequency
-				newH.completedDays = removeIncompleteDays(newH.completedDays, newH.frequency);
-			};
-
-			return newH;
-		}
-	);
-
-	saveToLocalStorage('habits', habits);
-
-	return habits;
+    // Ensure completedDays is always an array
+    return habits.map((habit) => ({
+      ...habit,
+      completedDays: Array.isArray(habit.completedDays)
+        ? habit.completedDays
+        : [],
+    }));
+  } catch (err) {
+    console.error('Failed to load habits', err);
+    return [];
+  }
 }
-
-export default initHabits;

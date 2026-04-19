@@ -1,22 +1,18 @@
-// utils
+// src/utils/habitsReducer.js
+
 import deleteHabit from './deleteHabit';
 import editHabit from './editHabit';
 import updateHabitProgress from './updateHabitProgress';
-
 import addNote from './addNote';
 import deleteNote from './deleteNote';
 import editNote from './editNote';
-
 import archiveHabit from './archiveHabit';
 import toggleCompleteYeserday from './toggleCompleteYeserday';
 import scrollToTop from './scrollToTop';
-
 import saveToLocalStorage from './saveToLocalStorage';
 
 function habitsReducer(habits, action) {
-	const {
-		data, habitTitle
-	} = action;
+	const { data, habitTitle } = action;
 
 	const newHabit = data && {
 		title: data.title.value,
@@ -31,7 +27,6 @@ function habitsReducer(habits, action) {
 			habits = [...action.importedData];
 			break;
 
-		// habits
 		case 'addHabit':
 			habits = [{ ...newHabit, creationDate: new Date() }, ...habits];
 			scrollToTop();
@@ -50,20 +45,31 @@ function habitsReducer(habits, action) {
 			break;
 
 		case 'toggleCompleteYeserday':
-			habits = toggleCompleteYeserday(habits, habitTitle, action.isTodayCompleted, action.isYesterdayCompleted, action.todayProgress, action.frequency);
+			habits = toggleCompleteYeserday(
+				habits,
+				habitTitle,
+				action.isTodayCompleted,
+				action.isYesterdayCompleted,
+				action.todayProgress,
+				action.frequency
+			);
 			break;
 
 		case 'updateProgress':
 			habits = updateHabitProgress(habits, habitTitle);
 			break;
 
-		// diary
 		case 'addNote':
 			habits = addNote(habits, habitTitle, action.newNote);
 			break;
 
 		case 'editNote':
-			habits = editNote(habits, action.habitTitle, action.noteCreationDate, action.newText);
+			habits = editNote(
+				habits,
+				action.habitTitle,
+				action.noteCreationDate,
+				action.newText
+			);
 			break;
 
 		case 'deleteNote':
@@ -72,7 +78,7 @@ function habitsReducer(habits, action) {
 
 		default:
 			console.error('Unknown action: ' + action.type);
-	};
+	}
 
 	saveToLocalStorage('habits', habits);
 
