@@ -30,7 +30,7 @@
 		// "noFallthroughCasesInSwitch": true,
 		// "noPropertyAccessFromIndexSignature": true,
 		// Recommended Options
-		// "strict": true,
+		"strict": true,
 		"jsx": "react-jsx",
 		// "verbatimModuleSyntax": true,
 		"isolatedModules": true,
