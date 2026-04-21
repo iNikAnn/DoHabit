@@ -13,7 +13,9 @@ import scrollToTop from './scrollToTop';
 
 import saveToLocalStorage from './saveToLocalStorage';
 
-function habitsReducer(habits, action) {
+import { Habit } from '../types/habit';
+
+function habitsReducer(habits: Habit[], action: any) {
 	const {
 		data, habitTitle
 	} = action;
