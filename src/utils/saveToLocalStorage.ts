@@ -1,10 +1,13 @@
-function saveToLocalStorage(key, data) {
+/**
+ * Asynchronously saves data to localStorage.
+ */
+function saveToLocalStorage(key: string, data: unknown) {
 	setTimeout(() => {
 		try {
 			localStorage.setItem(key, JSON.stringify(data));
 		} catch (error) {
 			console.error('Error saving to localStorage:', error);
-		};
+		}
 	}, 0);
 }
 
