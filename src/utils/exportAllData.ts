@@ -1,5 +1,13 @@
+/**
+ * Downloads a JSON file containing all data stored in localStorage.
+ */
 function exportAllData() {
-	const data = { ...localStorage };
+	const data = {
+		habits: localStorage.getItem('habits'),
+		mainDiary: localStorage.getItem('mainDiary'),
+		achievements: localStorage.getItem('achievements')
+	};
+
 	const jsonStr = JSON.stringify(data);
 	const blob = new Blob([jsonStr], { type: 'application/json' });
 	const url = URL.createObjectURL(blob);
