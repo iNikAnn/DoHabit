@@ -38,7 +38,7 @@ function habitsReducer(habits, action) {
 			break;
 
 		case 'deleteHabit':
-			habits = deleteHabit(habits, habitTitle);
+			habits = deleteHabit({ habits, title: habitTitle });
 			break;
 
 		case 'archiveHabit':
