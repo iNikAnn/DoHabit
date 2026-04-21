@@ -7,19 +7,19 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // stores
-import { useDialogStore } from './stores/dialogStore';
+import { useDialogStore } from './stores/dialogStore.js';
 
 // main components
-import MainPage from './components/MainPage';
-import Modal from './components/Modal';
-import Dialog from './components/Containment/Dialog';
+import MainPage from './components/MainPage.jsx';
+import Modal from './components/Modal.jsx';
+import Dialog from './components/Containment/Dialog.jsx';
 
 // hooks
-import useColorScheme from './hooks/useColorScheme';
-import useAchievementsCheck from './hooks/useAchievementsCheck';
+import useColorScheme from './hooks/useColorScheme.js';
+import useAchievementsCheck from './hooks/useAchievementsCheck.js';
 
 // db
-import dbModalRoutes from './db/dbModalRoutes';
+import dbModalRoutes from './db/dbModalRoutes.js';
 
 const PUBLIC_URL = process.env.PUBLIC_URL;
 
