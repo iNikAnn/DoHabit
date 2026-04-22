@@ -6,6 +6,7 @@
 	"private": true,
 	"dependencies": {
 		"chart.js": "^4.4.3",
+		"es-toolkit": "^1.46.0",
 		"framer-motion": "^11.0.3",
 		"gh-pages": "^6.1.1",
 		"html2canvas": "^1.4.1",
