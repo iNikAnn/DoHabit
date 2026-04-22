@@ -8,7 +8,6 @@ import { Bar } from "react-chartjs-2";
 ChartJS.register(BarElement);
 
 function WeekdayChart({ options, days, frequency, color }) {
-	const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 	const data = getCompletionCountPerDay(days, frequency);
 
 	const config = {
