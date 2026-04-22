@@ -1,7 +1,6 @@
-import { create } from "zustand";
-
-import initMainDiary from "../utils/initMainDiary";
-import mainDiaryReducer from "../utils/mainDiaryReducer";
+import { create } from 'zustand';
+import initMainDiary from '../utils/initMainDiary';
+import mainDiaryReducer from '../utils/mainDiaryReducer';
 
 export const useMainDiaryStore = create(
 	(set) => ({
