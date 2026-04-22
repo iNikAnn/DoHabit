@@ -1,14 +1,17 @@
+import getFromLocalStorage from './getFromLocalStorage';
+
 /**
  * Downloads a JSON file containing all data stored in localStorage.
  */
 function exportAllData() {
 	const data = {
-		habits: localStorage.getItem('habits'),
-		mainDiary: localStorage.getItem('mainDiary'),
-		achievements: localStorage.getItem('achievements')
+		habits: getFromLocalStorage('habits'),
+		mainDiary: getFromLocalStorage('mainDiary'),
+		achievements: getFromLocalStorage('achievements')
 	};
 
 	const jsonStr = JSON.stringify(data);
+
 	const blob = new Blob([jsonStr], { type: 'application/json' });
 	const url = URL.createObjectURL(blob);
 
