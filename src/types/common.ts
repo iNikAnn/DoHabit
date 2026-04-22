@@ -3,3 +3,9 @@ export interface Settings {
 	calendarHighlightToday?: boolean;
 	isDarkSchemeForced?: boolean;
 }
+
+export interface Streak {
+	length: number;
+	start: string;
+	end: string;
+}
