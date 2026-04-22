@@ -1,3 +1,5 @@
+export type ColorScheme = 'light' | 'dark';
+
 export interface Settings {
 	calendarView?: 'default' | 'compact';
 	calendarHighlightToday?: boolean;
