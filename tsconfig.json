@@ -33,7 +33,7 @@
 		// "verbatimModuleSyntax": true,
 		"isolatedModules": true,
 		// "noUncheckedSideEffectImports": true,
-		// "esModuleInterop": true,
+		"esModuleInterop": true,
 		"moduleDetection": "auto",
 		"moduleResolution": "node",
 		"allowJs": true,
