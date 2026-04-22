@@ -6,7 +6,7 @@ export interface Note {
 export interface CompletedDay {
 	date: string;
 	progress: number;
-	isCompYdayBtnUsed: boolean;
+	isCompYdayBtnUsed?: boolean;
 }
 
 export interface Habit {

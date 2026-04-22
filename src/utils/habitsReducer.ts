@@ -56,7 +56,7 @@ function habitsReducer(habits: Habit[], action: any) {
 			break;
 
 		case 'updateProgress':
-			habits = updateHabitProgress(habits, habitTitle);
+			habits = updateHabitProgress({ habits, title: habitTitle });
 			break;
 
 		// diary

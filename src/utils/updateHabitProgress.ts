@@ -1,5 +1,5 @@
 // types
-import { Habit } from '../types/habit';
+import { CompletedDay, Habit } from '../types/habit';
 
 // utils
 import getFormattedDate from './getFormattedDate';
@@ -10,40 +10,51 @@ interface Params {
 	title: string;
 }
 
+/**
+ * Updates or toggles the progress for a specific habit for the current day.
+ */
 function updateHabitProgress({ habits, title }: Params): Habit[] {
 	const today = getFormattedDate(new Date());
 
 	return habits.map((habit) => {
-		habit = { ...habit };
-
 		if (habit.title !== title) return habit;
 
 		const [isCompleted] = checkHabitCompletion(habit.completedDays, habit.frequency, new Date());
-		let completedDays = [...habit.completedDays];
+
+		let nextCompletedDays: CompletedDay[] = [];
 
 		if (isCompleted) {
-			completedDays = completedDays.filter(
+			// Remove entry if it was already completed (toggle logic)
+			nextCompletedDays = habit.completedDays.filter(
 				(day) => day.date !== today
 			);
 		} else {
-			const todayIndex = completedDays.findIndex(
+			const todayIndex = habit.completedDays.findIndex(
 				(day) => day.date === today
 			);
+			const currentDay = habit.completedDays[todayIndex];
 
-			todayIndex !== -1
-				? completedDays[todayIndex] = {
-					...completedDays[todayIndex],
-					progress: completedDays[todayIndex].progress + 1
-				}
-				: completedDays.unshift({ date: today, progress: 1, });
+			if (currentDay) {
+				// Increment progress for the existing entry
+				nextCompletedDays = [...habit.completedDays];
+
+				nextCompletedDays[todayIndex] = {
+					...currentDay,
+					progress: currentDay.progress + 1
+				};
+			} else {
+				// Add new entry for today if it doesn't exist
+				nextCompletedDays = [
+					{ date: today, progress: 1 },
+					...habit.completedDays
+				];
+			}
 		}
 
-		habit = {
+		return {
 			...habit,
-			completedDays
+			completedDays: nextCompletedDays
 		};
-
-		return habit;
 	});
 }
 
