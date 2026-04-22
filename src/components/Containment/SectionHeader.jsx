@@ -5,12 +5,9 @@ import TextButton from '../Actions/TextButton';
 import IconButton from '../Actions/IconButton';
 
 // utils
-import getCapitalizedText from '../../utils/getCapitalizedText';
+import { startCase } from 'es-toolkit';
 
 function SectionHeader({ title, titleStyle, btn, btnText, btnIcon, btnOnClick }) {
-
-	const capitalizedTitle = getCapitalizedText(title);
-
 	const btnProps = {
 		text: btnText,
 		icon: btnIcon,
@@ -28,7 +25,7 @@ function SectionHeader({ title, titleStyle, btn, btnText, btnIcon, btnOnClick })
 				style={titleStyle}
 				className={styles.title}
 			>
-				{capitalizedTitle}
+				{startCase(title)}
 			</h4>
 
 			{btn && (

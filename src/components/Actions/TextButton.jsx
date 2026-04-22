@@ -1,18 +1,15 @@
 import styles from '../../css/TextButton.module.css';
 
 // utils
-import getCapitalizedText from '../../utils/getCapitalizedText';
+import { startCase } from 'es-toolkit';
 
 function TextButton({ text = 'Click me', onClick }) {
-
-	const capitalizedText = getCapitalizedText(text);
-
 	return (
 		<button
 			className={styles.btn}
 			onClick={onClick}
 		>
-			{capitalizedText}
+			{startCase(text)}
 		</button>
 	);
 }
