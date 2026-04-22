@@ -96,7 +96,8 @@ function achievementsReducer(achievements, actions) {
 							const month = creationDate.getMonth();
 
 							if (day === 1 && month === 0) {
-								return checkHabitCompletion(h.completedDays, h.frequency, creationDate);
+								const [res] = checkHabitCompletion(h.completedDays, h.frequency, creationDate);
+								return res;
 							};
 
 							return false;
