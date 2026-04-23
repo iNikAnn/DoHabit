@@ -42,9 +42,10 @@ function HabitEditor() {
 	const [alreadyExist, setAlreadyExist] = useState(false);
 
 	// check for existing habit with the same title
+	// TODO: добавить дебаунс
 	useEffect(() => {
 		setAlreadyExist(
-			checkHabitTitleExistence(habits, habit, inputTitle)
+			checkHabitTitleExistence(habits, inputTitle, habit)
 		);
 	}, [habit, habits, inputTitle]);
 
