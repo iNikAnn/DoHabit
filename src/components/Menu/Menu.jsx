@@ -81,7 +81,7 @@ function Menu() {
 					icon={<ImFire style={{ color: 'IndianRed' }} />}
 					title="Clear Data"
 					desc="Delete all application data"
-					onClick={() => clearLocalStorage(PUBLIC_URL)}
+					onClick={() => clearLocalStorage()}
 				/>
 			</MenuItemList>
 
