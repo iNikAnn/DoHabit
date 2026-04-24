@@ -11,6 +11,7 @@ function getCompletionCountPerDay(
 	const counts = new Array(7).fill(0);
 
 	for (const day of completedDays) {
+		// Skip if the habit goal wasn't reached
 		if (day.progress < frequency) continue;
 
 		const dayOfWeek = new Date(day.date).getDay();
