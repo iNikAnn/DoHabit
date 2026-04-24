@@ -1,3 +1,6 @@
+// constants
+import { WEEKDAYS } from '../../constants';
+
 // utils
 import getCompletionCountPerDay from '../../utils/getCompletionCountPerDay';
 

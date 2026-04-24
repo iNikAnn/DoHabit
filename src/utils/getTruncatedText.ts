@@ -1,8 +1,17 @@
-function getTruncatedText(el, text) {
+/**
+ * Truncates text to fit within a specified number of lines.
+ * Use with caution as it causes multiple reflows.
+ */
+// TODO: Consider using CSS line-clamp
+function getTruncatedText(
+	el: HTMLElement,
+	text: string,
+	maxLines: number = 3
+): string {
 	if (!el) return text;
 
 	const elLineHeight = parseFloat(getComputedStyle(el).lineHeight);
-	const maxHeight = elLineHeight * 3;
+	const maxHeight = elLineHeight * maxLines;
 
 	el.textContent = text;
 
@@ -11,7 +20,7 @@ function getTruncatedText(el, text) {
 		text = text.slice(0, isFirst ? -1 : -4) + '...';
 		el.textContent = text;
 		if (isFirst) isFirst = false;
-	};
+	}
 
 	return text;
 }
