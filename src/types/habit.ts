@@ -19,6 +19,6 @@ export interface Habit {
 	frequency: number;
 	creationDate: string;
 	completedDays: CompletedDay[];
-	diary: Note[];
+	diary?: Note[];
 	isArchived: boolean;
 }
