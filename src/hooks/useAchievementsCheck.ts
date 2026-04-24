@@ -9,7 +9,7 @@ import useIsInitialRender from './useIsInitialRender';
 /**
  * Hook to trigger achievement synchronization on data changes.
  */
-function useAchievementsCheck() {
+function useAchievementsCheck(): void {
 
 	const isInitialRender = useIsInitialRender();
 	const achievementsDispatch = useAchievementsStore((s) => s.achievementsDispatch);
