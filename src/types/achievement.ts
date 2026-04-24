@@ -1,3 +1,4 @@
+import { DialogContent } from './dialog';
 import { Habit, Note } from './habit';
 
 export interface Achievement {
@@ -13,13 +14,13 @@ export interface Achievement {
 	};
 	isSecret: boolean;
 	isUnlocked?: boolean;
-	unlockDate?: string;
+	unlockDate?: Date | string;
 }
 
 export interface AchievementContext {
 	habits: Habit[];
 	mainDiary: Note[];
-	onUnlock: (ach: Achievement) => void;
+	onUnlock: (content: DialogContent) => void;
 	isInitialRender: boolean;
 }
 

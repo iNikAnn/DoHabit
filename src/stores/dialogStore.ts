@@ -1,6 +1,9 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-export const useDialogStore = create(
+// types
+import { DialogState } from '../types/dialog';
+
+export const useDialogStore = create<DialogState>(
 	(set) => ({
 		isVisible: false,
 		content: null,
