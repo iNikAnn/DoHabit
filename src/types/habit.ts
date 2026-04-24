@@ -20,4 +20,5 @@ export interface Habit {
 	creationDate: string;
 	completedDays: CompletedDay[];
 	diary: Note[];
+	isArchived: boolean;
 }
