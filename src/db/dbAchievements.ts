@@ -1,7 +1,9 @@
 // New achievements should be added to the end of the list
 // Do not change the ids of remaining elements when removing an item
 
-const achievements = [
+import { Achievement } from '../types/achievement';
+
+const achievements: Achievement[] = [
 	{
 		id: 0,
 		title: '7 Days',
