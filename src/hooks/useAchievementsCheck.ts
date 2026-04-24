@@ -4,9 +4,11 @@ import { useAchievementsStore } from '../stores/achievementsStore';
 import { useHabitsStore } from '../stores/habitsStore';
 import { useMainDiaryStore } from '../stores/mainDiaryStore';
 import { useDialogStore } from '../stores/dialogStore';
-
 import useIsInitialRender from './useIsInitialRender';
 
+/**
+ * Hook to trigger achievement synchronization on data changes.
+ */
 function useAchievementsCheck() {
 
 	const isInitialRender = useIsInitialRender();
@@ -20,7 +22,7 @@ function useAchievementsCheck() {
 			achievementsDispatch({
 				habits,
 				mainDiary,
-				onOpenDialog: openDialog,
+				onUnlock: openDialog,
 				isInitialRender: isInitialRender
 			});
 		},
