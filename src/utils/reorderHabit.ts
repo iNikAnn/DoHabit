@@ -9,7 +9,7 @@ interface Params {
 /**
  * Changes the position of a habit within the list.
  */
-function reorderHabit(params: Params) {
+function reorderHabit(params: Params): Habit[] {
 	const {
 		habits: [...habits],
 		newIndex,
