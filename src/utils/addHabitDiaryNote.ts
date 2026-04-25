@@ -1,4 +1,5 @@
-import { Habit, Note } from '../types/habit';
+import { Note } from '../types/diary';
+import { Habit, } from '../types/habit';
 
 interface Params {
 	habits: Habit[];
@@ -11,7 +12,7 @@ interface Params {
 /**
  * Adds a new note to a specific habit's diary.
  */
-function addNote(params: Params): Habit[] {
+function addHabitDiaryNote(params: Params): Habit[] {
 	const {
 		habits,
 		payload: {
@@ -33,4 +34,4 @@ function addNote(params: Params): Habit[] {
 	);
 }
 
-export default addNote;
+export default addHabitDiaryNote;

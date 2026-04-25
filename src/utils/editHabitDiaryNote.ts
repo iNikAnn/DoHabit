@@ -12,7 +12,7 @@ interface Params {
 /**
  * Updates the text of a specific note within a habit's diary.
  */
-function editNote(params: Params): Habit[] {
+function editHabitDiaryNote(params: Params): Habit[] {
 	const {
 		habits,
 		payload: {
@@ -46,4 +46,4 @@ function editNote(params: Params): Habit[] {
 	);
 }
 
-export default editNote;
+export default editHabitDiaryNote;

@@ -11,7 +11,7 @@ interface Params {
 /**
  * Removes a note from a specific habit's diary.
  */
-function deleteNote(params: Params): Habit[] {
+function deleteHabitDiaryNote(params: Params): Habit[] {
 	const {
 		habits,
 		payload: {
@@ -37,4 +37,4 @@ function deleteNote(params: Params): Habit[] {
 	);
 }
 
-export default deleteNote;
+export default deleteHabitDiaryNote;

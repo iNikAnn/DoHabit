@@ -9,9 +9,9 @@ import archiveHabit from './archiveHabit';
 import updateHabitProgress from './updateHabitProgress';
 import toggleYesterdayStatus from './toggleYesterdayStatus';
 
-import addNote from './addNote';
-import editNote from './editNote';
-import deleteNote from './deleteNote';
+import addHabitDiaryNote from './addHabitDiaryNote';
+import editHabitDiaryNote from './editHabitDiaryNote';
+import deleteHabitDiaryNote from './deleteHabitDiaryNote';
 
 import saveToLocalStorage from './saveToLocalStorage';
 
@@ -46,15 +46,15 @@ function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[]
 
 		// diary
 		case 'addNote':
-			nextHabits = addNote({ habits, payload });
+			nextHabits = addHabitDiaryNote({ habits, payload });
 			break;
 
 		case 'editNote':
-			nextHabits = editNote({ habits, payload });
+			nextHabits = editHabitDiaryNote({ habits, payload });
 			break;
 
 		case 'deleteNote':
-			nextHabits = deleteNote({ habits, payload });
+			nextHabits = deleteHabitDiaryNote({ habits, payload });
 			break;
 
 		default:

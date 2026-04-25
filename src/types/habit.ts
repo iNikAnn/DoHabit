@@ -1,10 +1,4 @@
-export interface Note {
-	text: string;
-	date: string;
-
-	/** Current streak at the time of note creation */
-	streak?: number;
-}
+import { Note } from './diary';
 
 export interface CompletedDay {
 	date: string;
@@ -121,5 +115,5 @@ export type HabitAction =
 
 export interface HabitState {
 	habits: Habit[];
-	habitsDispatch: (context: HabitAction) => void;
+	habitsDispatch: (action: HabitAction) => void;
 }
