@@ -50,9 +50,15 @@ export interface EditHabit {
 	payload: EditHabitFormData;
 }
 
+export interface DeleteHabit {
+	type: 'deleteHabit';
+	habitTitle: string;
+}
+
 export type HabitAction =
 	| AddHabit
-	| EditHabit;
+	| EditHabit
+	| DeleteHabit;
 
 export interface HabitState {
 	habits: Habit[];
