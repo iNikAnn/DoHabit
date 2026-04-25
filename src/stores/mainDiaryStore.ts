@@ -1,8 +1,13 @@
 import { create } from 'zustand';
+
+// types
+import { MainDiaryState } from '../types/diary';
+
+// utils
 import initMainDiary from '../utils/initMainDiary';
 import mainDiaryReducer from '../utils/mainDiaryReducer';
 
-export const useMainDiaryStore = create(
+export const useMainDiaryStore = create<MainDiaryState>(
 	(set) => ({
 		mainDiary: initMainDiary(),
 
