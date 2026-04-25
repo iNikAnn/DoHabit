@@ -9,7 +9,7 @@ interface Params {
 }
 
 /**
- * Edit a specific note in the general diary.
+ * Edit a specific note in the main diary.
  */
 function editMainDiaryNote(params: Params): Note[] {
 	const {
