@@ -42,7 +42,7 @@ function HabitEditor() {
 	const [alreadyExist, setAlreadyExist] = useState(false);
 
 	// check for existing habit with the same title
-	// TODO: добавить дебаунс
+	// TODO: use debounce
 	useEffect(() => {
 		setAlreadyExist(
 			checkHabitTitleExistence(habits, inputTitle, habit)
@@ -59,7 +59,7 @@ function HabitEditor() {
 		e.preventDefault();
 
 		inputTitle.length
-			? handleUpdate({ ...actionObj, data: e.target, type: isEditMode ? 'editHabit' : 'addHabit' })
+			? handleUpdate({ ...actionObj, payload: e.target, type: isEditMode ? 'editHabit' : 'addHabit' })
 			: setAlreadyExist(true);
 	};
 
