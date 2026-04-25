@@ -2,7 +2,7 @@
 import getFromLocalStorage from './getFromLocalStorage';
 
 // types
-import { Note } from '../types/habit';
+import { Note } from '../types/diary';
 
 /**
  * Loads the main diary notes from localStorage.

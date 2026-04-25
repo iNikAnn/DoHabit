@@ -46,7 +46,7 @@ function Diary() {
 	// create new note
 	const handleAddNote = (text) => {
 		const note = {
-			text,
+			text: text.trim(),
 			date: new Date(),
 			streak: currentStreak ?? undefined
 		};
@@ -88,7 +88,7 @@ function Diary() {
 			payload: {
 				habitTitle: habitTitle,
 				noteCreationDate: isEditing,
-				newText
+				newText: newText.trim()
 			}
 		};
 
