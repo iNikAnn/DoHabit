@@ -1,12 +1,19 @@
 import { Habit } from '../types/habit';
 
+interface Params {
+	habits: Habit[];
+	title: string;
+}
+
 /**
  * Toggles the archived status of a habit and pushes archived items to the end.
  */
-function archiveHabit(
-	habits: Habit[],
-	title: string
-): Habit[] {
+function archiveHabit(params: Params): Habit[] {
+	const {
+		habits,
+		title
+	} = params;
+
 	// TODO: Switch to ID-based search once implemented
 	return habits
 		.map((habit) => {

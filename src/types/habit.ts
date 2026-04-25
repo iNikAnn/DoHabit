@@ -55,10 +55,16 @@ export interface DeleteHabit {
 	habitTitle: string;
 }
 
+export interface ArchiveHabit {
+	type: 'archiveHabit';
+	habitTitle: string;
+}
+
 export type HabitAction =
 	| AddHabit
 	| EditHabit
-	| DeleteHabit;
+	| DeleteHabit
+	| ArchiveHabit;
 
 export interface HabitState {
 	habits: Habit[];
