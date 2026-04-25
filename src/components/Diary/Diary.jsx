@@ -45,23 +45,23 @@ function Diary() {
 
 	// create new note
 	const handleAddNote = (text) => {
-		const newNote = {
+		const note = {
 			text,
 			date: new Date(),
-			streak: currentStreak || undefined
+			streak: currentStreak ?? undefined
 		};
 
-		const actions = {
+		const action = {
 			type: 'addNote',
 			habitTitle: habitTitle,
-			newNote
+			payload: { note }
 		};
 
 		if (habitTitle) {
-			habitsDispatch(actions);
+			habitsDispatch(action);
 		} else {
-			mainDiaryDispatch(actions);
-		};
+			mainDiaryDispatch(action);
+		}
 
 		document.body
 			.querySelector('#modalChildrenWrapper')

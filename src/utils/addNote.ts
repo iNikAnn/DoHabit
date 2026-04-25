@@ -1,21 +1,29 @@
 import { Habit, Note } from '../types/habit';
 
+interface Params {
+	habits: Habit[];
+	habitTitle: string;
+	note: Note;
+}
+
 /**
  * Adds a new note to a specific habit's diary.
  */
-function addNote(
-	habits: Habit[],
-	title: string,
-	newNote: Note
-): Habit[] {
+function addNote(params: Params): Habit[] {
+	const {
+		habits,
+		habitTitle,
+		note
+	} = params;
+
 	return habits.map(
 		(habit) => {
 			// TODO: Switch to ID-based search once implemented
-			if (habit.title !== title) return habit;
+			if (habit.title !== habitTitle) return habit;
 
 			return {
 				...habit,
-				diary: [...(habit.diary ?? []), newNote]
+				diary: [...(habit.diary ?? []), note]
 			};
 		}
 	);

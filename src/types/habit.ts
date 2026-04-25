@@ -34,7 +34,6 @@ export interface EditHabitFormData extends HabitFormData {
 	order: { value: string };
 }
 
-
 // action types
 export interface AddHabit {
 	type: 'addHabit';
@@ -65,12 +64,21 @@ export interface UpdateProgress {
 	habitTitle: string;
 }
 
+export interface AddNote {
+	type: 'addNote';
+	habitTitle: string;
+	payload: {
+		note: Note
+	};
+}
+
 export type HabitAction =
 	| AddHabit
 	| EditHabit
 	| DeleteHabit
 	| ArchiveHabit
-	| UpdateProgress;
+	| UpdateProgress
+	| AddNote;
 
 export interface HabitState {
 	habits: Habit[];
