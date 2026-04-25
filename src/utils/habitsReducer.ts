@@ -16,7 +16,7 @@ import deleteHabitDiaryNote from './deleteHabitDiaryNote';
 import saveToLocalStorage from './saveToLocalStorage';
 
 function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[] {
-	let nextHabits: Habit[];
+	let nextHabits: Habit[] = [];
 
 	switch (type) {
 		// habits
@@ -61,7 +61,7 @@ function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[]
 			const _exhaustiveCheck: never = type;
 			console.error('Unknown action type.');
 			return _exhaustiveCheck;
-	};
+	}
 
 	saveToLocalStorage('habits', nextHabits);
 

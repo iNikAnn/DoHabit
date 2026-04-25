@@ -1,5 +1,6 @@
 import { DialogContent } from './dialog';
-import { Habit, Note } from './habit';
+import { Note } from './diary';
+import { Habit } from './habit';
 
 export interface Achievement {
 	id: number;

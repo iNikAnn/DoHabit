@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 // types
-import { HabitAction, HabitState } from '../types/habit';
+import { HabitState } from '../types/habit';
 
 // utils
 import initHabits from '../utils/initHabits';
@@ -11,7 +11,7 @@ export const useHabitsStore = create<HabitState>(
 	(set) => ({
 		habits: initHabits(),
 
-		habitsDispatch: (action: HabitAction) => set(
+		habitsDispatch: (action) => set(
 			(s) => ({ habits: habitsReducer(s.habits, action) })
 		)
 	})
