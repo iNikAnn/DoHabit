@@ -81,6 +81,12 @@ export interface EditNote {
 	};
 }
 
+export interface DeleteNote {
+	type: 'deleteNote';
+	habitTitle: string;
+	noteCreationDate: Date | string;
+}
+
 export type HabitAction =
 	| AddHabit
 	| EditHabit
@@ -88,7 +94,8 @@ export type HabitAction =
 	| ArchiveHabit
 	| UpdateProgress
 	| AddNote
-	| EditNote;
+	| EditNote
+	| DeleteNote;
 
 export interface HabitState {
 	habits: Habit[];

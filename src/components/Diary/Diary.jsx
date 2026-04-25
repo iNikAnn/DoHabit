@@ -103,16 +103,16 @@ function Diary() {
 	// delete note
 	const handleDeleteNote = (noteCreationDate) => {
 		if (window.confirm('Are you sure you want to delete this note?')) {
-			const actions = {
+			const action = {
 				type: 'deleteNote',
 				habitTitle: habitTitle,
 				noteCreationDate
 			};
 
 			if (habitTitle) {
-				habitsDispatch(actions);
+				habitsDispatch(action);
 			} else {
-				mainDiaryDispatch(actions);
+				mainDiaryDispatch(action);
 			};
 		};
 	};
