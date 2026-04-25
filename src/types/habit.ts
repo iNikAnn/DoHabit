@@ -60,11 +60,17 @@ export interface ArchiveHabit {
 	habitTitle: string;
 }
 
+export interface UpdateProgress {
+	type: 'updateProgress';
+	habitTitle: string;
+}
+
 export type HabitAction =
 	| AddHabit
 	| EditHabit
 	| DeleteHabit
-	| ArchiveHabit;
+	| ArchiveHabit
+	| UpdateProgress;
 
 export interface HabitState {
 	habits: Habit[];
