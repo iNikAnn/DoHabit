@@ -64,6 +64,17 @@ export interface UpdateProgress {
 	habitTitle: string;
 }
 
+export interface ToggleYesterdayStatus {
+	type: 'toggleYesterdayStatus';
+	payload: {
+		habitTitle: string;
+		isTodayCompleted: boolean;
+		isYesterdayCompleted: boolean;
+		todayProgress: number;
+		frequency: number;
+	}
+}
+
 export interface AddNote {
 	type: 'addNote';
 	habitTitle: string;
@@ -93,6 +104,7 @@ export type HabitAction =
 	| DeleteHabit
 	| ArchiveHabit
 	| UpdateProgress
+	| ToggleYesterdayStatus
 	| AddNote
 	| EditNote
 	| DeleteNote;

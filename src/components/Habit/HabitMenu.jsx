@@ -55,12 +55,14 @@ function HabitMenu(props) {
 
 	const handleCompleteYeserday = () => {
 		habitsDispatch({
-			type: 'toggleCompleteYeserday',
-			habitTitle: title,
-			isTodayCompleted,
-			isYesterdayCompleted,
-			todayProgress,
-			frequency
+			type: 'toggleYesterdayStatus',
+			payload: {
+				habitTitle: title,
+				isTodayCompleted,
+				isYesterdayCompleted,
+				todayProgress,
+				frequency
+			}
 		});
 	};
 
