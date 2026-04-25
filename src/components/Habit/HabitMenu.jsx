@@ -60,8 +60,7 @@ function HabitMenu(props) {
 				habitTitle: title,
 				isTodayCompleted,
 				isYesterdayCompleted,
-				todayProgress,
-				frequency
+				todayProgress
 			}
 		});
 	};
@@ -155,7 +154,7 @@ function HabitMenu(props) {
 					{buttons}
 				</ul>
 			</motion.div>
-		</motion.div >
+		</motion.div>
 	);
 }
 
