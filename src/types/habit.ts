@@ -34,34 +34,42 @@ export interface EditHabitFormData extends HabitFormData {
 	order: { value: string };
 }
 
+// TODO: Replace with habit id
 // action types
 export interface AddHabit {
 	type: 'addHabit';
-	payload: HabitFormData;
+	payload: {
+		data: HabitFormData;
+	};
 }
 
 export interface EditHabit {
 	type: 'editHabit';
-
-	// TODO: Replace with habit id
-	habitTitle: string;
-
-	payload: EditHabitFormData;
+	payload: {
+		habitTitle: string;
+		data: EditHabitFormData;
+	};
 }
 
 export interface DeleteHabit {
 	type: 'deleteHabit';
-	habitTitle: string;
+	payload: {
+		habitTitle: string;
+	};
 }
 
 export interface ArchiveHabit {
 	type: 'archiveHabit';
-	habitTitle: string;
+	payload: {
+		habitTitle: string;
+	};
 }
 
 export interface UpdateProgress {
 	type: 'updateProgress';
-	habitTitle: string;
+	payload: {
+		habitTitle: string;
+	};
 }
 
 export interface ToggleYesterdayStatus {
@@ -72,30 +80,32 @@ export interface ToggleYesterdayStatus {
 		isYesterdayCompleted: boolean;
 		todayProgress: number;
 		frequency: number;
-	}
+	};
 }
 
 export interface AddNote {
 	type: 'addNote';
-	habitTitle: string;
 	payload: {
-		note: Note
+		habitTitle: string;
+		note: Note;
 	};
 }
 
 export interface EditNote {
 	type: 'editNote';
-	habitTitle: string;
-	noteCreationDate: Date | string;
 	payload: {
-		newText: string
+		habitTitle: string;
+		noteCreationDate: Date | string;
+		newText: string;
 	};
 }
 
 export interface DeleteNote {
 	type: 'deleteNote';
-	habitTitle: string;
-	noteCreationDate: Date | string;
+	payload: {
+		habitTitle: string;
+		noteCreationDate: Date | string;
+	};
 }
 
 export type HabitAction =

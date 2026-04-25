@@ -54,7 +54,9 @@ function HabitHeader(props) {
 
 		habitsDispatch({
 			type: 'updateProgress',
-			habitTitle: title
+			payload: {
+				habitTitle: title
+			}
 		});
 	};
 
@@ -117,7 +119,9 @@ function HabitHeader(props) {
 						if (window.confirm('Are you sure you want to restore this habit?')) {
 							habitsDispatch({
 								type: 'archiveHabit',
-								habitTitle: title
+								payload: {
+									habitTitle: title
+								}
 							})
 						};
 					}}

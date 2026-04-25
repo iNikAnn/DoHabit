@@ -2,8 +2,10 @@ import { Habit, Note } from '../types/habit';
 
 interface Params {
 	habits: Habit[];
-	habitTitle: string;
-	note: Note;
+	payload: {
+		habitTitle: string;
+		note: Note;
+	};
 }
 
 /**
@@ -12,8 +14,10 @@ interface Params {
 function addNote(params: Params): Habit[] {
 	const {
 		habits,
-		habitTitle,
-		note
+		payload: {
+			habitTitle,
+			note
+		}
 	} = params;
 
 	return habits.map(

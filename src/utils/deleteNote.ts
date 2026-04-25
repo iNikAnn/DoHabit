@@ -2,8 +2,10 @@ import { Habit } from '../types/habit';
 
 interface Params {
 	habits: Habit[];
-	habitTitle: string;
-	noteCreationDate: Date | string;
+	payload: {
+		habitTitle: string;
+		noteCreationDate: Date | string;
+	};
 }
 
 /**
@@ -12,8 +14,10 @@ interface Params {
 function deleteNote(params: Params): Habit[] {
 	const {
 		habits,
-		habitTitle,
-		noteCreationDate
+		payload: {
+			habitTitle,
+			noteCreationDate
+		}
 	} = params;
 
 	// TODO: Switch to ID-based search once implemented

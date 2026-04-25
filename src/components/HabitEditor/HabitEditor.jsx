@@ -24,6 +24,7 @@ import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
 import { MdAddToPhotos } from 'react-icons/md';
 import { MdDeleteForever } from 'react-icons/md';
 import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
+import scrollToTop from '../../utils/scrollToTop';
 
 function HabitEditor() {
 
@@ -59,8 +60,12 @@ function HabitEditor() {
 		e.preventDefault();
 
 		inputTitle.length
-			? handleUpdate({ ...actionObj, payload: e.target, type: isEditMode ? 'editHabit' : 'addHabit' })
+			? handleUpdate({ type: isEditMode ? 'editHabit' : 'addHabit', payload: { ...actionObj, data: e.target } })
 			: setAlreadyExist(true);
+
+		if (!isEditMode) {
+			scrollToTop();
+		}
 	};
 
 	const handleUpdate = (props) => {
@@ -134,8 +139,8 @@ function HabitEditor() {
 									const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 
 									if (window.confirm(msg)) {
-										handleUpdate({ ...actionObj, type: 'deleteHabit' });
-									};
+										handleUpdate({ type: 'deleteHabit', payload: { ...actionObj } });
+									}
 								}}
 							/>
 
@@ -148,8 +153,8 @@ function HabitEditor() {
 									const msg = 'Are you sure you want to archive this habit? Archived habits can be found in the menu under the \'Archive\' section.';
 
 									if (window.confirm(msg)) {
-										handleUpdate({ ...actionObj, type: 'archiveHabit' });
-									};
+										handleUpdate({ type: 'archiveHabit', payload: { ...actionObj } });
+									}
 								}}
 							/>
 						</div>

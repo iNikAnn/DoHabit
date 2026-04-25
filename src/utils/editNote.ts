@@ -2,9 +2,11 @@ import { Habit } from '../types/habit';
 
 interface Params {
 	habits: Habit[];
-	habitTitle: string;
-	noteCreationDate: Date | string;
-	newText: string;
+	payload: {
+		habitTitle: string;
+		noteCreationDate: Date | string;
+		newText: string;
+	};
 }
 
 /**
@@ -13,9 +15,11 @@ interface Params {
 function editNote(params: Params): Habit[] {
 	const {
 		habits,
-		habitTitle,
-		noteCreationDate,
-		newText
+		payload: {
+			habitTitle,
+			noteCreationDate,
+			newText
+		}
 	} = params;
 
 	// TODO: Switch to ID-based search once implemented

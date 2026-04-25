@@ -2,7 +2,9 @@ import { Habit } from '../types/habit';
 
 interface Params {
 	habits: Habit[];
-	title: string;
+	payload: {
+		habitTitle: string;
+	};
 }
 
 /**
@@ -11,13 +13,13 @@ interface Params {
 function archiveHabit(params: Params): Habit[] {
 	const {
 		habits,
-		title
+		payload: { habitTitle }
 	} = params;
 
 	// TODO: Switch to ID-based search once implemented
 	return habits
 		.map((habit) => {
-			if (habit.title !== title) return habit;
+			if (habit.title !== habitTitle) return habit;
 
 			return {
 				...habit,

@@ -7,9 +7,11 @@ import mapHabitData from './mapHabitData';
 import reorderHabit from './reorderHabit';
 
 interface Params {
-	habits: Habit[],
-	title: string,
-	data: EditHabitFormData,
+	habits: Habit[];
+	payload: {
+		habitTitle: string;
+		data: EditHabitFormData;
+	};
 }
 
 /**
@@ -19,8 +21,10 @@ interface Params {
 function editHabit(params: Params): Habit[] {
 	const {
 		habits,
-		title,
-		data
+		payload: {
+			habitTitle,
+			data
+		}
 	} = params;
 
 	const fields = mapHabitData(data);
@@ -28,7 +32,7 @@ function editHabit(params: Params): Habit[] {
 	// Update the habit data and sync progress
 	let nextHabits = habits.map(
 		(habit) => {
-			if (habit.title !== title) return habit;
+			if (habit.title !== habitTitle) return habit;
 
 			const wasFrequencyChanged = habit.frequency !== fields.frequency;
 

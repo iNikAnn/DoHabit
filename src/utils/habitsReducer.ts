@@ -2,97 +2,70 @@
 import { Habit, HabitAction } from '../types/habit';
 
 // utils
-import mapHabitData from './mapHabitData';
-import deleteHabit from './deleteHabit';
+import addHabit from './addHabit';
 import editHabit from './editHabit';
+import deleteHabit from './deleteHabit';
+import archiveHabit from './archiveHabit';
 import updateHabitProgress from './updateHabitProgress';
 import toggleYesterdayStatus from './toggleYesterdayStatus';
 
 import addNote from './addNote';
-import deleteNote from './deleteNote';
 import editNote from './editNote';
-
-import archiveHabit from './archiveHabit';
-import scrollToTop from './scrollToTop';
+import deleteNote from './deleteNote';
 
 import saveToLocalStorage from './saveToLocalStorage';
 
-function habitsReducer(habits: Habit[], action: HabitAction): Habit[] {
-	switch (action.type) {
+function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[] {
+	let nextHabits: Habit[];
+
+	switch (type) {
 		// habits
 		case 'addHabit':
-			habits = [
-				{
-					...mapHabitData(action.payload),
-					creationDate: new Date(),
-					completedDays: []
-				},
-				...habits
-			];
-
-			// TODO: remove
-			scrollToTop();
+			nextHabits = addHabit({ habits, payload });
 			break;
 
 		case 'editHabit':
-			habits = editHabit({
-				habits,
-				title: action.habitTitle,
-				data: action.payload,
-			});
+			nextHabits = editHabit({ habits, payload });
 			break;
 
 		case 'deleteHabit':
-			habits = deleteHabit({ habits, title: action.habitTitle });
+			nextHabits = deleteHabit({ habits, payload });
 			break;
 
 		case 'archiveHabit':
-			habits = archiveHabit({ habits, title: action.habitTitle });
+			nextHabits = archiveHabit({ habits, payload });
 			break;
 
 		case 'updateProgress':
-			habits = updateHabitProgress({ habits, title: action.habitTitle });
+			nextHabits = updateHabitProgress({ habits, payload });
 			break;
 
 		case 'toggleYesterdayStatus':
-			habits = toggleYesterdayStatus({ habits, payload: action.payload });
+			nextHabits = toggleYesterdayStatus({ habits, payload });
 			break;
 
 		// diary
 		case 'addNote':
-			habits = addNote({
-				habits,
-				habitTitle: action.habitTitle,
-				note: action.payload.note
-			});
+			nextHabits = addNote({ habits, payload });
 			break;
 
 		case 'editNote':
-			habits = editNote({
-				habits,
-				habitTitle: action.habitTitle,
-				noteCreationDate: action.noteCreationDate,
-				newText: action.payload.newText
-			});
+			nextHabits = editNote({ habits, payload });
 			break;
 
 		case 'deleteNote':
-			habits = deleteNote({
-				habits,
-				habitTitle: action.habitTitle,
-				noteCreationDate: action.noteCreationDate
-			});
+			nextHabits = deleteNote({ habits, payload });
 			break;
 
 		default:
-			const _exhaustiveCheck: never = action;
-			console.error('Unknown action');
+			const _exhaustiveCheck: never = type;
+			console.error('Unknown action type.');
 			return _exhaustiveCheck;
 	};
 
-	saveToLocalStorage('habits', habits);
+	saveToLocalStorage('habits', nextHabits);
 
-	return habits;
+	return nextHabits;
 }
 
 export default habitsReducer;

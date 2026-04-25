@@ -7,17 +7,24 @@ import checkHabitCompletion from './checkHabitCompletion';
 
 interface Params {
 	habits: Habit[];
-	title: string;
+	payload: {
+		habitTitle: string;
+	};
 }
 
 /**
  * Updates or toggles the progress for a specific habit for the current day.
  */
-function updateHabitProgress({ habits, title }: Params): Habit[] {
+function updateHabitProgress(params: Params): Habit[] {
+	const {
+		habits,
+		payload: { habitTitle }
+	} = params;
+
 	const today = getFormattedDate(new Date());
 
 	return habits.map((habit) => {
-		if (habit.title !== title) return habit;
+		if (habit.title !== habitTitle) return habit;
 
 		const [isCompleted] = checkHabitCompletion(habit.completedDays, habit.frequency, new Date());
 

@@ -53,8 +53,10 @@ function Diary() {
 
 		const action = {
 			type: 'addNote',
-			habitTitle: habitTitle,
-			payload: { note }
+			payload: {
+				habitTitle: habitTitle,
+				note
+			}
 		};
 
 		if (habitTitle) {
@@ -83,9 +85,9 @@ function Diary() {
 	const handleEditNote = (newText) => {
 		const action = {
 			type: 'editNote',
-			habitTitle: habitTitle,
-			noteCreationDate: isEditing,
 			payload: {
+				habitTitle: habitTitle,
+				noteCreationDate: isEditing,
 				newText
 			}
 		};
@@ -105,16 +107,18 @@ function Diary() {
 		if (window.confirm('Are you sure you want to delete this note?')) {
 			const action = {
 				type: 'deleteNote',
-				habitTitle: habitTitle,
-				noteCreationDate
+				payload: {
+					habitTitle: habitTitle,
+					noteCreationDate
+				}
 			};
 
 			if (habitTitle) {
 				habitsDispatch(action);
 			} else {
 				mainDiaryDispatch(action);
-			};
-		};
+			}
+		}
 	};
 
 	// form

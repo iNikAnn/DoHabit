@@ -2,18 +2,25 @@ import { Habit } from '../types/habit';
 
 interface Params {
 	habits: Habit[];
-	title: string;
+	payload: {
+		habitTitle: string;
+	};
 }
 
 /**
  * Removes a habit from the list by its title.
  */
-function deleteHabit({ habits, title }: Params) {
-	if (title === '' || typeof title !== 'string') {
+function deleteHabit(params: Params): Habit[] {
+	const {
+		habits,
+		payload: { habitTitle }
+	} = params;
+
+	if (habitTitle === '') {
 		throw new Error('A valid habit title must be provided to delete a habit.');
 	}
 
-	return habits.filter((habit) => habit.title !== title);
+	return habits.filter((habit) => habit.title !== habitTitle);
 }
 
 export default deleteHabit;
