@@ -72,13 +72,23 @@ export interface AddNote {
 	};
 }
 
+export interface EditNote {
+	type: 'editNote';
+	habitTitle: string;
+	noteCreationDate: Date | string;
+	payload: {
+		newText: string
+	};
+}
+
 export type HabitAction =
 	| AddHabit
 	| EditHabit
 	| DeleteHabit
 	| ArchiveHabit
 	| UpdateProgress
-	| AddNote;
+	| AddNote
+	| EditNote;
 
 export interface HabitState {
 	habits: Habit[];

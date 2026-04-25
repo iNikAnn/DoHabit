@@ -1,18 +1,27 @@
 import { Habit } from '../types/habit';
 
+interface Params {
+	habits: Habit[];
+	habitTitle: string;
+	noteCreationDate: Date | string;
+	newText: string;
+}
+
 /**
  * Updates the text of a specific note within a habit's diary.
  */
-function editNote(
-	habits: Habit[],
-	title: string,
-	noteCreationDate: string,
-	newText: string
-): Habit[] {
+function editNote(params: Params): Habit[] {
+	const {
+		habits,
+		habitTitle,
+		noteCreationDate,
+		newText
+	} = params;
+
 	// TODO: Switch to ID-based search once implemented
 	return habits.map(
 		(habit) => {
-			if (habit.title !== title) return habit;
+			if (habit.title !== habitTitle) return habit;
 
 			const nextDiary = (habit.diary ?? []).map(
 				(note) => {

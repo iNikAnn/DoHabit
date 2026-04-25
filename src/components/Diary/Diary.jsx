@@ -81,18 +81,20 @@ function Diary() {
 	};
 
 	const handleEditNote = (newText) => {
-		const actions = {
+		const action = {
 			type: 'editNote',
 			habitTitle: habitTitle,
 			noteCreationDate: isEditing,
-			newText
+			payload: {
+				newText
+			}
 		};
 
 		if (habitTitle) {
-			habitsDispatch(actions);
+			habitsDispatch(action);
 		} else {
-			mainDiaryDispatch(actions);
-		};
+			mainDiaryDispatch(action);
+		}
 
 		setIsEditing(false);
 		handleFormActivation(false);
