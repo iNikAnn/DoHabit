@@ -17,8 +17,44 @@ export interface Habit {
 	colorIndex: number;
 	iconTitle: string;
 	frequency: number;
-	creationDate: string;
+	creationDate: Date | string;
 	completedDays: CompletedDay[];
 	diary?: Note[];
-	isArchived: boolean;
+	isArchived?: boolean;
+}
+
+export interface HabitFormData {
+	title: { value: string };
+	frequency: { value: string };
+	colorIndex: { value: string };
+	iconTitle: { value: string };
+}
+
+export interface EditHabitFormData extends HabitFormData {
+	order: { value: string };
+}
+
+
+// action types
+export interface AddHabit {
+	type: 'addHabit';
+	payload: HabitFormData;
+}
+
+export interface EditHabit {
+	type: 'editHabit';
+
+	// TODO: Replace with habit id
+	habitTitle: string;
+
+	payload: EditHabitFormData;
+}
+
+export type HabitAction =
+	| AddHabit
+	| EditHabit;
+
+export interface HabitState {
+	habits: Habit[];
+	habitsDispatch: (context: HabitAction) => void;
 }
