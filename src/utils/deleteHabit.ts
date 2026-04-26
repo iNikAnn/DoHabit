@@ -1,10 +1,8 @@
-import { Habit } from '../types/habit';
+import { DeleteHabit, Habit } from '../types/habit';
 
 interface Params {
 	habits: Habit[];
-	payload: {
-		habitTitle: string;
-	};
+	payload: DeleteHabit['payload'];
 }
 
 /**
@@ -13,14 +11,15 @@ interface Params {
 function deleteHabit(params: Params): Habit[] {
 	const {
 		habits,
-		payload: { habitTitle }
+		payload: { habitId }
 	} = params;
 
-	if (habitTitle === '') {
+	if (habitId === '') {
 		throw new Error('A valid habit title must be provided to delete a habit.');
 	}
 
-	return habits.filter((habit) => habit.title !== habitTitle);
+	// TODO: Switch to ID-based search once implemented
+	return habits.filter((habit) => habit.title !== habitId);
 }
 
 export default deleteHabit;

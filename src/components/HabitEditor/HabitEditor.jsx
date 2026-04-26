@@ -52,7 +52,7 @@ function HabitEditor() {
 
 	// action object
 	const actionObj = {
-		habitTitle: habit?.title
+		habitId: habit?.title
 	};
 
 	// on submit form

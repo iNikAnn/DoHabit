@@ -1,12 +1,12 @@
-import { Note } from '../types/diary';
-import { Habit, } from '../types/habit';
+// types
+import { AddNote, Habit, } from '../types/habit';
+
+// utils
+import updateHabitById from './updateHabitById';
 
 interface Params {
 	habits: Habit[];
-	payload: {
-		habitTitle: string;
-		note: Note;
-	};
+	payload: AddNote['payload'];
 }
 
 /**
@@ -16,22 +16,15 @@ function addHabitDiaryNote(params: Params): Habit[] {
 	const {
 		habits,
 		payload: {
-			habitTitle,
+			habitId,
 			note
 		}
 	} = params;
 
-	return habits.map(
-		(habit) => {
-			// TODO: Switch to ID-based search once implemented
-			if (habit.title !== habitTitle) return habit;
-
-			return {
-				...habit,
-				diary: [...(habit.diary ?? []), note]
-			};
-		}
-	);
+	return updateHabitById(habits, habitId, (habit) => ({
+		...habit,
+		diary: [...(habit.diary ?? []), note]
+	}));
 }
 
 export default addHabitDiaryNote;

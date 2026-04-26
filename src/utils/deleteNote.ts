@@ -16,6 +16,7 @@ function deleteNote(params: Params): Note[] {
 		payload: { noteCreationDate }
 	} = params;
 
+	// TODO: Switch to ID-based search once implemented
 	return diary.filter((note) => note.date !== noteCreationDate);
 }
 

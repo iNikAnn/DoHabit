@@ -1,15 +1,13 @@
 // types
-import { Habit } from '../types/habit';
+import { DeleteNote, Habit } from '../types/habit';
 
 // utils
+import updateHabitById from './updateHabitById';
 import deleteNote from './deleteNote';
 
 interface Params {
 	habits: Habit[];
-	payload: {
-		habitTitle: string;
-		noteCreationDate: Date | string;
-	};
+	payload: DeleteNote['payload'];
 }
 
 /**
@@ -21,20 +19,13 @@ function deleteHabitDiaryNote(params: Params): Habit[] {
 		payload
 	} = params;
 
-	// TODO: Switch to ID-based search once implemented
-	return habits.map(
-		(habit) => {
-			if (habit.title !== payload.habitTitle) return habit;
-
-			return {
-				...habit,
-				diary: deleteNote({
-					diary: habit.diary ?? [],
-					payload
-				})
-			};
-		}
-	);
+	return updateHabitById(habits, payload.habitId, (habit) => ({
+		...habit,
+		diary: deleteNote({
+			diary: habit.diary ?? [],
+			payload
+		})
+	}));
 }
 
 export default deleteHabitDiaryNote;

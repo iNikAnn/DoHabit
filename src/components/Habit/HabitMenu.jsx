@@ -57,7 +57,7 @@ function HabitMenu(props) {
 		habitsDispatch({
 			type: 'toggleYesterdayStatus',
 			payload: {
-				habitTitle: title,
+				habitId: title,
 				isTodayCompleted,
 				isYesterdayCompleted,
 				todayProgress

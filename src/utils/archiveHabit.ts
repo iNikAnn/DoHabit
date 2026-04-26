@@ -1,10 +1,12 @@
-import { Habit } from '../types/habit';
+// types
+import { ArchiveHabit, Habit } from '../types/habit';
+
+// utils
+import updateHabitById from './updateHabitById';
 
 interface Params {
 	habits: Habit[];
-	payload: {
-		habitTitle: string;
-	};
+	payload: ArchiveHabit['payload'];
 }
 
 /**
@@ -13,21 +15,17 @@ interface Params {
 function archiveHabit(params: Params): Habit[] {
 	const {
 		habits,
-		payload: { habitTitle }
+		payload: { habitId }
 	} = params;
 
-	// TODO: Switch to ID-based search once implemented
-	return habits
-		.map((habit) => {
-			if (habit.title !== habitTitle) return habit;
-
-			return {
-				...habit,
-				isArchived: !habit.isArchived
-			};
-		})
-		// Sort archived habits to the end of the list
-		.sort((a, b) => Number(a.isArchived) - Number(b.isArchived));
+	const nextHabits = updateHabitById(habits, habitId, (habit) => ({
+		...habit,
+		isArchived: !habit.isArchived
+	}))
+	// Sort archived habits to the end of the list
+	return nextHabits.sort(
+		(a, b) => Number(a.isArchived) - Number(b.isArchived)
+	);
 }
 
 export default archiveHabit;

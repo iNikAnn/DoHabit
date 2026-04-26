@@ -20,6 +20,7 @@ function editNote(params: Params): Note[] {
 		}
 	} = params;
 
+	// TODO: Switch to ID-based search once implemented
 	return diary.map((note) => {
 		if (note.date !== noteCreationDate) return note;
 

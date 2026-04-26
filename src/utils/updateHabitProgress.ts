@@ -1,15 +1,14 @@
 // types
-import { CompletedDay, Habit } from '../types/habit';
+import { CompletedDay, Habit, UpdateProgress } from '../types/habit';
 
 // utils
 import getFormattedDate from './getFormattedDate';
+import updateHabitById from './updateHabitById';
 import checkHabitCompletion from './checkHabitCompletion';
 
 interface Params {
 	habits: Habit[];
-	payload: {
-		habitTitle: string;
-	};
+	payload: UpdateProgress['payload'];
 }
 
 /**
@@ -18,15 +17,17 @@ interface Params {
 function updateHabitProgress(params: Params): Habit[] {
 	const {
 		habits,
-		payload: { habitTitle }
+		payload: { habitId }
 	} = params;
 
 	const today = getFormattedDate(new Date());
 
-	return habits.map((habit) => {
-		if (habit.title !== habitTitle) return habit;
-
-		const [isCompleted] = checkHabitCompletion(habit.completedDays, habit.frequency, new Date());
+	return updateHabitById(habits, habitId, (habit) => {
+		const [isCompleted] = checkHabitCompletion(
+			habit.completedDays,
+			habit.frequency,
+			new Date()
+		);
 
 		let nextCompletedDays: CompletedDay[] = [];
 

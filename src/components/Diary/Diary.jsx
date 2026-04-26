@@ -54,7 +54,7 @@ function Diary() {
 		const action = {
 			type: 'addNote',
 			payload: {
-				habitTitle: habitTitle,
+				habitId: habitTitle,
 				note
 			}
 		};
@@ -86,7 +86,7 @@ function Diary() {
 		const action = {
 			type: 'editNote',
 			payload: {
-				habitTitle: habitTitle,
+				habitId: habitTitle,
 				noteCreationDate: isEditing,
 				newText: newText.trim()
 			}
@@ -108,7 +108,7 @@ function Diary() {
 			const action = {
 				type: 'deleteNote',
 				payload: {
-					habitTitle: habitTitle,
+					habitId: habitTitle,
 					noteCreationDate
 				}
 			};

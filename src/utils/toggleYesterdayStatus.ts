@@ -1,18 +1,13 @@
 // types
-import { CompletedDay, Habit } from '../types/habit';
+import { CompletedDay, Habit, ToggleYesterdayStatus } from '../types/habit';
 
 // utils
 import getFormattedDate from './getFormattedDate';
+import updateHabitById from './updateHabitById';
 
 interface Params {
 	habits: Habit[];
-	payload: {
-		habitTitle: string;
-		isTodayCompleted: boolean;
-		isYesterdayCompleted: boolean;
-		todayProgress: number;
-		frequency: number;
-	}
+	payload: ToggleYesterdayStatus['payload'];
 }
 
 /**
@@ -22,7 +17,7 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 	const {
 		habits,
 		payload: {
-			habitTitle,
+			habitId,
 			isTodayCompleted,
 			isYesterdayCompleted,
 			todayProgress
@@ -33,9 +28,7 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 	yesterday.setDate(yesterday.getDate() - 1);
 	const yDayStr = getFormattedDate(yesterday);
 
-	return habits.map((habit) => {
-		if (habit.title !== habitTitle) return habit;
-
+	return updateHabitById(habits, habitId, (habit) => {
 		if (isYesterdayCompleted) {
 			// Remove yesterday entry
 			return {

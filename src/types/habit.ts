@@ -40,7 +40,7 @@ export interface AddHabit {
 export interface EditHabit {
 	type: 'editHabit';
 	payload: {
-		habitTitle: string;
+		habitId: string;
 		data: EditHabitFormData;
 	};
 }
@@ -48,28 +48,28 @@ export interface EditHabit {
 export interface DeleteHabit {
 	type: 'deleteHabit';
 	payload: {
-		habitTitle: string;
+		habitId: string;
 	};
 }
 
 export interface ArchiveHabit {
 	type: 'archiveHabit';
 	payload: {
-		habitTitle: string;
+		habitId: string;
 	};
 }
 
 export interface UpdateProgress {
 	type: 'updateProgress';
 	payload: {
-		habitTitle: string;
+		habitId: string;
 	};
 }
 
 export interface ToggleYesterdayStatus {
 	type: 'toggleYesterdayStatus';
 	payload: {
-		habitTitle: string;
+		habitId: string;
 		isTodayCompleted: boolean;
 		isYesterdayCompleted: boolean;
 		todayProgress: number;
@@ -80,7 +80,7 @@ export interface ToggleYesterdayStatus {
 export interface AddNote {
 	type: 'addNote';
 	payload: {
-		habitTitle: string;
+		habitId: string;
 		note: Note;
 	};
 }
@@ -88,7 +88,7 @@ export interface AddNote {
 export interface EditNote {
 	type: 'editNote';
 	payload: {
-		habitTitle: string;
+		habitId: string;
 		noteCreationDate: Date | string;
 		newText: string;
 	};
@@ -97,7 +97,7 @@ export interface EditNote {
 export interface DeleteNote {
 	type: 'deleteNote';
 	payload: {
-		habitTitle: string;
+		habitId: string;
 		noteCreationDate: Date | string;
 	};
 }

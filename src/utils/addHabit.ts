@@ -1,14 +1,12 @@
 // types
-import { Habit, HabitFormData } from '../types/habit';
+import { AddHabit, Habit } from '../types/habit';
 
 // utils
 import mapHabitData from './mapHabitData';
 
 interface Params {
 	habits: Habit[];
-	payload: {
-		data: HabitFormData;
-	};
+	payload: AddHabit['payload'];
 }
 
 /**

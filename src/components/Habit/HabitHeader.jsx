@@ -55,7 +55,7 @@ function HabitHeader(props) {
 		habitsDispatch({
 			type: 'updateProgress',
 			payload: {
-				habitTitle: title
+				habitId: title
 			}
 		});
 	};
@@ -120,7 +120,7 @@ function HabitHeader(props) {
 							habitsDispatch({
 								type: 'archiveHabit',
 								payload: {
-									habitTitle: title
+									habitId: title
 								}
 							})
 						};
