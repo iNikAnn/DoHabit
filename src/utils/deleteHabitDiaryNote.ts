@@ -1,4 +1,8 @@
+// types
 import { Habit } from '../types/habit';
+
+// utils
+import deleteNote from './deleteNote';
 
 interface Params {
 	habits: Habit[];
@@ -14,24 +18,20 @@ interface Params {
 function deleteHabitDiaryNote(params: Params): Habit[] {
 	const {
 		habits,
-		payload: {
-			habitTitle,
-			noteCreationDate
-		}
+		payload
 	} = params;
 
 	// TODO: Switch to ID-based search once implemented
 	return habits.map(
 		(habit) => {
-			if (habit.title !== habitTitle) return habit;
-
-			const nextDiary = (habit.diary ?? []).filter(
-				(note) => note.date !== noteCreationDate
-			);
+			if (habit.title !== payload.habitTitle) return habit;
 
 			return {
 				...habit,
-				diary: nextDiary
+				diary: deleteNote({
+					diary: habit.diary ?? [],
+					payload
+				})
 			};
 		}
 	);

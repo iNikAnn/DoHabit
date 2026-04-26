@@ -1,8 +1,9 @@
+// types
 import { MainDiaryAction, Note } from '../types/diary';
-import deleteMainDiaryNote from './deleteMainDiaryNote';
-import editMainDiaryNote from './editMainDiaryNote';
 
 // utils
+import editNote from './editNote';
+import deleteNote from './deleteNote';
 import saveToLocalStorage from './saveToLocalStorage';
 
 function mainDiaryReducer(diary: Note[], { type, payload }: MainDiaryAction) {
@@ -14,11 +15,11 @@ function mainDiaryReducer(diary: Note[], { type, payload }: MainDiaryAction) {
 			break;
 
 		case 'editNote':
-			nextDiary = editMainDiaryNote({ diary, payload });
+			nextDiary = editNote({ diary, payload });
 			break;
 
 		case 'deleteNote':
-			nextDiary = deleteMainDiaryNote({ diary, payload });
+			nextDiary = deleteNote({ diary, payload });
 			break;
 
 		default:

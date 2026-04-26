@@ -10,7 +10,7 @@ interface Params {
 /**
  * Remove a note from the main diary.
  */
-function deleteMainDiaryNote(params: Params): Note[] {
+function deleteNote(params: Params): Note[] {
 	const {
 		diary,
 		payload: { noteCreationDate }
@@ -19,4 +19,4 @@ function deleteMainDiaryNote(params: Params): Note[] {
 	return diary.filter((note) => note.date !== noteCreationDate);
 }
 
-export default deleteMainDiaryNote;
+export default deleteNote;

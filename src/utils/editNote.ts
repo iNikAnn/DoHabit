@@ -9,9 +9,9 @@ interface Params {
 }
 
 /**
- * Edit a specific note in the main diary.
+ * Edit a specific note in the diary.
  */
-function editMainDiaryNote(params: Params): Note[] {
+function editNote(params: Params): Note[] {
 	const {
 		diary,
 		payload: {
@@ -30,4 +30,4 @@ function editMainDiaryNote(params: Params): Note[] {
 	});
 }
 
-export default editMainDiaryNote;
+export default editNote;
