@@ -7,6 +7,9 @@ import { HabitState } from '../types/habit';
 import initHabits from '../utils/initHabits';
 import habitsReducer from '../utils/habitsReducer';
 
+/**
+ * Habits store providing state and a dispatch function.
+ */
 export const useHabitsStore = create<HabitState>(
 	(set) => ({
 		habits: initHabits(),

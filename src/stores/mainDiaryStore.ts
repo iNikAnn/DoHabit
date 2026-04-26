@@ -7,6 +7,9 @@ import { MainDiaryState } from '../types/diary';
 import initMainDiary from '../utils/initMainDiary';
 import mainDiaryReducer from '../utils/mainDiaryReducer';
 
+/**
+ * Main diary store providing state and a dispatch function.
+ */
 export const useMainDiaryStore = create<MainDiaryState>(
 	(set) => ({
 		mainDiary: initMainDiary(),
