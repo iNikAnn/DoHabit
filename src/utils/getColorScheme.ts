@@ -1,4 +1,4 @@
-import { ColorScheme } from '../types/common';
+import { ColorScheme } from '../types/colorScheme';
 
 /**
  * Determines the current color scheme based on user preference and system settings.

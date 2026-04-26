@@ -1,4 +1,4 @@
-import { ColorScheme } from '../types/common';
+import { ColorScheme } from '../types/colorScheme';
 
 /**
  * Generates an array of colors based on the specified color scheme.
