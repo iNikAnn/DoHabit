@@ -1,4 +1,4 @@
-import { IconType } from 'react-icons';
+import { IconBaseProps, IconType } from 'react-icons';
 
 import {
 	FaRunning, FaDumbbell, FaWalking, FaBookOpen, FaMoneyBill,

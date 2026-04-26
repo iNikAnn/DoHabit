@@ -51,6 +51,7 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 
 		return {
 			...habit,
+			// @ts-ignore
 			completedDays: habit.completedDays.toSpliced(insertIndex, 0, completedYesterday)
 		};
 	});

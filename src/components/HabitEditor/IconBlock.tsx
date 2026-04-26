@@ -4,7 +4,7 @@ import styles from '../../css/IconBlock.module.css';
 import { HABIT_ICONS } from '../../db/dbIcons';
 
 // hooks
-import { useState } from 'react';
+import { ElementType, useState } from 'react';
 
 // types
 import { Habit } from '../../types/habit';
@@ -66,6 +66,7 @@ function IconBlock({ habits, currentIconTitle }: Props) {
 
 						<div className={styles.iconList}>
 							{icons.map(({ iconTitle, Icon }, index) => {
+								const IconComponent = Icon as ElementType;
 								const isIconUsed = habits.find((habit) => habit.iconTitle === iconTitle);
 
 								return (
@@ -82,7 +83,8 @@ function IconBlock({ habits, currentIconTitle }: Props) {
 											onChange={(e) => setSelectedIcon(e.target.value)}
 											defaultChecked={iconTitle === currentIconTitle || (!currentIconTitle && !index)}
 										/>
-										<Icon />
+
+										<IconComponent />
 									</label>
 								);
 							})}

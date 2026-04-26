@@ -2,7 +2,7 @@
 import getFromLocalStorage from './getFromLocalStorage';
 
 // types
-import { Settings } from '../types/common';
+import { Settings } from '../types/settings';
 
 /**
  * Retrieves application settings from localStorage.

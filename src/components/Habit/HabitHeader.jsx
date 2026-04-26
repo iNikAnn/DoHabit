@@ -50,7 +50,7 @@ function HabitHeader(props) {
 		try {
 			navigator?.vibrate(isCompleted ? [10, 10, 10, 10, 10] : 10);
 		} catch (e) {
-			console.error(e);
+			console.warn(e);
 		}
 
 		habitsDispatch({

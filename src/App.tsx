@@ -21,7 +21,7 @@ import useAchievementsCheck from './hooks/useAchievementsCheck';
 // db
 import dbModalRoutes from './db/dbModalRoutes';
 
-const PUBLIC_URL = process.env.PUBLIC_URL;
+const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
 
 function App() {
 
@@ -36,6 +36,7 @@ function App() {
 
 	return (
 		<main className="App">
+			{/* @ts-ignore */}
 			<AnimatePresence initial={false}>
 				<Routes location={location} key={location.pathname}>
 					<Route
