@@ -1,9 +1,23 @@
 import styles from '../css/Button.module.css';
 
+// react
+import { JSX } from 'react';
+
 // icons
 import { IoIosArrowForward } from "react-icons/io";
 
-function Button(props) {
+interface Props {
+	type: 'submit' | 'button';
+	icon: JSX.Element;
+	text: string;
+	arrow: boolean;
+	color: string;
+	bgColor: string;
+	disabled: boolean;
+	onClick: (...args: any) => void;
+}
+
+function Button(props: Props) {
 	const {
 		type, icon, text, arrow, color, bgColor, disabled, onClick
 	} = props;
