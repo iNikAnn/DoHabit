@@ -1,5 +1,8 @@
 import styles from '../css/HabitList.module.css';
 
+// components
+import Habit from "./Habit/Habit";
+
 // react
 import { useState } from 'react';
 
@@ -8,12 +11,6 @@ import { AnimatePresence } from 'framer-motion';
 
 // stores
 import { useColorsStore } from '../stores/colorsStore';
-
-// components
-import Habit from "./Habit/Habit";
-
-// db
-import dbIcons from '../db/dbIcons';
 
 function HabitList({ habits, isArchive = false }) {
 
@@ -30,7 +27,6 @@ function HabitList({ habits, isArchive = false }) {
 			<Habit
 				key={h.title}
 				{...{ ...h, index, isArchive }}
-				icon={dbIcons.find(([iconTitle]) => iconTitle === h.iconTitle)?.[1] ?? '?'}
 				color={dbColors[h.colorIndex]}
 				isMenuVisible={visibleMenuIndex === index}
 				onShowMenu={(i) => handleToggleMenu(i)}

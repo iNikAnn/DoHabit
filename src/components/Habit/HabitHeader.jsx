@@ -12,10 +12,11 @@ import ProgressBar from './ProgressBar';
 // icons
 import { FaCheck } from "react-icons/fa";
 import { MdOutlineSettingsBackupRestore } from "react-icons/md";
+import { HABIT_ICONS } from '../../db/dbIcons';
 
 function HabitHeader(props) {
 	const {
-		title, icon, frequency, diary, colorPalette,
+		title, iconTitle, frequency, diary, colorPalette,
 		isTodayCompleted, todayProgress, currentStreak,
 		isArchive,
 	} = props;
@@ -60,13 +61,15 @@ function HabitHeader(props) {
 		});
 	};
 
+	const Icon = HABIT_ICONS.find((icon) => icon.iconTitle === iconTitle).Icon ?? null;
+
 	return (
 		<div className={styles.header}>
 			<div
 				style={{ backgroundColor: darkenedColor, color: baseColor }}
 				className={styles.iconWrapper}
 			>
-				{icon}
+				{Icon ? <Icon /> : '??'}
 			</div>
 
 			<div className={styles.titleWrapper} >
