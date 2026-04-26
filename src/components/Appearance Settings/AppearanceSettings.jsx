@@ -10,8 +10,7 @@ import Switch from '../Selection/Switch';
 
 function AppearanceSettings() {
 
-	const settings = useSettingsStore((s) => s.settings);
-	const settingsDispatch = useSettingsStore((s) => s.settingsDispatch);
+	const { settings, settingsDispatch } = useSettingsStore();
 
 	return (
 		<section className={styles.appearance}>
@@ -23,7 +22,10 @@ function AppearanceSettings() {
 						<Switch
 							isActive={settings.isDarkSchemeForced}
 							onClick={() => settingsDispatch({
-								isDarkSchemeForced: !settings.isDarkSchemeForced
+								type: 'updateSettings',
+								payload: {
+									isDarkSchemeForced: !settings.isDarkSchemeForced
+								}
 							})}
 						/>
 					}
@@ -38,9 +40,12 @@ function AppearanceSettings() {
 						<Switch
 							isActive={settings.calendarView === 'compact'}
 							onClick={() => settingsDispatch({
-								calendarView: settings.calendarView === 'compact'
-									? 'default'
-									: 'compact'
+								type: 'updateSettings',
+								payload: {
+									calendarView: settings.calendarView === 'compact'
+										? 'default'
+										: 'compact'
+								}
 							})}
 						/>
 					}
@@ -55,7 +60,10 @@ function AppearanceSettings() {
 						<Switch
 							isActive={settings.calendarHighlightToday ?? true}
 							onClick={() => settingsDispatch({
-								calendarHighlightToday: !(settings.calendarHighlightToday ?? true)
+								type: 'updateSettings',
+								payload: {
+									calendarHighlightToday: !(settings.calendarHighlightToday ?? true)
+								}
 							})}
 						/>
 					}
