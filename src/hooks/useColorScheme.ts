@@ -1,7 +1,10 @@
-import { useLayoutEffect } from "react";
-import { useSettingsStore } from "../stores/settingsStore";
+import { useLayoutEffect } from 'react';
+import { useSettingsStore } from '../stores/settingsStore';
 
-function useColorScheme() {
+/**
+ * Sync root color scheme with settings.
+ */
+function useColorScheme(): void {
 	const settings = useSettingsStore((s) => s.settings);
 
 	useLayoutEffect(
