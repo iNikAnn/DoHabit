@@ -73,7 +73,6 @@ export interface ToggleYesterdayStatus {
 		isTodayCompleted: boolean;
 		isYesterdayCompleted: boolean;
 		todayProgress: number;
-		frequency: number;
 	};
 }
 

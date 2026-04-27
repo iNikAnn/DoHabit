@@ -7,13 +7,13 @@ import { JSX } from 'react';
 import { IoIosArrowForward } from "react-icons/io";
 
 interface Props {
-	type: 'submit' | 'button';
+	type?: 'submit' | 'button';
 	icon: JSX.Element;
 	text: string;
-	arrow: boolean;
-	color: string;
+	color?: string;
 	bgColor: string;
-	disabled: boolean;
+	arrow: boolean;
+	disabled?: boolean;
 	onClick: (...args: any) => void;
 }
 
