@@ -4,9 +4,17 @@ import styles from '../../css/ColorBlock.module.css';
 import { useColorsStore } from '../../stores/colorsStore';
 
 // icon
-import { FaCheck } from "react-icons/fa";
+import { FaCheck } from 'react-icons/fa';
 
-function ColorBlock({ habits, currentColorIndex }) {
+// types
+import { Habit } from '../../types/habit';
+
+interface Props {
+	habits: Habit[];
+	currentColorIndex: number;
+}
+
+function ColorBlock({ habits, currentColorIndex }: Props) {
 
 	const dbColors = useColorsStore((s) => s.colors);
 
@@ -22,8 +30,8 @@ function ColorBlock({ habits, currentColorIndex }) {
 				}}
 			>
 				<input
-					type="radio"
-					name="colorIndex"
+					type='radio'
+					name='colorIndex'
 					id={color}
 					value={index}
 					defaultChecked={index === Number(currentColorIndex) || !index}
