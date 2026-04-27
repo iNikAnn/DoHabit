@@ -60,11 +60,11 @@ function Modal() {
 			</motion.header>
 
 			<motion.div
-				id="modalChildrenWrapper"
+				id='modalChildrenWrapper'
 				ref={scope}
 				style={{ x }}
 				className={styles.childrenWrapper}
-				drag="x"
+				drag='x'
 				dragConstraints={{ left: 0, right: 0 }}
 				dragElastic={{ left: 0.1, right: 0.5 }}
 				onDragEnd={handleDragEnd}
