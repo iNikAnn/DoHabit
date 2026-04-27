@@ -34,9 +34,9 @@ function MainPage() {
 			{filteredHabits.length === 0 && (
 				<Placeholder
 					image={<Calendar />}
-					title="No active habits found"
-					desc="Why not create one now?"
-					textOnButton="Create First Habit"
+					title='No active habits found'
+					desc='Why not create one now?'
+					textOnButton='Create First Habit'
 					buttonIcon={<MdAddToPhotos />}
 					to={`${process.env.PUBLIC_URL}/modal/habitEditor`}
 					state={{ modalTitle: 'Create new habit' }}
