@@ -1,5 +1,8 @@
 import styles from '../css/Header.module.css';
 
+// react
+import { JSX } from 'react';
+
 // router
 import { Link } from 'react-router-dom';
 
@@ -10,7 +13,7 @@ import IconButton from './Actions/IconButton';
 import { FaPlus, FaBars, FaAward } from 'react-icons/fa';
 import { MdLibraryBooks } from 'react-icons/md';
 
-const publicUrl = process.env.PUBLIC_URL;
+const publicUrl = process.env.PUBLIC_URL ?? '/';
 
 function Header() {
 
@@ -21,9 +24,12 @@ function Header() {
 		['/modal/menu', 'Menu', <FaBars />]
 	].map(
 		([path, title, icon]) => (
-			<li key={path}>
+			<li key={path as string}>
 				<Link to={publicUrl + path} state={{ modalTitle: title }}>
-					<IconButton {...{ icon, title }} />
+					<IconButton
+						icon={icon as JSX.Element}
+						text={title as string}
+					/>
 				</Link>
 			</li>
 		)
