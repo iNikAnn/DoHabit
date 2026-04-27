@@ -1,23 +1,37 @@
+// constants
+import { MONTHS } from '../../constants';
+
+// types
+import { CompletedDay } from '../../types/habit';
+
 // utils
 import getCompletionCountPerMonth from '../../utils/getCompletionCountPerMonth';
 
 // chart js
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, } from "chart.js";
-import { Line } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, ChartOptions, ChartData, } from 'chart.js';
+
+// icons
+import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler);
 
-function MonthlyChart({ options, days, frequency, color }) {
-	const MONTHS = [
-		"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-	];
+interface Props {
+	options: ChartOptions<'line'>;
+	days: CompletedDay[];
+	frequency: number;
+	color: string;
+}
+
+function MonthlyChart({ options, days, frequency, color }: Props) {
 
 	const data = getCompletionCountPerMonth(days, frequency);
 
-	const config = {
+	const config: {
+		data: ChartData<'line'>,
+		options: ChartOptions<'line'>,
+	} = {
 		data: {
-			labels: MONTHS,
+			labels: [...MONTHS],
 			datasets: [{
 				label: 'MonthlyChart',
 				data,
