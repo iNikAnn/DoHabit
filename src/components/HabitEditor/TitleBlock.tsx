@@ -3,7 +3,13 @@ import styles from '../../css/TitleBlock.module.css';
 // react
 import { useEffect, useState } from 'react';
 
-function TitleBlock({ input, alreadyExist, onChange }) {
+interface Props {
+	input: string;
+	alreadyExist: boolean;
+	onChange: (value: string) => void;
+}
+
+function TitleBlock({ input, alreadyExist, onChange }: Props) {
 	// error message
 	const [errorMessage, setErrorMessage] = useState('');
 
@@ -15,7 +21,7 @@ function TitleBlock({ input, alreadyExist, onChange }) {
 			);
 		} else {
 			setErrorMessage('');
-		};
+		}
 
 		return () => setErrorMessage('');
 	}, [input, alreadyExist]);
@@ -32,11 +38,11 @@ function TitleBlock({ input, alreadyExist, onChange }) {
 				)}
 			</div>
 
-			<input type="text" name="title" id="title"
+			<input type='text' name='title' id='title'
 				className={`${styles.input} ${alreadyExist ? styles.alreadyExist : ''}`}
 				value={input}
 				onChange={(e) => onChange(e.target.value)}
-				placeholder="Enter habit title"
+				placeholder='Enter habit title'
 			/>
 		</section>
 	);
