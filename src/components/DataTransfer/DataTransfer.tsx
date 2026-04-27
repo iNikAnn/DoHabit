@@ -10,8 +10,8 @@ import importAllData from '../../utils/importAllData';
 // icons
 import { ReactComponent as Export } from '../../img/upload.svg'
 import { ReactComponent as Import } from '../../img/import.svg'
-import { BsDatabaseFillUp } from "react-icons/bs";
-import { BsDatabaseFillDown } from "react-icons/bs";
+import { BsDatabaseFillUp } from 'react-icons/bs';
+import { BsDatabaseFillDown } from 'react-icons/bs';
 
 function DataTransfer() {
 	return (
@@ -19,21 +19,21 @@ function DataTransfer() {
 			<div className={styles.placeholderWrapper}>
 				<Placeholder
 					image={<Export />}
-					title="Export"
-					desc="Save a backup of your habits data to your device."
-					textOnButton="Export Now"
+					title='Export'
+					desc='Save a backup of your habits data to your device.'
+					textOnButton='Export Now'
 					buttonIcon={<BsDatabaseFillUp />}
 					onClick={exportAllData}
-					accentColor="#57a639"
+					accentColor='#57a639'
 				/>
 			</div>
 
 			<div className={styles.placeholderWrapper}>
 				<Placeholder
 					image={<Import />}
-					title="Import"
-					desc="Upload your habits data from a backup file."
-					textOnButton="Import Now"
+					title='Import'
+					desc='Upload your habits data from a backup file.'
+					textOnButton='Import Now'
 					buttonIcon={<BsDatabaseFillDown />}
 					onClick={importAllData}
 				/>
