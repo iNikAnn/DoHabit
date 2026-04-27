@@ -1,5 +1,8 @@
 import styles from '../../css/HabitHeader.module.css';
 
+// db
+import { HABIT_ICONS } from '../../db/dbIcons';
+
 // react
 import { useRef } from 'react';
 
@@ -9,26 +12,42 @@ import { useHabitsStore } from '../../stores/habitsStore';
 // components
 import ProgressBar from './ProgressBar';
 
+// types
+import { Habit } from '../../types/habit';
+import { ColorPalette } from '../../types/colorScheme';
+
 // icons
 import { FaCheck } from "react-icons/fa";
 import { MdOutlineSettingsBackupRestore } from "react-icons/md";
-import { HABIT_ICONS } from '../../db/dbIcons';
 
-function HabitHeader(props) {
+interface Props {
+	habit: Habit;
+	colorPalette: ColorPalette;
+	isTodayCompleted: boolean;
+	todayProgress: number;
+	currentStreak: number;
+	isArchive: boolean;
+}
+
+function HabitHeader(props: Props) {
 	const {
-		title, iconTitle, frequency, diary, colorPalette,
-		isTodayCompleted, todayProgress, currentStreak,
+		habit,
+		colorPalette,
+		isTodayCompleted,
+		todayProgress,
+		currentStreak,
 		isArchive,
 	} = props;
 
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 	const { baseColor, darkenedColor } = colorPalette;
 
-	const progressPercentage = Math.floor((todayProgress / frequency) * 100);
-	const progressWrapperRef = useRef(null);
+	const progressPercentage = Math.floor((todayProgress / habit.frequency) * 100);
+	const progressWrapperRef = useRef<HTMLDivElement>(null);
 
-	const handleUpdateProgress = (e) => {
+	const handleUpdateProgress = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.stopPropagation();
+		if (!progressWrapperRef.current) return;
 
 		const el = progressWrapperRef.current;
 
@@ -37,7 +56,7 @@ function HabitHeader(props) {
 			return;
 		};
 
-		const isCompleted = frequency - todayProgress === 1;
+		const isCompleted = habit.frequency - todayProgress === 1;
 
 		el.classList.toggle(styles.completed, isCompleted);
 		el.classList.toggle(styles.uncompleted, !isCompleted);
@@ -56,12 +75,13 @@ function HabitHeader(props) {
 		habitsDispatch({
 			type: 'updateProgress',
 			payload: {
-				habitId: title
+				// TODO: Switch to ID once implemented
+				habitId: habit.title
 			}
 		});
 	};
 
-	const Icon = HABIT_ICONS.find((icon) => icon.iconTitle === iconTitle).Icon ?? null;
+	const Icon = HABIT_ICONS.find((icon) => icon.iconTitle === habit.iconTitle)?.Icon ?? null;
 
 	return (
 		<div className={styles.header}>
@@ -74,7 +94,7 @@ function HabitHeader(props) {
 
 			<div className={styles.titleWrapper} >
 				<h4 className={styles.title}>
-					{title}
+					{habit.title}
 				</h4>
 
 				<div className={styles.desc}>
@@ -82,9 +102,9 @@ function HabitHeader(props) {
 						Streak: <strong>{currentStreak}</strong>
 					</small>
 
-					{(diary?.length > 0) && (
+					{!!habit.diary?.length && (
 						<small>
-							Notes: <strong>{diary.length}</strong>
+							Notes: <strong>{habit.diary.length}</strong>
 						</small>
 					)}
 				</div>
@@ -95,15 +115,17 @@ function HabitHeader(props) {
 					ref={progressWrapperRef}
 					className={styles.progressWrapper}
 				>
-					{frequency > 1 && (
+					{habit.frequency > 1 && (
 						<ProgressBar
-							{...{ segmentCount: frequency, colorPalette, todayProgress }}
+							colorPalette={colorPalette}
+							segmentCount={habit.frequency}
+							todayProgress={todayProgress}
 						/>
 					)}
 
 					<button
 						style={{ backgroundColor: isTodayCompleted ? baseColor : darkenedColor }}
-						className={`${styles.progressBtn} ${frequency > 1 ? styles.multiFrequency : ''}`}
+						className={`${styles.progressBtn} ${habit.frequency > 1 ? styles.multiFrequency : ''}`}
 						onClick={handleUpdateProgress}
 					>
 						{progressPercentage === 100 ? (
@@ -123,7 +145,8 @@ function HabitHeader(props) {
 							habitsDispatch({
 								type: 'archiveHabit',
 								payload: {
-									habitId: title
+									// TODO: Switch to ID once implemented
+									habitId: habit.title
 								}
 							})
 						};
