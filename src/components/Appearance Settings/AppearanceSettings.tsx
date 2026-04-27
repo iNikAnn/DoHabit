@@ -20,7 +20,7 @@ function AppearanceSettings() {
 					desc={`Current: ${settings.isDarkSchemeForced ? 'Dark' : 'System'}`}
 					other={
 						<Switch
-							isActive={settings.isDarkSchemeForced}
+							isActive={!!settings.isDarkSchemeForced}
 							onClick={() => settingsDispatch({
 								type: 'updateSettings',
 								payload: {

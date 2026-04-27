@@ -11,7 +11,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { LuExternalLink } from "react-icons/lu";
 
 interface Props {
-	icon: JSX.Element;
+	icon?: JSX.Element;
 	iconColor?: string;
 	title: string;
 	desc: string;
