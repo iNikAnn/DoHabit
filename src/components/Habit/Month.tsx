@@ -3,17 +3,34 @@ import styles from '../../css/Month.module.css';
 // stores
 import { useSettingsStore } from '../../stores/settingsStore';
 
+// types
+import { ColorPalette } from '../../types/colorScheme';
+import { CompletedDay } from '../../types/habit';
+
 // utils
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
 
-function Month(props) {
+interface Props {
+	completedDays: CompletedDay[];
+	colorPalette: ColorPalette;
+	frequency: number;
+	date: Date;
+	visibleMonthsCount: number;
+	dayGap: string;
+	dayBorderRadius: string;
+	isDaySquare: boolean;
+}
+
+function Month(props: Props) {
 	const {
-		date,
-
+		completedDays,
 		colorPalette,
-		completedDays, frequency,
-
-		visibleMonthsCount, isDaySquare, dayGap, dayBorderRadius
+		frequency,
+		date,
+		visibleMonthsCount,
+		dayGap,
+		dayBorderRadius,
+		isDaySquare
 	} = props;
 
 	const settings = useSettingsStore((s) => s.settings);
