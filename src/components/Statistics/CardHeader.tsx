@@ -1,6 +1,14 @@
 import styles from '../../css/CardHeader.module.css';
+import { JSX } from 'react';
 
-function CardHeader({ title, desc, icon, iconColor }) {
+interface Props {
+	title: string;
+	desc?: string;
+	icon: JSX.Element | string;
+	iconColor?: string;
+}
+
+function CardHeader({ title, desc, icon, iconColor }: Props) {
 	return (
 		<div>
 			<div className={styles.top}>
