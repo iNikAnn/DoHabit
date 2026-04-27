@@ -63,11 +63,13 @@ function Achievements() {
 			<section>
 				<SectionHeader
 					title="Secret achievements"
-					btn="textButton"
-					btnText="Show info"
-					btnOnClick={() => openDialog({
-						text: 'Surprise! These achievements are like unicorns — rare and totally unexpected!\nUse the app regularly, and you might just unlock some hidden achievements along the way!'
-					})}
+					button={{
+						variant: 'text',
+						text: 'Show info',
+						onClick: () => openDialog({
+							text: 'Surprise! These achievements are like unicorns — rare and totally unexpected!\nUse the app regularly, and you might just unlock some hidden achievements along the way!'
+						})
+					}}
 				/>
 
 				{sortedSecretAchievements.length ? (
