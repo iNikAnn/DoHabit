@@ -3,19 +3,23 @@ import styles from '../../css/FrequencyBlock.module.css';
 // react
 import { useState } from 'react';
 
-function FrequencyBlock({ currentFrequency }) {
+interface Props {
+	currentFrequency: number;
+}
+
+function FrequencyBlock({ currentFrequency }: Props) {
 	const [frequency, setFrequency] = useState(currentFrequency || 1);
 	const maxFrequency = 6;
 
-	const handleClick = (dir) => {
+	const handleClick = (dir: 'decrease' | 'increase') => {
 		setFrequency((curr) => {
 			if (dir === 'decrease') {
 				return Math.max(1, curr - 1);
-			};
+			}
 
 			if (dir === 'increase') {
 				return Math.min(maxFrequency, curr + 1);
-			};
+			}
 
 			return curr;
 		});
