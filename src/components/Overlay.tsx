@@ -14,7 +14,11 @@ const variants = {
 	transition: { duration: .2 }
 };
 
-function Overlay({ onClick }) {
+interface Props {
+	onClick: (...args: any) => void;
+}
+
+function Overlay({ onClick }: Props) {
 
 	useEffect(
 		() => {
