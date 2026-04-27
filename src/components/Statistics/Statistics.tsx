@@ -13,27 +13,40 @@ import WeekdayChart from './WeekdayChart';
 import MonthlyChart from './MonthlyChart';
 import StreakHistory from './StreakHistory';
 
+// types
+import { CompletedDay } from '../../types/habit';
+import { ColorPalette } from '../../types/colorScheme';
+
 // utils
 import getStreaks from '../../utils/getStreaks';
 
 // icons
 import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag, FaBinoculars } from "react-icons/fa";
 
+interface LocationState {
+	completedDays: CompletedDay[];
+	colorPalette: ColorPalette;
+	frequency: number;
+}
+
 function Statistics() {
 
 	const location = useLocation();
+	const state = location.state as LocationState;
 
 	const {
-		completedDays, frequency, colorPalette
-	} = location.state;
+		completedDays = [],
+		frequency = 0,
+		colorPalette
+	} = state ?? {};
 
 	const { baseColor, darkenedColor } = colorPalette;
 
 	// --- Selected Year:START ---
 	const currYear = new Date().getFullYear();
 	const earliestYear = new Date(
-		completedDays[completedDays.length - 1]?.date
-	).getFullYear() || currYear;
+		completedDays.at(-1)?.date ?? String(currYear)
+	).getFullYear();
 
 	const [selectedYear, setSelectedYear] = useState(currYear);
 
