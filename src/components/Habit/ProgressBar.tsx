@@ -1,7 +1,23 @@
 import styles from '../../css/ProgressBar.module.css';
 
-function ProgressBar({ colorPalette, segmentCount, todayProgress }) {
-	const { baseColor, darkenedColor } = colorPalette;
+// types
+import { ColorPalette } from '../../types/colorScheme';
+
+interface Props {
+	colorPalette: ColorPalette;
+	segmentCount: number;
+	todayProgress: number;
+}
+
+function ProgressBar(props: Props) {
+	const {
+		colorPalette: {
+			baseColor,
+			darkenedColor
+		},
+		segmentCount,
+		todayProgress
+	} = props;
 
 	const segmentList = new Array(segmentCount)
 		.fill(null)
