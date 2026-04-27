@@ -1,10 +1,15 @@
 import styles from '../../css/Switch.module.css';
 
-function Switch({ isActive, onClick }) {
+interface Props {
+	isActive: boolean;
+	onClick: (...args: any) => void;
+}
+
+function Switch({ isActive, onClick }: Props) {
 	return (
 		<div
 			role='button'
-			type='button'
+			// type='button'
 			className={styles.switch}
 			onClick={onClick}
 		>
