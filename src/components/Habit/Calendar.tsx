@@ -3,15 +3,26 @@ import styles from '../../css/Calendar.module.css';
 // components
 import Month from './Month';
 
+// types
+import { CompletedDay } from '../../types/habit';
+import { ColorPalette } from '../../types/colorScheme';
+
 // utils
 import getMonthsCount from '../../utils/getMonthsCount';
 
-function Calendar(props) {
+interface Props {
+	completedDays: CompletedDay[];
+	colorPalette: ColorPalette;
+	frequency: number;
+}
+
+function Calendar(props: Props) {
 	const {
-		completedDays
+		completedDays,
+		colorPalette,
+		frequency
 	} = props;
 
-	// const startMonth = getStartMonth(completedDays);
 	const startMonth = new Date(completedDays[completedDays.length - 1]?.date || new Date());
 	// const endMonth = completedDays.length === 0 ? new Date() : new Date(completedDays[0]?.date);
 	const endMonth = new Date();
@@ -36,11 +47,14 @@ function Calendar(props) {
 		months.push(
 			<Month
 				key={index}
-				{...props}
-				{...{
-					date, visibleMonthsCount,
-					isDaySquare, dayGap, dayBorderRadius
-				}}
+				completedDays={completedDays}
+				colorPalette={colorPalette}
+				frequency={frequency}
+				date={date}
+				visibleMonthsCount={visibleMonthsCount}
+				dayGap={dayGap}
+				dayBorderRadius={dayBorderRadius}
+				isDaySquare={isDaySquare}
 			/>
 		);
 	};
