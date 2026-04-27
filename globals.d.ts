@@ -5,9 +5,14 @@ import React, { JSX } from 'react';
 declare global {
 	declare module '*.css';
 
+	declare module '*.json' {
+		const value: any;
+		export default value;
+	};
+
 	declare module '*.svg' {
 		export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
-	}
+	};
 }
 
 
