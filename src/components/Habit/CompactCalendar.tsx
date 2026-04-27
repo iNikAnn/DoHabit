@@ -3,10 +3,25 @@ import styles from '../../css/CompactCalendar.module.css';
 // stores
 import { useSettingsStore } from '../../stores/settingsStore';
 
+// types
+import { ColorPalette } from '../../types/colorScheme';
+import { CompletedDay } from '../../types/habit';
+
 // utils
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
 
-function CompactCalendar({ colorPalette, completedDays, frequency }) {
+interface Props {
+	completedDays: CompletedDay[];
+	colorPalette: ColorPalette;
+	frequency: number;
+}
+
+function CompactCalendar(props: Props) {
+	const {
+		completedDays,
+		colorPalette,
+		frequency
+	} = props;
 
 	const settings = useSettingsStore((s) => s.settings);
 	const highlightToday = settings.calendarHighlightToday ?? true;
@@ -23,15 +38,15 @@ function CompactCalendar({ colorPalette, completedDays, frequency }) {
 	const checkedDates = checkHabitCompletion(completedDays, frequency, ...dates);
 
 	const weeks = checkedDates
-		.reduce(
+		.reduce<[boolean][]>(
 			(acc, curr, i) => {
-				const isSunday = dates[i].getDay() === 0;
+				const isSunday = dates[i]?.getDay() === 0;
 
 				if (isSunday) {
 					acc.push([curr]);
 				} else {
-					acc.length === 0 ? acc.push([curr]) : acc[acc.length - 1].unshift(curr);
-				};
+					acc.length === 0 ? acc.push([curr]) : acc[acc.length - 1]?.unshift(curr);
+				}
 
 				return acc;
 			},
@@ -47,7 +62,6 @@ function CompactCalendar({ colorPalette, completedDays, frequency }) {
 			{weeks.map((w, weekIndex) => (
 				<div key={weekIndex} className={styles.week}>
 					{w.map((isCompleted, dayIndex) => {
-
 						const isToday = weekIndex === weeks.length - 1 && dayIndex === w.length - 1;
 
 						return (
