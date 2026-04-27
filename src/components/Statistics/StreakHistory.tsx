@@ -3,7 +3,16 @@ import styles from '../../css/StreakHistory.module.css';
 // react
 import { useState } from 'react';
 
-function StreakHistory({ streaks, colorPalette }) {
+// types
+import { Streak } from '../../types/common';
+import { ColorPalette } from '../../types/colorScheme';
+
+interface Props {
+	streaks: Streak[];
+	colorPalette: ColorPalette;
+}
+
+function StreakHistory({ streaks, colorPalette }: Props) {
 
 	const { darkenedColor } = colorPalette;
 	const [listLength, setListLength] = useState(5);

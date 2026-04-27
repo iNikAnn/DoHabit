@@ -21,7 +21,8 @@ import { ColorPalette } from '../../types/colorScheme';
 import getStreaks from '../../utils/getStreaks';
 
 // icons
-import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag, FaBinoculars } from "react-icons/fa";
+import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag, FaBinoculars } from 'react-icons/fa';
+import { ChartOptions } from 'chart.js';
 
 interface LocationState {
 	completedDays: CompletedDay[];
@@ -68,7 +69,7 @@ function Statistics() {
 		((currentStreak - longestStreak) / (longestStreak || 1)) * 100
 	);
 
-	const chartOptions = {
+	const chartOptions: ChartOptions<'bar' | 'line'> = {
 		scales: {
 			x: {
 				grid: { color: darkenedColor, lineWidth: 0.4 },
@@ -85,14 +86,16 @@ function Statistics() {
 	return (
 		<div className={styles.statistics}>
 			<YearPicker
-				{...{ earliestYear, currYear, selectedYear }}
-				increase={handleIncreaseYear}
-				decrease={handleDecreaseYear}
+				earliestYear={earliestYear}
+				currYear={currYear}
+				selectedYear={selectedYear}
+				onIncrease={handleIncreaseYear}
+				onDecrease={handleDecreaseYear}
 			/>
 
 			<div style={{ display: 'flex', gap: '1rem' }}>
 				<Card
-					title="Current"
+					title='Current'
 					icon={percentageDifference + '%'}
 					accentColor={percentageDifference < 0 ? 'IndianRed' : '#57a639'}
 					contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
@@ -101,7 +104,7 @@ function Statistics() {
 				</Card>
 
 				<Card
-					title="Longest"
+					title='Longest'
 					icon={<FaAward style={{ color: baseColor }} />}
 					contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
 				>
@@ -110,19 +113,19 @@ function Statistics() {
 			</div>
 
 			<Card
-				title="Completions / Weekday"
+				title='Completions / Weekday'
 				icon={<FaCalendarWeek style={{ color: baseColor }} />}
 			>
 				<WeekdayChart
-					{...{ color: baseColor }}
 					days={selectedDays}
 					frequency={frequency}
 					options={chartOptions}
+					color={baseColor}
 				/>
 			</Card>
 
 			<Card
-				title="Total Completed"
+				title='Total Completed'
 				icon={<FaHashtag style={{ color: baseColor }} />}
 				contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
 			>
@@ -130,25 +133,26 @@ function Statistics() {
 			</Card>
 
 			<Card
-				title="Completions / Month"
+				title='Completions / Month'
 				icon={<FaCalendarAlt style={{ color: baseColor }} />}
 			>
 				<MonthlyChart
-					{...{ color: baseColor }}
 					days={selectedDays}
 					frequency={frequency}
 					options={chartOptions}
+					color={baseColor}
 				/>
 			</Card>
 
 			{filteredStreaks.length > 0 && (
 				<Card
-					title="Streak History"
-					desc="Shows streaks of 2 days or more."
+					title='Streak History'
+					desc='Shows streaks of 2 days or more.'
 					icon={<FaBinoculars style={{ color: baseColor }} />}
 				>
 					<StreakHistory
-						{...{ colorPalette, streaks: filteredStreaks }}
+						streaks={filteredStreaks}
+						colorPalette={colorPalette}
 					/>
 				</Card>
 			)}
