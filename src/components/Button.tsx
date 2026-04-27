@@ -11,10 +11,10 @@ interface Props {
 	icon: JSX.Element;
 	text: string;
 	color?: string;
-	bgColor: string;
-	arrow: boolean;
+	bgColor?: string;
+	arrow?: boolean;
 	disabled?: boolean;
-	onClick: (...args: any) => void;
+	onClick?: (...args: any) => void;
 }
 
 function Button(props: Props) {

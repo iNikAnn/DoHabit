@@ -1,12 +1,28 @@
 import styles from '../css/Placeholder.module.css';
 
+// react
+import { CSSProperties, JSX } from 'react';
+
 // router
 import { Link } from 'react-router-dom';
 
 // componets
 import Button from './Button';
 
-function Placeholder(props) {
+interface Props {
+	style?: CSSProperties;
+	image: JSX.Element;
+	title: string;
+	desc: string;
+	textOnButton?: string;
+	buttonIcon: JSX.Element;
+	to: string;
+	state: { modalTitle: string };
+	accentColor?: string;
+	onClick?: (...args: any) => void;
+}
+
+function Placeholder(props: Props) {
 	const {
 		style,
 		image, title, desc,

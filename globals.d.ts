@@ -4,7 +4,12 @@ import React, { JSX } from 'react';
 
 declare global {
 	declare module '*.css';
+
+	declare module '*.svg' {
+		export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
+	}
 }
+
 
 declare module 'react-icons' {
 	interface IconProps extends React.SVGAttributes<SVGAElement> {
