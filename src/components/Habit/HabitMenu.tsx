@@ -1,16 +1,23 @@
 import styles from '../../css/HabitMenu.module.css';
 
+// components
+import Button from '../Button';
+
+// react
+import { JSX } from 'react';
+
 // router
 import { Link } from 'react-router-dom';
 
 // framer
-import { motion } from 'framer-motion'
+import { motion, PanInfo } from 'framer-motion'
 
 // stores
 import { useHabitsStore } from '../../stores/habitsStore';
 
-// components
-import Button from '../Button';
+// types
+import { Habit } from '../../types/habit';
+import { ColorPalette } from '../../types/colorScheme';
 
 // icons
 import { MdEditSquare } from 'react-icons/md'; // edit
@@ -36,17 +43,33 @@ const contentVariants = {
 };
 // --- Variants:END ---
 
-function HabitMenu(props) {
+interface Props {
+	habit: Habit;
+	colorPalette: ColorPalette;
+	isTodayCompleted: boolean;
+	isYesterdayCompleted: boolean;
+	todayProgress: number;
+	currentStreak: number;
+	onShowMenu: (i: number) => void;
+	onShare: () => void;
+}
+
+function HabitMenu(props: Props) {
 	const {
-		title, completedDays, colorIndex, colorPalette,
-		isTodayCompleted, isYesterdayCompleted, todayProgress, frequency, currentStreak,
-		onShowMenu, onShare
+		habit,
+		colorPalette,
+		isTodayCompleted,
+		isYesterdayCompleted,
+		todayProgress,
+		currentStreak,
+		onShowMenu,
+		onShare
 	} = props;
 
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 	const { darkenedColor } = colorPalette;
 
-	const handleDragEnd = (_, info) => {
+	const handleDragEnd = (_: any, info: PanInfo) => {
 		if (info.offset.y >= 100) {
 			onShowMenu(-1);
 			navigator.vibrate?.(10);
@@ -57,7 +80,7 @@ function HabitMenu(props) {
 		habitsDispatch({
 			type: 'toggleYesterdayStatus',
 			payload: {
-				habitId: title,
+				habitId: habit.title,
 				isTodayCompleted,
 				isYesterdayCompleted,
 				todayProgress
@@ -78,7 +101,7 @@ function HabitMenu(props) {
 		darkenedColor,
 		'/modal/habitEditor',
 		{
-			habitTitle: title,
+			habitTitle: habit.title,
 			modalTitle: 'Edit habit',
 		},
 		null,
@@ -96,11 +119,11 @@ function HabitMenu(props) {
 		darkenedColor,
 		'/modal/statistics',
 		{
-			completedDays,
+			completedDays: habit.completedDays,
 			colorPalette,
-			colorIndex,
-			frequency,
-			modalTitle: title,
+			colorIndex: habit.colorIndex,
+			frequency: habit.frequency,
+			modalTitle: habit.title,
 		},
 		null,
 		true
@@ -111,17 +134,26 @@ function HabitMenu(props) {
 		'/modal/diary',
 		{
 			currentStreak,
-			habitTitle: title,
-			colorIndex: colorIndex,
-			modalTitle: title,
+			habitTitle: habit.title,
+			colorIndex: habit.colorIndex,
+			modalTitle: habit.title,
 		},
 		null,
 		true
 	]].map(
 		([icon, text, bgColor, to, state, onClick, arrow]) => (
-			<li key={text}>
-				<Link to={to ? (process.env.PUBLIC_URL + to) : null} state={state}>
-					<Button {...{ icon, text, bgColor, onClick, arrow }} />
+			<li key={text as string}>
+				<Link
+					to={to ? (process.env.PUBLIC_URL as string + to) : '/'}
+					state={state}
+				>
+					<Button
+						icon={icon as JSX.Element}
+						text={text as string}
+						bgColor={bgColor as string}
+						arrow={arrow as boolean}
+						onClick={onClick as () => void}
+					/>
 				</Link>
 			</li>
 		)
@@ -145,7 +177,7 @@ function HabitMenu(props) {
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className={styles.handle} />
-				<h3 className={styles.title}>{title}</h3>
+				<h3 className={styles.title}>{habit.title}</h3>
 
 				<ul
 					className={styles.list}
