@@ -4,14 +4,22 @@ import styles from '../../css/YearPicker.module.css';
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 
-function YearPicker({ earliestYear, currYear, selectedYear, increase, decrease }) {
+interface Props {
+	earliestYear: number;
+	currYear: number;
+	selectedYear: number;
+	onIncrease: () => void;
+	onDecrease: () => void;
+}
+
+function YearPicker({ earliestYear, currYear, selectedYear, onIncrease, onDecrease }: Props) {
 	return (
 		<div className={styles.yearPicker}>
 			<button
 				className={styles.btn}
 				disabled={earliestYear >= selectedYear}
 			>
-				<FaMinus onClick={decrease} />
+				<FaMinus onClick={onDecrease} />
 			</button>
 
 			<h2>{selectedYear}</h2>
@@ -20,7 +28,7 @@ function YearPicker({ earliestYear, currYear, selectedYear, increase, decrease }
 				className={styles.btn}
 				disabled={selectedYear === currYear}
 			>
-				<FaPlus onClick={increase} />
+				<FaPlus onClick={onIncrease} />
 			</button>
 		</div>
 	);
