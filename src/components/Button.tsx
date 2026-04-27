@@ -8,7 +8,7 @@ import { IoIosArrowForward } from "react-icons/io";
 
 interface Props {
 	type?: 'submit' | 'button';
-	icon: JSX.Element;
+	icon?: JSX.Element;
 	text: string;
 	color?: string;
 	bgColor?: string;

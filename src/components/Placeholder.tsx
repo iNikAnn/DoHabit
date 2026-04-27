@@ -15,9 +15,9 @@ interface Props {
 	title: string;
 	desc: string;
 	textOnButton?: string;
-	buttonIcon: JSX.Element;
-	to: string;
-	state: { modalTitle: string };
+	buttonIcon?: JSX.Element;
+	to?: string;
+	state?: { modalTitle: string };
 	accentColor?: string;
 	onClick?: (...args: any) => void;
 }
@@ -41,7 +41,7 @@ function Placeholder(props: Props) {
 				</span>
 			</div>
 
-			{textOnButton && (
+			{(textOnButton && to) && (
 				<Link to={to} state={state}>
 					<Button
 						icon={buttonIcon}
