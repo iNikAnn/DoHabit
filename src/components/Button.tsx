@@ -9,7 +9,7 @@ import { IoIosArrowForward } from "react-icons/io";
 interface Props {
 	type?: 'submit' | 'button';
 	icon?: JSX.Element;
-	text: string;
+	text?: string;
 	color?: string;
 	bgColor?: string;
 	arrow?: boolean;
