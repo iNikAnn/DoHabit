@@ -1,39 +1,44 @@
 import styles from '../../css/Note.module.css';
 
-// react
-import { useLayoutEffect, useRef, useState } from 'react';
-
 // framer
 import { motion } from 'framer-motion';
+
+// hooks
+import { useLayoutEffect, useRef, useState } from 'react';
+import useIsInitialRender from '../../hooks/useIsInitialRender';
+
+// types
+import { Note } from '../../types/diary';
 
 // utils
 import getListAnimationVariants from '../../utils/getListAnimationVariants';
 import getTruncatedText from '../../utils/getTruncatedText';
+import getFormattedDate from '../../utils/getFormattedDate';
 
-function Note({ text, date, streak, onStartEditNote, onDeleteNote }) {
+interface Props {
+	note: Note;
+	onStartEditNote: (noteCreationDate: string, currentText: string) => void;
+	onDeleteNote: (noteCreationDate: string) => void;
+}
 
-	const dateStr = new Date(date).toLocaleDateString();
-	const timeStr = new Date(date).toLocaleTimeString(
-		'en-GB',
-		{ hour: '2-digit', minute: '2-digit' }
-	);
+function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
 
-	const isFirstRender = useRef(true);
-	const textRef = useRef(null);
-	const [displayText, setDisplayText] = useState(text);
+	const dateTimeStr = getFormattedDate(new Date(note.date), { includeTime: true });
+	const isFirstRender = useIsInitialRender();
+	const textRef = useRef<HTMLDivElement>(null);
+	const [displayText, setDisplayText] = useState(note.text);
 
 	useLayoutEffect(
 		() => {
-			let currText = text;
+			let currText = note.text;
 
-			if (isFirstRender.current) {
+			if (isFirstRender && textRef.current) {
 				currText = getTruncatedText(textRef.current, currText);
-				isFirstRender.current = false;
-			};
+			}
 
 			setDisplayText(currText);
 		},
-		[text]
+		[isFirstRender, note.text]
 	);
 
 	const noteVariants = getListAnimationVariants(0.3);
@@ -53,20 +58,19 @@ function Note({ text, date, streak, onStartEditNote, onDeleteNote }) {
 
 			<div className={styles.desc}>
 				<div className={styles.date}>
-					<small>{dateStr}</small>
-					<small>{timeStr}</small>
+					<small>{dateTimeStr}</small>
 
-					{streak > 0 && (
-						<small>{'Streak: ' + streak}</small>
+					{!!note.streak && (
+						<small>{'Streak: ' + note.streak}</small>
 					)}
 				</div>
 
 				<div className={styles.actions}>
-					{displayText !== text && (
+					{displayText !== note.text && (
 						<button
 							style={{ color: 'dodgerblue' }}
 							className={styles.actionBtn}
-							onClick={() => setDisplayText(text)}
+							onClick={() => setDisplayText(note.text)}
 						>
 							Expand
 						</button>
@@ -74,7 +78,7 @@ function Note({ text, date, streak, onStartEditNote, onDeleteNote }) {
 
 					<button
 						className={styles.actionBtn}
-						onClick={() => onStartEditNote(date, text)}
+						onClick={() => onStartEditNote(note.date, note.text)}
 					>
 						{/* <MdEditSquare /> */}
 						Edit
@@ -82,7 +86,7 @@ function Note({ text, date, streak, onStartEditNote, onDeleteNote }) {
 
 					<button
 						className={styles.actionBtn}
-						onClick={() => onDeleteNote(date)}
+						onClick={() => onDeleteNote(note.date)}
 					>
 						{/* <MdDeleteForever /> */}
 						Delete
@@ -93,4 +97,4 @@ function Note({ text, date, streak, onStartEditNote, onDeleteNote }) {
 	);
 }
 
-export default Note;
+export default NoteCard;
