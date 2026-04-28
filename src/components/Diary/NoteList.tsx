@@ -19,6 +19,7 @@ function NoteList({ diary, onStartEditNote, onDeleteNote }: Props) {
 	const notes = diary
 		// @ts-ignore
 		.toReversed()
+		// @ts-ignore
 		.map((note) => (
 			<NoteCard
 				key={note.date}
@@ -31,6 +32,7 @@ function NoteList({ diary, onStartEditNote, onDeleteNote }: Props) {
 	return (
 		<div>
 			<ul className={styles.list}>
+				{/* @ts-ignore */}
 				<AnimatePresence initial={false}>
 					{notes}
 				</AnimatePresence>

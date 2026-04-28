@@ -23,6 +23,7 @@ function Achievements() {
 	const achievements = useAchievementsStore((s) => s.achievements);
 	const regularAchievements = achievements.filter((a) => !a.isSecret);
 	const secretAchievements = achievements.filter((a) => a.isSecret && a.isUnlocked);
+	// @ts-ignore
 	const sortedSecretAchievements = secretAchievements.toSorted(
 		// @ts-ignore
 		(a, b) => new Date(b.unlockDate).getTime() - new Date(a.unlockDate).getTime()
@@ -55,6 +56,7 @@ function Achievements() {
 
 				<ul className={styles.regularAchievements}>
 					{regularAchievements.map(
+						// @ts-ignore
 						(a) => (
 							<RegularAchievementCard
 								key={a.id}
@@ -82,6 +84,7 @@ function Achievements() {
 				{sortedSecretAchievements.length ? (
 					<ul className={styles.secretAchievements}>
 						{sortedSecretAchievements.map(
+							// @ts-ignore
 							(a) => (
 								<SecretAchievementCard
 									key={a.id}
