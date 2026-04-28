@@ -11,7 +11,7 @@ import Button from './Button';
 
 interface Props {
 	style?: CSSProperties;
-	image: JSX.Element;
+	image?: JSX.Element;
 	title: string;
 	desc: string;
 	textOnButton?: string;

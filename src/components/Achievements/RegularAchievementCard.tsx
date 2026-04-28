@@ -1,6 +1,13 @@
 import styles from '../../css/RegularAchievementCard.module.css';
+import { Achievement } from '../../types/achievement';
 
-function RegularAchievementCard({ achievement, imgSrc, onClick }) {
+interface Props {
+	achievement: Achievement;
+	imgSrc: string;
+	onClick: () => void;
+}
+
+function RegularAchievementCard({ achievement, imgSrc, onClick }: Props) {
 	return (
 		<li
 			className={`${styles.card} ${achievement.isUnlocked ? styles.unlocked : ''}`}
