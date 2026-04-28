@@ -10,7 +10,11 @@ import Placeholder from '../Placeholder';
 import RegularAchievementCard from './RegularAchievementCard';
 import SecretAchievementCard from './SecretAchievementCard';
 
-const publicUrl = process.env.PUBLIC_URL;
+// types
+import { Achievement } from '../../types/achievement';
+
+// @ts-ignore
+const publicUrl = process.env.PUBLIC_URL ?? '/';
 
 function Achievements() {
 
@@ -20,11 +24,12 @@ function Achievements() {
 	const regularAchievements = achievements.filter((a) => !a.isSecret);
 	const secretAchievements = achievements.filter((a) => a.isSecret && a.isUnlocked);
 	const sortedSecretAchievements = secretAchievements.toSorted(
-		(a, b) => new Date(b.unlockDate) - new Date(a.unlockDate)
+		// @ts-ignore
+		(a, b) => new Date(b.unlockDate).getTime() - new Date(a.unlockDate).getTime()
 	);
 
-	const handleShowDetails = (a) => {
-		if (!a.isUnlocked) return;
+	const handleShowDetails = (a: Achievement) => {
+		if (!a.isUnlocked || !a.unlockDate) return;
 
 		openDialog({
 			title: a.title,
@@ -38,12 +43,14 @@ function Achievements() {
 		<div className={styles.achievements}>
 			<section>
 				<SectionHeader
-					title="Streaks"
-					btn="textButton"
-					btnText="Show info"
-					btnOnClick={() => openDialog({
-						text: 'To unlock an achievement, complete a streak of the required number of days in any of your habits.'
-					})}
+					title='Streaks'
+					button={{
+						variant: 'text',
+						text: 'Show info',
+						onClick: () => openDialog({
+							text: 'To unlock an achievement, complete a streak of the required number of days in any of your habits.'
+						})
+					}}
 				/>
 
 				<ul className={styles.regularAchievements}>
@@ -62,7 +69,7 @@ function Achievements() {
 
 			<section>
 				<SectionHeader
-					title="Secret achievements"
+					title='Secret achievements'
 					button={{
 						variant: 'text',
 						text: 'Show info',
@@ -87,8 +94,8 @@ function Achievements() {
 					</ul>
 				) : (
 					<Placeholder
-						title="No secret achievements unlocked"
-						desc="Try exploring or playing to discover hidden achievements!"
+						title='No secret achievements unlocked'
+						desc='Try exploring or playing to discover hidden achievements!'
 					/>
 				)}
 			</section>
