@@ -1,5 +1,5 @@
 export interface DialogContent {
-	title: string;
+	title?: string;
 	subTitle?: string;
 	imgSrc?: string;
 	text?: string;

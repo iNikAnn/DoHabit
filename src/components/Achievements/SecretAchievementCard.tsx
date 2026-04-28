@@ -1,6 +1,15 @@
 import styles from '../../css/SecretAchievementCard.module.css';
 
-function SecretAchievementCard({ achievement, imgSrc, onClick }) {
+// types
+import { Achievement } from '../../types/achievement';
+
+interface Props {
+	achievement: Achievement;
+	imgSrc: string;
+	onClick: () => void;
+}
+
+function SecretAchievementCard({ achievement, imgSrc, onClick }: Props) {
 	return (
 		<li
 			className={styles.card}
