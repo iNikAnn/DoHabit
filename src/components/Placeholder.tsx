@@ -4,7 +4,7 @@ import styles from '../css/Placeholder.module.css';
 import { CSSProperties, JSX } from 'react';
 
 // router
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // componets
 import Button from './Button';
@@ -23,6 +23,8 @@ interface Props {
 }
 
 function Placeholder(props: Props) {
+	const location = useLocation();
+
 	const {
 		style,
 		image, title, desc,
@@ -41,8 +43,8 @@ function Placeholder(props: Props) {
 				</span>
 			</div>
 
-			{(textOnButton && to) && (
-				<Link to={to} state={state}>
+			{textOnButton && (
+				<Link to={to ?? location.pathname} state={state}>
 					<Button
 						icon={buttonIcon}
 						text={textOnButton}
