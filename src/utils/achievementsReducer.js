@@ -9,24 +9,23 @@ import removeIncompleteFirstDay from './removeIncompleteFirstDay';
 
 const todayDateStr = getFormattedDate(new Date());
 
-function achievementsReducer(achievements, actions) {
+function achievementsReducer(achievements, context) {
+	const { habits, mainDiary, onUnlock, isInitialRender } = context;
 
-	const { habits, mainDiary, onOpenDialog, isInitialRender } = actions;
-
-	const handleUnlockAchievement = (achievement) => {
-		achievement.isUnlocked = true;
-		achievement.unlockDate = new Date();
+	const handleUnlockAchievement = (ach) => {
+		ach.isUnlocked = true;
+		ach.unlockDate = new Date();
 
 		if (isInitialRender) {
-			onOpenDialog({
+			onUnlock({
 				title: 'Achievement Unlocked!',
 				text: 'It seems that new achievements have been unlocked!\nYou can check them in the achievements section.'
 			});
 		} else {
-			onOpenDialog({
+			onUnlock({
 				title: 'Achievement Unlocked!',
-				imgSrc: `${process.env.PUBLIC_URL}/img/achievements/${achievement.id}.svg`,
-				text: `"${achievement.title}"\n${achievement.desc}`
+				imgSrc: `${process.env.PUBLIC_URL}/img/achievements/${ach.id}.svg`,
+				text: `"${ach.title}"\n${ach.desc}`
 			});
 		};
 	};
@@ -96,7 +95,8 @@ function achievementsReducer(achievements, actions) {
 							const month = creationDate.getMonth();
 
 							if (day === 1 && month === 0) {
-								return checkHabitCompletion(h.completedDays, h.frequency, creationDate);
+								const [res] = checkHabitCompletion(h.completedDays, h.frequency, creationDate);
+								return res;
 							};
 
 							return false;
