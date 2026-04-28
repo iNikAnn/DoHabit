@@ -2,13 +2,13 @@ import styles from '../../css/OrderBlock.module.css';
 
 interface Props {
 	habitsCount: number;
-	currOrder: number;
-	setCurrOrder: React.Dispatch<React.SetStateAction<number>>;
+	currentOrder: number;
+	setCurrentOrder: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function OrderBlock({ habitsCount, currOrder, setCurrOrder }: Props) {
+function OrderBlock({ habitsCount, currentOrder, setCurrentOrder }: Props) {
 	const handleChangeOrder = (dir: 'top' | 'bottom' | 'up' | 'down') => {
-		setCurrOrder((order) => {
+		setCurrentOrder((order) => {
 			switch (dir) {
 				case 'bottom':
 					return habitsCount;
@@ -41,7 +41,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }: Props) {
 						type='number'
 						name='order'
 						id='order'
-						value={currOrder}
+						value={currentOrder}
 						tabIndex={-1}
 						readOnly
 					/>
@@ -50,7 +50,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }: Props) {
 						className={styles.btn}
 						type='button'
 						onClick={() => handleChangeOrder('down')}
-						disabled={currOrder === habitsCount}
+						disabled={currentOrder === habitsCount}
 					>
 						Step Down
 					</button>
@@ -59,7 +59,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }: Props) {
 						className={styles.btn}
 						type='button'
 						onClick={() => handleChangeOrder('up')}
-						disabled={currOrder === 1}
+						disabled={currentOrder === 1}
 					>
 						Step Up
 					</button>
@@ -70,18 +70,18 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }: Props) {
 						className='text-button'
 						type='button'
 						onClick={() => handleChangeOrder('bottom')}
-						disabled={currOrder === habitsCount}
+						disabled={currentOrder === habitsCount}
 					>
-						{currOrder === habitsCount ? 'Already at' : 'Move to'} Bottom
+						{currentOrder === habitsCount ? 'Already at' : 'Move to'} Bottom
 					</button>
 
 					<button
 						className='text-button'
 						type='button'
 						onClick={() => handleChangeOrder('top')}
-						disabled={currOrder === 1}
+						disabled={currentOrder === 1}
 					>
-						{currOrder === 1 ? 'Already at' : 'Move to'} Top
+						{currentOrder === 1 ? 'Already at' : 'Move to'} Top
 					</button>
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 import styles from '../../css/HabitEditor.module.css';
 
 // react
-import { useEffect, useState } from 'react';
+import { KeyboardEventHandler, SubmitEventHandler, useEffect, useState } from 'react';
 
 // router
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -17,14 +17,17 @@ import ColorBlock from './ColorBlock';
 import IconBlock from './IconBlock';
 import Button from '../Button';
 
+// types
+import { HabitAction, HabitData } from '../../types/habit';
+
 // utils
 import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
+import scrollToTop from '../../utils/scrollToTop';
 
 // icons
 import { MdAddToPhotos } from 'react-icons/md';
 import { MdDeleteForever } from 'react-icons/md';
 import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
-import scrollToTop from '../../utils/scrollToTop';
 
 function HabitEditor() {
 
@@ -37,9 +40,9 @@ function HabitEditor() {
 	const habitTitle = location.state?.habitTitle;
 	const isEditMode = Boolean(habitTitle);
 	const filteredHabits = isEditMode ? habits.filter((h) => !h.isArchived) : [];
-	const habit = isEditMode ? habits.find((habit) => habit.title === habitTitle) : null;
+	const habit = isEditMode ? habits.find((habit) => habit.title === habitTitle) : undefined;
 
-	const [inputTitle, setInputTitle] = useState(isEditMode ? habit?.title : '');
+	const [inputTitle, setInputTitle] = useState<string>(isEditMode ? (habit?.title ?? '') : '');
 	const [alreadyExist, setAlreadyExist] = useState(false);
 
 	// check for existing habit with the same title
@@ -51,16 +54,19 @@ function HabitEditor() {
 	}, [habit, habits, inputTitle]);
 
 	// action object
-	const actionObj = {
-		habitId: habit?.title
+	const payload = {
+		habitId: habit?.title ?? ''
 	};
 
 	// on submit form
-	const handleSabmitForm = (e) => {
+	const handleSabmitForm: SubmitEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
 
+		const formData = new FormData(e.target);
+		const data = Object.fromEntries(formData.entries()) as unknown as HabitData;
+
 		inputTitle.length
-			? handleUpdate({ type: isEditMode ? 'editHabit' : 'addHabit', payload: { ...actionObj, data: e.target } })
+			? handleUpdate({ type: isEditMode ? 'editHabit' : 'addHabit', payload: { ...payload, data } })
 			: setAlreadyExist(true);
 
 		if (!isEditMode) {
@@ -68,22 +74,25 @@ function HabitEditor() {
 		}
 	};
 
-	const handleUpdate = (props) => {
-		habitsDispatch(props);
+	const handleUpdate = (action: HabitAction) => {
+		habitsDispatch(action);
 		navigate(-1);
 	};
 
 	// prevents form submission on Enter key press and hides the virtual keyboard
-	const handlePressEnter = (e) => {
+	const handlePressEnter: KeyboardEventHandler<HTMLFormElement> = (e) => {
 		if (e.key === 'Enter') {
 			e.preventDefault();
-			e.target.blur();
-		};
+
+			if (e.target) {
+				(e.target as HTMLElement)?.blur();
+			}
+		}
 	};
 
 	// order
-	const [currOrder, setCurrOrder] = useState(() => (
-		isEditMode ? filteredHabits.indexOf(habit) + 1 : -1
+	const [currentOrder, setCurrentOrder] = useState(() => (
+		habit ? filteredHabits.indexOf(habit) + 1 : -1
 	));
 
 	return (
@@ -94,29 +103,31 @@ function HabitEditor() {
 				onKeyDown={handlePressEnter}
 			>
 				<TitleBlock
-					input={inputTitle}
-					onChange={(newTitle) => setInputTitle(newTitle)}
+					input={inputTitle ?? ''}
+					onChange={setInputTitle}
 					alreadyExist={alreadyExist}
 				/>
 
 				<FrequencyBlock
-					{...{ currentFrequency: habit?.frequency }}
+					currentFrequency={habit?.frequency}
 				/>
 
 				{isEditMode && (
 					<OrderBlock
 						habitsCount={filteredHabits.length}
-						currOrder={currOrder}
-						setCurrOrder={setCurrOrder}
+						currentOrder={currentOrder}
+						setCurrentOrder={setCurrentOrder}
 					/>
 				)}
 
 				<ColorBlock
-					{...{ habits, currentColorIndex: habit?.colorIndex }}
+					habits={habits}
+					currentColorIndex={habit?.colorIndex}
 				/>
 
 				<IconBlock
-					{...{ habits, currentIconTitle: habit?.iconTitle }}
+					habits={habits}
+					currentIconTitle={habit?.iconTitle}
 				/>
 
 				<small
@@ -139,7 +150,7 @@ function HabitEditor() {
 									const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 
 									if (window.confirm(msg)) {
-										handleUpdate({ type: 'deleteHabit', payload: { ...actionObj } });
+										handleUpdate({ type: 'deleteHabit', payload: { ...payload } });
 									}
 								}}
 							/>
@@ -153,7 +164,7 @@ function HabitEditor() {
 									const msg = 'Are you sure you want to archive this habit? Archived habits can be found in the menu under the \'Archive\' section.';
 
 									if (window.confirm(msg)) {
-										handleUpdate({ type: 'archiveHabit', payload: { ...actionObj } });
+										handleUpdate({ type: 'archiveHabit', payload: { ...payload } });
 									}
 								}}
 							/>

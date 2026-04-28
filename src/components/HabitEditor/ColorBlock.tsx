@@ -11,10 +11,10 @@ import { Habit } from '../../types/habit';
 
 interface Props {
 	habits: Habit[];
-	currentColorIndex: number;
+	currentColorIndex?: number;
 }
 
-function ColorBlock({ habits, currentColorIndex }: Props) {
+function ColorBlock({ habits, currentColorIndex = 0 }: Props) {
 
 	const dbColors = useColorsStore((s) => s.colors);
 
@@ -34,7 +34,7 @@ function ColorBlock({ habits, currentColorIndex }: Props) {
 					name='colorIndex'
 					id={color}
 					value={index}
-					defaultChecked={index === Number(currentColorIndex) || !index}
+					defaultChecked={index === currentColorIndex || !index}
 				/>
 
 				<FaCheck />

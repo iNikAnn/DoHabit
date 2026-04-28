@@ -43,7 +43,7 @@ function editHabit(params: Params): Habit[] {
 		(habit) => habit.title === fields.title
 	);
 
-	const newIndex = Number(payload.data.order.value) - 1;
+	const newIndex = Number(payload.data.order ?? 1) - 1;
 
 	// Reorder if the position has changed
 	if (currentIndex !== -1 && newIndex !== currentIndex) {

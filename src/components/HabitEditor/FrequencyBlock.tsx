@@ -4,11 +4,11 @@ import styles from '../../css/FrequencyBlock.module.css';
 import { useState } from 'react';
 
 interface Props {
-	currentFrequency: number;
+	currentFrequency?: number;
 }
 
-function FrequencyBlock({ currentFrequency }: Props) {
-	const [frequency, setFrequency] = useState(currentFrequency || 1);
+function FrequencyBlock({ currentFrequency = 1 }: Props) {
+	const [frequency, setFrequency] = useState(currentFrequency);
 	const maxFrequency = 6;
 
 	const handleClick = (dir: 'decrease' | 'increase') => {

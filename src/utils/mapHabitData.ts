@@ -1,14 +1,14 @@
-import { HabitFormData } from '../types/habit';
+import { HabitData } from '../types/habit';
 
 /**
  * Map raw form data to habit properties.
  */
-function mapHabitData(data: HabitFormData) {
+function mapHabitData(data: HabitData) {
 	return {
-		title: data.title.value,
-		frequency: Number(data.frequency.value) || 1,
-		colorIndex: Number(data.colorIndex.value) || 0,
-		iconTitle: data.iconTitle.value
+		title: data.title,
+		frequency: Number(data.frequency) || 1,
+		colorIndex: Number(data.colorIndex) || 0,
+		iconTitle: data.iconTitle
 	};
 }
 

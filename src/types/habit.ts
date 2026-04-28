@@ -17,15 +17,12 @@ export interface Habit {
 	isArchived?: boolean;
 }
 
-export interface HabitFormData {
-	title: { value: string };
-	frequency: { value: string };
-	colorIndex: { value: string };
-	iconTitle: { value: string };
-}
-
-export interface EditHabitFormData extends HabitFormData {
-	order: { value: string };
+export interface HabitData {
+	title: string;
+	frequency: string;
+	colorIndex: string;
+	iconTitle: string;
+	order?: string;
 }
 
 // TODO: Replace with habit id
@@ -33,7 +30,7 @@ export interface EditHabitFormData extends HabitFormData {
 export interface AddHabit {
 	type: 'addHabit';
 	payload: {
-		data: HabitFormData;
+		data: HabitData;
 	};
 }
 
@@ -41,7 +38,7 @@ export interface EditHabit {
 	type: 'editHabit';
 	payload: {
 		habitId: string;
-		data: EditHabitFormData;
+		data: HabitData;
 	};
 }
 

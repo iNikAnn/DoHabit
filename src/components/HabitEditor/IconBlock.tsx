@@ -14,13 +14,13 @@ import { groupBy, pick } from 'es-toolkit';
 
 interface Props {
 	habits: Habit[];
-	currentIconTitle: string;
+	currentIconTitle?: string;
 }
 
-function IconBlock({ habits, currentIconTitle }: Props) {
+function IconBlock({ habits, currentIconTitle = 'default' }: Props) {
 
 	const [showMore, setShowMore] = useState(false);
-	const [selectedIcon, setSelectedIcon] = useState(currentIconTitle ?? 'default');
+	const [selectedIcon, setSelectedIcon] = useState(currentIconTitle);
 
 	const groupedIcons = groupBy(HABIT_ICONS, (icon) => icon.category);
 
