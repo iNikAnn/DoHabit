@@ -20,6 +20,9 @@ import AddNoteForm from './AddNoteForm';
 import { ReactComponent as InfoSvg } from '../../img/information.svg';
 import { MdStickyNote2 } from 'react-icons/md';
 
+import { HabitAction } from '../../types/habit';
+import { Note } from '../../types/diary';
+
 function Diary() {
 
 	const location = useLocation();
@@ -35,6 +38,12 @@ function Diary() {
 	const [habitTitle] = useState(location.state?.habitTitle);
 	const [accentColor] = useState(dbColors[location.state?.colorIndex]);
 
+	// form
+	const [input, setInput] = useState('');
+	const [isFormActive, setIsFormActive] = useState(false);
+	const [isEditing, setIsEditing] = useState('');
+	const inputRef = useRef<HTMLInputElement>(null);
+
 	const currentStreak = location.state?.currentStreak ?? 0;
 
 	const diary = habitTitle
@@ -44,14 +53,14 @@ function Diary() {
 	const hasNotes = diary && typeof diary === 'object' && diary.length;
 
 	// create new note
-	const handleAddNote = (text) => {
-		const note = {
+	const handleAddNote = (text: string) => {
+		const note: Note = {
 			text: text.trim(),
-			date: new Date(),
+			date: String(new Date()),
 			streak: currentStreak ?? undefined
 		};
 
-		const action = {
+		const action: HabitAction = {
 			type: 'addNote',
 			payload: {
 				habitId: habitTitle,
@@ -67,7 +76,7 @@ function Diary() {
 
 		document.body
 			.querySelector('#modalChildrenWrapper')
-			.scrollTo({
+			?.scrollTo({
 				top: 0,
 				behavior: 'smooth'
 			});
@@ -76,16 +85,19 @@ function Diary() {
 	};
 
 	// edit note
-	const handleStartEdit = (noteCreationDate, text) => {
-		setIsEditing(noteCreationDate);
-		setInput(text);
-		formRef.current.focus();
+	const handleStartEdit = (noteCreationDate: string, currentText: string) => {
+		if (inputRef.current) {
+			setIsEditing(noteCreationDate);
+			setInput(currentText);
+			inputRef.current.focus();
+		}
 	};
 
-	const handleEditNote = (newText) => {
-		const action = {
+	const handleEditNote = (newText: string) => {
+		const action: HabitAction = {
 			type: 'editNote',
 			payload: {
+				// TODO: Switch to ID once implemented
 				habitId: habitTitle,
 				noteCreationDate: isEditing,
 				newText: newText.trim()
@@ -98,16 +110,19 @@ function Diary() {
 			mainDiaryDispatch(action);
 		}
 
-		setIsEditing(false);
+		setIsEditing('');
 		handleFormActivation(false);
 	};
 
 	// delete note
-	const handleDeleteNote = (noteCreationDate) => {
+	// TODO: Switch to ID once implemented
+	const handleDeleteNote = (noteCreationDate: string) => {
 		if (window.confirm('Are you sure you want to delete this note?')) {
-			const action = {
+			const action: HabitAction = {
 				type: 'deleteNote',
+
 				payload: {
+					// TODO: Switch to ID once implemented
 					habitId: habitTitle,
 					noteCreationDate
 				}
@@ -121,16 +136,14 @@ function Diary() {
 		}
 	};
 
-	// form
-	const [input, setInput] = useState('');
-	const [isFormActive, setIsFormActive] = useState(false);
-	const [isEditing, setIsEditing] = useState(false);
-	const formRef = useRef(null);
-
-	const handleFormActivation = (boolean) => setIsFormActive(boolean);
+	const handleFormActivation = (boolean: boolean) => setIsFormActive(boolean);
 
 	useEffect(
-		() => { if (isFormActive) formRef.current.focus(); },
+		() => {
+			if (isFormActive && inputRef.current) {
+				inputRef.current.focus();
+			}
+		},
 		[isFormActive]
 	);
 
@@ -145,20 +158,20 @@ function Diary() {
 			) : (
 				<Placeholder
 					image={<InfoSvg />}
-					title={(habitTitle ? "This habit's" : 'Main') + ' diary is empty'}
-					desc="Add your first note to start tracking your progress and thoughts."
-					textOnButton="Add First Note"
+					title={(habitTitle ? 'This habit\'s' : 'Main') + ' diary is empty'}
+					desc='Add your first note to start tracking your progress and thoughts.'
+					textOnButton='Add First Note'
 					buttonIcon={<MdStickyNote2 />}
 					onClick={() => handleFormActivation(true)}
-					{...{ accentColor }}
+					accentColor={accentColor}
 				/>
 			)}
 
 			{(hasNotes || isFormActive) && (
 				<AddNoteForm
-					ref={formRef}
+					ref={inputRef}
 					input={input}
-					setInput={setInput}
+					onChange={(v: string) => setInput(v)}
 					onFocus={() => handleFormActivation(true)}
 					onSubmit={isEditing ? handleEditNote : handleAddNote}
 					isSendBtnVisible={isFormActive}
