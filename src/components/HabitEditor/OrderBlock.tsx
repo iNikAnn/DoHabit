@@ -1,22 +1,30 @@
 import styles from '../../css/OrderBlock.module.css';
 
-function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
-	const handleChangeOrder = (dir) => {
-		setCurrOrder((order) => {
-			if (dir === 'bottom') {
-				return habitsCount;
-			}
-			else if (dir === 'top') {
-				return 1;
-			}
-			else if (dir === 'down' && order + 1 <= habitsCount) {
-				return order + 1;
-			}
-			else if (dir === 'up' && order - 1 >= 1) {
-				return order - 1;
-			};
+interface Props {
+	habitsCount: number;
+	currOrder: number;
+	setCurrOrder: React.Dispatch<React.SetStateAction<number>>;
+}
 
-			return order;
+function OrderBlock({ habitsCount, currOrder, setCurrOrder }: Props) {
+	const handleChangeOrder = (dir: 'top' | 'bottom' | 'up' | 'down') => {
+		setCurrOrder((order) => {
+			switch (dir) {
+				case 'bottom':
+					return habitsCount;
+
+				case 'top':
+					return 1;
+
+				case 'down':
+					return order + 1 <= habitsCount ? order + 1 : order;
+
+				case 'up':
+					return order - 1 >= 1 ? order - 1 : order;
+
+				default:
+					return order;
+			}
 		});
 	};
 
@@ -30,9 +38,9 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 				<div className={styles.top}>
 					<input
 						className={styles.input}
-						type="number"
-						name="order"
-						id="order"
+						type='number'
+						name='order'
+						id='order'
 						value={currOrder}
 						tabIndex={-1}
 						readOnly
@@ -40,7 +48,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 
 					<button
 						className={styles.btn}
-						type="button"
+						type='button'
 						onClick={() => handleChangeOrder('down')}
 						disabled={currOrder === habitsCount}
 					>
@@ -49,7 +57,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 
 					<button
 						className={styles.btn}
-						type="button"
+						type='button'
 						onClick={() => handleChangeOrder('up')}
 						disabled={currOrder === 1}
 					>
@@ -60,7 +68,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 				<div className={styles.bottom}>
 					<button
 						className='text-button'
-						type="button"
+						type='button'
 						onClick={() => handleChangeOrder('bottom')}
 						disabled={currOrder === habitsCount}
 					>
@@ -69,7 +77,7 @@ function OrderBlock({ habitsCount, currOrder, setCurrOrder }) {
 
 					<button
 						className='text-button'
-						type="button"
+						type='button'
 						onClick={() => handleChangeOrder('top')}
 						disabled={currOrder === 1}
 					>
