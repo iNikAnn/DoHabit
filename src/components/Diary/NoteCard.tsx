@@ -12,8 +12,7 @@ import { Note } from '../../types/diary';
 
 // utils
 import getListAnimationVariants from '../../utils/getListAnimationVariants';
-import getTruncatedText from '../../utils/getTruncatedText';
-import { formatDate } from '@shared/lib/utils';
+import { formatDate, truncateText } from '@shared/lib/utils';
 
 interface Props {
 	note: Note;
@@ -33,7 +32,7 @@ function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
 			let currText = note.text;
 
 			if (isFirstRender && textRef.current) {
-				currText = getTruncatedText(textRef.current, currText);
+				currText = truncateText(textRef.current, currText);
 			}
 
 			setDisplayText(currText);
