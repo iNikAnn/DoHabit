@@ -8,4 +8,4 @@ function scrollToTop() {
 	});
 }
 
-export default scrollToTop;
+export { scrollToTop };
