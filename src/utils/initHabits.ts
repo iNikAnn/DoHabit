@@ -1,6 +1,5 @@
 // utils
-import { readLocalStorage } from '@shared/lib/utils';
-import saveToLocalStorage from './saveToLocalStorage';
+import { readLocalStorage, writeLocalStorage } from '@shared/lib/utils';
 import removeIncompleteDays from './removeIncompleteDays';
 
 // types
@@ -23,7 +22,7 @@ function initHabits() {
 		})
 	}));
 
-	saveToLocalStorage('habits', habits);
+	writeLocalStorage('habits', habits);
 
 	return habits;
 }

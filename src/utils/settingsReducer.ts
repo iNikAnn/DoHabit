@@ -2,7 +2,7 @@
 import { Settings, SettingsAction } from '../types/settings';
 
 // utils
-import saveToLocalStorage from './saveToLocalStorage';
+import { writeLocalStorage } from '@shared/lib/utils';
 
 /**
  * Reducer for application settings with persistence.
@@ -21,7 +21,7 @@ function settingsReducer(settings: Settings, { type, payload }: SettingsAction):
 			return _exhaustiveCheck;
 	}
 
-	saveToLocalStorage('settings', nextSettings);
+	writeLocalStorage('settings', nextSettings);
 
 	return nextSettings;
 }

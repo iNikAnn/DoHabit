@@ -1,11 +1,10 @@
 // utils
-import saveToLocalStorage from './saveToLocalStorage';
 import getStreaks from './getStreaks';
 import getDayGap from './getDayGap';
 import getCompletionGaps from './getCompletionGaps';
 import checkHabitCompletion from './checkHabitCompletion';
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
-import { formatDate } from '@shared/lib/utils';
+import { formatDate, writeLocalStorage } from '@shared/lib/utils';
 
 const todayDateStr = formatDate(new Date());
 
@@ -408,7 +407,7 @@ function achievementsReducer(achievements, context) {
 			})
 		);
 
-	saveToLocalStorage('achievements', basicAchievementsInfo);
+	writeLocalStorage('achievements', basicAchievementsInfo);
 
 	return achievements;
 }

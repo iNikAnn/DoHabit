@@ -1,7 +1,7 @@
 /**
  * Asynchronously saves data to localStorage.
  */
-function saveToLocalStorage(key: string, data: unknown) {
+function writeLocalStorage(key: string, data: unknown) {
 	setTimeout(() => {
 		try {
 			localStorage.setItem(key, JSON.stringify(data));
@@ -11,4 +11,4 @@ function saveToLocalStorage(key: string, data: unknown) {
 	}, 0);
 }
 
-export default saveToLocalStorage;
+export { writeLocalStorage };

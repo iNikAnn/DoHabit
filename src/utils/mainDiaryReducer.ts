@@ -4,7 +4,7 @@ import { MainDiaryAction, Note } from '../types/diary';
 // utils
 import editNote from './editNote';
 import deleteNote from './deleteNote';
-import saveToLocalStorage from './saveToLocalStorage';
+import { writeLocalStorage } from '@shared/lib/utils';
 
 function mainDiaryReducer(diary: Note[], { type, payload }: MainDiaryAction) {
 	let nextDiary = [...diary];
@@ -28,7 +28,7 @@ function mainDiaryReducer(diary: Note[], { type, payload }: MainDiaryAction) {
 			return _exhaustiveCheck;
 	}
 
-	saveToLocalStorage('mainDiary', nextDiary);
+	writeLocalStorage('mainDiary', nextDiary);
 
 	return nextDiary;
 }
