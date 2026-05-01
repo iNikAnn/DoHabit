@@ -1,17 +1,21 @@
+interface ClearLocalStorageOptions {
+	keys?: string | string[];
+	warningMessage?: string;
+}
+
 /**
- * Permanently deletes all data from localStorage after double confirmation.
+ * Deletes specified keys or all data from localStorage after double confirmation.
  * Redirects the user to the home page upon success.
  */
-function clearLocalStorage(): void {
-	const CONFIRMATION_PHRASE = 'delete all data';
+function clearLocalStorage(options: ClearLocalStorageOptions): void {
+	const {
+		keys,
+		warningMessage = keys
+			? 'Are you sure you want to delete selected data?'
+			: 'Are you sure you want to delete ALL application data?'
+	} = options;
 
-	const warningMessage =
-		'Are you sure you want to delete all application data?\n\n' +
-		'This includes:\n' +
-		'- All your habits\n' +
-		'- All achievements\n' +
-		'- All diary entries\n\n' +
-		'This action cannot be undone!';
+	const CONFIRMATION_PHRASE = 'delete data';
 
 	// First level of protection
 	if (!window.confirm(warningMessage)) {
@@ -22,13 +26,19 @@ function clearLocalStorage(): void {
 	const userInput = prompt(`To confirm, type "${CONFIRMATION_PHRASE}":`);
 
 	if (userInput?.trim().toLowerCase() === CONFIRMATION_PHRASE) {
-		localStorage.clear();
+		if (keys) {
+			const items = Array.isArray(keys) ? keys : [keys];
+			items.forEach((key) => localStorage.removeItem(key));
+		} else {
+			localStorage.clear();
+		}
+
 		alert('All data has been successfully removed. The application will now reload.');
 
 		// Redirect to home page to reinitialize the app state
 		window.location.href = '/';
 	} else {
-		alert('Incorrect phrase. Operation canceled.');
+		alert('Action canceled or incorrect phrase.');
 	}
 }
 
