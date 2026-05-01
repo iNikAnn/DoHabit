@@ -1,6 +1,7 @@
 export { clearLocalStorage } from './clear-local-storage/clearLocalStorage';
 export { exportAppData } from './export-app-data/exportAppData';
 export { formatDate } from './format-date/formatDate';
+export { generateBaseColors } from './generate-base-colors/generateBaseColors';
 export { importAppData } from './import-app-data/importAllData';
 export { readLocalStorage } from './read-local-storage/readLocalStorage';
 export { resolveTheme } from './resolve-theme/resolveTheme';
