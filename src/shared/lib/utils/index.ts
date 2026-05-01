@@ -1,5 +1,6 @@
 export { clearLocalStorage } from './clear-local-storage/clearLocalStorage';
 export { countDaysBetween } from './count-days-between/countDaysBetween';
+export { countMonths } from './count-months/countMonths';
 export { exportAppData } from './export-app-data/exportAppData';
 export { formatDate } from './format-date/formatDate';
 export { generateBaseColors } from './generate-base-colors/generateBaseColors';
