@@ -8,7 +8,7 @@ import { ColorsState } from '../types/colorScheme';
 
 // utils
 import getColors from '../utils/getColors';
-import getColorScheme from '../utils/getColorScheme';
+import { resolveTheme } from '@shared/lib/utils';
 
 /**
  * Colors Store.
@@ -17,7 +17,7 @@ import getColorScheme from '../utils/getColorScheme';
 export const useColorsStore = create<ColorsState>(
 	(set) => ({
 		colors: getColors(
-			getColorScheme(useSettingsStore.getState().settings.isDarkSchemeForced ?? false)
+			resolveTheme(useSettingsStore.getState().settings.isDarkSchemeForced ?? false)
 		),
 
 		update: (newColors) => set({ colors: newColors })
@@ -30,7 +30,7 @@ export const useColorsStore = create<ColorsState>(
  */
 useSettingsStore.subscribe(
 	(s) => {
-		const scheme = getColorScheme(s.settings.isDarkSchemeForced ?? false);
+		const scheme = resolveTheme(s.settings.isDarkSchemeForced ?? false);
 
 		useColorsStore.getState().update(getColors(scheme));
 	}
