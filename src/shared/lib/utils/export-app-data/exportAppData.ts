@@ -1,13 +1,13 @@
-import getFromLocalStorage from '../../../../utils/getFromLocalStorage';
+import { readLocalStorage } from '../read-local-storage/readLocalStorage';
 
 /**
  * Downloads a JSON file containing all data stored in localStorage.
  */
 function exportAppData() {
 	const data = {
-		habits: getFromLocalStorage('habits'),
-		mainDiary: getFromLocalStorage('mainDiary'),
-		achievements: getFromLocalStorage('achievements')
+		habits: readLocalStorage('habits'),
+		mainDiary: readLocalStorage('mainDiary'),
+		achievements: readLocalStorage('achievements')
 	};
 
 	const jsonStr = JSON.stringify(data);

@@ -1,5 +1,5 @@
 // utils
-import getFromLocalStorage from './getFromLocalStorage';
+import { readLocalStorage } from '@shared/lib/utils';
 
 // types
 import { Note } from '../types/diary';
@@ -8,7 +8,7 @@ import { Note } from '../types/diary';
  * Loads the main diary notes from localStorage.
  */
 function initMainDiary(): Note[] {
-	return getFromLocalStorage<Note[]>('mainDiary', []);
+	return readLocalStorage<Note[]>('mainDiary', []);
 }
 
 export default initMainDiary;
