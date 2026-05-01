@@ -4,8 +4,7 @@ import styles from '../../css/DataTransfer.module.css';
 import Placeholder from '../Placeholder';
 
 // utils
-import importAllData from '../../utils/importAllData';
-import { exportAppData } from '@shared/lib/utils';
+import { exportAppData, importAppData } from '@shared/lib/utils';
 
 // icons
 import { ReactComponent as Export } from '../../img/upload.svg'
@@ -35,7 +34,7 @@ function DataTransfer() {
 					desc='Upload your habits data from a backup file.'
 					textOnButton='Import Now'
 					buttonIcon={<BsDatabaseFillDown />}
-					onClick={importAllData}
+					onClick={importAppData}
 				/>
 			</div>
 		</div>

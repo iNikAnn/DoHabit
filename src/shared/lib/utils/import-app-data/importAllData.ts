@@ -1,9 +1,9 @@
-import saveToLocalStorage from './saveToLocalStorage';
+import saveToLocalStorage from '../../../../utils/saveToLocalStorage';
 
 /**
  * Imports application data from a JSON file and saves it to localStorage.
  */
-function importAllData() {
+function importAppData() {
 	const input = document.createElement('input');
 	input.type = 'file';
 	input.accept = '.json';
@@ -40,4 +40,4 @@ function importAllData() {
 	input.click();
 }
 
-export default importAllData;
+export { importAppData };
