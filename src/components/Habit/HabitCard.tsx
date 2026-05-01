@@ -19,7 +19,7 @@ import HabitMenu from './HabitMenu';
 import { Habit } from '../../types/habit';
 
 // utils
-import getColorPalette from '../../utils/getColorPalette';
+import { getColorVariants } from '@shared/lib/utils';
 import getTodayProgress from '../../utils/getTodayProgress';
 import getStreaks from '../../utils/getStreaks';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
@@ -51,7 +51,7 @@ function HabitCard(props: Props) {
 
 	const settings = useSettingsStore((s) => s.settings);
 	const habitRef = useRef(null);
-	const colorPalette = useMemo(() => getColorPalette(color), [color]);
+	const colorPalette = useMemo(() => getColorVariants(color), [color]);
 	const todayProgress = getTodayProgress(habit.completedDays);
 	const { currentStreak } = getStreaks(habit.completedDays, habit.frequency);
 
