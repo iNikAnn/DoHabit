@@ -42,4 +42,4 @@ function clearLocalStorage(options: ClearLocalStorageOptions): void {
 	}
 }
 
-export default clearLocalStorage;
+export { clearLocalStorage };
