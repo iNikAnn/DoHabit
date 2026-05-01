@@ -3,7 +3,7 @@ import { CompletedDay } from '../types/habit';
 
 // utils
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
-import getDayGap from './getDayGap';
+import { countDaysBetween } from '@shared/lib/utils';
 
 /**
  * Calculates the number of days between consecutive completed entries.
@@ -25,7 +25,7 @@ function getCompletionGaps(
 		const nextDate = dates[i + 1];
 		if (!nextDate) return;
 
-		const gap = getDayGap(date, nextDate);
+		const gap = countDaysBetween(date, nextDate);
 		gaps.push(gap);
 	});
 

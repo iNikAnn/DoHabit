@@ -1,6 +1,6 @@
 // utils
 import getStreaks from './getStreaks';
-import getDayGap from './getDayGap';
+import { countDaysBetween } from '@shared/lib/utils';
 import getCompletionGaps from './getCompletionGaps';
 import checkHabitCompletion from './checkHabitCompletion';
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
@@ -74,7 +74,7 @@ function achievementsReducer(achievements, context) {
 						(h) => {
 							if (!h.creationDate || h.completedDays.length) return false;
 
-							const gap = getDayGap(
+							const gap = countDaysBetween(
 								new Date(formatDate(new Date(h.creationDate))),
 								new Date(todayDateStr)
 							);
@@ -171,7 +171,7 @@ function achievementsReducer(achievements, context) {
 							return allStreaks.some(
 								(s) => {
 									if (s.length === a.criteria.streak) {
-										const gap = getDayGap(new Date(todayDateStr), new Date(s.end));
+										const gap = countDaysBetween(new Date(todayDateStr), new Date(s.end));
 										return gap > 1;
 									};
 
@@ -197,7 +197,7 @@ function achievementsReducer(achievements, context) {
 									allStreaks[i + 1].length === a.criteria.streak &&
 									allStreaks[i + 2].length === a.criteria.streak
 								) {
-									const gap = getDayGap(new Date(todayDateStr), new Date(allStreaks[i].end));
+									const gap = countDaysBetween(new Date(todayDateStr), new Date(allStreaks[i].end));
 									if (gap > 1) return true;
 								};
 							};
@@ -303,7 +303,7 @@ function achievementsReducer(achievements, context) {
 							for (let i = 0; i < completedWeekends.length - 1; i++) {
 								const currDate = new Date(completedWeekends[i].date);
 								const nextDate = new Date(completedWeekends[i + 1]?.date);
-								const gap = getDayGap(currDate, nextDate);
+								const gap = countDaysBetween(currDate, nextDate);
 
 								if (currWeekendStreak === 0 && currDate.getDay() === 6) continue;
 
