@@ -21,6 +21,7 @@ import useAchievementsCheck from './hooks/useAchievementsCheck';
 // db
 import dbModalRoutes from './db/dbModalRoutes';
 
+// @ts-ignore
 const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
 
 function App() {

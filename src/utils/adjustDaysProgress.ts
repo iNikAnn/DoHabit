@@ -2,7 +2,7 @@
 import { CompletedDay } from '../types/habit';
 
 // utils
-import getFormattedDate from './getFormattedDate';
+import { formatDate } from '@shared/lib/utils';
 
 /**
  * Synchronizes the progress of past days with the new habit frequency.
@@ -12,7 +12,7 @@ function adjustDaysProgress(
 	completedDays: CompletedDay[],
 	newFrequency: number
 ): CompletedDay[] {
-	const today = getFormattedDate(new Date());
+	const today = formatDate(new Date());
 
 	return completedDays.map(
 		(day) => {

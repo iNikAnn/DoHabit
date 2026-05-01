@@ -2,7 +2,7 @@
 import { CompletedDay, Habit, UpdateProgress } from '../types/habit';
 
 // utils
-import getFormattedDate from './getFormattedDate';
+import { formatDate } from '@shared/lib/utils';
 import updateHabitById from './updateHabitById';
 import checkHabitCompletion from './checkHabitCompletion';
 
@@ -20,7 +20,7 @@ function updateHabitProgress(params: Params): Habit[] {
 		payload: { habitId }
 	} = params;
 
-	const today = getFormattedDate(new Date());
+	const today = formatDate(new Date());
 
 	return updateHabitById(habits, habitId, (habit) => {
 		const [isCompleted] = checkHabitCompletion(

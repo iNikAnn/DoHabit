@@ -1,6 +1,8 @@
-// utils
+// types
 import { CompletedDay } from '../types/habit';
-import getFormattedDate from './getFormattedDate';
+
+// utils
+import { formatDate } from '@shared/lib/utils';
 
 /**
  * Checks if a habit was completed for each of the provided dates.
@@ -12,7 +14,7 @@ function checkHabitCompletion(
 ): boolean[] {
 	return dates.map(
 		(date) => {
-			const formattedDate = getFormattedDate(date);
+			const formattedDate = formatDate(date);
 
 			// Check if there is an entry for this date with sufficient progress
 			return completedDays.some(

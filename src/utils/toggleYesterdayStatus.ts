@@ -2,7 +2,7 @@
 import { CompletedDay, Habit, ToggleYesterdayStatus } from '../types/habit';
 
 // utils
-import getFormattedDate from './getFormattedDate';
+import { formatDate } from '@shared/lib/utils';
 import updateHabitById from './updateHabitById';
 
 interface Params {
@@ -26,7 +26,7 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 
 	const yesterday = new Date();
 	yesterday.setDate(yesterday.getDate() - 1);
-	const yDayStr = getFormattedDate(yesterday);
+	const yDayStr = formatDate(yesterday);
 
 	return updateHabitById(habits, habitId, (habit) => {
 		if (isYesterdayCompleted) {

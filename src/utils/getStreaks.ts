@@ -6,8 +6,8 @@ import { Streak } from '../types/common';
 import { CompletedDay } from '../types/habit';
 
 // utils
-import getFormattedDate from './getFormattedDate';
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
+import { formatDate } from '@shared/lib/utils';
 
 interface Result {
 	allStreaks: Streak[];
@@ -66,7 +66,7 @@ function getStreaks(
 		}
 	});
 
-	const todayMs = new Date(getFormattedDate(new Date())).getTime();
+	const todayMs = new Date(formatDate(new Date())).getTime();
 	const lastCompletedMs = new Date(processedDays[0].date).getTime();
 
 	// Streak is active if the last completion was today or yesterday

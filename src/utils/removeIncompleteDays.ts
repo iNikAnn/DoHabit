@@ -1,6 +1,8 @@
-// utils
+// types
 import { CompletedDay } from '../types/habit';
-import getFormattedDate from './getFormattedDate';
+
+// utils
+import { formatDate } from '@shared/lib/utils';
 
 interface Params {
 	completedDays: CompletedDay[];
@@ -11,7 +13,7 @@ interface Params {
  * Filters out past days where the progress was lower than the required frequency.
  */
 function removeIncompleteDays({ completedDays, frequency }: Params): CompletedDay[] {
-	const today = new Date(getFormattedDate(new Date()));
+	const today = new Date(formatDate(new Date()));
 
 	return completedDays.filter(
 		(day) => {

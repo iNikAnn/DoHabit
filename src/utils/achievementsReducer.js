@@ -3,11 +3,11 @@ import saveToLocalStorage from './saveToLocalStorage';
 import getStreaks from './getStreaks';
 import getDayGap from './getDayGap';
 import getCompletionGaps from './getCompletionGaps';
-import getFormattedDate from './getFormattedDate';
 import checkHabitCompletion from './checkHabitCompletion';
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
+import { formatDate } from '@shared/lib/utils';
 
-const todayDateStr = getFormattedDate(new Date());
+const todayDateStr = formatDate(new Date());
 
 function achievementsReducer(achievements, context) {
 	const { habits, mainDiary, onUnlock, isInitialRender } = context;
@@ -76,7 +76,7 @@ function achievementsReducer(achievements, context) {
 							if (!h.creationDate || h.completedDays.length) return false;
 
 							const gap = getDayGap(
-								new Date(getFormattedDate(new Date(h.creationDate))),
+								new Date(formatDate(new Date(h.creationDate))),
 								new Date(todayDateStr)
 							);
 
@@ -277,7 +277,7 @@ function achievementsReducer(achievements, context) {
 					for (const h of habits) {
 						if (!h.creationDate) continue;
 
-						const cd = getFormattedDate(new Date(h.creationDate));
+						const cd = formatDate(new Date(h.creationDate));
 						creationDateMap[cd] = (creationDateMap[cd] || 0) + 1;
 					};
 

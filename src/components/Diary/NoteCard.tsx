@@ -13,7 +13,7 @@ import { Note } from '../../types/diary';
 // utils
 import getListAnimationVariants from '../../utils/getListAnimationVariants';
 import getTruncatedText from '../../utils/getTruncatedText';
-import getFormattedDate from '../../utils/getFormattedDate';
+import { formatDate } from '@shared/lib/utils';
 
 interface Props {
 	note: Note;
@@ -23,7 +23,7 @@ interface Props {
 
 function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
 
-	const dateTimeStr = getFormattedDate(new Date(note.date), { includeTime: true });
+	const dateTimeStr = formatDate(new Date(note.date), { includeTime: true });
 	const isFirstRender = useIsInitialRender();
 	const textRef = useRef<HTMLDivElement>(null);
 	const [displayText, setDisplayText] = useState(note.text);
