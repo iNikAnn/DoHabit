@@ -4,8 +4,8 @@ import styles from '../../css/DataTransfer.module.css';
 import Placeholder from '../Placeholder';
 
 // utils
-import exportAllData from '../../utils/exportAllData';
 import importAllData from '../../utils/importAllData';
+import { exportAppData } from '@shared/lib/utils';
 
 // icons
 import { ReactComponent as Export } from '../../img/upload.svg'
@@ -23,7 +23,7 @@ function DataTransfer() {
 					desc='Save a backup of your habits data to your device.'
 					textOnButton='Export Now'
 					buttonIcon={<BsDatabaseFillUp />}
-					onClick={exportAllData}
+					onClick={exportAppData}
 					accentColor='#57a639'
 				/>
 			</div>
