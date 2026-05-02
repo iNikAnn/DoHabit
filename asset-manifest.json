@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/DoHabit/static/css/main.74ca7627.css",
-    "main.js": "/DoHabit/static/js/main.bc489f04.js",
+    "main.js": "/DoHabit/static/js/main.11a828a9.js",
     "service-worker.js": "/DoHabit/service-worker.js",
     "static/media/logo192-alpha.png": "/DoHabit/static/media/logo192-alpha.8533f0ee32bc19d301ce.png",
     "static/media/calendar.svg": "/DoHabit/static/media/calendar.65e1cc974c8ca39b901c9bdb5369b502.svg",
@@ -13,6 +13,6 @@
   },
   "entrypoints": [
     "static/css/main.74ca7627.css",
-    "static/js/main.bc489f04.js"
+    "static/js/main.11a828a9.js"
   ]
 }
