@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 // hooks
 import { useLayoutEffect, useRef, useState } from 'react';
-import useIsInitialRender from '../../hooks/useIsInitialRender';
+import { useIsFirstRender } from '@shared/lib/hooks';
 
 // types
 import { Note } from '../../types/diary';
@@ -23,7 +23,7 @@ interface Props {
 function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
 
 	const dateTimeStr = formatDate(new Date(note.date), { includeTime: true });
-	const isFirstRender = useIsInitialRender();
+	const isFirstRender = useIsFirstRender();
 	const textRef = useRef<HTMLDivElement>(null);
 	const [displayText, setDisplayText] = useState(note.text);
 

@@ -4,14 +4,14 @@ import { useAchievementsStore } from '../stores/achievementsStore';
 import { useHabitsStore } from '../stores/habitsStore';
 import { useMainDiaryStore } from '../stores/mainDiaryStore';
 import { useDialogStore } from '../stores/dialogStore';
-import useIsInitialRender from './useIsInitialRender';
+import { useIsFirstRender } from '@shared/lib/hooks';
 
 /**
  * Hook to trigger achievement synchronization on data changes.
  */
 function useAchievementsCheck(): void {
 
-	const isInitialRender = useIsInitialRender();
+	const isInitialRender = useIsFirstRender();
 	const achievementsDispatch = useAchievementsStore((s) => s.achievementsDispatch);
 	const habits = useHabitsStore((s) => s.habits);
 	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
