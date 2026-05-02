@@ -4,6 +4,29 @@
 		// File Layout
 		"rootDir": "./src",
 		"outDir": "./build",
+		"paths": {
+			"@app/*": [
+				"./src/app/*"
+			],
+			"@pages/*": [
+				"./src/pages/*"
+			],
+			"@widgets/*": [
+				"./src/widgets/*"
+			],
+			"@features/*": [
+				"./src/features/*"
+			],
+			"@entities/*": [
+				"./src/entities/*"
+			],
+			"@shared/*": [
+				"./src/shared/*"
+			],
+			"@/*": [
+				"./src/*"
+			]
+		},
 		// Environment Settings
 		// See also https://aka.ms/tsconfig/module
 		"module": "esnext",
@@ -44,6 +67,10 @@
 			{
 				"name": "typescript-plugin-css-modules"
 			}
-		],
-	}
+		]
+	},
+	"exclude": [
+		"node_modules",
+		"craco.config.js"
+	]
 }

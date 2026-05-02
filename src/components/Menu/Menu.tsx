@@ -6,7 +6,7 @@ import MenuItemList from './MenuItemList';
 import MenuItem from './MenuItem';
 
 // utils
-import clearLocalStorage from '../../utils/clearLocalStorage';
+import { clearLocalStorage } from '@shared/lib/utils';
 
 // icons
 import { BsFillDatabaseFill } from 'react-icons/bs';
@@ -17,6 +17,14 @@ import { HiArchiveBox } from 'react-icons/hi2';
 
 // @ts-ignore
 const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
+
+const warningMessage =
+	'Are you sure you want to delete all application data?\n\n' +
+	'This includes:\n' +
+	'- All your habits\n' +
+	'- All achievements\n' +
+	'- All diary entries\n\n' +
+	'This action cannot be undone!';
 
 function Menu() {
 	return (
@@ -82,7 +90,7 @@ function Menu() {
 					icon={<ImFire style={{ color: 'IndianRed' }} />}
 					title='Clear Data'
 					desc='Delete all application data'
-					onClick={() => clearLocalStorage()}
+					onClick={() => clearLocalStorage({ warningMessage })}
 				/>
 			</MenuItemList>
 

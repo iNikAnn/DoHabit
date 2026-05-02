@@ -9,8 +9,10 @@ import HabitList from './HabitList';
 import Placeholder from './Placeholder';
 
 // icons
-import { ReactComponent as Calendar } from '../img/calendar.svg';
-import { MdAddToPhotos } from "react-icons/md";
+// import { ReactComponent as Calendar } from '../img/calendar.svg';
+import { Calendar } from '@shared/assets/icons';
+import { MdAddToPhotos } from 'react-icons/md';
+
 import { useHabitsStore } from '../stores/habitsStore';
 
 const mainVariants = {
@@ -38,6 +40,7 @@ function MainPage() {
 					desc='Why not create one now?'
 					textOnButton='Create First Habit'
 					buttonIcon={<MdAddToPhotos />}
+					// @ts-ignore
 					to={`${process.env.PUBLIC_URL}/modal/habitEditor`}
 					state={{ modalTitle: 'Create new habit' }}
 				/>

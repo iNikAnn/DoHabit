@@ -8,7 +8,7 @@ import { CompletedDay } from '../../types/habit';
 import { ColorPalette } from '../../types/colorScheme';
 
 // utils
-import getMonthsCount from '../../utils/getMonthsCount';
+import { countMonths } from '@shared/lib/utils';
 
 interface Props {
 	completedDays: CompletedDay[];
@@ -26,7 +26,7 @@ function Calendar(props: Props) {
 	const startMonth = new Date(completedDays[completedDays.length - 1]?.date || new Date());
 	// const endMonth = completedDays.length === 0 ? new Date() : new Date(completedDays[0]?.date);
 	const endMonth = new Date();
-	const monthsCount = getMonthsCount(startMonth, endMonth);
+	const monthsCount = countMonths(startMonth, endMonth);
 	// const monthsCount = 1;
 
 	const visibleMonthsCount = Math.max(monthsCount,

@@ -1,12 +1,11 @@
-/**
- * Formats a Date object into "YYYY-MM-DD" or "YYYY-MM-DD HH:mm".
- */
-
-interface Options {
+interface FormatDateOptions {
 	includeTime?: boolean;
 }
 
-function getFormattedDate(date: Date, options?: Options): string {
+/**
+ * Formats a Date object into 'YYYY-MM-DD' or 'YYYY-MM-DD HH:mm'.
+ */
+function formatDate(date: Date, options?: FormatDateOptions): string {
 	const {
 		includeTime
 	} = options ?? {};
@@ -29,4 +28,4 @@ function getFormattedDate(date: Date, options?: Options): string {
 	return datePart;
 }
 
-export default getFormattedDate;
+export { formatDate };

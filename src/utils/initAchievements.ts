@@ -5,13 +5,13 @@ import { Achievement } from '../types/achievement';
 import dbAchievements from '../db/dbAchievements';
 
 // utils
-import getFromLocalStorage from './getFromLocalStorage';
+import { readLocalStorage } from '@shared/lib/utils';
 
 /**
  * Merge base achievements with saved progress.
  */
 function initAchievements(): Achievement[] {
-	const savedAchs = getFromLocalStorage<Achievement[]>('achievements', []);
+	const savedAchs = readLocalStorage<Achievement[]>('achievements', []);
 
 	// Updates achievements to match the database,
 	// preserving the unlocked status from local storage

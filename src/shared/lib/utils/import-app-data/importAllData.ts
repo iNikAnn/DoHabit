@@ -1,9 +1,9 @@
-import saveToLocalStorage from './saveToLocalStorage';
+import { writeLocalStorage } from '../write-local-storage/writeLocalStorage';
 
 /**
  * Imports application data from a JSON file and saves it to localStorage.
  */
-function importAllData() {
+function importAppData() {
 	const input = document.createElement('input');
 	input.type = 'file';
 	input.accept = '.json';
@@ -26,7 +26,7 @@ function importAllData() {
 				if (!Object.hasOwn(parsedData, key)) continue;
 
 				const value = parsedData[key];
-				saveToLocalStorage(key, value);
+				writeLocalStorage(key, value);
 			}
 
 			window.alert('Data imported successfully! The application will now reload.');
@@ -40,4 +40,4 @@ function importAllData() {
 	input.click();
 }
 
-export default importAllData;
+export { importAppData };

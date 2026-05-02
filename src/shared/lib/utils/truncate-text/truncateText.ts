@@ -3,7 +3,7 @@
  * Use with caution as it causes multiple reflows.
  */
 // TODO: Consider using CSS line-clamp
-function getTruncatedText(
+function truncateText(
 	el: HTMLElement,
 	text: string,
 	maxLines: number = 3
@@ -25,4 +25,4 @@ function getTruncatedText(
 	return text;
 }
 
-export default getTruncatedText;
+export { truncateText };

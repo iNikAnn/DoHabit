@@ -5,15 +5,14 @@ import { motion } from 'framer-motion';
 
 // hooks
 import { useLayoutEffect, useRef, useState } from 'react';
-import useIsInitialRender from '../../hooks/useIsInitialRender';
+import { useIsFirstRender } from '@shared/lib/hooks';
 
 // types
 import { Note } from '../../types/diary';
 
 // utils
 import getListAnimationVariants from '../../utils/getListAnimationVariants';
-import getTruncatedText from '../../utils/getTruncatedText';
-import getFormattedDate from '../../utils/getFormattedDate';
+import { formatDate, truncateText } from '@shared/lib/utils';
 
 interface Props {
 	note: Note;
@@ -23,8 +22,8 @@ interface Props {
 
 function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
 
-	const dateTimeStr = getFormattedDate(new Date(note.date), { includeTime: true });
-	const isFirstRender = useIsInitialRender();
+	const dateTimeStr = formatDate(new Date(note.date), { includeTime: true });
+	const isFirstRender = useIsFirstRender();
 	const textRef = useRef<HTMLDivElement>(null);
 	const [displayText, setDisplayText] = useState(note.text);
 
@@ -33,7 +32,7 @@ function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
 			let currText = note.text;
 
 			if (isFirstRender && textRef.current) {
-				currText = getTruncatedText(textRef.current, currText);
+				currText = truncateText(textRef.current, currText);
 			}
 
 			setDisplayText(currText);

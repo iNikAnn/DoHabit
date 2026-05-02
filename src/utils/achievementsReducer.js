@@ -1,13 +1,12 @@
 // utils
-import saveToLocalStorage from './saveToLocalStorage';
 import getStreaks from './getStreaks';
-import getDayGap from './getDayGap';
+import { countDaysBetween } from '@shared/lib/utils';
 import getCompletionGaps from './getCompletionGaps';
-import getFormattedDate from './getFormattedDate';
 import checkHabitCompletion from './checkHabitCompletion';
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
+import { formatDate, writeLocalStorage } from '@shared/lib/utils';
 
-const todayDateStr = getFormattedDate(new Date());
+const todayDateStr = formatDate(new Date());
 
 function achievementsReducer(achievements, context) {
 	const { habits, mainDiary, onUnlock, isInitialRender } = context;
@@ -75,8 +74,8 @@ function achievementsReducer(achievements, context) {
 						(h) => {
 							if (!h.creationDate || h.completedDays.length) return false;
 
-							const gap = getDayGap(
-								new Date(getFormattedDate(new Date(h.creationDate))),
+							const gap = countDaysBetween(
+								new Date(formatDate(new Date(h.creationDate))),
 								new Date(todayDateStr)
 							);
 
@@ -172,7 +171,7 @@ function achievementsReducer(achievements, context) {
 							return allStreaks.some(
 								(s) => {
 									if (s.length === a.criteria.streak) {
-										const gap = getDayGap(new Date(todayDateStr), new Date(s.end));
+										const gap = countDaysBetween(new Date(todayDateStr), new Date(s.end));
 										return gap > 1;
 									};
 
@@ -198,7 +197,7 @@ function achievementsReducer(achievements, context) {
 									allStreaks[i + 1].length === a.criteria.streak &&
 									allStreaks[i + 2].length === a.criteria.streak
 								) {
-									const gap = getDayGap(new Date(todayDateStr), new Date(allStreaks[i].end));
+									const gap = countDaysBetween(new Date(todayDateStr), new Date(allStreaks[i].end));
 									if (gap > 1) return true;
 								};
 							};
@@ -277,7 +276,7 @@ function achievementsReducer(achievements, context) {
 					for (const h of habits) {
 						if (!h.creationDate) continue;
 
-						const cd = getFormattedDate(new Date(h.creationDate));
+						const cd = formatDate(new Date(h.creationDate));
 						creationDateMap[cd] = (creationDateMap[cd] || 0) + 1;
 					};
 
@@ -304,7 +303,7 @@ function achievementsReducer(achievements, context) {
 							for (let i = 0; i < completedWeekends.length - 1; i++) {
 								const currDate = new Date(completedWeekends[i].date);
 								const nextDate = new Date(completedWeekends[i + 1]?.date);
-								const gap = getDayGap(currDate, nextDate);
+								const gap = countDaysBetween(currDate, nextDate);
 
 								if (currWeekendStreak === 0 && currDate.getDay() === 6) continue;
 
@@ -408,7 +407,7 @@ function achievementsReducer(achievements, context) {
 			})
 		);
 
-	saveToLocalStorage('achievements', basicAchievementsInfo);
+	writeLocalStorage('achievements', basicAchievementsInfo);
 
 	return achievements;
 }

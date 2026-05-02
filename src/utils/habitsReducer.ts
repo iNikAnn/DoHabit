@@ -13,7 +13,7 @@ import addHabitDiaryNote from './addHabitDiaryNote';
 import editHabitDiaryNote from './editHabitDiaryNote';
 import deleteHabitDiaryNote from './deleteHabitDiaryNote';
 
-import saveToLocalStorage from './saveToLocalStorage';
+import { writeLocalStorage } from '@shared/lib/utils';
 
 function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[] {
 	let nextHabits: Habit[] = [];
@@ -63,7 +63,7 @@ function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[]
 			return _exhaustiveCheck;
 	}
 
-	saveToLocalStorage('habits', nextHabits);
+	writeLocalStorage('habits', nextHabits);
 
 	return nextHabits;
 }

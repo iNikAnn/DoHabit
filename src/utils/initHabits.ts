@@ -1,6 +1,5 @@
 // utils
-import getFromLocalStorage from './getFromLocalStorage';
-import saveToLocalStorage from './saveToLocalStorage';
+import { readLocalStorage, writeLocalStorage } from '@shared/lib/utils';
 import removeIncompleteDays from './removeIncompleteDays';
 
 // types
@@ -10,7 +9,7 @@ import { Habit } from '../types/habit';
  * Initializes habits by cleaning up incomplete past entries and updating localStorage.
  */
 function initHabits() {
-	let habits = getFromLocalStorage<Habit[]>('habits', []);
+	let habits = readLocalStorage<Habit[]>('habits', []);
 	if (!habits.length) return habits;
 
 	habits = habits.map((habit) => ({
@@ -23,7 +22,7 @@ function initHabits() {
 		})
 	}));
 
-	saveToLocalStorage('habits', habits);
+	writeLocalStorage('habits', habits);
 
 	return habits;
 }

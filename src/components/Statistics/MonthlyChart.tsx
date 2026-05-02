@@ -1,5 +1,5 @@
 // constants
-import { MONTHS } from '../../constants';
+import { MONTHS } from '@shared/config';
 
 // types
 import { CompletedDay } from '../../types/habit';

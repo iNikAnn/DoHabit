@@ -8,7 +8,7 @@ import HabitList from '../HabitList';
 import Placeholder from '../Placeholder';
 
 // icons
-import { ReactComponent as Table } from '../../img/table-of-contents.svg'
+import { Table } from '@shared/assets/icons';
 
 function Archive() {
 
