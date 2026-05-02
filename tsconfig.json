@@ -67,6 +67,10 @@
 			{
 				"name": "typescript-plugin-css-modules"
 			}
-		],
-	}
+		]
+	},
+	"exclude": [
+		"node_modules",
+		"craco.config.js"
+	]
 }
