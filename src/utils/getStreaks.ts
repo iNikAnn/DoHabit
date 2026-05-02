@@ -1,5 +1,5 @@
 // constants
-import { DAY_MS } from '../constants';
+import { DAY_MS } from '@shared/config';
 
 // types
 import { Streak } from '../types/common';
