@@ -7,8 +7,7 @@ import Placeholder from '../Placeholder';
 import { exportAppData, importAppData } from '@shared/lib/utils';
 
 // icons
-import { ReactComponent as Export } from '../../img/upload.svg'
-import { ReactComponent as Import } from '../../img/import.svg'
+import { Export, Import } from '@shared/assets/icons';
 import { BsDatabaseFillUp } from 'react-icons/bs';
 import { BsDatabaseFillDown } from 'react-icons/bs';
 
