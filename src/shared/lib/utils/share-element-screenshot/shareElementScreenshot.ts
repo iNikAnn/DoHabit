@@ -3,7 +3,7 @@ import html2canvas, { Options } from 'html2canvas';
 /**
  * Captures an element as an image and opens the native sharing dialog.
  */
-async function shareHabit(element: HTMLDivElement) {
+async function shareElementScreenshot(element: HTMLDivElement) {
 	// Check if the Web Share API is available
 	if (!navigator?.share) {
 		window.alert('Sharing is not supported.');
@@ -16,7 +16,7 @@ async function shareHabit(element: HTMLDivElement) {
 		y: -20,
 		width: element.offsetWidth + 40,
 		height: element.offsetHeight + 40,
-		ignoreElements: (el) => el.getAttribute('data-name') === 'habitMenu'
+		ignoreElements: (el) => el.getAttribute('data-screenshot-ignore') === 'true'
 	};
 
 	// Convert element to canvas
@@ -32,12 +32,12 @@ async function shareHabit(element: HTMLDivElement) {
 		return;
 	}
 
-	const fileName = `DoHabit_${new Date().toISOString().replace(/\W/g, '_')}.jpg`;
+	const fileName = `DoHabit_${Date.now()}.jpg`;
 	const file = new File([blob], fileName, { type: 'image/jpeg' });
 
 	const sharedData: ShareData = {
-		title: 'Share Habit',
-		text: 'Check out my habit!',
+		title: 'Share',
+		text: 'Look at this!',
 		files: [file]
 	};
 
@@ -48,4 +48,4 @@ async function shareHabit(element: HTMLDivElement) {
 	}
 }
 
-export default shareHabit;
+export { shareElementScreenshot };

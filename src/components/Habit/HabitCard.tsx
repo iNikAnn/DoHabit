@@ -19,11 +19,10 @@ import HabitMenu from './HabitMenu';
 import { Habit } from '../../types/habit';
 
 // utils
-import { getColorVariants } from '@shared/lib/utils';
+import { getColorVariants, shareElementScreenshot } from '@shared/lib/utils';
 import getTodayProgress from '../../utils/getTodayProgress';
 import getStreaks from '../../utils/getStreaks';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
-import shareHabit from '../../utils/shareHabit';
 import getListAnimationVariants from '../../utils/getListAnimationVariants';
 
 const today = new Date();
@@ -63,9 +62,9 @@ function HabitCard(props: Props) {
 		[habit.completedDays, habit.frequency]
 	);
 
-	const handleShare = () => {
+	const handleShareHabit = () => {
 		if (habitRef.current) {
-			shareHabit(habitRef.current);
+			shareElementScreenshot(habitRef.current);
 		} else {
 			alert('Something went wrong.');
 		}
@@ -125,7 +124,7 @@ function HabitCard(props: Props) {
 						todayProgress={todayProgress}
 						currentStreak={currentStreak}
 						onShowMenu={onShowMenu}
-						onShare={handleShare}
+						onShare={handleShareHabit}
 					/>
 				)}
 			</AnimatePresence>

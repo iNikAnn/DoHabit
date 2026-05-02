@@ -9,5 +9,6 @@ export { importAppData } from './import-app-data/importAllData';
 export { readLocalStorage } from './read-local-storage/readLocalStorage';
 export { resolveTheme } from './resolve-theme/resolveTheme';
 export { scrollToTop } from './scroll-to-top/scrollToTop';
+export { shareElementScreenshot } from './share-element-screenshot/shareElementScreenshot';
 export { truncateText } from './truncate-text/truncateText';
 export { writeLocalStorage } from './write-local-storage/writeLocalStorage';

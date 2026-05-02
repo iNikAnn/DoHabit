@@ -144,6 +144,7 @@ function HabitMenu(props: Props) {
 		([icon, text, bgColor, to, state, onClick, arrow]) => (
 			<li key={text as string}>
 				<Link
+					// @ts-ignore
 					to={to ? (process.env.PUBLIC_URL as string + to) : '/'}
 					state={state}
 				>
@@ -161,9 +162,9 @@ function HabitMenu(props: Props) {
 
 	return (
 		<motion.div
-			data-name='habitMenu'
 			className={styles.menu}
 			{...bgVariants}
+			data-screenshot-ignore
 		>
 			<motion.div
 				className={styles.content}
