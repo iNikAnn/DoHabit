@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 
 // router
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
@@ -7,19 +7,19 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // stores
-import { useDialogStore } from './stores/dialogStore';
+import { useDialogStore } from '../stores/dialogStore';
 
 // main components
-import MainPage from './components/MainPage';
-import Modal from './components/Modal';
-import Dialog from './components/Containment/Dialog';
+import MainPage from '../components/MainPage';
+import Modal from '../components/Modal';
+import Dialog from '../components/Containment/Dialog';
 
 // hooks
-import useColorScheme from './hooks/useColorScheme';
-import useAchievementsCheck from './hooks/useAchievementsCheck';
+import useColorScheme from '../hooks/useColorScheme';
+import useAchievementsCheck from '../hooks/useAchievementsCheck';
 
 // db
-import dbModalRoutes from './db/dbModalRoutes';
+import dbModalRoutes from '../db/dbModalRoutes';
 
 // @ts-ignore
 const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
@@ -68,4 +68,4 @@ function App() {
 	);
 }
 
-export default App;
+export { App };

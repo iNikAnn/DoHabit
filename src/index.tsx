@@ -1,9 +1,7 @@
+import '@app/styles/index.css';
 import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App';
-
+import { App } from '@app/App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
-
 import { BrowserRouter } from 'react-router-dom';
 
 const root = createRoot(document.getElementById('root')!);
