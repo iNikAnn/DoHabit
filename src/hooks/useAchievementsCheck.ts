@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useAchievementsStore } from '../stores/achievementsStore';
 import { useHabitsStore } from '../stores/habitsStore';
 import { useMainDiaryStore } from '../stores/mainDiaryStore';
-import { useDialogStore } from '../stores/dialogStore';
 import { useIsFirstRender } from '@shared/lib';
+import { useDialogStore } from '@shared/ui';
 
 /**
  * Hook to trigger achievement synchronization on data changes.

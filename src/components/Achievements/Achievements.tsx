@@ -1,8 +1,8 @@
 import styles from '../../css/Achievements.module.css';
 
 // stores
-import { useDialogStore } from '../../stores/dialogStore';
 import { useAchievementsStore } from '../../stores/achievementsStore';
+import { useDialogStore } from '@shared/ui';
 
 // components
 import SectionHeader from '../Containment/SectionHeader';

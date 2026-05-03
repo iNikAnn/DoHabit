@@ -1,4 +1,4 @@
-import { DialogContent } from './dialog';
+import { DialogContent } from '@shared/ui';
 import { Note } from './diary';
 import { Habit } from './habit';
 
