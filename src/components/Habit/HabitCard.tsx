@@ -19,7 +19,7 @@ import HabitMenu from './HabitMenu';
 import { Habit } from '../../types/habit';
 
 // utils
-import { getColorVariants, shareElementScreenshot } from '@shared/lib/utils';
+import { getColorVariants, shareElementScreenshot } from '@shared/lib';
 import getTodayProgress from '../../utils/getTodayProgress';
 import getStreaks from '../../utils/getStreaks';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';

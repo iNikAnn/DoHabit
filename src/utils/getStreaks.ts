@@ -7,7 +7,7 @@ import { CompletedDay } from '../types/habit';
 
 // utils
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
-import { formatDate } from '@shared/lib/utils';
+import { formatDate } from '@shared/lib';
 
 interface Result {
 	allStreaks: Streak[];

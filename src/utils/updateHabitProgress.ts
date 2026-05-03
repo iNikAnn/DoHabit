@@ -2,7 +2,7 @@
 import { CompletedDay, Habit, UpdateProgress } from '../types/habit';
 
 // utils
-import { formatDate } from '@shared/lib/utils';
+import { formatDate } from '@shared/lib';
 import updateHabitById from './updateHabitById';
 import checkHabitCompletion from './checkHabitCompletion';
 

@@ -2,7 +2,7 @@
 import { Settings, SettingsAction } from '../types/settings';
 
 // utils
-import { writeLocalStorage } from '@shared/lib/utils';
+import { writeLocalStorage } from '@shared/lib';
 
 /**
  * Reducer for application settings with persistence.

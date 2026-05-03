@@ -3,7 +3,7 @@ import { CompletedDay } from '../types/habit';
 
 // utils
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
-import { countDaysBetween } from '@shared/lib/utils';
+import { countDaysBetween } from '@shared/lib';
 
 /**
  * Calculates the number of days between consecutive completed entries.

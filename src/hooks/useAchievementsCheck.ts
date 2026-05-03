@@ -4,7 +4,7 @@ import { useAchievementsStore } from '../stores/achievementsStore';
 import { useHabitsStore } from '../stores/habitsStore';
 import { useMainDiaryStore } from '../stores/mainDiaryStore';
 import { useDialogStore } from '../stores/dialogStore';
-import { useIsFirstRender } from '@shared/lib/hooks';
+import { useIsFirstRender } from '@shared/lib';
 
 /**
  * Hook to trigger achievement synchronization on data changes.

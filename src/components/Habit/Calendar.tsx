@@ -8,7 +8,7 @@ import { CompletedDay } from '../../types/habit';
 import { ColorPalette } from '../../types/colorScheme';
 
 // utils
-import { countMonths } from '@shared/lib/utils';
+import { countMonths } from '@shared/lib';
 
 interface Props {
 	completedDays: CompletedDay[];

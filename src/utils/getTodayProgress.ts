@@ -2,7 +2,7 @@
 import { CompletedDay } from '../types/habit';
 
 // utils
-import { formatDate } from '@shared/lib/utils';
+import { formatDate } from '@shared/lib';
 
 /**
  * Gets the progress value for the current day if it exists.

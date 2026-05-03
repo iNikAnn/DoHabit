@@ -4,7 +4,7 @@ import styles from '../../css/DataTransfer.module.css';
 import Placeholder from '../Placeholder';
 
 // utils
-import { exportAppData, importAppData } from '@shared/lib/utils';
+import { exportAppData, importAppData } from '@shared/lib';
 
 // icons
 import { ExportIcon, ImportIcon } from '@shared/assets';
