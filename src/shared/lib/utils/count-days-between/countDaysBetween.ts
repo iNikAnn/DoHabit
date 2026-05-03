@@ -1,4 +1,4 @@
-import { DAY_MS } from '@shared/config';
+import { DAY_MS } from '@shared/const';
 
 /**
  * Calculates the number of full days between two dates,
