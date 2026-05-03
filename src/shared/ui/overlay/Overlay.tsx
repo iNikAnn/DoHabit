@@ -1,9 +1,5 @@
-import styles from '../css/Overlay.module.css';
-
-// react
+import styles from './Overlay.module.css';
 import { useEffect } from 'react';
-
-// framer
 import { motion } from 'framer-motion';
 
 // variants
@@ -19,7 +15,6 @@ interface Props {
 }
 
 function Overlay({ onClick }: Props) {
-
 	useEffect(
 		() => {
 			document.body.style.overflow = 'hidden';
@@ -40,4 +35,4 @@ function Overlay({ onClick }: Props) {
 	);
 }
 
-export default Overlay;
+export { Overlay };

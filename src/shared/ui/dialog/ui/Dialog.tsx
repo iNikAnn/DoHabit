@@ -1,13 +1,7 @@
 import styles from './Dialog.module.css';
-
-// motion
 import { AnimatePresence, motion } from 'framer-motion';
-
-// stores
 import { useDialogStore } from '../model/store';
-
-// components
-import Overlay from '../../../../components/Overlay';
+import { Overlay } from '@shared/ui';
 import TextButton from '../../../../components/Actions/TextButton';
 
 // variants
