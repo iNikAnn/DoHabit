@@ -15,9 +15,6 @@ import { IoIosMail } from 'react-icons/io';
 import { ImFire } from 'react-icons/im';
 import { HiArchiveBox } from 'react-icons/hi2';
 
-// @ts-ignore
-const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
-
 const warningMessage =
 	'Are you sure you want to delete all application data?\n\n' +
 	'This includes:\n' +

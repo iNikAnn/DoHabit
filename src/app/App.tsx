@@ -10,8 +10,8 @@ import { AnimatePresence } from 'framer-motion';
 import { useDialogStore } from '../stores/dialogStore';
 
 // main components
+import { ModalLayout } from '@shared/ui';
 import MainPage from '../components/MainPage';
-import Modal from '../components/Modal';
 import Dialog from '../components/Containment/Dialog';
 
 // hooks
@@ -49,7 +49,7 @@ function App() {
 
 					<Route
 						path='/modal'
-						element={<Modal />}
+						element={<ModalLayout />}
 					>
 						{dbModalRoutes.map((r) => (
 							<Route key={r.path} path={r.path} element={r.element} />
