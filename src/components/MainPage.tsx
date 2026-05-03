@@ -9,8 +9,7 @@ import HabitList from './HabitList';
 import Placeholder from './Placeholder';
 
 // icons
-// import { ReactComponent as Calendar } from '../img/calendar.svg';
-import { Calendar } from '@shared/assets/icons';
+import { CalendarIcon } from '@shared/assets';
 import { MdAddToPhotos } from 'react-icons/md';
 
 import { useHabitsStore } from '../stores/habitsStore';
@@ -35,7 +34,7 @@ function MainPage() {
 
 			{filteredHabits.length === 0 && (
 				<Placeholder
-					image={<Calendar />}
+					image={<CalendarIcon />}
 					title='No active habits found'
 					desc='Why not create one now?'
 					textOnButton='Create First Habit'

@@ -8,7 +8,7 @@ import HabitList from '../HabitList';
 import Placeholder from '../Placeholder';
 
 // icons
-import { Table } from '@shared/assets/icons';
+import { TableIcon } from '@shared/assets';
 
 function Archive() {
 
@@ -24,7 +24,7 @@ function Archive() {
 				/>
 			) : (
 				<Placeholder
-					image={<Table />}
+					image={<TableIcon />}
 					title="No archived habits found"
 					desc="You can archive a habit by editing it."
 				/>
