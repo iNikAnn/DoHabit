@@ -13,8 +13,6 @@ import IconButton from './Actions/IconButton';
 import { FaPlus, FaBars, FaAward } from 'react-icons/fa';
 import { MdLibraryBooks } from 'react-icons/md';
 
-const publicUrl = process.env.PUBLIC_URL ?? '/';
-
 function Header() {
 
 	const navItems = [
@@ -25,7 +23,7 @@ function Header() {
 	].map(
 		([path, title, icon]) => (
 			<li key={path as string}>
-				<Link to={publicUrl + path} state={{ modalTitle: title }}>
+				<Link to={path as string} state={{ modalTitle: title }}>
 					<IconButton
 						icon={icon as JSX.Element}
 						text={title as string}

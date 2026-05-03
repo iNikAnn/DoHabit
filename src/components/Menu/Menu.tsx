@@ -35,7 +35,7 @@ function Menu() {
 					iconColor='#7b68ee'
 					title='Archive'
 					desc='View or manage archived habits'
-					to={`${PUBLIC_URL}/modal/archive`}
+					to='/modal/archive'
 					state={{ modalTitle: 'Archive' }}
 					arrow
 				/>
@@ -45,7 +45,7 @@ function Menu() {
 					iconColor='#ffa420'
 					title='Appearance'
 					desc={'Customize the app\'s look'}
-					to={`${PUBLIC_URL}/modal/appearance`}
+					to='/modal/appearance'
 					state={{ modalTitle: 'Appearance' }}
 					arrow
 				/>
@@ -55,7 +55,7 @@ function Menu() {
 					iconColor='#77dd77'
 					title='Export / Import Data'
 					desc='Backup or restore your data'
-					to={`${PUBLIC_URL}/modal/dataTransfer`}
+					to='/modal/dataTransfer'
 					state={{ modalTitle: 'Export/Import Data' }}
 					arrow
 				/>

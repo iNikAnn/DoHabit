@@ -21,9 +21,6 @@ import useAchievementsCheck from '../hooks/useAchievementsCheck';
 // db
 import dbModalRoutes from '../db/dbModalRoutes';
 
-// @ts-ignore
-const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
-
 function App() {
 
 	const location = useLocation();
@@ -36,22 +33,22 @@ function App() {
 	useAchievementsCheck();
 
 	return (
-		<main className="App">
+		<main className='App'>
 			{/* @ts-ignore */}
 			<AnimatePresence initial={false}>
 				<Routes location={location} key={location.pathname}>
 					<Route
 						path='*'
-						element={<Navigate to={PUBLIC_URL} />}
+						element={<Navigate to='/' />}
 					/>
 
 					<Route
-						path={PUBLIC_URL}
+						path='/'
 						element={<MainPage />}
 					/>
 
 					<Route
-						path={`${PUBLIC_URL}/modal`}
+						path='/modal'
 						element={<Modal />}
 					>
 						{dbModalRoutes.map((r) => (
@@ -61,7 +58,7 @@ function App() {
 				</Routes>
 
 				{isDialogVisible && (
-					<Dialog key="dialog" />
+					<Dialog key='dialog' />
 				)}
 			</AnimatePresence>
 		</main>

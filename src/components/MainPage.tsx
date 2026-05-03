@@ -39,8 +39,7 @@ function MainPage() {
 					desc='Why not create one now?'
 					textOnButton='Create First Habit'
 					buttonIcon={<MdAddToPhotos />}
-					// @ts-ignore
-					to={`${process.env.PUBLIC_URL}/modal/habitEditor`}
+					to='/modal/habitEditor'
 					state={{ modalTitle: 'Create new habit' }}
 				/>
 			)}
