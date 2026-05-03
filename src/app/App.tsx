@@ -1,29 +1,19 @@
 import './styles/App.css';
 
-// router
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-
-// framer
-import { AnimatePresence } from 'framer-motion';
-
 // stores
 import { useDialogStore } from '../stores/dialogStore';
 
 // main components
-import { ModalLayout } from '@shared/ui';
-import MainPage from '../components/MainPage';
 import Dialog from '../components/Containment/Dialog';
 
 // hooks
 import useColorScheme from '../hooks/useColorScheme';
 import useAchievementsCheck from '../hooks/useAchievementsCheck';
 
-// db
-import dbModalRoutes from '../db/dbModalRoutes';
+import { AppRouter } from './providers';
 
 function App() {
 
-	const location = useLocation();
 	const isDialogVisible = useDialogStore((s) => s.isVisible);
 
 	// Get colors from database based on settings or system theme
@@ -34,33 +24,11 @@ function App() {
 
 	return (
 		<main className='App'>
-			{/* @ts-ignore */}
-			<AnimatePresence initial={false}>
-				<Routes location={location} key={location.pathname}>
-					<Route
-						path='*'
-						element={<Navigate to='/' />}
-					/>
+			<AppRouter />
 
-					<Route
-						path='/'
-						element={<MainPage />}
-					/>
-
-					<Route
-						path='/modal'
-						element={<ModalLayout />}
-					>
-						{dbModalRoutes.map((r) => (
-							<Route key={r.path} path={r.path} element={r.element} />
-						))}
-					</Route>
-				</Routes>
-
-				{isDialogVisible && (
-					<Dialog key='dialog' />
-				)}
-			</AnimatePresence>
+			{isDialogVisible && (
+				<Dialog key='dialog' />
+			)}
 		</main>
 	);
 }

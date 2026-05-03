@@ -8,38 +8,38 @@ import Menu from '../components/Menu/Menu';
 import Statistics from '../components/Statistics/Statistics';
 
 const modalRoutes = [
-	{
-		path: 'achievements',
-		element: <Achievements />
-	},
-	{
-		path: 'appearance',
-		element: <AppearanceSettings />
-	},
-	{
-		path: 'archive',
-		element: <Archive />
-	},
-	{
-		path: 'dataTransfer',
-		element: <DataTransfer />
-	},
-	{
-		path: 'diary',
-		element: <Diary />
-	},
-	{
-		path: 'habitEditor',
-		element: <HabitEditor />
-	},
-	{
-		path: 'menu',
-		element: <Menu />
-	},
-	{
-		path: 'statistics',
-		element: <Statistics />
-	}
+	// {
+	// 	path: 'achievements',
+	// 	element: <Achievements />
+	// },
+	// {
+	// 	path: 'appearance',
+	// 	element: <AppearanceSettings />
+	// },
+	// {
+	// 	path: 'archive',
+	// 	element: <Archive />
+	// },
+	// {
+	// 	path: 'dataTransfer',
+	// 	element: <DataTransfer />
+	// },
+	// {
+	// 	path: 'diary',
+	// 	element: <Diary />
+	// },
+	// {
+	// 	path: 'habitEditor',
+	// 	element: <HabitEditor />
+	// },
+	// {
+	// 	path: 'menu',
+	// 	element: <Menu />
+	// },
+	// {
+	// 	path: 'statistics',
+	// 	element: <Statistics />
+	// }
 ];
 
 export default modalRoutes;

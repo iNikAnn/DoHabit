@@ -14,6 +14,7 @@ import { FaGithub, FaPaintBrush } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
 import { ImFire } from 'react-icons/im';
 import { HiArchiveBox } from 'react-icons/hi2';
+import { getModalPath } from '@shared/const';
 
 const warningMessage =
 	'Are you sure you want to delete all application data?\n\n' +
@@ -32,7 +33,7 @@ function Menu() {
 					iconColor='#7b68ee'
 					title='Archive'
 					desc='View or manage archived habits'
-					to='/modal/archive'
+					to={getModalPath('ARCHIVE')}
 					state={{ modalTitle: 'Archive' }}
 					arrow
 				/>
@@ -42,7 +43,7 @@ function Menu() {
 					iconColor='#ffa420'
 					title='Appearance'
 					desc={'Customize the app\'s look'}
-					to='/modal/appearance'
+					to={getModalPath('APPEARANCE')}
 					state={{ modalTitle: 'Appearance' }}
 					arrow
 				/>
@@ -52,7 +53,7 @@ function Menu() {
 					iconColor='#77dd77'
 					title='Export / Import Data'
 					desc='Backup or restore your data'
-					to='/modal/dataTransfer'
+					to={getModalPath('DATA_TRANSFER')}
 					state={{ modalTitle: 'Export/Import Data' }}
 					arrow
 				/>
