@@ -27,8 +27,8 @@
 	padding: 0 1rem;
 }
 
-/* title */
-.title {
+/* modalTitle */
+.modalTitle {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;

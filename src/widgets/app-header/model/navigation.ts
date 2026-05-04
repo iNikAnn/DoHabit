@@ -26,7 +26,7 @@ export const NAV_ITEMS: NavItem[] = [
 	},
 	{
 		path: getModalPath('MENU'),
-		title: 'App menu',
+		title: 'Menu',
 		icon: FaBars
 	}
 ];
