@@ -1,12 +1,7 @@
 import styles from './ModalLayout.module.css';
-
-// router
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-
-// framer
-import { motion, useAnimate, useMotionValue } from 'framer-motion'
-
-// icons
+import { useDragAction } from '@shared/lib';
+import { motion } from 'framer-motion'
 import { IoIosArrowForward } from 'react-icons/io';
 
 // variants
@@ -30,22 +25,16 @@ function ModalLayout() {
 	// Get title passed from Link state or fallback to app name
 	const modalTitle = location.state?.modalTitle ?? 'DoHabit';
 
-	const [scope, animate] = useAnimate();
-	const x = useMotionValue(0);
-
-	const handleDragEnd = async () => {
-		const startX = x.get();
-
-		if (startX >= 50) {
-			await animate(
-				scope.current,
-				{ opacity: [1, 0], x: [startX, startX + 100] },
-				{ duration: .1, ease: 'easeOut' }
-			);
+	const { scope, motionValue: x, handleDragEnd } = useDragAction({
+		successAnimation: {
+			opacity: 0,
+			x: window.innerWidth / 2
+		},
+		onAction: () => {
 			handleClose();
-			navigator.vibrate?.(10);
-		};
-	};
+			navigator?.vibrate?.(10);
+		}
+	});
 
 	return (
 		<motion.div
@@ -55,9 +44,9 @@ function ModalLayout() {
 			<motion.header className={styles.header}>
 				<IoIosArrowForward onClick={handleClose} />
 
-				<h2 className={styles.modalTitle}>
+				<h1 className={styles.modalTitle}>
 					{modalTitle}
-				</h2>
+				</h1>
 			</motion.header>
 
 			<motion.div
