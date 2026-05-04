@@ -17,7 +17,7 @@ import Placeholder from '../Placeholder';
 import AddNoteForm from './AddNoteForm';
 
 // icons
-import { Information } from '@shared/assets/icons';
+import { InformationIcon } from '@shared/assets';
 import { MdStickyNote2 } from 'react-icons/md';
 
 import { HabitAction } from '../../types/habit';
@@ -157,7 +157,7 @@ function Diary() {
 				/>
 			) : (
 				<Placeholder
-					image={<Information />}
+					image={<InformationIcon />}
 					title={(habitTitle ? 'This habit\'s' : 'Main') + ' diary is empty'}
 					desc='Add your first note to start tracking your progress and thoughts.'
 					textOnButton='Add First Note'

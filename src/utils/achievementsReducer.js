@@ -1,10 +1,10 @@
 // utils
 import getStreaks from './getStreaks';
-import { countDaysBetween } from '@shared/lib/utils';
+import { countDaysBetween } from '@shared/lib';
 import getCompletionGaps from './getCompletionGaps';
 import checkHabitCompletion from './checkHabitCompletion';
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
-import { formatDate, writeLocalStorage } from '@shared/lib/utils';
+import { formatDate, writeLocalStorage } from '@shared/lib';
 
 const todayDateStr = formatDate(new Date());
 

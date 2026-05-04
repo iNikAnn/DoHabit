@@ -22,7 +22,7 @@ import { HabitAction, HabitData } from '../../types/habit';
 
 // utils
 import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
-import { scrollToTop } from '@shared/lib/utils';
+import { scrollToTop } from '@shared/lib';
 
 // icons
 import { MdAddToPhotos } from 'react-icons/md';

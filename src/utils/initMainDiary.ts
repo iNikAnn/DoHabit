@@ -1,5 +1,5 @@
 // utils
-import { readLocalStorage } from '@shared/lib/utils';
+import { readLocalStorage } from '@shared/lib';
 
 // types
 import { Note } from '../types/diary';

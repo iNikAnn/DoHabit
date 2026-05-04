@@ -7,7 +7,7 @@ import { useSettingsStore } from './settingsStore';
 import { ColorsState } from '../types/colorScheme';
 
 // utils
-import { generateBaseColors, resolveTheme } from '@shared/lib/utils';
+import { generateBaseColors, resolveTheme } from '@shared/lib';
 
 /**
  * Colors Store.

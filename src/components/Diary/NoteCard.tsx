@@ -5,14 +5,13 @@ import { motion } from 'framer-motion';
 
 // hooks
 import { useLayoutEffect, useRef, useState } from 'react';
-import { useIsFirstRender } from '@shared/lib/hooks';
 
 // types
 import { Note } from '../../types/diary';
 
 // utils
 import getListAnimationVariants from '../../utils/getListAnimationVariants';
-import { formatDate, truncateText } from '@shared/lib/utils';
+import { formatDate, truncateText, useIsFirstRender } from '@shared/lib';
 
 interface Props {
 	note: Note;

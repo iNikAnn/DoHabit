@@ -1,4 +1,4 @@
-import styles from '../css/Modal.module.css';
+import styles from './ModalLayout.module.css';
 
 // react
 import { useState } from 'react';
@@ -20,7 +20,7 @@ const modalVariants = {
 	transition: { duration: .2, ease: 'easeOut' }
 };
 
-function Modal() {
+function ModalLayout() {
 
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -75,4 +75,4 @@ function Modal() {
 	);
 }
 
-export default Modal;
+export { ModalLayout };

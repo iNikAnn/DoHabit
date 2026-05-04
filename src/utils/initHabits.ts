@@ -1,5 +1,5 @@
 // utils
-import { readLocalStorage, writeLocalStorage } from '@shared/lib/utils';
+import { readLocalStorage, writeLocalStorage } from '@shared/lib';
 import removeIncompleteDays from './removeIncompleteDays';
 
 // types

@@ -12,20 +12,19 @@ import IconButton from './Actions/IconButton';
 // icons
 import { FaPlus, FaBars, FaAward } from 'react-icons/fa';
 import { MdLibraryBooks } from 'react-icons/md';
-
-const publicUrl = process.env.PUBLIC_URL ?? '/';
+import { getModalPath } from '@shared/const';
 
 function Header() {
 
 	const navItems = [
-		['/modal/habitEditor', 'Create new habit', <FaPlus />],
-		['/modal/diary', 'Main Diary', <MdLibraryBooks />],
-		['/modal/achievements', 'Achievements', <FaAward />],
-		['/modal/menu', 'Menu', <FaBars />]
+		[getModalPath('HABIT_EDITOR'), 'Create new habit', <FaPlus />],
+		[getModalPath('DIARY'), 'Main Diary', <MdLibraryBooks />],
+		[getModalPath('ACHIEVEMENTS'), 'Achievements', <FaAward />],
+		[getModalPath('MENU'), 'Menu', <FaBars />]
 	].map(
 		([path, title, icon]) => (
 			<li key={path as string}>
-				<Link to={publicUrl + path} state={{ modalTitle: title }}>
+				<Link to={path as string} state={{ modalTitle: title }}>
 					<IconButton
 						icon={icon as JSX.Element}
 						text={title as string}

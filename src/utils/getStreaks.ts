@@ -1,5 +1,5 @@
 // constants
-import { DAY_MS } from '@shared/config';
+import { DAY_MS } from '@shared/const';
 
 // types
 import { Streak } from '../types/common';
@@ -7,7 +7,7 @@ import { CompletedDay } from '../types/habit';
 
 // utils
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
-import { formatDate } from '@shared/lib/utils';
+import { formatDate } from '@shared/lib';
 
 interface Result {
 	allStreaks: Streak[];

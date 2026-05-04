@@ -5,7 +5,7 @@ import { Achievement } from '../types/achievement';
 import dbAchievements from '../db/dbAchievements';
 
 // utils
-import { readLocalStorage } from '@shared/lib/utils';
+import { readLocalStorage } from '@shared/lib';
 
 /**
  * Merge base achievements with saved progress.

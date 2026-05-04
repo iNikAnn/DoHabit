@@ -144,8 +144,7 @@ function HabitMenu(props: Props) {
 		([icon, text, bgColor, to, state, onClick, arrow]) => (
 			<li key={text as string}>
 				<Link
-					// @ts-ignore
-					to={to ? (process.env.PUBLIC_URL as string + to) : '/'}
+					to={to as string ?? '/'}
 					state={state}
 				>
 					<Button

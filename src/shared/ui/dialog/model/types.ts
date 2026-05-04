@@ -6,7 +6,6 @@ export interface DialogContent {
 }
 
 export interface DialogState {
-	isVisible: boolean;
 	content?: DialogContent | null;
 	open: (content: DialogContent) => void;
 	close: () => void;

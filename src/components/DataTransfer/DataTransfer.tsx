@@ -4,10 +4,10 @@ import styles from '../../css/DataTransfer.module.css';
 import Placeholder from '../Placeholder';
 
 // utils
-import { exportAppData, importAppData } from '@shared/lib/utils';
+import { exportAppData, importAppData } from '@shared/lib';
 
 // icons
-import { Export, Import } from '@shared/assets/icons';
+import { ExportIcon, ImportIcon } from '@shared/assets';
 import { BsDatabaseFillUp } from 'react-icons/bs';
 import { BsDatabaseFillDown } from 'react-icons/bs';
 
@@ -16,7 +16,7 @@ function DataTransfer() {
 		<div className={styles.dataTransfer}>
 			<div className={styles.placeholderWrapper}>
 				<Placeholder
-					image={<Export />}
+					image={<ExportIcon />}
 					title='Export'
 					desc='Save a backup of your habits data to your device.'
 					textOnButton='Export Now'
@@ -28,7 +28,7 @@ function DataTransfer() {
 
 			<div className={styles.placeholderWrapper}>
 				<Placeholder
-					image={<Import />}
+					image={<ImportIcon />}
 					title='Import'
 					desc='Upload your habits data from a backup file.'
 					textOnButton='Import Now'

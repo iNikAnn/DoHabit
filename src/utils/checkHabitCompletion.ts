@@ -2,7 +2,7 @@
 import { CompletedDay } from '../types/habit';
 
 // utils
-import { formatDate } from '@shared/lib/utils';
+import { formatDate } from '@shared/lib';
 
 /**
  * Checks if a habit was completed for each of the provided dates.
