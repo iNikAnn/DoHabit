@@ -11,6 +11,9 @@ import Statistics from '@/components/Statistics/Statistics';
 import { modalPaths, ModalRouteKey } from '@shared/const';
 import { ModalLayout } from '@shared/ui';
 
+/**
+ * Individual route definitions for modal sub-pages.
+ */
 export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	ACHIEVEMENTS: {
 		path: modalPaths.ACHIEVEMENTS,
@@ -46,6 +49,14 @@ export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	}
 };
 
+/**
+ * Global route configuration.
+ *
+ * Note: Most functional pages are rendered as sub-routes
+ * inside ModalLayout via React Router Outlet.
+ *
+ * @see {@link modalPaths} - Defined in shared/const/router.ts
+ */
 export const routeConfig: RouteObject[] = [
 	{
 		path: '/',
@@ -57,6 +68,7 @@ export const routeConfig: RouteObject[] = [
 		children: Object.values(modalChildRoutes)
 	},
 	{
+		/* Fallback for undefined routes */
 		path: '*',
 		element: <Navigate to='/' />
 	}
