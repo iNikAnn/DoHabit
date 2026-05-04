@@ -1,10 +1,10 @@
-import styles from '../css/MainPage.module.css';
+import styles from './MainPage.module.css';
 
 // framer
 import { motion } from 'framer-motion';
 
 // components
-import Header from '../../../components/Header';
+import { AppHeader } from '@widgets/app-header';
 import HabitList from '../../../components/HabitList';
 import Placeholder from '../../../components/Placeholder';
 
@@ -28,7 +28,7 @@ function MainPage() {
 
 	return (
 		<motion.div className={styles.mainPage} {...mainVariants}>
-			<Header />
+			<AppHeader />
 
 			<HabitList habits={filteredHabits} />
 
