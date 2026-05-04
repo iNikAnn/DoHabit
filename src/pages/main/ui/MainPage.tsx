@@ -4,15 +4,15 @@ import styles from '../css/MainPage.module.css';
 import { motion } from 'framer-motion';
 
 // components
-import Header from './Header';
-import HabitList from './HabitList';
-import Placeholder from './Placeholder';
+import Header from '../../../components/Header';
+import HabitList from '../../../components/HabitList';
+import Placeholder from '../../../components/Placeholder';
 
 // icons
 import { CalendarIcon } from '@shared/assets';
 import { MdAddToPhotos } from 'react-icons/md';
 
-import { useHabitsStore } from '../stores/habitsStore';
+import { useHabitsStore } from '../../../stores/habitsStore';
 
 const mainVariants = {
 	initial: { opacity: 0 },
@@ -47,4 +47,4 @@ function MainPage() {
 	);
 }
 
-export default MainPage;
+export { MainPage };

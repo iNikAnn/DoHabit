@@ -5,7 +5,7 @@ import Archive from '@/components/Archive/Archive';
 import DataTransfer from '@/components/DataTransfer/DataTransfer';
 import Diary from '@/components/Diary/Diary';
 import HabitEditor from '@/components/HabitEditor/HabitEditor';
-import MainPage from '@/components/MainPage';
+import { MainPage } from '@pages/main';
 import Menu from '@/components/Menu/Menu';
 import Statistics from '@/components/Statistics/Statistics';
 import { modalPaths, ModalRouteKey } from '@shared/const';
