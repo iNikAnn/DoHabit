@@ -12,8 +12,8 @@ import { useHabitsStore } from '../../stores/habitsStore';
 import { useMainDiaryStore } from '../../stores/mainDiaryStore';
 
 // components
+import { Placeholder } from '@shared/ui';
 import NoteList from './NoteList';
-import Placeholder from '../Placeholder';
 import AddNoteForm from './AddNoteForm';
 
 // icons
@@ -157,13 +157,17 @@ function Diary() {
 				/>
 			) : (
 				<Placeholder
-					image={<InformationIcon />}
-					title={(habitTitle ? 'This habit\'s' : 'Main') + ' diary is empty'}
-					desc='Add your first note to start tracking your progress and thoughts.'
-					textOnButton='Add First Note'
-					buttonIcon={<MdStickyNote2 />}
-					onClick={() => handleFormActivation(true)}
-					accentColor={accentColor}
+					content={{
+						image: <InformationIcon />,
+						title: (habitTitle ? 'This habit\'s' : 'Main') + ' diary is empty',
+						description: 'Add your first note to start tracking your progress and thoughts.'
+					}}
+					action={{
+						label: 'Add First Note',
+						icon: <MdStickyNote2 />,
+						color: accentColor,
+						onClick: () => handleFormActivation(true)
+					}}
 				/>
 			)}
 

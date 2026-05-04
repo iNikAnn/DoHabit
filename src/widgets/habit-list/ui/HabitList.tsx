@@ -2,7 +2,7 @@ import styles from './HabitList.module.css';
 
 // components
 import HabitCard from '../../../components/Habit/HabitCard';
-import Placeholder from '@/components/Placeholder';
+import { Placeholder } from '@shared/ui';
 
 // react
 import { useState } from 'react';
@@ -50,19 +50,25 @@ function HabitList(params: HabitListParams) {
 	if (filteredHabits.length === 0) {
 		return isArchive ? (
 			<Placeholder
-				image={<TableIcon />}
-				title='No archived habits found'
-				desc='You can archive a habit by editing it.'
+				content={{
+					image: <TableIcon />,
+					title: 'No archived habits found',
+					description: 'You can archive a habit by editing it.'
+				}}
 			/>
 		) : (
 			<Placeholder
-				image={<CalendarIcon />}
-				title='No active habits found'
-				desc='Why not create one now?'
-				textOnButton='Create First Habit'
-				buttonIcon={<MdAddToPhotos />}
-				to={getModalPath('HABIT_EDITOR')}
-				state={{ modalTitle: 'Create new habit' }}
+				content={{
+					image: <CalendarIcon />,
+					title: 'No active habits found',
+					description: 'Why not create one now?'
+				}}
+				action={{
+					label: 'Create First Habit',
+					icon: <MdAddToPhotos />,
+					to: getModalPath('HABIT_EDITOR'),
+					state: { modalTitle: 'Create new habit' }
+				}}
 			/>
 		);
 	}

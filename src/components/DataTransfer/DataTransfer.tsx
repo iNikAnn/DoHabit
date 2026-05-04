@@ -1,7 +1,7 @@
 import styles from '../../css/DataTransfer.module.css';
 
 // components
-import Placeholder from '../Placeholder';
+import { Placeholder } from '@shared/ui';
 
 // utils
 import { exportAppData, importAppData } from '@shared/lib';
@@ -16,24 +16,32 @@ function DataTransfer() {
 		<div className={styles.dataTransfer}>
 			<div className={styles.placeholderWrapper}>
 				<Placeholder
-					image={<ExportIcon />}
-					title='Export'
-					desc='Save a backup of your habits data to your device.'
-					textOnButton='Export Now'
-					buttonIcon={<BsDatabaseFillUp />}
-					onClick={exportAppData}
-					accentColor='#57a639'
+					content={{
+						image: <ExportIcon />,
+						title: 'Export',
+						description: 'Save a backup of your habits data to your device.'
+					}}
+					action={{
+						label: 'Export Now',
+						icon: < BsDatabaseFillUp />,
+						color: '#57a639',
+						onClick: exportAppData
+					}}
 				/>
 			</div>
 
 			<div className={styles.placeholderWrapper}>
 				<Placeholder
-					image={<ImportIcon />}
-					title='Import'
-					desc='Upload your habits data from a backup file.'
-					textOnButton='Import Now'
-					buttonIcon={<BsDatabaseFillDown />}
-					onClick={importAppData}
+					content={{
+						image: <ImportIcon />,
+						title: 'Import',
+						description: 'Upload your habits data from a backup file.'
+					}}
+					action={{
+						label: 'Import Now',
+						icon: <BsDatabaseFillDown />,
+						onClick: importAppData
+					}}
 				/>
 			</div>
 		</div>

@@ -2,11 +2,10 @@ import styles from '../../css/Achievements.module.css';
 
 // stores
 import { useAchievementsStore } from '../../stores/achievementsStore';
-import { useDialogStore } from '@shared/ui';
+import { Placeholder, useDialogStore } from '@shared/ui';
 
 // components
 import SectionHeader from '../Containment/SectionHeader';
-import Placeholder from '../Placeholder';
 import RegularAchievementCard from './RegularAchievementCard';
 import SecretAchievementCard from './SecretAchievementCard';
 
@@ -97,8 +96,10 @@ function Achievements() {
 					</ul>
 				) : (
 					<Placeholder
-						title='No secret achievements unlocked'
-						desc='Try exploring or playing to discover hidden achievements!'
+						content={{
+							title: 'No secret achievements unlocked',
+							description: 'Try exploring or playing to discover hidden achievements!'
+						}}
 					/>
 				)}
 			</section>
