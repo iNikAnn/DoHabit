@@ -1,8 +1,5 @@
 import styles from './ModalLayout.module.css';
 
-// react
-import { useState } from 'react';
-
 // router
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
@@ -20,14 +17,18 @@ const modalVariants = {
 	transition: { duration: .2, ease: 'easeOut' }
 };
 
+/**
+ * Shared layout for all modal routes.
+ */
 function ModalLayout() {
-
 	const location = useLocation();
 	const navigate = useNavigate();
 
+	// Navigate one level up to close the modal view
 	const handleClose = () => navigate(-1);
 
-	const [title] = useState(location.state?.modalTitle);
+	// Get title passed from Link state or fallback to app name
+	const modalTitle = location.state?.modalTitle ?? 'DoHabit';
 
 	const [scope, animate] = useAnimate();
 	const x = useMotionValue(0);
@@ -54,8 +55,8 @@ function ModalLayout() {
 			<motion.header className={styles.header}>
 				<IoIosArrowForward onClick={handleClose} />
 
-				<h2 className={styles.title}>
-					{title ?? ''}
+				<h2 className={styles.modalTitle}>
+					{modalTitle}
 				</h2>
 			</motion.header>
 
