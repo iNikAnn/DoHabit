@@ -1,9 +1,6 @@
 import './styles/App.css';
-
 import { AppRouter } from './providers';
-import { Dialog } from '@shared/ui';
-
-// hooks
+import { Dialog, Drawer } from '@shared/ui';
 import useColorScheme from '../hooks/useColorScheme';
 import useAchievementsCheck from '../hooks/useAchievementsCheck';
 
@@ -15,6 +12,7 @@ function App() {
 		<main className='App'>
 			<AppRouter />
 			<Dialog />
+			<Drawer />
 		</main>
 	);
 }

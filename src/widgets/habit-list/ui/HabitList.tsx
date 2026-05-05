@@ -1,23 +1,11 @@
 import styles from './HabitList.module.css';
-
-// components
 import HabitCard from '../../../components/Habit/HabitCard';
 import { Placeholder } from '@shared/ui';
-
-// react
-import { useState } from 'react';
-
-// framer
 import { AnimatePresence } from 'framer-motion';
-
-// stores
 import { useColorsStore } from '../../../stores/colorsStore';
 import { useHabitsStore } from '@/stores/habitsStore';
-
-// types
 import { CalendarIcon, TableIcon } from '@shared/assets';
 import { MdAddToPhotos } from 'react-icons/md';
-
 import { getModalPath } from '@shared/const';
 
 interface HabitListParams {
@@ -38,13 +26,6 @@ function HabitList(params: HabitListParams) {
 
 	// Filter habits based on mode
 	const filteredHabits = habits.filter((h) => isArchive ? h.isArchived : !h.isArchived);
-
-	const [visibleMenuIndex, setVisibleMenuIndex] = useState(-1);
-
-	const handleToggleMenu = (i: number) => {
-		document.body.classList.toggle('no-scroll');
-		setVisibleMenuIndex(i === visibleMenuIndex ? -1 : i);
-	};
 
 	// 1. Handle empty state
 	if (filteredHabits.length === 0) {
@@ -78,16 +59,13 @@ function HabitList(params: HabitListParams) {
 		<div className={styles.habitList}>
 			{/* @ts-ignore */}
 			<AnimatePresence initial={false}>
-				{filteredHabits.map((habit, index) => (
+				{filteredHabits.map((habit) => (
 					<HabitCard
 						// TODO: Switch to ID once implemented
 						key={habit.title}
 						habit={habit}
-						habitIndex={index}
 						color={dbColors[habit.colorIndex] ?? 'red'}
 						isArchive={isArchive}
-						isMenuVisible={visibleMenuIndex === index}
-						onShowMenu={handleToggleMenu}
 					/>
 				))}
 			</AnimatePresence>
