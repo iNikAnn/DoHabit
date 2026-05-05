@@ -99,7 +99,7 @@ function HabitMenu(props: Props) {
 		<MdEditSquare />,
 		'Edit Habit',
 		darkenedColor,
-		'/modal/habitEditor',
+		'/modal/habit-editor',
 		{
 			habitTitle: habit.title,
 			modalTitle: 'Edit habit',
