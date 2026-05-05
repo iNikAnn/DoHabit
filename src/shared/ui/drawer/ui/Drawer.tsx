@@ -2,11 +2,12 @@ import styles from './Drawer.module.css';
 import { Button, Overlay } from '@shared/ui';
 import { AnimatePresence, motion, PanInfo } from 'framer-motion'
 import { useDrawerStore } from '../model/store';
+import { createPortal } from 'react-dom';
 
 const drawerVariants = {
 	initial: { opacity: 0, y: '25%' },
 	animate: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: '75%' },
+	exit: { opacity: 0, y: '50%' },
 	transition: { duration: .2, ease: 'easeOut' }
 };
 
@@ -31,39 +32,42 @@ function Drawer() {
 				<>
 					<Overlay key='drawer-overlay' onClick={closeDrawer} />
 
-					<motion.div
-						key='drawer'
-						className={styles.drawer}
-						{...drawerVariants}
-						drag='y'
-						dragConstraints={{ top: 0, bottom: 0 }}
-						dragElastic={{ top: 0.1, bottom: 1 }}
-						onDragEnd={handleDragEnd}
-					>
-						<div className={styles.handle} />
-						<h3 className={styles.title}>{content.title}</h3>
+					{createPortal(
+						<motion.div
+							key='drawer'
+							className={styles.drawer}
+							{...drawerVariants}
+							drag='y'
+							dragConstraints={{ top: 0, bottom: 0 }}
+							dragElastic={{ top: 0.1, bottom: 1 }}
+							onDragEnd={handleDragEnd}
+						>
+							<div className={styles.handle} />
+							<h3 className={styles.title}>{content.title}</h3>
 
-						{content.actions && (
-							<ul
-								className={styles.actions}
-								onClick={closeDrawer}
-							>
-								{content.actions.map(({ label, indicator, ...rest }) => (
-									<li key={label}>
-										<Button
-											indicator={{
-												type: indicator?.type ?? 'none',
-												style: { color: 'var(--color-secondary)', ...indicator?.style }
-											}}
-											{...rest}
-										>
-											{label}
-										</Button>
-									</li>
-								))}
-							</ul>
-						)}
-					</motion.div>
+							{content.actions && (
+								<ul
+									className={styles.actions}
+									onClick={closeDrawer}
+								>
+									{content.actions.map(({ label, indicator, ...rest }) => (
+										<li key={label}>
+											<Button
+												indicator={{
+													type: indicator?.type ?? 'none',
+													style: { color: 'var(--color-secondary)', ...indicator?.style }
+												}}
+												{...rest}
+											>
+												{label}
+											</Button>
+										</li>
+									))}
+								</ul>
+							)}
+						</motion.div>,
+						document.body
+					)}
 				</>
 			)}
 		</AnimatePresence >

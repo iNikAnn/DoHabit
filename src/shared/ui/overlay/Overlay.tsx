@@ -1,6 +1,7 @@
 import styles from './Overlay.module.css';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { createPortal } from 'react-dom';
 
 const variants = {
 	initial: { opacity: 0 },
@@ -29,11 +30,14 @@ function Overlay({ onClick }: Props) {
 	}, []);
 
 	return (
-		<motion.div
-			{...variants}
-			className={styles.overlay}
-			onClick={onClick}
-		/>
+		createPortal(
+			<motion.div
+				{...variants}
+				className={styles.overlay}
+				onClick={onClick}
+			/>,
+			document.body
+		)
 	);
 }
 

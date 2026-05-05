@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useDialogStore } from '../model/store';
 import { Overlay } from '@shared/ui';
 import TextButton from '../../../../components/Actions/TextButton';
+import { createPortal } from 'react-dom';
 
 const dialogVariants = {
 	initial: { opacity: 0, y: '-40%', x: '-50%' },
@@ -28,44 +29,47 @@ function Dialog() {
 				<>
 					<Overlay key='dialog-overlay' onClick={closeDialog} />
 
-					<motion.div
-						key='dialog'
-						className={styles.dialog}
-						{...dialogVariants}
-					>
-						<div className={styles.content}>
-							{content.title && (
-								<div>
-									<h3>{content.title}</h3>
+					{createPortal(
+						<motion.div
+							key='dialog'
+							className={styles.dialog}
+							{...dialogVariants}
+						>
+							<div className={styles.content}>
+								{content.title && (
+									<div>
+										<h3>{content.title}</h3>
 
-									{content.subTitle && (
-										<small className={styles.subTitle}>
-											{content.subTitle}
-										</small>
-									)}
-								</div>
-							)}
+										{content.subTitle && (
+											<small className={styles.subTitle}>
+												{content.subTitle}
+											</small>
+										)}
+									</div>
+								)}
 
-							{content.imgSrc && (
-								<img src={content.imgSrc} alt={content.title} className={styles.img} />
-							)}
+								{content.imgSrc && (
+									<img src={content.imgSrc} alt={content.title} className={styles.img} />
+								)}
 
-							{content.text && (
-								<div className={styles.text}>
-									{content.text.split('\n').map((line, i) => (
-										<div key={i}>{line}</div>
-									))}
-								</div>
-							)}
-						</div>
+								{content.text && (
+									<div className={styles.text}>
+										{content.text.split('\n').map((line, i) => (
+											<div key={i}>{line}</div>
+										))}
+									</div>
+								)}
+							</div>
 
-						<div className={styles.btnsWrapper}>
-							<TextButton
-								text="Close"
-								onClick={closeDialog}
-							/>
-						</div>
-					</motion.div>
+							<div className={styles.btnsWrapper}>
+								<TextButton
+									text="Close"
+									onClick={closeDialog}
+								/>
+							</div>
+						</motion.div>,
+						document.body
+					)}
 				</>
 			)}
 		</AnimatePresence>
