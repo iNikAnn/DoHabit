@@ -6,8 +6,8 @@ import { useDrawerStore } from '../model/store';
 const drawerVariants = {
 	initial: { opacity: 0, y: '25%' },
 	animate: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: '25%' },
-	transition: { duration: 0.2, ease: 'easeOut' }
+	exit: { opacity: 0, y: '75%' },
+	transition: { duration: .2, ease: 'easeOut' }
 };
 
 /**

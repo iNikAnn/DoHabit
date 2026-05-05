@@ -4,18 +4,19 @@ import { useDialogStore } from '../model/store';
 import { Overlay } from '@shared/ui';
 import TextButton from '../../../../components/Actions/TextButton';
 
-// variants
 const dialogVariants = {
 	initial: { opacity: 0, y: '-40%', x: '-50%' },
 	animate: { opacity: 1, y: '-50%', x: '-50%' },
 	exit: { opacity: 0, y: '-40%', x: '-50%' },
-
 	transition: {
 		duration: .2,
 		ease: 'easeInOut'
 	}
 };
 
+/**
+ * Dialog component controlled via global state.
+ */
 function Dialog() {
 	const content = useDialogStore((s) => s.content);
 	const closeDialog = useDialogStore((s) => s.close);
