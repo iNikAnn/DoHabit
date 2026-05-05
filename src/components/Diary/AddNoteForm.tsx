@@ -4,7 +4,7 @@ import styles from '../../css/AddNoteForm.module.css';
 import { ForwardedRef, forwardRef, SubmitEventHandler } from 'react';
 
 // components
-import Button from '../Button';
+import { Button } from '@shared/ui';
 
 // icons
 import { IoSend } from 'react-icons/io5';

@@ -1,7 +1,6 @@
 import styles from './Placeholder.module.css';
-import { Link, useLocation } from 'react-router-dom';
 import { PlaceholderProps } from './types';
-import Button from '../../../components/Button';
+import { Button } from '@shared/ui';
 
 /**
  * Generic placeholder for empty states.
@@ -12,8 +11,6 @@ function Placeholder(props: PlaceholderProps) {
 		content,
 		action
 	} = props;
-
-	const location = useLocation();
 
 	return (
 		<div className={styles.placeholder}>
@@ -28,17 +25,15 @@ function Placeholder(props: PlaceholderProps) {
 			</div>
 
 			{action && (
-				<Link
-					to={action.to ?? location.pathname}
+				<Button
+					to={action.to}
 					state={action.state}
+					icon={action.icon}
+					style={{ backgroundColor: action.color }}
+					onClick={action.onClick}
 				>
-					<Button
-						icon={action.icon}
-						text={action.label}
-						bgColor={action.color}
-						onClick={action.onClick}
-					/>
-				</Link>
+					{action.label}
+				</Button>
 			)}
 		</div>
 	);

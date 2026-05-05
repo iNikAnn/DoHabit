@@ -15,7 +15,7 @@ import FrequencyBlock from './FrequencyBlock';
 import OrderBlock from './OrderBlock';
 import ColorBlock from './ColorBlock';
 import IconBlock from './IconBlock';
-import Button from '../Button';
+import { Button } from '@shared/ui';
 
 // types
 import { HabitAction, HabitData } from '../../types/habit';
@@ -142,10 +142,10 @@ function HabitEditor() {
 						<div className={styles.extraBtnsWrapper}>
 							<Button
 								icon={<MdDeleteForever />}
-								text='Delete Habit'
-								color='IndianRed'
-								// bgColor='IndianRed'
-								bgColor='var(--bg-color-primary)'
+								style={{
+									color: 'IndianRed',
+									backgroundColor: 'var(--bg-color-primary)'
+								}}
 								onClick={() => {
 									const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 
@@ -153,13 +153,13 @@ function HabitEditor() {
 										handleUpdate({ type: 'deleteHabit', payload: { ...payload } });
 									}
 								}}
-							/>
+							>
+								Delete Habit
+							</Button>
 
 							<Button
 								icon={<HiArchiveBoxArrowDown />}
-								text='Archive Habit'
-								// bgColor='#7b68ee'
-								bgColor='var(--bg-color-primary)'
+								style={{ backgroundColor: 'var(--bg-color-primary)' }}
 								onClick={() => {
 									const msg = 'Are you sure you want to archive this habit? Archived habits can be found in the menu under the \'Archive\' section.';
 
@@ -167,17 +167,19 @@ function HabitEditor() {
 										handleUpdate({ type: 'archiveHabit', payload: { ...payload } });
 									}
 								}}
-							/>
+							>
+								Archive Habit
+							</Button>
 						</div>
 					)}
 
 					<Button
 						type='submit'
 						icon={<MdAddToPhotos />}
-						text={isEditMode ? 'Save Changes' : 'Create Habit'}
-						color='#e6e6e6'
 						disabled={alreadyExist}
-					/>
+					>
+						{isEditMode ? 'Save Changes' : 'Create Habit'}
+					</Button>
 				</div>
 			</form>
 		</div>

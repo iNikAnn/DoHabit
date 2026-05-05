@@ -1,7 +1,7 @@
 import styles from '../../css/HabitMenu.module.css';
 
 // components
-import Button from '../Button';
+import { Button } from '@shared/ui';
 
 // react
 import { JSX } from 'react';
@@ -143,18 +143,19 @@ function HabitMenu(props: Props) {
 	]].map(
 		([icon, text, bgColor, to, state, onClick, arrow]) => (
 			<li key={text as string}>
-				<Link
-					to={to as string ?? '/'}
+				<Button
+					to={to ? to as string : undefined}
+					// @ts-ignore
 					state={state}
+					style={{ backgroundColor: bgColor ? bgColor as string : '' }}
+					// @ts-ignore
+					icon={icon}
+					indicator={{ type: arrow ? 'arrow' : 'none' }}
+					// @ts-ignore
+					onClick={onClick}
 				>
-					<Button
-						icon={icon as JSX.Element}
-						text={text as string}
-						bgColor={bgColor as string}
-						arrow={arrow as boolean}
-						onClick={onClick as () => void}
-					/>
-				</Link>
+					{text as string}
+				</Button>
 			</li>
 		)
 	);

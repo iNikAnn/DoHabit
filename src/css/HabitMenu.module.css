@@ -74,7 +74,7 @@
 } */
 
 /* btn */
-.list button {
+.list button, .list a {
 	width: 100%;
 	height: 100%;
 	border-radius: 2rem;
