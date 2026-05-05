@@ -39,7 +39,7 @@ function MainPage() {
 					desc='Why not create one now?'
 					textOnButton='Create First Habit'
 					buttonIcon={<MdAddToPhotos />}
-					to='/modal/habitEditor'
+					to='/modal/habit-editor'
 					state={{ modalTitle: 'Create new habit' }}
 				/>
 			)}
