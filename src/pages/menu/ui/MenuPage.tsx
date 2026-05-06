@@ -56,7 +56,7 @@ function MenuPage() {
 					iconColor='#77dd77'
 					title='Export / Import Data'
 					desc='Backup or restore your data'
-					to={getModalPath('DATA_TRANSFER')}
+					to={getModalPath('DATA_MANAGEMENT')}
 					state={{ modalTitle: 'Export/Import Data' }}
 					arrow
 				/>

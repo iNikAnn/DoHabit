@@ -1,0 +1,1 @@
+export { DataManagementPage } from './ui/DataManagementPage';

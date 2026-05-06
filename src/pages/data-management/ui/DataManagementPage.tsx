@@ -1,4 +1,4 @@
-import styles from '../../css/DataTransfer.module.css';
+import styles from './DataManagementPage.module.css';
 
 // components
 import { Placeholder } from '@shared/ui';
@@ -11,7 +11,10 @@ import { ExportIcon, ImportIcon } from '@shared/assets';
 import { BsDatabaseFillUp } from 'react-icons/bs';
 import { BsDatabaseFillDown } from 'react-icons/bs';
 
-function DataTransfer() {
+/**
+ * Handles data export and import (JSON backups).
+ */
+function DataManagementPage() {
 	return (
 		<div className={styles.dataTransfer}>
 			<div className={styles.placeholderWrapper}>
@@ -48,4 +51,4 @@ function DataTransfer() {
 	);
 }
 
-export default DataTransfer;
+export { DataManagementPage };
