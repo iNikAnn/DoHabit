@@ -1,19 +1,14 @@
 import styles from '../../css/HabitHeader.module.css';
 
-// db
-import { HABIT_ICONS } from '../../db/dbIcons';
-
 // react
 import { useRef } from 'react';
 
-// stores
-import { useHabitsStore } from '../../stores/habitsStore';
+import { Habit, HABIT_ICONS, useHabitsStore } from '@entities/habit';
 
 // components
 import ProgressBar from './ProgressBar';
 
 // types
-import { Habit } from '../../types/habit';
 import { ColorPalette } from '../../types/colorScheme';
 
 // icons
@@ -102,11 +97,11 @@ function HabitHeader(props: Props) {
 						Streak: <strong>{currentStreak}</strong>
 					</small>
 
-					{!!habit.diary?.length && (
+					{/* {!!habit.diary?.length && (
 						<small>
 							Notes: <strong>{habit.diary.length}</strong>
 						</small>
-					)}
+					)} */}
 				</div>
 			</div>
 

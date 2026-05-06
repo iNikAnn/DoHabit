@@ -1,17 +1,17 @@
 import { create } from 'zustand';
-import { DiaryState } from './types';
-import initDiary from './init';
-import diaryReducer from './reducer';
+import { NoteState } from './types';
+import initNotes from './init';
+import { notesReducer } from './reducer';
 
 /**
- * Diary store providing state and a dispatch function.
+ * Note store providing state and a dispatch function.
  */
-export const useDiaryStore = create<DiaryState>(
+export const useNotesStore = create<NoteState>(
 	(set) => ({
-		diary: initDiary(),
+		notes: initNotes(),
 
-		diaryDispatch: (actions) => set(
-			(s) => ({ diary: diaryReducer(s.diary, actions) })
+		notesDispatch: (actions) => set(
+			(s) => ({ notes: notesReducer(s.notes, actions) })
 		)
 	})
 );

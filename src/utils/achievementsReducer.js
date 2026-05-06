@@ -1,9 +1,9 @@
 // utils
-import getStreaks from './getStreaks';
+import getStreaks from '../entities/habit/lib/getStreaks';
 import { countDaysBetween } from '@shared/lib';
-import getCompletionGaps from './getCompletionGaps';
-import checkHabitCompletion from './checkHabitCompletion';
-import removeIncompleteFirstDay from './removeIncompleteFirstDay';
+import getCompletionGaps from '../entities/habit/lib/getCompletionGaps';
+import checkHabitCompletion from '../entities/habit/lib/checkHabitCompletion';
+import removeIncompleteFirstDay from '../entities/habit/lib/removeIncompleteFirstDay';
 import { formatDate, writeLocalStorage } from '@shared/lib';
 
 const todayDateStr = formatDate(new Date());

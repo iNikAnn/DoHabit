@@ -1,14 +1,7 @@
 import styles from '../../css/Month.module.css';
-
-// stores
 import { useSettingsStore } from '../../stores/settingsStore';
-
-// types
 import { ColorPalette } from '../../types/colorScheme';
-import { CompletedDay } from '../../types/habit';
-
-// utils
-import checkHabitCompletion from '../../utils/checkHabitCompletion';
+import { CompletedDay, checkHabitCompletion } from '@entities/habit';
 
 interface Props {
 	completedDays: CompletedDay[];

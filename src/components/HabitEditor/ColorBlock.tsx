@@ -1,13 +1,7 @@
 import styles from '../../css/ColorBlock.module.css';
-
-// stores
 import { useColorsStore } from '../../stores/colorsStore';
-
-// icon
+import { Habit } from '@entities/habit';
 import { FaCheck } from 'react-icons/fa';
-
-// types
-import { Habit } from '../../types/habit';
 
 interface Props {
 	habits: Habit[];

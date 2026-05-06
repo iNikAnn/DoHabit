@@ -1,12 +1,11 @@
 import styles from './HabitList.module.css';
-import HabitCard from '../../../components/Habit/HabitCard';
-import { Placeholder } from '@shared/ui';
 import { AnimatePresence } from 'framer-motion';
 import { useColorsStore } from '../../../stores/colorsStore';
-import { useHabitsStore } from '@/stores/habitsStore';
-import { CalendarIcon, TableIcon } from '@shared/assets';
 import { MdAddToPhotos } from 'react-icons/md';
+import { HabitCard, useHabitsStore } from '@entities/habit';
+import { CalendarIcon, TableIcon } from '@shared/assets';
 import { getModalPath } from '@shared/const';
+import { Placeholder } from '@shared/ui';
 
 interface HabitListParams {
 	isArchive?: boolean;

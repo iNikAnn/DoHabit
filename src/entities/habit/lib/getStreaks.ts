@@ -75,4 +75,4 @@ function getStreaks(
 	};
 }
 
-export default getStreaks;
+export { getStreaks };

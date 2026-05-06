@@ -1,13 +1,7 @@
 import styles from '../../css/Calendar.module.css';
-
-// components
 import Month from './Month';
-
-// types
-import { CompletedDay } from '../../types/habit';
 import { ColorPalette } from '../../types/colorScheme';
-
-// utils
+import { CompletedDay } from '@entities/habit';
 import { countMonths } from '@shared/lib';
 
 interface Props {

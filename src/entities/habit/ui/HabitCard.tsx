@@ -19,9 +19,9 @@ import { Habit } from '../model/types';
 
 // utils
 import { getColorVariants, shareElementScreenshot } from '@shared/lib';
-import getTodayProgress from '../../../utils/getTodayProgress';
-import getStreaks from '../../../utils/getStreaks';
-import checkHabitCompletion from '../lib/checkHabitCompletion';
+import getTodayProgress from '../lib/getTodayProgress';
+import { getStreaks } from '../lib/getStreaks';
+import { checkHabitCompletion } from '../lib/checkHabitCompletion';
 import getListAnimationVariants from '../../../utils/getListAnimationVariants';
 import { DrawerAction, useDrawerStore } from '@shared/ui';
 import { MdEditSquare, MdLibraryBooks } from 'react-icons/md';

@@ -21,4 +21,4 @@ function getCompletionCountPerDay(
 	return counts;
 }
 
-export default getCompletionCountPerDay;
+export { getCompletionCountPerDay };

@@ -6,8 +6,7 @@ import { KeyboardEventHandler, SubmitEventHandler, useEffect, useState } from 'r
 // router
 import { useLocation, useNavigate } from 'react-router-dom';
 
-// stores
-import { useHabitsStore } from '../../../stores/habitsStore';
+import { checkHabitTitleExistence, HabitAction, HabitData, useHabitsStore } from '@entities/habit';
 
 // components
 import TitleBlock from '../../../components/HabitEditor/TitleBlock';
@@ -17,11 +16,7 @@ import ColorBlock from '../../../components/HabitEditor/ColorBlock';
 import IconBlock from '../../../components/HabitEditor/IconBlock';
 import { Button } from '@shared/ui';
 
-// types
-import { HabitAction, HabitData } from '../../../types/habit';
-
 // utils
-import checkHabitTitleExistence from '../../../utils/checkHabitTitleExistence';
 import { scrollToTop } from '@shared/lib';
 
 // icons

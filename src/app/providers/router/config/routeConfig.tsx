@@ -7,7 +7,7 @@ import { DiaryPage } from '@pages/diary';
 import { HabitEditorPage } from '@pages/habit-editor';
 import { MainPage } from '@pages/main';
 import { MenuPage } from '@pages/menu';
-import Statistics from '@/components/Statistics/Statistics';
+import { HabitStatisticsPage } from '@pages/habit-statistics';
 import { modalPaths, ModalRouteKey } from '@shared/const';
 import { ModalLayout } from '@shared/ui';
 
@@ -45,7 +45,7 @@ export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	},
 	STATISTICS: {
 		path: modalPaths.STATISTICS,
-		element: <Statistics />
+		element: <HabitStatisticsPage />
 	}
 };
 

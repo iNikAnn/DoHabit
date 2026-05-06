@@ -21,4 +21,4 @@ function getCompletionCountPerMonth(
 	return counts;
 }
 
-export default getCompletionCountPerMonth;
+export { getCompletionCountPerMonth };

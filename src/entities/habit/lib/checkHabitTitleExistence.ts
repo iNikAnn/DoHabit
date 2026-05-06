@@ -18,4 +18,4 @@ function checkHabitTitleExistence(
 	);
 }
 
-export default checkHabitTitleExistence;
+export { checkHabitTitleExistence };

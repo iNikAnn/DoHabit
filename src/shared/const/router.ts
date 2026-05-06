@@ -10,7 +10,7 @@ export const modalPaths = {
 	DIARY: 'diary',
 	HABIT_EDITOR: 'habit-editor',
 	MENU: 'menu',
-	STATISTICS: 'statistics'
+	STATISTICS: 'habit-statistics'
 } as const;
 
 export type ModalRouteKey = keyof typeof modalPaths;

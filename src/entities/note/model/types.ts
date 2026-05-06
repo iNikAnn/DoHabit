@@ -36,12 +36,12 @@ export interface DeleteNote {
 	};
 }
 
-export type DiaryAction =
+export type NoteAction =
 	| AddNote
 	| EditNote
 	| DeleteNote;
 
-export interface DiaryState {
-	diary: Note[];
-	diaryDispatch: (action: DiaryAction) => void;
+export interface NoteState {
+	notes: Note[];
+	notesDispatch: (action: NoteAction) => void;
 }

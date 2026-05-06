@@ -1,15 +1,7 @@
-// constants
-import { WEEKDAYS } from '@shared/const';
-
-// types
-import { CompletedDay } from '../../types/habit';
-
-// utils
-import getCompletionCountPerDay from '../../utils/getCompletionCountPerDay';
-
-// chart js
 import { BarElement, Chart as ChartJS, ChartData, ChartOptions } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { CompletedDay, getCompletionCountPerDay } from '@entities/habit';
+import { WEEKDAYS } from '@shared/const';
 
 ChartJS.register(BarElement);
 

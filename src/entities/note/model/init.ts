@@ -4,8 +4,8 @@ import { readLocalStorage } from '@shared/lib';
 /**
  * Loads diary notes from localStorage.
  */
-function initDiary(): Note[] {
+function initNotes(): Note[] {
 	return readLocalStorage<Note[]>('diary', []);
 }
 
-export default initDiary;
+export default initNotes;

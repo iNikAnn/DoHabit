@@ -95,4 +95,4 @@ function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
 	);
 }
 
-export default NoteCard;
+export { NoteCard };

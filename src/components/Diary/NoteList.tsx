@@ -1,18 +1,11 @@
 import styles from '../../css/NoteList.module.css';
-
-// framer
 import { AnimatePresence } from 'framer-motion';
-
-// components
-import NoteCard from './NoteCard';
-
-// types
-import { Note } from '../../types/diary';
+import { Note, NoteCard } from '@entities/note';
 
 interface Props {
 	diary: Note[];
-	onStartEditNote: (noteCreationDate: string, currentText: string) => void;
-	onDeleteNote: (noteCreationDate: string) => void;
+	onStartEditNote: (noteId: string, currentText: string) => void;
+	onDeleteNote: (noteId: string) => void;
 }
 
 function NoteList({ diary, onStartEditNote, onDeleteNote }: Props) {
@@ -22,7 +15,7 @@ function NoteList({ diary, onStartEditNote, onDeleteNote }: Props) {
 		// @ts-ignore
 		.map((note) => (
 			<NoteCard
-				key={note.date}
+				key={note.id}
 				note={note}
 				onStartEditNote={onStartEditNote}
 				onDeleteNote={onDeleteNote}

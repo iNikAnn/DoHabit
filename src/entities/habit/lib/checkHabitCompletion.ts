@@ -24,4 +24,4 @@ function checkHabitCompletion<T extends Date[]>(
 	) as any;
 }
 
-export default checkHabitCompletion;
+export { checkHabitCompletion };

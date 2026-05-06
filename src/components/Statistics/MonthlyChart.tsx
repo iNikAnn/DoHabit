@@ -1,17 +1,7 @@
-// constants
-import { MONTHS } from '@shared/const';
-
-// types
-import { CompletedDay } from '../../types/habit';
-
-// utils
-import getCompletionCountPerMonth from '../../utils/getCompletionCountPerMonth';
-
-// chart js
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, ChartOptions, ChartData, } from 'chart.js';
-
-// icons
 import { Line } from 'react-chartjs-2';
+import { CompletedDay, getCompletionCountPerMonth } from '@entities/habit';
+import { MONTHS } from '@shared/const';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler);
 
