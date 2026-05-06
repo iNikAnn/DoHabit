@@ -1,4 +1,4 @@
-import { CompletedDay } from '../types/habit';
+import { CompletedDay } from '../model/types';
 
 /**
  * Removes the first day entry if its progress is below the required frequency.
