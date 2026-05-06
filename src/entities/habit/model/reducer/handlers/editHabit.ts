@@ -1,11 +1,8 @@
-// types
-import { EditHabit, Habit } from '../types/habit';
-
-// utils
-import mapHabitData from './mapHabitData';
-import updateHabitById from './updateHabitById';
-import adjustDaysProgress from './adjustDaysProgress';
-import reorderHabit from './reorderHabit';
+import { EditHabit, Habit } from '../../types';
+import mapHabitData from '../../../lib/mapHabitData';
+import updateHabitById from '../../../lib/updateHabitById';
+import adjustDaysProgress from '../../../lib/adjustDaysProgress';
+import reorderHabit from '../../../lib/reorderHabit';
 
 interface Params {
 	habits: Habit[];
