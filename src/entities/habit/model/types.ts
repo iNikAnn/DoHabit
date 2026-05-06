@@ -1,4 +1,4 @@
-import { Note } from './diary';
+import { Note } from '@entities/note';
 
 export interface CompletedDay {
 	date: string;
