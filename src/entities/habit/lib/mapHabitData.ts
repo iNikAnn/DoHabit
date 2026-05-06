@@ -1,4 +1,4 @@
-import { HabitData } from '../types/habit';
+import { HabitData } from '../model/types';
 
 /**
  * Map raw form data to habit properties.
