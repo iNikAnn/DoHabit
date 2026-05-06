@@ -1,4 +1,4 @@
-import styles from '../../css/Diary.module.css';
+import styles from './DiaryPage.module.css';
 
 // react
 import { useEffect, useRef, useState } from 'react';
@@ -7,23 +7,26 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 // stores
-import { useColorsStore } from '../../stores/colorsStore';
-import { useHabitsStore } from '../../stores/habitsStore';
-import { useMainDiaryStore } from '../../stores/mainDiaryStore';
+import { useColorsStore } from '../../../stores/colorsStore';
+import { useHabitsStore } from '../../../stores/habitsStore';
+import { useMainDiaryStore } from '../../../stores/mainDiaryStore';
 
 // components
 import { Placeholder } from '@shared/ui';
-import NoteList from './NoteList';
-import AddNoteForm from './AddNoteForm';
+import NoteList from '../../../components/Diary/NoteList';
+import AddNoteForm from '../../../components/Diary/AddNoteForm';
 
 // icons
 import { InformationIcon } from '@shared/assets';
 import { MdStickyNote2 } from 'react-icons/md';
 
-import { HabitAction } from '../../types/habit';
-import { Note } from '../../types/diary';
+import { HabitAction } from '../../../types/habit';
+import { Note } from '../../../types/diary';
 
-function Diary() {
+/**
+ * Main notes feed. Handles global entries or habit-specific filtering.
+ */
+function DiaryPage() {
 
 	const location = useLocation();
 
@@ -192,4 +195,4 @@ function Diary() {
 	);
 }
 
-export default Diary;
+export { DiaryPage };

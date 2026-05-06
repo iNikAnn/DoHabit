@@ -3,7 +3,7 @@ import Achievements from '@/components/Achievements/Achievements';
 import AppearanceSettings from '@/components/Appearance Settings/AppearanceSettings';
 import Archive from '@/components/Archive/Archive';
 import DataTransfer from '@/components/DataTransfer/DataTransfer';
-import Diary from '@/components/Diary/Diary';
+import { DiaryPage } from '@pages/diary';
 import { HabitEditorPage } from '@pages/habit-editor';
 import { MainPage } from '@pages/main';
 import Menu from '@/components/Menu/Menu';
@@ -33,7 +33,7 @@ export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	},
 	DIARY: {
 		path: modalPaths.DIARY,
-		element: <Diary />
+		element: <DiaryPage />
 	},
 	HABIT_EDITOR: {
 		path: modalPaths.HABIT_EDITOR,
