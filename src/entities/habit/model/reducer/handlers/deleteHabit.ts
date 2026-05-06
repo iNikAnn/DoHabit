@@ -1,4 +1,4 @@
-import { DeleteHabit, Habit } from '../types/habit';
+import { DeleteHabit, Habit } from '../../types';
 
 interface Params {
 	habits: Habit[];
