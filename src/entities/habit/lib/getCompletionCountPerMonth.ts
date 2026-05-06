@@ -1,4 +1,4 @@
-import { CompletedDay } from '../types/habit';
+import { CompletedDay } from '../model/types';
 
 /**
  * Calculates the total number of fully completed days for each month.
