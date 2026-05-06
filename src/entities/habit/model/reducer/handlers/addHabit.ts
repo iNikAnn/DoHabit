@@ -1,10 +1,7 @@
-// types
-import { AddHabit, Habit } from '../types/habit';
+import { AddHabit, Habit } from '../../types';
+import mapHabitData from '../../../lib/mapHabitData';
 
-// utils
-import mapHabitData from './mapHabitData';
-
-interface Params {
+interface AddHabitParams {
 	habits: Habit[];
 	payload: AddHabit['payload'];
 }
@@ -12,7 +9,7 @@ interface Params {
 /**
  * Adds a new habit to the beginning of the list.
  */
-function addHabit(params: Params): Habit[] {
+function addHabit(params: AddHabitParams): Habit[] {
 	const {
 		habits,
 		payload: { data }
