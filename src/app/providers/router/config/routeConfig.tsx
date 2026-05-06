@@ -1,7 +1,7 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { AchievementsPage } from '@pages/achievements';
 import { AppearancePage } from '@pages/appearance';
-import Archive from '@/components/Archive/Archive';
+import { ArchivePage } from '@pages/archive';
 import { DataManagementPage } from '@pages/data-management';
 import { DiaryPage } from '@pages/diary';
 import { HabitEditorPage } from '@pages/habit-editor';
@@ -25,7 +25,7 @@ export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	},
 	ARCHIVE: {
 		path: modalPaths.ARCHIVE,
-		element: <Archive />
+		element: <ArchivePage />
 	},
 	DATA_MANAGEMENT: {
 		path: modalPaths.DATA_MANAGEMENT,

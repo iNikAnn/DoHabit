@@ -1,7 +1,10 @@
-import styles from '../../css/Archive.module.css';
+import styles from './ArchivePage.module.css';
 import { HabitList } from '@widgets/habit-list';
 
-function Archive() {
+/**
+ * Displays deactivated habits.
+ */
+function ArchivePage() {
 	return (
 		<div className={styles.archive}>
 			<HabitList isArchive />
@@ -9,4 +12,4 @@ function Archive() {
 	);
 }
 
-export default Archive;
+export { ArchivePage };
