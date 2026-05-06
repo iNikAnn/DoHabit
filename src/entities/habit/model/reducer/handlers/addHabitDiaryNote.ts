@@ -1,8 +1,5 @@
-// types
-import { AddNote, Habit, } from '../types/habit';
-
-// utils
-import updateHabitById from './updateHabitById';
+import { AddNote, Habit } from '../../types';
+import updateHabitById from '../../../lib/updateHabitById';
 
 interface Params {
 	habits: Habit[];
