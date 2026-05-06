@@ -1,14 +1,17 @@
-import styles from '../../css/appearanceSettings.module.css';
+import styles from './AppearancePage.module.css';
 
 // stores
-import { useSettingsStore } from '../../stores/settingsStore';
+import { useSettingsStore } from '../../../stores/settingsStore';
 
 // components
-import MenuItemList from '../Menu/MenuItemList';
-import MenuItem from '../Menu/MenuItem';
-import Switch from '../Selection/Switch';
+import MenuItemList from '../../../components/Menu/MenuItemList';
+import MenuItem from '../../../components/Menu/MenuItem';
+import Switch from '../../../components/Selection/Switch';
 
-function AppearanceSettings() {
+/**
+ * UI customization page.
+ */
+function AppearancePage() {
 
 	const { settings, settingsDispatch } = useSettingsStore();
 
@@ -73,4 +76,4 @@ function AppearanceSettings() {
 	);
 }
 
-export default AppearanceSettings;
+export { AppearancePage };

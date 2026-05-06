@@ -1,6 +1,6 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { AchievementsPage } from '@pages/achievements';
-import AppearanceSettings from '@/components/Appearance Settings/AppearanceSettings';
+import { AppearancePage } from '@pages/appearance';
 import Archive from '@/components/Archive/Archive';
 import { DataManagementPage } from '@pages/data-management';
 import { DiaryPage } from '@pages/diary';
@@ -21,7 +21,7 @@ export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	},
 	APPEARANCE: {
 		path: modalPaths.APPEARANCE,
-		element: <AppearanceSettings />
+		element: <AppearancePage />
 	},
 	ARCHIVE: {
 		path: modalPaths.ARCHIVE,
