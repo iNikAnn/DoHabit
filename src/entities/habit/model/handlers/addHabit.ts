@@ -1,5 +1,5 @@
-import { AddHabit, Habit } from '../../types';
-import mapHabitData from '../../../lib/mapHabitData';
+import { AddHabit, Habit } from '../types';
+import mapHabitData from '../../lib/mapHabitData';
 
 interface AddHabitParams {
 	habits: Habit[];
@@ -16,9 +16,10 @@ function addHabit(params: AddHabitParams): Habit[] {
 	} = params;
 
 	const newHabit = {
+		id: crypto.randomUUID(),
 		...mapHabitData(data),
-		creationDate: new Date(),
-		completedDays: []
+		completedDays: [],
+		createdAt: Date.now()
 	};
 
 	return [newHabit, ...habits];

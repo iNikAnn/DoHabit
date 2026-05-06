@@ -1,5 +1,5 @@
-import { ArchiveHabit, Habit } from '../../types';
-import updateHabitById from '../../../lib/updateHabitById';
+import { ArchiveHabit, Habit } from '../types';
+import updateHabitById from '../../lib/updateHabitById';
 
 interface Params {
 	habits: Habit[];

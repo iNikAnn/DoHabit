@@ -1,5 +1,5 @@
-import { Habit, CompletedDay, ToggleYesterdayStatus } from '../../types';
-import updateHabitById from '../../../lib/updateHabitById';
+import { Habit, CompletedDay, ToggleYesterdayStatus } from '../types';
+import updateHabitById from '../../lib/updateHabitById';
 import { formatDate } from '@shared/lib';
 
 interface Params {

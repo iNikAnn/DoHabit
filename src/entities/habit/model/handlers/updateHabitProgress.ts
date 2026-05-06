@@ -1,6 +1,6 @@
-import { CompletedDay, Habit, UpdateProgress } from '../../types';
-import updateHabitById from '../../../lib/updateHabitById';
-import checkHabitCompletion from '../../../lib/checkHabitCompletion';
+import { CompletedDay, Habit, UpdateProgress } from '../types';
+import updateHabitById from '../../lib/updateHabitById';
+import { checkHabitCompletion } from '../../lib/checkHabitCompletion';
 import { formatDate } from '@shared/lib';
 
 interface Params {

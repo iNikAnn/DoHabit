@@ -1,8 +1,8 @@
 // utils
-import getStreaks from '../entities/habit/lib/getStreaks';
+import { getStreaks } from '../entities/habit/lib/getStreaks';
 import { countDaysBetween } from '@shared/lib';
 import getCompletionGaps from '../entities/habit/lib/getCompletionGaps';
-import checkHabitCompletion from '../entities/habit/lib/checkHabitCompletion';
+import { checkHabitCompletion } from '../entities/habit/lib/checkHabitCompletion';
 import removeIncompleteFirstDay from '../entities/habit/lib/removeIncompleteFirstDay';
 import { formatDate, writeLocalStorage } from '@shared/lib';
 

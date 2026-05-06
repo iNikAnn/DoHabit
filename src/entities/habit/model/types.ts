@@ -10,9 +10,11 @@ export interface Habit {
 	colorIndex: number;
 	iconTitle: string;
 	frequency: number;
-	creationDate: Date | string;
 	completedDays: CompletedDay[];
 	isArchived?: boolean;
+
+	/** Creation time as a Unix timestamp (ms) */
+	createdAt: number;
 }
 
 export interface HabitData {
