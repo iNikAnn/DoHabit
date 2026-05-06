@@ -1,11 +1,7 @@
 import { create } from 'zustand';
-
-// types
-import { HabitState } from '../types/habit';
-
-// utils
-import initHabits from '../utils/initHabits';
-import habitsReducer from '../utils/habitsReducer';
+import { HabitState } from './types';
+import initHabits from './init';
+import habitsReducer from './reducer';
 
 /**
  * Habits store providing state and a dispatch function.

@@ -1,5 +1,3 @@
-import { Note } from '@entities/note';
-
 export interface CompletedDay {
 	date: string;
 	progress: number;
@@ -7,13 +5,13 @@ export interface CompletedDay {
 }
 
 export interface Habit {
+	id: string;
 	title: string;
 	colorIndex: number;
 	iconTitle: string;
 	frequency: number;
 	creationDate: Date | string;
 	completedDays: CompletedDay[];
-	diary?: Note[];
 	isArchived?: boolean;
 }
 
@@ -73,41 +71,13 @@ export interface ToggleYesterdayStatus {
 	};
 }
 
-export interface AddNote {
-	type: 'addNote';
-	payload: {
-		habitId: string;
-		note: Note;
-	};
-}
-
-export interface EditNote {
-	type: 'editNote';
-	payload: {
-		habitId: string;
-		noteCreationDate: Date | string;
-		newText: string;
-	};
-}
-
-export interface DeleteNote {
-	type: 'deleteNote';
-	payload: {
-		habitId: string;
-		noteCreationDate: Date | string;
-	};
-}
-
 export type HabitAction =
 	| AddHabit
 	| EditHabit
 	| DeleteHabit
 	| ArchiveHabit
 	| UpdateProgress
-	| ToggleYesterdayStatus
-	| AddNote
-	| EditNote
-	| DeleteNote;
+	| ToggleYesterdayStatus;
 
 export interface HabitState {
 	habits: Habit[];

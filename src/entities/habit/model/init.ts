@@ -1,9 +1,6 @@
-// utils
+import { Habit } from './types';
+import removeIncompleteDays from '../lib/removeIncompleteDays';
 import { readLocalStorage, writeLocalStorage } from '@shared/lib';
-import removeIncompleteDays from './removeIncompleteDays';
-
-// types
-import { Habit } from '../types/habit';
 
 /**
  * Initializes habits by cleaning up incomplete past entries and updating localStorage.

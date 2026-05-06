@@ -1,0 +1,68 @@
+/* note */
+.note {
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-primary);
+	font-size: 1rem;
+	font-weight: 400;
+
+	padding: 1.2rem;
+	padding-bottom: 0.8rem;
+
+	overflow: hidden;
+}
+
+/* text */
+.text {
+	/* outline: 1px solid tomato; */
+	line-height: 1.4rem;
+	overflow: hidden;
+}
+
+/* desc */
+.desc {
+	/* outline: 1px solid tomato; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	color: gray;
+	border-top: 1px solid var(--bg-color-secondary);
+
+	padding-top: 0.8rem;
+}
+
+/* date */
+.date {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+/* actions */
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+/* actionBtn */
+.actionBtn {
+	display: flex;
+	align-items: center;
+	gap: 0.2rem;
+
+	background-color: transparent;
+	font-weight: bold;
+}
+
+/* svg */
+.actionBtn svg {
+	width: 1rem;
+	height: 1rem;
+}

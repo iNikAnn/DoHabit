@@ -1,20 +1,16 @@
-// types
-import { Habit, HabitAction } from '../types/habit';
-
-// utils
-import addHabit from './addHabit';
-import editHabit from './editHabit';
-import deleteHabit from './deleteHabit';
-import archiveHabit from './archiveHabit';
-import updateHabitProgress from './updateHabitProgress';
-import toggleYesterdayStatus from './toggleYesterdayStatus';
-
-import addHabitDiaryNote from './addHabitDiaryNote';
-import editHabitDiaryNote from './editHabitDiaryNote';
-import deleteHabitDiaryNote from './deleteHabitDiaryNote';
-
+import { Habit, HabitAction } from './types';
+import addHabit from './handlers/addHabit';
+import editHabit from './handlers/editHabit';
+import deleteHabit from './handlers/deleteHabit';
+import archiveHabit from './handlers/archiveHabit';
+import updateHabitProgress from './handlers/updateHabitProgress';
+import toggleYesterdayStatus from './handlers/toggleYesterdayStatus';
 import { writeLocalStorage } from '@shared/lib';
 
+/**
+ * Main habit reducer.
+ * Routes actions to specific handler functions.
+ */
 function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[] {
 	let nextHabits: Habit[] = [];
 
@@ -42,19 +38,6 @@ function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[]
 
 		case 'toggleYesterdayStatus':
 			nextHabits = toggleYesterdayStatus({ habits, payload });
-			break;
-
-		// diary
-		case 'addNote':
-			nextHabits = addHabitDiaryNote({ habits, payload });
-			break;
-
-		case 'editNote':
-			nextHabits = editHabitDiaryNote({ habits, payload });
-			break;
-
-		case 'deleteNote':
-			nextHabits = deleteHabitDiaryNote({ habits, payload });
 			break;
 
 		default:
