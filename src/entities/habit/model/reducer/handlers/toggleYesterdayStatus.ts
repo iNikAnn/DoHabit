@@ -1,9 +1,6 @@
-// types
-import { CompletedDay, Habit, ToggleYesterdayStatus } from '../types/habit';
-
-// utils
+import { Habit, CompletedDay, ToggleYesterdayStatus } from '../../types';
+import updateHabitById from '../../../lib/updateHabitById';
 import { formatDate } from '@shared/lib';
-import updateHabitById from './updateHabitById';
 
 interface Params {
 	habits: Habit[];
