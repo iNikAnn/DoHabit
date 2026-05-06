@@ -1,15 +1,10 @@
-// constants
-import { DAY_MS } from '@shared/const';
-
-// types
-import { Streak } from '../types/common';
-import { CompletedDay } from '../types/habit';
-
-// utils
+import { Streak } from '../../../types/common';
+import { CompletedDay } from '../model/types';
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
 import { formatDate } from '@shared/lib';
+import { DAY_MS } from '@shared/const';
 
-interface Result {
+interface GetStreaksResult {
 	allStreaks: Streak[];
 	currentStreak: number
 	longestStreak: number;
@@ -22,7 +17,7 @@ interface Result {
 function getStreaks(
 	completedDays: CompletedDay[],
 	frequency: number
-): Result {
+): GetStreaksResult {
 	const processedDays = removeIncompleteFirstDay(completedDays, frequency);
 
 	// Return 'zero streaks' if the input array is empty
