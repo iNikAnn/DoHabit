@@ -1,9 +1,9 @@
-import styles from '../../css/Menu.module.css';
+import styles from './MenuPage.module.css';
 import packageJson from '../../../package.json';
 
 // components
-import MenuItemList from './MenuItemList';
-import MenuItem from './MenuItem';
+import MenuItemList from '../../../components/Menu/MenuItemList';
+import MenuItem from '../../../components/Menu/MenuItem';
 
 // utils
 import { clearLocalStorage } from '@shared/lib';
@@ -24,7 +24,10 @@ const warningMessage =
 	'- All diary entries\n\n' +
 	'This action cannot be undone!';
 
-function Menu() {
+/**
+ * Navigation hub for app settings.
+ */
+function MenuPage() {
 	return (
 		<section className={styles.menu}>
 			<MenuItemList title='App'>
@@ -99,4 +102,4 @@ function Menu() {
 	);
 }
 
-export default Menu;
+export { MenuPage };

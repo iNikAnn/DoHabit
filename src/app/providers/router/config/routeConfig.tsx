@@ -6,7 +6,7 @@ import DataTransfer from '@/components/DataTransfer/DataTransfer';
 import { DiaryPage } from '@pages/diary';
 import { HabitEditorPage } from '@pages/habit-editor';
 import { MainPage } from '@pages/main';
-import Menu from '@/components/Menu/Menu';
+import { MenuPage } from '@pages/menu';
 import Statistics from '@/components/Statistics/Statistics';
 import { modalPaths, ModalRouteKey } from '@shared/const';
 import { ModalLayout } from '@shared/ui';
@@ -41,7 +41,7 @@ export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	},
 	MENU: {
 		path: modalPaths.MENU,
-		element: <Menu />
+		element: <MenuPage />
 	},
 	STATISTICS: {
 		path: modalPaths.STATISTICS,
