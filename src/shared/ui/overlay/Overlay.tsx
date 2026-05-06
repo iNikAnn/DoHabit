@@ -1,8 +1,8 @@
 import styles from './Overlay.module.css';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { createPortal } from 'react-dom';
 
-// variants
 const variants = {
 	initial: { opacity: 0 },
 	animate: { opacity: 1 },
@@ -14,24 +14,30 @@ interface Props {
 	onClick: (...args: any) => void;
 }
 
+/**
+ * Global backdrop for modals, drawers...
+ * Locks body scroll on mount and restores it on unmount.
+ */
 function Overlay({ onClick }: Props) {
-	useEffect(
-		() => {
-			document.body.style.overflow = 'hidden';
+	useEffect(() => {
+		// Disable page scrolling when overlay is active
+		document.body.style.overflow = 'hidden';
 
-			return () => {
-				document.body.style.overflow = 'auto';
-			};
-		},
-		[]
-	);
+		return () => {
+			// Restore scrolling when overlay is removed
+			document.body.style.overflow = 'auto';
+		};
+	}, []);
 
 	return (
-		<motion.div
-			{...variants}
-			className={styles.overlay}
-			onClick={onClick}
-		/>
+		createPortal(
+			<motion.div
+				{...variants}
+				className={styles.overlay}
+				onClick={onClick}
+			/>,
+			document.body
+		)
 	);
 }
 

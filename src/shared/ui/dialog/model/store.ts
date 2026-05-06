@@ -5,7 +5,7 @@ export const useDialogStore = create<DialogState>(
 	(set) => ({
 		content: null,
 
-		open: (contentObj) => set({ content: contentObj }),
+		open: (content) => set({ content: content }),
 		close: () => set({ content: null })
 	})
 );

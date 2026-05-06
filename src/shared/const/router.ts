@@ -6,7 +6,7 @@ export const modalPaths = {
 	ACHIEVEMENTS: 'achievements',
 	APPEARANCE: 'menu/appearance',
 	ARCHIVE: 'menu/archive',
-	DATA_TRANSFER: 'menu/data-transfer',
+	DATA_MANAGEMENT: 'menu/data-management',
 	DIARY: 'diary',
 	HABIT_EDITOR: 'habit-editor',
 	MENU: 'menu',

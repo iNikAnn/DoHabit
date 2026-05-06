@@ -4,7 +4,7 @@ import styles from '../../css/Habit.module.css';
 import { useMemo, useRef } from 'react';
 
 // framer
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 // stores
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -13,7 +13,6 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import HabitHeader from './HabitHeader';
 import Calendar from './Calendar';
 import CompactCalendar from './CompactCalendar';
-import HabitMenu from './HabitMenu';
 
 // types
 import { Habit } from '../../types/habit';
@@ -24,6 +23,12 @@ import getTodayProgress from '../../utils/getTodayProgress';
 import getStreaks from '../../utils/getStreaks';
 import checkHabitCompletion from '../../utils/checkHabitCompletion';
 import getListAnimationVariants from '../../utils/getListAnimationVariants';
+import { DrawerAction, useDrawerStore } from '@shared/ui';
+import { MdEditSquare, MdLibraryBooks } from 'react-icons/md';
+import { getModalPath } from '@shared/const';
+import { FaCalendarCheck, FaCalendarTimes, FaShareAltSquare } from 'react-icons/fa';
+import { useHabitsStore } from '@/stores/habitsStore';
+import { FaChartSimple } from 'react-icons/fa6';
 
 const today = new Date();
 const yesterday = new Date(today);
@@ -31,23 +36,18 @@ yesterday.setDate(today.getDate() - 1);
 
 interface Props {
 	habit: Habit;
-	habitIndex: number;
 	color: string;
 	isArchive: boolean;
-	isMenuVisible: boolean;
-	onShowMenu: (i: number) => void;
 }
 
 function HabitCard(props: Props) {
 	const {
 		habit,
-		habitIndex,
 		color,
 		isArchive,
-		isMenuVisible,
-		onShowMenu
 	} = props;
 
+	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 	const settings = useSettingsStore((s) => s.settings);
 	const habitRef = useRef(null);
 	const colorPalette = useMemo(() => getColorVariants(color), [color]);
@@ -88,6 +88,83 @@ function HabitCard(props: Props) {
 	);
 
 	const habitVariants = getListAnimationVariants(0.3);
+	const { darkenedColor } = colorPalette;
+
+	const openDrawer = useDrawerStore((s) => s.open);
+
+	const handleCompleteYeserday = () => {
+		habitsDispatch({
+			type: 'toggleYesterdayStatus',
+			payload: {
+				habitId: habit.title,
+				isTodayCompleted,
+				isYesterdayCompleted,
+				todayProgress
+			}
+		});
+	};
+
+	const handleOpenDrawer = () => {
+		if (isArchive) return;
+
+		const actions: DrawerAction[] = [
+			{
+				icon: isYesterdayCompleted ? <FaCalendarTimes /> : <FaCalendarCheck />,
+				label: (isYesterdayCompleted ? 'Uncomp.' : 'Comp.') + ' Y\'day',
+				style: { backgroundColor: isYesterdayCompleted ? 'IndianRed' : darkenedColor },
+				onClick: handleCompleteYeserday
+			},
+			{
+				to: getModalPath('HABIT_EDITOR'),
+				state: {
+					habitTitle: habit.title,
+					modalTitle: 'Edit habit',
+				},
+				icon: <MdEditSquare />,
+				label: 'Edit Habit',
+				indicator: { type: 'arrow' },
+				style: { backgroundColor: darkenedColor }
+			},
+			{
+				icon: <FaShareAltSquare />,
+				label: 'Share Habit',
+				onClick: handleShareHabit,
+				style: { backgroundColor: darkenedColor }
+			},
+			{
+				to: getModalPath('STATISTICS'),
+				state: {
+					completedDays: habit.completedDays,
+					colorPalette,
+					colorIndex: habit.colorIndex,
+					frequency: habit.frequency,
+					modalTitle: habit.title,
+				},
+				icon: <FaChartSimple />,
+				label: 'Statistics',
+				indicator: { type: 'arrow' },
+				style: { backgroundColor: darkenedColor }
+			},
+			{
+				to: getModalPath('DIARY'),
+				state: {
+					currentStreak,
+					habitTitle: habit.title,
+					colorIndex: habit.colorIndex,
+					modalTitle: habit.title,
+				},
+				icon: <MdLibraryBooks />,
+				label: 'Diary',
+				indicator: { type: 'arrow' },
+				style: { backgroundColor: darkenedColor }
+			}
+		];
+
+		openDrawer({
+			title: habit.title,
+			actions
+		});
+	};
 
 	return (
 		<motion.div
@@ -95,7 +172,7 @@ function HabitCard(props: Props) {
 			className={styles.habit}
 			{...habitVariants}
 			layout
-			onClick={() => onShowMenu(habitIndex)}
+			onClick={handleOpenDrawer}
 		>
 			<HabitHeader
 				habit={habit}
@@ -111,23 +188,6 @@ function HabitCard(props: Props) {
 					{calendar}
 				</div>
 			)}
-
-			{/* @ts-ignore */}
-			<AnimatePresence>
-				{(isMenuVisible && !isArchive) && (
-					<HabitMenu
-						key='habitMenu'
-						habit={habit}
-						colorPalette={colorPalette}
-						isTodayCompleted={!!isTodayCompleted}
-						isYesterdayCompleted={!!isYesterdayCompleted}
-						todayProgress={todayProgress}
-						currentStreak={currentStreak}
-						onShowMenu={onShowMenu}
-						onShare={handleShareHabit}
-					/>
-				)}
-			</AnimatePresence>
 		</motion.div>
 	);
 }

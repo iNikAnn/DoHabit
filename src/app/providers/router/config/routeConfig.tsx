@@ -1,12 +1,12 @@
 import { Navigate, RouteObject } from 'react-router-dom';
-import Achievements from '@/components/Achievements/Achievements';
-import AppearanceSettings from '@/components/Appearance Settings/AppearanceSettings';
-import Archive from '@/components/Archive/Archive';
-import DataTransfer from '@/components/DataTransfer/DataTransfer';
-import Diary from '@/components/Diary/Diary';
-import HabitEditor from '@/components/HabitEditor/HabitEditor';
-import MainPage from '@/components/MainPage';
-import Menu from '@/components/Menu/Menu';
+import { AchievementsPage } from '@pages/achievements';
+import { AppearancePage } from '@pages/appearance';
+import { ArchivePage } from '@pages/archive';
+import { DataManagementPage } from '@pages/data-management';
+import { DiaryPage } from '@pages/diary';
+import { HabitEditorPage } from '@pages/habit-editor';
+import { MainPage } from '@pages/main';
+import { MenuPage } from '@pages/menu';
 import Statistics from '@/components/Statistics/Statistics';
 import { modalPaths, ModalRouteKey } from '@shared/const';
 import { ModalLayout } from '@shared/ui';
@@ -17,31 +17,31 @@ import { ModalLayout } from '@shared/ui';
 export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	ACHIEVEMENTS: {
 		path: modalPaths.ACHIEVEMENTS,
-		element: <Achievements />
+		element: <AchievementsPage />
 	},
 	APPEARANCE: {
 		path: modalPaths.APPEARANCE,
-		element: <AppearanceSettings />
+		element: <AppearancePage />
 	},
 	ARCHIVE: {
 		path: modalPaths.ARCHIVE,
-		element: <Archive />
+		element: <ArchivePage />
 	},
-	DATA_TRANSFER: {
-		path: modalPaths.DATA_TRANSFER,
-		element: <DataTransfer />
+	DATA_MANAGEMENT: {
+		path: modalPaths.DATA_MANAGEMENT,
+		element: <DataManagementPage />
 	},
 	DIARY: {
 		path: modalPaths.DIARY,
-		element: <Diary />
+		element: <DiaryPage />
 	},
 	HABIT_EDITOR: {
 		path: modalPaths.HABIT_EDITOR,
-		element: <HabitEditor />
+		element: <HabitEditorPage />
 	},
 	MENU: {
 		path: modalPaths.MENU,
-		element: <Menu />
+		element: <MenuPage />
 	},
 	STATISTICS: {
 		path: modalPaths.STATISTICS,

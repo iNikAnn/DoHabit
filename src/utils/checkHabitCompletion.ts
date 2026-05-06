@@ -1,17 +1,14 @@
-// types
 import { CompletedDay } from '../types/habit';
-
-// utils
 import { formatDate } from '@shared/lib';
 
 /**
  * Checks if a habit was completed for each of the provided dates.
  */
-function checkHabitCompletion(
+function checkHabitCompletion<T extends Date[]>(
 	completedDays: CompletedDay[],
 	frequency: number,
-	...dates: Date[]
-): boolean[] {
+	...dates: T
+): { [K in keyof T]: boolean } {
 	return dates.map(
 		(date) => {
 			const formattedDate = formatDate(date);
@@ -24,7 +21,7 @@ function checkHabitCompletion(
 				)
 			);
 		}
-	);
+	) as any;
 }
 
 export default checkHabitCompletion;
