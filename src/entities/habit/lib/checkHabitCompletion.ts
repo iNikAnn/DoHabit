@@ -1,4 +1,4 @@
-import { CompletedDay } from '../types/habit';
+import { CompletedDay } from '../model/types';
 import { formatDate } from '@shared/lib';
 
 /**
