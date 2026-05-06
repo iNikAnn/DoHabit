@@ -4,7 +4,7 @@ import AppearanceSettings from '@/components/Appearance Settings/AppearanceSetti
 import Archive from '@/components/Archive/Archive';
 import DataTransfer from '@/components/DataTransfer/DataTransfer';
 import Diary from '@/components/Diary/Diary';
-import HabitEditor from '@/components/HabitEditor/HabitEditor';
+import { HabitEditorPage } from '@pages/habit-editor';
 import { MainPage } from '@pages/main';
 import Menu from '@/components/Menu/Menu';
 import Statistics from '@/components/Statistics/Statistics';
@@ -37,7 +37,7 @@ export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	},
 	HABIT_EDITOR: {
 		path: modalPaths.HABIT_EDITOR,
-		element: <HabitEditor />
+		element: <HabitEditorPage />
 	},
 	MENU: {
 		path: modalPaths.MENU,

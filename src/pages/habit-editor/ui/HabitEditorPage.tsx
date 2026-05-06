@@ -1,4 +1,4 @@
-import styles from '../../css/HabitEditor.module.css';
+import styles from './HabitEditorPage.module.css';
 
 // react
 import { KeyboardEventHandler, SubmitEventHandler, useEffect, useState } from 'react';
@@ -7,21 +7,21 @@ import { KeyboardEventHandler, SubmitEventHandler, useEffect, useState } from 'r
 import { useLocation, useNavigate } from 'react-router-dom';
 
 // stores
-import { useHabitsStore } from '../../stores/habitsStore';
+import { useHabitsStore } from '../../../stores/habitsStore';
 
 // components
-import TitleBlock from './TitleBlock';
-import FrequencyBlock from './FrequencyBlock';
-import OrderBlock from './OrderBlock';
-import ColorBlock from './ColorBlock';
-import IconBlock from './IconBlock';
+import TitleBlock from '../../../components/HabitEditor/TitleBlock';
+import FrequencyBlock from '../../../components/HabitEditor/FrequencyBlock';
+import OrderBlock from '../../../components/HabitEditor/OrderBlock';
+import ColorBlock from '../../../components/HabitEditor/ColorBlock';
+import IconBlock from '../../../components/HabitEditor/IconBlock';
 import { Button } from '@shared/ui';
 
 // types
-import { HabitAction, HabitData } from '../../types/habit';
+import { HabitAction, HabitData } from '../../../types/habit';
 
 // utils
-import checkHabitTitleExistence from '../../utils/checkHabitTitleExistence';
+import checkHabitTitleExistence from '../../../utils/checkHabitTitleExistence';
 import { scrollToTop } from '@shared/lib';
 
 // icons
@@ -29,7 +29,10 @@ import { MdAddToPhotos } from 'react-icons/md';
 import { MdDeleteForever } from 'react-icons/md';
 import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
 
-function HabitEditor() {
+/**
+ * Entry point for creating or modifying habits.
+ */
+function HabitEditorPage() {
 
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -186,4 +189,4 @@ function HabitEditor() {
 	);
 }
 
-export default HabitEditor;
+export { HabitEditorPage };
