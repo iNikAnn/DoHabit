@@ -1,5 +1,5 @@
 import styles from './MenuPage.module.css';
-import packageJson from '../../../package.json';
+import packageJson from '../../../../package.json';
 
 // components
 import MenuItemList from '../../../components/Menu/MenuItemList';
