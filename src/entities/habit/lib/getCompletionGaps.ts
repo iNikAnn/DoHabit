@@ -1,7 +1,4 @@
-// types
-import { CompletedDay } from '../types/habit';
-
-// utils
+import { CompletedDay } from '../model/types';
 import removeIncompleteFirstDay from './removeIncompleteFirstDay';
 import { countDaysBetween } from '@shared/lib';
 
