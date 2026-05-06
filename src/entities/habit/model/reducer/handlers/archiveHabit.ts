@@ -1,8 +1,5 @@
-// types
-import { ArchiveHabit, Habit } from '../types/habit';
-
-// utils
-import updateHabitById from './updateHabitById';
+import { ArchiveHabit, Habit } from '../../types';
+import updateHabitById from '../../../lib/updateHabitById';
 
 interface Params {
 	habits: Habit[];
@@ -21,7 +18,8 @@ function archiveHabit(params: Params): Habit[] {
 	const nextHabits = updateHabitById(habits, habitId, (habit) => ({
 		...habit,
 		isArchived: !habit.isArchived
-	}))
+	}));
+
 	// Sort archived habits to the end of the list
 	return nextHabits.sort(
 		(a, b) => Number(a.isArchived) - Number(b.isArchived)
