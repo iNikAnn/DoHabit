@@ -1,12 +1,9 @@
-// types
-import { MainDiaryAction, Note } from '../types/diary';
-
-// utils
-import editNote from './editNote';
-import deleteNote from './deleteNote';
+import { DiaryAction, Note } from './types';
+import editNote from './handlers/editNote';
+import deleteNote from './handlers/deleteNote';
 import { writeLocalStorage } from '@shared/lib';
 
-function mainDiaryReducer(diary: Note[], { type, payload }: MainDiaryAction) {
+function diaryReducer(diary: Note[], { type, payload }: DiaryAction) {
 	let nextDiary = [...diary];
 
 	switch (type) {
@@ -33,4 +30,4 @@ function mainDiaryReducer(diary: Note[], { type, payload }: MainDiaryAction) {
 	return nextDiary;
 }
 
-export default mainDiaryReducer;
+export default diaryReducer;
