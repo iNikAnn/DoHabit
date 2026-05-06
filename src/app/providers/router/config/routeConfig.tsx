@@ -1,5 +1,5 @@
 import { Navigate, RouteObject } from 'react-router-dom';
-import Achievements from '@/components/Achievements/Achievements';
+import { AchievementsPage } from '@pages/achievements';
 import AppearanceSettings from '@/components/Appearance Settings/AppearanceSettings';
 import Archive from '@/components/Archive/Archive';
 import DataTransfer from '@/components/DataTransfer/DataTransfer';
@@ -17,7 +17,7 @@ import { ModalLayout } from '@shared/ui';
 export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	ACHIEVEMENTS: {
 		path: modalPaths.ACHIEVEMENTS,
-		element: <Achievements />
+		element: <AchievementsPage />
 	},
 	APPEARANCE: {
 		path: modalPaths.APPEARANCE,

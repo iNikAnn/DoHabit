@@ -1,21 +1,21 @@
-import styles from '../../css/Achievements.module.css';
+import styles from './AchievementsPage.module.css';
 
 // stores
-import { useAchievementsStore } from '../../stores/achievementsStore';
+import { useAchievementsStore } from '../../../stores/achievementsStore';
 import { Placeholder, useDialogStore } from '@shared/ui';
 
 // components
-import SectionHeader from '../Containment/SectionHeader';
-import RegularAchievementCard from './RegularAchievementCard';
-import SecretAchievementCard from './SecretAchievementCard';
+import SectionHeader from '../../../components/Containment/SectionHeader';
+import RegularAchievementCard from '../../../components/Achievements/RegularAchievementCard';
+import SecretAchievementCard from '../../../components/Achievements/SecretAchievementCard';
 
 // types
-import { Achievement } from '../../types/achievement';
+import { Achievement } from '../../../types/achievement';
 
 // @ts-ignore
 const publicUrl = process.env.PUBLIC_URL ?? '/';
 
-function Achievements() {
+function AchievementsPage() {
 
 	const openDialog = useDialogStore((s) => s.open);
 
@@ -107,4 +107,4 @@ function Achievements() {
 	);
 }
 
-export default Achievements;
+export { AchievementsPage };
