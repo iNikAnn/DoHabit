@@ -1,4 +1,4 @@
-import { Habit } from '../types/habit';
+import { Habit } from '../model/types';
 
 /**
  * Checks if a habit title already exists,
