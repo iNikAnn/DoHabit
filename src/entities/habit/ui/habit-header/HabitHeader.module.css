@@ -1,0 +1,60 @@
+/* header */
+.header {
+	/* outline: 1px solid red; */
+	outline-offset: -1px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.6rem;
+
+	padding: 0.6rem;
+}
+
+/* icon */
+.iconWrapper {
+	/* outline: 1px solid tomato; */
+	color: var(--habit-color-base);
+}
+
+.iconWrapper,
+.actionWrapper button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 3rem;
+	height: 3rem;
+	background-color: var(--habit-color-dark);
+	border-radius: var(--border-radius-secondary);
+}
+
+.iconWrapper svg,
+.actionWrapper button svg {
+	width: 1.6rem;
+	height: 1.6rem;
+}
+
+/* titleWrapper */
+.titleWrapper {
+	/* outline: 2px solid greenyellow; */
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	overflow: hidden;
+}
+
+.title {
+	/* outline: 1px solid blue; */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* description */
+.description {
+	display: flex;
+	gap: 0.6rem;
+	color: gray;
+}
