@@ -1,0 +1,25 @@
+/* wrapper */
+.wrapper {
+	display: flex;
+	gap: 2px;
+}
+
+/* button */
+.button {
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.button.multiFrequency {
+	border-radius: 0 var(--border-radius-secondary) var(--border-radius-secondary) 0;
+}
+
+/* icon */
+.button svg {
+	width: 1.6rem;
+	height: 1.6rem;
+}
