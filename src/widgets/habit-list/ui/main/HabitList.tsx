@@ -1,18 +1,18 @@
 import styles from './HabitList.module.css';
 import { AnimatePresence } from 'framer-motion';
-import { useColorsStore } from '../../../stores/colorsStore';
-import { MdAddToPhotos, MdEditSquare, MdLibraryBooks } from 'react-icons/md';
-import { getHabitStats } from '../lib/getHabitStats';
+import { useColorsStore } from '../../../../stores/colorsStore';
+import { MdEditSquare, MdLibraryBooks } from 'react-icons/md';
+import { getHabitStats } from '../../lib/getHabitStats';
 import { UpdateHabitProgress } from '@features/update-habit-progress';
 import { RestoreHabit } from '@features/restore-habit';
 import { Habit, HabitCard, useHabitsStore } from '@entities/habit';
-import { CalendarIcon, TableIcon } from '@shared/assets';
 import { getModalPath } from '@shared/const';
-import { DrawerAction, Placeholder, useDrawerStore } from '@shared/ui';
+import { DrawerAction, useDrawerStore } from '@shared/ui';
 import { getColorVariants, shareElementScreenshot } from '@shared/lib';
 import { FaCalendarCheck, FaCalendarTimes, FaShareAltSquare } from 'react-icons/fa';
 import { ColorVariants } from '@/types/colorScheme';
 import { FaChartSimple } from 'react-icons/fa6';
+import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
 
 interface HabitListParams {
 	isArchive?: boolean;
@@ -37,29 +37,7 @@ function HabitList(params: HabitListParams) {
 
 	// 1. Handle empty state
 	if (filteredHabits.length === 0) {
-		return isArchive ? (
-			<Placeholder
-				content={{
-					image: <TableIcon />,
-					title: 'No archived habits found',
-					description: 'You can archive a habit by editing it.'
-				}}
-			/>
-		) : (
-			<Placeholder
-				content={{
-					image: <CalendarIcon />,
-					title: 'No active habits found',
-					description: 'Why not create one now?'
-				}}
-				action={{
-					label: 'Create First Habit',
-					icon: <MdAddToPhotos />,
-					to: getModalPath('HABIT_EDITOR'),
-					state: { modalTitle: 'Create new habit' }
-				}}
-			/>
-		);
+		return <HabitListEmpty isArchive={isArchive} />
 	}
 
 	const handleShareHabit = (element: HTMLDivElement) => {
