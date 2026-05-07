@@ -5,16 +5,16 @@ import { useState } from 'react';
 
 // types
 import { Streak } from '../../types/common';
-import { ColorPalette } from '../../types/colorScheme';
+import { ColorVariants } from '../../types/colorScheme';
 
 interface Props {
 	streaks: Streak[];
-	colorPalette: ColorPalette;
+	colorVariants: ColorVariants;
 }
 
-function StreakHistory({ streaks, colorPalette }: Props) {
+function StreakHistory({ streaks, colorVariants }: Props) {
 
-	const { darkenedColor } = colorPalette;
+	const { darkenedColor } = colorVariants;
 	const [listLength, setListLength] = useState(5);
 	const streakList = streaks.slice(0, listLength);
 

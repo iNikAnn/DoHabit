@@ -9,8 +9,7 @@ function updateHabitById(
 	updateFn: (habit: Habit) => Habit
 ): Habit[] {
 	return habits.map((habit) => (
-		// TODO: Switch to ID-based search once implemented
-		habit.title === habitId
+		habit.id === habitId
 			? updateFn(habit)
 			: habit
 	));

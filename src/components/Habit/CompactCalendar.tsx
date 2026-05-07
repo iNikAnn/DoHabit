@@ -1,25 +1,25 @@
 import styles from '../../css/CompactCalendar.module.css';
 import { useSettingsStore } from '../../stores/settingsStore';
-import { ColorPalette } from '../../types/colorScheme';
+import { ColorVariants } from '../../types/colorScheme';
 import { checkHabitCompletion, CompletedDay } from '@entities/habit';
 
 interface Props {
 	completedDays: CompletedDay[];
-	colorPalette: ColorPalette;
+	colorVariants: ColorVariants;
 	frequency: number;
 }
 
 function CompactCalendar(props: Props) {
 	const {
 		completedDays,
-		colorPalette,
+		colorVariants,
 		frequency
 	} = props;
 
 	const settings = useSettingsStore((s) => s.settings);
 	const highlightToday = settings.calendarHighlightToday ?? true;
 
-	const { baseColor, darkenedColor } = colorPalette;
+	const { baseColor, darkenedColor } = colorVariants;
 	const months = 6;
 	const columns = months * 4;
 

@@ -6,14 +6,14 @@ import Card from '../../../components/Statistics/Card';
 import WeekdayChart from '../../../components/Statistics/WeekdayChart';
 import MonthlyChart from '../../../components/Statistics/MonthlyChart';
 import StreakHistory from '../../../components/Statistics/StreakHistory';
-import { ColorPalette } from '../../../types/colorScheme';
+import { ColorVariants } from '../../../types/colorScheme';
 import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag, FaBinoculars } from 'react-icons/fa';
 import { ChartOptions } from 'chart.js';
 import { CompletedDay, getStreaks } from '@entities/habit';
 
 interface LocationState {
 	completedDays: CompletedDay[];
-	colorPalette: ColorPalette;
+	colorVariants: ColorVariants;
 	frequency: number;
 }
 
@@ -25,10 +25,10 @@ function HabitStatisticsPage() {
 	const {
 		completedDays = [],
 		frequency = 0,
-		colorPalette
+		colorVariants
 	} = state ?? {};
 
-	const { baseColor, darkenedColor } = colorPalette;
+	const { baseColor, darkenedColor } = colorVariants;
 
 	// --- Selected Year:START ---
 	const currYear = new Date().getFullYear();
@@ -139,7 +139,7 @@ function HabitStatisticsPage() {
 				>
 					<StreakHistory
 						streaks={filteredStreaks}
-						colorPalette={colorPalette}
+						colorVariants={colorVariants}
 					/>
 				</Card>
 			)}

@@ -1,19 +1,19 @@
 import styles from '../../css/Calendar.module.css';
 import Month from './Month';
-import { ColorPalette } from '../../types/colorScheme';
+import { ColorVariants } from '../../types/colorScheme';
 import { CompletedDay } from '@entities/habit';
 import { countMonths } from '@shared/lib';
 
 interface Props {
 	completedDays: CompletedDay[];
-	colorPalette: ColorPalette;
+	colorVariants: ColorVariants;
 	frequency: number;
 }
 
 function Calendar(props: Props) {
 	const {
 		completedDays,
-		colorPalette,
+		colorVariants,
 		frequency
 	} = props;
 
@@ -42,7 +42,7 @@ function Calendar(props: Props) {
 			<Month
 				key={index}
 				completedDays={completedDays}
-				colorPalette={colorPalette}
+				colorVariants={colorVariants}
 				frequency={frequency}
 				date={date}
 				visibleMonthsCount={visibleMonthsCount}

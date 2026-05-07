@@ -1,9 +1,9 @@
-import { ColorPalette } from '../../../../types/colorScheme';
+import { ColorVariants } from '../../../../types/colorScheme';
 
 /**
  * Generates color variations (base, darkened, softened) from an HSL string.
  */
-function getColorVariants(hsl: string): ColorPalette {
+function getColorVariants(hsl: string): ColorVariants {
 	const hslRegex = /(\d+)%,?\s+(\d+)%\)/;
 
 	const darkenedLight = hsl.replace(hslRegex, '8%, 95%)');
