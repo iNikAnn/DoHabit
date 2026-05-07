@@ -1,7 +1,7 @@
 /* propgress bar */
 .progressBar {
 	/* outline: 1px solid tomato; */
-	width: 1rem;
+	width: 0.8rem;
 
 	display: flex;
 	flex-direction: column-reverse;
@@ -12,6 +12,11 @@
 .segment {
 	height: 100%;
 	width: 100%;
+	background-color: var(--bg-color-tertiary);
+}
+
+.segment.passed {
+	background-color: var(--bg-color-secondary);
 }
 
 .segment.first {
