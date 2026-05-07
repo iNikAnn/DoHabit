@@ -1,6 +1,6 @@
 import { Habit, CompletedDay, ToggleYesterdayStatus } from '../types';
 import updateHabitById from '../../lib/updateHabitById';
-import { formatDate } from '@shared/lib';
+import { formatDate, getYesterday } from '@shared/lib';
 
 interface Params {
 	habits: Habit[];
@@ -15,18 +15,15 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 		habits,
 		payload: {
 			habitId,
-			isTodayCompleted,
-			isYesterdayCompleted,
+			isYdayCompleted,
 			todayProgress
 		}
 	} = params;
 
-	const yesterday = new Date();
-	yesterday.setDate(yesterday.getDate() - 1);
-	const yDayStr = formatDate(yesterday);
+	const yDayStr = formatDate(getYesterday());
 
 	return updateHabitById(habits, habitId, (habit) => {
-		if (isYesterdayCompleted) {
+		if (isYdayCompleted) {
 			// Remove yesterday entry
 			return {
 				...habit,
@@ -37,19 +34,19 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 		}
 
 		// New record for yesterday
-		const completedYesterday: CompletedDay = {
+		const completedYday: CompletedDay = {
 			date: yDayStr,
 			progress: habit.frequency,
 			isCompYdayBtnUsed: true
 		};
 
 		// Determine insertion index: 1 if today has record, otherwise 0
-		const insertIndex = (isTodayCompleted || todayProgress) ? 1 : 0;
+		const insertIndex = todayProgress ? 1 : 0;
 
 		return {
 			...habit,
 			// @ts-ignore
-			completedDays: habit.completedDays.toSpliced(insertIndex, 0, completedYesterday)
+			completedDays: habit.completedDays.toSpliced(insertIndex, 0, completedYday)
 		};
 	});
 }

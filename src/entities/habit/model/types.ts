@@ -68,8 +68,7 @@ export interface ToggleYesterdayStatus {
 	type: 'toggleYesterdayStatus';
 	payload: {
 		habitId: string;
-		isTodayCompleted: boolean;
-		isYesterdayCompleted: boolean;
+		isYdayCompleted: boolean;
 		todayProgress: number;
 	};
 }
