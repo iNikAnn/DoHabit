@@ -49,10 +49,11 @@ export interface DeleteHabit {
 	};
 }
 
-export interface ArchiveHabit {
-	type: 'archiveHabit';
+export interface SetHabitArchiveStatus {
+	type: 'setHabitArchiveStatus';
 	payload: {
 		habitId: string;
+		isArchived: boolean;
 	};
 }
 
@@ -77,7 +78,7 @@ export type HabitAction =
 	| AddHabit
 	| EditHabit
 	| DeleteHabit
-	| ArchiveHabit
+	| SetHabitArchiveStatus
 	| UpdateProgress
 	| ToggleYesterdayStatus;
 

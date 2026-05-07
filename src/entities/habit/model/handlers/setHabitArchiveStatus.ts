@@ -1,23 +1,26 @@
-import { ArchiveHabit, Habit } from '../types';
+import { SetHabitArchiveStatus, Habit } from '../types';
 import updateHabitById from '../../lib/updateHabitById';
 
 interface Params {
 	habits: Habit[];
-	payload: ArchiveHabit['payload'];
+	payload: SetHabitArchiveStatus['payload'];
 }
 
 /**
- * Toggles the archived status of a habit and pushes archived items to the end.
+ * Set the archived status of a habit and pushes archived items to the end.
  */
-function archiveHabit(params: Params): Habit[] {
+function setHabitArchiveStatus(params: Params): Habit[] {
 	const {
 		habits,
-		payload: { habitId }
+		payload: {
+			habitId,
+			isArchived
+		}
 	} = params;
 
 	const nextHabits = updateHabitById(habits, habitId, (habit) => ({
 		...habit,
-		isArchived: !habit.isArchived
+		isArchived
 	}));
 
 	// Sort archived habits to the end of the list
@@ -26,4 +29,4 @@ function archiveHabit(params: Params): Habit[] {
 	);
 }
 
-export default archiveHabit;
+export default setHabitArchiveStatus;

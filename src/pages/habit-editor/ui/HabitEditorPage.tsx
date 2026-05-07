@@ -162,7 +162,7 @@ function HabitEditorPage() {
 									const msg = 'Are you sure you want to archive this habit? Archived habits can be found in the menu under the \'Archive\' section.';
 
 									if (window.confirm(msg)) {
-										handleUpdate({ type: 'archiveHabit', payload: { ...payload } });
+										handleUpdate({ type: 'setHabitArchiveStatus', payload: { ...payload, isArchived: true } });
 									}
 								}}
 							>

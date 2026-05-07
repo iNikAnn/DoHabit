@@ -2,7 +2,7 @@ import { Habit, HabitAction } from './types';
 import addHabit from './handlers/addHabit';
 import editHabit from './handlers/editHabit';
 import deleteHabit from './handlers/deleteHabit';
-import archiveHabit from './handlers/archiveHabit';
+import setHabitArchiveStatus from './handlers/setHabitArchiveStatus';
 import updateHabitProgress from './handlers/updateHabitProgress';
 import toggleYesterdayStatus from './handlers/toggleYesterdayStatus';
 import { writeLocalStorage } from '@shared/lib';
@@ -28,8 +28,8 @@ function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[]
 			nextHabits = deleteHabit({ habits, payload });
 			break;
 
-		case 'archiveHabit':
-			nextHabits = archiveHabit({ habits, payload });
+		case 'setHabitArchiveStatus':
+			nextHabits = setHabitArchiveStatus({ habits, payload });
 			break;
 
 		case 'updateProgress':
