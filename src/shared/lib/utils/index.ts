@@ -5,6 +5,7 @@ export { exportAppData } from './export-app-data/exportAppData';
 export { formatDate } from './format-date/formatDate';
 export { generateBaseColors } from './generate-base-colors/generateBaseColors';
 export { getColorVariants } from './get-color-variants/getColorVariants';
+export { getYesterday } from './get-yesterday/getYesterday';
 export { importAppData } from './import-app-data/importAllData';
 export { readLocalStorage } from './read-local-storage/readLocalStorage';
 export { resolveTheme } from './resolve-theme/resolveTheme';
