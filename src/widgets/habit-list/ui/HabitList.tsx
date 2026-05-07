@@ -2,6 +2,8 @@ import styles from './HabitList.module.css';
 import { AnimatePresence } from 'framer-motion';
 import { useColorsStore } from '../../../stores/colorsStore';
 import { MdAddToPhotos } from 'react-icons/md';
+import { UpdateHabitProgress } from '@features/update-habit-progress';
+import { RestoreHabit } from '@features/restore-habit';
 import { HabitCard, useHabitsStore } from '@entities/habit';
 import { CalendarIcon, TableIcon } from '@shared/assets';
 import { getModalPath } from '@shared/const';
@@ -20,8 +22,8 @@ function HabitList(params: HabitListParams) {
 		isArchive = false
 	} = params;
 
-	const dbColors = useColorsStore((s) => s.colors);
 	const habits = useHabitsStore((s) => s.habits);
+	const colors = useColorsStore((s) => s.colors);
 
 	// Filter habits based on mode
 	const filteredHabits = habits.filter((h) => isArchive ? h.isArchived : !h.isArchived);
@@ -60,10 +62,12 @@ function HabitList(params: HabitListParams) {
 			<AnimatePresence initial={false}>
 				{filteredHabits.map((habit) => (
 					<HabitCard
-						// TODO: Switch to ID once implemented
-						key={habit.title}
+						key={habit.id}
+						headerAction={isArchive
+							? <RestoreHabit habitId={habit.id} />
+							: <UpdateHabitProgress habit={habit} />}
 						habit={habit}
-						color={dbColors[habit.colorIndex] ?? 'red'}
+						color={colors[habit.colorIndex] ?? 'red'}
 						isArchive={isArchive}
 					/>
 				))}

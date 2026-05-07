@@ -1,47 +1,49 @@
 import styles from './HabitCard.module.css';
 
 // react
-import { useMemo, useRef } from 'react';
+import { CSSProperties, ReactNode, useMemo, useRef } from 'react';
 
 // framer
 import { motion } from 'framer-motion';
 
 // stores
-import { useSettingsStore } from '../../../stores/settingsStore';
+import { useSettingsStore } from '../../../../stores/settingsStore';
 
 // components
-import HabitHeader from '../../../components/Habit/HabitHeader';
-import Calendar from '../../../components/Habit/Calendar';
-import CompactCalendar from '../../../components/Habit/CompactCalendar';
+import HabitHeader from '../habit-header/HabitHeader';
+import Calendar from '../../../../components/Habit/Calendar';
+import CompactCalendar from '../../../../components/Habit/CompactCalendar';
 
 // types
-import { Habit } from '../model/types';
+import { Habit } from '../../model/types';
 
 // utils
 import { getColorVariants, shareElementScreenshot } from '@shared/lib';
-import getTodayProgress from '../lib/getTodayProgress';
-import { getStreaks } from '../lib/getStreaks';
-import { checkHabitCompletion } from '../lib/checkHabitCompletion';
-import getListAnimationVariants from '../../../utils/getListAnimationVariants';
+import { getStreaks } from '../../lib/getStreaks';
+import { checkHabitCompletion } from '../../lib/checkHabitCompletion';
+import getListAnimationVariants from '../../../../utils/getListAnimationVariants';
 import { DrawerAction, useDrawerStore } from '@shared/ui';
 import { MdEditSquare, MdLibraryBooks } from 'react-icons/md';
 import { getModalPath } from '@shared/const';
 import { FaCalendarCheck, FaCalendarTimes, FaShareAltSquare } from 'react-icons/fa';
 import { FaChartSimple } from 'react-icons/fa6';
-import { useHabitsStore } from '../model/store';
+import { useHabitsStore } from '../../model/store';
+import { getTodayProgress } from '@entities/habit';
 
 const today = new Date();
 const yesterday = new Date(today);
 yesterday.setDate(today.getDate() - 1);
 
-interface Props {
+interface HabitCardProps {
+	headerAction?: ReactNode;
 	habit: Habit;
 	color: string;
 	isArchive: boolean;
 }
 
-function HabitCard(props: Props) {
+function HabitCard(props: HabitCardProps) {
 	const {
+		headerAction,
 		habit,
 		color,
 		isArchive,
@@ -50,12 +52,14 @@ function HabitCard(props: Props) {
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 	const settings = useSettingsStore((s) => s.settings);
 	const habitRef = useRef(null);
-	const colorPalette = useMemo(() => getColorVariants(color), [color]);
-	const todayProgress = getTodayProgress(habit.completedDays);
+	const colorVariants = useMemo(() => getColorVariants(color), [color]);
+	const {
+		progress: todayProgress,
+		isCompleted: isTodayCompleted
+	} = getTodayProgress({ completedDays: habit.completedDays, frequency: habit.frequency });
 	const { currentStreak } = getStreaks(habit.completedDays, habit.frequency);
 
 	const [
-		isTodayCompleted,
 		isYesterdayCompleted
 	] = useMemo(
 		() => checkHabitCompletion(habit.completedDays, habit.frequency, today, yesterday),
@@ -73,7 +77,7 @@ function HabitCard(props: Props) {
 	const calendar = useMemo(
 		() => {
 			const props = {
-				colorPalette,
+				colorVariants,
 				completedDays: habit.completedDays,
 				frequency: habit.frequency
 			};
@@ -84,11 +88,11 @@ function HabitCard(props: Props) {
 				<Calendar {...props} />
 			);
 		},
-		[colorPalette, habit.completedDays, habit.frequency, settings.calendarView]
+		[colorVariants, habit.completedDays, habit.frequency, settings.calendarView]
 	);
 
 	const habitVariants = getListAnimationVariants(0.3);
-	const { darkenedColor } = colorPalette;
+	const { baseColor, darkenedColor, softenedColor } = colorVariants;
 
 	const openDrawer = useDrawerStore((s) => s.open);
 
@@ -117,7 +121,7 @@ function HabitCard(props: Props) {
 			{
 				to: getModalPath('HABIT_EDITOR'),
 				state: {
-					habitTitle: habit.title,
+					habitId: habit.id,
 					modalTitle: 'Edit habit',
 				},
 				icon: <MdEditSquare />,
@@ -135,7 +139,7 @@ function HabitCard(props: Props) {
 				to: getModalPath('STATISTICS'),
 				state: {
 					completedDays: habit.completedDays,
-					colorPalette,
+					colorVariants,
 					colorIndex: habit.colorIndex,
 					frequency: habit.frequency,
 					modalTitle: habit.title,
@@ -169,18 +173,23 @@ function HabitCard(props: Props) {
 	return (
 		<motion.div
 			ref={habitRef}
+
+			// Inject dynamic colors as CSS variables.
+			style={{
+				'--habit-color-base': baseColor,
+				'--habit-color-dark': darkenedColor,
+				'--habit-color-soft': softenedColor
+			} as CSSProperties}
+
 			className={styles.habit}
 			{...habitVariants}
 			layout
 			onClick={handleOpenDrawer}
 		>
 			<HabitHeader
+				action={headerAction}
 				habit={habit}
-				colorPalette={colorPalette}
-				isTodayCompleted={!!isTodayCompleted}
-				todayProgress={todayProgress}
-				currentStreak={currentStreak}
-				isArchive={isArchive}
+				currentStreak={isArchive ? undefined : currentStreak}
 			/>
 
 			{!isArchive && (
