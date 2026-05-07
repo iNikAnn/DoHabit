@@ -35,10 +35,10 @@ function HabitEditorPage() {
 	const habits = useHabitsStore((s) => s.habits);
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 
-	const habitTitle = location.state?.habitTitle;
-	const isEditMode = Boolean(habitTitle);
+	const habitId = location.state?.habitId;
+	const isEditMode = Boolean(habitId);
 	const filteredHabits = isEditMode ? habits.filter((h) => !h.isArchived) : [];
-	const habit = isEditMode ? habits.find((habit) => habit.title === habitTitle) : undefined;
+	const habit = isEditMode ? habits.find((habit) => habit.id === habitId) : undefined;
 
 	const [inputTitle, setInputTitle] = useState<string>(isEditMode ? (habit?.title ?? '') : '');
 	const [alreadyExist, setAlreadyExist] = useState(false);
@@ -53,7 +53,7 @@ function HabitEditorPage() {
 
 	// action object
 	const payload = {
-		habitId: habit?.title ?? ''
+		habitId: habit?.id ?? ''
 	};
 
 	// on submit form
