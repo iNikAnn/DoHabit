@@ -71,7 +71,7 @@ function HabitStatisticsPage() {
 	};
 
 	return (
-		<div className={styles.Habitstatistics}>
+		<div className={styles.statistics}>
 			<YearPicker
 				earliestYear={earliestYear}
 				currYear={currYear}
