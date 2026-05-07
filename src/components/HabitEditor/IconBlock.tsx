@@ -56,8 +56,8 @@ function IconBlock({ habits, currentIconTitle = 'default' }: Props) {
 						)}
 
 						<div className={styles.iconList}>
-							{icons.map(({ iconTitle, Icon }, index) => {
-								const IconComponent = Icon as ElementType;
+							{icons.map(({ iconTitle, icon }, index) => {
+								const IconComponent = icon as ElementType;
 								const isIconUsed = habits.find((habit) => habit.iconTitle === iconTitle);
 
 								return (

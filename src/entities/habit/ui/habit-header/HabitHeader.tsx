@@ -1,6 +1,6 @@
 import styles from './HabitHeader.module.css';
 import { ReactNode } from 'react';
-import { Habit, HABIT_ICONS } from '@entities/habit';
+import { Habit, HABIT_ICONS_MAP } from '@entities/habit';
 
 interface HabitHeaderProps {
 	action?: ReactNode;
@@ -15,8 +15,9 @@ function HabitHeader(props: HabitHeaderProps) {
 		currentStreak,
 	} = props;
 
-	const Icon = HABIT_ICONS.find((icon) => icon.iconTitle === habit.iconTitle)?.Icon
-		?? HABIT_ICONS[0]?.Icon;
+	// Get icon by title or use default fallback
+	const Icon = HABIT_ICONS_MAP[habit.iconTitle]?.icon
+		?? HABIT_ICONS_MAP['default']?.icon;
 
 	return (
 		<div className={styles.header}>
