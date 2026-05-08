@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { LuExternalLink } from 'react-icons/lu';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IconType } from 'react-icons';
+import { renderIcon } from '@shared/lib';
 
 const INDICATOR_ICONS: Record<ButtonIndicator, IconType | null> = {
 	arrow: IoIosArrowForward,
@@ -21,6 +22,7 @@ function Button(props: ButtonProps) {
 		to,
 		state,
 		icon,
+		iconProps,
 		children,
 		indicator,
 		style,
@@ -33,7 +35,7 @@ function Button(props: ButtonProps) {
 
 	const innerContent = (
 		<>
-			{icon}
+			{renderIcon(icon, iconProps)}
 			{children}
 			{Indicator && <Indicator style={indicator?.style} className={styles.indicator} />}
 		</>
