@@ -1,0 +1,60 @@
+/* form */
+/* .form {
+	position: sticky;
+	left: 0;
+	bottom: 0;
+	transform: translate(-1rem, 1rem);
+
+	display: flex;
+	gap: 0.4rem;
+
+	width: calc(100% + 2rem);
+
+	background-color: var(--bg);
+	border-top: 1px solid var(--bg-color-secondary);
+
+	padding: 0.6rem 1rem;
+	margin-top: auto;
+	z-index: 999;
+} */
+.form {
+	/* outline: 1px solid tomato; */
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+
+	display: flex;
+	gap: 0.4rem;
+
+	/* background-color: var(--bg); */
+	/* background-color: green; */
+
+	/* padding: 0 1rem 0.6rem; */
+	padding: 0 1rem 1rem;
+	/* margin-top: auto; */
+	z-index: 999;
+}
+
+.form input {
+	width: 100%;
+	height: 3rem;
+	padding: 0 1rem;
+	padding-right: 4rem;
+	border: 2px solid var(--bg-color-secondary);
+	border-radius: 3rem;
+}
+
+.form input:focus {
+	outline: 2px solid dodgerblue;
+}
+
+.actionButton {
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
