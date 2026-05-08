@@ -1,25 +1,20 @@
 import styles from './NoteCard.module.css';
-
-// framer
 import { motion } from 'framer-motion';
-
-// hooks
 import { useLayoutEffect, useRef, useState } from 'react';
-
-// types
 import { Note } from '../model/types';
-
-// utils
 import getListAnimationVariants from '../../../utils/getListAnimationVariants';
 import { formatDate, truncateText, useIsFirstRender } from '@shared/lib';
 
-interface Props {
+interface NoteCardProps {
 	note: Note;
-	onStartEditNote: (noteCreationDate: string, currentText: string) => void;
-	onDeleteNote: (noteCreationDate: string) => void;
+	onClick: () => void;
 }
 
-function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
+function NoteCard(props: NoteCardProps) {
+	const {
+		note,
+		onClick
+	} = props;
 
 	const dateTimeStr = formatDate(new Date(note.createdAt), { includeTime: true });
 	const isFirstRender = useIsFirstRender();
@@ -46,6 +41,7 @@ function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
 			className={styles.note}
 			{...noteVariants}
 			layout
+			onClick={onClick}
 		>
 			<div
 				ref={textRef}
@@ -73,22 +69,6 @@ function NoteCard({ note, onStartEditNote, onDeleteNote }: Props) {
 							Expand
 						</button>
 					)}
-
-					<button
-						className={styles.actionBtn}
-						onClick={() => onStartEditNote(note.id, note.text)}
-					>
-						{/* <MdEditSquare /> */}
-						Edit
-					</button>
-
-					<button
-						className={styles.actionBtn}
-						onClick={() => onDeleteNote(note.id)}
-					>
-						{/* <MdDeleteForever /> */}
-						Delete
-					</button>
 				</div>
 			</div>
 		</motion.div>
