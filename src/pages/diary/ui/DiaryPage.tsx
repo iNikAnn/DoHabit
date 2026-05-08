@@ -1,196 +1,69 @@
 import styles from './DiaryPage.module.css';
-
-// react
-import { useEffect, useRef, useState } from 'react';
-
-// router
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
-// stores
-import { useColorsStore } from '../../../stores/colorsStore';
-import { useHabitsStore } from '../../../stores/habitsStore';
-import { useMainDiaryStore } from '../../../stores/mainDiaryStore';
-
-// components
-import { Placeholder } from '@shared/ui';
-import NoteList from '../../../components/Diary/NoteList';
-import AddNoteForm from '../../../components/Diary/AddNoteForm';
-
-// icons
-import { InformationIcon } from '@shared/assets';
-import { MdStickyNote2 } from 'react-icons/md';
-
-import { HabitAction } from '../../../types/habit';
-import { Note } from '../../../types/diary';
+import { NoteForm } from '@widgets/note-form';
+import { NoteList } from '@widgets/note-list';
+import { Note } from '@entities/note';
+import { scrollToTop } from '@shared/lib';
 
 /**
- * Main notes feed. Handles global entries or habit-specific filtering.
+ * Main diary page component.
+ * Coordinates note creation, editing, and filtered feed display.
  */
 function DiaryPage() {
-
 	const location = useLocation();
-
-	const dbColors = useColorsStore((s) => s.colors);
-
-	const habits = useHabitsStore((s) => s.habits);
-	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
-
-	const mainDiary = useMainDiaryStore((s) => s.mainDiary);
-	const mainDiaryDispatch = useMainDiaryStore((s) => s.mainDiaryDispatch);
-
-	const [habitTitle] = useState(location.state?.habitTitle);
-	const [accentColor] = useState(dbColors[location.state?.colorIndex]);
-
-	// form
-	const [input, setInput] = useState('');
+	const [editingNoteId, setEditingNoteId] = useState<string>();
 	const [isFormActive, setIsFormActive] = useState(false);
-	const [isEditing, setIsEditing] = useState('');
-	const inputRef = useRef<HTMLInputElement>(null);
+	const [noteFormInput, setNoteFormInput] = useState('');
 
-	const currentStreak = location.state?.currentStreak ?? 0;
+	const { habitId, currentStreak } = location.state ?? {};
 
-	const diary = habitTitle
-		? habits.find((h) => h.title === habitTitle)?.diary
-		: mainDiary;
-
-	const hasNotes = diary && typeof diary === 'object' && diary.length;
-
-	// create new note
-	const handleAddNote = (text: string) => {
-		const note: Note = {
-			text: text.trim(),
-			date: String(new Date()),
-			streak: currentStreak ?? undefined
-		};
-
-		const action: HabitAction = {
-			type: 'addNote',
-			payload: {
-				habitId: habitTitle,
-				note
-			}
-		};
-
-		if (habitTitle) {
-			habitsDispatch(action);
-		} else {
-			mainDiaryDispatch(action);
-		}
-
-		document.body
-			.querySelector('#modalChildrenWrapper')
-			?.scrollTo({
-				top: 0,
-				behavior: 'smooth'
-			});
-
-		handleFormActivation(false);
+	/**
+	 * Opens the form in edit mode and fills it with note data.
+	 */
+	const handleEditNote = (note: Note) => {
+		setEditingNoteId(note.id);
+		setNoteFormInput(note.text);
+		setIsFormActive(true);
 	};
 
-	// edit note
-	const handleStartEdit = (noteCreationDate: string, currentText: string) => {
-		if (inputRef.current) {
-			setIsEditing(noteCreationDate);
-			setInput(currentText);
-			inputRef.current.focus();
-		}
-	};
-
-	const handleEditNote = (newText: string) => {
-		const action: HabitAction = {
-			type: 'editNote',
-			payload: {
-				// TODO: Switch to ID once implemented
-				habitId: habitTitle,
-				noteCreationDate: isEditing,
-				newText: newText.trim()
-			}
-		};
-
-		if (habitTitle) {
-			habitsDispatch(action);
-		} else {
-			mainDiaryDispatch(action);
+	/**
+	 * Handle closing the note form.
+	 * Keeps text as draft if user just closed new note form.
+	 */
+	const handleNoteFormClose = (shouldClear = false, shouldScrollUp = false) => {
+		// Clear input on submit or when finishing edit mode
+		if (shouldClear || editingNoteId) {
+			setNoteFormInput('');
 		}
 
-		setIsEditing('');
-		handleFormActivation(false);
-	};
-
-	// delete note
-	// TODO: Switch to ID once implemented
-	const handleDeleteNote = (noteCreationDate: string) => {
-		if (window.confirm('Are you sure you want to delete this note?')) {
-			const action: HabitAction = {
-				type: 'deleteNote',
-
-				payload: {
-					// TODO: Switch to ID once implemented
-					habitId: habitTitle,
-					noteCreationDate
-				}
-			};
-
-			if (habitTitle) {
-				habitsDispatch(action);
-			} else {
-				mainDiaryDispatch(action);
-			}
+		// Scroll to top of the list
+		if (shouldScrollUp) {
+			scrollToTop(document.querySelector('#modalChildrenWrapper'));
 		}
+
+		// Reset edit state and hide form
+		setEditingNoteId(undefined);
+		setIsFormActive(false);
 	};
-
-	const handleFormActivation = (boolean: boolean) => setIsFormActive(boolean);
-
-	useEffect(
-		() => {
-			if (isFormActive && inputRef.current) {
-				inputRef.current.focus();
-			}
-		},
-		[isFormActive]
-	);
 
 	return (
 		<div className={styles.diary}>
-			{hasNotes ? (
-				<NoteList
-					diary={diary}
-					onStartEditNote={handleStartEdit}
-					onDeleteNote={handleDeleteNote}
-				/>
-			) : (
-				<Placeholder
-					content={{
-						image: <InformationIcon />,
-						title: (habitTitle ? 'This habit\'s' : 'Main') + ' diary is empty',
-						description: 'Add your first note to start tracking your progress and thoughts.'
-					}}
-					action={{
-						label: 'Add First Note',
-						icon: <MdStickyNote2 />,
-						color: accentColor,
-						onClick: () => handleFormActivation(true)
-					}}
-				/>
-			)}
+			<NoteList
+				habitId={habitId}
+				onEdit={handleEditNote}
+			/>
 
-			{(hasNotes || isFormActive) && (
-				<AddNoteForm
-					ref={inputRef}
-					input={input}
-					onChange={(v: string) => setInput(v)}
-					onFocus={() => handleFormActivation(true)}
-					onSubmit={isEditing ? handleEditNote : handleAddNote}
-					isSendBtnVisible={isFormActive}
-				/>
-			)}
-
-			{isFormActive && (
-				<div
-					className={styles.overlay}
-					onClick={() => handleFormActivation(false)}
-				/>
-			)}
+			<NoteForm
+				input={noteFormInput}
+				habitId={habitId}
+				streak={currentStreak}
+				editingNoteId={editingNoteId}
+				isFormActive={isFormActive}
+				onActivate={() => setIsFormActive(true)}
+				onChange={setNoteFormInput}
+				onClose={handleNoteFormClose}
+			/>
 		</div>
 	);
 }
