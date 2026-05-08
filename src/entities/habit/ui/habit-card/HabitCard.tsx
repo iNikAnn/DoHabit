@@ -49,7 +49,7 @@ function HabitCard(props: HabitCardProps) {
 			/>
 
 			{content && (
-				<div className={styles.contentWapper}>
+				<div className={styles.contentWrapper}>
 					{content}
 				</div>
 			)}

@@ -1,7 +1,7 @@
 import styles from '../../css/CompactCalendar.module.css';
-import { useSettingsStore } from '../../stores/settingsStore';
 import { ColorVariants } from '../../types/colorScheme';
 import { checkHabitCompletion, CompletedDay } from '@entities/habit';
+import { useSettingsStore } from '@entities/settings';
 
 interface Props {
 	completedDays: CompletedDay[];

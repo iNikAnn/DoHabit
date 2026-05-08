@@ -6,10 +6,10 @@ import { getHabitStats } from '../../lib/getHabitStats';
 import { useHabitActions } from '../../lib/useHabitActions';
 import CompactCalendar from '@/components/Habit/CompactCalendar';
 import Calendar from '@/components/Habit/Calendar';
-import { useSettingsStore } from '@/stores/settingsStore';
-import { UpdateHabitProgress } from '@features/update-habit-progress';
 import { RestoreHabit } from '@features/restore-habit';
+import { UpdateHabitProgress } from '@features/update-habit-progress';
 import { HabitCard, useHabitsStore } from '@entities/habit';
+import { useSettingsStore } from '@entities/settings';
 import { getColorVariants } from '@shared/lib';
 
 interface HabitListParams {

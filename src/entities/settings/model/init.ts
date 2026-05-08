@@ -1,8 +1,5 @@
-// utils
+import { Settings } from './types';
 import { readLocalStorage } from '@shared/lib';
-
-// types
-import { Settings } from '../types/settings';
 
 /**
  * Retrieves application settings from localStorage.
@@ -11,4 +8,4 @@ function initSettings(): Settings {
 	return readLocalStorage<Settings>('settings', {});
 }
 
-export default initSettings;
+export { initSettings };

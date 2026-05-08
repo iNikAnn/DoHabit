@@ -1,12 +1,8 @@
 import styles from './AppearancePage.module.css';
-
-// stores
-import { useSettingsStore } from '../../../stores/settingsStore';
-
-// components
 import MenuItemList from '../../../components/Menu/MenuItemList';
 import MenuItem from '../../../components/Menu/MenuItem';
 import Switch from '../../../components/Selection/Switch';
+import { useSettingsStore } from '@entities/settings';
 
 /**
  * UI customization page.
@@ -17,9 +13,9 @@ function AppearancePage() {
 
 	return (
 		<section className={styles.appearance}>
-			<MenuItemList title="Color Theme">
+			<MenuItemList title='Color Theme'>
 				<MenuItem
-					title="Force Dark Mode"
+					title='Force Dark Mode'
 					desc={`Current: ${settings.isDarkSchemeForced ? 'Dark' : 'System'}`}
 					other={
 						<Switch
@@ -35,9 +31,9 @@ function AppearancePage() {
 				/>
 			</MenuItemList>
 
-			<MenuItemList title="Calendar">
+			<MenuItemList title='Calendar'>
 				<MenuItem
-					title="Compact Calendar View"
+					title='Compact Calendar View'
 					desc={`Current: ${settings.calendarView === 'compact' ? 'Compact' : 'Default'}`}
 					other={
 						<Switch
@@ -55,7 +51,7 @@ function AppearancePage() {
 				/>
 
 				<MenuItem
-					title="Highlight Today's Date"
+					title={'Highlight Today\'s Date'}
 					desc={(settings.calendarHighlightToday ?? true)
 						? 'Today is highlighted'
 						: 'Today is not highlighted'}

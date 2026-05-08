@@ -1,11 +1,7 @@
 import { create } from 'zustand';
-
-// types
-import { SettingsState } from '../types/settings';
-
-// utils
-import initSettings from '../utils/initSettings';
-import settingsReducer from '../utils/settingsReducer';
+import { SettingsState } from './types';
+import { initSettings } from './init';
+import { settingsReducer } from './reducer';
 
 /**
  * Settings store providing state and a dispatch function.

@@ -1,7 +1,4 @@
-// types
-import { Settings, SettingsAction } from '../types/settings';
-
-// utils
+import { Settings, SettingsAction } from './types';
 import { writeLocalStorage } from '@shared/lib';
 
 /**
@@ -26,4 +23,4 @@ function settingsReducer(settings: Settings, { type, payload }: SettingsAction):
 	return nextSettings;
 }
 
-export default settingsReducer;
+export { settingsReducer };
