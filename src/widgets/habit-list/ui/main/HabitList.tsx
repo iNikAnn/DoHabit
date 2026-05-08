@@ -12,7 +12,7 @@ import { HabitCard, useHabitsStore } from '@entities/habit';
 import { useSettingsStore } from '@entities/settings';
 import { getColorVariants } from '@shared/lib';
 
-interface HabitListParams {
+interface HabitListProps {
 	isArchive?: boolean;
 }
 
@@ -20,10 +20,10 @@ interface HabitListParams {
  * Habit list widget.
  * Supports dual mode: active habits or archived habits.
  */
-function HabitList(params: HabitListParams) {
+function HabitList(props: HabitListProps) {
 	const {
 		isArchive = false
-	} = params;
+	} = props;
 
 	const habits = useHabitsStore((s) => s.habits);
 	const settings = useSettingsStore((s) => s.settings);
