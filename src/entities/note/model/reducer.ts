@@ -25,7 +25,7 @@ function notesReducer(diary: Note[], { type, payload }: NoteAction) {
 			return _exhaustiveCheck;
 	}
 
-	writeLocalStorage('mainDiary', nextDiary);
+	writeLocalStorage('diary', nextDiary);
 
 	return nextDiary;
 }

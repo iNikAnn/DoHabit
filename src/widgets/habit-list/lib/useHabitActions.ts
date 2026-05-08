@@ -1,7 +1,7 @@
 import { ColorVariants } from '@/types/colorScheme';
-import { FaCalendarCheck, FaCalendarTimes, FaShareAlt } from 'react-icons/fa';
+import { FaCalendarCheck, FaCalendarTimes, FaPencilAlt, FaShareAlt } from 'react-icons/fa';
 import { FaChartSimple } from 'react-icons/fa6';
-import { MdEditSquare, MdLibraryBooks } from 'react-icons/md';
+import { MdLibraryBooks } from 'react-icons/md';
 import { Habit, useHabitsStore } from '@entities/habit';
 import { getModalPath } from '@shared/const';
 import { shareElementScreenshot } from '@shared/lib';
@@ -40,10 +40,14 @@ function useHabitActions() {
 		const { darkenedColor } = colorVariants;
 
 		return [
+			// Done/Undo yestarday
 			{
 				icon: isYdayCompleted ? FaCalendarTimes : FaCalendarCheck,
 				label: (isYdayCompleted ? 'Undo' : 'Done') + ' Y\'day',
-				style: { backgroundColor: isYdayCompleted ? 'IndianRed' : darkenedColor },
+				style: {
+					color: isYdayCompleted ? 'IndianRed' : '',
+					backgroundColor: darkenedColor
+				},
 				onClick: () => habitsDispatch({
 					type: 'toggleYesterdayStatus',
 					payload: {
@@ -53,23 +57,29 @@ function useHabitActions() {
 					}
 				})
 			},
+
+			// Open habit editor
 			{
 				to: getModalPath('HABIT_EDITOR'),
 				state: {
 					modalTitle: 'Edit habit',
 					habitId: habit.id
 				},
-				icon: MdEditSquare,
+				icon: FaPencilAlt,
 				label: 'Edit Habit',
 				indicator: { type: 'arrow' },
 				style: { backgroundColor: darkenedColor }
 			},
+
+			// Share habit
 			{
 				icon: FaShareAlt,
 				label: 'Share Habit',
 				onClick: () => shareElementScreenshot(cardElement),
 				style: { backgroundColor: darkenedColor }
 			},
+
+			// Open habit statistics
 			{
 				to: getModalPath('STATISTICS'),
 				state: {
@@ -84,12 +94,13 @@ function useHabitActions() {
 				indicator: { type: 'arrow' },
 				style: { backgroundColor: darkenedColor }
 			},
+
+			// Open habit diary
 			{
 				to: getModalPath('DIARY'),
 				state: {
 					modalTitle: habit.title,
-					habitTitle: habit.title,
-					colorIndex: habit.colorIndex,
+					habitId: habit.id,
 					currentStreak
 				},
 				icon: MdLibraryBooks,

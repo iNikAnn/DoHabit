@@ -60,9 +60,3 @@
 	background-color: transparent;
 	font-weight: bold;
 }
-
-/* svg */
-.actionBtn svg {
-	width: 1rem;
-	height: 1rem;
-}
