@@ -3,15 +3,15 @@ import { ReactNode } from 'react';
 import { Habit, HABIT_ICONS_MAP } from '@entities/habit';
 
 interface HabitHeaderProps {
-	action?: ReactNode;
 	habit: Habit;
+	action?: ReactNode;
 	currentStreak?: number;
 }
 
 function HabitHeader(props: HabitHeaderProps) {
 	const {
-		action,
 		habit,
+		action,
 		currentStreak,
 	} = props;
 

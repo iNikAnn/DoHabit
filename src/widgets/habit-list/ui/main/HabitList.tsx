@@ -4,6 +4,9 @@ import { useColorsStore } from '../../../../stores/colorsStore';
 import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
 import { getHabitStats } from '../../lib/getHabitStats';
 import { useHabitActions } from '../../lib/useHabitActions';
+import CompactCalendar from '@/components/Habit/CompactCalendar';
+import Calendar from '@/components/Habit/Calendar';
+import { useSettingsStore } from '@/stores/settingsStore';
 import { UpdateHabitProgress } from '@features/update-habit-progress';
 import { RestoreHabit } from '@features/restore-habit';
 import { HabitCard, useHabitsStore } from '@entities/habit';
@@ -23,6 +26,7 @@ function HabitList(params: HabitListParams) {
 	} = params;
 
 	const habits = useHabitsStore((s) => s.habits);
+	const settings = useSettingsStore((s) => s.settings);
 	const colors = useColorsStore((s) => s.colors);
 	const { openHabitMenu } = useHabitActions();
 
@@ -43,16 +47,30 @@ function HabitList(params: HabitListParams) {
 					const colorVariants = getColorVariants(colors[habit.colorIndex]);
 					const habitStats = getHabitStats(habit);
 
+					const headerAction = isArchive
+						? <RestoreHabit habitId={habit.id} />
+						: <UpdateHabitProgress habit={habit} />;
+
+					const calendarProps = {
+						colorVariants,
+						completedDays: habit.completedDays,
+						frequency: habit.frequency
+					};
+
+					const calendar = !isArchive
+						? settings.calendarView === 'compact'
+							? <CompactCalendar {...calendarProps} />
+							: <Calendar {...calendarProps} />
+						: undefined;
+
 					return (
 						<HabitCard
 							key={habit.id}
-							headerAction={isArchive
-								? <RestoreHabit habitId={habit.id} />
-								: <UpdateHabitProgress habit={habit} />}
 							habit={habit}
+							headerAction={headerAction}
 							colorVariants={colorVariants}
-							currentStreak={habitStats.currentStreak}
-							isArchive={isArchive}
+							currentStreak={isArchive ? undefined : habitStats.currentStreak}
+							content={calendar}
 							onClick={(e) => !isArchive && openHabitMenu({
 								habit,
 								habitStats,
