@@ -9,13 +9,10 @@ function checkHabitTitleExistence(
 	input: string,
 	currentHabit?: Habit
 ): boolean {
-	// TODO: Switch to ID-based comparison once unique identifiers are implemented
-	return habits.some(
-		(habit) => (
-			habit.title === input &&
-			habit.title !== currentHabit?.title
-		)
-	);
+	return habits.some((habit) => (
+		habit.title === input &&
+		habit.title !== currentHabit?.title
+	));
 }
 
 export { checkHabitTitleExistence };

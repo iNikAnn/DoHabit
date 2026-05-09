@@ -25,7 +25,6 @@ export interface HabitData {
 	order?: string;
 }
 
-// TODO: Replace with habit id
 // action types
 export interface AddHabit {
 	type: 'addHabit';
