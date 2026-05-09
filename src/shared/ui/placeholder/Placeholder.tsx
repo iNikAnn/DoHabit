@@ -32,6 +32,7 @@ function Placeholder(props: PlaceholderProps) {
 				<div className={styles.actionsWrapper}>
 					{actions.map((a) => (
 						<Button
+							key={a.label}
 							to={a.to}
 							state={a.state}
 							icon={a.icon}

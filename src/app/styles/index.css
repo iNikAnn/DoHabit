@@ -15,7 +15,7 @@
 	--accent-color: dodgerblue;
 
 	--color-primary: light-dark(hsl(0, 0%, 8%), hsl(0, 0%, 90%));
-	--color-secondary: light-dark(hsl(0, 0%, 20%), hsl(0, 0%, 50%));
+	--color-secondary: light-dark(hsl(0, 0%, 40%), hsl(0, 0%, 50%));
 
 	--bg: light-dark(hsl(0, 0%, 95%), black);
 	--bg-color-primary: light-dark(hsl(0, 0%, 100%), hsl(0, 0%, 8%));

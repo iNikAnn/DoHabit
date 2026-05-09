@@ -8,7 +8,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { renderIcon } from '@shared/lib';
 
 // Motion-enhanced Link
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 const INDICATOR_ICONS: Record<ButtonIndicator, IconType | null> = {
 	arrow: IoIosArrowForward,

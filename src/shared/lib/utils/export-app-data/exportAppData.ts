@@ -6,7 +6,7 @@ import { readLocalStorage } from '../read-local-storage/readLocalStorage';
 function exportAppData() {
 	const data = {
 		habits: readLocalStorage('habits'),
-		mainDiary: readLocalStorage('mainDiary'),
+		diary: readLocalStorage('diary'),
 		achievements: readLocalStorage('achievements')
 	};
 
