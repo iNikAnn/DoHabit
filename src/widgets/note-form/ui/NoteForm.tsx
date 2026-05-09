@@ -1,7 +1,7 @@
 import styles from './NoteForm.module.css';
 import { SubmitEventHandler } from 'react';
 import { createPortal } from 'react-dom';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { IoSend } from 'react-icons/io5';
 import { FaPlus } from 'react-icons/fa';
 import { useNotesStore } from '@entities/note';
@@ -18,6 +18,9 @@ interface Props {
 	onClose: (shouldClear?: boolean, shouldScrollUp?: boolean) => void;
 }
 
+/**
+ * Note creation and editing form.
+ */
 function NoteForm(props: Props) {
 	const {
 		input,
@@ -32,12 +35,16 @@ function NoteForm(props: Props) {
 
 	const notesDispatch = useNotesStore((s) => s.notesDispatch);
 
-	const handleSubmitForm: SubmitEventHandler<HTMLFormElement> = (e) => {
+	/**
+	 * Handles note submission.
+	 * Updates existing note if editingNoteId is present, otherwise creates a new one.
+	 */
+	const handleSubmitForm: SubmitEventHandler = (e) => {
 		e.preventDefault();
 
-		const isEditMode = editingNoteId;
+		const isEditMode = !!editingNoteId;
 
-		if (editingNoteId) {
+		if (isEditMode) {
 			notesDispatch({
 				type: 'editNote',
 				payload: {
@@ -60,15 +67,22 @@ function NoteForm(props: Props) {
 			});
 		}
 
+		// Close form, clear input, and scroll up if it was a new note
 		onClose(true, !isEditMode);
 	};
 
 	return (
 		// @ts-ignore
-		<AnimatePresence>
+		<AnimatePresence initial={false}>
 			{!isFormActive && (
 				<Button
 					key='activate-note-form-button'
+
+					initial={{ opacity: 0, scale: 0 }}
+					animate={{ opacity: 1, scale: 1 }}
+					exit={{ opacity: 0, scale: 0 }}
+					transition={{ duration: 0.2 }}
+
 					className={styles.actionButton}
 					onClick={onActivate}
 				>
@@ -85,8 +99,14 @@ function NoteForm(props: Props) {
 					/>
 
 					{createPortal(
-						<form
+						<motion.form
 							key='note-form'
+
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.2 }}
+
 							className={styles.form}
 							action='submit'
 							onSubmit={handleSubmitForm}
@@ -102,12 +122,19 @@ function NoteForm(props: Props) {
 							/>
 
 							<Button
+								key='submit-note-form-button'
 								type='submit'
 								icon={<IoSend />}
+
+								initial={{ opacity: 0, scale: 0 }}
+								animate={{ opacity: 1, scale: 0.8 }}
+								exit={{ opacity: 0, scale: 0 }}
+								transition={{ duration: 0.2 }}
+
 								className={styles.actionButton}
 								disabled={!input.length}
 							/>
-						</form>,
+						</motion.form>,
 						document.body
 					)}
 				</>
