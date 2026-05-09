@@ -1,14 +1,13 @@
 import styles from './AppearancePage.module.css';
 import MenuItemList from '../../../components/Menu/MenuItemList';
 import MenuItem from '../../../components/Menu/MenuItem';
-import Switch from '../../../components/Selection/Switch';
 import { useSettingsStore } from '@entities/settings';
+import { Switch } from '@shared/ui';
 
 /**
  * UI customization page.
  */
 function AppearancePage() {
-
 	const { settings, settingsDispatch } = useSettingsStore();
 
 	return (
