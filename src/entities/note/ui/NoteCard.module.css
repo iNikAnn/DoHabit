@@ -20,21 +20,18 @@
 /* text */
 .text {
 	/* outline: 1px solid tomato; */
-	line-height: 1.4rem;
+	line-height: 1.2rem;
 	overflow: hidden;
 }
 
-/* desc */
-.desc {
+/* description */
+.description {
 	/* outline: 1px solid tomato; */
 	display: flex;
-	justify-content: space-between;
+	gap: 1rem;
 	align-items: center;
 
 	color: gray;
-	border-top: 1px solid var(--bg-color-secondary);
-
-	padding-top: 0.8rem;
 }
 
 /* date */
@@ -42,21 +39,4 @@
 	display: flex;
 	align-items: center;
 	gap: 0.4rem;
-}
-
-/* actions */
-.actions {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-}
-
-/* actionBtn */
-.actionBtn {
-	display: flex;
-	align-items: center;
-	gap: 0.2rem;
-
-	background-color: transparent;
-	font-weight: bold;
 }
