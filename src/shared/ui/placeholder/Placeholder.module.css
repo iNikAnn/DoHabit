@@ -27,6 +27,11 @@
 	gap: 0.4rem;
 }
 
-.desc {
-	color: gray;
+.description {
+	color: var(--color-secondary);
+}
+
+.actionsWrapper {
+	display: flex;
+	gap: 1rem;
 }
