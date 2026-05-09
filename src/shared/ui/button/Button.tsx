@@ -1,10 +1,14 @@
 import styles from './Button.module.css';
 import { ButtonIndicator, ButtonProps } from './types';
+import { IconType } from 'react-icons';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { LuExternalLink } from 'react-icons/lu';
 import { IoIosArrowForward } from 'react-icons/io';
-import { IconType } from 'react-icons';
 import { renderIcon } from '@shared/lib';
+
+// Motion-enhanced Link
+const MotionLink = motion(Link);
 
 const INDICATOR_ICONS: Record<ButtonIndicator, IconType | null> = {
 	arrow: IoIosArrowForward,
@@ -44,27 +48,27 @@ function Button(props: ButtonProps) {
 	// Render as Link
 	if (to) {
 		return (
-			<Link
+			<MotionLink
 				to={to}
 				state={state}
 				style={style}
 				className={classes}
 			>
 				{innerContent}
-			</Link>
+			</MotionLink>
 		);
 	}
 
 	// Render as native Button
 	return (
-		<button
+		<motion.button
 			type={type}
 			style={style}
 			className={classes}
 			{...rest}
 		>
 			{innerContent}
-		</button>
+		</motion.button>
 	);
 }
 

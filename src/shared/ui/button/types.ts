@@ -1,4 +1,5 @@
-import { ButtonHTMLAttributes, CSSProperties, ReactNode } from 'react';
+import { HTMLMotionProps } from 'framer-motion';
+import { CSSProperties, ReactNode } from 'react';
 import { IconType } from 'react-icons';
 
 interface IconProps {
@@ -7,7 +8,7 @@ interface IconProps {
 
 export type ButtonIndicator = 'arrow' | 'external' | 'none';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends HTMLMotionProps<'button'> {
 	to?: string;
 	state?: Record<string, unknown>;
 	icon?: ReactNode | IconType;
