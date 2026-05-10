@@ -5,50 +5,36 @@ import deleteHabit from './handlers/deleteHabit';
 import setHabitArchiveStatus from './handlers/setHabitArchiveStatus';
 import updateHabitProgress from './handlers/updateHabitProgress';
 import toggleYesterdayStatus from './handlers/toggleYesterdayStatus';
-import { writeLocalStorage } from '@shared/lib';
 
 /**
  * Main habit reducer.
  * Routes actions to specific handler functions.
  */
 function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[] {
-	let nextHabits: Habit[] = [];
-
 	switch (type) {
-		// habits
 		case 'addHabit':
-			nextHabits = addHabit({ habits, payload });
-			break;
+			return addHabit({ habits, payload });
 
 		case 'editHabit':
-			nextHabits = editHabit({ habits, payload });
-			break;
+			return editHabit({ habits, payload });
 
 		case 'deleteHabit':
-			nextHabits = deleteHabit({ habits, payload });
-			break;
+			return deleteHabit({ habits, payload });
 
 		case 'setHabitArchiveStatus':
-			nextHabits = setHabitArchiveStatus({ habits, payload });
-			break;
+			return setHabitArchiveStatus({ habits, payload });
 
 		case 'updateProgress':
-			nextHabits = updateHabitProgress({ habits, payload });
-			break;
+			return updateHabitProgress({ habits, payload });
 
 		case 'toggleYesterdayStatus':
-			nextHabits = toggleYesterdayStatus({ habits, payload });
-			break;
+			return toggleYesterdayStatus({ habits, payload });
 
 		default:
 			const _exhaustiveCheck: never = type;
 			console.error('Unknown action type.');
 			return _exhaustiveCheck;
 	}
-
-	writeLocalStorage('habits', nextHabits);
-
-	return nextHabits;
 }
 
 export default habitsReducer;
