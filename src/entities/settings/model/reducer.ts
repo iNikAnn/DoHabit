@@ -1,26 +1,18 @@
 import { Settings, SettingsAction } from './types';
-import { writeLocalStorage } from '@shared/lib';
 
 /**
- * Reducer for application settings with persistence.
+ * Reducer for application settings.
  */
 function settingsReducer(settings: Settings, { type, payload }: SettingsAction): Settings {
-	let nextSettings: Settings = {};
-
 	switch (type) {
 		case 'updateSettings':
-			nextSettings = { ...settings, ...payload };
-			break;
+			return { ...settings, ...payload };
 
 		default:
 			const _exhaustiveCheck: never = type;
 			console.error('Unknown action type.');
 			return _exhaustiveCheck;
 	}
-
-	writeLocalStorage('settings', nextSettings);
-
-	return nextSettings;
 }
 
 export { settingsReducer };
