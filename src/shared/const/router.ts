@@ -2,7 +2,7 @@
  * Relative paths for modal sub-routes.
  * Rendered via Outlet inside the ModalLayout.
  */
-export const modalPaths = {
+export const MODAL_PATHS = {
 	ACHIEVEMENTS: 'achievements',
 	APPEARANCE: 'menu/appearance',
 	ARCHIVE: 'menu/archive',
@@ -10,14 +10,14 @@ export const modalPaths = {
 	DIARY: 'diary',
 	HABIT_EDITOR: 'habit-editor',
 	MENU: 'menu',
-	STATISTICS: 'statistics'
+	STATISTICS: 'habit-statistics'
 } as const;
 
-export type ModalRouteKey = keyof typeof modalPaths;
+export type ModalRouteKey = keyof typeof MODAL_PATHS;
 
 /**
  * Returns the absolute application path for a specific modal route.
  */
 export const getModalPath = (key: ModalRouteKey) => {
-	return `/modal/${modalPaths[key]}`;
+	return `/modal/${MODAL_PATHS[key]}`;
 };

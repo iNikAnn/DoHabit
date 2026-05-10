@@ -1,6 +1,6 @@
 export type ColorScheme = 'light' | 'dark';
 
-export interface ColorPalette {
+export interface ColorVariants {
 	baseColor: string;
 	darkenedColor: string;
 	softenedColor: string;

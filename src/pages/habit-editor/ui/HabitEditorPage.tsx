@@ -6,8 +6,7 @@ import { KeyboardEventHandler, SubmitEventHandler, useEffect, useState } from 'r
 // router
 import { useLocation, useNavigate } from 'react-router-dom';
 
-// stores
-import { useHabitsStore } from '../../../stores/habitsStore';
+import { checkHabitTitleExistence, HabitAction, HabitData, useHabitsStore } from '@entities/habit';
 
 // components
 import TitleBlock from '../../../components/HabitEditor/TitleBlock';
@@ -17,11 +16,7 @@ import ColorBlock from '../../../components/HabitEditor/ColorBlock';
 import IconBlock from '../../../components/HabitEditor/IconBlock';
 import { Button } from '@shared/ui';
 
-// types
-import { HabitAction, HabitData } from '../../../types/habit';
-
 // utils
-import checkHabitTitleExistence from '../../../utils/checkHabitTitleExistence';
 import { scrollToTop } from '@shared/lib';
 
 // icons
@@ -40,10 +35,10 @@ function HabitEditorPage() {
 	const habits = useHabitsStore((s) => s.habits);
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 
-	const habitTitle = location.state?.habitTitle;
-	const isEditMode = Boolean(habitTitle);
+	const habitId = location.state?.habitId;
+	const isEditMode = Boolean(habitId);
 	const filteredHabits = isEditMode ? habits.filter((h) => !h.isArchived) : [];
-	const habit = isEditMode ? habits.find((habit) => habit.title === habitTitle) : undefined;
+	const habit = isEditMode ? habits.find((habit) => habit.id === habitId) : undefined;
 
 	const [inputTitle, setInputTitle] = useState<string>(isEditMode ? (habit?.title ?? '') : '');
 	const [alreadyExist, setAlreadyExist] = useState(false);
@@ -58,7 +53,7 @@ function HabitEditorPage() {
 
 	// action object
 	const payload = {
-		habitId: habit?.title ?? ''
+		habitId: habit?.id ?? ''
 	};
 
 	// on submit form
@@ -167,7 +162,7 @@ function HabitEditorPage() {
 									const msg = 'Are you sure you want to archive this habit? Archived habits can be found in the menu under the \'Archive\' section.';
 
 									if (window.confirm(msg)) {
-										handleUpdate({ type: 'archiveHabit', payload: { ...payload } });
+										handleUpdate({ type: 'setHabitArchiveStatus', payload: { ...payload, isArchived: true } });
 									}
 								}}
 							>

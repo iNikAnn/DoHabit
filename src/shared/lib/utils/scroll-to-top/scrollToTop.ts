@@ -1,8 +1,10 @@
 /**
- * Smoothly scrolls the window to the top of the page.
+ * Smoothly scrolls element or window to top.
  */
-function scrollToTop() {
-	window.scrollTo({
+function scrollToTop(element?: Element | null) {
+	const target = element ?? window;
+
+	target.scrollTo({
 		top: 0,
 		behavior: 'smooth'
 	});

@@ -1,0 +1,28 @@
+/* propgress bar */
+.progressBar {
+	/* outline: 1px solid tomato; */
+	width: 0.8rem;
+
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 2px;
+}
+
+/* segment */
+.segment {
+	height: 100%;
+	width: 100%;
+	background-color: var(--bg-color-tertiary);
+}
+
+.segment.passed {
+	background-color: var(--bg-color-secondary);
+}
+
+.segment.first {
+	border-radius: 0 0 0 var(--border-radius-secondary);
+}
+
+.segment.last {
+	border-radius: var(--border-radius-secondary) 0 0 0;
+}

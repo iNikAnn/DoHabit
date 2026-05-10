@@ -1,0 +1,62 @@
+/* wrapper */
+.wrapper {
+	display: flex;
+	gap: 2px;
+}
+
+.wrapper.completed {
+	animation: scaleIn 0.2s ease-in;
+}
+
+.wrapper.updated {
+	animation: scaleOut 0.2s ease-in;
+}
+
+/* button */
+.button {
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.button.multiFrequency {
+	border-radius: 0 var(--border-radius-secondary) var(--border-radius-secondary) 0;
+}
+
+/* icon */
+.button svg {
+	width: 1.6rem;
+	height: 1.6rem;
+}
+
+/* animation */
+@keyframes scaleIn {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes scaleOut {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(0.9);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}

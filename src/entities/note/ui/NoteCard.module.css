@@ -1,0 +1,42 @@
+/* note */
+.note {
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-primary);
+	font-size: 1rem;
+	font-weight: 400;
+
+	padding: 1.2rem;
+	padding-bottom: 0.8rem;
+
+	overflow: hidden;
+}
+
+/* text */
+.text {
+	/* outline: 1px solid tomato; */
+	line-height: 1.2rem;
+	overflow: hidden;
+}
+
+/* description */
+.description {
+	/* outline: 1px solid tomato; */
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+
+	color: gray;
+}
+
+/* date */
+.date {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}

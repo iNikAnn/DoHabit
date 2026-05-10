@@ -1,18 +1,11 @@
 import styles from '../../css/Month.module.css';
-
-// stores
-import { useSettingsStore } from '../../stores/settingsStore';
-
-// types
-import { ColorPalette } from '../../types/colorScheme';
-import { CompletedDay } from '../../types/habit';
-
-// utils
-import checkHabitCompletion from '../../utils/checkHabitCompletion';
+import { ColorVariants } from '../../types/colorScheme';
+import { CompletedDay, checkHabitCompletion } from '@entities/habit';
+import { useSettingsStore } from '@entities/settings';
 
 interface Props {
 	completedDays: CompletedDay[];
-	colorPalette: ColorPalette;
+	colorVariants: ColorVariants;
 	frequency: number;
 	date: Date;
 	visibleMonthsCount: number;
@@ -24,7 +17,7 @@ interface Props {
 function Month(props: Props) {
 	const {
 		completedDays,
-		colorPalette,
+		colorVariants,
 		frequency,
 		date,
 		visibleMonthsCount,
@@ -36,7 +29,7 @@ function Month(props: Props) {
 	const settings = useSettingsStore((s) => s.settings);
 	const highlightToday = settings.calendarHighlightToday ?? true;
 
-	const { baseColor, darkenedColor, softenedColor } = colorPalette;
+	const { baseColor, darkenedColor, softenedColor } = colorVariants;
 
 	const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 	const today = new Date();

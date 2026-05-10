@@ -3,14 +3,18 @@ import { PlaceholderProps } from './types';
 import { Button } from '@shared/ui';
 
 /**
- * Generic placeholder for empty states.
- * Supports optional action button with routing or callback.
+ * Generic placeholder.
+ * Supports optional action buttons with routing or callback.
  */
 function Placeholder(props: PlaceholderProps) {
 	const {
 		content,
 		action
 	} = props;
+
+	const actions = action
+		? Array.isArray(action) ? action : [action]
+		: null;
 
 	return (
 		<div className={styles.placeholder}>
@@ -19,21 +23,26 @@ function Placeholder(props: PlaceholderProps) {
 			<div className={styles.textWrapper}>
 				<h3>{content.title}</h3>
 
-				<span className={styles.desc}>
+				<span className={styles.description}>
 					{content.description}
 				</span>
 			</div>
 
-			{action && (
-				<Button
-					to={action.to}
-					state={action.state}
-					icon={action.icon}
-					style={{ backgroundColor: action.color }}
-					onClick={action.onClick}
-				>
-					{action.label}
-				</Button>
+			{actions && (
+				<div className={styles.actionsWrapper}>
+					{actions.map((a) => (
+						<Button
+							key={a.label}
+							to={a.to}
+							state={a.state}
+							icon={a.icon}
+							style={{ backgroundColor: a.color }}
+							onClick={a.onClick}
+						>
+							{a.label}
+						</Button>
+					))}
+				</div>
 			)}
 		</div>
 	);

@@ -3,7 +3,7 @@ import html2canvas, { Options } from 'html2canvas';
 /**
  * Captures an element as an image and opens the native sharing dialog.
  */
-async function shareElementScreenshot(element: HTMLDivElement) {
+async function shareElementScreenshot(element: HTMLElement) {
 	// Check if the Web Share API is available
 	if (!navigator?.share) {
 		window.alert('Sharing is not supported.');

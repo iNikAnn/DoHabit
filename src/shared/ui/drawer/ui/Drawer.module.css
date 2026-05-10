@@ -15,7 +15,7 @@
 
 	padding: 1rem 1rem calc(1rem + 6rem);
 	will-change: opacity, transform;
-	z-index: 999;
+	z-index: 300;
 }
 
 /* handle */

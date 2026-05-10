@@ -1,6 +1,6 @@
+import { Habit } from '@entities/habit';
+import { Note } from '@entities/note';
 import { DialogContent } from '@shared/ui';
-import { Note } from './diary';
-import { Habit } from './habit';
 
 export interface Achievement {
 	id: number;

@@ -16,6 +16,9 @@ import { ImFire } from 'react-icons/im';
 import { HiArchiveBox } from 'react-icons/hi2';
 import { getModalPath } from '@shared/const';
 
+// @ts-ignore
+const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
+
 const warningMessage =
 	'Are you sure you want to delete all application data?\n\n' +
 	'This includes:\n' +
@@ -91,7 +94,19 @@ function MenuPage() {
 					icon={<ImFire style={{ color: 'IndianRed' }} />}
 					title='Clear Data'
 					desc='Delete all application data'
-					onClick={() => clearLocalStorage({ warningMessage })}
+					onClick={() => {
+						if (window.confirm(warningMessage)) {
+							const userInput = prompt('To confirm, type: "delete data":');
+
+							if (userInput?.trim().toLowerCase() === 'delete data') {
+								clearLocalStorage();
+								alert('All data has been successfully removed. The application will now reload.');
+								window.location.href = PUBLIC_URL;
+							} else {
+								alert('Action canceled or incorrect phrase.');
+							}
+						}
+					}}
 				/>
 			</MenuItemList>
 

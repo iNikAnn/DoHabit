@@ -1,15 +1,12 @@
 import styles from './DataManagementPage.module.css';
-
-// components
-import { Placeholder } from '@shared/ui';
-
-// utils
-import { exportAppData, importAppData } from '@shared/lib';
-
-// icons
-import { ExportIcon, ImportIcon } from '@shared/assets';
 import { BsDatabaseFillUp } from 'react-icons/bs';
 import { BsDatabaseFillDown } from 'react-icons/bs';
+import { ExportIcon, ImportIcon } from '@shared/assets';
+import { exportAppData, importAppData } from '@shared/lib';
+import { Placeholder } from '@shared/ui';
+
+// @ts-ignore
+const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
 
 /**
  * Handles data export and import (JSON backups).
@@ -43,7 +40,16 @@ function DataManagementPage() {
 					action={{
 						label: 'Import Now',
 						icon: <BsDatabaseFillDown />,
-						onClick: importAppData
+						onClick: async () => {
+							const res = await importAppData();
+
+							if (res) {
+								window.alert('Data imported successfully! The application will now reload.');
+								window.location.href = PUBLIC_URL;
+							} else {
+								window.alert('Something went wrong during import.');
+							}
+						}
 					}}
 				/>
 			</div>

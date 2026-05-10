@@ -6,7 +6,9 @@ import useAchievementsCheck from '../hooks/useAchievementsCheck';
 
 function App() {
 	useColorScheme();
-	useAchievementsCheck();
+
+	// TODO: Refactor and re-enable after fixing the achievements logic to support the new data structure
+	// useAchievementsCheck();
 
 	return (
 		<main className='App'>

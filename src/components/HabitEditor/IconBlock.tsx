@@ -1,16 +1,7 @@
 import styles from '../../css/IconBlock.module.css';
-
-// db
-import { HABIT_ICONS } from '../../db/dbIcons';
-
-// hooks
 import { ElementType, useState } from 'react';
-
-// types
-import { Habit } from '../../types/habit';
-
-// utils
 import { groupBy, pick } from 'es-toolkit';
+import { Habit, HABIT_ICONS } from '@entities/habit';
 
 interface Props {
 	habits: Habit[];
@@ -65,8 +56,8 @@ function IconBlock({ habits, currentIconTitle = 'default' }: Props) {
 						)}
 
 						<div className={styles.iconList}>
-							{icons.map(({ iconTitle, Icon }, index) => {
-								const IconComponent = Icon as ElementType;
+							{icons.map(({ iconTitle, icon }, index) => {
+								const IconComponent = icon as ElementType;
 								const isIconUsed = habits.find((habit) => habit.iconTitle === iconTitle);
 
 								return (

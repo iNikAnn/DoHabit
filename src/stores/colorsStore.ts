@@ -1,12 +1,6 @@
 import { create } from 'zustand';
-
-// hooks
-import { useSettingsStore } from './settingsStore';
-
-// types
 import { ColorsState } from '../types/colorScheme';
-
-// utils
+import { useSettingsStore } from '@entities/settings';
 import { generateBaseColors, resolveTheme } from '@shared/lib';
 
 /**

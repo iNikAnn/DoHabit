@@ -1,1 +1,1 @@
-export { HabitList } from './ui/HabitList';
+export { HabitList } from './ui/main/HabitList';

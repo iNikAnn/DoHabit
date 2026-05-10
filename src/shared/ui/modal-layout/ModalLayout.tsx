@@ -1,8 +1,9 @@
 import styles from './ModalLayout.module.css';
+import { useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useDragAction } from '@shared/lib';
 import { motion } from 'framer-motion'
 import { IoIosArrowForward } from 'react-icons/io';
+import { useDragAction } from '@shared/lib';
 
 // variants
 const modalVariants = {
@@ -22,8 +23,8 @@ function ModalLayout() {
 	// Navigate one level up to close the modal view
 	const handleClose = () => navigate(-1);
 
-	// Get title passed from Link state or fallback to app name
-	const modalTitle = location.state?.modalTitle ?? 'DoHabit';
+	// Store title in state to prevent losing it on re-renders
+	const [modalTitle] = useState(location.state?.modalTitle ?? 'DoHabit');
 
 	const { scope, motionValue: x, handleDragEnd } = useDragAction({
 		successAnimation: {

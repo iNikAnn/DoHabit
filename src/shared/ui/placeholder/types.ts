@@ -17,5 +17,5 @@ export interface PlaceholderAction {
 
 export interface PlaceholderProps {
 	content: PlaceholderContent;
-	action?: PlaceholderAction;
+	action?: PlaceholderAction | PlaceholderAction[];
 }
