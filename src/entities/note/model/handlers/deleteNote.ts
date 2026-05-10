@@ -1,20 +1,20 @@
 import { DeleteNote, Note } from '../types';
 
 interface DeleteNoteParams {
-	diary: Note[];
+	notes: Note[];
 	payload: DeleteNote['payload'];
 }
 
 /**
- * Remove a note from the diary.
+ * Remove a note from the list.
  */
 function deleteNote(params: DeleteNoteParams): Note[] {
 	const {
-		diary,
+		notes,
 		payload: { noteId }
 	} = params;
 
-	return diary.filter((note) => note.id !== noteId);
+	return notes.filter((note) => note.id !== noteId);
 }
 
 export default deleteNote;

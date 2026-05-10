@@ -1,23 +1,23 @@
 import { EditNote, Note } from '../types';
 
 interface EditNoteParams {
-	diary: Note[];
+	notes: Note[];
 	payload: EditNote['payload'];
 }
 
 /**
- * Edit a specific note in the diary.
+ * Edit a specific note.
  */
 function editNote(params: EditNoteParams): Note[] {
 	const {
-		diary,
+		notes,
 		payload: {
 			noteId,
 			newText
 		}
 	} = params;
 
-	return diary.map((note) => {
+	return notes.map((note) => {
 		if (note.id !== noteId) return note;
 
 		return {

@@ -1,33 +1,23 @@
 import { NoteAction, Note } from './types';
 import editNote from './handlers/editNote';
 import deleteNote from './handlers/deleteNote';
-import { writeLocalStorage } from '@shared/lib';
 
-function notesReducer(diary: Note[], { type, payload }: NoteAction) {
-	let nextDiary = [...diary];
-
+function notesReducer(notes: Note[], { type, payload }: NoteAction): Note[] {
 	switch (type) {
 		case 'addNote':
-			nextDiary.push(payload.note);
-			break;
+			return [...notes, payload.note];
 
 		case 'editNote':
-			nextDiary = editNote({ diary, payload });
-			break;
+			return editNote({ notes, payload });
 
 		case 'deleteNote':
-			nextDiary = deleteNote({ diary, payload });
-			break;
+			return deleteNote({ notes, payload });
 
 		default:
 			const _exhaustiveCheck: never = type;
 			console.error('Unknown action type.');
 			return _exhaustiveCheck;
 	}
-
-	writeLocalStorage('diary', nextDiary);
-
-	return nextDiary;
 }
 
 export { notesReducer };
