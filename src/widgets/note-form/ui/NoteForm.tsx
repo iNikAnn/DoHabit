@@ -119,6 +119,7 @@ function NoteForm(props: Props) {
 								onChange={(e) => onChange(e.target.value)}
 								placeholder='Enter your note here...'
 								autoFocus
+								autoComplete='off'
 							/>
 
 							<Button
