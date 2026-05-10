@@ -23,6 +23,8 @@ import { scrollToTop } from '@shared/lib';
 import { MdAddToPhotos } from 'react-icons/md';
 import { MdDeleteForever } from 'react-icons/md';
 import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
+import { NoteAction } from '@entities/note/model/types';
+import { useNotesStore } from '@entities/note';
 
 /**
  * Entry point for creating or modifying habits.
@@ -34,6 +36,7 @@ function HabitEditorPage() {
 
 	const habits = useHabitsStore((s) => s.habits);
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
+	const notesDispatch = useNotesStore((s) => s.notesDispatch);
 
 	const habitId = location.state?.habitId;
 	const isEditMode = Boolean(habitId);
@@ -72,9 +75,12 @@ function HabitEditorPage() {
 		}
 	};
 
-	const handleUpdate = (action: HabitAction) => {
-		habitsDispatch(action);
-		navigate(-1);
+	const handleUpdate = (habitAction: HabitAction, noteAction?: NoteAction) => {
+		habitsDispatch(habitAction);
+		if (noteAction) {
+			notesDispatch(noteAction);
+		}
+		navigate('/');
 	};
 
 	// prevents form submission on Enter key press and hides the virtual keyboard
@@ -148,7 +154,10 @@ function HabitEditorPage() {
 									const msg = 'Are you sure you want to delete this habit? Deleted data cannot be recovered.';
 
 									if (window.confirm(msg)) {
-										handleUpdate({ type: 'deleteHabit', payload: { ...payload } });
+										handleUpdate(
+											{ type: 'deleteHabit', payload: { ...payload } },
+											{ type: 'deleteHabitNotes', payload: { ...payload } }
+										);
 									}
 								}}
 							>

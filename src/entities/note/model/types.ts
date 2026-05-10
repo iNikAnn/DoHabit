@@ -36,10 +36,18 @@ export interface DeleteNote {
 	};
 }
 
+export interface DeleteHabitNotes {
+	type: 'deleteHabitNotes';
+	payload: {
+		habitId: string;
+	};
+}
+
 export type NoteAction =
 	| AddNote
 	| EditNote
-	| DeleteNote;
+	| DeleteNote
+	| DeleteHabitNotes;
 
 export interface NoteState {
 	notes: Note[];
