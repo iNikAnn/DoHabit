@@ -1,15 +1,13 @@
 import { Habit } from './types';
 import removeIncompleteDays from '../lib/removeIncompleteDays';
-import { readLocalStorage, writeLocalStorage } from '@shared/lib';
 
 /**
- * Initializes habits by cleaning up incomplete past entries and updating localStorage.
+ * Initializes habits by cleaning up incomplete past entries.
  */
-function initHabits() {
-	let habits = readLocalStorage<Habit[]>('habits', []);
-	if (!habits.length) return habits;
+function initHabits(habits: Habit[]): Habit[] {
+	if (!habits.length) return [];
 
-	habits = habits.map((habit) => ({
+	return habits.map((habit) => ({
 		...habit,
 
 		// Remove incomplete days before today with progress less than habit frequency
@@ -18,10 +16,6 @@ function initHabits() {
 			frequency: habit.frequency
 		})
 	}));
-
-	writeLocalStorage('habits', habits);
-
-	return habits;
 }
 
-export default initHabits;
+export { initHabits };
