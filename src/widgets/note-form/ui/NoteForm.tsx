@@ -59,7 +59,7 @@ function NoteForm(props: Props) {
 					note: {
 						id: crypto.randomUUID(),
 						habitId,
-						streak,
+						streak: streak || undefined, // Avoid saving zero streaks
 						text: input.trim(),
 						createdAt: Date.now()
 					}
