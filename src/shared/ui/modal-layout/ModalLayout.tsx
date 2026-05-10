@@ -1,5 +1,5 @@
 import styles from './ModalLayout.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion'
 import { IoIosArrowForward } from 'react-icons/io';
@@ -37,10 +37,18 @@ function ModalLayout() {
 		}
 	});
 
+	/**
+	 * Prevent layout jumps by resetting window scroll.
+	 */
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
 		<motion.div
 			className={styles.modal}
 			{...modalVariants}
+			layoutRoot
 		>
 			<motion.header className={styles.header}>
 				<IoIosArrowForward onClick={handleClose} />

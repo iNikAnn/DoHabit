@@ -17,7 +17,7 @@ function getListAnimationVariants(duration: number): Variants {
 			transition: {
 				duration,
 				ease: 'easeOut',
-				delay: duration
+				delay: duration / 2
 			}
 		},
 
