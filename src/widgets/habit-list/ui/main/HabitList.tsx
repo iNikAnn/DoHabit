@@ -1,4 +1,5 @@
 import styles from './HabitList.module.css';
+import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
 import { useColorsStore } from '../../../../stores/colorsStore';
 import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
@@ -40,7 +41,7 @@ function HabitList(props: HabitListProps) {
 
 	// 2. Render list
 	return (
-		<div className={styles.habitList}>
+		<div className={clsx(styles.habitList, isArchive && styles.isArchive)}>
 			{/* @ts-ignore */}
 			<AnimatePresence initial={false}>
 				{filteredHabits.map((habit) => {

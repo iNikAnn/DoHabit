@@ -17,4 +17,4 @@ function deleteNote(params: DeleteNoteParams): Note[] {
 	return notes.filter((note) => note.id !== noteId);
 }
 
-export default deleteNote;
+export { deleteNote };

@@ -27,4 +27,4 @@ function editNote(params: EditNoteParams): Note[] {
 	});
 }
 
-export default editNote;
+export { editNote };

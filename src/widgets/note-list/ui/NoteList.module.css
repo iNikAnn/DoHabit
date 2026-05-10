@@ -12,10 +12,10 @@
 	padding-bottom: 0.6rem;
 }
 
-/* diary list */
+/* note list */
 .list {
 	display: flex;
 	flex-direction: column;
-	gap: 0.4rem;
+	gap: 0.6rem;
 	padding-bottom: 5rem;
 }

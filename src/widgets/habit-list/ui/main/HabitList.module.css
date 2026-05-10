@@ -4,6 +4,10 @@
 	gap: 1rem;
 }
 
+.habitList.isArchive {
+	gap: 0.6rem;
+}
+
 @media screen and (min-width: 576px) {
 	.habitList {
 		/* outline: 2px solid green; */
