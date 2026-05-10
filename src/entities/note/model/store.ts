@@ -3,6 +3,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 import { NoteState } from './types';
 import { notesReducer } from './reducer';
 import { noteMigrations } from './migrations';
+import { STORAGE_KEYS } from '@shared/const';
 
 const CURRENT_VERSION = 1;
 
@@ -59,7 +60,7 @@ export const useNotesStore = create<NoteState>()(
 			)
 		}),
 		{
-			name: 'dohabit-notes-storage',
+			name: STORAGE_KEYS.NOTES,
 			storage: createJSONStorage(() => customStorage),
 			version: CURRENT_VERSION,
 			migrate: (persistedState, version) => {

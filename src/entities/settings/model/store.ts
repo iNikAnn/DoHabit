@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { SettingsState } from './types';
 import { settingsReducer } from './reducer';
+import { STORAGE_KEYS } from '@shared/const';
 
 const customStorage = {
 	getItem: (key: string) => {
@@ -50,7 +51,7 @@ export const useSettingsStore = create<SettingsState>()(
 			)
 		}),
 		{
-			name: 'dohabit-settings-storage',
+			name: STORAGE_KEYS.SETTINGS,
 			storage: createJSONStorage(() => customStorage)
 		}
 	)

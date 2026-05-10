@@ -4,6 +4,7 @@ import { HabitState } from './types';
 import { initHabits } from './init';
 import habitsReducer from './reducer';
 import { habitMigrations } from './migrations';
+import { STORAGE_KEYS } from '@shared/const';
 
 const CURRENT_VERSION = 1;
 
@@ -85,7 +86,7 @@ export const useHabitsStore = create<HabitState>()(
 			)
 		}),
 		{
-			name: 'dohabit-habits-storage',
+			name: STORAGE_KEYS.HABITS,
 			storage: createJSONStorage(() => customStorage),
 			version: CURRENT_VERSION,
 			migrate: (persistedState, version) => {

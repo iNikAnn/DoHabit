@@ -1,13 +1,14 @@
 import { readLocalStorage } from '../read-local-storage/readLocalStorage';
+import { STORAGE_KEYS } from '@shared/const';
 
 /**
- * Downloads a JSON file containing all data stored in localStorage.
+ * Downloads a JSON file containing app data stored in localStorage.
  */
 function exportAppData() {
 	const data = {
-		habits: readLocalStorage('habits'),
-		diary: readLocalStorage('diary'),
-		achievements: readLocalStorage('achievements')
+		[STORAGE_KEYS.HABITS]: readLocalStorage(STORAGE_KEYS.HABITS),
+		[STORAGE_KEYS.NOTES]: readLocalStorage(STORAGE_KEYS.NOTES),
+		// achievements: readLocalStorage('achievements')
 	};
 
 	const jsonStr = JSON.stringify(data);
