@@ -8,7 +8,7 @@ import { HabitEditorPage } from '@pages/habit-editor';
 import { MainPage } from '@pages/main';
 import { MenuPage } from '@pages/menu';
 import { HabitStatisticsPage } from '@pages/habit-statistics';
-import { modalPaths, ModalRouteKey } from '@shared/const';
+import { MODAL_PATHS, ModalRouteKey } from '@shared/const';
 import { ModalLayout } from '@shared/ui';
 
 /**
@@ -16,35 +16,35 @@ import { ModalLayout } from '@shared/ui';
  */
 export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
 	ACHIEVEMENTS: {
-		path: modalPaths.ACHIEVEMENTS,
+		path: MODAL_PATHS.ACHIEVEMENTS,
 		element: <AchievementsPage />
 	},
 	APPEARANCE: {
-		path: modalPaths.APPEARANCE,
+		path: MODAL_PATHS.APPEARANCE,
 		element: <AppearancePage />
 	},
 	ARCHIVE: {
-		path: modalPaths.ARCHIVE,
+		path: MODAL_PATHS.ARCHIVE,
 		element: <ArchivePage />
 	},
 	DATA_MANAGEMENT: {
-		path: modalPaths.DATA_MANAGEMENT,
+		path: MODAL_PATHS.DATA_MANAGEMENT,
 		element: <DataManagementPage />
 	},
 	DIARY: {
-		path: modalPaths.DIARY,
+		path: MODAL_PATHS.DIARY,
 		element: <DiaryPage />
 	},
 	HABIT_EDITOR: {
-		path: modalPaths.HABIT_EDITOR,
+		path: MODAL_PATHS.HABIT_EDITOR,
 		element: <HabitEditorPage />
 	},
 	MENU: {
-		path: modalPaths.MENU,
+		path: MODAL_PATHS.MENU,
 		element: <MenuPage />
 	},
 	STATISTICS: {
-		path: modalPaths.STATISTICS,
+		path: MODAL_PATHS.STATISTICS,
 		element: <HabitStatisticsPage />
 	}
 };
@@ -55,7 +55,7 @@ export const modalChildRoutes: Record<ModalRouteKey, RouteObject> = {
  * Note: Most functional pages are rendered as sub-routes
  * inside ModalLayout via React Router Outlet.
  *
- * @see {@link modalPaths} - Defined in shared/const/router.ts
+ * @see {@link MODAL_PATHS} - Defined in shared/const/router.ts
  */
 export const routeConfig: RouteObject[] = [
 	{
