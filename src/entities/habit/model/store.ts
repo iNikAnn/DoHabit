@@ -54,14 +54,14 @@ const customStorage = {
 				}
 			}
 
-			const jsonData = JSON.stringify(data);
+			const jsonString = JSON.stringify(data);
 
 			// Sync storage if data structure or habits were changed during load
 			if (needsSave) {
-				localStorage.setItem(key, jsonData);
+				localStorage.setItem(key, jsonString);
 			}
 
-			return jsonData;
+			return jsonString;
 		} catch (error) {
 			console.error('Failed to parse storage data:', error);
 			return null;

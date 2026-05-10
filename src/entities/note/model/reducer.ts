@@ -2,6 +2,9 @@ import { NoteAction, Note } from './types';
 import editNote from './handlers/editNote';
 import deleteNote from './handlers/deleteNote';
 
+/**
+ * Main reducer for the Diary notes.
+ */
 function notesReducer(notes: Note[], { type, payload }: NoteAction): Note[] {
 	switch (type) {
 		case 'addNote':
