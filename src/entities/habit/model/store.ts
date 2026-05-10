@@ -29,6 +29,20 @@ const customStorage = {
 				needsSave = true;
 			}
 
+			// CLEANUP: Remove habit-linked notes after they are successfully migrated
+			const isNotesMigrated = localStorage.getItem('dohabit_notes_migrated') === 'true';
+
+			if (data?.state?.habits && isNotesMigrated) {
+				data.state.habits = data.state.habits.map((h: any) => {
+					const nextHabit = { ...h };
+					delete nextHabit.diary;
+					return nextHabit;
+				});
+
+				needsSave = true;
+				localStorage.removeItem('dohabit_notes_migrated');
+			}
+
 			// CLEANUP: Filter out unfinished habit days before loading into the store
 			if (data?.state?.habits) {
 				const cleanedHabits = initHabits(data.state.habits);

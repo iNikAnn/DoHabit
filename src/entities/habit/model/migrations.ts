@@ -21,7 +21,6 @@ function migrateToV1(state: any): any {
 			};
 
 			delete nextHabit.creationDate;
-
 			return nextHabit;
 		})
 	};

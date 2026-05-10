@@ -46,6 +46,8 @@ function migrateToV1(state: any) {
 			})
 			.sort((a, b) => a.createdAt - b.createdAt);
 
+		localStorage.setItem('dohabit_notes_migrated', 'true');
+
 		return {
 			...state,
 			notes: processedNotes
