@@ -9,6 +9,9 @@
 }
 
 :root {
+	/* https://developer.chrome.com/docs/css-ui/edge-to-edge */
+	 --safe-area-max-inset-bottom: env(safe-area-max-inset-bottom, 36px);
+
 	--app-width: 760px;
 	--header-height: 4rem;
 

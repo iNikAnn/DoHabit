@@ -2,6 +2,7 @@
 	padding: 1rem;
 	/* padding-top: calc(var(--header-height) + 1rem); */
 	padding-top: var(--header-height);
+	padding-bottom: var(--safe-area-max-inset-bottom);
 }
 
 .text-button {

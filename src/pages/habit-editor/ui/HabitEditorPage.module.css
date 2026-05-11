@@ -12,21 +12,19 @@
 	position: sticky;
 	left: 0;
 	bottom: 0;
+	padding: 0.6rem 1rem;
+	padding-bottom: var(--safe-area-max-inset-bottom);
 	width: calc(100% + 2rem);
 	transform: translate(-1rem, 1rem);
 
 	display: flex;
-	/* justify-content: space-between; */
 	flex-direction: column;
 	gap: 0.4rem;
 
-	/* background-image: linear-gradient(to top, var(--bg), transparent); */
 	background-color: var(--bg);
 	border-top: 1px solid var(--bg-color-secondary);
 
-	padding: 0.6rem 1rem;
 	margin-top: auto;
-	/* padding-top: 0; */
 }
 
 .btnsWrapper button {

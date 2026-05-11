@@ -113,8 +113,8 @@ function NoteForm(props: Props) {
 						>
 							<input
 								type='text'
-								name='input'
-								id='input'
+								name='note-input'
+								id='note-input'
 								value={input}
 								onChange={(e) => onChange(e.target.value)}
 								placeholder='Enter your note here...'
