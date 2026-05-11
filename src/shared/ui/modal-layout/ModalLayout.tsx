@@ -63,10 +63,14 @@ function ModalLayout() {
 				ref={scope}
 				style={{ x }}
 				className={styles.childrenWrapper}
-				drag='x'
-				dragConstraints={{ left: 0, right: 0 }}
-				dragElastic={{ left: 0.1, right: 0.5 }}
-				onDragEnd={handleDragEnd}
+			/**
+			* Temporarily disabled custom drag-to-close to avoid UI bugs.
+			* Relying on native Android back-swipe gestures for now.
+			*/
+			// drag='x'
+			// dragConstraints={{ left: 0, right: 0 }}
+			// dragElastic={{ left: 0.1, right: 0.5 }}
+			// onDragEnd={handleDragEnd}
 			>
 				<Outlet />
 			</motion.div>
