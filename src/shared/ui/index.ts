@@ -1,4 +1,5 @@
 export { Button } from './button/Button';
+export { CompactCalendar } from './compact-calendar/CompactCalendar';
 export type { ButtonProps } from './button/types';
 export * from './dialog';
 export * from './drawer';
