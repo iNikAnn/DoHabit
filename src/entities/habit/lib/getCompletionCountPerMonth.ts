@@ -12,7 +12,7 @@ function getCompletionCountPerMonth(
 
 	for (const day of completedDays) {
 		// Skip if the habit goal wasn't reached
-		if (day.progress < frequency) continue;
+		if (day.progress !== undefined && day.progress < frequency) continue;
 
 		const month = new Date(day.date).getMonth();
 		counts[month] += 1;

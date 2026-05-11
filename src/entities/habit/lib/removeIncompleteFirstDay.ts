@@ -11,7 +11,7 @@ function removeIncompleteFirstDay(
 	const firstDay = completedDays.at(0);
 
 	// If the first day exists and is incomplete, remove it
-	if (firstDay && firstDay.progress < frequency) {
+	if (firstDay && firstDay.progress !== undefined && firstDay.progress < frequency) {
 		completedDays = completedDays.slice(1);
 	}
 

@@ -34,10 +34,12 @@ function getTodayProgress(params: Params): Result {
 		};
 	}
 
+	const { progress = 0 } = latestEntry;
+
 	return {
-		progress: latestEntry.progress,
-		percentage: Math.floor((latestEntry.progress / frequency) * 100),
-		isCompleted: latestEntry.progress >= frequency
+		progress: progress,
+		percentage: Math.floor((progress / frequency) * 100),
+		isCompleted: progress >= frequency
 	};
 }
 

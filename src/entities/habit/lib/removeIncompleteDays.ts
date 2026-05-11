@@ -15,7 +15,7 @@ function removeIncompleteDays({ completedDays, frequency }: Params): CompletedDa
 	return completedDays.filter(
 		(day) => {
 			const isBeforeToday = new Date(day.date) < today;
-			const isIncomplete = day.progress < frequency;
+			const isIncomplete = day.progress !== undefined && day.progress < frequency;
 
 			return !(isBeforeToday && isIncomplete);
 		}

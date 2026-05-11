@@ -14,7 +14,8 @@ function adjustDaysProgress(
 	return completedDays.map(
 		(day) => {
 			const isToday = day.date === today;
-			const isUncompleted = day.progress < newFrequency;
+			// const isUncompleted = day.progress && day.progress < newFrequency;
+			const isUncompleted = day.progress !== undefined && day.progress < newFrequency;
 
 			// Skip updating today if it's still in progress
 			if (isToday && isUncompleted) {

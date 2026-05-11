@@ -44,7 +44,7 @@ function updateHabitProgress(params: Params): Habit[] {
 
 				nextCompletedDays[todayIndex] = {
 					...currentDay,
-					progress: currentDay.progress + 1
+					progress: (currentDay.progress ?? 0) + 1
 				};
 			} else {
 				// Add new entry for today if it doesn't exist

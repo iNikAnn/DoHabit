@@ -8,14 +8,25 @@ function checkHabitCompletion<T extends Date[]>(
 	completedDays: CompletedDay[],
 	frequency: number,
 	...dates: T
-): { [K in keyof T]: boolean } {
+): Set<string> {
+	// Create index of all valid completions
 	const completedSet = new Set(
 		completedDays
-			.filter((day) => day.progress >= frequency)
-			.map((day) => day.date)
+			.filter((d) => d.progress === undefined || d.progress >= frequency)
+			.map((d) => d.date)
 	);
 
-	return dates.map((date) => completedSet.has(formatDate(date))) as any;
+	const result = new Set<string>();
+
+	dates.forEach((date) => {
+		const formattedDate = formatDate(date);
+
+		if (completedSet.has(formattedDate)) {
+			result.add(formattedDate);
+		}
+	});
+
+	return result;
 }
 
 export { checkHabitCompletion };
