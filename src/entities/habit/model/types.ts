@@ -1,5 +1,7 @@
 export interface CompletedDay {
+	/** ISO date string (YYYY-MM-DD) */
 	date: string;
+
 	progress: number;
 	isCompYdayBtnUsed?: boolean;
 }

@@ -9,19 +9,13 @@ function checkHabitCompletion<T extends Date[]>(
 	frequency: number,
 	...dates: T
 ): { [K in keyof T]: boolean } {
-	return dates.map(
-		(date) => {
-			const formattedDate = formatDate(date);
+	const completedSet = new Set(
+		completedDays
+			.filter((day) => day.progress >= frequency)
+			.map((day) => day.date)
+	);
 
-			// Check if there is an entry for this date with sufficient progress
-			return completedDays.some(
-				(day) => (
-					day.date === formattedDate
-					&& day.progress >= frequency
-				)
-			);
-		}
-	) as any;
+	return dates.map((date) => completedSet.has(formatDate(date))) as any;
 }
 
 export { checkHabitCompletion };
