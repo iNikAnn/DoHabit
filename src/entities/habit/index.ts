@@ -8,3 +8,4 @@ export { getCompletionCountPerDay } from './lib/getCompletionCountPerDay';
 export { getCompletionCountPerMonth } from './lib/getCompletionCountPerMonth';
 export { getStreaks } from './lib/getStreaks';
 export { getTodayProgress } from './lib/getTodayProgress';
+export { isYesterdayCompleted } from './lib/isYesterdayCompleted';
