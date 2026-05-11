@@ -112,7 +112,7 @@ function NoteForm(props: Props) {
 							onSubmit={handleSubmitForm}
 						>
 							<input
-								type='text'
+								type='search' // Using 'search' type to kill mobile autofill
 								name='note-input'
 								id='note-input'
 								value={input}

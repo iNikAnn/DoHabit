@@ -38,7 +38,10 @@ function TitleBlock({ input, alreadyExist, onChange }: Props) {
 				)}
 			</div>
 
-			<input type='text' name='title' id='title'
+			<input
+				type='search' // Using 'search' type to kill mobile autofill
+				name='title'
+				id='title'
 				className={`${styles.input} ${alreadyExist ? styles.alreadyExist : ''}`}
 				value={input}
 				onChange={(e) => onChange(e.target.value)}
