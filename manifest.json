@@ -2,15 +2,17 @@
 	"short_name": "DoHabit",
 	"name": "DoHabit",
 	"desdescription": "DoHabit is a straightforward habit tracker that doesn’t require registration. Easily mark your completed days, track your progress, and keep a journal for each habit.",
-	"categories": ["education", "lifestyle", "productivity"],
-
+	"categories": [
+		"education",
+		"lifestyle",
+		"productivity"
+	],
 	"related_applications": [
 		{
 			"platform": "webapp",
 			"url": "https://inikann.github.io/DoHabit/manifest.json"
 		}
 	],
-
 	"icons": [
 		{
 			"src": "favicon.ico",
@@ -40,10 +42,9 @@
 			"purpose": "maskable"
 		}
 	],
-
 	"start_url": ".",
 	"display": "standalone",
 	"theme_color": "#000000",
-	"background_color": "#121212",
+	"background_color": "#000000",
 	"lang": "en"
 }

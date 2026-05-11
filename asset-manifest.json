@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/DoHabit/static/css/main.3bdcfb88.css",
-    "main.js": "/DoHabit/static/js/main.7ea9ae61.js",
+    "main.css": "/DoHabit/static/css/main.48c0973f.css",
+    "main.js": "/DoHabit/static/js/main.1b78d0ca.js",
     "service-worker.js": "/DoHabit/service-worker.js",
     "static/media/logo192-alpha.png": "/DoHabit/static/media/logo192-alpha.8533f0ee32bc19d301ce.png",
     "static/media/calendar.svg": "/DoHabit/static/media/calendar.65e1cc974c8ca39b901c9bdb5369b502.svg",
@@ -12,7 +12,7 @@
     "index.html": "/DoHabit/index.html"
   },
   "entrypoints": [
-    "static/css/main.3bdcfb88.css",
-    "static/js/main.7ea9ae61.js"
+    "static/css/main.48c0973f.css",
+    "static/js/main.1b78d0ca.js"
   ]
 }
