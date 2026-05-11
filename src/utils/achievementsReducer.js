@@ -2,7 +2,7 @@
 import { getStreaks } from '../entities/habit/lib/getStreaks';
 import { countDaysBetween } from '@shared/lib';
 import getCompletionGaps from '../entities/habit/lib/getCompletionGaps';
-import { checkHabitCompletion } from '../entities/habit/lib/checkHabitCompletion';
+import { getCompletedDatesSet } from '../entities/habit/lib/getCompletedDatesSet';
 import removeIncompleteFirstDay from '../entities/habit/lib/removeIncompleteFirstDay';
 import { formatDate, writeLocalStorage } from '@shared/lib';
 
@@ -94,7 +94,7 @@ function achievementsReducer(achievements, context) {
 							const month = creationDate.getMonth();
 
 							if (day === 1 && month === 0) {
-								const [res] = checkHabitCompletion(h.completedDays, h.frequency, creationDate);
+								const [res] = getCompletedDatesSet(h.completedDays, h.frequency, creationDate);
 								return res;
 							};
 

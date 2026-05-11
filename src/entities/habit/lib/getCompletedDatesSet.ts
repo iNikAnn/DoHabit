@@ -2,12 +2,12 @@ import { CompletedDay } from '../model/types';
 import { formatDate } from '@shared/lib';
 
 /**
- * Checks if a habit was completed for each of the provided dates.
+ * Resolves completed dates into a Set.
  */
-function checkHabitCompletion<T extends Date[]>(
+function getCompletedDatesSet(
 	completedDays: CompletedDay[],
 	frequency: number,
-	...dates: T
+	...dates: Date[]
 ): Set<string> {
 	// Create index of all valid completions
 	const completedSet = new Set(
@@ -29,4 +29,4 @@ function checkHabitCompletion<T extends Date[]>(
 	return result;
 }
 
-export { checkHabitCompletion };
+export { getCompletedDatesSet };

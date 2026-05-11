@@ -1,6 +1,7 @@
+import { formatDate } from '@shared/lib';
 import styles from '../../css/Month.module.css';
 import { ColorVariants } from '../../types/colorScheme';
-import { CompletedDay, checkHabitCompletion } from '@entities/habit';
+import { CompletedDay, getCompletedDatesSet } from '@entities/habit';
 import { useSettingsStore } from '@entities/settings';
 
 interface Props {
@@ -56,10 +57,11 @@ function Month(props: Props) {
 		(_, i) => new Date(date.getFullYear(), date.getMonth(), (i - shift + 1))
 	);
 
-	const checkedDates = checkHabitCompletion(completedDays, frequency, ...dates);
+	const checkedDates = getCompletedDatesSet(completedDays, frequency, ...dates);
 
-	const days = checkedDates
-		.map((isCompleted, index) => {
+	const days = dates
+		.map((date, index) => {
+			const isCompleted = checkedDates.has(formatDate(date));
 			let isToday = false;
 
 			if (index >= shift) {
