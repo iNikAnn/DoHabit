@@ -1,6 +1,6 @@
 import { CompletedDay, Habit, UpdateProgress } from '../types';
+import { getTodayProgress } from '../../lib/getTodayProgress';
 import updateHabitById from '../../lib/updateHabitById';
-import { checkHabitCompletion } from '../../lib/checkHabitCompletion';
 import { formatDate } from '@shared/lib';
 
 interface Params {
@@ -20,11 +20,10 @@ function updateHabitProgress(params: Params): Habit[] {
 	const today = formatDate(new Date());
 
 	return updateHabitById(habits, habitId, (habit) => {
-		const [isCompleted] = checkHabitCompletion(
-			habit.completedDays,
-			habit.frequency,
-			new Date()
-		);
+		const { isCompleted } = getTodayProgress({
+			completedDays: habit.completedDays,
+			frequency: habit.frequency
+		});
 
 		let nextCompletedDays: CompletedDay[] = [];
 
