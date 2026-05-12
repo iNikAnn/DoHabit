@@ -51,16 +51,16 @@ function AppearancePage() {
 
 				<MenuItem
 					title={'Highlight Today\'s Date'}
-					desc={(settings.calendarHighlightToday ?? true)
+					desc={settings.calendarHighlightToday
 						? 'Today is highlighted'
 						: 'Today is not highlighted'}
 					other={
 						<Switch
-							isActive={settings.calendarHighlightToday ?? true}
+							isActive={settings.calendarHighlightToday ?? false}
 							onClick={() => settingsDispatch({
 								type: 'updateSettings',
 								payload: {
-									calendarHighlightToday: !(settings.calendarHighlightToday ?? true)
+									calendarHighlightToday: !settings.calendarHighlightToday
 								}
 							})}
 						/>

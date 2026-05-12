@@ -26,7 +26,7 @@ function Month(props: Props) {
 	} = props;
 
 	const settings = useSettingsStore((s) => s.settings);
-	const highlightToday = settings.calendarHighlightToday ?? true;
+	const highlightToday = settings.calendarHighlightToday ?? false;
 
 	const { baseColor, darkenedColor, softenedColor } = colorVariants;
 
