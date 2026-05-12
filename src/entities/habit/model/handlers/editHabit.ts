@@ -2,6 +2,7 @@ import { EditHabit, Habit } from '../types';
 import mapHabitData from '../../lib/mapHabitData';
 import updateHabitById from '../../lib/updateHabitById';
 import reorderHabit from '../../lib/reorderHabit';
+import { getTodayProgress } from '../../lib/getTodayProgress';
 
 interface Params {
 	habits: Habit[];
@@ -20,10 +21,24 @@ function editHabit(params: Params): Habit[] {
 	const fields = mapHabitData(payload.data);
 
 	// Update the habit data and sync progress
-	let nextHabits = updateHabitById(habits, payload.habitId, (habit) => ({
-		...habit,
-		...fields
-	}));
+	let nextHabits = updateHabitById(habits, payload.habitId, (habit) => {
+		const { isCompleted } = getTodayProgress(habit);
+		const isFrequencyChanged = fields.frequency !== habit.frequency;
+
+		/**
+		 * Keep progress in sync with frequency.
+		 * Reset to 0 if not finished to avoid accidental completion.
+		 */
+		const nextProgress = isCompleted
+			? fields.frequency
+			: isFrequencyChanged ? 0 : habit.currentProgress;
+
+		return {
+			...habit,
+			...fields,
+			currentProgress: nextProgress
+		};
+	});
 
 	// Find current position using updated title if it changed
 	const currentIndex = nextHabits.findIndex(
