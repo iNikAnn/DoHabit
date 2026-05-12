@@ -2,9 +2,6 @@ export interface CompletedDay {
 	/** ISO date string (YYYY-MM-DD). */
 	date: string;
 
-	/** Optional progress value. If missing, day is considered fully completed. */
-	progress?: number;
-
 	isCompYdayBtnUsed?: boolean;
 }
 
@@ -78,7 +75,7 @@ export interface ToggleYesterdayStatus {
 	payload: {
 		habitId: string;
 		isYdayCompleted: boolean;
-		todayProgress: number;
+		isTodayCompleted: boolean;
 	};
 }
 

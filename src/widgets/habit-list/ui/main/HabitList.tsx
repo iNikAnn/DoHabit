@@ -54,8 +54,7 @@ function HabitList(props: HabitListProps) {
 
 					const calendarProps = {
 						colorVariants,
-						completedDays: habit.completedDays,
-						frequency: habit.frequency
+						completedDays: habit.completedDays
 					};
 
 					const calendar = !isArchive
@@ -65,7 +64,7 @@ function HabitList(props: HabitListProps) {
 								accentColor={colorVariants.baseColor}
 								highlightToday={settings.calendarHighlightToday}
 								getCompletedDates={(days) => (
-									getCompletedDatesSet(habit.completedDays, habit.frequency, ...days)
+									getCompletedDatesSet(habit.completedDays, ...days)
 								)}
 							/>
 							: <Calendar {...calendarProps} />

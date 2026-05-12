@@ -7,7 +7,6 @@ import { useSettingsStore } from '@entities/settings';
 interface Props {
 	completedDays: CompletedDay[];
 	colorVariants: ColorVariants;
-	frequency: number;
 	date: Date;
 	visibleMonthsCount: number;
 	dayGap: string;
@@ -19,7 +18,6 @@ function Month(props: Props) {
 	const {
 		completedDays,
 		colorVariants,
-		frequency,
 		date,
 		visibleMonthsCount,
 		dayGap,
@@ -57,7 +55,7 @@ function Month(props: Props) {
 		(_, i) => new Date(date.getFullYear(), date.getMonth(), (i - shift + 1))
 	);
 
-	const checkedDates = getCompletedDatesSet(completedDays, frequency, ...dates);
+	const checkedDates = getCompletedDatesSet(completedDays, ...dates);
 
 	const days = dates
 		.map((date, index) => {

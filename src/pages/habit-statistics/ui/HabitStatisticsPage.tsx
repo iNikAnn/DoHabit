@@ -14,7 +14,6 @@ import { CompletedDay, getStreaks } from '@entities/habit';
 interface LocationState {
 	completedDays: CompletedDay[];
 	colorVariants: ColorVariants;
-	frequency: number;
 }
 
 function HabitStatisticsPage() {
@@ -24,7 +23,6 @@ function HabitStatisticsPage() {
 
 	const {
 		completedDays = [],
-		frequency = 0,
 		colorVariants
 	} = state ?? {};
 
@@ -47,8 +45,8 @@ function HabitStatisticsPage() {
 	);
 
 	// --- Streaks:START ---
-	const { currentStreak } = getStreaks(completedDays, frequency);
-	const { allStreaks, longestStreak } = getStreaks(selectedDays, frequency);
+	const { currentStreak } = getStreaks(completedDays);
+	const { allStreaks, longestStreak } = getStreaks(selectedDays);
 	const filteredStreaks = allStreaks.filter((s) => s.length > 1);
 	// --- Streaks:END ---
 
@@ -105,7 +103,6 @@ function HabitStatisticsPage() {
 			>
 				<WeekdayChart
 					days={selectedDays}
-					frequency={frequency}
 					options={chartOptions}
 					color={baseColor}
 				/>
@@ -125,7 +122,6 @@ function HabitStatisticsPage() {
 			>
 				<MonthlyChart
 					days={selectedDays}
-					frequency={frequency}
 					options={chartOptions}
 					color={baseColor}
 				/>

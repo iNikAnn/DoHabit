@@ -3,7 +3,6 @@ import { getStreaks } from '../entities/habit/lib/getStreaks';
 import { countDaysBetween } from '@shared/lib';
 import getCompletionGaps from '../entities/habit/lib/getCompletionGaps';
 import { getCompletedDatesSet } from '../entities/habit/lib/getCompletedDatesSet';
-import { removeIncompleteLatestDay } from '../entities/habit/lib/removeIncompleteLatestDay';
 import { formatDate, writeLocalStorage } from '@shared/lib';
 
 const todayDateStr = formatDate(new Date());
@@ -149,9 +148,7 @@ function achievementsReducer(achievements, context) {
 
 					const datesMap = {};
 					for (const h of habits) {
-						const completedDays = removeIncompleteLatestDay(h.completedDays, h.frequency);
-
-						for (const d of completedDays) {
+						for (const d of h.completedDays) {
 							const date = d.date
 							datesMap[date] = (datesMap[date] || 0) + 1;
 						};
@@ -227,9 +224,7 @@ function achievementsReducer(achievements, context) {
 
 					const datesMap = {};
 					for (const h of habits) {
-						const completedDays = removeIncompleteLatestDay(h.completedDays, h.frequency);
-
-						for (const d of completedDays) {
+						for (const d of h.completedDays) {
 							const date = new Date(d.date);
 
 							const isHalloween = date.getMonth() === 9 && date.getDate() === 31;
@@ -253,9 +248,7 @@ function achievementsReducer(achievements, context) {
 
 					const datesMap = {};
 					for (const h of habits) {
-						const completedDays = removeIncompleteLatestDay(h.completedDays, h.frequency);
-
-						for (const d of completedDays) {
+						for (const d of h.completedDays) {
 							const date = new Date(d.date);
 
 							const isLastDay = date.getMonth() === 11 && date.getDate() === 31;
@@ -289,8 +282,7 @@ function achievementsReducer(achievements, context) {
 				case 20:
 					shouldUnlock = habits.some(
 						(h) => {
-							const completedDays = removeIncompleteLatestDay(h.completedDays, h.frequency);
-							const completedWeekends = completedDays.filter(
+							const completedWeekends = h.completedDays.filter(
 								(d) => {
 									const day = new Date(d.date).getDay();
 									return day === 0 || day === 6;

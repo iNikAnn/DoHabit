@@ -6,17 +6,16 @@ import { getStreaks, getTodayProgress, Habit, isYesterdayCompleted } from '@enti
  */
 function getHabitStats(habit: Habit) {
 	const {
-		frequency,
 		completedDays
 	} = habit;
 
 	const isYdayCompleted = isYesterdayCompleted(completedDays);
-	const { progress: todayProgress } = getTodayProgress(habit);
-	const { currentStreak } = getStreaks(completedDays, frequency);
+	const { isCompleted: isTodayCompleted } = getTodayProgress(habit);
+	const { currentStreak } = getStreaks(completedDays);
 
 	return {
+		isTodayCompleted,
 		isYdayCompleted,
-		todayProgress,
 		currentStreak
 	};
 }

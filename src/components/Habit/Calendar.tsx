@@ -7,14 +7,12 @@ import { countMonths } from '@shared/lib';
 interface Props {
 	completedDays: CompletedDay[];
 	colorVariants: ColorVariants;
-	frequency: number;
 }
 
 function Calendar(props: Props) {
 	const {
 		completedDays,
 		colorVariants,
-		frequency
 	} = props;
 
 	const startMonth = new Date(completedDays[completedDays.length - 1]?.date || new Date());
@@ -43,7 +41,6 @@ function Calendar(props: Props) {
 				key={index}
 				completedDays={completedDays}
 				colorVariants={colorVariants}
-				frequency={frequency}
 				date={date}
 				visibleMonthsCount={visibleMonthsCount}
 				dayGap={dayGap}

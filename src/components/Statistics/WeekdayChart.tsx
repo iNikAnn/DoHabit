@@ -8,12 +8,11 @@ ChartJS.register(BarElement);
 interface Props {
 	options: ChartOptions<'bar'>;
 	days: CompletedDay[];
-	frequency: number;
 	color: string;
 }
 
-function WeekdayChart({ options, days, frequency, color }: Props) {
-	const data = getCompletionCountPerDay(days, frequency);
+function WeekdayChart({ options, days, color }: Props) {
+	const data = getCompletionCountPerDay(days);
 
 	const config: {
 		data: ChartData<'bar'>,
