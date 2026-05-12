@@ -1,9 +1,9 @@
-import { CompletedDay } from '../model/types';
 import { formatDate } from '@shared/lib';
 
 interface Params {
-	completedDays: CompletedDay[];
 	frequency: number;
+	currentProgress: number;
+	lastActivityDate: string;
 }
 
 interface Result {
@@ -14,19 +14,20 @@ interface Result {
 
 /**
  * Calculates current day progress based on habit frequency.
- * Returns progress value, percentage, and completion status.
+ * Resets to zero if lastActivityDate is not today.
  */
 function getTodayProgress(params: Params): Result {
 	const {
-		completedDays,
-		frequency
+		frequency,
+		currentProgress,
+		lastActivityDate
 	} = params;
 
 	const today = formatDate(new Date());
-	const latestEntry = completedDays[0];
 
-	// No entries for today yet
-	if (latestEntry?.date !== today) {
+	// If latest activity was on a different day,
+	// progress is 0
+	if (lastActivityDate !== today) {
 		return {
 			progress: 0,
 			percentage: 0,
@@ -34,12 +35,10 @@ function getTodayProgress(params: Params): Result {
 		};
 	}
 
-	const { progress = 0 } = latestEntry;
-
 	return {
-		progress: progress,
-		percentage: Math.floor((progress / frequency) * 100),
-		isCompleted: progress >= frequency
+		progress: currentProgress,
+		percentage: Math.floor((currentProgress / frequency) * 100),
+		isCompleted: currentProgress >= frequency
 	};
 }
 
