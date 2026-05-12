@@ -1,6 +1,6 @@
 import { Streak } from '../../../types/common';
 import { CompletedDay } from '../model/types';
-import removeIncompleteFirstDay from './removeIncompleteFirstDay';
+import { removeIncompleteLatestDay } from './removeIncompleteLatestDay';
 import { formatDate } from '@shared/lib';
 import { DAY_MS } from '@shared/const';
 
@@ -18,7 +18,7 @@ function getStreaks(
 	completedDays: CompletedDay[],
 	frequency: number
 ): GetStreaksResult {
-	const processedDays = removeIncompleteFirstDay(completedDays, frequency);
+	const processedDays = removeIncompleteLatestDay(completedDays, frequency);
 
 	// Return 'zero streaks' if the input array is empty
 	if (processedDays[0] === undefined) {

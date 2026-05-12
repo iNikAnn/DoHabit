@@ -1,5 +1,5 @@
 import { CompletedDay } from '../model/types';
-import removeIncompleteFirstDay from './removeIncompleteFirstDay';
+import { removeIncompleteLatestDay } from './removeIncompleteLatestDay';
 import { countDaysBetween } from '@shared/lib';
 
 /**
@@ -10,7 +10,7 @@ function getCompletionGaps(
 	frequency: number
 ): number[] {
 	const gaps: number[] = [];
-	const processedDays = removeIncompleteFirstDay(completedDays, frequency);
+	const processedDays = removeIncompleteLatestDay(completedDays, frequency);
 
 	if (processedDays.length < 2) return gaps;
 
