@@ -5,7 +5,7 @@ import habitsReducer from './reducer';
 import { habitMigrations } from './migrations';
 import { STORAGE_KEYS } from '@shared/const';
 
-const CURRENT_VERSION = 1;
+const CURRENT_VERSION = 2;
 
 const customStorage = {
 	getItem: (key: string) => {
