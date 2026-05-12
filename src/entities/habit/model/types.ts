@@ -1,5 +1,5 @@
 export interface CompletedDay {
-	/** ISO date string (YYYY-MM-DD) */
+	/** ISO date string (YYYY-MM-DD). */
 	date: string;
 
 	/** Optional progress value. If missing, day is considered fully completed. */
@@ -14,10 +14,13 @@ export interface Habit {
 	colorIndex: number;
 	iconTitle: string;
 	frequency: number;
+
+	/** Sorted in descending order (newest dates first). */
 	completedDays: CompletedDay[];
+
 	isArchived?: boolean;
 
-	/** Creation time as a Unix timestamp (ms) */
+	/** Creation time as a Unix timestamp (ms). */
 	createdAt: number;
 }
 
