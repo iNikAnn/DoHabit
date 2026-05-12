@@ -13,7 +13,10 @@ export interface Habit {
 	title: string;
 	colorIndex: number;
 	iconTitle: string;
+
 	frequency: number;
+	currentProgress: number;
+	lastActivityDate: string;
 
 	/** Sorted in descending order (newest dates first). */
 	completedDays: CompletedDay[];
