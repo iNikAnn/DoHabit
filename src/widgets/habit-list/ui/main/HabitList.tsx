@@ -5,7 +5,7 @@ import { useColorsStore } from '../../../../stores/colorsStore';
 import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
 import { getHabitStats } from '../../lib/getHabitStats';
 import { useHabitActions } from '../../lib/useHabitActions';
-import Calendar from '@/components/Habit/Calendar';
+import Calendar from '@shared/ui/calendar/main/Calendar';
 import { RestoreHabit } from '@features/restore-habit';
 import { UpdateHabitProgress } from '@features/update-habit-progress';
 import { getCompletedDatesSet, HabitCard, useHabitsStore } from '@entities/habit';
@@ -54,19 +54,15 @@ function HabitList(props: HabitListProps) {
 
 					const calendarProps = {
 						colorVariants,
-						completedDays: habit.completedDays
+						highlightToday: settings.calendarHighlightToday,
+						getCompletedDates: (days: string[]) => (
+							getCompletedDatesSet(habit.completedDays, ...days)
+						)
 					};
 
 					const calendar = !isArchive
 						? settings.calendarView === 'compact'
-							? <CompactCalendar
-								color={colorVariants.darkenedColor}
-								accentColor={colorVariants.baseColor}
-								highlightToday={settings.calendarHighlightToday}
-								getCompletedDates={(days) => (
-									getCompletedDatesSet(habit.completedDays, ...days)
-								)}
-							/>
+							? <CompactCalendar {...calendarProps} />
 							: <Calendar {...calendarProps} />
 						: undefined;
 

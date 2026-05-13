@@ -3,7 +3,8 @@
 	/* outline: 1px solid green; */
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	grid-auto-rows: minmax(auto, min-content);
+	grid-auto-rows: 1.4rem;
+	gap: 0.2rem;
 }
 
 /* weekday */
@@ -14,6 +15,12 @@
 	align-items: center;
 }
 
+.weekday,
+.dayNum {
+	font-size: 0.7rem;
+	font-weight: bold;
+}
+
 /* day */
 .day {
 	display: flex;
@@ -22,4 +29,5 @@
 
 	background-color: var(--bg-color-secondary);
 	font-weight: 300;
+	border-radius: 6px;
 }
