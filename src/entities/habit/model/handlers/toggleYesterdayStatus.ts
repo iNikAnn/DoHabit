@@ -16,7 +16,7 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 		payload: {
 			habitId,
 			isYdayCompleted,
-			todayProgress
+			isTodayCompleted
 		}
 	} = params;
 
@@ -24,24 +24,26 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 
 	return updateHabitById(habits, habitId, (habit) => {
 		if (isYdayCompleted) {
+			// If today is finished, it's at [0], so yesterday is at [1].
+			// Otherwise, yesterday is at [0].
+			const targetIndex = isTodayCompleted ? 1 : 0;
+
 			// Remove yesterday entry
 			return {
 				...habit,
-				completedDays: habit.completedDays.filter(
-					(day) => day.date !== yDayStr
-				)
+				// @ts-ignore
+				completedDays: habit.completedDays.toSpliced(targetIndex, 1)
 			};
 		}
 
 		// New record for yesterday
 		const completedYday: CompletedDay = {
 			date: yDayStr,
-			progress: habit.frequency,
 			isCompYdayBtnUsed: true
 		};
 
 		// Determine insertion index: 1 if today has record, otherwise 0
-		const insertIndex = todayProgress ? 1 : 0;
+		const insertIndex = isTodayCompleted ? 1 : 0;
 
 		return {
 			...habit,

@@ -1,12 +1,11 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { HabitState } from './types';
-import { initHabits } from './init';
 import habitsReducer from './reducer';
 import { habitMigrations } from './migrations';
 import { STORAGE_KEYS } from '@shared/const';
 
-const CURRENT_VERSION = 1;
+const CURRENT_VERSION = 2;
 
 const customStorage = {
 	getItem: (key: string) => {
@@ -42,17 +41,6 @@ const customStorage = {
 
 				needsSave = true;
 				localStorage.removeItem('dohabit_notes_migrated');
-			}
-
-			// CLEANUP: Filter out unfinished habit days before loading into the store
-			if (data?.state?.habits) {
-				const cleanedHabits = initHabits(data.state.habits);
-
-				// Update storage only if some habits were actually cleaned
-				if (JSON.stringify(cleanedHabits) !== JSON.stringify(data.state.habits)) {
-					data.state.habits = cleanedHabits;
-					needsSave = true;
-				}
 			}
 
 			const jsonString = JSON.stringify(data);

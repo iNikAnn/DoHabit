@@ -14,14 +14,11 @@ interface Props {
  * Updates progress for a specific habit.
  * Manages click animations, haptic feedback, and progress visualization.
  */
-function UpdateHabitProgress(props: Props) {
+function UpdateHabitProgress({ habit }: Props) {
 	const {
-		habit: {
-			id,
-			frequency,
-			completedDays
-		}
-	} = props;
+		id,
+		frequency
+	} = habit;
 
 	// Local state for trigger-based animations
 	const [animation, setAnimation] = useState<'completed' | 'updated' | null>(null);
@@ -29,17 +26,13 @@ function UpdateHabitProgress(props: Props) {
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 
 	// Current day stats from the domain helper
-	const {
-		progress,
-		percentage,
-		isCompleted
-	} = getTodayProgress({ completedDays, frequency });
+	const { progress, percentage, isCompleted } = getTodayProgress(habit);
 
 	const handleUpdateProgress: MouseEventHandler = (e) => {
 		e.stopPropagation();
 
 		// Trigger visual feedback
-		const isFinalStep = frequency - progress === 1;
+		const isFinalStep = habit.frequency - progress === 1;
 		setAnimation(isFinalStep ? 'completed' : 'updated');
 
 		// Haptic feedback

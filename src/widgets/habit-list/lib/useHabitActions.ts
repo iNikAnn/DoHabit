@@ -11,7 +11,7 @@ interface OpenMenuParams {
 	habit: Habit;
 	habitStats: {
 		isYdayCompleted: boolean;
-		todayProgress: number;
+		isTodayCompleted: boolean;
 		currentStreak: number;
 	};
 	colorVariants: ColorVariants;
@@ -30,7 +30,7 @@ function useHabitActions() {
 			habit,
 			habitStats: {
 				isYdayCompleted,
-				todayProgress,
+				isTodayCompleted,
 				currentStreak
 			},
 			colorVariants,
@@ -53,7 +53,7 @@ function useHabitActions() {
 					payload: {
 						habitId: habit.id,
 						isYdayCompleted,
-						todayProgress
+						isTodayCompleted
 					}
 				})
 			},

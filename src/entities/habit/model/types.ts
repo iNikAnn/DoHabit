@@ -1,6 +1,7 @@
 export interface CompletedDay {
+	/** ISO date string (YYYY-MM-DD). */
 	date: string;
-	progress: number;
+
 	isCompYdayBtnUsed?: boolean;
 }
 
@@ -9,11 +10,17 @@ export interface Habit {
 	title: string;
 	colorIndex: number;
 	iconTitle: string;
+
 	frequency: number;
+	currentProgress: number;
+	lastActivityDate: string;
+
+	/** Sorted in descending order (newest dates first). */
 	completedDays: CompletedDay[];
+
 	isArchived?: boolean;
 
-	/** Creation time as a Unix timestamp (ms) */
+	/** Creation time as a Unix timestamp (ms). */
 	createdAt: number;
 }
 
@@ -68,7 +75,7 @@ export interface ToggleYesterdayStatus {
 	payload: {
 		habitId: string;
 		isYdayCompleted: boolean;
-		todayProgress: number;
+		isTodayCompleted: boolean;
 	};
 }
 

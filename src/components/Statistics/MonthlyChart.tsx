@@ -8,13 +8,11 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler);
 interface Props {
 	options: ChartOptions<'line'>;
 	days: CompletedDay[];
-	frequency: number;
 	color: string;
 }
 
-function MonthlyChart({ options, days, frequency, color }: Props) {
-
-	const data = getCompletionCountPerMonth(days, frequency);
+function MonthlyChart({ options, days, color }: Props) {
+	const data = getCompletionCountPerMonth(days);
 
 	const config: {
 		data: ChartData<'line'>,

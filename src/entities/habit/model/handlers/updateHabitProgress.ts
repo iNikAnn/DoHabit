@@ -1,7 +1,6 @@
-import { CompletedDay, Habit, UpdateProgress } from '../types';
+import { Habit, UpdateProgress } from '../types';
+import { getTodayProgress } from '../../lib/getTodayProgress';
 import updateHabitById from '../../lib/updateHabitById';
-import { checkHabitCompletion } from '../../lib/checkHabitCompletion';
-import { formatDate } from '@shared/lib';
 
 interface Params {
 	habits: Habit[];
@@ -17,48 +16,30 @@ function updateHabitProgress(params: Params): Habit[] {
 		payload: { habitId }
 	} = params;
 
-	const today = formatDate(new Date());
-
 	return updateHabitById(habits, habitId, (habit) => {
-		const [isCompleted] = checkHabitCompletion(
-			habit.completedDays,
-			habit.frequency,
-			new Date()
-		);
-
-		let nextCompletedDays: CompletedDay[] = [];
+		const { today, progress, isCompleted } = getTodayProgress(habit);
 
 		if (isCompleted) {
-			// Remove entry if it was already completed (toggle logic)
-			nextCompletedDays = habit.completedDays.filter(
-				(day) => day.date !== today
-			);
-		} else {
-			const todayIndex = habit.completedDays.findIndex(
-				(day) => day.date === today
-			);
-			const currentDay = habit.completedDays[todayIndex];
-
-			if (currentDay) {
-				// Increment progress for the existing entry
-				nextCompletedDays = [...habit.completedDays];
-
-				nextCompletedDays[todayIndex] = {
-					...currentDay,
-					progress: currentDay.progress + 1
-				};
-			} else {
-				// Add new entry for today if it doesn't exist
-				nextCompletedDays = [
-					{ date: today, progress: 1 },
-					...habit.completedDays
-				];
-			}
+			// Remove from history and reset progress (toggle logic)
+			return {
+				...habit,
+				currentProgress: 0,
+				lastActivityDate: today,
+				completedDays: habit.completedDays.slice(1)
+			};
 		}
+
+		// Increment progress
+		const nextProgress = progress + 1;
+		const isNowCompleted = nextProgress >= habit.frequency;
 
 		return {
 			...habit,
-			completedDays: nextCompletedDays
+			currentProgress: nextProgress,
+			lastActivityDate: today,
+			completedDays: isNowCompleted
+				? [{ date: today }, ...habit.completedDays]
+				: habit.completedDays
 		};
 	});
 }

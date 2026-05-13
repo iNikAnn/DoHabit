@@ -5,13 +5,12 @@ import { useColorsStore } from '../../../../stores/colorsStore';
 import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
 import { getHabitStats } from '../../lib/getHabitStats';
 import { useHabitActions } from '../../lib/useHabitActions';
-import CompactCalendar from '@/components/Habit/CompactCalendar';
-import Calendar from '@/components/Habit/Calendar';
 import { RestoreHabit } from '@features/restore-habit';
 import { UpdateHabitProgress } from '@features/update-habit-progress';
-import { HabitCard, useHabitsStore } from '@entities/habit';
+import { getCompletedDatesSet, HabitCard, useHabitsStore } from '@entities/habit';
 import { useSettingsStore } from '@entities/settings';
 import { getColorVariants } from '@shared/lib';
+import { Calendar, CompactCalendar } from '@shared/ui';
 
 interface HabitListProps {
 	isArchive?: boolean;
@@ -54,8 +53,10 @@ function HabitList(props: HabitListProps) {
 
 					const calendarProps = {
 						colorVariants,
-						completedDays: habit.completedDays,
-						frequency: habit.frequency
+						highlightToday: settings.calendarHighlightToday,
+						getCompletedDates: (days: string[]) => (
+							getCompletedDatesSet(habit.completedDays, ...days)
+						)
 					};
 
 					const calendar = !isArchive

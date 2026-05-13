@@ -1,5 +1,6 @@
 import { AddHabit, Habit } from '../types';
 import mapHabitData from '../../lib/mapHabitData';
+import { formatDate } from '@shared/lib';
 
 interface AddHabitParams {
 	habits: Habit[];
@@ -15,11 +16,15 @@ function addHabit(params: AddHabitParams): Habit[] {
 		payload: { data }
 	} = params;
 
-	const newHabit = {
+	const now = new Date();
+
+	const newHabit: Habit = {
 		id: crypto.randomUUID(),
 		...mapHabitData(data),
 		completedDays: [],
-		createdAt: Date.now()
+		currentProgress: 0,
+		lastActivityDate: formatDate(now),
+		createdAt: now.getTime()
 	};
 
 	return [newHabit, ...habits];

@@ -1,20 +1,14 @@
 import { CompletedDay } from '../model/types';
-import removeIncompleteFirstDay from './removeIncompleteFirstDay';
 import { countDaysBetween } from '@shared/lib';
 
 /**
  * Calculates the number of days between consecutive completed entries.
  */
-function getCompletionGaps(
-	completedDays: CompletedDay[],
-	frequency: number
-): number[] {
+function getCompletionGaps(completedDays: CompletedDay[]): number[] {
 	const gaps: number[] = [];
-	const processedDays = removeIncompleteFirstDay(completedDays, frequency);
+	if (completedDays.length < 2) return gaps;
 
-	if (processedDays.length < 2) return gaps;
-
-	const dates = processedDays.map((day) => (
+	const dates = completedDays.map((day) => (
 		new Date(day.date)
 	));
 

@@ -1,5 +1,4 @@
-import { checkHabitCompletion, getStreaks, getTodayProgress, Habit } from '@entities/habit';
-import { getYesterday } from '@shared/lib';
+import { getStreaks, getTodayProgress, Habit, isYesterdayCompleted } from '@entities/habit';
 
 /**
  * Get stats for a specific habit.
@@ -7,19 +6,16 @@ import { getYesterday } from '@shared/lib';
  */
 function getHabitStats(habit: Habit) {
 	const {
-		completedDays,
-		frequency
+		completedDays
 	} = habit;
 
-	const yDay = getYesterday();
-
-	const [isYdayCompleted] = checkHabitCompletion(completedDays, frequency, yDay);
-	const { progress: todayProgress } = getTodayProgress({ completedDays, frequency });
-	const { currentStreak } = getStreaks(completedDays, frequency);
+	const isYdayCompleted = isYesterdayCompleted(completedDays);
+	const { isCompleted: isTodayCompleted } = getTodayProgress(habit);
+	const { currentStreak } = getStreaks(completedDays);
 
 	return {
+		isTodayCompleted,
 		isYdayCompleted,
-		todayProgress,
 		currentStreak
 	};
 }

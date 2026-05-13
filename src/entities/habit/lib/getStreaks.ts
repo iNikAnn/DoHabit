@@ -1,10 +1,9 @@
 import { Streak } from '../../../types/common';
 import { CompletedDay } from '../model/types';
-import removeIncompleteFirstDay from './removeIncompleteFirstDay';
 import { formatDate } from '@shared/lib';
 import { DAY_MS } from '@shared/const';
 
-interface GetStreaksResult {
+interface HabitStreaks {
 	allStreaks: Streak[];
 	currentStreak: number
 	longestStreak: number;
@@ -14,23 +13,18 @@ interface GetStreaksResult {
  * Calculates the current streak, longest streak, and all streaks
  * based on completed days.
  */
-function getStreaks(
-	completedDays: CompletedDay[],
-	frequency: number
-): GetStreaksResult {
-	const processedDays = removeIncompleteFirstDay(completedDays, frequency);
-
+function getStreaks(completedDays: CompletedDay[]): HabitStreaks {
 	// Return 'zero streaks' if the input array is empty
-	if (processedDays[0] === undefined) {
+	if (completedDays[0] === undefined) {
 		return { allStreaks: [], currentStreak: 0, longestStreak: 0 };
 	}
 
 	const allStreaks: Streak[] = [];
 	let currentSeries = 1;
-	let streakEnd = processedDays[0].date;
+	let streakEnd = completedDays[0].date;
 
 	// Map dates to timestamps
-	const daysWithTs = processedDays.map((day) => ({
+	const daysWithTs = completedDays.map((day) => ({
 		date: day.date,
 		ts: new Date(day.date).getTime()
 	}));
@@ -62,7 +56,7 @@ function getStreaks(
 	});
 
 	const todayMs = new Date(formatDate(new Date())).getTime();
-	const lastCompletedMs = new Date(processedDays[0].date).getTime();
+	const lastCompletedMs = new Date(completedDays[0].date).getTime();
 
 	// Streak is active if the last completion was today or yesterday
 	const isStreakActive = (todayMs - lastCompletedMs) / DAY_MS <= 1;
