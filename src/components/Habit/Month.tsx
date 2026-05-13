@@ -1,8 +1,8 @@
-import { formatDate } from '@shared/lib';
 import styles from '../../css/Month.module.css';
 import { ColorVariants } from '../../types/colorScheme';
 import { CompletedDay, getCompletedDatesSet } from '@entities/habit';
 import { useSettingsStore } from '@entities/settings';
+import { formatDate } from '@shared/lib';
 
 interface Props {
 	completedDays: CompletedDay[];
@@ -55,7 +55,8 @@ function Month(props: Props) {
 		(_, i) => new Date(date.getFullYear(), date.getMonth(), (i - shift + 1))
 	);
 
-	const checkedDates = getCompletedDatesSet(completedDays, ...dates);
+
+	const checkedDates = getCompletedDatesSet(completedDays, ...dates.map((d) => formatDate(d)));
 
 	const days = dates
 		.map((date, index) => {

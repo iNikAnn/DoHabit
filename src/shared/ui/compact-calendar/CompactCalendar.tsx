@@ -1,13 +1,13 @@
 import styles from './CompactCalendar.module.css';
 import clsx from 'clsx';
-import { formatDate } from '@shared/lib';
+import { formatDate, getDatesRange } from '@shared/lib';
 
 interface Props {
 	weeksCount?: number;
 	color?: string;
 	accentColor?: string;
 	highlightToday?: boolean;
-	getCompletedDates: (days: Date[]) => Set<string>;
+	getCompletedDates: (days: string[]) => Set<string>;
 }
 
 /**
@@ -28,21 +28,15 @@ function CompactCalendar(props: Props) {
 	// Total days: full previous weeks + days in current week
 	const totalDays = 7 * (weeksCount - 1) + (currentDayIndex || 7);
 
-	// Array of dates starting from Monday of the first week up to today, inclusive.
-	const allDays = Array.from({ length: totalDays }, (_, i) => {
-		const date = new Date(now);
-		date.setDate(now.getDate() - (totalDays - 1 - i));
-		date.setHours(0, 0, 0, 0);
-		return date;
-	});
+	const dateRange = getDatesRange(totalDays, { to: now });
 
 	// Group into weeks (columns)
-	const weeks: Date[][] = [];
-	for (let i = 0; i < allDays.length; i += 7) {
-		weeks.push(allDays.slice(i, i + 7));
+	const weeks: string[][] = [];
+	for (let i = 0; i < dateRange.length; i += 7) {
+		weeks.push(dateRange.slice(i, i + 7));
 	}
 
-	const completedDates = getCompletedDates(allDays);
+	const completedSet = getCompletedDates(dateRange);
 
 	return (
 		<div
@@ -52,12 +46,12 @@ function CompactCalendar(props: Props) {
 			{weeks.map((week, weekIndex) => (
 				<div key={weekIndex} className={styles.week}>
 					{week.map((date) => {
-						const isToday = date.toDateString() === now.toDateString();
-						const isCompleted = completedDates.has(formatDate(date));
+						const isToday = date === formatDate(now);
+						const isCompleted = completedSet.has(date);
 
 						return (
 							<div
-								key={date.toISOString()}
+								key={date}
 								style={{
 									backgroundColor: isCompleted ? accentColor : color
 								}}

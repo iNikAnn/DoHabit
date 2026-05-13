@@ -1,17 +1,15 @@
 import { CompletedDay } from '../model/types';
-import { formatDate } from '@shared/lib';
 
 /**
  * Resolves completed dates into a Set.
  */
-function getCompletedDatesSet(completedDays: CompletedDay[], ...dates: Date[]): Set<string> {
+function getCompletedDatesSet(completedDays: CompletedDay[], ...dates: string[]): Set<string> {
 	const result = new Set<string>();
 	if (completedDays.length === 0 || dates.length === 0) return result;
 
 	// Prepare targets and find the oldest one to set a deadline
-	const targetDateStrings = dates.map((d) => formatDate(d));
-	const oldestTarget = targetDateStrings.reduce((a, b) => a < b ? a : b);
-	const targetSet = new Set(targetDateStrings);
+	const oldestTarget = dates.reduce((a, b) => a < b ? a : b);
+	const targetSet = new Set(dates);
 
 	for (const entry of completedDays) {
 		// All targets found. Stop.
