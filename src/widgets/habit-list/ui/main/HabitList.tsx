@@ -5,13 +5,12 @@ import { useColorsStore } from '../../../../stores/colorsStore';
 import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
 import { getHabitStats } from '../../lib/getHabitStats';
 import { useHabitActions } from '../../lib/useHabitActions';
-import Calendar from '@shared/ui/calendar/main/Calendar';
 import { RestoreHabit } from '@features/restore-habit';
 import { UpdateHabitProgress } from '@features/update-habit-progress';
 import { getCompletedDatesSet, HabitCard, useHabitsStore } from '@entities/habit';
 import { useSettingsStore } from '@entities/settings';
 import { getColorVariants } from '@shared/lib';
-import { CompactCalendar } from '@shared/ui';
+import { Calendar, CompactCalendar } from '@shared/ui';
 
 interface HabitListProps {
 	isArchive?: boolean;

@@ -56,4 +56,4 @@ function Calendar(props: Props) {
 	);
 }
 
-export default Calendar;
+export { Calendar };

@@ -67,12 +67,12 @@ function Month(props: Props) {
 	const weekdays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 		.map((weekday, index) => {
 			const isToday = ((index + 1) % 7) === today.getDay();
-			const isThisMonth = today.getMonth() === monthDate.getMonth();
+			const isCurrentMonth = today.getMonth() === monthDate.getMonth();
 
 			return (
 				<div
 					key={weekday + Math.random()}
-					style={{ color: (isToday && isThisMonth) ? 'inherit' : softenedColor }}
+					style={{ color: (isToday && isCurrentMonth) ? 'inherit' : softenedColor }}
 					className={styles.weekday}
 				>
 					{weekday}
