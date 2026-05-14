@@ -2,7 +2,8 @@ import styles from './NoteForm.module.css';
 import { SubmitEventHandler } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { IoSend } from 'react-icons/io5';
+import TextareaAutosize from 'react-textarea-autosize';
+import { IoSend } from "react-icons/io5";
 import { FaPlus } from 'react-icons/fa';
 import { useNotesStore } from '@entities/note';
 import { Button, Overlay } from '@shared/ui';
@@ -94,8 +95,7 @@ function NoteForm(props: Props) {
 				<>
 					<Overlay
 						key='note-form-dialog'
-						// Calling via arrow function to avoid passing Event object
-						onClick={() => onClose()}
+						onClick={() => onClose()} // Calling via arrow function to avoid passing Event object
 					/>
 
 					{createPortal(
@@ -111,10 +111,11 @@ function NoteForm(props: Props) {
 							action='submit'
 							onSubmit={handleSubmitForm}
 						>
-							<input
-								type='search' // Using 'search' type to kill mobile autofill
+							<TextareaAutosize
 								name='note-input'
 								id='note-input'
+								minRows={1}
+								maxRows={10}
 								value={input}
 								onChange={(e) => onChange(e.target.value)}
 								placeholder='Enter your note here...'
@@ -128,12 +129,12 @@ function NoteForm(props: Props) {
 								icon={<IoSend />}
 
 								initial={{ opacity: 0, scale: 0 }}
-								animate={{ opacity: 1, scale: 0.8 }}
+								animate={{ opacity: 1, scale: 1 }}
 								exit={{ opacity: 0, scale: 0 }}
 								transition={{ duration: 0.2 }}
 
 								className={styles.actionButton}
-								disabled={!input.length}
+								disabled={!input.trim()}
 							/>
 						</motion.form>,
 						document.body
