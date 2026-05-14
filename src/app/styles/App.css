@@ -1,8 +1,8 @@
 .App {
-	padding: 1rem;
+	padding: 16px;
 	/* padding-top: calc(var(--header-height) + 1rem); */
 	padding-top: var(--header-height);
-	padding-bottom: var(--safe-area-max-inset-bottom);
+	padding-bottom: calc(var(--safe-area-max-inset-bottom) + 16px);
 }
 
 .text-button {

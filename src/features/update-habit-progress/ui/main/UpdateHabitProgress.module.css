@@ -23,7 +23,7 @@
 }
 
 .button.multiFrequency {
-	border-radius: 0 var(--border-radius-secondary) var(--border-radius-secondary) 0;
+	border-radius: 0 var(--border-radius-tertiary) var(--border-radius-tertiary) 0;
 }
 
 /* icon */
