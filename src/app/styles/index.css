@@ -71,3 +71,11 @@ input {
 li {
 	list-style: none;
 }
+
+textarea,
+input,
+button,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
