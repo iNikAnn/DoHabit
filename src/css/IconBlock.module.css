@@ -32,7 +32,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: var(--border-radius-secondary);
+	border-radius: var(--border-radius-tertiary);
 	background-color: var(--bg-color-primary);
 }
 

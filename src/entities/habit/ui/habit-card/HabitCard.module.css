@@ -1,12 +1,12 @@
 .habit {
 	/* position: relative; */
 	background-color: var(--bg-color-primary);
-	border-radius: var(--border-radius-primary);
+	border-radius: var(--border-radius-secondary);
 	overflow: hidden;
 }
 
 .contentWrapper {
-	padding: 0 0.6rem 0.6rem;
+	padding: 0 10px 10px;
 }
 
 @media screen and (min-width: 576px) {

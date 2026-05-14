@@ -8,7 +8,7 @@
 	flex-direction: column;
 
 	background-color: var(--bg-color-primary);
-	border-radius: var(--border-radius-primary);
+	border-radius: var(--border-radius-secondary);
 }
 
 .list li:not(:last-child) {

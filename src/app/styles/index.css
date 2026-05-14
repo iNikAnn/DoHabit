@@ -25,9 +25,9 @@
 	--bg-color-secondary: light-dark(hsl(0, 0%, 90%), hsl(0, 0%, 12%));
 	--bg-color-tertiary: light-dark(hsl(0, 0%, 80%), hsl(0, 0%, 20%));
 
-	--border-radius-primary: 1rem;
-	--border-radius-secondary: 0.6rem;
-	--border-radius-tertiary: 0.4rem;
+	--border-radius-primary: 30px;
+	--border-radius-secondary: 20px;
+	--border-radius-tertiary: 10px;
 
 	--input-height-primary: 3rem;
 }

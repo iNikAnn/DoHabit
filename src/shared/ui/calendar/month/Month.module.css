@@ -3,7 +3,7 @@
 	/* outline: 1px solid green; */
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	gap: 0.2rem;
+	gap: 3px;
 }
 
 /* weekday */
@@ -12,6 +12,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 7px;
 }
 
 .weekday,
