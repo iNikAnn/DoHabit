@@ -2,17 +2,19 @@
 .menuItem {
 	/* outline: 1px solid tomato; */
 	width: 100%;
+	height: auto;
 	padding: 1rem;
 
 	display: flex;
 	align-items: center;
+	justify-content: start;
 	gap: 1rem;
 
 	background-color: unset;
 }
 
 /* icon */
-.menuItem svg {
+.menuItem > svg:first-of-type {
 	width: 1.6rem;
 	height: 1.6rem;
 	flex-shrink: 0;
@@ -31,19 +33,12 @@
 	font-size: 1rem;
 }
 
-.desc {
+.description {
 	color: gray;
 	font-size: 0.8rem;
+	font-weight: normal;
 }
 
-/* arrow */
-.textWrapper + svg {
-	color: gray;
-	margin-left: auto;
-	width: 1.2rem;
-	height: 1.2rem;
-}
-
-.other {
+.extra {
 	margin-left: auto;
 }

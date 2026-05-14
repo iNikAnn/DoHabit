@@ -1,9 +1,11 @@
 export { Button } from './button/Button';
+export type { ButtonProps } from './button/types';
 export { Calendar } from './calendar/main/Calendar';
 export { CompactCalendar } from './compact-calendar/CompactCalendar';
-export type { ButtonProps } from './button/types';
 export * from './dialog';
 export * from './drawer';
+export { MenuList } from './menu-list/ui/MenuList';
+export type { MenuItemProps } from './menu-list/model/types';
 export { ModalLayout } from './modal-layout/ModalLayout';
 export { Overlay } from './overlay/Overlay';
 export { Placeholder } from './placeholder/Placeholder';
