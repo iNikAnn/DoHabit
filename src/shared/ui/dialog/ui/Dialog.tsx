@@ -1,9 +1,9 @@
 import styles from './Dialog.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useDialogStore } from '../model/store';
-import { Overlay } from '@shared/ui';
-import TextButton from '../../../../components/Actions/TextButton';
 import { createPortal } from 'react-dom';
+import { useNativeBackClose } from '@shared/lib';
+import { Overlay } from '@shared/ui';
 
 const dialogVariants = {
 	initial: { opacity: 0, y: '-40%', x: '-50%' },
@@ -21,6 +21,7 @@ const dialogVariants = {
 function Dialog() {
 	const content = useDialogStore((s) => s.content);
 	const closeDialog = useDialogStore((s) => s.close);
+	useNativeBackClose(Boolean(content), closeDialog)
 
 	return (
 		// @ts-ignore
@@ -59,13 +60,6 @@ function Dialog() {
 										))}
 									</div>
 								)}
-							</div>
-
-							<div className={styles.btnsWrapper}>
-								<TextButton
-									text="Close"
-									onClick={closeDialog}
-								/>
 							</div>
 						</motion.div>,
 						document.body

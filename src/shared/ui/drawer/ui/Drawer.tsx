@@ -3,6 +3,7 @@ import { Button, Overlay } from '@shared/ui';
 import { AnimatePresence, motion, PanInfo } from 'framer-motion'
 import { useDrawerStore } from '../model/store';
 import { createPortal } from 'react-dom';
+import { useNativeBackClose } from '@shared/lib';
 
 const drawerVariants = {
 	initial: { opacity: 0, y: '25%' },
@@ -17,6 +18,7 @@ const drawerVariants = {
 function Drawer() {
 	const content = useDrawerStore((s) => s.content);
 	const closeDrawer = useDrawerStore((s) => s.close);
+	useNativeBackClose(Boolean(content), closeDrawer);
 
 	const handleDragEnd = (_: any, info: PanInfo) => {
 		if (info.offset.y >= 100) {
