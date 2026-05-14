@@ -49,17 +49,13 @@ function Month(props: Props) {
 			<div
 				key={dayNum}
 				style={{
+					color: isCompleted ? 'inherit' : softenedColor,
 					backgroundColor: isCompleted ? baseColor : darkenedColor,
 					border: (isToday && highlightToday) ? '2px solid var(--color-primary)' : ''
 				}}
 				className={styles.day}
 			>
-				<small
-					style={{ color: isCompleted ? 'inherit' : softenedColor }}
-					className={styles.dayNum}
-				>
-					{dayNum}
-				</small>
+				{dayNum}
 			</div>
 		);
 	});
