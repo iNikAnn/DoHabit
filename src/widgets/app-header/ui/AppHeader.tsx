@@ -1,7 +1,6 @@
 import styles from './AppHeader.module.css';
 import { NAV_ITEMS } from '../model/navigation';
-import { Link } from 'react-router-dom';
-import IconButton from '../../../components/Actions/IconButton';
+import { Button } from '@shared/ui';
 
 /**
  * Main application header with navigation.
@@ -22,17 +21,14 @@ function AppHeader() {
 						const { path, title, icon: Icon } = item;
 
 						return (
-							<Link
+							<Button
 								key={item.path}
 								to={path}
-								// Passes title to ModalLayout's header via router state
 								state={{ modalTitle: title }}
+								className={styles.navItem}
 							>
-								<IconButton
-									icon={<Icon />}
-									text={title}
-								/>
-							</Link>
+								<Icon />
+							</Button>
 						);
 					})}
 				</ul>
