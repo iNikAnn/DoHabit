@@ -1,19 +1,8 @@
-/* dataTransfer */
-.dataTransfer {
+/* page */
+.page {
 	/* outline: 2px solid tomato; */
-	outline-offset: 1px;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-}
-
-/* placeholderWrapper */
-.placeholderWrapper {
-	/* outline: 2px solid green; */
-	position: relative;
-	height: 50%;
-}
-
-.placeholderWrapper:first-child {
-	border-bottom: 1px solid var(--bg-color-primary);
+	gap: 32px;
 }

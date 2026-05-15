@@ -1,58 +1,54 @@
 import styles from './DataManagementPage.module.css';
-import { BsDatabaseFillUp } from 'react-icons/bs';
-import { BsDatabaseFillDown } from 'react-icons/bs';
-import { ExportIcon, ImportIcon } from '@shared/assets';
-import { exportAppData, importAppData } from '@shared/lib';
-import { Placeholder } from '@shared/ui';
-
-// @ts-ignore
-const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
+import { ImFire } from 'react-icons/im';
+import { FaDownload, FaUpload } from 'react-icons/fa6';
+import { clearAppData } from '@features/data-management/clear-data';
+import { exportAppData } from '@features/data-management/export-data';
+import { importAppData } from '@features/data-management/import-data';
+import { MenuItemProps, MenuList } from '@shared/ui';
 
 /**
  * Handles data export and import (JSON backups).
  */
 function DataManagementPage() {
+	const backupItems: MenuItemProps[] = [
+		{
+			icon: FaUpload,
+			iconProps: { color: '#4cbe57' },
+			title: 'Export',
+			description: 'Save a backup data to your device',
+			onClick: exportAppData
+		},
+		{
+			icon: FaDownload,
+			iconProps: { color: '#728ad8' },
+			title: 'Import',
+			description: 'Upload your app data from a backup file',
+			onClick: importAppData
+		}
+	];
+
+	const dangerItems: MenuItemProps[] = [
+		{
+			icon: <ImFire style={{ color: 'IndianRed' }} />,
+			title: 'Clear All',
+			description: 'Delete all application data',
+			onClick: clearAppData
+		}
+	];
+
 	return (
-		<div className={styles.dataTransfer}>
-			<div className={styles.placeholderWrapper}>
-				<Placeholder
-					content={{
-						image: <ExportIcon />,
-						title: 'Export',
-						description: 'Save a backup of your habits data to your device.'
-					}}
-					action={{
-						label: 'Export Now',
-						icon: < BsDatabaseFillUp />,
-						color: '#57a639',
-						onClick: exportAppData
-					}}
-				/>
-			</div>
+		<div className={styles.page}>
+			<MenuList
+				title='Backup'
+				items={backupItems}
+			/>
 
-			<div className={styles.placeholderWrapper}>
-				<Placeholder
-					content={{
-						image: <ImportIcon />,
-						title: 'Import',
-						description: 'Upload your habits data from a backup file.'
-					}}
-					action={{
-						label: 'Import Now',
-						icon: <BsDatabaseFillDown />,
-						onClick: async () => {
-							const res = await importAppData();
-
-							if (res) {
-								window.alert('Data imported successfully! The application will now reload.');
-								window.location.href = PUBLIC_URL;
-							} else {
-								window.alert('Something went wrong during import.');
-							}
-						}
-					}}
-				/>
-			</div>
+			<MenuList
+				title='Danger Zone'
+				titleStyle={{ color: 'IndianRed' }}
+				listStyle={{ border: '2px solid IndianRed' }}
+				items={dangerItems}
+			/>
 		</div>
 	);
 }

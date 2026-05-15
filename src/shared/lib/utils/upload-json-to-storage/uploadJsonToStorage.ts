@@ -1,10 +1,11 @@
 import { writeLocalStorage } from '@shared/lib';
 
 /**
- * Imports application data from a JSON file and saves it to localStorage.
+ * Opens a file picker to select a JSON file and writes its content to localStorage.
  */
-function importAppData(): Promise<boolean> {
+function uploadJsonToStorage(): Promise<boolean> {
 	return new Promise((resolve) => {
+		// Create a hidden input to trigger the native file picker
 		const input = document.createElement('input');
 		input.type = 'file';
 		input.accept = '.json';
@@ -12,21 +13,25 @@ function importAppData(): Promise<boolean> {
 		input.onchange = async (e: Event) => {
 			const target = e.target as HTMLInputElement;
 			const file = target.files?.[0];
+
 			if (!file) {
 				resolve(false);
 				return;
-			};
+			}
 
 			try {
+				// Read file content as string and parse it
 				const data = await file.text();
 				const parsedData = JSON.parse(data) as Record<string, unknown>;
 
+				// Make sure data is a valid object
 				if (typeof parsedData !== 'object' || parsedData === null) {
 					console.error('Invalid JSON format.');
 					resolve(false);
 					return;
 				}
 
+				// Iterate through keys and dump everything into localStorage
 				for (const key in parsedData) {
 					if (!Object.hasOwn(parsedData, key)) continue;
 
@@ -42,8 +47,10 @@ function importAppData(): Promise<boolean> {
 		};
 
 		input.onerror = () => resolve(false);
+
+		// Trigger the picker
 		input.click();
 	});
 }
 
-export { importAppData };
+export { uploadJsonToStorage };
