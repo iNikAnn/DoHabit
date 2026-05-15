@@ -8,7 +8,7 @@ import { MenuList } from '@shared/ui';
  */
 function MenuPage() {
 	return (
-		<section className={styles.menu}>
+		<section className={styles.page}>
 			<MenuList
 				title='App'
 				items={appItems}

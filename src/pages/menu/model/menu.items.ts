@@ -27,10 +27,10 @@ export const appItems: MenuItemProps[] = [
 	{
 		icon: BsFillDatabaseFill,
 		iconProps: { color: '#77dd77' },
-		title: 'Export / Import Data',
-		description: 'Backup or restore your data',
+		title: 'Data Management',
+		description: 'Backup, restore, or clear app data',
 		to: getModalPath('DATA_MANAGEMENT'),
-		state: { modalTitle: 'Export/Import Data' },
+		state: { modalTitle: 'Data Management' },
 		indicator: { type: 'arrow' }
 	}
 ];
