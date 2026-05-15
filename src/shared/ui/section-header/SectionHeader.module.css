@@ -10,4 +10,11 @@
 /* title */
 .title {
 	/* outline: 1px solid tomato; */
+	font-size: 16px;
+}
+
+.actionWrapper {
+	display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }

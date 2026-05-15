@@ -1,19 +1,21 @@
 import styles from './AchievementsPage.module.css';
-
-// stores
+import { CSSProperties } from 'react';
 import { useAchievementsStore } from '../../../stores/achievementsStore';
-import { Placeholder, useDialogStore } from '@shared/ui';
-
-// components
-import SectionHeader from '../../../components/Containment/SectionHeader';
 import RegularAchievementCard from '../../../components/Achievements/RegularAchievementCard';
 import SecretAchievementCard from '../../../components/Achievements/SecretAchievementCard';
-
-// types
 import { Achievement } from '../../../types/achievement';
+import { Button, Placeholder, SectionHeader, useDialogStore } from '@shared/ui';
 
 // @ts-ignore
 const publicUrl = process.env.PUBLIC_URL ?? '/';
+
+const actionStyle: CSSProperties = {
+	height: 'auto',
+	color: 'dodgerblue',
+	backgroundColor: 'unset',
+	fontSize: '16px',
+	fontWeight: 'normal'
+};
 
 function AchievementsPage() {
 
@@ -44,13 +46,16 @@ function AchievementsPage() {
 			<section>
 				<SectionHeader
 					title='Streaks'
-					button={{
-						variant: 'text',
-						text: 'Show info',
-						onClick: () => openDialog({
-							text: 'To unlock an achievement, complete a streak of the required number of days in any of your habits.'
-						})
-					}}
+					action={(
+						<Button
+							style={actionStyle}
+							onClick={() => openDialog({
+								text: 'To unlock an achievement, complete a streak of the required number of days in any of your habits.'
+							})}
+						>
+							Show info
+						</Button>
+					)}
 				/>
 
 				<ul className={styles.regularAchievements}>
@@ -71,13 +76,16 @@ function AchievementsPage() {
 			<section>
 				<SectionHeader
 					title='Secret achievements'
-					button={{
-						variant: 'text',
-						text: 'Show info',
-						onClick: () => openDialog({
-							text: 'Surprise! These achievements are like unicorns — rare and totally unexpected!\nUse the app regularly, and you might just unlock some hidden achievements along the way!'
-						})
-					}}
+					action={(
+						<Button
+							style={actionStyle}
+							onClick={() => openDialog({
+								text: 'Surprise! These achievements are like unicorns — rare and totally unexpected!\nUse the app regularly, and you might just unlock some hidden achievements along the way!'
+							})}
+						>
+							Show info
+						</Button>
+					)}
 				/>
 
 				{sortedSecretAchievements.length ? (

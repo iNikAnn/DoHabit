@@ -1,8 +1,8 @@
 import styles from './MenuList.module.css';
 import { CSSProperties } from 'react';
-import SectionHeader from '../../../../components/Containment/SectionHeader';
 import { MenuItemProps } from '../model/types';
 import { MenuItem } from './MenuItem';
+import { SectionHeader } from '@shared/ui';
 
 interface Props {
 	title: string;
