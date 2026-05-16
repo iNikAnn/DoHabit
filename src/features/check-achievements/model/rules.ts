@@ -6,6 +6,15 @@ import { formatDate } from '@shared/lib';
 export const achievementRules: Record<AchievementId, (ctx: CheckContext) => boolean> = {
 	'fresh-start': ({ habits }) => habits.length > 0,
 
+	'ill-be-back': ({ habits }) => {
+		// Fast exit: need at least 5 habits
+		if (habits.length < 5) return false;
+
+		const archivedCount = habits.filter((h) => h.isArchived).length;
+
+		return archivedCount >= 5;
+	},
+
 	'overachiever-day': ({ habits }) => {
 		const todayStr = formatDate(new Date());
 
