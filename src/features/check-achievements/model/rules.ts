@@ -2,7 +2,7 @@ import { AchievementRules } from './types';
 import { getStreaks, getTodayProgress } from '@entities/habit';
 import { formatDate } from '@shared/lib';
 
-export const achievementRules: AchievementRules = {
+const habitAhievementRules: AchievementRules<'habit'> = {
 	'fresh-start': ({ habits }) => habits.length > 0,
 
 	'ill-be-back': ({ habits }) => {
@@ -86,4 +86,13 @@ export const achievementRules: AchievementRules = {
 			return isStartedJanFirst;
 		});
 	}))
+};
+
+const noteAhievementRules: AchievementRules<'note'> = {
+	'gravity-falls-journal': ({ notes }) => notes.length >= 7
+};
+
+export const achievementRules = {
+	...habitAhievementRules,
+	...noteAhievementRules
 };
