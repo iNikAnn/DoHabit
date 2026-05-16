@@ -6,6 +6,19 @@ import { formatDate } from '@shared/lib';
 export const achievementRules: Record<AchievementId, (ctx: CheckContext) => boolean> = {
 	'fresh-start': ({ habits }) => habits.length > 0,
 
+	'overachiever-day': ({ habits }) => {
+		const todayStr = formatDate(new Date());
+
+		// Filter out habits that match today's date format
+		const habitsCreatedToday = habits.filter((h) => {
+			if (!h.createdAt) return false;
+			return formatDate(new Date(h.createdAt)) === todayStr;
+		});
+
+		// Trigger achievement if 3 or more habits were spawned today
+		return habitsCreatedToday.length >= 3;
+	},
+
 	'new-years-resolution': ({ habits }) => habits.some((h) => {
 		if (!h.createdAt || h.completedDays.length === 0) return false;
 
