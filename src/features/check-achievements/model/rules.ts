@@ -1,9 +1,19 @@
 import { AchievementRules } from './types';
 import { getStreaks, getTodayProgress } from '@entities/habit';
-import { formatDate } from '@shared/lib';
+import { countDaysBetween, formatDate } from '@shared/lib';
 
 const habitAhievementRules: AchievementRules<'habit'> = {
 	'fresh-start': ({ habits }) => habits.length > 0,
+
+	'main-quest-abandoned': ({ habits }) => habits.some((h) => {
+		// Skip if the user actually started working on this habit
+		if (h.completedDays.length > 0) return false;
+
+		// Calculate the exact gap between creation date and today
+		const gap = countDaysBetween(new Date(h.createdAt), new Date());
+
+		return gap > 5;
+	}),
 
 	'ill-be-back': ({ habits }) => {
 		// Fast exit: need at least 5 habits
