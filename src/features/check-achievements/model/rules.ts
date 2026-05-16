@@ -1,9 +1,8 @@
-import { CheckContext } from './types';
-import { AchievementId } from '@entities/achievement';
+import { AchievementRules } from './types';
 import { getStreaks, getTodayProgress } from '@entities/habit';
 import { formatDate } from '@shared/lib';
 
-export const achievementRules: Record<AchievementId, (ctx: CheckContext) => boolean> = {
+export const achievementRules: AchievementRules = {
 	'fresh-start': ({ habits }) => habits.length > 0,
 
 	'ill-be-back': ({ habits }) => {
@@ -37,6 +36,22 @@ export const achievementRules: Record<AchievementId, (ctx: CheckContext) => bool
 			const { isCompleted } = getTodayProgress(h);
 			return isCompleted;
 		});
+	},
+
+	'time-traveler': ({ habits }) => {
+		// Calculate total usages of the "Yesterday" button across all habits
+		const totalLateCompletions = habits.reduce((acc, h) => {
+			if (!h.completedDays) return acc;
+
+			const lateCount = h.completedDays.reduce(
+				(count, day) => count + (day.isCompYdayBtnUsed ? 1 : 0),
+				0
+			);
+
+			return acc + lateCount;
+		}, 0);
+
+		return totalLateCompletions >= 5;
 	},
 
 	'new-years-resolution': ({ habits }) => habits.some((h) => {
