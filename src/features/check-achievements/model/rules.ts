@@ -89,7 +89,9 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 };
 
 const noteAhievementRules: AchievementRules<'note'> = {
-	'gravity-falls-journal': ({ notes }) => notes.length >= 7
+	'gravity-falls-journal': ({ notes }) => notes.length >= 7,
+
+	'not-twitter-approved': ({ notes }) => notes && notes.some((n) => n.text && n.text.length > 140)
 };
 
 export const achievementRules = {
