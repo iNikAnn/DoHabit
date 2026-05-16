@@ -39,7 +39,9 @@ function Button(props: ButtonProps) {
 
 	const innerContent = (
 		<>
-			{renderIcon(icon, iconProps)}
+			{typeof icon === 'string'
+				? <img src={icon} alt='icon' />
+				: renderIcon(icon, iconProps)}
 			{children}
 			{Indicator && <Indicator style={indicator?.style} className={styles.indicator} />}
 		</>

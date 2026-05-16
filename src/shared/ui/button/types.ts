@@ -11,7 +11,7 @@ export type ButtonIndicator = 'arrow' | 'external' | 'none';
 export interface ButtonProps extends HTMLMotionProps<'button'> {
 	to?: string;
 	state?: Record<string, unknown>;
-	icon?: ReactNode | IconType;
+	icon?: ReactNode | IconType | string;
 	iconProps?: IconProps;
 	children?: ReactNode;
 	indicator?: {
