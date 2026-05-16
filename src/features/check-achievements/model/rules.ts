@@ -1,6 +1,6 @@
 import { CheckContext } from './types';
 import { AchievementId } from '@entities/achievement';
-import { getStreaks } from '@entities/habit';
+import { getStreaks, getTodayProgress } from '@entities/habit';
 import { formatDate } from '@shared/lib';
 
 export const achievementRules: Record<AchievementId, (ctx: CheckContext) => boolean> = {
@@ -17,6 +17,17 @@ export const achievementRules: Record<AchievementId, (ctx: CheckContext) => bool
 
 		// Trigger achievement if 3 or more habits were spawned today
 		return habitsCreatedToday.length >= 3;
+	},
+
+	'perfect-day': ({ habits }) => {
+		// Fast exit: need at least 3 habits to qualify for a perfect day
+		if (!habits || habits.length < 3) return false;
+
+		// Every single habit must be checked off for the current day
+		return habits.every((h) => {
+			const { isCompleted } = getTodayProgress(h);
+			return isCompleted;
+		});
 	},
 
 	'new-years-resolution': ({ habits }) => habits.some((h) => {
