@@ -129,7 +129,15 @@ const noteAhievementRules: AchievementRules<'note'> = {
 		if (!latestNote) return false;
 
 		const noteHour = new Date(latestNote.createdAt).getHours();
-		return noteHour > 4 && noteHour < 9;
+		return noteHour >= 4 && noteHour <= 8;
+	},
+
+	'gotham-protector': ({ notes }) => {
+		const latestNote = notes.at(-1);
+		if (!latestNote) return false;
+
+		const noteHour = new Date(latestNote.createdAt).getHours();
+		return noteHour >= 0 && noteHour <= 3;
 	},
 
 	'tolstoy-mode': ({ notes }) => {
