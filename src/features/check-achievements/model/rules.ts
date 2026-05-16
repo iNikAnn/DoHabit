@@ -107,6 +107,16 @@ const noteAhievementRules: AchievementRules<'note'> = {
 
 		const noteHour = new Date(latestNote.createdAt).getHours();
 		return noteHour > 4 && noteHour < 9;
+	},
+
+	'tolstoy-mode': ({ notes }) => {
+		// Fast exit: no need to count characters if there aren't even 100 notes yet
+		if (!notes || notes.length < 100) return false;
+
+		// Simple sum run only when it actually makes sense
+		const totalChars = notes.reduce((count, n) => count + n.text.length, 0);
+
+		return totalChars >= 10_000;
 	}
 };
 
