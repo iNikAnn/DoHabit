@@ -20,6 +20,8 @@ export const achievementRules: Record<AchievementId, (ctx: CheckContext) => bool
 		return firstCompletedDay?.date === janFirstStr;
 	}),
 
+	'accumulated-year': ({ habits }) => habits.some((h) => h.completedDays && h.completedDays.length >= 365),
+
 	'perfect-year': (({ habits }) => habits.some((h) => {
 		// Fast exit: if total completed days are less than a year
 		if (!h.completedDays || h.completedDays.length < 365) return false;
