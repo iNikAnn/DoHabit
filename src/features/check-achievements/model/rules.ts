@@ -9,7 +9,10 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 		// Fast exit: need at least 5 habits
 		if (habits.length < 5) return false;
 
-		const archivedCount = habits.filter((h) => h.isArchived).length;
+		const archivedCount = habits.reduce(
+			(count, h) => count + (h.isArchived ? 1 : 0),
+			0
+		);
 
 		return archivedCount >= 5;
 	},
@@ -17,14 +20,13 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 	'overachiever-day': ({ habits }) => {
 		const todayStr = formatDate(new Date());
 
-		// Filter out habits that match today's date format
-		const habitsCreatedToday = habits.filter((h) => {
-			if (!h.createdAt) return false;
-			return formatDate(new Date(h.createdAt)) === todayStr;
-		});
+		const createdTodayCount = habits.reduce(
+			(count, h) => count + (formatDate(new Date(h.createdAt)) === todayStr ? 1 : 0),
+			0
+		);
 
 		// Trigger achievement if 3 or more habits were spawned today
-		return habitsCreatedToday.length >= 3;
+		return createdTodayCount >= 3;
 	},
 
 	'perfect-day': ({ habits }) => {
@@ -55,6 +57,7 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 	},
 
 	'new-years-resolution': ({ habits }) => habits.some((h) => {
+		// Fast exit: if total completed days array is empty
 		if (!h.createdAt || h.completedDays.length === 0) return false;
 
 		const creationDate = (new Date(h.createdAt));
@@ -91,7 +94,20 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 const noteAhievementRules: AchievementRules<'note'> = {
 	'gravity-falls-journal': ({ notes }) => notes.length >= 7,
 
-	'not-twitter-approved': ({ notes }) => notes && notes.some((n) => n.text && n.text.length > 140)
+	'not-twitter-approved': ({ notes }) => {
+		const latestNote = notes.at(-1);
+		if (!latestNote) return false;
+
+		return latestNote.text.length > 140;
+	},
+
+	'diane-morning-log': ({ notes }) => {
+		const latestNote = notes.at(-1);
+		if (!latestNote) return false;
+
+		const noteHour = new Date(latestNote.createdAt).getHours();
+		return noteHour > 4 && noteHour < 9;
+	}
 };
 
 export const achievementRules = {
