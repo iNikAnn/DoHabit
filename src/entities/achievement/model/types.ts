@@ -16,11 +16,12 @@ export interface Achievement {
 	id: string;
 	title: string;
 	description: string;
+	icon: string;
 	isSecret?: boolean;
 }
 
 export interface AchievementState {
-	// Stores key-value as { "achievement-id": "2026-05-15" }
-	unlockedAt: Partial<Record<AchievementId, string>>;
+	// Stores key-value as { "achievement-id": "1234567890123" }
+	unlockedAt: Partial<Record<AchievementId, number>>;
 	unlock: (id: AchievementId) => void;
 }
