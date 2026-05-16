@@ -11,6 +11,7 @@ function MenuItem(props: MenuItemProps) {
 	const {
 		title,
 		description,
+		iconSize,
 		truncateDescription,
 		indicator = {},
 		extra,
@@ -19,7 +20,10 @@ function MenuItem(props: MenuItemProps) {
 
 	return (
 		<Button
-			className={styles.menuItem}
+			className={clsx(
+				styles.menuItem,
+				iconSize && styles[iconSize]
+			)}
 			indicator={{
 				type: 'none',
 				style: {

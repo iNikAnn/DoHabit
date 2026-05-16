@@ -16,9 +16,21 @@
 /* icon */
 .menuItem > svg:first-of-type,
 .menuItem > img:first-of-type {
-	width: 1.6rem;
-	height: 1.6rem;
+	width: 26px;
+	height: 26px;
 	flex-shrink: 0;
+}
+
+.menuItem.sm > svg:first-of-type,
+.menuItem.sm > img:first-of-type {
+	width: 16px;
+	height: 16px;
+}
+
+.menuItem.lg > svg:first-of-type,
+.menuItem.lg > img:first-of-type {
+	width: 48px;
+	height: 48px;
 }
 
 /* textWrapper */

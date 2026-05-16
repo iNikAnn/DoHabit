@@ -49,6 +49,7 @@ function AchievementList() {
 	return (
 		<MenuList
 			items={achievements}
+			iconSize='lg'
 			truncateDescription
 		/>
 	);

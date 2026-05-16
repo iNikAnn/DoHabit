@@ -1,6 +1,6 @@
 import styles from './MenuList.module.css';
 import { CSSProperties, ReactNode } from 'react';
-import { MenuItemProps } from '../model/types';
+import { ItemIconSize, MenuItemProps } from '../model/types';
 import { MenuItem } from './MenuItem';
 import { SectionHeader } from '@shared/ui';
 
@@ -10,6 +10,7 @@ interface Props {
 	categoryStyle?: CSSProperties;
 	titleStyle?: CSSProperties;
 	listStyle?: CSSProperties;
+	iconSize?: ItemIconSize;
 	truncateDescription?: boolean;
 	items: MenuItemProps[];
 }
@@ -24,6 +25,7 @@ function MenuList(props: Props) {
 		categoryStyle,
 		titleStyle,
 		listStyle,
+		iconSize,
 		truncateDescription,
 		items
 	} = props;
@@ -49,6 +51,7 @@ function MenuList(props: Props) {
 					<li key={item.title}>
 						<MenuItem
 							{...item}
+							iconSize={iconSize}
 							truncateDescription={truncateDescription}
 						/>
 					</li>
