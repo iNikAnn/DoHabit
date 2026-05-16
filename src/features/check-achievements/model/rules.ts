@@ -12,7 +12,20 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 		// Calculate the exact gap between creation date and today
 		const gap = countDaysBetween(new Date(h.createdAt), new Date());
 
-		return gap > 5;
+		return gap >= 6;
+	}),
+
+	'habit-vacation-over': ({ habits }) => habits.some((h) => {
+		if (h.completedDays.length < 2) return false;
+
+		const lastDay = h.completedDays.at(0);
+		const prevDay = h.completedDays.at(1);
+
+		if (!lastDay || !prevDay) return false;
+
+		const gap = countDaysBetween(new Date(lastDay.date), new Date(prevDay.date));
+
+		return gap >= 21;
 	}),
 
 	'ill-be-back': ({ habits }) => {
