@@ -14,7 +14,8 @@
 }
 
 /* icon */
-.menuItem > svg:first-of-type {
+.menuItem > svg:first-of-type,
+.menuItem > img:first-of-type {
 	width: 1.6rem;
 	height: 1.6rem;
 	flex-shrink: 0;
@@ -27,6 +28,7 @@
 	flex-direction: column;
 	gap: 0.4rem;
 	text-align: left;
+	overflow: hidden;
 }
 
 .title {
@@ -37,6 +39,12 @@
 	color: gray;
 	font-size: 0.8rem;
 	font-weight: normal;
+}
+
+.description.truncate {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .extra {

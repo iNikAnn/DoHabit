@@ -1,4 +1,5 @@
 import styles from './MenuItem.module.css';
+import clsx from 'clsx';
 import { MenuItemProps } from '../model/types';
 import { Button } from '@shared/ui';
 
@@ -10,6 +11,7 @@ function MenuItem(props: MenuItemProps) {
 	const {
 		title,
 		description,
+		truncateDescription,
 		indicator = {},
 		extra,
 		...rest
@@ -34,14 +36,19 @@ function MenuItem(props: MenuItemProps) {
 					{title}
 				</h3>
 
-				<small className={styles.description}>
+				<small className={clsx(
+					styles.description,
+					truncateDescription && styles.truncate
+				)}>
 					{description}
 				</small>
 			</div>
 
-			<div className={styles.extra}>
-				{extra}
-			</div>
+			{extra && (
+				<div className={styles.extra}>
+					{extra}
+				</div>
+			)}
 		</Button>
 	);
 }
