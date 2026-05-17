@@ -1,7 +1,7 @@
 export interface Settings {
+	theme?: 'light' | 'dark';
 	calendarView?: 'default' | 'compact';
 	calendarHighlightToday?: boolean;
-	isDarkSchemeForced?: boolean;
 }
 
 export interface UpdateSettings {

@@ -1,5 +1,6 @@
 import styles from './AppearancePage.module.css';
 import { useSettingsStore } from '@entities/settings';
+import { ThemeSettings } from '@widgets/theme-settings';
 import { MenuItemProps, MenuList, Switch } from '@shared/ui';
 
 /**
@@ -7,24 +8,6 @@ import { MenuItemProps, MenuList, Switch } from '@shared/ui';
  */
 function AppearancePage() {
 	const { settings, settingsDispatch } = useSettingsStore();
-
-	const colorItems: MenuItemProps[] = [
-		{
-			title: 'Force Dark Mode',
-			description: `Current: ${settings.isDarkSchemeForced ? 'Dark' : 'System'}`,
-			extra: (
-				<Switch
-					isActive={!!settings.isDarkSchemeForced}
-					onClick={() => settingsDispatch({
-						type: 'updateSettings',
-						payload: {
-							isDarkSchemeForced: !settings.isDarkSchemeForced
-						}
-					})}
-				/>
-			)
-		}
-	];
 
 	const calendarItems: MenuItemProps[] = [
 		{
@@ -65,10 +48,7 @@ function AppearancePage() {
 
 	return (
 		<section className={styles.appearance}>
-			<MenuList
-				title='Color Theme'
-				items={colorItems}
-			/>
+			<ThemeSettings />
 
 			<MenuList
 				title='Calendar'
