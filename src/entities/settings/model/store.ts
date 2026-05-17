@@ -44,7 +44,11 @@ const customStorage = {
 export const useSettingsStore = create<SettingsState>()(
 	persist(
 		(set) => ({
-			settings: {},
+			settings: {
+				calendarHighlightToday: true,
+				calendarShowDayNames: true,
+				calendarShowDayNumbers: true
+			},
 
 			settingsDispatch: (action) => set(
 				(s) => ({ settings: settingsReducer(s.settings, action) })

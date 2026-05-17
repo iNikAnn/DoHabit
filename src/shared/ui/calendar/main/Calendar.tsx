@@ -3,19 +3,23 @@ import { ColorVariants } from '../../../../types/colorScheme';
 import Month from '../month/Month';
 import { countDaysBetween, getDatesRange } from '@shared/lib';
 
-interface Props {
+interface CalendarProps {
 	colorVariants: ColorVariants;
 	highlightToday?: boolean;
+	showDayNames?: boolean;
+	showDayNumbers?: boolean;
 	getCompletedDates: (days: string[]) => Set<string>;
 }
 
 /**
  * Main calendar component.
  */
-function Calendar(props: Props) {
+function Calendar(props: CalendarProps) {
 	const {
 		colorVariants,
 		highlightToday,
+		showDayNames,
+		showDayNumbers,
 		getCompletedDates,
 	} = props;
 
@@ -49,6 +53,8 @@ function Calendar(props: Props) {
 						completedSet={completedSet}
 						colorVariants={colorVariants}
 						highlightToday={highlightToday}
+						showDayNames={showDayNames}
+						showDayNumbers={showDayNumbers}
 					/>
 				);
 			}).reverse()} {/* Sort months from oldest to newest */}

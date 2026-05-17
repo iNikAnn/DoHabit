@@ -8,6 +8,8 @@ interface Props {
 	completedSet: Set<string>;
 	colorVariants: ColorVariants;
 	highlightToday?: boolean;
+	showDayNames?: boolean;
+	showDayNumbers?: boolean;
 }
 
 /**
@@ -23,7 +25,9 @@ function Month(props: Props) {
 			darkenedColor,
 			softenedColor
 		},
-		highlightToday
+		highlightToday,
+		showDayNames,
+		showDayNumbers
 	} = props;
 
 	const year = monthDate.getFullYear();
@@ -55,26 +59,27 @@ function Month(props: Props) {
 				}}
 				className={styles.day}
 			>
-				{dayNum}
+				{showDayNumbers && dayNum}
 			</div>
 		);
 	});
 
-	const weekdays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
-		.map((weekday, index) => {
+	const weekdays = showDayNames
+		? ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((weekday, index) => {
 			const isToday = ((index + 1) % 7) === today.getDay();
 			const isCurrentMonth = today.getMonth() === monthDate.getMonth();
 
 			return (
 				<div
-					key={weekday + Math.random()}
+					key={weekday}
 					style={{ color: (isToday && isCurrentMonth) ? 'inherit' : softenedColor }}
 					className={styles.weekday}
 				>
 					{weekday}
 				</div>
 			);
-		});
+		})
+		: null;
 
 	return (
 		<div className={styles.month}>

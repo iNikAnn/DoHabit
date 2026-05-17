@@ -53,6 +53,8 @@ function HabitList(props: HabitListProps) {
 					const calendarProps = {
 						colorVariants,
 						highlightToday: settings.calendarHighlightToday,
+						showDayNames: settings.calendarShowDayNames,
+						showDayNumbers: settings.calendarShowDayNumbers,
 						getCompletedDates: (days: string[]) => (
 							getCompletedDatesSet(habit.completedDays, ...days)
 						)
