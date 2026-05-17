@@ -1,7 +1,6 @@
 import styles from './HabitList.module.css';
 import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
-import { useColorsStore } from '../../../../stores/colorsStore';
 import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
 import { getHabitStats } from '../../lib/getHabitStats';
 import { useHabitActions } from '../../lib/useHabitActions';
@@ -9,7 +8,7 @@ import { RestoreHabit } from '@features/restore-habit';
 import { UpdateHabitProgress } from '@features/update-habit-progress';
 import { getCompletedDatesSet, HabitCard, useHabitsStore } from '@entities/habit';
 import { useSettingsStore } from '@entities/settings';
-import { getColorVariants } from '@shared/lib';
+import { getAppPalette } from '@shared/lib';
 import { Calendar, CompactCalendar } from '@shared/ui';
 
 interface HabitListProps {
@@ -27,7 +26,7 @@ function HabitList(props: HabitListProps) {
 
 	const habits = useHabitsStore((s) => s.habits);
 	const settings = useSettingsStore((s) => s.settings);
-	const colors = useColorsStore((s) => s.colors);
+	const palette = getAppPalette();
 	const { openHabitMenu } = useHabitActions();
 
 	// Filter habits based on mode
@@ -44,7 +43,7 @@ function HabitList(props: HabitListProps) {
 			{/* @ts-ignore */}
 			<AnimatePresence initial={false}>
 				{filteredHabits.map((habit) => {
-					const colorVariants = getColorVariants(colors[habit.colorIndex]);
+					const colorVariants = palette[habit.colorIndex] ?? palette[0]!;
 					const habitStats = getHabitStats(habit);
 
 					const headerAction = isArchive

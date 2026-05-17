@@ -1,7 +1,7 @@
 import styles from '../../css/ColorBlock.module.css';
-import { useColorsStore } from '../../stores/colorsStore';
-import { Habit } from '@entities/habit';
 import { FaCheck } from 'react-icons/fa';
+import { Habit } from '@entities/habit';
+import { getAppPalette } from '@shared/lib';
 
 interface Props {
 	habits: Habit[];
@@ -9,10 +9,9 @@ interface Props {
 }
 
 function ColorBlock({ habits, currentColorIndex = 0 }: Props) {
+	const palette = getAppPalette();
 
-	const dbColors = useColorsStore((s) => s.colors);
-
-	const colorList = dbColors.map((color, index) => {
+	const colorList = palette.map(({ baseColor: color }, index) => {
 		const isColorUsed = habits.find((habit) => Number(habit.colorIndex) === index);
 
 		return (
