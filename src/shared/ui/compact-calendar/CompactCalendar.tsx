@@ -15,7 +15,7 @@ interface Props {
  */
 function CompactCalendar(props: Props) {
 	const {
-		weeksCount = 24,
+		weeksCount = 20,
 		colorVariants: {
 			baseColor,
 			darkenedColor

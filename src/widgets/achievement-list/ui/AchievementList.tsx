@@ -1,5 +1,5 @@
 import { Achievement, AchievementId, ACHIEVEMENTS, useAchievementsStore } from '@entities/achievement';
-import { MenuItemProps, MenuList, Placeholder, useDialogStore } from '@shared/ui';
+import { ListItemProps, List, Placeholder, useDialogStore } from '@shared/ui';
 
 /**
  * Render a sorted list of unlocked user achievements.
@@ -22,7 +22,7 @@ function AchievementList() {
 	};
 
 	// Filter, sort by newest unlock date, and map to list items
-	const achievements: MenuItemProps[] = ACHIEVEMENTS
+	const achievements: ListItemProps[] = ACHIEVEMENTS
 		.filter((a) => unlockedAt[a.id])
 		.sort((a, b) => unlockedAt[b.id]! - unlockedAt[a.id]!)
 		.map((a) => ({
@@ -47,7 +47,7 @@ function AchievementList() {
 
 	// 2. Render list
 	return (
-		<MenuList
+		<List
 			items={achievements}
 			iconSize='lg'
 			truncateDescription

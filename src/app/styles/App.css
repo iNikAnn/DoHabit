@@ -4,10 +4,3 @@
 	padding-top: var(--header-height);
 	padding-bottom: calc(var(--safe-area-max-inset-bottom) + 16px);
 }
-
-.text-button {
-	background-color: transparent;
-	color: dodgerblue;
-	font-size: inherit;
-	font-family: inherit;
-}
