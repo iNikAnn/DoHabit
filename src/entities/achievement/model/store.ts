@@ -1,25 +1,30 @@
 import { create } from 'zustand';
 import { AchievementState } from './types';
-import { formatDate } from '@shared/lib';
+import { persist } from 'zustand/middleware';
+import { STORAGE_KEYS } from '@shared/const';
 
 /**
  * Manages the state of unlocked achievements and their timestamps.
  */
 export const useAchievementsStore = create<AchievementState>()(
-	// TODO: use persist
-	(set) => ({
-		unlockedAt: {},
+	persist(
+		(set) => ({
+			unlockedAt: {},
 
-		unlock: (id) => set((state) => {
-			// Prevent overwriting the unlock date if already achieved
-			if (state.unlockedAt[id]) return state;
+			unlock: (id) => set((state) => {
+				// Prevent overwriting the unlock date if already achieved
+				if (state.unlockedAt[id]) return state;
 
-			return {
-				unlockedAt: {
-					...state.unlockedAt,
-					[id]: formatDate(new Date())
-				}
-			};
-		})
-	})
+				return {
+					unlockedAt: {
+						...state.unlockedAt,
+						[id]: new Date().getTime()
+					}
+				};
+			})
+		}),
+		{
+			name: STORAGE_KEYS.ACHIEVEMENTS
+		}
+	)
 );

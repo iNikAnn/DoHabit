@@ -11,7 +11,7 @@ function exportAppData() {
 		const data = {
 			[STORAGE_KEYS.HABITS]: readLocalStorage(STORAGE_KEYS.HABITS),
 			[STORAGE_KEYS.NOTES]: readLocalStorage(STORAGE_KEYS.NOTES),
-			// achievements: readLocalStorage('achievements')
+			[STORAGE_KEYS.ACHIEVEMENTS]: readLocalStorage(STORAGE_KEYS.ACHIEVEMENTS)
 		};
 
 		const jsonStr = JSON.stringify(data);
