@@ -7,11 +7,11 @@ import { Habit } from '../model/types';
 function checkHabitTitleExistence(
 	habits: Habit[],
 	input: string,
-	currentHabit?: Habit
+	initialHabit?: Habit
 ): boolean {
 	return habits.some((habit) => (
-		habit.title === input &&
-		habit.title !== currentHabit?.title
+		habit.title.toLowerCase() === input.trim().toLowerCase() &&
+		habit.id !== initialHabit?.id
 	));
 }
 
