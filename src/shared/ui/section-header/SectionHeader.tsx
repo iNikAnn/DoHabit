@@ -5,18 +5,18 @@ import { CSSProperties, ReactNode } from 'react';
 interface Props {
 	title: string
 	titleStyle?: CSSProperties;
-	action?: ReactNode;
+	extra?: ReactNode;
 }
 
 /**
  * Generic layout component that displays a section title
- * with an optional action slot on the opposite side.
+ * with an optional extra slot on the opposite side.
  */
 function SectionHeader(props: Props) {
 	const {
 		title,
 		titleStyle,
-		action
+		extra
 	} = props;
 
 	return (
@@ -28,9 +28,9 @@ function SectionHeader(props: Props) {
 				{startCase(title)}
 			</h4>
 
-			{action && (
-				<div className={styles.actionWrapper}>
-					{action}
+			{extra && (
+				<div className={styles.extraWrapper}>
+					{extra}
 				</div>
 			)}
 		</div>

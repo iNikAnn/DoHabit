@@ -9,7 +9,7 @@ import { SectionHeader } from '@shared/ui';
 function List(props: ListProps) {
 	const {
 		title,
-		action,
+		extra,
 		categoryStyle,
 		titleStyle,
 		listStyle,
@@ -27,7 +27,7 @@ function List(props: ListProps) {
 				<SectionHeader
 					title={title}
 					titleStyle={titleStyle}
-					action={action}
+					extra={extra}
 				/>
 			)}
 

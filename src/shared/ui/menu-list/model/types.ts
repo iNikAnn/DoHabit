@@ -13,7 +13,7 @@ export interface ListItemProps extends ButtonProps {
 
 export interface ListProps {
 	title?: string;
-	action?: ReactNode;
+	extra?: ReactNode;
 	categoryStyle?: CSSProperties;
 	titleStyle?: CSSProperties;
 	listStyle?: CSSProperties;
