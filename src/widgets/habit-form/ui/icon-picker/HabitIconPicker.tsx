@@ -1,38 +1,42 @@
-import styles from '../../css/IconBlock.module.css';
+import styles from './HabitIconPicker.module.css';
 import { ElementType, useState } from 'react';
-import { groupBy, pick } from 'es-toolkit';
+import { groupBy, pick, upperFirst } from 'es-toolkit';
 import { Habit, HABIT_ICONS } from '@entities/habit';
+import { Button, SectionHeader } from '@shared/ui';
 
 interface Props {
 	habits: Habit[];
-	currentIconTitle?: string;
+	initialIconTitle?: string;
 }
 
-function IconBlock({ habits, currentIconTitle = 'default' }: Props) {
-
+function HabitIconPicker({ habits, initialIconTitle = 'default' }: Props) {
 	const [showMore, setShowMore] = useState(false);
-	const [selectedIcon, setSelectedIcon] = useState(currentIconTitle);
+	const [selectedIcon, setSelectedIcon] = useState(initialIconTitle);
 
+	const usedIcons = new Set(habits.map((h) => h.iconTitle));
 	const groupedIcons = groupBy(HABIT_ICONS, (icon) => icon.category);
 
 	// Only show the 'Featured' group unless 'showMore' is toggled
 	const visibleIcons = showMore
 		? groupedIcons
-		: pick(groupedIcons, ['Featured']);
+		: pick(groupedIcons, ['featured']);
 
 	return (
 		<section>
-			<div className={styles.header}>
-				<h3>Icon</h3>
-
-				<button
-					type='button'
-					className='text-button'
-					onClick={() => setShowMore((state) => !state)}
-				>
-					{'Show ' + (showMore ? 'less' : 'more')}
-				</button>
-			</div>
+			<SectionHeader
+				title='Icon'
+				description={habits.length > 0
+					? 'Faded icons are already in use. You can still reuse them.'
+					: undefined}
+				extra={(
+					<Button
+						className={styles.showMoreButton}
+						onClick={() => setShowMore((state) => !state)}
+					>
+						{'Show ' + (showMore ? 'less' : 'more')}
+					</Button>
+				)}
+			/>
 
 			<div className={styles.iconCategoryList}>
 				<input
@@ -45,25 +49,22 @@ function IconBlock({ habits, currentIconTitle = 'default' }: Props) {
 				/>
 
 				{Object.entries(visibleIcons).map(([category, icons], index) => (
-					<div
-						key={category}
-
-					>
-						{category !== 'Featured' && (
+					<div key={category}>
+						{category !== 'featured' && (
 							<small className={styles.iconCategoryName}>
-								{category}
+								{upperFirst(category)}
 							</small>
 						)}
 
 						<div className={styles.iconList}>
 							{icons.map(({ iconTitle, icon }, index) => {
 								const IconComponent = icon as ElementType;
-								const isIconUsed = habits.find((habit) => habit.iconTitle === iconTitle);
+								const isUsed = usedIcons.has(iconTitle);
 
 								return (
 									<label
 										key={iconTitle}
-										style={{ transform: isIconUsed ? 'scale(0.75)' : '' }}
+										style={{ opacity: isUsed ? 0.5 : 1 }}
 										className={styles.iconLabel}
 									>
 										<input
@@ -72,7 +73,7 @@ function IconBlock({ habits, currentIconTitle = 'default' }: Props) {
 											id={iconTitle}
 											value={iconTitle}
 											onChange={(e) => setSelectedIcon(e.target.value)}
-											defaultChecked={iconTitle === currentIconTitle || (!currentIconTitle && !index)}
+											defaultChecked={iconTitle === initialIconTitle || (!initialIconTitle && !index)}
 										/>
 
 										<IconComponent />
@@ -87,4 +88,4 @@ function IconBlock({ habits, currentIconTitle = 'default' }: Props) {
 	);
 }
 
-export default IconBlock;
+export default HabitIconPicker;

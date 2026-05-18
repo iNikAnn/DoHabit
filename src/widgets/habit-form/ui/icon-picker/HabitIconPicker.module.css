@@ -1,9 +1,9 @@
-/* header */
-.header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 0.6rem;
+.showMoreButton {
+	height: auto;
+	background-color: unset;
+	padding: 0;
+	color: dodgerblue;
+	font-size: inherit;
 }
 
 .iconCategoryList {
@@ -15,16 +15,18 @@
 
 .iconCategoryName {
 	display: block;
+	padding-left: 16px;
 	margin-bottom: 0.6rem;
+	color: var(--color-secondary);
 }
 
 /* iconList */
 .iconList {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	grid-auto-rows: 2rem;
+	grid-auto-rows: 32px;
 	justify-content: space-between;
-	gap: 0.4rem;
+	gap: 8px;
 }
 
 /* label */
@@ -37,8 +39,9 @@
 }
 
 .iconLabel:has(:checked) {
-	background-color: var(--bg-color-secondary);
-	outline: 2px solid dodgerblue;
+	outline: 2px solid var(--color-primary);
+	color: var(--color-primary);
+	opacity: 1 !important;
 }
 
 /* input */
