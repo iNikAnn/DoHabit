@@ -1,24 +1,12 @@
-import styles from './MenuList.module.css';
-import { CSSProperties, ReactNode } from 'react';
-import { ItemIconSize, MenuItemProps } from '../model/types';
-import { MenuItem } from './MenuItem';
+import styles from './List.module.css';
+import { ListItem } from './ListItem';
+import { ListProps } from '../model/types';
 import { SectionHeader } from '@shared/ui';
 
-interface Props {
-	title?: string;
-	action?: ReactNode;
-	categoryStyle?: CSSProperties;
-	titleStyle?: CSSProperties;
-	listStyle?: CSSProperties;
-	iconSize?: ItemIconSize;
-	truncateDescription?: boolean;
-	items: MenuItemProps[];
-}
-
 /**
- * Generic list component to render grouped menu items.
+ * Generic list component to render grouped items.
  */
-function MenuList(props: Props) {
+function List(props: ListProps) {
 	const {
 		title,
 		action,
@@ -49,7 +37,7 @@ function MenuList(props: Props) {
 			>
 				{items.map((item) => (
 					<li key={item.title}>
-						<MenuItem
+						<ListItem
 							{...item}
 							iconSize={iconSize}
 							truncateDescription={truncateDescription}
@@ -61,4 +49,4 @@ function MenuList(props: Props) {
 	);
 }
 
-export { MenuList };
+export { List };

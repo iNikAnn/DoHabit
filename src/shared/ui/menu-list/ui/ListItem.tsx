@@ -1,13 +1,13 @@
-import styles from './MenuItem.module.css';
+import styles from './ListItem.module.css';
 import clsx from 'clsx';
-import { MenuItemProps } from '../model/types';
+import { ListItemProps } from '../model/types';
 import { Button } from '@shared/ui';
 
 /**
  * Individual menu entry component.
  * Wraps content in a Button and supports titles, descriptions, and extra elements.
  */
-function MenuItem(props: MenuItemProps) {
+function ListItem(props: ListItemProps) {
 	const {
 		title,
 		description,
@@ -57,4 +57,4 @@ function MenuItem(props: MenuItemProps) {
 	);
 }
 
-export { MenuItem };
+export { ListItem };

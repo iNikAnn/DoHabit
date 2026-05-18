@@ -1,20 +1,22 @@
 import styles from './MenuPage.module.css';
 import packageJson from '../../../../package.json';
-import { appItems, supportItems } from '../model/menu.items';
-import { MenuList } from '@shared/ui';
+import useListItems from '../model/useListItems';
+import { List } from '@shared/ui';
 
 /**
  * Navigation hub for app settings.
  */
 function MenuPage() {
+	const { appItems, supportItems } = useListItems();
+
 	return (
 		<section className={styles.page}>
-			<MenuList
+			<List
 				title='App'
 				items={appItems}
 			/>
 
-			<MenuList
+			<List
 				title='Support'
 				items={supportItems}
 			/>

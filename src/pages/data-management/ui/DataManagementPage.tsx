@@ -1,19 +1,21 @@
 import styles from './DataManagementPage.module.css';
-import { backupItems, dangerItems } from '../model/menu.items';
-import { MenuList } from '@shared/ui';
+import useListItems from '../model/useListItems';
+import { List } from '@shared/ui';
 
 /**
  * Handles data export and import (JSON backups).
  */
 function DataManagementPage() {
+	const { backupItems, dangerItems } = useListItems();
+
 	return (
 		<div className={styles.page}>
-			<MenuList
+			<List
 				title='Backup'
 				items={backupItems}
 			/>
 
-			<MenuList
+			<List
 				title='Danger Zone'
 				titleStyle={{ color: 'IndianRed' }}
 				listStyle={{ border: '2px solid IndianRed' }}

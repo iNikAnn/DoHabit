@@ -1,10 +1,10 @@
 import { useSettingsStore } from '@entities/settings';
-import { MenuItemProps, MenuList, Switch } from '@shared/ui';
+import { ListItemProps, List, Switch } from '@shared/ui';
 
 function CalendarSettings() {
 	const { settings, settingsDispatch } = useSettingsStore();
 
-	const calendarItems: MenuItemProps[] = [
+	const calendarItems: ListItemProps[] = [
 		{
 			title: 'Compact calendar view',
 			description: `Current: ${settings.calendarView === 'compact' ? 'Compact' : 'Default'}`,
@@ -72,7 +72,7 @@ function CalendarSettings() {
 	];
 
 	return (
-		<MenuList
+		<List
 			title='Calendar'
 			items={calendarItems}
 		/>
