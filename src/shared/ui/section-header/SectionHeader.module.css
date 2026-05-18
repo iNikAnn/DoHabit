@@ -4,13 +4,20 @@
 	justify-content: space-between;
 	align-items: center;
 
-	margin: 0 1rem 1rem;
+	margin: 0 16px 16px;
 }
 
 /* title */
 .title {
 	/* outline: 1px solid tomato; */
 	font-size: 16px;
+}
+
+/* description */
+.description {
+	display: block;
+	margin-top: 8px;
+	color: var(--color-secondary);
 }
 
 .extraWrapper {

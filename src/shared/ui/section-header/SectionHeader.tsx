@@ -4,6 +4,7 @@ import { CSSProperties, ReactNode } from 'react';
 
 interface Props {
 	title: string
+	description?: string;
 	titleStyle?: CSSProperties;
 	extra?: ReactNode;
 }
@@ -15,18 +16,27 @@ interface Props {
 function SectionHeader(props: Props) {
 	const {
 		title,
+		description,
 		titleStyle,
 		extra
 	} = props;
 
 	return (
 		<div className={styles.header}>
-			<h4
-				style={titleStyle}
-				className={styles.title}
-			>
-				{startCase(title)}
-			</h4>
+			<div>
+				<h4
+					style={titleStyle}
+					className={styles.title}
+				>
+					{startCase(title)}
+				</h4>
+
+				{description && (
+					<small className={styles.description}>
+						{description}
+					</small>
+				)}
+			</div>
 
 			{extra && (
 				<div className={styles.extraWrapper}>
