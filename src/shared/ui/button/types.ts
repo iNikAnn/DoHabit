@@ -6,7 +6,7 @@ interface IconProps {
 	[key: string]: unknown;
 }
 
-export type ButtonIndicator = 'arrow' | 'external' | 'none';
+export type ButtonIndicator = 'arrow' | 'external' | 'checkmark' | 'none';
 
 export interface ButtonProps extends HTMLMotionProps<'button'> {
 	to?: string;

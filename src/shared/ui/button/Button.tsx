@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { LuExternalLink } from 'react-icons/lu';
 import { IoIosArrowForward } from 'react-icons/io';
+import { FaCheck } from 'react-icons/fa';
 import { renderIcon } from '@shared/lib';
 
 // Motion-enhanced Link
@@ -13,6 +14,7 @@ const MotionLink = motion.create(Link);
 const INDICATOR_ICONS: Record<ButtonIndicator, IconType | null> = {
 	arrow: IoIosArrowForward,
 	external: LuExternalLink,
+	checkmark: FaCheck,
 	none: null
 };
 
