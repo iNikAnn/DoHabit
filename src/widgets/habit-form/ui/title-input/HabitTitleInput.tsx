@@ -13,15 +13,16 @@ function HabitTitleInput({ input, isDuplicate, onChange }: HabitTitleInputProps)
 		<section>
 			<SectionHeader
 				title='Name'
-				extra={isDuplicate && (
+				extra={isDuplicate ? (
 					<div className={styles.errorMessage}>
 						Already exists.
 					</div>
-				)}
+				) : undefined}
 			/>
 
 			<input
 				type='search' // Using 'search' type to kill mobile autofill
+				enterKeyHint='enter'
 				name='title'
 				id='title'
 				className={clsx(
@@ -31,6 +32,7 @@ function HabitTitleInput({ input, isDuplicate, onChange }: HabitTitleInputProps)
 				value={input}
 				onChange={(e) => onChange(e.target.value)}
 				placeholder='Enter habit name...'
+				autoComplete='off'
 			/>
 		</section>
 	);

@@ -2,9 +2,9 @@
 .colorList {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	grid-auto-rows: 2rem;
+	grid-auto-rows: 32px;
 	justify-content: space-between;
-	gap: 0.4rem;
+	gap: 8px;
 }
 
 .label {
@@ -15,9 +15,9 @@
 	border-radius: var(--border-radius-tertiary);
 }
 
-/* .label:has(:checked) {
+.label:has(:checked) {
 	outline: 2px solid var(--color-primary);
-} */
+}
 
 /* input */
 .colorList input {

@@ -8,16 +8,19 @@ import { checkHabitTitleExistence, Habit } from '@entities/habit';
 function useHabitDuplicate(
 	habits: Habit[],
 	currentTitle: string,
+	isSubmitting: boolean,
 	initialHabit?: Habit
 ): boolean {
 	const [isDuplicate, setIsDuplicate] = useState(false);
 	const debouncedTitle = useDebounce(currentTitle, 1000);
 
 	useEffect(() => {
+		if (isSubmitting) return;
+
 		setIsDuplicate(
 			checkHabitTitleExistence(habits, debouncedTitle, initialHabit)
 		);
-	}, [debouncedTitle, habits, initialHabit]);
+	}, [debouncedTitle, habits, initialHabit, isSubmitting]);
 
 	return isDuplicate;
 }

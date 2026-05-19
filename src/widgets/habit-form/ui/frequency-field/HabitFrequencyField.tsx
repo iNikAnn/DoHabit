@@ -1,4 +1,4 @@
-import styles from './HabitFrequencyPicker.module.css';
+import styles from './HabitFrequencyField.module.css';
 import { Button, SectionHeader } from '@shared/ui';
 import { useState } from 'react';
 
@@ -8,7 +8,7 @@ interface Props {
 
 const MAX_FREQUENCY = 6;
 
-function HabitFrequencyPicker({ initialFrequency = 1 }: Props) {
+function HabitFrequencyField({ initialFrequency = 1 }: Props) {
 	const [frequency, setFrequency] = useState(initialFrequency);
 
 	const handleClick = (action: 'increment' | 'decrement') => {
@@ -65,4 +65,4 @@ function HabitFrequencyPicker({ initialFrequency = 1 }: Props) {
 	);
 }
 
-export default HabitFrequencyPicker;
+export default HabitFrequencyField;
