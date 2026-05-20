@@ -7,6 +7,7 @@ import HabitFrequencyField from './frequency-field/HabitFrequencyField';
 import HabitColorPicker from './color-picker/HabitColorPicker';
 import HabitIconPicker from './icon-picker/HabitIconPicker';
 import HabitOrderField from './order-field/HabitOrderField';
+import HabitExtraActions from './extra-actions/HabitExtraActions';
 import useHabitDuplicate from '../lib/useHabitDuplicate';
 import { HabitData, useHabitsStore } from '@entities/habit';
 import { scrollToTop } from '@shared/lib';
@@ -105,6 +106,13 @@ function HabitForm({ habitId }: HabitFormProps) {
 			/>
 
 			<div className={styles.submitButtonWrapper}>
+				{(isEditMode && habitId) && (
+					<HabitExtraActions
+						habitId={habitId}
+						onSuccess={(() => navigate('/'))}
+					/>
+				)}
+
 				<Button
 					type='submit'
 					icon={<MdAddToPhotos />}

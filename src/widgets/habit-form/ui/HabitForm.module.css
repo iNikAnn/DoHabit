@@ -13,8 +13,9 @@
 	bottom: 0;
 	transform: translate(-16px, 16px);
 	padding: 16px;
-	padding-top: 0;
-	background-image: linear-gradient(transparent, var(--bg-color-primary));
+	display: flex;
+	gap: 8px;
+	background-image: linear-gradient(transparent, var(--bg));
 	margin-top: auto;
 	z-index: 10;
 }
