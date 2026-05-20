@@ -47,8 +47,7 @@
 }
 
 /* action */
-.actions button,
-.actions a {
+.action {
 	width: 100%;
 	height: 100%;
 	border-radius: 2rem;
@@ -56,6 +55,11 @@
 	background-color: var(--bg-color-tertiary);
 	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 	padding: 0 1.2rem;
+}
+
+.action.danger {
+	background-color: #3b1c1d;
+	color: #ed6062;
 }
 
 @media screen and (min-width: 576px) {
