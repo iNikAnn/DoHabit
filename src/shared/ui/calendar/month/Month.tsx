@@ -41,7 +41,7 @@ function Month(props: Props) {
 
 	const days = Array.from({ length: shift + daysInMonth }, (_, i) => {
 		// Render empty slots for correct weekday alignment
-		if (i < shift) return <div key={`empty-${i}`} />;
+		if (i < shift) return <div key={`empty-${i}`} className={styles.day} />;
 
 		const dayNum = i - shift + 1;
 		const dayStr = `${year}-${monthStr}-${String(dayNum).padStart(2, '0')}`;
