@@ -5,20 +5,14 @@
 	align-items: center;
 }
 
-/* desc */
-.desc {
+/* description */
+.description {
 	width: 100%;
 	color: gray;
 }
 
-/* iconWrapper */
-.iconWrapper {
+/* extra */
+.extra {
 	display: flex;
 	align-items: center;
-}
-
-/* svg */
-.top svg {
-	width: 1.4rem;
-	height: 1.4rem;
 }

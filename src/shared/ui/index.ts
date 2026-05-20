@@ -1,6 +1,7 @@
 export { Button } from './button/Button';
 export type { ButtonProps } from './button/types';
 export { Calendar } from './calendar/main/Calendar';
+export { Card } from './card/Card';
 export { CompactCalendar } from './compact-calendar/CompactCalendar';
 export * from './dialog';
 export * from './drawer';

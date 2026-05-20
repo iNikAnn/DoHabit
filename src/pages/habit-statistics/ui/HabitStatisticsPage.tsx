@@ -2,7 +2,6 @@ import styles from './HabitStatisticsPage.module.css';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import YearPicker from '../../../components/Statistics/YearPicker';
-import Card from '../../../components/Statistics/Card';
 import WeekdayChart from '../../../components/Statistics/WeekdayChart';
 import MonthlyChart from '../../../components/Statistics/MonthlyChart';
 import StreakHistory from '../../../components/Statistics/StreakHistory';
@@ -10,6 +9,7 @@ import { ColorVariants } from '../../../types/colorScheme';
 import { FaAward, FaCalendarWeek, FaCalendarAlt, FaHashtag, FaBinoculars } from 'react-icons/fa';
 import { ChartOptions } from 'chart.js';
 import { CompletedDay, getStreaks } from '@entities/habit';
+import { Card } from '@shared/ui';
 
 interface LocationState {
 	completedDays: CompletedDay[];
@@ -81,25 +81,30 @@ function HabitStatisticsPage() {
 			<div style={{ display: 'flex', gap: '1rem' }}>
 				<Card
 					title='Current'
-					icon={percentageDifference + '%'}
-					accentColor={percentageDifference < 0 ? 'IndianRed' : '#57a639'}
-					contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
+					extra={(
+						<div style={{ color: percentageDifference < 0 ? 'IndianRed' : '#57a639' }}>
+							{percentageDifference + '%'}
+						</div>
+					)}
 				>
-					{currentStreak}
+					<div style={{ fontSize: '2.2rem', fontWeight: 'bold' }}>
+						{currentStreak}
+					</div>
 				</Card>
 
 				<Card
 					title='Longest'
-					icon={<FaAward style={{ color: baseColor }} />}
-					contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
+					extra={<FaAward style={{ color: baseColor }} />}
 				>
-					{longestStreak}
+					<div style={{ fontSize: '2.2rem', fontWeight: 'bold' }}>
+						{longestStreak}
+					</div>
 				</Card>
 			</div>
 
 			<Card
 				title='Completions / Weekday'
-				icon={<FaCalendarWeek style={{ color: baseColor }} />}
+				extra={<FaCalendarWeek style={{ color: baseColor }} />}
 			>
 				<WeekdayChart
 					days={selectedDays}
@@ -108,17 +113,19 @@ function HabitStatisticsPage() {
 				/>
 			</Card>
 
+
 			<Card
 				title='Total Completed'
-				icon={<FaHashtag style={{ color: baseColor }} />}
-				contentStyle={{ fontSize: '2.2rem', fontWeight: 'bold' }}
+				extra={<FaHashtag style={{ color: baseColor }} />}
 			>
-				{selectedDays.length}
+				<div style={{ fontSize: '2.2rem', fontWeight: 'bold' }}>
+					{selectedDays.length}
+				</div>
 			</Card>
 
 			<Card
 				title='Completions / Month'
-				icon={<FaCalendarAlt style={{ color: baseColor }} />}
+				extra={<FaCalendarAlt style={{ color: baseColor }} />}
 			>
 				<MonthlyChart
 					days={selectedDays}
@@ -130,8 +137,8 @@ function HabitStatisticsPage() {
 			{filteredStreaks.length > 0 && (
 				<Card
 					title='Streak History'
-					desc='Shows streaks of 2 days or more.'
-					icon={<FaBinoculars style={{ color: baseColor }} />}
+					description='Shows streaks of 2 days or more.'
+					extra={<FaBinoculars style={{ color: baseColor }} />}
 				>
 					<StreakHistory
 						streaks={filteredStreaks}
