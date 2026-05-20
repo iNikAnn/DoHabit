@@ -44,10 +44,6 @@ function useHabitActions() {
 			{
 				icon: isYdayCompleted ? FaCalendarTimes : FaCalendarCheck,
 				label: (isYdayCompleted ? 'Undo' : 'Done') + ' Y\'day',
-				style: {
-					color: isYdayCompleted ? 'IndianRed' : '',
-					backgroundColor: darkenedColor
-				},
 				onClick: () => habitsDispatch({
 					type: 'toggleYesterdayStatus',
 					payload: {
@@ -55,7 +51,8 @@ function useHabitActions() {
 						isYdayCompleted,
 						isTodayCompleted
 					}
-				})
+				}),
+				style: { backgroundColor: darkenedColor }
 			},
 
 			// Open habit editor

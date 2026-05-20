@@ -58,8 +58,8 @@
 }
 
 .action.danger {
-	background-color: #3b1c1d;
-	color: #ed6062;
+	background-color: light-dark(#df8a8d, #3b1c1d);
+	color: light-dark(#722225, #ed6062);
 }
 
 @media screen and (min-width: 576px) {

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
 import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
 import { getHabitStats } from '../../lib/getHabitStats';
-import { useHabitActions } from '../../lib/useHabitActions';
+import { useHabitActions } from '../../model/useHabitActions';
 import { RestoreHabit } from '@features/restore-habit';
 import { UpdateHabitProgress } from '@features/update-habit-progress';
 import { getCompletedDatesSet, HabitCard, useHabitsStore } from '@entities/habit';

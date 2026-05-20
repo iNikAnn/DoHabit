@@ -25,7 +25,8 @@ function useNoteActions() {
 			{
 				icon: FaTrash,
 				label: 'Delete Note',
-				style: { color: 'IndianRed' },
+				variant: 'danger',
+				// style: { color: 'IndianRed' },
 				onClick: () => {
 					if (window.confirm('Are you sure you want to delete this note?')) {
 						notesDispatch({
