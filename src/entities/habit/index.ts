@@ -1,5 +1,5 @@
 export type { Habit, HabitData, HabitAction, CompletedDay } from './model/types';
-export { useHabitsStore } from './model/store';
+export { useHabitsStore, habitsStore } from './model/store';
 export { HabitCard } from './ui/habit-card/HabitCard';
 export { HABIT_ICONS, HABIT_ICONS_MAP } from './assets/icons';
 export { checkHabitTitleExistence } from './lib/checkHabitTitleExistence';
