@@ -1,0 +1,1 @@
+export { TotalCompletedMetric } from './ui/TotalCompletedMetric';

@@ -1,7 +1,7 @@
 import styles from './CompactCalendar.module.css';
 import clsx from 'clsx';
-import { ColorVariants } from '@/types/colorScheme';
-import { formatDate, getDatesRange } from '@shared/lib';
+import { ColorVariants } from '@shared/lib/theme';
+import { formatDate, getDatesRange } from '@shared/lib/date-time';
 
 interface Props {
 	weeksCount?: number;
@@ -15,7 +15,7 @@ interface Props {
  */
 function CompactCalendar(props: Props) {
 	const {
-		weeksCount = 24,
+		weeksCount = 20,
 		colorVariants: {
 			baseColor,
 			darkenedColor

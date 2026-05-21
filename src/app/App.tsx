@@ -1,14 +1,12 @@
 import './styles/App.css';
 import { AppRouter } from './providers';
+import { useCheckAchievements } from '@features/check-achievements';
+import { useTheme } from '@entities/settings';
 import { Dialog, Drawer } from '@shared/ui';
-import useColorScheme from '../hooks/useColorScheme';
-import useAchievementsCheck from '../hooks/useAchievementsCheck';
 
 function App() {
-	useColorScheme();
-
-	// TODO: Refactor and re-enable after fixing the achievements logic to support the new data structure
-	// useAchievementsCheck();
+	useTheme();
+	useCheckAchievements();
 
 	return (
 		<main className='App'>

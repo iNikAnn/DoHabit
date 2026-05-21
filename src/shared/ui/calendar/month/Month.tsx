@@ -1,6 +1,6 @@
 import styles from './Month.module.css';
-import { ColorVariants } from '../../../../types/colorScheme';
-import { formatDate } from '@shared/lib';
+import { formatDate } from '@shared/lib/date-time';
+import { ColorVariants } from '@shared/lib/theme';
 
 interface Props {
 	today: Date;
@@ -8,6 +8,8 @@ interface Props {
 	completedSet: Set<string>;
 	colorVariants: ColorVariants;
 	highlightToday?: boolean;
+	showDayNames?: boolean;
+	showDayNumbers?: boolean;
 }
 
 /**
@@ -23,7 +25,9 @@ function Month(props: Props) {
 			darkenedColor,
 			softenedColor
 		},
-		highlightToday
+		highlightToday,
+		showDayNames,
+		showDayNumbers
 	} = props;
 
 	const year = monthDate.getFullYear();
@@ -37,7 +41,7 @@ function Month(props: Props) {
 
 	const days = Array.from({ length: shift + daysInMonth }, (_, i) => {
 		// Render empty slots for correct weekday alignment
-		if (i < shift) return <div key={`empty-${i}`} />;
+		if (i < shift) return <div key={`empty-${i}`} className={styles.day} />;
 
 		const dayNum = i - shift + 1;
 		const dayStr = `${year}-${monthStr}-${String(dayNum).padStart(2, '0')}`;
@@ -55,26 +59,27 @@ function Month(props: Props) {
 				}}
 				className={styles.day}
 			>
-				{dayNum}
+				{showDayNumbers && dayNum}
 			</div>
 		);
 	});
 
-	const weekdays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
-		.map((weekday, index) => {
+	const weekdays = showDayNames
+		? ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((weekday, index) => {
 			const isToday = ((index + 1) % 7) === today.getDay();
 			const isCurrentMonth = today.getMonth() === monthDate.getMonth();
 
 			return (
 				<div
-					key={weekday + Math.random()}
+					key={weekday}
 					style={{ color: (isToday && isCurrentMonth) ? 'inherit' : softenedColor }}
 					className={styles.weekday}
 				>
 					{weekday}
 				</div>
 			);
-		});
+		})
+		: null;
 
 	return (
 		<div className={styles.month}>

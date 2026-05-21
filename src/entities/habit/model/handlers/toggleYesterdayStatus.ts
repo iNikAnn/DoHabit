@@ -1,6 +1,6 @@
 import { Habit, CompletedDay, ToggleYesterdayStatus } from '../types';
 import updateHabitById from '../../lib/updateHabitById';
-import { formatDate, getYesterday } from '@shared/lib';
+import { formatDate, getYesterday } from '@shared/lib/date-time';
 
 interface Params {
 	habits: Habit[];

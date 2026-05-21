@@ -1,9 +1,9 @@
 import styles from './Drawer.module.css';
-import { Button, Overlay } from '@shared/ui';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, PanInfo } from 'framer-motion'
 import { useDrawerStore } from '../model/store';
-import { createPortal } from 'react-dom';
-import { useNativeBackClose } from '@shared/lib';
+import { useNativeBackClose } from '@shared/lib/dom';
+import { Button, Overlay } from '@shared/ui';
 
 const drawerVariants = {
 	initial: { opacity: 0, y: '25%' },
@@ -55,6 +55,7 @@ function Drawer() {
 									{content.actions.map(({ label, indicator, ...rest }) => (
 										<li key={label}>
 											<Button
+												className={styles.action}
 												indicator={{
 													type: indicator?.type ?? 'none',
 													style: { color: 'var(--color-secondary)', ...indicator?.style }

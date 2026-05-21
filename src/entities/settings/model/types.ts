@@ -1,7 +1,9 @@
 export interface Settings {
+	theme?: 'light' | 'dark';
 	calendarView?: 'default' | 'compact';
-	calendarHighlightToday?: boolean;
-	isDarkSchemeForced?: boolean;
+	calendarHighlightToday: boolean;
+	calendarShowDayNames: boolean;
+	calendarShowDayNumbers: boolean;
 }
 
 export interface UpdateSettings {

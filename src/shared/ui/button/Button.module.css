@@ -1,23 +1,40 @@
 /* button */
 .button {
-	height: 2.2rem;
-	padding: 0 0.8rem;
+	height: 36px;
+	padding: 0 14px;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 0.4rem;
+	gap: 6px;
 
 	background-color: dodgerblue;
 	border-radius: var(--border-radius-secondary);
-	font-size: 0.9rem;
+	font-size: 14px;
 	font-weight: bold;
+}
+
+.button.secondary {
+	background-color: var(--bg-color-secondary);
+}
+
+.button.text {
+	height: auto;
+	padding: 0;
+	font-size: 16px;
+	background-color: unset;
+	color: dodgerblue;
+}
+
+.button.danger {
+	background-color: light-dark(#df8a8d, #3b1c1d);
+	color: light-dark(#722225, #ed6062);
 }
 
 /* icons */
 .button svg {
-	width: 1rem;
-	height: 1rem;
+	width: 16px;
+	height: 16px;
 }
 
 .indicator {
@@ -26,5 +43,5 @@
 
 /* disabled */
 .button:disabled {
-	background-color: gray;
+	opacity: 0.5;
 }

@@ -1,0 +1,1 @@
+export { archiveHabit } from './model/archiveHabit';

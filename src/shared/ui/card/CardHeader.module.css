@@ -1,0 +1,18 @@
+/* top */
+.top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* description */
+.description {
+	width: 100%;
+	color: gray;
+}
+
+/* extra */
+.extra {
+	display: flex;
+	align-items: center;
+}

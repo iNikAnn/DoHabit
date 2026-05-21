@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { LuExternalLink } from 'react-icons/lu';
 import { IoIosArrowForward } from 'react-icons/io';
-import { renderIcon } from '@shared/lib';
+import { FaCheck } from 'react-icons/fa';
+import { renderIcon } from '@shared/lib/react';
 
 // Motion-enhanced Link
 const MotionLink = motion.create(Link);
@@ -13,6 +14,7 @@ const MotionLink = motion.create(Link);
 const INDICATOR_ICONS: Record<ButtonIndicator, IconType | null> = {
 	arrow: IoIosArrowForward,
 	external: LuExternalLink,
+	checkmark: FaCheck,
 	none: null
 };
 
@@ -25,6 +27,7 @@ function Button(props: ButtonProps) {
 		type = 'button',
 		to,
 		state,
+		variant,
 		icon,
 		iconProps,
 		children,
@@ -34,12 +37,14 @@ function Button(props: ButtonProps) {
 		...rest
 	} = props;
 
-	const classes = `${styles.button} ${className ?? ''}`.trim();
+	const classes = `${styles.button} ${styles[variant ?? '']} ${className ?? ''}`.trim();
 	const Indicator = indicator ? INDICATOR_ICONS[indicator.type] : null;
 
 	const innerContent = (
 		<>
-			{renderIcon(icon, iconProps)}
+			{typeof icon === 'string'
+				? <img src={icon} alt='icon' />
+				: renderIcon(icon, iconProps)}
 			{children}
 			{Indicator && <Indicator style={indicator?.style} className={styles.indicator} />}
 		</>

@@ -1,8 +1,8 @@
 import styles from './Dialog.module.css';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useDialogStore } from '../model/store';
-import { createPortal } from 'react-dom';
-import { useNativeBackClose } from '@shared/lib';
+import { useNativeBackClose } from '@shared/lib/dom';
 import { Overlay } from '@shared/ui';
 
 const dialogVariants = {

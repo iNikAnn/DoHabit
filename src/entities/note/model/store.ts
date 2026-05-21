@@ -80,3 +80,5 @@ export const useNotesStore = create<NoteState>()(
 		}
 	)
 );
+
+export const notesStore = useNotesStore;

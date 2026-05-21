@@ -1,8 +1,8 @@
 import styles from './NoteCard.module.css';
 import { motion } from 'framer-motion';
 import { Note } from '../model/types';
-import getListAnimationVariants from '../../../utils/getListAnimationVariants';
-import { formatDate } from '@shared/lib';
+import { createListVariants } from '@shared/lib/animation';
+import { formatDate } from '@shared/lib/date-time';
 
 interface NoteCardProps {
 	note: Note;
@@ -16,7 +16,7 @@ function NoteCard(props: NoteCardProps) {
 	} = props;
 
 	const dateTimeStr = formatDate(new Date(note.createdAt), { includeTime: true });
-	const noteVariants = getListAnimationVariants(0.3);
+	const noteVariants = createListVariants(0.3);
 
 	return (
 		<motion.div

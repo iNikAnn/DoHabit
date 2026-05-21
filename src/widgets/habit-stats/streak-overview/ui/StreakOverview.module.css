@@ -1,0 +1,11 @@
+.wrapper {
+	display: flex;
+	gap: 16px;
+}
+
+.content {
+	display: flex;
+	justify-content: center;
+	font-size: 40px;
+	font-weight: bold;
+}

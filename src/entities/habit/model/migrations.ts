@@ -1,4 +1,4 @@
-import { formatDate } from '@shared/lib';
+import { formatDate } from '@shared/lib/date-time';
 
 export const habitMigrations: Record<number, (state: any) => any> = {
 	0: (state) => state,

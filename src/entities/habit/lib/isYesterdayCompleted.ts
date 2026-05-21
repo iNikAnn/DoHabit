@@ -1,5 +1,5 @@
 import { CompletedDay } from '../model/types';
-import { formatDate, getYesterday } from '@shared/lib';
+import { formatDate, getYesterday } from '@shared/lib/date-time';
 
 /**
  * Checks if yesterday was completed by looking at the latest two entries.

@@ -42,6 +42,18 @@
 	gap: 1rem;
 }
 
+.navItem {
+	width: 32px;
+	height: 32px;
+	background-color: unset;
+	padding: 0;
+}
+
+.navItem svg {
+	width: 22px;
+	height: 22px;
+}
+
 @media screen and (min-width: 576px) {
 	.header {
 		/* outline: 1px solid tomato; */

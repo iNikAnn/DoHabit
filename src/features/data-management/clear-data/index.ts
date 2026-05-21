@@ -1,0 +1,1 @@
+export { clearAppData } from './model/clearAppData';

@@ -94,3 +94,5 @@ export const useHabitsStore = create<HabitState>()(
 		}
 	)
 );
+
+export const habitsStore = useHabitsStore;

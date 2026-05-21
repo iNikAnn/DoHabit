@@ -1,0 +1,64 @@
+/* menuItem */
+.menuItem {
+	/* outline: 1px solid tomato; */
+	width: 100%;
+	height: auto;
+	padding: 1rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	gap: 1rem;
+
+	background-color: unset;
+}
+
+/* icon */
+.menuItem > svg:first-of-type,
+.menuItem > img:first-of-type {
+	width: 26px;
+	height: 26px;
+	flex-shrink: 0;
+}
+
+.menuItem.sm > svg:first-of-type,
+.menuItem.sm > img:first-of-type {
+	width: 16px;
+	height: 16px;
+}
+
+.menuItem.lg > svg:first-of-type,
+.menuItem.lg > img:first-of-type {
+	width: 48px;
+	height: 48px;
+}
+
+/* textWrapper */
+.textWrapper {
+	/* outline: 1px solid tomato; */
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	text-align: left;
+	overflow: hidden;
+}
+
+.title {
+	font-size: 1rem;
+}
+
+.description {
+	color: gray;
+	font-size: 0.8rem;
+	font-weight: normal;
+}
+
+.description.truncate {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.extra {
+	margin-left: auto;
+}

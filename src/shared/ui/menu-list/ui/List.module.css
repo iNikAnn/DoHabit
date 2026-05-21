@@ -1,0 +1,28 @@
+.category {
+	/* outline: 1px solid tomato; */
+}
+
+/* list */
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	border-radius: var(--border-radius-secondary);
+}
+
+.list li {
+	background-color: var(--bg-color-primary);
+	border-radius: 4px;
+}
+
+.list li:first-child {
+	border-radius: var(--border-radius-secondary) var(--border-radius-secondary) 4px 4px;
+}
+
+.list li:last-child {
+	border-radius: 4px 4px var(--border-radius-secondary) var(--border-radius-secondary);
+}
+
+.list li:only-child {
+    border-radius: var(--border-radius-secondary);
+}

@@ -1,6 +1,6 @@
 import styles from './NoteList.module.css';
 import { AnimatePresence } from 'framer-motion';
-import { useNoteActions } from '../lib/useNoteActions';
+import { useNoteActions } from '../model/useNoteActions';
 import { Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { Placeholder } from '@shared/ui';

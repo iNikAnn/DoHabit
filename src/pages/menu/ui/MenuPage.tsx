@@ -1,114 +1,25 @@
 import styles from './MenuPage.module.css';
 import packageJson from '../../../../package.json';
-
-// components
-import MenuItemList from '../../../components/Menu/MenuItemList';
-import MenuItem from '../../../components/Menu/MenuItem';
-
-// utils
-import { clearLocalStorage } from '@shared/lib';
-
-// icons
-import { BsFillDatabaseFill } from 'react-icons/bs';
-import { FaGithub, FaPaintBrush } from 'react-icons/fa';
-import { IoIosMail } from 'react-icons/io';
-import { ImFire } from 'react-icons/im';
-import { HiArchiveBox } from 'react-icons/hi2';
-import { getModalPath } from '@shared/const';
-
-// @ts-ignore
-const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
-
-const warningMessage =
-	'Are you sure you want to delete all application data?\n\n' +
-	'This includes:\n' +
-	'- All your habits\n' +
-	'- All achievements\n' +
-	'- All diary entries\n\n' +
-	'This action cannot be undone!';
+import useListItems from '../model/useListItems';
+import { List } from '@shared/ui';
 
 /**
  * Navigation hub for app settings.
  */
 function MenuPage() {
+	const { appItems, supportItems } = useListItems();
+
 	return (
-		<section className={styles.menu}>
-			<MenuItemList title='App'>
-				<MenuItem
-					icon={<HiArchiveBox />}
-					iconColor='#7b68ee'
-					title='Archive'
-					desc='View or manage archived habits'
-					to={getModalPath('ARCHIVE')}
-					state={{ modalTitle: 'Archive' }}
-					arrow
-				/>
+		<section className={styles.page}>
+			<List
+				title='App'
+				items={appItems}
+			/>
 
-				<MenuItem
-					icon={<FaPaintBrush />}
-					iconColor='#ffa420'
-					title='Appearance'
-					desc={'Customize the app\'s look'}
-					to={getModalPath('APPEARANCE')}
-					state={{ modalTitle: 'Appearance' }}
-					arrow
-				/>
-
-				<MenuItem
-					icon={<BsFillDatabaseFill />}
-					iconColor='#77dd77'
-					title='Export / Import Data'
-					desc='Backup or restore your data'
-					to={getModalPath('DATA_MANAGEMENT')}
-					state={{ modalTitle: 'Export/Import Data' }}
-					arrow
-				/>
-			</MenuItemList>
-
-			<MenuItemList title='Other'>
-				<MenuItem
-					icon={<FaGithub />}
-					iconColor='#7fc7ff'
-					title='GitHub Repository'
-					desc='View or contribute to the project'
-					onClick={() => window.open('https://github.com/iNikAnn/DoHabit', '_blank')}
-					link
-				/>
-
-				<MenuItem
-					icon={<IoIosMail />}
-					iconColor='#ffb841'
-					title='Send Feedback'
-					desc='Share your thoughts or report an issue'
-					onClick={() => window.location.href = 'mailto:ilowen@ya.ru?subject=Feedback%20on%20DoHabit'}
-					link
-				/>
-			</MenuItemList>
-
-			<MenuItemList
-				title='Danger Zone'
-				titleStyle={{ color: 'IndianRed' }}
-				listStyle={{ border: '1px solid IndianRed' }}
-			>
-				<MenuItem
-					icon={<ImFire style={{ color: 'IndianRed' }} />}
-					title='Clear Data'
-					desc='Delete all application data'
-					onClick={() => {
-						if (window.confirm(warningMessage)) {
-							const userInput = prompt('To confirm, type: "delete data":');
-
-							if (userInput?.trim().toLowerCase() === 'delete data') {
-								clearLocalStorage();
-								alert('All data has been successfully removed. The application will now reload.');
-								window.location.href = PUBLIC_URL;
-							} else {
-								alert('Action canceled or incorrect phrase.');
-							}
-						}
-					}}
-				/>
-			</MenuItemList>
+			<List
+				title='Support'
+				items={supportItems}
+			/>
 
 			<div className={styles.footer}>
 				<small>Version: {packageJson.version}</small>
