@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { LuExternalLink } from 'react-icons/lu';
 import { IoIosArrowForward } from 'react-icons/io';
 import { FaCheck } from 'react-icons/fa';
-import { renderIcon } from '@shared/lib';
+import { renderIcon } from '@shared/lib/react';
 
 // Motion-enhanced Link
 const MotionLink = motion.create(Link);

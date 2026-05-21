@@ -2,7 +2,7 @@ import styles from './Drawer.module.css';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, PanInfo } from 'framer-motion'
 import { useDrawerStore } from '../model/store';
-import { useNativeBackClose } from '@shared/lib';
+import { useNativeBackClose } from '@shared/lib/dom';
 import { Button, Overlay } from '@shared/ui';
 
 const drawerVariants = {
