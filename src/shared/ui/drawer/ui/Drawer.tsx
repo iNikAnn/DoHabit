@@ -1,5 +1,4 @@
 import styles from './Drawer.module.css';
-import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, PanInfo } from 'framer-motion'
 import { useDrawerStore } from '../model/store';
@@ -53,13 +52,10 @@ function Drawer() {
 									className={styles.actions}
 									onClick={closeDrawer}
 								>
-									{content.actions.map(({ label, indicator, variant, ...rest }) => (
+									{content.actions.map(({ label, indicator, ...rest }) => (
 										<li key={label}>
 											<Button
-												className={clsx(
-													styles.action,
-													variant && styles[variant]
-												)}
+												className={styles.action}
 												indicator={{
 													type: indicator?.type ?? 'none',
 													style: { color: 'var(--color-secondary)', ...indicator?.style }

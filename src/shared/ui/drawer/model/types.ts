@@ -2,7 +2,6 @@ import { ButtonProps } from '@shared/ui';
 
 export interface DrawerAction extends ButtonProps {
 	label: string;
-	variant?: 'default' | 'danger';
 }
 
 export interface DrawerContent {

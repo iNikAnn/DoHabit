@@ -6,11 +6,13 @@ interface IconProps {
 	[key: string]: unknown;
 }
 
+export type ButtonVariant = 'secondary' | 'text' | 'danger';
 export type ButtonIndicator = 'arrow' | 'external' | 'checkmark' | 'none';
 
 export interface ButtonProps extends HTMLMotionProps<'button'> {
 	to?: string;
 	state?: Record<string, unknown>;
+	variant?: ButtonVariant;
 	icon?: ReactNode | IconType | string;
 	iconProps?: IconProps;
 	children?: ReactNode;

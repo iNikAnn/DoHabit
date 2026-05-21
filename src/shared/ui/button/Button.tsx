@@ -27,6 +27,7 @@ function Button(props: ButtonProps) {
 		type = 'button',
 		to,
 		state,
+		variant,
 		icon,
 		iconProps,
 		children,
@@ -36,7 +37,7 @@ function Button(props: ButtonProps) {
 		...rest
 	} = props;
 
-	const classes = `${styles.button} ${className ?? ''}`.trim();
+	const classes = `${styles.button} ${styles[variant ?? '']} ${className ?? ''}`.trim();
 	const Indicator = indicator ? INDICATOR_ICONS[indicator.type] : null;
 
 	const innerContent = (
