@@ -13,11 +13,14 @@ interface Params {
 function updateHabitProgress(params: Params): Habit[] {
 	const {
 		habits,
-		payload: { habitId }
+		payload: { habitId, isLongPress }
 	} = params;
 
 	return updateHabitById(habits, habitId, (habit) => {
 		const { today, progress, isCompleted } = getTodayProgress(habit);
+
+		// Avoid toggling or modifying already completed status on long press
+		if (isCompleted && isLongPress) return habit;
 
 		if (isCompleted) {
 			// Remove from history and reset progress (toggle logic)
@@ -29,8 +32,8 @@ function updateHabitProgress(params: Params): Habit[] {
 			};
 		}
 
-		// Increment progress
-		const nextProgress = progress + 1;
+		// Max out progress if long pressed, otherwise increment by one
+		const nextProgress = isLongPress ? habit.frequency : progress + 1;
 		const isNowCompleted = nextProgress >= habit.frequency;
 
 		return {

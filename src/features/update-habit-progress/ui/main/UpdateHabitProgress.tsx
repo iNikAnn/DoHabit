@@ -1,6 +1,7 @@
 import styles from './UpdateHabitProgress.module.css';
 import clsx from 'clsx';
-import { MouseEventHandler, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLongPress } from '@uidotdev/usehooks';
 import { FaCheck } from 'react-icons/fa';
 import ProgressBar from '../progress-bar/ProgressBar';
 import { Habit, useHabitsStore, getTodayProgress } from '@entities/habit';
@@ -28,12 +29,12 @@ function UpdateHabitProgress({ habit }: Props) {
 	// Current day stats from the domain helper
 	const { progress, percentage, isCompleted } = getTodayProgress(habit);
 
-	const handleUpdateProgress: MouseEventHandler = (e) => {
-		e.stopPropagation();
+	const handleUpdateProgress = (e?: React.MouseEvent<HTMLButtonElement>, isLongPress?: boolean) => {
+		if (e) e.stopPropagation();
 
 		// Trigger visual feedback
 		const isFinalStep = habit.frequency - progress === 1;
-		setAnimation(isFinalStep ? 'completed' : 'updated');
+		setAnimation((isFinalStep || isLongPress) ? 'completed' : 'updated');
 
 		// Haptic feedback
 		try {
@@ -42,11 +43,16 @@ function UpdateHabitProgress({ habit }: Props) {
 			console.warn('Vibration not supported or failed.', e);
 		}
 
+		// Prevent updating already completed habits via long press
+		if (isLongPress && habit.frequency === progress) return;
+
 		habitsDispatch({
 			type: 'updateProgress',
-			payload: { habitId: id }
+			payload: { habitId: id, isLongPress }
 		});
 	};
+
+	const attrs = useLongPress(() => handleUpdateProgress(undefined, true), { threshold: 500 });
 
 	// Cleanup animation classes after they finish playing
 	useEffect(() => {
@@ -81,6 +87,7 @@ function UpdateHabitProgress({ habit }: Props) {
 					styles.button,
 					frequency > 1 && styles.multiFrequency
 				)}
+				{...attrs}
 				onClick={handleUpdateProgress}
 			>
 				{percentage >= 100 ? (

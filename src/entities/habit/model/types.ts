@@ -67,6 +67,7 @@ export interface UpdateProgress {
 	type: 'updateProgress';
 	payload: {
 		habitId: string;
+		isLongPress?: boolean;
 	};
 }
 
