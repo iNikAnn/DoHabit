@@ -4,7 +4,7 @@ import { FaChartSimple } from 'react-icons/fa6';
 import { MdLibraryBooks } from 'react-icons/md';
 import { Habit, useHabitsStore } from '@entities/habit';
 import { getModalPath } from '@shared/const';
-import { shareElementScreenshot } from '@shared/lib';
+import { shareElementScreenshot } from '@shared/lib/dom';
 import { DrawerAction, useDrawerStore } from '@shared/ui';
 
 interface OpenMenuParams {

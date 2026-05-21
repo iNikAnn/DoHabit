@@ -10,7 +10,7 @@ import HabitOrderField from './order-field/HabitOrderField';
 import HabitExtraActions from './extra-actions/HabitExtraActions';
 import useHabitDuplicate from '../lib/useHabitDuplicate';
 import { HabitData, useHabitsStore } from '@entities/habit';
-import { scrollToTop } from '@shared/lib';
+import { scrollToTop } from '@shared/lib/dom';
 import { Button } from '@shared/ui';
 
 interface HabitFormProps {

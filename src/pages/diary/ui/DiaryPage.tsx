@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { NoteForm } from '@widgets/note-form';
 import { NoteList } from '@widgets/note-list';
 import { Note } from '@entities/note';
-import { scrollToTop } from '@shared/lib';
+import { scrollToTop } from '@shared/lib/dom';
 
 /**
  * Main diary page component.
