@@ -3,7 +3,7 @@ import { writeLocalStorage } from '@shared/lib/local-storage';
 /**
  * Opens a file picker to select a JSON file and writes its content to localStorage.
  */
-function uploadJsonToStorage(): Promise<boolean> {
+function uploadJson(): Promise<boolean> {
 	return new Promise((resolve) => {
 		// Create a hidden input to trigger the native file picker
 		const input = document.createElement('input');
@@ -53,4 +53,4 @@ function uploadJsonToStorage(): Promise<boolean> {
 	});
 }
 
-export { uploadJsonToStorage };
+export { uploadJson };

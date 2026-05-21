@@ -1,4 +1,4 @@
-import { uploadJsonToStorage } from '@shared/lib';
+import { uploadJson } from '../lib/uploadJson';
 
 // @ts-ignore
 const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
@@ -7,7 +7,7 @@ const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
  * Orchestrates the application data import process.
  */
 async function importAppData() {
-	const res = await uploadJsonToStorage();
+	const res = await uploadJson();
 
 	if (res) {
 		// Notify user and force a reload to apply changes across the app
