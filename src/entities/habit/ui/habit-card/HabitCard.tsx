@@ -3,7 +3,7 @@ import { CSSProperties, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { Habit } from '../../model/types';
 import HabitHeader from '../habit-header/HabitHeader';
-import getListAnimationVariants from '../../../../utils/getListAnimationVariants';
+import { createListVariants } from '@shared/lib/animation';
 import { ColorVariants } from '@shared/lib/theme';
 
 interface HabitCardProps {
@@ -25,7 +25,7 @@ function HabitCard(props: HabitCardProps) {
 		onClick
 	} = props;
 
-	const habitVariants = getListAnimationVariants(0.3);
+	const habitVariants = createListVariants(0.3);
 
 	// Dynamic colors as CSS variables
 	const style = {

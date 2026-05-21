@@ -3,7 +3,7 @@ import { Variants } from 'framer-motion';
 /**
  * Returns Framer Motion variants for list item animations.
  */
-function getListAnimationVariants(duration: number): Variants {
+function createListVariants(duration: number): Variants {
 	return {
 		initial: {
 			opacity: 0,
@@ -33,4 +33,4 @@ function getListAnimationVariants(duration: number): Variants {
 	};
 }
 
-export default getListAnimationVariants;
+export { createListVariants };
