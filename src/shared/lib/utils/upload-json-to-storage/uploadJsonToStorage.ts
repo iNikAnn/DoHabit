@@ -1,4 +1,4 @@
-import { writeLocalStorage } from '@shared/lib';
+import { writeLocalStorage } from '@shared/lib/local-storage';
 
 /**
  * Opens a file picker to select a JSON file and writes its content to localStorage.

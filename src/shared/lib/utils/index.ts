@@ -1,14 +1,11 @@
-export { clearLocalStorage } from './clear-local-storage/clearLocalStorage';
 export { countDaysBetween } from './count-days-between/countDaysBetween';
 export { countMonths } from './count-months/countMonths';
 export { formatDate } from './format-date/formatDate';
 export { getAppPalette } from './get-app-palette/getAppPalette';
 export { getDatesRange } from './get-dates-range/getDatesRange';
 export { getYesterday } from './get-yesterday/getYesterday';
-export { readLocalStorage } from './read-local-storage/readLocalStorage';
 export { renderIcon } from './render-icon/renderIcon';
 export { scrollToTop } from './scroll-to-top/scrollToTop';
 export { shareElementScreenshot } from './share-element-screenshot/shareElementScreenshot';
 export { truncateText } from './truncate-text/truncateText';
 export { uploadJsonToStorage } from './upload-json-to-storage/uploadJsonToStorage';
-export { writeLocalStorage } from './write-local-storage/writeLocalStorage';

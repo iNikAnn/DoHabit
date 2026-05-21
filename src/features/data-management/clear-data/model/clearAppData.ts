@@ -1,4 +1,4 @@
-import { clearLocalStorage } from '@shared/lib';
+import { clearLocalStorage } from '@shared/lib/local-storage';
 
 // @ts-ignore
 const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';

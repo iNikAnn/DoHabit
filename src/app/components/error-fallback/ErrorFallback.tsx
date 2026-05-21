@@ -1,5 +1,5 @@
 import { exportAppData } from '@features/data-management/export-data';
-import { clearLocalStorage } from '@shared/lib';
+import { clearLocalStorage } from '@shared/lib/local-storage';
 import { Placeholder } from '@shared/ui';
 
 // @ts-ignore
