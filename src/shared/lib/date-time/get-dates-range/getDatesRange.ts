@@ -1,4 +1,4 @@
-import { formatDate } from '@shared/lib';
+import { formatDate } from '@shared/lib/date-time';
 
 interface DateRangeOptions {
 	from?: Date | string;

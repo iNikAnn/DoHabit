@@ -1,5 +1,5 @@
 import { CompletedDay } from '../model/types';
-import { countDaysBetween } from '@shared/lib';
+import { countDaysBetween } from '@shared/lib/date-time';
 
 /**
  * Calculates the number of days between consecutive completed entries.

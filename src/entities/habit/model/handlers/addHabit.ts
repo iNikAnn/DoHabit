@@ -1,6 +1,6 @@
 import { AddHabit, Habit } from '../types';
 import mapHabitData from '../../lib/mapHabitData';
-import { formatDate } from '@shared/lib';
+import { formatDate } from '@shared/lib/date-time';
 
 interface AddHabitParams {
 	habits: Habit[];

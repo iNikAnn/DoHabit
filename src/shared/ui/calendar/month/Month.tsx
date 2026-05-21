@@ -1,6 +1,6 @@
 import styles from './Month.module.css';
 import { ColorVariants } from '../../../../types/colorScheme';
-import { formatDate } from '@shared/lib';
+import { formatDate } from '@shared/lib/date-time';
 
 interface Props {
 	today: Date;

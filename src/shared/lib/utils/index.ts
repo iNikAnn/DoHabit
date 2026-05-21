@@ -1,9 +1,4 @@
-export { countDaysBetween } from './count-days-between/countDaysBetween';
-export { countMonths } from './count-months/countMonths';
-export { formatDate } from './format-date/formatDate';
 export { getAppPalette } from './get-app-palette/getAppPalette';
-export { getDatesRange } from './get-dates-range/getDatesRange';
-export { getYesterday } from './get-yesterday/getYesterday';
 export { renderIcon } from './render-icon/renderIcon';
 export { scrollToTop } from './scroll-to-top/scrollToTop';
 export { shareElementScreenshot } from './share-element-screenshot/shareElementScreenshot';

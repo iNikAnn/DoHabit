@@ -1,5 +1,5 @@
 import { STORAGE_KEYS } from '@shared/const';
-import { formatDate } from '@shared/lib';
+import { formatDate } from '@shared/lib/date-time';
 import { readLocalStorage } from '@shared/lib/local-storage';
 
 /**

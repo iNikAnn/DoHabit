@@ -1,6 +1,6 @@
 import { AchievementRules } from './types';
 import { getStreaks, getTodayProgress } from '@entities/habit';
-import { countDaysBetween, formatDate } from '@shared/lib';
+import { countDaysBetween, formatDate } from '@shared/lib/date-time';
 
 const habitAhievementRules: AchievementRules<'habit'> = {
 	'fresh-start': ({ habits }) => habits.length > 0,

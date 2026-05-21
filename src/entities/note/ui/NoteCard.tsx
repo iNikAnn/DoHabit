@@ -2,7 +2,7 @@ import styles from './NoteCard.module.css';
 import { motion } from 'framer-motion';
 import { Note } from '../model/types';
 import getListAnimationVariants from '../../../utils/getListAnimationVariants';
-import { formatDate } from '@shared/lib';
+import { formatDate } from '@shared/lib/date-time';
 
 interface NoteCardProps {
 	note: Note;
