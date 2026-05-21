@@ -70,8 +70,8 @@
 	color: indianred;
 }
 
-/* showMoreBtn */
-.showMoreBtn {
-	display: block;
-	margin: 1rem auto 0;
+.buttonWrapper {
+	display: flex;
+	justify-content: center;
+	margin-top: 16px;
 }

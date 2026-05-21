@@ -1,27 +1,24 @@
-/* header */
 .header {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 8px 16px;
 	align-items: center;
-
+	font-size: 1rem;
 	margin: 0 16px 16px;
 }
 
-/* title */
 .title {
-	/* outline: 1px solid tomato; */
-	font-size: 16px;
+	grid-column: 1;
+	grid-row: 1;
 }
 
-/* description */
+.extra {
+	grid-column: 2;
+	grid-row: 1;
+}
+
 .description {
-	display: block;
-	margin-top: 8px;
+	grid-column: 1 / span 2;
+	grid-row: 2;
 	color: var(--color-secondary);
-}
-
-.extraWrapper {
-	display: flex;
-    align-items: center;
-    flex-shrink: 0;
 }

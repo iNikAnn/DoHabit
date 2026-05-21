@@ -1,6 +1,6 @@
 import styles from './SectionHeader.module.css';
-import { startCase } from 'es-toolkit';
 import { CSSProperties, ReactNode } from 'react';
+import { startCase } from 'es-toolkit';
 
 interface Props {
 	title: string
@@ -23,25 +23,23 @@ function SectionHeader(props: Props) {
 
 	return (
 		<div className={styles.header}>
-			<div>
-				<h4
-					style={titleStyle}
-					className={styles.title}
-				>
-					{startCase(title)}
-				</h4>
-
-				{description && (
-					<small className={styles.description}>
-						{description}
-					</small>
-				)}
-			</div>
+			<h4
+				style={titleStyle}
+				className={styles.title}
+			>
+				{startCase(title)}
+			</h4>
 
 			{extra && (
 				<div className={styles.extraWrapper}>
 					{extra}
 				</div>
+			)}
+
+			{description && (
+				<small className={styles.description}>
+					{description}
+				</small>
 			)}
 		</div>
 	);

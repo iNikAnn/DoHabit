@@ -1,16 +1,7 @@
-.showMoreButton {
-	height: auto;
-	background-color: unset;
-	padding: 0;
-	color: dodgerblue;
-	font-size: inherit;
-}
-
 .iconCategoryList {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-
 }
 
 .iconCategoryName {

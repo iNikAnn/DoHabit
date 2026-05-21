@@ -30,7 +30,7 @@ function HabitIconPicker({ habits, initialIconTitle = 'default' }: Props) {
 					: undefined}
 				extra={(
 					<Button
-						className={styles.showMoreButton}
+						variant='text'
 						onClick={() => setShowMore((state) => !state)}
 					>
 						{'Show ' + (showMore ? 'less' : 'more')}

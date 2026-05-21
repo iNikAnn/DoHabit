@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FaBinoculars } from 'react-icons/fa';
 import { Streak } from '../../../../types/common';
 import { ColorVariants } from '../../../../types/colorScheme';
-import { Card } from '@shared/ui';
+import { Button, Card } from '@shared/ui';
 
 interface StreakHistoryProps {
 	streaks: Streak[];
@@ -69,12 +69,14 @@ function StreakHistory(props: StreakHistoryProps) {
 				</ul>
 
 				{listLength < streaks.length && (
-					<button
-						className={`text-button ${styles.showMoreBtn}`}
-						onClick={() => setListLength((curr) => curr + 5)}
-					>
-						Show more
-					</button>
+					<div className={styles.buttonWrapper}>
+						<Button
+							variant='text'
+							onClick={() => setListLength((curr) => curr + 5)}
+						>
+							Show more
+						</Button>
+					</div>
 				)}
 			</div>
 		</Card>
