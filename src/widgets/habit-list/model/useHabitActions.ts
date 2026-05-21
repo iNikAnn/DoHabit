@@ -3,7 +3,7 @@ import { FaChartSimple } from 'react-icons/fa6';
 import { MdLibraryBooks } from 'react-icons/md';
 import { Habit, useHabitsStore } from '@entities/habit';
 import { getModalPath } from '@shared/const';
-import { shareElementScreenshot } from '@shared/lib/dom';
+import { takeScreenshot } from '@shared/lib/dom';
 import { ColorVariants } from '@shared/lib/theme';
 import { DrawerAction, useDrawerStore } from '@shared/ui';
 
@@ -72,7 +72,7 @@ function useHabitActions() {
 			{
 				icon: FaShareAlt,
 				label: 'Share Habit',
-				onClick: () => shareElementScreenshot(cardElement),
+				onClick: () => takeScreenshot(cardElement),
 				style: { backgroundColor: darkenedColor }
 			},
 

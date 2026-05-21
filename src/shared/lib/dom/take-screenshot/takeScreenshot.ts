@@ -1,9 +1,9 @@
-import html2canvas, { Options } from 'html2canvas';
+import html2canvas, { Options } from 'html2canvas-pro';
 
 /**
  * Captures an element as an image and opens the native sharing dialog.
  */
-async function shareElementScreenshot(element: HTMLElement) {
+async function takeScreenshot(element: HTMLElement) {
 	// Check if the Web Share API is available
 	if (!navigator?.share) {
 		window.alert('Sharing is not supported.');
@@ -48,4 +48,4 @@ async function shareElementScreenshot(element: HTMLElement) {
 	}
 }
 
-export { shareElementScreenshot };
+export { takeScreenshot };
