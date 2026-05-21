@@ -8,7 +8,7 @@ import { RestoreHabit } from '@features/restore-habit';
 import { UpdateHabitProgress } from '@features/update-habit-progress';
 import { getCompletedDatesSet, HabitCard, useHabitsStore } from '@entities/habit';
 import { useSettingsStore } from '@entities/settings';
-import { getAppPalette } from '@shared/lib';
+import { getAppPalette } from '@shared/lib/theme';
 import { Calendar, CompactCalendar } from '@shared/ui';
 
 interface HabitListProps {

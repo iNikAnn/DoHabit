@@ -2,13 +2,13 @@ import styles from './HabitStatisticsPage.module.css';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ChartOptions } from 'chart.js';
-import { ColorVariants } from '../../../types/colorScheme';
 import { MonthlyChart } from '@widgets/habit-stats/monthly-chart';
 import { StreakHistory } from '@widgets/habit-stats/streak-history';
 import { StreakOverview } from '@widgets/habit-stats/streak-overview';
 import { TotalCompletedMetric } from '@widgets/habit-stats/total-completed-metric';
 import { WeekdayChart } from '@widgets/habit-stats/weekday-chart';
 import { CompletedDay, getStreaks } from '@entities/habit';
+import { ColorVariants } from '@shared/lib/theme';
 import { YearPicker } from '@shared/ui';
 
 interface LocationState {

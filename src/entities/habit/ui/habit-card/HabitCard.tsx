@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Habit } from '../../model/types';
 import HabitHeader from '../habit-header/HabitHeader';
 import getListAnimationVariants from '../../../../utils/getListAnimationVariants';
-import { ColorVariants } from '@/types/colorScheme';
+import { ColorVariants } from '@shared/lib/theme';
 
 interface HabitCardProps {
 	habit: Habit;

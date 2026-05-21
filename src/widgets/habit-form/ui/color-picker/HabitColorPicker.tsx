@@ -1,6 +1,6 @@
 import styles from './HabitColorPicker.module.css';
 import { Habit } from '@entities/habit';
-import { getAppPalette } from '@shared/lib';
+import { getAppPalette } from '@shared/lib/theme';
 import { SectionHeader } from '@shared/ui';
 
 interface Props {

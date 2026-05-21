@@ -5,8 +5,3 @@ export interface ColorVariants {
 	darkenedColor: string;
 	softenedColor: string;
 }
-
-export interface ColorsState {
-	colors: string[];
-	update: (newColors: string[]) => void;
-}

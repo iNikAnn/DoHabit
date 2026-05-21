@@ -1,6 +1,6 @@
 import styles from './CompactCalendar.module.css';
 import clsx from 'clsx';
-import { ColorVariants } from '@/types/colorScheme';
+import { ColorVariants } from '@shared/lib/theme';
 import { formatDate, getDatesRange } from '@shared/lib/date-time';
 
 interface Props {
