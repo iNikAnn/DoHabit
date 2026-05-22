@@ -33,7 +33,7 @@ function DiaryPage() {
 	 */
 	const handleNoteFormClose = (shouldClear = false, shouldScrollUp = false) => {
 		// Clear input on submit or when finishing edit mode
-		if (shouldClear || editingNoteId) {
+		if (shouldClear) {
 			setNoteFormInput('');
 		}
 

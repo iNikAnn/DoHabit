@@ -36,7 +36,7 @@ function NoteForm(props: Props) {
 	} = props;
 
 	const notesDispatch = useNotesStore((s) => s.notesDispatch);
-	useNativeBackClose(isFormActive, onClose);
+	useNativeBackClose(isFormActive, () => onClose(Boolean(editingNoteId)));
 
 	/**
 	 * Handles note submission.
@@ -97,7 +97,7 @@ function NoteForm(props: Props) {
 				<>
 					<Overlay
 						key='note-form-dialog'
-						onClick={onClose}
+						onClick={() => onClose(Boolean(editingNoteId))}
 					/>
 
 					{createPortal(

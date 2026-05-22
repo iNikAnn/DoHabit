@@ -8,6 +8,9 @@ function useNativeBackClose(isOpen: boolean, onClose: () => void) {
 	// Keep fresh callback reference to avoid effect reruns
 	const onCloseRef = useRef(onClose);
 
+	// Always sync ref with latest callback
+	onCloseRef.current = onClose;
+
 	useEffect(() => {
 		if (!isOpen) return;
 
