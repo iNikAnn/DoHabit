@@ -72,6 +72,13 @@ button {
 	color: inherit;
 }
 
+/* Remove mobile tap highlight */
+button,
+a,
+[role="button"] {
+    -webkit-tap-highlight-color: transparent;
+}
+
 input {
 	border: none;
 	background-color: var(--bg-color-primary);
