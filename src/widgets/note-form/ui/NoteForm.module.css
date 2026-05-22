@@ -55,3 +55,8 @@
 	width: 22px;
 	height: 22px;
 }
+
+.actionButton:disabled {
+	background-color: var(--bg-color-tertiary);
+	color: var(--color-secondary);
+}
