@@ -34,7 +34,7 @@ function Overlay({ onClick }: Props) {
 			<motion.div
 				{...variants}
 				className={styles.overlay}
-				onClick={onClick}
+				onClick={() => onClick()} // Calling via arrow function to avoid passing Event object
 			/>,
 			document.body
 		)
