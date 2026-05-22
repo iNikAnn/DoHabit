@@ -6,6 +6,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { IoSend } from "react-icons/io5";
 import { FaPlus } from 'react-icons/fa';
 import { useNotesStore } from '@entities/note';
+import { useNativeBackClose } from '@shared/lib/dom';
 import { Button, Overlay } from '@shared/ui';
 
 interface Props {
@@ -35,6 +36,7 @@ function NoteForm(props: Props) {
 	} = props;
 
 	const notesDispatch = useNotesStore((s) => s.notesDispatch);
+	useNativeBackClose(isFormActive, onClose);
 
 	/**
 	 * Handles note submission.
@@ -95,7 +97,7 @@ function NoteForm(props: Props) {
 				<>
 					<Overlay
 						key='note-form-dialog'
-						onClick={() => onClose()} // Calling via arrow function to avoid passing Event object
+						onClick={onClose}
 					/>
 
 					{createPortal(
