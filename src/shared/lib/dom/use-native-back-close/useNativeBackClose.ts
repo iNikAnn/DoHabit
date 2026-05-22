@@ -1,22 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 /**
  * Handles closing UI components via system back gesture.
  * Syncs browser history with the component's open state.
  */
 function useNativeBackClose(isOpen: boolean, onClose: () => void) {
+	// Keep fresh callback reference to avoid effect reruns
+	const onCloseRef = useRef(onClose);
+
 	useEffect(() => {
 		if (!isOpen) return;
 
 		const handlePopState = () => {
-			onClose();
+			onCloseRef.current();
 		};
 
-		// Add entry to history to catch the "back" move
-		window.history.pushState({ action: 'close-ui' }, '');
-		window.addEventListener('popstate', handlePopState);
+		// Delay pushState to let pending history.back() finish first
+		const timer = setTimeout(() => {
+			window.history.pushState({ action: 'close-ui' }, '');
+			window.addEventListener('popstate', handlePopState);
+		}, 50);
 
 		return () => {
+			clearTimeout(timer);
 			window.removeEventListener('popstate', handlePopState);
 
 			// If closed manually, remove entry from history
@@ -24,7 +30,7 @@ function useNativeBackClose(isOpen: boolean, onClose: () => void) {
 				window.history.back();
 			}
 		};
-	}, [isOpen, onClose]);
+	}, [isOpen]);
 }
 
 export { useNativeBackClose };
