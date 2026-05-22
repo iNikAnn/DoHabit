@@ -4,7 +4,7 @@
 	right: 0;
 	top: 0;
 	bottom: 0;
-	backdrop-filter: blur(4px) saturate(0.5) brightness(0.75);
-	will-change: opacity, backdrop-filter;
+	background: rgba(0, 0, 0, 0.4);
+	will-change: opacity;
 	z-index: 200;
 }
