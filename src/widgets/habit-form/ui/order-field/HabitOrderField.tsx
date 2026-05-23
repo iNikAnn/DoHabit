@@ -1,6 +1,6 @@
 import styles from './HabitOrderField.module.css';
 import { useState } from 'react';
-import { Habit } from '@entities/habit';
+import { type Habit } from '@entities/habit';
 import { Button, SectionHeader } from '@shared/ui';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 

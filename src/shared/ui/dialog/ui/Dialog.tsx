@@ -9,10 +9,6 @@ const dialogVariants = {
 	initial: { opacity: 0, y: '-40%', x: '-50%' },
 	animate: { opacity: 1, y: '-50%', x: '-50%' },
 	exit: { opacity: 0, y: '-40%', x: '-50%' },
-	transition: {
-		duration: .2,
-		ease: 'easeInOut'
-	}
 };
 
 /**
@@ -24,7 +20,6 @@ function Dialog() {
 	useNativeBackClose(Boolean(content), closeDialog)
 
 	return (
-		// @ts-ignore
 		<AnimatePresence>
 			{content && (
 				<>
@@ -35,6 +30,7 @@ function Dialog() {
 							key='dialog'
 							className={styles.dialog}
 							{...dialogVariants}
+							transition={{ duration: .2, ease: 'easeInOut' }}
 						>
 							<div className={styles.content}>
 								{content.title && (
@@ -65,8 +61,9 @@ function Dialog() {
 						document.body
 					)}
 				</>
-			)}
-		</AnimatePresence>
+			)
+			}
+		</AnimatePresence >
 	);
 }
 

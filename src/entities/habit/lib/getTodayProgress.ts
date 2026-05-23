@@ -1,4 +1,4 @@
-import { Habit } from '../model/types';
+import type { Habit } from '../model/types';
 import { formatDate } from '@shared/lib/date-time';
 
 interface HabitProgress {

@@ -1,6 +1,6 @@
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
-import { Note, useNotesStore } from '@entities/note';
-import { DrawerAction, useDrawerStore } from '@shared/ui';
+import { type Note, useNotesStore } from '@entities/note';
+import { type DrawerAction, useDrawerStore } from '@shared/ui';
 
 interface OpenMenuParams {
 	note: Note;

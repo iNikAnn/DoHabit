@@ -1,4 +1,4 @@
-import { Habit, HabitAction } from './types';
+import type { Habit, HabitAction } from './types';
 import addHabit from './handlers/addHabit';
 import editHabit from './handlers/editHabit';
 import deleteHabit from './handlers/deleteHabit';

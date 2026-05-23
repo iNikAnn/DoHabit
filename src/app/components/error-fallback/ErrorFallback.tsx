@@ -2,16 +2,13 @@ import { exportAppData } from '@features/data-management/export-data';
 import { clearLocalStorage } from '@shared/lib/local-storage';
 import { Placeholder } from '@shared/ui';
 
-// @ts-ignore
-const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
-
 /**
  * Error fallback for the whole app.
  * Provides options to reload or clear data.
  */
 function ErrorFallback() {
 	const handleReload = () => {
-		window.location.href = PUBLIC_URL;
+		window.location.href = import.meta.env.BASE_URL;
 	};
 
 	const handleBackupAndReset = () => {

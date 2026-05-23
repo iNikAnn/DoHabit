@@ -1,4 +1,4 @@
-import { DeleteHabitNotes, Note } from '../types';
+import type { DeleteHabitNotes, Note } from '../types';
 
 interface DeleteHabitNotesParams {
 	notes: Note[];

@@ -1,11 +1,11 @@
 import { FaCalendarCheck, FaCalendarTimes, FaPencilAlt, FaShareAlt } from 'react-icons/fa';
 import { FaChartSimple } from 'react-icons/fa6';
 import { MdLibraryBooks } from 'react-icons/md';
-import { Habit, useHabitsStore } from '@entities/habit';
+import { type Habit, useHabitsStore } from '@entities/habit';
 import { getModalPath } from '@shared/const';
 import { takeScreenshot } from '@shared/lib/dom';
-import { ColorVariants } from '@shared/lib/theme';
-import { DrawerAction, useDrawerStore } from '@shared/ui';
+import { type ColorVariants } from '@shared/lib/theme';
+import { type DrawerAction, useDrawerStore } from '@shared/ui';
 
 interface OpenMenuParams {
 	habit: Habit;

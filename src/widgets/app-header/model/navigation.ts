@@ -3,7 +3,7 @@ import { FaAward, FaBars, FaPlus } from 'react-icons/fa';
 import { MdLibraryBooks } from 'react-icons/md';
 
 // types
-import { NavItem } from './types';
+import type { NavItem } from './types';
 
 // utils
 import { getModalPath } from '@shared/const';

@@ -1,4 +1,4 @@
-import { DeleteNote, Note } from '../types';
+import type { DeleteNote, Note } from '../types';
 
 interface DeleteNoteParams {
 	notes: Note[];

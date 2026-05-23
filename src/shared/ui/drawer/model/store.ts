@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { DrawerState } from './types';
+import type { DrawerState } from './types';
 
 export const useDrawerStore = create<DrawerState>(
 	(set) => ({

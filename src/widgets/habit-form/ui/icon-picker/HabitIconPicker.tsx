@@ -1,7 +1,7 @@
 import styles from './HabitIconPicker.module.css';
-import { ElementType, useState } from 'react';
+import { type ElementType, useState } from 'react';
 import { groupBy, pick, upperFirst } from 'es-toolkit';
-import { Habit, HABIT_ICONS } from '@entities/habit';
+import { type Habit, HABIT_ICONS } from '@entities/habit';
 import { Button, SectionHeader } from '@shared/ui';
 
 interface Props {

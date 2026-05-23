@@ -1,6 +1,6 @@
-import { HTMLMotionProps } from 'framer-motion';
-import { CSSProperties, ReactNode } from 'react';
-import { IconType } from 'react-icons';
+import type { HTMLMotionProps } from 'framer-motion';
+import type { CSSProperties, ReactNode } from 'react';
+import type { IconType } from 'react-icons';
 
 interface IconProps {
 	[key: string]: unknown;

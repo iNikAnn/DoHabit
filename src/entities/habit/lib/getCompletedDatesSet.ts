@@ -1,4 +1,4 @@
-import { CompletedDay } from '../model/types';
+import type { CompletedDay } from '../model/types';
 
 /**
  * Resolves completed dates into a Set.

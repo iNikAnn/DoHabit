@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDebounce } from '@uidotdev/usehooks';
-import { checkHabitTitleExistence, Habit } from '@entities/habit';
+import { checkHabitTitleExistence, type Habit } from '@entities/habit';
 
 /**
  * Hook to check if a habit with the same title already exists.

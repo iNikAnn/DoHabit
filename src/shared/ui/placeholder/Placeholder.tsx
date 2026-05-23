@@ -1,5 +1,5 @@
 import styles from './Placeholder.module.css';
-import { PlaceholderProps } from './types';
+import type { PlaceholderProps } from './types';
 import { Button } from '@shared/ui';
 
 /**

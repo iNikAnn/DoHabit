@@ -1,5 +1,5 @@
 import { useSettingsStore } from '@entities/settings';
-import { ListItemProps, Switch } from '@shared/ui';
+import { type ListItemProps, Switch } from '@shared/ui';
 
 function useListItems() {
 	const { settings, settingsDispatch } = useSettingsStore();

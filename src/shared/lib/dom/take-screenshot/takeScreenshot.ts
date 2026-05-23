@@ -1,4 +1,4 @@
-import html2canvas, { Options } from 'html2canvas-pro';
+import html2canvas, { type Options } from 'html2canvas-pro';
 
 /**
  * Captures an element as an image and opens the native sharing dialog.

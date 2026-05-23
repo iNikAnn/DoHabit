@@ -1,4 +1,4 @@
-import { Settings, SettingsAction } from './types';
+import type { Settings, SettingsAction } from './types';
 
 /**
  * Reducer for application settings.

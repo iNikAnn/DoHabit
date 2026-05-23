@@ -3,7 +3,7 @@ import { FaGithub, FaPaintBrush } from 'react-icons/fa';
 import { BsFillDatabaseFill } from 'react-icons/bs';
 import { IoIosMail } from 'react-icons/io';
 import { getModalPath } from '@shared/const';
-import { ListItemProps } from '@shared/ui';
+import type { ListItemProps } from '@shared/ui';
 
 function useListItems() {
 	const appItems: ListItemProps[] = [

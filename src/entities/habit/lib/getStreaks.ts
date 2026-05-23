@@ -1,7 +1,7 @@
-import { CompletedDay } from '../model/types';
+import type { CompletedDay } from '../model/types';
 import { formatDate } from '@shared/lib/date-time';
 import { DAY_MS } from '@shared/const';
-import { Streak } from '@shared/model';
+import { type Streak } from '@shared/model';
 
 interface HabitStreaks {
 	allStreaks: Streak[];

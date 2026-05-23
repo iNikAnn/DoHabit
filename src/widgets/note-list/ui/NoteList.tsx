@@ -1,7 +1,7 @@
 import styles from './NoteList.module.css';
 import { AnimatePresence } from 'framer-motion';
 import { useNoteActions } from '../model/useNoteActions';
-import { Note, NoteCard, useNotesStore } from '@entities/note';
+import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { Placeholder } from '@shared/ui';
 
@@ -46,7 +46,6 @@ function NoteList(props: NoteListProps) {
 	return (
 		<div>
 			<ul className={styles.list}>
-				{/* @ts-ignore */}
 				<AnimatePresence initial={false}>
 					{filteredNotes.map((note) => (
 						<NoteCard

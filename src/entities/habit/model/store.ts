@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { HabitState } from './types';
+import type { HabitState } from './types';
 import habitsReducer from './reducer';
 import { habitMigrations } from './migrations';
 import { STORAGE_KEYS } from '@shared/const';

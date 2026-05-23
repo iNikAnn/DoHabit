@@ -1,4 +1,4 @@
-import { CompletedDay } from '../model/types';
+import type { CompletedDay } from '../model/types';
 import { countDaysBetween } from '@shared/lib/date-time';
 
 /**

@@ -1,5 +1,5 @@
 import styles from './HabitColorPicker.module.css';
-import { Habit } from '@entities/habit';
+import { type Habit } from '@entities/habit';
 import { getAppPalette } from '@shared/lib/theme';
 import { SectionHeader } from '@shared/ui';
 

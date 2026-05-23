@@ -1,10 +1,10 @@
 import styles from './HabitCard.module.css';
-import { CSSProperties, ReactNode } from 'react';
+import { type CSSProperties, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { Habit } from '../../model/types';
+import type { Habit } from '../../model/types';
 import HabitHeader from '../habit-header/HabitHeader';
 import { createListVariants } from '@shared/lib/animation';
-import { ColorVariants } from '@shared/lib/theme';
+import { type ColorVariants } from '@shared/lib/theme';
 
 interface HabitCardProps {
 	habit: Habit;

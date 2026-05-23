@@ -1,4 +1,4 @@
-import { NoteAction, Note } from './types';
+import type { NoteAction, Note } from './types';
 import { editNote } from './handlers/editNote';
 import { deleteNote } from './handlers/deleteNote';
 import { deleteHabitNotes } from './handlers/deleteHabitNotes';

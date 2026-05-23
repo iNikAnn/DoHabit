@@ -1,4 +1,4 @@
-import { ColorVariants } from '../types';
+import type { ColorVariants } from '../types';
 
 const COLORS_COUNT = 21;
 

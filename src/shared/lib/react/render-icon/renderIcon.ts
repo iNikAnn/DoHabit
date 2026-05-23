@@ -1,5 +1,5 @@
-import { createElement, ReactNode } from 'react';
-import { IconType } from 'react-icons';
+import { createElement, type ReactNode } from 'react';
+import { type IconType } from 'react-icons';
 
 type Icon = ReactNode | IconType;
 

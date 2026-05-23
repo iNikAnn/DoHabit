@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { AchievementState } from './types';
+import { type AchievementState } from './types';
 import { persist } from 'zustand/middleware';
 import { STORAGE_KEYS } from '@shared/const';
 

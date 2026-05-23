@@ -1,6 +1,7 @@
-import { BarElement, Chart as ChartJS, ChartData, ChartOptions } from 'chart.js';
+import type { ChartData, ChartOptions } from 'chart.js';
+import { BarElement, Chart as ChartJS } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { CompletedDay, getCompletionCountPerDay } from '@entities/habit';
+import { type CompletedDay, getCompletionCountPerDay } from '@entities/habit';
 import { WEEKDAYS } from '@shared/const';
 import { Card } from '@shared/ui';
 import { FaCalendarWeek } from 'react-icons/fa';

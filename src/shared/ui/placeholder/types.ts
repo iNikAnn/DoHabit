@@ -1,14 +1,14 @@
-import { JSX } from 'react';
+import { type ReactNode } from 'react';
 
 export interface PlaceholderContent {
-	image?: JSX.Element;
+	image?: ReactNode;
 	title: string;
 	description: string;
 }
 
 export interface PlaceholderAction {
 	label: string;
-	icon?: JSX.Element;
+	icon?: ReactNode;
 	color?: string;
 	to?: string;
 	state?: { modalTitle: string };

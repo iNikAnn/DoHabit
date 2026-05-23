@@ -1,6 +1,6 @@
 import styles from './ModalLayout.module.css';
 import { useEffect, useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import { motion } from 'framer-motion'
 import { IoIosArrowForward } from 'react-icons/io';
 

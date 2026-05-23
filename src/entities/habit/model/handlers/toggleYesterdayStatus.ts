@@ -1,4 +1,4 @@
-import { Habit, CompletedDay, ToggleYesterdayStatus } from '../types';
+import type { Habit, CompletedDay, ToggleYesterdayStatus } from '../types';
 import updateHabitById from '../../lib/updateHabitById';
 import { formatDate, getYesterday } from '@shared/lib/date-time';
 
@@ -31,7 +31,6 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 			// Remove yesterday entry
 			return {
 				...habit,
-				// @ts-ignore
 				completedDays: habit.completedDays.toSpliced(targetIndex, 1)
 			};
 		}
@@ -47,7 +46,6 @@ function toggleYesterdayStatus(params: Params): Habit[] {
 
 		return {
 			...habit,
-			// @ts-ignore
 			completedDays: habit.completedDays.toSpliced(insertIndex, 0, completedYday)
 		};
 	});

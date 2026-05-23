@@ -1,7 +1,7 @@
 import { FaFont } from 'react-icons/fa';
 import { FaMoon, FaSun } from 'react-icons/fa6';
 import { useSettingsStore } from '@entities/settings';
-import { DrawerAction } from '@shared/ui';
+import { type DrawerAction } from '@shared/ui';
 
 function useThemeActions() {
 	const settings = useSettingsStore((s) => s.settings);

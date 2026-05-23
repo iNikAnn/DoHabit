@@ -1,4 +1,4 @@
-import { Navigate, RouteObject } from 'react-router-dom';
+import { Navigate, type RouteObject } from 'react-router';
 import { AchievementsPage } from '@pages/achievements';
 import { AppearancePage } from '@pages/appearance';
 import { ArchivePage } from '@pages/archive';
@@ -8,7 +8,7 @@ import { HabitEditorPage } from '@pages/habit-editor';
 import { MainPage } from '@pages/main';
 import { MenuPage } from '@pages/menu';
 import { HabitStatisticsPage } from '@pages/habit-statistics';
-import { MODAL_PATHS, ModalRouteKey } from '@shared/const';
+import { MODAL_PATHS, type ModalRouteKey } from '@shared/const';
 import { ModalLayout } from '@shared/ui';
 
 /**

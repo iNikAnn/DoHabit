@@ -3,7 +3,7 @@ import { ImFire } from 'react-icons/im';
 import { clearAppData } from '@features/data-management/clear-data';
 import { exportAppData } from '@features/data-management/export-data';
 import { importAppData } from '@features/data-management/import-data';
-import { ListItemProps } from '@shared/ui';
+import type { ListItemProps } from '@shared/ui';
 
 function useListItems() {
 	const backupItems: ListItemProps[] = [

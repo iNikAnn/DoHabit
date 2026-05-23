@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { achievementRules } from '../model/rules';
-import { AchievementId, ACHIEVEMENTS, useAchievementsStore } from '@entities/achievement';
+import { type AchievementId, ACHIEVEMENTS, useAchievementsStore } from '@entities/achievement';
 import { useHabitsStore } from '@entities/habit';
 import { useNotesStore } from '@entities/note';
 import { useIsFirstRender } from '@shared/lib/react';

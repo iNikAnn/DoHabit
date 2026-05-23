@@ -1,4 +1,4 @@
-import { EditHabit, Habit } from '../types';
+import type { EditHabit, Habit } from '../types';
 import mapHabitData from '../../lib/mapHabitData';
 import updateHabitById from '../../lib/updateHabitById';
 import reorderHabit from '../../lib/reorderHabit';
