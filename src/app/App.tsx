@@ -3,6 +3,7 @@ import { AppRouter } from './providers';
 import { useCheckAchievements } from '@features/check-achievements';
 import { useTheme } from '@entities/settings';
 import { Dialog, Drawer } from '@shared/ui';
+import PWABadge from '@/PWABadge';
 
 function App() {
 	useTheme();
@@ -13,6 +14,7 @@ function App() {
 			<AppRouter />
 			<Dialog />
 			<Drawer />
+			<PWABadge />
 		</main>
 	);
 }

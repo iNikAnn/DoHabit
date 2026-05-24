@@ -1,32 +1,38 @@
-.PWABadge-container {
-    width: 0;
-	height: 0;
-    padding: 0;
-    margin: 0;
-}
-
 .PWABadge-toast {
     position: fixed;
     right: 0;
     bottom: 0;
     z-index: 1;
-    padding: 12px;
+    padding: 16px;
     margin: 16px;
+	color: var(--color-primary);
     text-align: left;
-    background-color: white;
-    border: 1px solid #8885;
-    border-radius: 4px;
-    box-shadow: 3px 4px 5px 0 #8885;
+    background-color: var(--bg-color-secondary);
+	border: 1px solid var(--bg-color-tertiary);
+    border-radius: var(--border-radius-secondary);
 }
 
-.PWABadge-toast-message {
-    margin-bottom: 8px;
+.PWABadge-message {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+#toast-message {
+	color: var(--color-secondary);
+}
+
+.PWABadge-buttons {
+	display: flex;
+	gap: 8px;
+	width: 100%;
+	margin-top: 16px;
+}
+
+.PWABadge-buttons button:last-child {
+	background-color: var(--bg-color-tertiary);
 }
 
 .PWABadge-toast-button {
-    padding: 3px 10px;
-    margin-right: 5px;
-    outline: none;
-    border: 1px solid #8885;
-    border-radius: 2px;
+	width: 100%;
 }
