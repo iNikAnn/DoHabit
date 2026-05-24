@@ -33,7 +33,7 @@ export default defineConfig({
 			injectRegister: false,
 
 			pwaAssets: {
-				disabled: false,
+				disabled: true,
 				config: true,
 			},
 
@@ -53,32 +53,32 @@ export default defineConfig({
 				icons: [
 					// favicon
 					{
-						src: 'favicon.png',
-						sizes: '64x64 32x32 24x24 16x16',
-						type: 'image/png'
+						src: 'assets/brand/favicon.ico',
+						sizes: "64x64 32x32 24x24 16x16",
+						type: "image/x-icon"
 					},
 
 					// with alpha
 					{
-						src: 'icons/logo192-alpha.png',
+						src: 'assets/brand/logo192-alpha.png',
 						type: 'image/png',
 						sizes: '192x192'
 					},
 					{
-						src: 'icons/logo512-alpha.png',
+						src: 'assets/brand/logo512-alpha.png',
 						type: 'image/png',
 						sizes: '512x512'
 					},
 
 					// maskable
 					{
-						src: 'icons/logo192-maskable.png',
+						src: 'assets/brand/logo192-maskable.png',
 						type: 'image/png',
 						sizes: '192x192',
 						purpose: 'maskable'
 					},
 					{
-						src: 'icons/logo512-maskable.png',
+						src: 'assets/brand/logo512-maskable.png',
 						type: 'image/png',
 						sizes: '512x512',
 						purpose: 'maskable'
@@ -86,13 +86,13 @@ export default defineConfig({
 
 					// monochrome
 					{
-						src: 'icons/logo512-monochrome.png',
+						src: 'assets/brand/logo512-monochrome.png',
 						type: 'image/png',
 						sizes: '512x512',
 						purpose: 'monochrome'
 					},
 					{
-						src: 'icons/logo512-maskable-monochrome.png',
+						src: 'assets/brand/logo512-maskable-monochrome.png',
 						type: 'image/png',
 						sizes: '512x512',
 						purpose: 'maskable monochrome'
