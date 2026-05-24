@@ -30,6 +30,7 @@ const customStorage = {
 
 			return raw;
 		} catch (error) {
+			console.error(error);
 			return null;
 		}
 	},

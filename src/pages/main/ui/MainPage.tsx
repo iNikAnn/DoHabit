@@ -6,8 +6,7 @@ import { HabitList } from '@widgets/habit-list';
 const mainVariants = {
 	initial: { opacity: 0 },
 	animate: { opacity: 1 },
-	exit: { opacity: 0 },
-	transition: { duration: .3, ease: 'easeOut' }
+	exit: { opacity: 0 }
 };
 
 function MainPage() {
@@ -15,6 +14,7 @@ function MainPage() {
 		<motion.div
 			className={styles.mainPage}
 			{...mainVariants}
+			transition={{ duration: .3, ease: 'easeOut' }}
 		>
 			<AppHeader />
 			<HabitList />

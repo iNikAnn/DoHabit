@@ -30,10 +30,11 @@ function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[]
 		case 'toggleYesterdayStatus':
 			return toggleYesterdayStatus({ habits, payload });
 
-		default:
+		default: {
 			const _exhaustiveCheck: never = type;
 			console.error('Unknown action type.');
 			return _exhaustiveCheck;
+		}
 	}
 }
 

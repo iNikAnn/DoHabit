@@ -1,5 +1,5 @@
 import styles from './Card.module.css';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import CardHeader from './CardHeader';
 
 interface CardProps {

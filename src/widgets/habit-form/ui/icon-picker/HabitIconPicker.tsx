@@ -48,7 +48,7 @@ function HabitIconPicker({ habits, initialIconTitle = 'default' }: Props) {
 					readOnly
 				/>
 
-				{Object.entries(visibleIcons).map(([category, icons], index) => (
+				{Object.entries(visibleIcons).map(([category, icons]) => (
 					<div key={category}>
 						{category !== 'featured' && (
 							<small className={styles.iconCategoryName}>

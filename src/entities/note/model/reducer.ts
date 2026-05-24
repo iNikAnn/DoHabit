@@ -20,10 +20,11 @@ function notesReducer(notes: Note[], { type, payload }: NoteAction): Note[] {
 		case 'deleteHabitNotes':
 			return deleteHabitNotes({ notes, payload });
 
-		default:
+		default: {
 			const _exhaustiveCheck: never = type;
 			console.error('Unknown action type.');
 			return _exhaustiveCheck;
+		}
 	}
 }
 

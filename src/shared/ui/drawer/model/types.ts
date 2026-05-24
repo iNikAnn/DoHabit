@@ -1,4 +1,4 @@
-import { ButtonProps } from '@shared/ui';
+import { type ButtonProps } from '@shared/ui';
 
 export interface DrawerAction extends ButtonProps {
 	label: string;
