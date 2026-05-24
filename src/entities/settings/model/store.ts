@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { SettingsState } from './types';
+import type { SettingsState } from './types';
 import { settingsReducer } from './reducer';
 import { STORAGE_KEYS } from '@shared/const';
 
@@ -30,6 +30,7 @@ const customStorage = {
 
 			return raw;
 		} catch (error) {
+			console.error(error);
 			return null;
 		}
 	},

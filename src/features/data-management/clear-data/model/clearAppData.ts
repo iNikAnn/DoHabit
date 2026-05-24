@@ -1,8 +1,5 @@
 import { clearLocalStorage } from '@shared/lib/local-storage';
 
-// @ts-ignore
-const PUBLIC_URL = process.env.PUBLIC_URL ?? '/';
-
 const warningMessage =
 	'Are you sure you want to delete all application data?\n\n' +
 	'This includes:\n' +
@@ -28,7 +25,7 @@ function clearAppData() {
 			alert('All data has been successfully removed. The application will now reload.');
 
 			// Hard redirect to clear state and refresh the app
-			window.location.href = PUBLIC_URL;
+			window.location.href = import.meta.env.BASE_URL;
 		} else {
 			alert('Action canceled or incorrect phrase.');
 		}

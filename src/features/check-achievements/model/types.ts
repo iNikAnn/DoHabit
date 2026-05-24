@@ -1,6 +1,6 @@
-import { AchievementId, AchievementType } from '@entities/achievement';
-import { Habit } from '@entities/habit';
-import { Note } from '@entities/note';
+import type { AchievementId, AchievementType } from '@entities/achievement';
+import type { Habit } from '@entities/habit';
+import type { Note } from '@entities/note';
 
 export type CheckContext = { habits: Habit[]; notes: Note[] };
 

@@ -1,9 +1,9 @@
 import styles from './DiaryPage.module.css';
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { NoteForm } from '@widgets/note-form';
 import { NoteList } from '@widgets/note-list';
-import { Note } from '@entities/note';
+import { type Note } from '@entities/note';
 import { scrollToTop } from '@shared/lib/dom';
 
 /**

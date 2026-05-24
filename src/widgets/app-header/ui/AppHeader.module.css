@@ -2,32 +2,29 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 99;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	width: 100%;
 	height: var(--header-height);
-
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
+	padding: 0 26px;
 	background-color: var(--bg);
-
-	padding: 0 1.6rem;
-	z-index: 99;
 }
 
 /* logo */
 .logoWrapper {
 	/* outline: 1px solid tomato; */
 	display: flex;
+	gap: 8px;
 	align-items: center;
-	gap: 0.6rem;
 }
 
 .logo {
 	display: block;
-	width: 1.8rem;
-	height: 1.8rem;
-	background: url(../../../../public/icons/logo192-alpha.png);
+	width: 26px;
+	height: 26px;
+	background: url("/assets/brand/logo512-alpha.png");
 	background-size: contain;
 }
 
@@ -38,15 +35,15 @@
 /* btnsWrapper */
 .navList {
 	display: flex;
+	gap: 16px;
 	align-items: center;
-	gap: 1rem;
 }
 
 .navItem {
 	width: 32px;
 	height: 32px;
-	background-color: unset;
 	padding: 0;
+	background-color: unset;
 }
 
 .navItem svg {
@@ -54,11 +51,10 @@
 	height: 22px;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (width >= 576px) {
 	.header {
-		/* outline: 1px solid tomato; */
-		width: var(--app-width);
 		left: 50%;
+		width: var(--app-width);
 		transform: translateX(-50%);
 	}
 }

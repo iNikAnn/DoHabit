@@ -1,4 +1,4 @@
-import { AchievementRules } from './types';
+import type { AchievementRules } from './types';
 import { getStreaks, getTodayProgress } from '@entities/habit';
 import { countDaysBetween, formatDate } from '@shared/lib/date-time';
 

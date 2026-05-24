@@ -1,6 +1,6 @@
 import styles from './HabitHeader.module.css';
-import { ReactNode } from 'react';
-import { Habit, HABIT_ICONS_MAP } from '@entities/habit';
+import { type ReactNode } from 'react';
+import { type Habit, HABIT_ICONS_MAP } from '@entities/habit';
 
 interface HabitHeaderProps {
 	habit: Habit;

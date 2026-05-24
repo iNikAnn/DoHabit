@@ -1,4 +1,4 @@
-import { AddHabit, Habit } from '../types';
+import type { AddHabit, Habit } from '../types';
 import mapHabitData from '../../lib/mapHabitData';
 import { formatDate } from '@shared/lib/date-time';
 

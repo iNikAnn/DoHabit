@@ -1,4 +1,4 @@
-import { getStreaks, getTodayProgress, Habit, isYesterdayCompleted } from '@entities/habit';
+import { getStreaks, getTodayProgress, type Habit, isYesterdayCompleted } from '@entities/habit';
 
 /**
  * Get stats for a specific habit.

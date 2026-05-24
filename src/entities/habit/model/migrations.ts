@@ -50,6 +50,7 @@ function migrateToV2(state: any): any {
 			const nextCompletedDays = h.completedDays
 				.filter((d: any) => d.progress >= h.frequency)
 				.map((d: any) => {
+					// eslint-disable-next-line
 					const { progress, ...rest } = d; // remove progress field
 					return rest;
 				});

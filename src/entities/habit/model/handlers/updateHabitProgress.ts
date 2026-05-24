@@ -1,4 +1,4 @@
-import { Habit, UpdateProgress } from '../types';
+import type { Habit, UpdateProgress } from '../types';
 import { getTodayProgress } from '../../lib/getTodayProgress';
 import updateHabitById from '../../lib/updateHabitById';
 

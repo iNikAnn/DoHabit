@@ -1,5 +1,5 @@
 import styles from './HabitEditorPage.module.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { HabitForm } from '@widgets/habit-form';
 
 /**

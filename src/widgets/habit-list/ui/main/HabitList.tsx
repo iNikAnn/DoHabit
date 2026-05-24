@@ -40,7 +40,6 @@ function HabitList(props: HabitListProps) {
 	// 2. Render list
 	return (
 		<div className={clsx(styles.habitList, isArchive && styles.isArchive)}>
-			{/* @ts-ignore */}
 			<AnimatePresence initial={false}>
 				{filteredHabits.map((habit) => {
 					const colorVariants = palette[habit.colorIndex] ?? palette[0]!;

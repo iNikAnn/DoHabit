@@ -2,7 +2,7 @@ import useThemeActions from './useThemeActions';
 import { FaFont } from 'react-icons/fa';
 import { FaMoon, FaSun } from 'react-icons/fa6';
 import { useSettingsStore } from '@entities/settings';
-import { ListItemProps, useDrawerStore } from '@shared/ui';
+import { type ListItemProps, useDrawerStore } from '@shared/ui';
 
 function useListItems() {
 	const openDrawer = useDrawerStore((s) => s.open);

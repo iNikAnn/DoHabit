@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { NoteState } from './types';
+import type { NoteState } from './types';
 import { notesReducer } from './reducer';
 import { noteMigrations } from './migrations';
 import { STORAGE_KEYS } from '@shared/const';

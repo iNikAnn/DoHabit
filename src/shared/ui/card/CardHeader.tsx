@@ -1,5 +1,5 @@
 import styles from './CardHeader.module.css';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 interface CardHeaderProps {
 	title: string;

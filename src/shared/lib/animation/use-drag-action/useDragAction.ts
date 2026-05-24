@@ -1,4 +1,4 @@
-import { TargetAndTransition, useAnimate, useMotionValue } from 'framer-motion';
+import { type TargetAndTransition, useAnimate, useMotionValue } from 'framer-motion';
 
 interface DragActionOptions {
 	threshold?: number;

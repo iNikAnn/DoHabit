@@ -1,14 +1,13 @@
 import styles from './ModalLayout.module.css';
 import { useEffect, useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import { motion } from 'framer-motion'
 import { IoIosArrowForward } from 'react-icons/io';
 
 const modalVariants = {
 	initial: { opacity: 0, x: '50%' },
 	animate: { opacity: 1, x: 0 },
-	exit: { opacity: 0, x: '10%' },
-	transition: { duration: .2, ease: 'easeOut' }
+	exit: { opacity: 0, x: '10%' }
 };
 
 /**
@@ -33,6 +32,7 @@ function ModalLayout() {
 		<motion.div
 			className={styles.modal}
 			{...modalVariants}
+			transition={{ duration: .2, ease: 'easeOut' }}
 			layoutRoot
 		>
 			<motion.header className={styles.header}>

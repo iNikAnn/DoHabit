@@ -1,23 +1,23 @@
 .form {
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
+	height: 100%;
 }
 
 .submitButtonWrapper {
 	/* outline: 1px solid tomato; */
 	position: sticky;
-	width: calc(100% + 32px);
-	left: 0;
 	bottom: 0;
-	transform: translate(-16px, 16px);
-	padding: 16px;
+	left: 0;
+	z-index: 10;
 	display: flex;
 	gap: 8px;
-	background-image: linear-gradient(transparent, var(--bg));
+	width: calc(100% + 32px);
+	padding: 16px;
 	margin-top: auto;
-	z-index: 10;
+	background-image: linear-gradient(transparent, var(--bg));
+	transform: translate(-16px, 16px);
 }
 
 .submitButton {
@@ -26,7 +26,7 @@
 }
 
 .submitButton:disabled {
-	opacity: 1;
-	background-color: var(--bg-color-tertiary);
 	color: var(--color-secondary);
+	background-color: var(--bg-color-tertiary);
+	opacity: 1;
 }

@@ -1,4 +1,4 @@
-import { NoteAction, Note } from './types';
+import type { NoteAction, Note } from './types';
 import { editNote } from './handlers/editNote';
 import { deleteNote } from './handlers/deleteNote';
 import { deleteHabitNotes } from './handlers/deleteHabitNotes';
@@ -20,10 +20,11 @@ function notesReducer(notes: Note[], { type, payload }: NoteAction): Note[] {
 		case 'deleteHabitNotes':
 			return deleteHabitNotes({ notes, payload });
 
-		default:
+		default: {
 			const _exhaustiveCheck: never = type;
 			console.error('Unknown action type.');
 			return _exhaustiveCheck;
+		}
 	}
 }
 

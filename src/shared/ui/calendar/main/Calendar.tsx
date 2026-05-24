@@ -1,7 +1,7 @@
 import styles from './Calendar.module.css';
 import Month from '../month/Month';
 import { countDaysBetween, getDatesRange } from '@shared/lib/date-time';
-import { ColorVariants } from '@shared/lib/theme';
+import type { ColorVariants } from '@shared/lib/theme';
 
 interface CalendarProps {
 	colorVariants: ColorVariants;

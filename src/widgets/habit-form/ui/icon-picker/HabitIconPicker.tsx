@@ -1,7 +1,7 @@
 import styles from './HabitIconPicker.module.css';
-import { ElementType, useState } from 'react';
+import { type ElementType, useState } from 'react';
 import { groupBy, pick, upperFirst } from 'es-toolkit';
-import { Habit, HABIT_ICONS } from '@entities/habit';
+import { type Habit, HABIT_ICONS } from '@entities/habit';
 import { Button, SectionHeader } from '@shared/ui';
 
 interface Props {
@@ -48,7 +48,7 @@ function HabitIconPicker({ habits, initialIconTitle = 'default' }: Props) {
 					readOnly
 				/>
 
-				{Object.entries(visibleIcons).map(([category, icons], index) => (
+				{Object.entries(visibleIcons).map(([category, icons]) => (
 					<div key={category}>
 						{category !== 'featured' && (
 							<small className={styles.iconCategoryName}>

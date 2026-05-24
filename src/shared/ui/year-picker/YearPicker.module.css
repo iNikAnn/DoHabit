@@ -1,13 +1,11 @@
 /* yearPicker */
 .yearPicker {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-
+	justify-content: space-between;
+	padding: 10px;
 	background-color: var(--bg-color-primary);
 	border-radius: var(--border-radius-secondary);
-
-	padding: 0.6rem;
 }
 
 /* button */

@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router';
 import { routeConfig } from '../config/routeConfig';
 
 /**
@@ -10,7 +10,6 @@ function AppRouter() {
 	const location = useLocation();
 
 	return (
-		// @ts-ignore
 		<AnimatePresence initial={false}>
 			{/*
                 key & location are required for AnimatePresence

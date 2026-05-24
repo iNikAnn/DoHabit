@@ -3,16 +3,12 @@
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	/* transform: translate(-50%, -50%); */
-
+	z-index: 999;
 	width: 85%;
-
+	padding: 1rem;
 	background-color: var(--bg-color-secondary);
 	border-radius: var(--border-radius-secondary);
-	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
-
-	padding: 1rem;
-	z-index: 999;
+	box-shadow: 0 0 15px rgb(0 0 0 / 25%);
 }
 
 /* content */
@@ -30,8 +26,8 @@
 
 /* img */
 .img {
-	width: 50%;
 	align-self: center;
+	width: 50%;
 }
 
 /* text */
@@ -41,7 +37,7 @@
 	gap: 0.4rem;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (width >= 576px) {
 	.dialog {
 		width: 600px;
 	}

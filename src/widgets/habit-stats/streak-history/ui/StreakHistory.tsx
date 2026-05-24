@@ -1,8 +1,8 @@
 import styles from './StreakHistory.module.css';
 import { useState } from 'react';
 import { FaBinoculars } from 'react-icons/fa';
-import { ColorVariants } from '@shared/lib/theme';
-import { Streak } from '@shared/model';
+import { type ColorVariants } from '@shared/lib/theme';
+import { type Streak } from '@shared/model';
 import { Button, Card } from '@shared/ui';
 
 interface StreakHistoryProps {

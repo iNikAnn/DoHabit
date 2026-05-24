@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useLongPress } from '@uidotdev/usehooks';
 import { FaCheck } from 'react-icons/fa';
 import ProgressBar from '../progress-bar/ProgressBar';
-import { Habit, useHabitsStore, getTodayProgress } from '@entities/habit';
+import { type Habit, useHabitsStore, getTodayProgress } from '@entities/habit';
 import { Button } from '@shared/ui';
 
 interface Props {

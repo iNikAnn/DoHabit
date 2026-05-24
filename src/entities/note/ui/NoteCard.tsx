@@ -1,6 +1,6 @@
 import styles from './NoteCard.module.css';
 import { motion } from 'framer-motion';
-import { Note } from '../model/types';
+import type { Note } from '../model/types';
 import { createListVariants } from '@shared/lib/animation';
 import { formatDate } from '@shared/lib/date-time';
 

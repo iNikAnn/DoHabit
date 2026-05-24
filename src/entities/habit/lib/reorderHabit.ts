@@ -1,4 +1,4 @@
-import { Habit } from '../model/types';
+import type { Habit } from '../model/types';
 
 interface Params {
 	habits: Habit[];

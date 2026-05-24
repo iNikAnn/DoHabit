@@ -1,4 +1,4 @@
-import { Habit } from '../model/types';
+import type { Habit } from '../model/types';
 
 /**
  * Generic helper to update a specific habit in the list.

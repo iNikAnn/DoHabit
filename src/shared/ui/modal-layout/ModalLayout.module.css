@@ -1,62 +1,48 @@
 .modal {
 	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-
+	inset: 0;
+	z-index: 129;
 	display: flex;
 	flex-direction: column;
-
-	background-color: var(--bg);
-
 	padding-bottom: 0;
-	z-index: 129;
+	background-color: var(--bg);
 }
 
 /* header */
 .header {
-	height: var(--header-height);
 	display: flex;
-	/* justify-content: space-between; */
-	align-items: center;
-	gap: 1rem;
 	flex-shrink: 0;
-
-	/* border-bottom: 1px solid var(--bg-color-secondary); */
-	padding: 0 1rem;
+	gap: 16px;
+	align-items: center;
+	height: var(--header-height);
+	padding: 0 16px;
 }
 
 /* modalTitle */
 .modalTitle {
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap;
 	font-size: 1.6rem;
+	white-space: nowrap;
 }
 
-/* close btn */
-/* .header button svg {
-	transform: rotate(45deg);
-} */
-
 .header svg {
-	width: 1.6rem;
-	height: 1.6rem;
-	transform: rotate(180deg);
-	stroke-width: 20;
 	flex-shrink: 0;
+	width: 26px;
+	height: 26px;
+	stroke-width: 20;
+	transform: rotate(180deg);
 }
 
 /* childrenWrapper */
 .childrenWrapper {
 	height: 100%;
-	padding: 1rem;
+	padding: 16px;
 	padding-top: 0;
 	overflow-y: scroll;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (width >= 576px) {
 	.modal {
 		width: var(--app-width);
 		margin: 0 auto;

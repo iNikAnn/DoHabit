@@ -1,8 +1,7 @@
 /* page */
 .page {
-	/* outline: 2px solid tomato; */
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
+	height: 100%;
 }

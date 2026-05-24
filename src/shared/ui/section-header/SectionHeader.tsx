@@ -1,5 +1,5 @@
 import styles from './SectionHeader.module.css';
-import { CSSProperties, ReactNode } from 'react';
+import { type CSSProperties, type ReactNode } from 'react';
 import { startCase } from 'es-toolkit';
 
 interface Props {

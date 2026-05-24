@@ -1,6 +1,6 @@
 import styles from './HabitForm.module.css';
-import { KeyboardEventHandler, SubmitEventHandler, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { type KeyboardEventHandler, type SubmitEventHandler, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { MdAddToPhotos } from 'react-icons/md';
 import HabitTitleInput from './title-input/HabitTitleInput';
 import HabitFrequencyField from './frequency-field/HabitFrequencyField';
@@ -9,7 +9,7 @@ import HabitIconPicker from './icon-picker/HabitIconPicker';
 import HabitOrderField from './order-field/HabitOrderField';
 import HabitExtraActions from './extra-actions/HabitExtraActions';
 import useHabitDuplicate from '../lib/useHabitDuplicate';
-import { HabitData, useHabitsStore } from '@entities/habit';
+import { type HabitData, useHabitsStore } from '@entities/habit';
 import { scrollToTop } from '@shared/lib/dom';
 import { Button } from '@shared/ui';
 

@@ -9,7 +9,9 @@ function useNativeBackClose(isOpen: boolean, onClose: () => void) {
 	const onCloseRef = useRef(onClose);
 
 	// Always sync ref with latest callback
-	onCloseRef.current = onClose;
+	useEffect(() => {
+		onCloseRef.current = onClose;
+	}, [onClose]);
 
 	useEffect(() => {
 		if (!isOpen) return;

@@ -1,6 +1,6 @@
 import styles from './ListItem.module.css';
 import clsx from 'clsx';
-import { ListItemProps } from '../model/types';
+import type { ListItemProps } from '../model/types';
 import { Button } from '@shared/ui';
 
 /**

@@ -1,4 +1,4 @@
-import { CompletedDay } from '../model/types';
+import type { CompletedDay } from '../model/types';
 
 /**
  * Calculates total completions for each day of the week (0-6).

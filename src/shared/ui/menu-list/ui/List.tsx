@@ -1,6 +1,6 @@
 import styles from './List.module.css';
 import { ListItem } from './ListItem';
-import { ListProps } from '../model/types';
+import type { ListProps } from '../model/types';
 import { SectionHeader } from '@shared/ui';
 
 /**

@@ -1,7 +1,7 @@
 import styles from './Button.module.css';
-import { ButtonIndicator, ButtonProps } from './types';
-import { IconType } from 'react-icons';
-import { Link } from 'react-router-dom';
+import type { ButtonIndicator, ButtonProps } from './types';
+import type { IconType } from 'react-icons';
+import { Link } from 'react-router';
 import { motion } from 'framer-motion';
 import { LuExternalLink } from 'react-icons/lu';
 import { IoIosArrowForward } from 'react-icons/io';

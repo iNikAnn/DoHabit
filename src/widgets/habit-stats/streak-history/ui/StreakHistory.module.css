@@ -7,15 +7,15 @@
 .streaks {
 	display: flex;
 	flex-direction: column;
-	gap: 0.6rem;
+	gap: 10px;
 }
 
 /* card */
 .card {
 	display: flex;
+	gap: 16px;
 	align-items: center;
-	gap: 1rem;
-	padding-bottom: 0.6rem;
+	padding-bottom: 10px;
 	border-bottom: 1px solid;
 }
 
@@ -26,48 +26,46 @@
 
 /* length */
 .length {
-	width: 3rem;
-	height: 3rem;
-
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-shrink: 0;
-
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	font-weight: bold;
 	background-color: var(--bg-color-secondary);
 	border-radius: var(--border-radius-secondary);
-	font-weight: bold;
 }
 
 /* desc */
 .desc {
-	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 1rem;
+	gap: 16px;
+	width: 100%;
 }
 
 /* dateWrapper */
 .dateWrapper {
 	display: flex;
+	gap: 16px;
 	align-items: center;
-	gap: 0.4rem;
 }
 
 /* label */
 .label {
+	padding: 4px 8px;
 	border-radius: var(--border-radius-tertiary);
-	padding: 0.2rem 0.4rem;
 }
 
 .label.start {
-	background-color: color-mix(in srgb, mediumseagreen, black 50%);
 	color: mediumseagreen;
+	background-color: color-mix(in srgb, mediumseagreen, black 50%);
 }
 
 .label.end {
-	background-color: color-mix(in srgb, indianred, black 50%);
 	color: indianred;
+	background-color: color-mix(in srgb, indianred, black 50%);
 }
 
 .buttonWrapper {

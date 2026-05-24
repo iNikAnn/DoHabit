@@ -1,6 +1,6 @@
 import { archiveHabit } from '@features/archive-habit';
 import { removeHabit } from '@features/remove-habit';
-import { DrawerAction } from '@shared/ui';
+import { type DrawerAction } from '@shared/ui';
 import { FaTrash } from 'react-icons/fa';
 import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
 

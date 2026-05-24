@@ -1,4 +1,4 @@
-import { EditNote, Note } from '../types';
+import type { EditNote, Note } from '../types';
 
 interface EditNoteParams {
 	notes: Note[];

@@ -1,5 +1,7 @@
-import { Achievement, AchievementId, ACHIEVEMENTS, useAchievementsStore } from '@entities/achievement';
-import { ListItemProps, List, Placeholder, useDialogStore } from '@shared/ui';
+import type { Achievement, AchievementId } from '@entities/achievement';
+import { ACHIEVEMENTS, useAchievementsStore } from '@entities/achievement';
+import type { ListItemProps } from '@shared/ui';
+import { List, Placeholder, useDialogStore } from '@shared/ui';
 
 /**
  * Render a sorted list of unlocked user achievements.

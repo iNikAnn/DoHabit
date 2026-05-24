@@ -1,5 +1,5 @@
-import { CSSProperties, ReactNode } from 'react';
-import { ButtonProps } from '@shared/ui/button/types';
+import type { CSSProperties, ReactNode } from 'react';
+import type { ButtonProps } from '@shared/ui/button/types';
 
 export type ItemIconSize = 'sm' | 'md' | 'lg';
 

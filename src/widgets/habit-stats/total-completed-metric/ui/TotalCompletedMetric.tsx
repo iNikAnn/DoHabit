@@ -1,6 +1,6 @@
 import styles from './TotalCompletedMetric.module.css';
 import { FaHashtag } from 'react-icons/fa';
-import { CompletedDay } from '@entities/habit';
+import { type CompletedDay } from '@entities/habit';
 import { Card } from '@shared/ui';
 
 interface Props {

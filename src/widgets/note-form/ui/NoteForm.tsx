@@ -1,5 +1,5 @@
 import styles from './NoteForm.module.css';
-import { SubmitEventHandler } from 'react';
+import { type SubmitEventHandler } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -75,7 +75,6 @@ function NoteForm(props: Props) {
 	};
 
 	return (
-		// @ts-ignore
 		<AnimatePresence initial={false}>
 			{!isFormActive && (
 				<Button

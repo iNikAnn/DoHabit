@@ -1,4 +1,4 @@
-import { Habit, HabitAction } from './types';
+import type { Habit, HabitAction } from './types';
 import addHabit from './handlers/addHabit';
 import editHabit from './handlers/editHabit';
 import deleteHabit from './handlers/deleteHabit';
@@ -30,10 +30,11 @@ function habitsReducer(habits: Habit[], { type, payload }: HabitAction): Habit[]
 		case 'toggleYesterdayStatus':
 			return toggleYesterdayStatus({ habits, payload });
 
-		default:
+		default: {
 			const _exhaustiveCheck: never = type;
 			console.error('Unknown action type.');
 			return _exhaustiveCheck;
+		}
 	}
 }
 

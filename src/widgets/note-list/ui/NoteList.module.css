@@ -2,20 +2,17 @@
 .header {
 	position: sticky;
 	top: 0;
-
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-
+	justify-content: space-between;
+	padding-bottom: 10px;
 	background-color: var(--bg);
-
-	padding-bottom: 0.6rem;
 }
 
 /* note list */
 .list {
 	display: flex;
 	flex-direction: column;
-	gap: 0.6rem;
-	padding-bottom: 5rem;
+	gap: 10px;
+	padding-bottom: 80px;
 }

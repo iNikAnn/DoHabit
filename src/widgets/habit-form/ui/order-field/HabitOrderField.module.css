@@ -2,13 +2,13 @@
 .content {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 16px;
 }
 
 /* top */
 .top {
 	display: flex;
-	gap: 0.4rem;
+	gap: 8px;
 }
 
 .input {
@@ -19,9 +19,9 @@
 }
 
 .buttonsWrapper {
-	width: 100%;
 	display: flex;
-	gap:4px
+	gap:4px;
+	width: 100%
 }
 
 .buttonsWrapper button:first-child {
@@ -32,26 +32,26 @@
 	border-radius: 4px var(--border-radius-secondary) var(--border-radius-secondary) 4px;
 }
 
-.button {
+.stepButton {
 	width: 100%;
 	height: 100%;
+	pointer-events: all;
 	background-color: var(--bg-color-primary);
 	border-radius: var(--border-radius-secondary);
-	pointer-events: all;
 }
 
 /* bottom */
 .bottom {
 	display: flex;
-	gap: 0.4rem;
-	margin-left: calc(var(--input-height-primary) + 0.4rem);
+	gap: 8px;
+	margin-left: calc(var(--input-height-primary) + 8px);
 }
 
-.bottom button {
-	height: auto;
+.extremeButton {
 	width: 100%;
+	height: auto;
+	padding: 0;
+	color: dodgerblue;
 	pointer-events: all;
 	background-color: unset;
-	color: dodgerblue;
-	padding: 0;
 }

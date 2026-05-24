@@ -4,14 +4,15 @@
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	gap: 3px;
+	padding: 0;
 }
 
 /* weekday */
 .weekday {
 	/* outline: 1px solid red; */
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
 	margin-bottom: 7px;
 }
 
@@ -24,8 +25,8 @@
 /* day */
 .day {
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
 	aspect-ratio: 1 / 1;
 	border-radius: 6px;
 }

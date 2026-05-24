@@ -1,4 +1,4 @@
-import { Settings, SettingsAction } from './types';
+import type { Settings, SettingsAction } from './types';
 
 /**
  * Reducer for application settings.
@@ -8,10 +8,11 @@ function settingsReducer(settings: Settings, { type, payload }: SettingsAction):
 		case 'updateSettings':
 			return { ...settings, ...payload };
 
-		default:
+		default: {
 			const _exhaustiveCheck: never = type;
 			console.error('Unknown action type.');
 			return _exhaustiveCheck;
+		}
 	}
 }
 

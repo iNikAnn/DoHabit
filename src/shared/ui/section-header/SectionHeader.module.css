@@ -3,22 +3,22 @@
 	grid-template-columns: 1fr auto;
 	gap: 8px 16px;
 	align-items: center;
-	font-size: 1rem;
 	margin: 0 16px 16px;
+	font-size: 1rem;
 }
 
 .title {
-	grid-column: 1;
 	grid-row: 1;
+	grid-column: 1;
 }
 
 .extra {
-	grid-column: 2;
 	grid-row: 1;
+	grid-column: 2;
 }
 
 .description {
-	grid-column: 1 / span 2;
 	grid-row: 2;
+	grid-column: 1 / span 2;
 	color: var(--color-secondary);
 }

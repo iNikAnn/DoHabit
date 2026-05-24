@@ -1,4 +1,4 @@
-import { SetHabitArchiveStatus, Habit } from '../types';
+import type { SetHabitArchiveStatus, Habit } from '../types';
 import updateHabitById from '../../lib/updateHabitById';
 
 interface Params {
