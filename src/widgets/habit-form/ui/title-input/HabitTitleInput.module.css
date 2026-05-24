@@ -1,15 +1,7 @@
-/* header */
-.header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 0.6rem;
-}
-
 /* input */
 .input {
-	height: var(--input-height-primary);
 	width: 100%;
+	height: var(--input-height-primary);
 	padding: 0 16px;
 	outline-offset: -2px;
 }

@@ -1,16 +1,14 @@
 /* page */
 .page {
-	/* outline: 1px solid tomato; */
-	height: 100%;
-
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
+	height: 100%;
 }
 
 /* footer */
 .footer {
-	text-align: center;
-	color: gray;
 	margin-top: auto;
+	color: gray;
+	text-align: center;
 }

@@ -1,35 +1,28 @@
 /* note */
 .note {
 	position: relative;
-
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-
-	background-color: var(--bg-color-primary);
-	border-radius: var(--border-radius-secondary);
-	font-size: 1rem;
-	font-weight: 400;
-
-	white-space: pre-wrap;
-    word-wrap: break-word;
-
 	padding: 18px;
 	padding-bottom: 12px;
-
 	overflow: hidden;
+	font-size: 1rem;
+	font-weight: 400;
+    overflow-wrap: break-word;
+	white-space: pre-wrap;
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-secondary);
 }
 
 /* text */
 .text {
-	/* outline: 1px solid tomato; */
-	line-height: 1.2rem;
 	overflow: hidden;
+	line-height: 1.2rem;
 }
 
 /* description */
 .description {
-	/* outline: 1px solid tomato; */
 	display: flex;
 	gap: 16px;
 	align-items: center;
@@ -39,6 +32,6 @@
 /* date */
 .date {
 	display: flex;
-	align-items: center;
 	gap: 0.4rem;
+	align-items: center;
 }

@@ -1,17 +1,15 @@
 /* button */
 .button {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+	justify-content: center;
 	height: 36px;
 	padding: 0 14px;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 6px;
-
-	background-color: dodgerblue;
-	border-radius: var(--border-radius-secondary);
 	font-size: 14px;
 	font-weight: bold;
+	background-color: dodgerblue;
+	border-radius: var(--border-radius-secondary);
 }
 
 .button.secondary {
@@ -22,13 +20,13 @@
 	height: auto;
 	padding: 0;
 	font-size: 16px;
-	background-color: unset;
 	color: dodgerblue;
+	background-color: unset;
 }
 
 .button.danger {
-	background-color: light-dark(#df8a8d, #3b1c1d);
 	color: light-dark(#722225, #ed6062);
+	background-color: light-dark(#df8a8d, #3b1c1d);
 }
 
 /* icons */

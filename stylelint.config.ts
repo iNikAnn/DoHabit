@@ -6,5 +6,8 @@ export default {
 	],
 	plugins: [
 		'stylelint-order'
-	]
+	],
+	rules: {
+		'selector-class-pattern': null
+	}
 };

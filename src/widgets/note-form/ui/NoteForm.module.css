@@ -7,26 +7,24 @@
 .form {
 	/* outline: 1px solid tomato; */
 	position: fixed;
-	left: 0;
 	bottom: 0;
 	bottom: var(--safe-area-max-inset-bottom);
-	width: 100%;
-
-	display: flex;
-	gap: 0.4rem;
-
+	left: 0;
 	z-index: 240;
+	display: flex;
+	gap: 8px;
+	width: 100%;
 }
 
 .form textarea {
 	width: 100%;
-	font-size: 1rem;
 	padding: var(--textarea-padding);
 	padding-right: calc(var(--button-size) + var(--textarea-padding));
+	font-size: 1rem;
+	resize: none;
 	background-color: var(--bg-color-secondary);
 	border: none;
 	border-radius: var(--border-radius-primary)  var(--border-radius-primary) 0 0;
-	resize: none;
 }
 
 .form textarea:focus {
@@ -44,11 +42,11 @@
 		25px +
 		1px
 	);
+	z-index: 250;
+	flex-shrink: 0;
 	width: var(--button-size);
 	height: var(--button-size);
 	border-radius: var(--border-radius-secondary);
-	flex-shrink: 0;
-	z-index: 250;
 }
 
 .actionButton svg {
@@ -57,6 +55,6 @@
 }
 
 .actionButton:disabled {
-	background-color: var(--bg-color-tertiary);
 	color: var(--color-secondary);
+	background-color: var(--bg-color-tertiary);
 }

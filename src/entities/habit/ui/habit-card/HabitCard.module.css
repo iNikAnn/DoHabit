@@ -1,15 +1,14 @@
 .habit {
-	/* position: relative; */
+	overflow: hidden;
 	background-color: var(--bg-color-primary);
 	border-radius: var(--border-radius-secondary);
-	overflow: hidden;
 }
 
 .contentWrapper {
 	padding: 0 10px 10px;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (width >= 576px) {
 	.habit {
 		flex: 0 0 calc((var(--app-width) / 2) - (1rem / 2));
 	}

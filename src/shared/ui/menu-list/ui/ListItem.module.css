@@ -1,24 +1,21 @@
 /* menuItem */
 .menuItem {
-	/* outline: 1px solid tomato; */
-	width: 100%;
-	height: auto;
-	padding: 1rem;
-
 	display: flex;
+	gap: 16px;
 	align-items: center;
 	justify-content: start;
-	gap: 1rem;
-
+	width: 100%;
+	height: auto;
+	padding: 16px;
 	background-color: unset;
 }
 
 /* icon */
 .menuItem > svg:first-of-type,
 .menuItem > img:first-of-type {
+	flex-shrink: 0;
 	width: 26px;
 	height: 26px;
-	flex-shrink: 0;
 }
 
 .menuItem.sm > svg:first-of-type,
@@ -38,9 +35,9 @@
 	/* outline: 1px solid tomato; */
 	display: flex;
 	flex-direction: column;
-	gap: 0.4rem;
-	text-align: left;
+	gap: 6px;
 	overflow: hidden;
+	text-align: left;
 }
 
 .title {
@@ -48,15 +45,15 @@
 }
 
 .description {
-	color: gray;
 	font-size: 0.8rem;
 	font-weight: normal;
+	color: gray;
 }
 
 .description.truncate {
-	white-space: nowrap;
-	text-overflow: ellipsis;
 	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .extra {

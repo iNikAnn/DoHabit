@@ -1,21 +1,17 @@
 .habitList {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 16px;
 }
 
 .habitList.isArchive {
-	gap: 0.6rem;
+	gap: 10px;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (width >= 576px) {
 	.habitList {
-		/* outline: 2px solid green; */
+		flex-flow: row wrap;
 		width: var(--app-width);
-
-		flex-direction: row;
-		flex-wrap: wrap;
-
 		margin: 0 auto;
 	}
 }

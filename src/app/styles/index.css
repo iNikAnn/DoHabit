@@ -4,12 +4,12 @@
 
 -webkit-outer-spin-button,
 -webkit-inner-spin-button {
-    -webkit-appearance: none;
     margin: 0;
+    appearance: none;
 }
 
 input[type='number'] {
-    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 * {
@@ -21,34 +21,28 @@ input[type='number'] {
 :root {
 	/* https://developer.chrome.com/docs/css-ui/edge-to-edge */
 	 --safe-area-max-inset-bottom: env(safe-area-max-inset-bottom, 36px);
-
 	--app-width: 760px;
 	--header-height: 4rem;
-
 	--accent-color: dodgerblue;
-
-	--color-primary: light-dark(hsl(0, 0%, 10%), hsl(0, 0%, 90%));
-	--color-secondary: light-dark(hsl(0, 0%, 40%), hsl(0, 0%, 50%));
-
-	--bg: light-dark(hsl(0, 0%, 95%), black);
-	--bg-color-primary: light-dark(hsl(0, 0%, 100%), hsl(0, 0%, 8%));
-	--bg-color-secondary: light-dark(hsl(0, 0%, 90%), hsl(0, 0%, 12%));
-	--bg-color-tertiary: light-dark(hsl(0, 0%, 80%), hsl(0, 0%, 20%));
-
+	--color-primary: light-dark(hsl(0deg 0% 10%), hsl(0deg 0% 90%));
+	--color-secondary: light-dark(hsl(0deg 0% 40%), hsl(0deg 0% 50%));
+	--bg: light-dark(hsl(0deg 0% 95%), black);
+	--bg-color-primary: light-dark(hsl(0deg 0% 100%), hsl(0deg 0% 8%));
+	--bg-color-secondary: light-dark(hsl(0deg 0% 90%), hsl(0deg 0% 12%));
+	--bg-color-tertiary: light-dark(hsl(0deg 0% 80%), hsl(0deg 0% 20%));
 	--border-radius-primary: 30px;
 	--border-radius-secondary: 20px;
 	--border-radius-tertiary: 10px;
-
 	--input-height-primary: 3rem;
 }
 
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+	overscroll-behavior: none;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
 		'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	overscroll-behavior: none;
 }
 
 code {
@@ -56,10 +50,10 @@ code {
 }
 
 html {
-	color-scheme: light dark;
-	background-color: var(--bg);
 	color: var(--color-primary);
 	user-select: none;
+	color-scheme: light dark;
+	background-color: var(--bg);
 }
 
 a {
@@ -68,8 +62,8 @@ a {
 }
 
 button {
-	border: none;
 	color: inherit;
+	border: none;
 }
 
 /* Remove mobile tap highlight */
@@ -80,8 +74,8 @@ a,
 }
 
 input {
-	border: none;
 	background-color: var(--bg-color-primary);
+	border: none;
 	border-radius: var(--border-radius-secondary);
 }
 

@@ -60,7 +60,7 @@ function HabitOrderField({ habits, habit }: Props) {
 					<div className={styles.buttonsWrapper}>
 						<Button
 							icon={<FaArrowDown />}
-							className={styles.button}
+							className={styles.stepButton}
 							onClick={() => handleChangeOrder('down')}
 							disabled={currentOrder === habitsCount}
 						>
@@ -69,7 +69,7 @@ function HabitOrderField({ habits, habit }: Props) {
 
 						<Button
 							icon={<FaArrowUp />}
-							className={styles.button}
+							className={styles.stepButton}
 							onClick={() => handleChangeOrder('up')}
 							disabled={currentOrder === 1}
 						>
@@ -80,7 +80,7 @@ function HabitOrderField({ habits, habit }: Props) {
 
 				<div className={styles.bottom}>
 					<Button
-						type='button'
+						className={styles.extremeButton}
 						onClick={() => handleChangeOrder('bottom')}
 						disabled={currentOrder === habitsCount}
 					>
@@ -88,7 +88,7 @@ function HabitOrderField({ habits, habit }: Props) {
 					</Button>
 
 					<Button
-						type='button'
+						className={styles.extremeButton}
 						onClick={() => handleChangeOrder('top')}
 						disabled={currentOrder === 1}
 					>
