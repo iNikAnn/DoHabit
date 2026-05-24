@@ -10,6 +10,7 @@
 		"dev": "vite",
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
+		"lint:css": "stylelint '**/*.css'",
 		"preview": "vite preview"
 	},
 	"dependencies": {
