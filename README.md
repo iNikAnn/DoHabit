@@ -1,6 +1,6 @@
 # DoHabit | Habit Tracker
 
-![Screens](https://github.com/iNikAnn/DoHabit/blob/main/public/img/Repo-Card-Template.jpg)
+![Screens](https://github.com/iNikAnn/DoHabit/blob/main/public/assets/img/Repo-Card-Template.jpg)
 
 DoHabit is a straightforward habit tracker that doesn’t require registration. Easily mark your completed days, track your progress, and keep a journal for each habit.
 
