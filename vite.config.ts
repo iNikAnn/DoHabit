@@ -55,7 +55,7 @@ export default defineConfig({
 					{
 						src: 'assets/brand/favicon.ico',
 						sizes: "64x64 32x32 24x24 16x16",
-						type: "image/x-icon"
+						type: "image/x-icon",
 					},
 
 					// with alpha
@@ -86,10 +86,22 @@ export default defineConfig({
 
 					// monochrome
 					{
+						src: 'assets/brand/logo192-monochrome.png',
+						type: 'image/png',
+						sizes: '192x192',
+						purpose: 'monochrome'
+					},
+					{
 						src: 'assets/brand/logo512-monochrome.png',
 						type: 'image/png',
 						sizes: '512x512',
 						purpose: 'monochrome'
+					},
+					{
+						src: 'assets/brand/logo192-maskable-monochrome.png',
+						type: 'image/png',
+						sizes: '192x192',
+						purpose: 'maskable monochrome'
 					},
 					{
 						src: 'assets/brand/logo512-maskable-monochrome.png',
