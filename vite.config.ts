@@ -58,19 +58,12 @@ export default defineConfig({
 						type: "image/x-icon",
 					},
 
-					// with alpha
+					// 192
 					{
 						src: 'assets/brand/logo192-alpha.png',
 						type: 'image/png',
 						sizes: '192x192'
 					},
-					{
-						src: 'assets/brand/logo512-alpha.png',
-						type: 'image/png',
-						sizes: '512x512'
-					},
-
-					// maskable
 					{
 						src: 'assets/brand/logo192-maskable.png',
 						type: 'image/png',
@@ -78,37 +71,30 @@ export default defineConfig({
 						purpose: 'maskable'
 					},
 					{
-						src: 'assets/brand/logo512-maskable.png',
-						type: 'image/png',
-						sizes: '512x512',
-						purpose: 'maskable'
-					},
-
-					// monochrome
-					{
 						src: 'assets/brand/logo192-monochrome.png',
 						type: 'image/png',
 						sizes: '192x192',
 						purpose: 'monochrome'
+					},
+
+					// 512
+					{
+						src: 'assets/brand/logo512-alpha.png',
+						type: 'image/png',
+						sizes: '512x512'
+					},
+					{
+						src: 'assets/brand/logo512-maskable.png',
+						type: 'image/png',
+						sizes: '512x512',
+						purpose: 'maskable'
 					},
 					{
 						src: 'assets/brand/logo512-monochrome.png',
 						type: 'image/png',
 						sizes: '512x512',
 						purpose: 'monochrome'
-					},
-					{
-						src: 'assets/brand/logo192-maskable-monochrome.png',
-						type: 'image/png',
-						sizes: '192x192',
-						purpose: 'maskable monochrome'
-					},
-					{
-						src: 'assets/brand/logo512-maskable-monochrome.png',
-						type: 'image/png',
-						sizes: '512x512',
-						purpose: 'maskable monochrome'
-					},
+					}
 				],
 
 				start_url: '.',
