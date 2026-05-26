@@ -1,3 +1,10 @@
 .App {
 	padding: 0 16px;
 }
+
+@media screen and (width >= 576px) {
+	.App {
+		width: var(--app-width);
+		margin: 0 auto;
+	}
+}
