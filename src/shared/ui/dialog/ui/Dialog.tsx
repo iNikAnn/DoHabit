@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useDialogStore } from '../model/store';
 import { variants } from '../model/animations';
 import { useNativeBackClose } from '@shared/lib/dom';
-import { Overlay } from '@shared/ui';
+import { Button, Overlay } from '@shared/ui';
 
 /**
  * Dialog component controlled via global state.
@@ -52,6 +52,28 @@ function Dialog() {
 											<div key={i}>{line}</div>
 										))}
 									</div>
+								)}
+
+								{content.actions && (
+									<ul
+										className={styles.actions}
+										onClick={closeDialog}
+									>
+										{content.actions.map(({ label, indicator, ...rest }) => (
+											<li key={label}>
+												<Button
+													className={styles.actionButton}
+													indicator={{
+														type: indicator?.type ?? 'none',
+														style: { color: 'var(--color-secondary)', ...indicator?.style }
+													}}
+													{...rest}
+												>
+													{label}
+												</Button>
+											</li>
+										))}
+									</ul>
 								)}
 							</div>
 						</motion.div>,
