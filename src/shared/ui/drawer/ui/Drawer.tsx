@@ -1,15 +1,10 @@
 import styles from './Drawer.module.css';
 import { createPortal } from 'react-dom';
-import { AnimatePresence, motion, type PanInfo, type Variants } from 'framer-motion'
+import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
+import { variants } from '../model/animations';
 import { useDrawerStore } from '../model/store';
 import { useNativeBackClose } from '@shared/lib/dom';
 import { Button, Overlay } from '@shared/ui';
-
-const drawerVariants: Variants = {
-	initial: { opacity: 0, y: '25%' },
-	animate: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: '50%' }
-};
 
 /**
  * Interactive bottom sheet component controlled via global state.
@@ -36,8 +31,10 @@ function Drawer() {
 						<motion.div
 							key='drawer'
 							className={styles.drawer}
-							{...drawerVariants}
-							transition={{ duration: .2, ease: 'easeOut' }}
+							variants={variants}
+							initial='initial'
+							animate='animate'
+							exit='exit'
 							drag='y'
 							dragConstraints={{ top: 0, bottom: 0 }}
 							dragElastic={{ top: 0.1, bottom: 1 }}
