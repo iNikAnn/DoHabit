@@ -39,7 +39,11 @@ function HabitHeader(props: HabitHeaderProps) {
 				)}
 			</div>
 
-			<div className={styles.actionWrapper}>
+			<div
+				className={styles.actionWrapper}
+				onClick={(e) => e.stopPropagation()}
+				onPointerDownCapture={((e) => e.stopPropagation())}
+			>
 				{action}
 			</div>
 		</div>

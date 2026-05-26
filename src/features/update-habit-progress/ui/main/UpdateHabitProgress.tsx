@@ -29,9 +29,7 @@ function UpdateHabitProgress({ habit }: Props) {
 	// Current day stats from the domain helper
 	const { progress, percentage, isCompleted } = getTodayProgress(habit);
 
-	const handleUpdateProgress = (e?: React.MouseEvent<HTMLButtonElement>, isLongPress?: boolean) => {
-		if (e) e.stopPropagation();
-
+	const handleUpdateProgress = (isLongPress?: boolean) => {
 		// Trigger visual feedback
 		const isFinalStep = habit.frequency - progress === 1;
 		setAnimation((isFinalStep || isLongPress) ? 'completed' : 'updated');
@@ -52,7 +50,7 @@ function UpdateHabitProgress({ habit }: Props) {
 		});
 	};
 
-	const attrs = useLongPress(() => handleUpdateProgress(undefined, true), { threshold: 500 });
+	const attrs = useLongPress(() => handleUpdateProgress(true), { threshold: 300 });
 
 	// Cleanup animation classes after they finish playing
 	useEffect(() => {
@@ -88,7 +86,7 @@ function UpdateHabitProgress({ habit }: Props) {
 					frequency > 1 && styles.multiFrequency
 				)}
 				{...attrs}
-				onClick={handleUpdateProgress}
+				onClick={() => handleUpdateProgress()}
 			>
 				{percentage >= 100 ? (
 					<FaCheck />
