@@ -2,7 +2,7 @@
 	position: fixed;
 	inset: 0;
 	z-index: 200;
-	background: rgb(0 0 0 / 40%);
-	backdrop-filter: blur(2px) saturate(0.5);
+	background: rgb(0 0 0 / 60%);
+	transform: translateZ(0);
 	will-change: opacity;
 }

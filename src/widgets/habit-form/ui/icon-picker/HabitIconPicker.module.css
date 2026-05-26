@@ -32,6 +32,7 @@
 .iconLabel:has(:checked) {
 	color: var(--color-primary);
 	outline: 2px solid var(--color-primary);
+	outline-offset: -2px;
 	opacity: 1 !important;
 }
 

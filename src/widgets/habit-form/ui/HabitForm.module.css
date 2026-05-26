@@ -6,18 +6,17 @@
 }
 
 .submitButtonWrapper {
-	/* outline: 1px solid tomato; */
 	position: sticky;
+	right: 0;
 	bottom: 0;
 	left: 0;
 	z-index: 10;
 	display: flex;
 	gap: 8px;
-	width: calc(100% + 32px);
-	padding: 16px;
+	padding: 16px 0;
 	margin-top: auto;
 	background-image: linear-gradient(transparent, var(--bg));
-	transform: translate(-16px, 16px);
+	transform: translateY(16px);
 }
 
 .submitButton {
