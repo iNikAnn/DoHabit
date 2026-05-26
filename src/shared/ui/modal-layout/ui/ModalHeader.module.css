@@ -1,0 +1,29 @@
+/* header */
+.header {
+	display: flex;
+	flex-shrink: 0;
+	gap: 16px;
+	align-items: center;
+	height: var(--header-height);
+}
+
+.closeButton {
+	flex-shrink: 0;
+	padding: 0;
+	background-color: unset;
+}
+
+.closeButton svg {
+	width: 26px;
+	height: 26px;
+	stroke-width: 20;
+	transform: rotate(180deg);
+}
+
+/* title */
+.title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 1.6rem;
+	white-space: nowrap;
+}

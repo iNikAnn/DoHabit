@@ -37,6 +37,19 @@
 	gap: 0.4rem;
 }
 
+.actions {
+	display: flex;
+	gap: 8px;
+}
+
+.actions li {
+	flex: 1;
+}
+
+.actionButton {
+	width: 100%;
+}
+
 @media screen and (width >= 576px) {
 	.dialog {
 		width: 600px;

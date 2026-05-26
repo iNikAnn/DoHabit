@@ -10,19 +10,23 @@
 	border-radius: var(--border-radius-secondary);
 }
 
-.list li {
+.list li button,
+.list li a {
 	background-color: var(--bg-color-primary);
 	border-radius: 4px;
 }
 
-.list li:first-child {
+.list li:first-child button,
+.list li:first-child a {
 	border-radius: var(--border-radius-secondary) var(--border-radius-secondary) 4px 4px;
 }
 
-.list li:last-child {
+.list li:last-child button,
+.list li:last-child a {
 	border-radius: 4px 4px var(--border-radius-secondary) var(--border-radius-secondary);
 }
 
-.list li:only-child {
+.list li:only-child button,
+.list li:only-child a {
     border-radius: var(--border-radius-secondary);
 }

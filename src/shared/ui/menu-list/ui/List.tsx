@@ -1,4 +1,5 @@
 import styles from './List.module.css';
+import { motion } from 'framer-motion';
 import { ListItem } from './ListItem';
 import type { ListProps } from '../model/types';
 import { SectionHeader } from '@shared/ui';
@@ -36,13 +37,13 @@ function List(props: ListProps) {
 				className={styles.list}
 			>
 				{items.map((item) => (
-					<li key={item.title}>
+					<motion.li key={item.title}>
 						<ListItem
 							{...item}
 							iconSize={iconSize}
 							truncateDescription={truncateDescription}
 						/>
-					</li>
+					</motion.li>
 				))}
 			</ul>
 		</div>

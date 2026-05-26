@@ -1,12 +1,12 @@
-import { Button } from '@shared/ui';
-import './PWABadge.css';
-
 import { useRegisterSW } from 'virtual:pwa-register/react';
+import { useDialogStore } from '@shared/ui';
 
 function PWABadge() {
 	// periodic sync is disabled, change the value to enable it, the period is in milliseconds
 	// You can remove onRegisteredSW callback and registerPeriodicSync function
 	const period = 0;
+
+	const openDialog = useDialogStore((s) => s.open);
 
 	const {
 		needRefresh: [needRefresh, setNeedRefresh],
@@ -14,56 +14,44 @@ function PWABadge() {
 	} = useRegisterSW({
 		onRegisteredSW(swUrl, r) {
 			if (period <= 0) return
+
 			if (r?.active?.state === 'activated') {
-				registerPeriodicSync(period, swUrl, r)
-			}
-			else if (r?.installing) {
+				registerPeriodicSync(period, swUrl, r);
+			} else if (r?.installing) {
 				r.installing.addEventListener('statechange', (e) => {
 					const sw = e.target as ServiceWorker
-					if (sw.state === 'activated')
-						registerPeriodicSync(period, swUrl, r)
-				})
+
+					if (sw.state === 'activated') {
+						registerPeriodicSync(period, swUrl, r);
+					}
+				});
 			}
-		},
+		}
 	});
 
-	function close() {
+	function handleClose() {
 		setNeedRefresh(false);
 	}
 
-	return (
-		<div className='PWABadge' role='alert' aria-labelledby='toast-message'>
-			{needRefresh && (
-				<div className='PWABadge-toast'>
-					<div className='PWABadge-message'>
-						<h3>
-							Update Ready!
-						</h3>
+	if (needRefresh) {
+		openDialog({
+			title: 'Update Ready!',
+			text: 'Please click the reload button to sync the latest features.',
+			actions: [
+				{
+					label: 'Reload',
+					onClick: () => updateServiceWorker(true)
+				},
+				{
+					label: 'Close',
+					onClick: () => handleClose(),
+					style: { backgroundColor: 'var(--bg-color-tertiary)' }
+				}
+			]
+		});
+	}
 
-						<span id='toast-message'>
-							Please click the reload button to sync the latest features.
-						</span>
-					</div>
-
-					<div className='PWABadge-buttons'>
-						<Button
-							className='PWABadge-toast-button'
-							onClick={() => updateServiceWorker(true)}
-						>
-							Reload
-						</Button>
-
-						<Button
-							className='PWABadge-toast-button'
-							onClick={() => close()}
-						>
-							Close
-						</Button>
-					</div>
-				</div>
-			)}
-		</div>
-	);
+	return null;
 }
 
 export default PWABadge;
@@ -75,18 +63,20 @@ function registerPeriodicSync(period: number, swUrl: string, r: ServiceWorkerReg
 	if (period <= 0) return;
 
 	setInterval(async () => {
-		if ('onLine' in navigator && !navigator.onLine)
+		if ('onLine' in navigator && !navigator.onLine) {
 			return;
+		}
 
 		const resp = await fetch(swUrl, {
 			cache: 'no-store',
 			headers: {
 				'cache': 'no-store',
-				'cache-control': 'no-cache',
-			},
+				'cache-control': 'no-cache'
+			}
 		});
 
-		if (resp?.status === 200)
+		if (resp?.status === 200) {
 			await r.update();
+		}
 	}, period);
 }

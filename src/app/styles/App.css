@@ -1,5 +1,10 @@
 .App {
-	padding: 16px;
-	padding-top: var(--header-height);
-	padding-bottom: calc(var(--safe-area-max-inset-bottom) + 16px);
+	padding: 0 16px;
+}
+
+@media screen and (width >= 576px) {
+	.App {
+		width: var(--app-width);
+		margin: 0 auto;
+	}
 }

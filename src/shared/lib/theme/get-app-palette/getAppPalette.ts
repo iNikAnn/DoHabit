@@ -10,7 +10,7 @@ function getAppPalette(): ColorVariants[] {
 		const hue = Math.floor(360 / COLORS_COUNT * i);
 
 		return {
-			baseColor: `light-dark(oklch(0.8 0.2 ${hue}), oklch(0.55 0.13 ${hue}))`,
+			baseColor: `light-dark(oklch(0.8 0.2 ${hue}), oklch(0.6 0.13 ${hue}))`,
 
 			darkenedColor: `light-dark(oklch(0.96 0.02 ${hue}), oklch(0.3 0.01 ${hue}))`,
 
