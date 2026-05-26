@@ -1,0 +1,23 @@
+.modal {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	padding: 0 16px;
+	overflow: hidden;
+	background-color: var(--bg);
+}
+
+/* content */
+.content {
+	flex: 1;
+	padding-bottom: 16px;
+	overflow-y: auto;
+}
+
+@media screen and (width >= 576px) {
+	.modal {
+		width: var(--app-width);
+		margin: 0 auto;
+	}
+}
