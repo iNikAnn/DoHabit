@@ -2,8 +2,8 @@ import type { Variants } from 'framer-motion';
 
 export const variants: Variants = {
 	initial: {
-		x: '-20%',
-		scale: 0.9,
+		x: '-15%',
+		scale: 0.92,
 		opacity: 0
 	},
 
@@ -19,8 +19,8 @@ export const variants: Variants = {
 	},
 
 	exit: {
-		x: '-20%',
-		scale: 0.9,
+		x: '-15%',
+		scale: 0.92,
 		opacity: 0,
 		transition: {
 			type: 'spring',

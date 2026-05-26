@@ -1,6 +1,6 @@
 import styles from './HabitList.module.css';
 import clsx from 'clsx';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
 import { getHabitStats } from '../../lib/getHabitStats';
 import { useHabitActions } from '../../model/useHabitActions';
@@ -39,7 +39,7 @@ function HabitList(props: HabitListProps) {
 
 	// 2. Render list
 	return (
-		<div className={clsx(styles.habitList, isArchive && styles.isArchive)}>
+		<ul className={clsx(styles.habitList, isArchive && styles.isArchive)}>
 			<AnimatePresence initial={false}>
 				{filteredHabits.map((habit) => {
 					const colorVariants = palette[habit.colorIndex] ?? palette[0]!;
@@ -66,24 +66,32 @@ function HabitList(props: HabitListProps) {
 						: undefined;
 
 					return (
-						<HabitCard
+						<motion.li
 							key={habit.id}
-							habit={habit}
-							headerAction={headerAction}
-							colorVariants={colorVariants}
-							currentStreak={isArchive ? undefined : habitStats.currentStreak}
-							content={calendar}
-							onClick={(e) => !isArchive && openHabitMenu({
-								habit,
-								habitStats,
-								colorVariants,
-								cardElement: e.currentTarget
-							})}
-						/>
+							whileTap={{
+								filter: 'brightness(0.8)',
+								scale: 0.98
+							}}
+							transition={{ duration: 0.1 }}
+						>
+							<HabitCard
+								habit={habit}
+								headerAction={headerAction}
+								colorVariants={colorVariants}
+								currentStreak={isArchive ? undefined : habitStats.currentStreak}
+								content={calendar}
+								onClick={(e) => !isArchive && openHabitMenu({
+									habit,
+									habitStats,
+									colorVariants,
+									cardElement: e.currentTarget
+								})}
+							/>
+						</motion.li>
 					);
 				})}
 			</AnimatePresence>
-		</div>
+		</ul>
 	);
 }
 

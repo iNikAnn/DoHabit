@@ -51,7 +51,7 @@ function Drawer() {
 									{content.actions.map(({ label, indicator, ...rest }) => (
 										<li key={label}>
 											<Button
-												className={styles.action}
+												className={styles.actionButton}
 												indicator={{
 													type: indicator?.type ?? 'none',
 													style: { color: 'var(--color-secondary)', ...indicator?.style }

@@ -1,5 +1,5 @@
 import styles from './NoteList.module.css';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useNoteActions } from '../model/useNoteActions';
 import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
@@ -48,11 +48,19 @@ function NoteList(props: NoteListProps) {
 			<ul className={styles.list}>
 				<AnimatePresence initial={false}>
 					{filteredNotes.map((note) => (
-						<NoteCard
+						<motion.li
 							key={note.id}
-							note={note}
-							onClick={() => openNoteMenu({ note, onEdit })}
-						/>
+							whileTap={{
+								filter: 'brightness(0.8)',
+								scale: 0.96
+							}}
+							transition={{ duration: 0.1 }}
+						>
+							<NoteCard
+								note={note}
+								onClick={() => openNoteMenu({ note, onEdit })}
+							/>
+						</motion.li>
 					))}
 				</AnimatePresence>
 			</ul>

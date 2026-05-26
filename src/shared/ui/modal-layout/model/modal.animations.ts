@@ -5,13 +5,13 @@ export const variants: Variants = {
 	initial: (direction: Direction) => {
 		return direction === 'forward'
 			? {
-				x: '75%',
+				x: '50%',
 				scale: 1,
 				opacity: 0
 			}
 			: {
-				x: '-20%',
-				scale: 0.9,
+				x: '-15%',
+				scale: 0.92,
 				opacity: 0
 			};
 	},
@@ -28,8 +28,8 @@ export const variants: Variants = {
 	}),
 
 	exit: (direction: Direction) => ({
-		x: direction === 'forward' ? '-20%' : '75%',
-		scale: direction == 'forward' ? 0.9 : 1,
+		x: direction === 'forward' ? '-15%' : '50%',
+		scale: direction == 'forward' ? 0.92 : 1,
 		opacity: 0,
 		transition: {
 			type: 'spring',

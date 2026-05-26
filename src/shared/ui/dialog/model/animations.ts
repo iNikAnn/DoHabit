@@ -13,8 +13,8 @@ export const variants: Variants = {
 		opacity: 1,
 		transition: {
 			type: 'spring',
-			stiffness: 350,
-			damping: 22
+			stiffness: 400,
+			damping: 23
 		}
 	},
 
@@ -24,7 +24,7 @@ export const variants: Variants = {
 		opacity: 0,
 		transition: {
 			type: 'tween',
-			duration: 0.2,
+			duration: 0.15,
 			ease: 'easeIn'
 		}
 	}
