@@ -1,14 +1,9 @@
 .header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 99;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
 	height: var(--header-height);
-	padding: 0 26px;
+	padding: 0 10px;
 	background-color: var(--bg);
 }
 
@@ -53,8 +48,7 @@
 
 @media screen and (width >= 576px) {
 	.header {
-		left: 50%;
 		width: var(--app-width);
-		transform: translateX(-50%);
+		margin: 0 auto;
 	}
 }
