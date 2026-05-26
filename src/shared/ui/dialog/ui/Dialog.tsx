@@ -2,14 +2,9 @@ import styles from './Dialog.module.css';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useDialogStore } from '../model/store';
+import { variants } from '../model/animations';
 import { useNativeBackClose } from '@shared/lib/dom';
 import { Overlay } from '@shared/ui';
-
-const dialogVariants = {
-	initial: { opacity: 0, y: '-40%', x: '-50%' },
-	animate: { opacity: 1, y: '-50%', x: '-50%' },
-	exit: { opacity: 0, y: '-40%', x: '-50%' },
-};
 
 /**
  * Dialog component controlled via global state.
@@ -29,8 +24,10 @@ function Dialog() {
 						<motion.div
 							key='dialog'
 							className={styles.dialog}
-							{...dialogVariants}
-							transition={{ duration: .2, ease: 'easeInOut' }}
+							variants={variants}
+							initial='initial'
+							animate='animate'
+							exit='exit'
 						>
 							<div className={styles.content}>
 								{content.title && (
@@ -61,8 +58,7 @@ function Dialog() {
 						document.body
 					)}
 				</>
-			)
-			}
+			)}
 		</AnimatePresence >
 	);
 }
