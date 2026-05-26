@@ -7,8 +7,13 @@
 	height: var(--header-height);
 }
 
-.header svg {
+.closeButton {
 	flex-shrink: 0;
+	padding: 0;
+	background-color: unset;
+}
+
+.closeButton svg {
 	width: 26px;
 	height: 26px;
 	stroke-width: 20;

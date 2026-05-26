@@ -18,6 +18,11 @@ const INDICATOR_ICONS: Record<ButtonIndicator, IconType | null> = {
 	none: null
 };
 
+const whileTap = {
+	filter: 'brightness(0.8)',
+	scale: 0.96
+};
+
 /**
  * Universal Button component.
  * Renders as a <Link> if 'to' prop is provided.
@@ -58,6 +63,8 @@ function Button(props: ButtonProps) {
 				state={state}
 				style={style}
 				className={classes}
+				whileTap={whileTap}
+				transition={{ duration: 0.1 }}
 			>
 				{innerContent}
 			</MotionLink>
@@ -71,6 +78,8 @@ function Button(props: ButtonProps) {
 			style={style}
 			className={classes}
 			{...rest}
+			whileTap={whileTap}
+			transition={{ duration: 0.1 }}
 		>
 			{innerContent}
 		</motion.button>

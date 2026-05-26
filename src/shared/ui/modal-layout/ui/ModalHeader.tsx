@@ -1,5 +1,6 @@
-import { IoIosArrowForward } from 'react-icons/io';
 import styles from './ModalHeader.module.css';
+import { IoIosArrowForward } from 'react-icons/io';
+import { Button } from '@shared/ui';
 
 interface ModalHeaderProps {
 	title: string;
@@ -9,7 +10,12 @@ interface ModalHeaderProps {
 function ModalHeader({ title, onClose }: ModalHeaderProps) {
 	return (
 		<header className={styles.header}>
-			<IoIosArrowForward onClick={onClose} />
+			<Button
+				className={styles.closeButton}
+				onClick={onClose}
+			>
+				<IoIosArrowForward />
+			</Button>
 
 			<h1 className={styles.title}>
 				{title}
