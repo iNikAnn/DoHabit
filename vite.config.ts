@@ -25,6 +25,10 @@ export default defineConfig({
 		host: true
 	},
 
+	build: {
+		target: 'esnext'
+	},
+
 	plugins: [
 		react(),
 		svgr(),
