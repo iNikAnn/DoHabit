@@ -1,0 +1,22 @@
+.container {
+	display: flex;
+	gap: 4px;
+	padding: 4px;
+	overflow-x: scroll;
+	background-color: var(--bg-color-primary);
+	border-radius: var(--border-radius-secondary);
+}
+
+.tab {
+	flex: 1;
+	height: 40px;
+	padding: 0 16px;
+	color:var(--color-secondary);
+	background-color: unset;
+	border-radius: 16px
+}
+
+.tab.selected {
+	color: var(--color-primary);
+	background-color: var(--bg-color-tertiary)
+}
