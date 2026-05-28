@@ -5,6 +5,15 @@
 	gap: 16px;
 }
 
+.toolbar {
+	display: flex;
+	gap: 8px;
+}
+
+.toolbar > div {
+	width: 100%;
+}
+
 /* note list */
 .list {
 	display: flex;

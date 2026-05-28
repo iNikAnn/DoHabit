@@ -2,6 +2,7 @@ import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useNoteActions } from '../model/useNoteActions';
+import SortButton from './sort-button/SortButton';
 import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { useIntersectionObserver } from '@shared/lib/dom';
@@ -26,9 +27,11 @@ function NoteList(props: NoteListProps) {
 	} = props;
 
 	const notes = useNotesStore((s) => s.notes);
+	const { openNoteMenu } = useNoteActions();
+
 	const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 	const [selectedYear, setSelectedYear] = useState<'All' | number>('All');
-	const { openNoteMenu } = useNoteActions();
+	const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
 
 	// Get all notes for the current view context (habit or global)
 	// Sort by date, newest first.
@@ -44,12 +47,16 @@ function NoteList(props: NoteListProps) {
 
 	// Filter by selected year
 	const yearNotes = useMemo(() => {
-		if (selectedYear === 'All') return scopeNotes;
+		const filtered = selectedYear === 'All'
+			? scopeNotes
+			: scopeNotes.filter((n) => new Date(n.createdAt).getFullYear() === selectedYear);
 
-		return scopeNotes
-			.filter((n) => new Date(n.createdAt).getFullYear() === selectedYear)
-			.sort((a, b) => b.createdAt - a.createdAt); // Newest first
-	}, [scopeNotes, selectedYear]);
+		return filtered.sort((a, b) => (
+			sortOrder === 'desc'
+				? b.createdAt - a.createdAt
+				: a.createdAt - b.createdAt
+		));
+	}, [scopeNotes, selectedYear, sortOrder]);
 
 	const visibleNotes = yearNotes.slice(0, visibleCount);
 
@@ -76,13 +83,18 @@ function NoteList(props: NoteListProps) {
 	// 2. Render list
 	return (
 		<div className={styles.container}>
-			{availableYears.length > 1 && (
+			<div className={styles.toolbar}>
 				<SegmentedControl
 					options={['All', ...availableYears].map((v) => ({ value: String(v) }))}
 					value={String(selectedYear)}
 					onChange={(v) => setSelectedYear(v === 'All' ? 'All' : Number(v))}
 				/>
-			)}
+
+				<SortButton
+					order={sortOrder}
+					onClick={() => setSortOrder((prev) => prev === 'asc' ? 'desc' : 'asc')}
+				/>
+			</div>
 
 			<ul className={styles.list}>
 				<AnimatePresence initial={false}>
