@@ -1,6 +1,7 @@
 import styles from './SegmentedControl.module.css';
 import clsx from 'clsx';
 import { Button } from '@shared/ui';
+import { motion } from 'framer-motion';
 
 interface ControlOption {
 	value: string;
@@ -39,7 +40,17 @@ function SegmentedControl(props: SegmentedControlProps) {
 						)}
 						onClick={() => onChange(o.value)}
 					>
-						{o.label ?? o.value}
+						{isSelected && (
+							<motion.div
+								layoutId='selectedTabBackground'
+								className={styles.selectedIndicator}
+								transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+							/>
+						)}
+
+						<span className={styles.tabText}>
+							{o.label ?? o.value}
+						</span>
 					</Button>
 				);
 			})}

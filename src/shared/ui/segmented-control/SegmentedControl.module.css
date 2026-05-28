@@ -7,16 +7,32 @@
 	border-radius: var(--border-radius-secondary);
 }
 
+.tab,
+.selectedIndicator {
+	border-radius: 16px
+}
+
 .tab {
+	position: relative;
 	flex: 1;
 	height: 40px;
 	padding: 0 16px;
 	color:var(--color-secondary);
 	background-color: unset;
-	border-radius: 16px
 }
 
 .tab.selected {
 	color: var(--color-primary);
-	background-color: var(--bg-color-tertiary)
+}
+
+.selectedIndicator {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background-color: var(--bg-color-tertiary);
+}
+
+.tabText {
+	position: relative;
+	z-index: 1;
 }
