@@ -2,12 +2,13 @@ import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useNoteActions } from '../model/useNoteActions';
+import { cardVariants } from '../model/animations';
 import SortButton from './sort-button/SortButton';
 import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
+import { extractYearsFromTimeline, getYearBoundaries } from '@shared/lib/date-time';
 import { useIntersectionObserver } from '@shared/lib/dom';
 import { Placeholder, SegmentedControl } from '@shared/ui';
-import { extractYearsFromTimeline, getYearBoundaries } from '@shared/lib/date-time';
 
 interface NoteListProps {
 	habitId?: string;
@@ -35,7 +36,6 @@ function NoteList(props: NoteListProps) {
 	const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
 
 	// Get all notes for the current view context (habit or global)
-	// Sort by date, newest first.
 	const scopeNotes = useMemo(() => {
 		return notes.filter((n) => habitId ? n.habitId === habitId : !n.habitId);
 	}, [habitId, notes]);
@@ -48,21 +48,20 @@ function NoteList(props: NoteListProps) {
 
 	// Filter by selected year
 	const yearNotes = useMemo(() => {
-		let filtered = scopeNotes;
+		if (selectedYear === 'All') return scopeNotes;
 
-		if (selectedYear !== 'All') {
-			const [start, end] = getYearBoundaries(selectedYear);
-			filtered = scopeNotes.filter((n) => n.createdAt >= start && n.createdAt < end);
-		}
+		const [start, end] = getYearBoundaries(selectedYear);
+		return scopeNotes.filter((n) => n.createdAt >= start && n.createdAt < end);
+	}, [scopeNotes, selectedYear]);
 
-		return filtered.sort((a, b) => (
-			sortOrder === 'desc'
-				? b.createdAt - a.createdAt
-				: a.createdAt - b.createdAt
-		));
-	}, [scopeNotes, selectedYear, sortOrder]);
+	// Sort by selected order
+	const sortedNotes = useMemo(() => yearNotes.sort((a, b) => (
+		sortOrder === 'desc'
+			? b.createdAt - a.createdAt
+			: a.createdAt - b.createdAt
+	)), [sortOrder, yearNotes]);
 
-	const visibleNotes = yearNotes.slice(0, visibleCount);
+	const visibleNotes = sortedNotes.slice(0, visibleCount);
 
 	// Trigger loading next page when user scrolls to the bottom element
 	const loadMoreRef = useIntersectionObserver({
