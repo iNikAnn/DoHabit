@@ -126,6 +126,7 @@ export default defineConfig({
 				display_override: ['standalone', 'minimal-ui', 'browser'],
 				orientation: 'portrait',
 				lang: 'en',
+				dir: 'ltr',
 
 				theme_color: THEME_COLOR_DARK,
 				background_color: BACKGROUND_COLOR_DARK,
