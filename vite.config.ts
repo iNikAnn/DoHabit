@@ -129,6 +129,10 @@ export default defineConfig({
 					}
 				],
 
+				launch_handler: {
+					client_mode: 'focus-existing'
+				},
+
 				start_url: '.',
 				id: '/DoHabit/',
 				display: 'standalone',
