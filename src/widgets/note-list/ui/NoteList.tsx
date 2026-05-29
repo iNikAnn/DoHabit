@@ -7,7 +7,7 @@ import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { useIntersectionObserver } from '@shared/lib/dom';
 import { Placeholder, SegmentedControl } from '@shared/ui';
-import { getYearBoundaries } from '@shared/lib/date-time';
+import { extractYearsFromTimeline, getYearBoundaries } from '@shared/lib/date-time';
 
 interface NoteListProps {
 	habitId?: string;
@@ -41,17 +41,10 @@ function NoteList(props: NoteListProps) {
 	}, [habitId, notes]);
 
 	// Extract years only from the contextual scope notes
-	const availableYears = useMemo(() => {
-		const date = new Date();
-		const uniqueYears = new Set<number>();
-
-		scopeNotes.forEach((n) => {
-			date.setTime(n.createdAt);
-			uniqueYears.add(date.getFullYear());
-		});
-
-		return Array.from(uniqueYears).reverse();
-	}, [scopeNotes]);
+	const availableYears = useMemo(
+		() => extractYearsFromTimeline(scopeNotes, { order: 'desc' }),
+		[scopeNotes]
+	);
 
 	// Filter by selected year
 	const yearNotes = useMemo(() => {
