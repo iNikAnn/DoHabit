@@ -120,6 +120,15 @@ export default defineConfig({
 					}
 				],
 
+				shortcuts: [
+					{
+						name: 'Open notes',
+						short_name: 'Notes',
+						description: 'Capture ideas, moods, and reflections in your personal daily diary.',
+						url: '/modal/diary'
+					}
+				],
+
 				start_url: '.',
 				id: '/DoHabit/',
 				display: 'standalone',
