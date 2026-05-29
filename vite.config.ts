@@ -70,6 +70,7 @@ export default defineConfig({
 				name: 'DoHabit',
 				short_name: 'DoHabit',
 				description: pkg.description,
+				prefer_related_applications: false,
 
 				categories: [
 					'fitness',
@@ -122,6 +123,7 @@ export default defineConfig({
 				start_url: '.',
 				id: '/DoHabit/',
 				display: 'standalone',
+				display_override: ['standalone', 'minimal-ui', 'browser'],
 				orientation: 'portrait',
 				lang: 'en',
 
