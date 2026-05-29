@@ -4,7 +4,6 @@ import { useLocation } from 'react-router';
 import { NoteForm } from '@widgets/note-form';
 import { NoteList } from '@widgets/note-list';
 import { type Note } from '@entities/note';
-import { scrollToTop } from '@shared/lib/dom';
 
 /**
  * Main diary page component.
@@ -31,15 +30,10 @@ function DiaryPage() {
 	 * Handle closing the note form.
 	 * Keeps text as draft if user just closed new note form.
 	 */
-	const handleNoteFormClose = (shouldClear = false, shouldScrollUp = false) => {
+	const handleNoteFormClose = (shouldClear = false) => {
 		// Clear input on submit or when finishing edit mode
 		if (shouldClear) {
 			setNoteFormInput('');
-		}
-
-		// Scroll to top of the list
-		if (shouldScrollUp) {
-			scrollToTop(document.querySelector('#modalChildrenWrapper'));
 		}
 
 		// Reset edit state and hide form
