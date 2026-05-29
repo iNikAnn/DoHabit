@@ -3,6 +3,8 @@ import svgr from "vite-plugin-svgr";
 import { defineConfig } from 'vite'
 import path from 'path';
 import react from '@vitejs/plugin-react'
+import htmlPlugin from 'vite-plugin-html-config';
+import pkg from './package.json';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,6 +34,16 @@ export default defineConfig({
 	plugins: [
 		react(),
 		svgr(),
+
+		htmlPlugin({
+			metas: [
+				{
+					name: 'description',
+					content: pkg.description
+				}
+			]
+		}),
+
 		VitePWA({
 			registerType: 'prompt',
 			injectRegister: false,
@@ -44,7 +56,7 @@ export default defineConfig({
 			manifest: {
 				name: 'DoHabit',
 				short_name: 'DoHabit',
-				description: 'DoHabit is a straightforward habit tracker that doesn’t require registration. Easily mark your completed days, track your progress, and keep a journal for each habit.',
+				description: pkg.description,
 
 				categories: [
 					'fitness',

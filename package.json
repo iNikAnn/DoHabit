@@ -1,8 +1,8 @@
 {
 	"name": "dohabit",
-	"description": "DoHabit is a straightforward habit tracker that doesn’t require registration. Easily mark your completed days, track your progress, and keep a journal for each habit.",
+	"description": "Build lasting habits with zero friction. DoHabit is a minimalist, privacy-first tracker that works completely offline. No accounts, no tracking—just your progress, beautiful charts, and a personal journal for every habit.",
 	"private": true,
-	"version": "0.40.0",
+	"version": "0.40.1",
 	"homepage": "https://inikann.github.io/DoHabit/",
 	"type": "module",
 	"scripts": {
@@ -51,6 +51,7 @@
 		"typescript": "~6.0.3",
 		"typescript-eslint": "^8.59.4",
 		"vite": "^8.0.10",
+		"vite-plugin-html-config": "^2.0.2",
 		"vite-plugin-pwa": "^1.3.0",
 		"vite-plugin-svgr": "^5.2.0",
 		"workbox-core": "^7.4.1",
