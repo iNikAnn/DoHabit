@@ -7,7 +7,7 @@ import { Dialog, Drawer } from '@shared/ui';
 import PWABadge from '@/PWABadge';
 
 function App() {
-	useTheme();
+	const theme = useTheme();
 	useCheckAchievements();
 
 	return (
