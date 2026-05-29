@@ -2,6 +2,7 @@ import styles from './NoteForm.module.css';
 import { type SubmitEventHandler } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { toast } from 'sonner';
 import TextareaAutosize from 'react-textarea-autosize';
 import { IoSend } from "react-icons/io5";
 import { FaPlus } from 'react-icons/fa';
@@ -17,7 +18,7 @@ interface Props {
 	isFormActive: boolean;
 	onActivate: () => void;
 	onChange: (v: string) => void;
-	onClose: (shouldClear?: boolean, shouldScrollUp?: boolean) => void;
+	onClose: (shouldClear?: boolean) => void;
 }
 
 /**
@@ -70,8 +71,9 @@ function NoteForm(props: Props) {
 			});
 		}
 
-		// Close form, clear input, and scroll up if it was a new note
-		onClose(true, !isEditMode);
+		// Close form, clear input, show toast
+		onClose(true);
+		toast.success(isEditMode ? 'Changes saved!' : 'Note created!');
 	};
 
 	return (

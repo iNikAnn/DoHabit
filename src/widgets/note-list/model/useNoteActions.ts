@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import { type Note, useNotesStore } from '@entities/note';
 import { type DrawerAction, useDrawerStore } from '@shared/ui';
@@ -26,7 +27,6 @@ function useNoteActions() {
 				icon: FaTrash,
 				label: 'Delete Note',
 				variant: 'danger',
-				// style: { color: 'IndianRed' },
 				onClick: () => {
 					if (window.confirm('Are you sure you want to delete this note?')) {
 						notesDispatch({
@@ -35,6 +35,8 @@ function useNoteActions() {
 								noteId: note.id
 							}
 						});
+
+						toast.success('Note deleted!');
 					}
 				}
 			},

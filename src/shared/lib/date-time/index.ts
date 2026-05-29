@@ -1,5 +1,7 @@
 export { countDaysBetween } from './count-days-between/countDaysBetween';
 export { countMonths } from './count-months/countMonths';
+export { extractYearsFromTimeline } from './extract-years-from-timeline/extractYearsFromTimeline';
 export { formatDate } from './format-date/formatDate';
 export { getDatesRange } from './get-dates-range/getDatesRange';
+export { getYearBoundaries } from './get-year-boundaries/getYearBoundaries';
 export { getYesterday } from './get-yesterday/getYesterday';

@@ -1,3 +1,4 @@
 export { scrollToTop } from './scroll-to-top/scrollToTop';
 export { takeScreenshot } from './take-screenshot/takeScreenshot';
+export { useIntersectionObserver } from './use-intersection-observer/useIntersectionObserver';
 export { useNativeBackClose } from './use-native-back-close/useNativeBackClose';
