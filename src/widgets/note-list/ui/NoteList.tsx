@@ -42,8 +42,15 @@ function NoteList(props: NoteListProps) {
 
 	// Extract years only from the contextual scope notes
 	const availableYears = useMemo(() => {
-		const years = scopeNotes.map((n) => new Date(n.createdAt).getFullYear());
-		return Array.from(new Set(years)).sort((a, b) => b - a);
+		const date = new Date();
+		const uniqueYears = new Set<number>();
+
+		scopeNotes.forEach((n) => {
+			date.setTime(n.createdAt);
+			uniqueYears.add(date.getFullYear());
+		});
+
+		return Array.from(uniqueYears).reverse();
 	}, [scopeNotes]);
 
 	// Filter by selected year
