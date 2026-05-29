@@ -7,6 +7,7 @@ import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { useIntersectionObserver } from '@shared/lib/dom';
 import { Placeholder, SegmentedControl } from '@shared/ui';
+import { getYearBoundaries } from '@shared/lib/date-time';
 
 interface NoteListProps {
 	habitId?: string;
@@ -47,9 +48,12 @@ function NoteList(props: NoteListProps) {
 
 	// Filter by selected year
 	const yearNotes = useMemo(() => {
-		const filtered = selectedYear === 'All'
-			? scopeNotes
-			: scopeNotes.filter((n) => new Date(n.createdAt).getFullYear() === selectedYear);
+		let filtered = scopeNotes;
+
+		if (selectedYear !== 'All') {
+			const [start, end] = getYearBoundaries(selectedYear);
+			filtered = scopeNotes.filter((n) => n.createdAt >= start && n.createdAt < end);
+		}
 
 		return filtered.sort((a, b) => (
 			sortOrder === 'desc'
