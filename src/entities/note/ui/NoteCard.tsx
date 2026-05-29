@@ -1,7 +1,5 @@
 import styles from './NoteCard.module.css';
-import { motion } from 'framer-motion';
 import type { Note } from '../model/types';
-import { createListVariants } from '@shared/lib/animation';
 import { formatDate } from '@shared/lib/date-time';
 
 interface NoteCardProps {
@@ -16,13 +14,10 @@ function NoteCard(props: NoteCardProps) {
 	} = props;
 
 	const dateTimeStr = formatDate(new Date(note.createdAt), { includeTime: true });
-	const noteVariants = createListVariants(0.3);
 
 	return (
-		<motion.div
+		<div
 			className={styles.note}
-			{...noteVariants}
-			layout
 			onClick={onClick}
 		>
 			<div className={styles.text}>
@@ -38,7 +33,7 @@ function NoteCard(props: NoteCardProps) {
 					<small>{'Streak: ' + note.streak}</small>
 				)}
 			</div>
-		</motion.div>
+		</div>
 	);
 }
 
