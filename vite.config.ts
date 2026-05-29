@@ -6,6 +6,10 @@ import react from '@vitejs/plugin-react'
 import htmlPlugin from 'vite-plugin-html-config';
 import pkg from './package.json';
 
+const THEME_COLOR_DARK = '#000000';
+const THEME_COLOR_LIGHT = '#ffffff';
+const BACKGROUND_COLOR_DARK = '#000000'
+
 // https://vitejs.dev/config/
 export default defineConfig({
 	base: '/DoHabit/',
@@ -40,6 +44,15 @@ export default defineConfig({
 				{
 					name: 'description',
 					content: pkg.description
+				},
+				{
+					name: 'theme-color',
+					content: THEME_COLOR_DARK
+				},
+				{
+					name: 'theme-color',
+					content: THEME_COLOR_LIGHT,
+					media: '(prefers-color-scheme: light)'
 				}
 			]
 		}),
@@ -112,8 +125,8 @@ export default defineConfig({
 				orientation: 'portrait',
 				lang: 'en',
 
-				theme_color: '#000000',
-				background_color: '#000000',
+				theme_color: THEME_COLOR_DARK,
+				background_color: BACKGROUND_COLOR_DARK,
 			},
 
 			workbox: {
