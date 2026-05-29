@@ -15,7 +15,14 @@ function App() {
 			<AppRouter />
 			<Dialog />
 			<Drawer />
-			<Toaster position='top-center' />
+
+			<Toaster
+				position='top-center'
+				theme={theme ?? 'system'}
+				richColors
+				toastOptions={{ className: 'toast' }}
+			/>
+
 			<PWABadge />
 		</main>
 	);

@@ -2,6 +2,11 @@
 	padding: 0 16px;
 }
 
+.toast {
+	border: none !important;
+	border-radius: var(--border-radius-secondary) !important;
+}
+
 @media screen and (width >= 576px) {
 	.App {
 		width: var(--app-width);
