@@ -1,4 +1,5 @@
 import './styles/App.css';
+import { Toaster } from 'sonner'
 import { AppRouter } from './providers';
 import { useCheckAchievements } from '@features/check-achievements';
 import { useTheme } from '@entities/settings';
@@ -14,6 +15,7 @@ function App() {
 			<AppRouter />
 			<Dialog />
 			<Drawer />
+			<Toaster position='top-center' />
 			<PWABadge />
 		</main>
 	);
