@@ -35,18 +35,24 @@ function NoteList(props: NoteListProps) {
 	const [selectedYear, setSelectedYear] = useState<'All' | number>('All');
 	const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
 
-	// Get all notes for the current view context (habit or global)
+	/**
+	 * Get all notes for the current view context (habit or global).
+	 */
 	const scopeNotes = useMemo(() => {
 		return notes.filter((n) => habitId ? n.habitId === habitId : !n.habitId);
 	}, [habitId, notes]);
 
-	// Extract years only from the contextual scope notes
+	/**
+	 * Extract years only from the contextual scope notes.
+	 */
 	const availableYears = useMemo(
 		() => extractYearsFromTimeline(scopeNotes, { order: 'desc' }),
 		[scopeNotes]
 	);
 
-	// Filter by selected year
+	/**
+	 * Filter by selected year.
+	 */
 	const yearNotes = useMemo(() => {
 		if (selectedYear === 'All') return scopeNotes;
 
@@ -54,16 +60,21 @@ function NoteList(props: NoteListProps) {
 		return scopeNotes.filter((n) => n.createdAt >= start && n.createdAt < end);
 	}, [scopeNotes, selectedYear]);
 
-	// Sort by selected order
-	const sortedNotes = useMemo(() => yearNotes.sort((a, b) => (
+	/**
+	 * Derives the sorted notes list based on the active sort order.
+	 */
+	const sortedNotes = useMemo(() => (
+		// Reverses pre-sorted ascending array to achieve descending order
 		sortOrder === 'desc'
-			? b.createdAt - a.createdAt
-			: a.createdAt - b.createdAt
-	)), [sortOrder, yearNotes]);
+			? yearNotes.toReversed()
+			: yearNotes
+	), [sortOrder, yearNotes]);
 
 	const visibleNotes = sortedNotes.slice(0, visibleCount);
 
-	// Trigger loading next page when user scrolls to the bottom element
+	/**
+	 * Trigger loading next page when user scrolls to the bottom element.
+	 */
 	const loadMoreRef = useIntersectionObserver({
 		onIntersect: useCallback(() => setVisibleCount((prev) => prev + ITEMS_PER_PAGE), []),
 		enabled: visibleNotes.length < yearNotes.length,
@@ -100,15 +111,20 @@ function NoteList(props: NoteListProps) {
 			</div>
 
 			<ul className={styles.list}>
-				<AnimatePresence initial={false}>
+				<AnimatePresence initial={false} mode='popLayout'>
 					{visibleNotes.map((note) => (
 						<motion.li
-							key={note.id}
+							key={`${note.id}_${sortOrder}`} // Force remount on sorting to prevent motion glitching on short lists
+							variants={cardVariants}
+							initial='initial'
+							animate='animate'
+							exit='exit'
+							layout='position'
 							whileTap={{
 								filter: 'brightness(0.8)',
-								scale: 0.98
+								scale: 0.98,
+								transition: { duration: 0.1 }
 							}}
-							transition={{ duration: 0.1 }}
 						>
 							<NoteCard
 								note={note}
@@ -122,7 +138,7 @@ function NoteList(props: NoteListProps) {
 			{visibleNotes.length < yearNotes.length && (
 				<div ref={loadMoreRef} style={{ height: '60px' }} />
 			)}
-		</div>
+		</div >
 	);
 }
 
