@@ -1,5 +1,5 @@
 import styles from './NoteForm.module.css';
-import { type SubmitEventHandler } from 'react';
+import { type KeyboardEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { toast } from 'sonner';
@@ -20,6 +20,8 @@ interface Props {
 	onChange: (v: string) => void;
 	onClose: (shouldClear?: boolean) => void;
 }
+
+const isDev = import.meta.env.DEV;
 
 /**
  * Note creation and editing form.
@@ -43,8 +45,8 @@ function NoteForm(props: Props) {
 	 * Handles note submission.
 	 * Updates existing note if editingNoteId is present, otherwise creates a new one.
 	 */
-	const handleSubmitForm: SubmitEventHandler = (e) => {
-		e.preventDefault();
+	const handleSubmitForm = (e?: React.SubmitEvent<HTMLFormElement>) => {
+		e?.preventDefault();
 
 		const isEditMode = !!editingNoteId;
 
@@ -61,7 +63,7 @@ function NoteForm(props: Props) {
 				type: 'addNote',
 				payload: {
 					note: {
-						id: crypto.randomUUID(),
+						id: isDev ? String(Math.random()) : crypto.randomUUID(),
 						habitId,
 						streak: streak || undefined, // Avoid saving zero streaks
 						text: input.trim(),
@@ -74,6 +76,16 @@ function NoteForm(props: Props) {
 		// Close form, clear input, show toast
 		onClose(true);
 		toast.success(isEditMode ? 'Changes saved!' : 'Note created!');
+	};
+
+	/**
+	 * Handles key combinations for form submission.
+	 */
+	const handleKeyDown = (e: KeyboardEvent) => {
+		if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+			e.preventDefault();
+			handleSubmitForm();
+		}
 	};
 
 	return (
@@ -120,10 +132,11 @@ function NoteForm(props: Props) {
 								minRows={1}
 								maxRows={10}
 								value={input}
-								onChange={(e) => onChange(e.target.value)}
 								placeholder='Enter your note here...'
 								autoFocus
 								autoComplete='off'
+								onChange={(e) => onChange(e.target.value)}
+								onKeyDown={handleKeyDown}
 							/>
 
 							<Button
