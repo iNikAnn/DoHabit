@@ -1,9 +1,7 @@
 import styles from './HabitCard.module.css';
 import { type CSSProperties, type ReactNode } from 'react';
-import { motion } from 'framer-motion';
 import type { Habit } from '../../model/types';
 import HabitHeader from '../habit-header/HabitHeader';
-import { createListVariants } from '@shared/lib/animation';
 import { type ColorVariants } from '@shared/lib/theme';
 
 interface HabitCardProps {
@@ -25,8 +23,6 @@ function HabitCard(props: HabitCardProps) {
 		onClick
 	} = props;
 
-	const habitVariants = createListVariants(0.3);
-
 	// Dynamic colors as CSS variables
 	const style = {
 		'--habit-color-base': colorVariants.baseColor,
@@ -35,11 +31,9 @@ function HabitCard(props: HabitCardProps) {
 	} as CSSProperties;
 
 	return (
-		<motion.div
+		<div
 			style={style}
 			className={styles.habit}
-			{...habitVariants}
-			layout
 			onClick={onClick}
 		>
 			<HabitHeader
@@ -53,7 +47,7 @@ function HabitCard(props: HabitCardProps) {
 					{content}
 				</div>
 			)}
-		</motion.div>
+		</div>
 	);
 }
 

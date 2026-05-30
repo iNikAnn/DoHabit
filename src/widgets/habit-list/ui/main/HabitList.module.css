@@ -4,6 +4,10 @@
 	gap: 16px;
 }
 
+.habitList > li {
+	min-width: 0;
+}
+
 .habitList.isArchive {
 	gap: 10px;
 }

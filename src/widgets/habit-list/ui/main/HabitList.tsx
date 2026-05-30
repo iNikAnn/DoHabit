@@ -70,9 +70,9 @@ function HabitList(props: HabitListProps) {
 							key={habit.id}
 							whileTap={{
 								filter: 'brightness(0.8)',
-								scale: 0.98
+								scale: 0.98,
+								transition: { duration: 0.1 }
 							}}
-							transition={{ duration: 0.1 }}
 						>
 							<HabitCard
 								habit={habit}

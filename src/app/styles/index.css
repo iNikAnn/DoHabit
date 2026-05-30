@@ -21,7 +21,7 @@ input[type='number'] {
 :root {
 	/* https://developer.chrome.com/docs/css-ui/edge-to-edge */
 	 --safe-area-max-inset-bottom: env(safe-area-max-inset-bottom, 36px);
-	--app-width: 760px;
+	--app-width: 640px;
 	--header-height: 4rem;
 	--accent-color: dodgerblue;
 	--color-primary: light-dark(hsl(0deg 0% 10%), hsl(0deg 0% 90%));
