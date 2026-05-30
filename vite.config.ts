@@ -1,15 +1,15 @@
 import { VitePWA } from 'vite-plugin-pwa';
 import svgr from 'vite-plugin-svgr';
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 import path from 'path';
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
 import htmlPlugin from 'vite-plugin-html-config';
 import pkg from './package.json';
 
 const THEME_COLOR_DARK = '#000000';
 const THEME_COLOR_LIGHT = '#ffffff';
-const BACKGROUND_COLOR_DARK = '#000000'
-const APP_TITLE = 'DoHabit | Habit Tracker';
+const BACKGROUND_COLOR_DARK = '#000000';
+const APP_TITLE = 'DoHabit | Build Habits, Break Limits & Crush Your Goals';
 const OG_BANNER_URL = '/assets/img/Repo-Card-Template.jpg';
 
 const APP_URL = new URL(pkg.homepage);
