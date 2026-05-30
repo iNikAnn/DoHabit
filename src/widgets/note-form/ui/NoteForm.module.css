@@ -7,6 +7,7 @@
 .form {
 	/* outline: 1px solid tomato; */
 	position: fixed;
+	right: 0;
 	bottom: 0;
 	bottom: var(--safe-area-max-inset-bottom);
 	left: 0;
@@ -57,4 +58,23 @@
 .actionButton:disabled {
 	color: var(--color-secondary);
 	background-color: var(--bg-color-tertiary);
+}
+
+@media screen and (width >= 576px) {
+	.form {
+		bottom: 0;
+		width: var(--app-width);
+		padding: 0 16px;
+		margin: 0 auto;
+	}
+
+	.actionButton {
+		right: calc((100vw - var(--app-width)) / 2 + 32px);
+		bottom: calc(
+			var(--textarea-padding) +
+			0.5rem -
+			25px +
+			1px
+		);
+	}
 }
