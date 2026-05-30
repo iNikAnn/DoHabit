@@ -1,6 +1,7 @@
 import { toast } from 'sonner';
-import { FaPencilAlt, FaTrash } from 'react-icons/fa';
+import { FaCopy, FaPencilAlt, FaTrash } from 'react-icons/fa';
 import { type Note, useNotesStore } from '@entities/note';
+import { copyToClipboard } from '@shared/lib/dom';
 import { type DrawerAction, useDrawerStore } from '@shared/ui';
 
 interface OpenMenuParams {
@@ -46,6 +47,21 @@ function useNoteActions() {
 				icon: FaPencilAlt,
 				label: 'Edit Note',
 				onClick: () => onEdit(note)
+			},
+
+			// Copy to clipboard
+			{
+				icon: FaCopy,
+				label: 'Copy Text',
+				onClick: async () => {
+					const success = await copyToClipboard({ text: note.text });
+
+					if (success) {
+						toast.success('Copied!');
+					} else {
+						toast.error('Copy failed.');
+					}
+				}
 			}
 		];
 	}
