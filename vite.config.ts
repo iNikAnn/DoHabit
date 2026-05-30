@@ -1,5 +1,5 @@
 import { VitePWA } from 'vite-plugin-pwa';
-import svgr from "vite-plugin-svgr";
+import svgr from 'vite-plugin-svgr';
 import { defineConfig } from 'vite'
 import path from 'path';
 import react from '@vitejs/plugin-react'
@@ -9,10 +9,16 @@ import pkg from './package.json';
 const THEME_COLOR_DARK = '#000000';
 const THEME_COLOR_LIGHT = '#ffffff';
 const BACKGROUND_COLOR_DARK = '#000000'
+const APP_TITLE = 'DoHabit | Habit Tracker';
+const OG_BANNER_URL = '/assets/img/Repo-Card-Template.jpg';
+
+const APP_URL = new URL(pkg.homepage);
+const APP_BASE = APP_URL.pathname;
+const APP_DOMAIN = APP_URL.hostname;
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: '/DoHabit/',
+	base: APP_BASE,
 
 	resolve: {
 		alias: {
@@ -40,11 +46,16 @@ export default defineConfig({
 		svgr(),
 
 		htmlPlugin({
+			title: APP_TITLE,
+
 			metas: [
+				// general
 				{
 					name: 'description',
 					content: pkg.description
 				},
+
+				// theme
 				{
 					name: 'theme-color',
 					content: THEME_COLOR_DARK
@@ -53,6 +64,53 @@ export default defineConfig({
 					name: 'theme-color',
 					content: THEME_COLOR_LIGHT,
 					media: '(prefers-color-scheme: light)'
+				},
+
+				// OG
+				{
+					property: 'og:url',
+					content: pkg.homepage
+				},
+				{
+					property: 'og:type',
+					content: 'website'
+				},
+				{
+					property: 'og:title',
+					content: APP_TITLE
+				},
+				{
+					property: 'og:description',
+					content: pkg.description
+				},
+				{
+					property: 'og:image',
+					content: OG_BANNER_URL
+				},
+
+				{
+					name: 'twitter:card',
+					content: 'summary_large_image'
+				},
+				{
+					property: 'twitter:domain',
+					content: APP_DOMAIN
+				},
+				{
+					property: 'twitter:url',
+					content: pkg.homepage
+				},
+				{
+					name: 'twitter:title',
+					content: APP_TITLE
+				},
+				{
+					name: 'twitter:description',
+					content: pkg.description
+				},
+				{
+					name: 'twitter:image',
+					content: OG_BANNER_URL
 				}
 			]
 		}),
@@ -134,7 +192,7 @@ export default defineConfig({
 				},
 
 				start_url: '.',
-				id: '/DoHabit/',
+				id: APP_BASE,
 				display: 'standalone',
 				display_override: ['standalone', 'minimal-ui', 'browser'],
 				orientation: 'portrait',
