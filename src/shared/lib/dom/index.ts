@@ -1,3 +1,4 @@
+export { copyToClipboard } from './copy-to-clipboard/copyToClipboard';
 export { scrollToTop } from './scroll-to-top/scrollToTop';
 export { takeScreenshot } from './take-screenshot/takeScreenshot';
 export { useIntersectionObserver } from './use-intersection-observer/useIntersectionObserver';
