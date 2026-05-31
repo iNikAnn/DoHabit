@@ -1,0 +1,43 @@
+.toolbar {
+	position: fixed;
+	right: 0;
+		bottom: calc(
+		var(--safe-area-max-inset-bottom) +
+		32px +
+		0.5rem -
+		25px +
+		1px
+	);
+	left: 0;
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+
+	/* padding: 0 16px; */
+	padding: 0 32px;
+}
+
+.toolbar button {
+	width: 48px;
+	height: 48px;
+}
+
+.scrollToTopButton {
+	background-color: var(--bg-color-secondary);
+
+	/* border: 1px solid var(--color-secondary); */
+}
+
+.activateNoteFormButton svg {
+	width: 22px;
+	height: 22px;
+}
+
+@media screen and (width >= 576px) {
+	.toolbar {
+		bottom: 16px;
+		width: var(--app-width);
+		padding: 0 32px;
+		margin: 0 auto;
+	}
+}

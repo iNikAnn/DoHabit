@@ -20,7 +20,8 @@ const INDICATOR_ICONS: Record<ButtonIndicator, IconType | null> = {
 
 const whileTap = {
 	filter: 'brightness(0.8)',
-	scale: 0.96
+	scale: 0.96,
+	transition: { duration: 0.1 }
 };
 
 /**
@@ -64,7 +65,6 @@ function Button(props: ButtonProps) {
 				style={style}
 				className={classes}
 				whileTap={whileTap}
-				transition={{ duration: 0.1 }}
 			>
 				{innerContent}
 			</MotionLink>
@@ -77,9 +77,8 @@ function Button(props: ButtonProps) {
 			type={type}
 			style={style}
 			className={classes}
-			{...rest}
 			whileTap={whileTap}
-			transition={{ duration: 0.1 }}
+			{...rest}
 		>
 			{innerContent}
 		</motion.button>
