@@ -14,13 +14,17 @@
 	width: 100%;
 }
 
+.noteGroupsWrapper {
+	padding-bottom: 80px;
+}
+
 /* note list */
-.list {
+.noteList {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 
-	/* padding-bottom: 80px; */
 }
 
 .monthLabelWrapper {

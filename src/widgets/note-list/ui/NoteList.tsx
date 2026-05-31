@@ -73,16 +73,22 @@ function NoteList(props: NoteListProps) {
 			: yearNotes
 	), [sortOrder, yearNotes]);
 
-	const visibleNotes = sortedNotes.slice(0, visibleCount);
+	const visibleNotes = useMemo(
+		() => sortedNotes.slice(0, visibleCount),
+		[sortedNotes, visibleCount]
+	);
 
 	/**
 	 * Group notes by year and month string (e.g., '2026-05').
-	 */
-	const date = new Date();
-	const groupedNotes = groupBy(visibleNotes, (n) => {
-		date.setTime(n.createdAt);
-		return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-	});
+	*/
+	const groupedNotes = useMemo(() => {
+		const date = new Date();
+
+		return groupBy(visibleNotes, (n) => {
+			date.setTime(n.createdAt);
+			return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+		})
+	}, [visibleNotes]);
 
 	/**
 	 * Trigger loading next page when user scrolls to the bottom element.
@@ -122,40 +128,44 @@ function NoteList(props: NoteListProps) {
 				/>
 			</div>
 
-			{Object.entries(groupedNotes).map(([monthLabel, notes]) => (
-				<section key={monthLabel}>
-					<div className={styles.monthLabelWrapper}>
-						<small className={styles.monthLabel}>
-							{monthLabel}
-						</small>
-					</div>
+			<div className={styles.noteGroupsWrapper}>
+				<AnimatePresence mode='popLayout'>
+					{Object.entries(groupedNotes).map(([monthLabel, notes]) => (
+						<section key={`${monthLabel}_${sortOrder}`}>
+							<div className={styles.monthLabelWrapper}>
+								<small className={styles.monthLabel}>
+									{monthLabel}
+								</small>
+							</div>
 
-					<ul className={styles.list}>
-						<AnimatePresence initial={false} mode='popLayout'>
-							{notes.map((note) => (
-								<motion.li
-									key={`${note.id}_${sortOrder}`} // Force remount on sorting to prevent motion glitching on short lists
-									variants={cardVariants}
-									initial='initial'
-									animate='animate'
-									exit='exit'
-									layout='position'
-									whileTap={{
-										filter: 'brightness(0.8)',
-										scale: 0.98,
-										transition: { duration: 0.1 }
-									}}
-								>
-									<NoteCard
-										note={note}
-										onClick={() => openNoteMenu({ note, onEdit })}
-									/>
-								</motion.li>
-							))}
-						</AnimatePresence>
-					</ul>
-				</section>
-			))}
+							<ul className={styles.noteList}>
+								<AnimatePresence mode='popLayout' propagate>
+									{notes.map((note) => (
+										<motion.li
+											key={`${note.id}_${sortOrder}`} // Force remount on sorting to prevent motion glitching on short lists
+											variants={cardVariants}
+											initial='initial'
+											animate='animate'
+											exit='exit'
+											layout='position'
+											whileTap={{
+												filter: 'brightness(0.8)',
+												scale: 0.98,
+												transition: { duration: 0.1 }
+											}}
+										>
+											<NoteCard
+												note={note}
+												onClick={() => openNoteMenu({ note, onEdit })}
+											/>
+										</motion.li>
+									))}
+								</AnimatePresence>
+							</ul>
+						</section>
+					))}
+				</AnimatePresence>
+			</div>
 
 			{visibleNotes.length < yearNotes.length && (
 				<div ref={loadMoreRef} style={{ height: '60px' }} />
