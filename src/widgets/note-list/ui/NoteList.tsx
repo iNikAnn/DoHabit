@@ -1,16 +1,16 @@
 import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { groupBy } from 'es-toolkit';
 import { useNoteActions } from '../model/useNoteActions';
 import { cardVariants } from '../model/animations';
 import SortButton from './sort-button/SortButton';
 import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
+import { MONTHS } from '@shared/const';
 import { extractYearsFromTimeline, getYearBoundaries } from '@shared/lib/date-time';
 import { useIntersectionObserver } from '@shared/lib/dom';
 import { Placeholder, SegmentedControl } from '@shared/ui';
-import { groupBy } from 'es-toolkit';
-import { FaCalendar } from 'react-icons/fa';
 
 interface NoteListProps {
 	habitId?: string;
@@ -130,40 +130,47 @@ function NoteList(props: NoteListProps) {
 
 			<div className={styles.noteGroupsWrapper}>
 				<AnimatePresence mode='popLayout'>
-					{Object.entries(groupedNotes).map(([monthLabel, notes]) => (
-						<section key={`${monthLabel}_${sortOrder}`}>
-							<div className={styles.monthLabelWrapper}>
-								<small className={styles.monthLabel}>
-									{monthLabel}
-								</small>
-							</div>
+					{Object.entries(groupedNotes).map(([groupKey, notes], index) => {
+						const monthIndex = Number(groupKey.split('-')[1]) - 1;
 
-							<ul className={styles.noteList}>
-								<AnimatePresence mode='popLayout' propagate>
-									{notes.map((note) => (
-										<motion.li
-											key={`${note.id}_${sortOrder}`} // Force remount on sorting to prevent motion glitching on short lists
-											variants={cardVariants}
-											initial='initial'
-											animate='animate'
-											exit='exit'
-											layout='position'
-											whileTap={{
-												filter: 'brightness(0.8)',
-												scale: 0.98,
-												transition: { duration: 0.1 }
-											}}
-										>
-											<NoteCard
-												note={note}
-												onClick={() => openNoteMenu({ note, onEdit })}
-											/>
-										</motion.li>
-									))}
-								</AnimatePresence>
-							</ul>
-						</section>
-					))}
+						return (
+							<section key={`${groupKey}_${sortOrder}`}>
+								<div
+									className={styles.monthLabelWrapper}
+									data-first-group={index === 0 ? 'true' : undefined}
+								>
+									<small className={styles.monthLabel}>
+										{MONTHS[monthIndex]}
+									</small>
+								</div>
+
+								<ul className={styles.noteList}>
+									<AnimatePresence mode='popLayout' propagate>
+										{notes.map((note) => (
+											<motion.li
+												key={`${note.id}_${sortOrder}`} // Force remount on sorting to prevent motion glitching on short lists
+												variants={cardVariants}
+												initial='initial'
+												animate='animate'
+												exit='exit'
+												layout='position'
+												whileTap={{
+													filter: 'brightness(0.8)',
+													scale: 0.98,
+													transition: { duration: 0.1 }
+												}}
+											>
+												<NoteCard
+													note={note}
+													onClick={() => openNoteMenu({ note, onEdit })}
+												/>
+											</motion.li>
+										))}
+									</AnimatePresence>
+								</ul>
+							</section>
+						)
+					})}
 				</AnimatePresence>
 			</div>
 

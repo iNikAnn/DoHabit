@@ -34,7 +34,12 @@
 	display: flex;
 	padding-top: 4px;
 	padding-bottom: 8px;
+	margin-top: 16px;
 	color: var(--color-secondary);
+}
+
+.monthLabelWrapper[data-first-group] {
+	margin-top: 0;
 }
 
 .monthLabel {

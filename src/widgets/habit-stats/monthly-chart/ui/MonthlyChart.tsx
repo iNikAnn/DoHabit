@@ -28,7 +28,7 @@ function MonthlyChart({ options, days, color }: Props) {
 		options: ChartOptions<'line'>,
 	} = {
 		data: {
-			labels: [...MONTHS],
+			labels: [...MONTHS.map((m) => m.slice(0, 3))],
 			datasets: [{
 				label: 'MonthlyChart',
 				data,
