@@ -38,12 +38,13 @@ function NoteList(props: NoteListProps) {
 	/**
 	 * Get all notes for the current view context (habit or global).
 	 */
-	const scopeNotes = useMemo(() => {
-		return notes.filter((n) => habitId ? n.habitId === habitId : !n.habitId);
-	}, [habitId, notes]);
+	const scopeNotes = useMemo(
+		() => notes.filter((n) => habitId ? n.habitId === habitId : !n.habitId),
+		[habitId, notes]
+	);
 
 	/**
-	 * Extract years only from the contextual scope notes.
+	 * Extracts a list of years to populate the timeline filter options.
 	 */
 	const availableYears = useMemo(
 		() => extractYearsFromTimeline(scopeNotes, { order: 'desc' }),
