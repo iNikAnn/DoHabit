@@ -1,11 +1,13 @@
 import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { groupBy } from 'es-toolkit';
 import { useNoteActions } from '../model/useNoteActions';
 import { cardVariants } from '../model/animations';
 import SortButton from './sort-button/SortButton';
 import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
+import { MONTHS } from '@shared/const';
 import { extractYearsFromTimeline, getYearBoundaries } from '@shared/lib/date-time';
 import { useIntersectionObserver } from '@shared/lib/dom';
 import { Placeholder, SegmentedControl } from '@shared/ui';
@@ -38,12 +40,13 @@ function NoteList(props: NoteListProps) {
 	/**
 	 * Get all notes for the current view context (habit or global).
 	 */
-	const scopeNotes = useMemo(() => {
-		return notes.filter((n) => habitId ? n.habitId === habitId : !n.habitId);
-	}, [habitId, notes]);
+	const scopeNotes = useMemo(
+		() => notes.filter((n) => habitId ? n.habitId === habitId : !n.habitId),
+		[habitId, notes]
+	);
 
 	/**
-	 * Extract years only from the contextual scope notes.
+	 * Extracts a list of years to populate the timeline filter options.
 	 */
 	const availableYears = useMemo(
 		() => extractYearsFromTimeline(scopeNotes, { order: 'desc' }),
@@ -70,7 +73,22 @@ function NoteList(props: NoteListProps) {
 			: yearNotes
 	), [sortOrder, yearNotes]);
 
-	const visibleNotes = sortedNotes.slice(0, visibleCount);
+	const visibleNotes = useMemo(
+		() => sortedNotes.slice(0, visibleCount),
+		[sortedNotes, visibleCount]
+	);
+
+	/**
+	 * Group notes by year and month string (e.g., '2026-05').
+	*/
+	const groupedNotes = useMemo(() => {
+		const date = new Date();
+
+		return groupBy(visibleNotes, (n) => {
+			date.setTime(n.createdAt);
+			return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+		})
+	}, [visibleNotes]);
 
 	/**
 	 * Trigger loading next page when user scrolls to the bottom element.
@@ -110,30 +128,51 @@ function NoteList(props: NoteListProps) {
 				/>
 			</div>
 
-			<ul className={styles.list}>
-				<AnimatePresence initial={false} mode='popLayout'>
-					{visibleNotes.map((note) => (
-						<motion.li
-							key={`${note.id}_${sortOrder}`} // Force remount on sorting to prevent motion glitching on short lists
-							variants={cardVariants}
-							initial='initial'
-							animate='animate'
-							exit='exit'
-							layout='position'
-							whileTap={{
-								filter: 'brightness(0.8)',
-								scale: 0.98,
-								transition: { duration: 0.1 }
-							}}
-						>
-							<NoteCard
-								note={note}
-								onClick={() => openNoteMenu({ note, onEdit })}
-							/>
-						</motion.li>
-					))}
+			<div className={styles.noteGroupsWrapper}>
+				<AnimatePresence mode='popLayout'>
+					{Object.entries(groupedNotes).map(([groupKey, notes], index) => {
+						const monthIndex = Number(groupKey.split('-')[1]) - 1;
+
+						return (
+							<section key={`${groupKey}_${sortOrder}`}>
+								<div
+									className={styles.monthLabelWrapper}
+									data-first-group={index === 0 ? 'true' : undefined}
+								>
+									<small className={styles.monthLabel}>
+										{MONTHS[monthIndex]}
+									</small>
+								</div>
+
+								<ul className={styles.noteList}>
+									<AnimatePresence mode='popLayout' propagate>
+										{notes.map((note) => (
+											<motion.li
+												key={`${note.id}_${sortOrder}`} // Force remount on sorting to prevent motion glitching on short lists
+												variants={cardVariants}
+												initial='initial'
+												animate='animate'
+												exit='exit'
+												layout='position'
+												whileTap={{
+													filter: 'brightness(0.8)',
+													scale: 0.98,
+													transition: { duration: 0.1 }
+												}}
+											>
+												<NoteCard
+													note={note}
+													onClick={() => openNoteMenu({ note, onEdit })}
+												/>
+											</motion.li>
+										))}
+									</AnimatePresence>
+								</ul>
+							</section>
+						)
+					})}
 				</AnimatePresence>
-			</ul>
+			</div>
 
 			{visibleNotes.length < yearNotes.length && (
 				<div ref={loadMoreRef} style={{ height: '60px' }} />

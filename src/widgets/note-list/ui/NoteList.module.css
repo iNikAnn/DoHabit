@@ -14,10 +14,37 @@
 	width: 100%;
 }
 
+.noteGroupsWrapper {
+	padding-bottom: 80px;
+}
+
 /* note list */
-.list {
+.noteList {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	padding-bottom: 80px;
+
+}
+
+.monthLabelWrapper {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	padding-top: 4px;
+	padding-bottom: 8px;
+	margin-top: 16px;
+	color: var(--color-secondary);
+}
+
+.monthLabelWrapper[data-first-group] {
+	margin-top: 0;
+}
+
+.monthLabel {
+	padding: 8px 12px;
+	margin: 0 auto;
+	background-color: var(--bg-color-secondary);
+	border-radius: var(--border-radius-tertiary);
 }
