@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { toast } from 'sonner';
 import TextareaAutosize from 'react-textarea-autosize';
 import { IoSend } from "react-icons/io5";
-import { FaPlus } from 'react-icons/fa';
 import { useNotesStore } from '@entities/note';
 import { useNativeBackClose } from '@shared/lib/dom';
 import { Button, Overlay } from '@shared/ui';
@@ -16,7 +15,6 @@ interface Props {
 	streak?: number,
 	editingNoteId?: string;
 	isFormActive: boolean;
-	onActivate: () => void;
 	onChange: (v: string) => void;
 	onClose: (shouldClear?: boolean) => void;
 }
@@ -33,7 +31,6 @@ function NoteForm(props: Props) {
 		streak,
 		editingNoteId,
 		isFormActive,
-		onActivate,
 		onChange,
 		onClose
 	} = props;
@@ -90,22 +87,6 @@ function NoteForm(props: Props) {
 
 	return (
 		<AnimatePresence initial={false}>
-			{!isFormActive && (
-				<Button
-					key='activate-note-form-button'
-
-					initial={{ opacity: 0, scale: 0 }}
-					animate={{ opacity: 1, scale: 1 }}
-					exit={{ opacity: 0, scale: 0 }}
-					transition={{ duration: 0.2 }}
-
-					className={styles.actionButton}
-					onClick={onActivate}
-				>
-					<FaPlus />
-				</Button>
-			)}
-
 			{isFormActive && (
 				<>
 					<Overlay
