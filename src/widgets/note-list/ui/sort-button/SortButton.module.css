@@ -6,5 +6,6 @@
 }
 
 .sortButton.active {
-	background-color: var(--bg-color-tertiary);
+	color: var(--accent-color);
+	background-color: var(--bg-color-secondary);
 }
