@@ -210,7 +210,8 @@ function NoteList(props: NoteListProps) {
 											>
 												<NoteCard
 													note={note}
-													onClick={() => openNoteMenu({ note, onEdit })}
+													onCardClick={() => openNoteMenu({ note, onEdit })}
+													onTagClick={setActiveTag}
 												/>
 											</motion.li>
 										))}

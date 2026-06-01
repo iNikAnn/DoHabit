@@ -5,13 +5,15 @@ import NoteText from './note-text/NoteText';
 
 interface NoteCardProps {
 	note: Note;
-	onClick: () => void;
+	onCardClick: () => void;
+	onTagClick: (tag: string) => void;
 }
 
 function NoteCard(props: NoteCardProps) {
 	const {
 		note,
-		onClick
+		onCardClick,
+		onTagClick
 	} = props;
 
 	const dateTimeStr = formatDate(new Date(note.createdAt), { includeTime: true });
@@ -19,9 +21,12 @@ function NoteCard(props: NoteCardProps) {
 	return (
 		<div
 			className={styles.note}
-			onClick={onClick}
+			onClick={onCardClick}
 		>
-			<NoteText text={note.text} />
+			<NoteText
+				text={note.text}
+				onTagClick={onTagClick}
+			/>
 
 			<div className={styles.description}>
 				<div className={styles.date}>
