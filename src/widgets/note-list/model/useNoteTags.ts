@@ -1,6 +1,7 @@
 import type { Note } from '@entities/note';
 import { useDrawerStore, type DrawerAction } from '@shared/ui';
 import { extractUniqueTags } from '@shared/lib/text';
+import type { PlaceholderProps } from '@shared/ui/placeholder/types';
 
 interface OpenMenuParams {
 	title: string,
@@ -33,9 +34,20 @@ function useNoteTags() {
 
 	return {
 		openNoteTagsMenu: (params: OpenMenuParams) => {
+			const actions = getActions(params);
+
+			const placeholder: PlaceholderProps = {
+				content: {
+					title: 'No tags found',
+					description: 'To create a tag, simply add a hashtag (#) before any word while writing a note.'
+				}
+			};
+
 			openDrawer({
 				title: params.title,
-				actions: getActions(params)
+				actions,
+				// Display empty state placeholder if no tags are available in the selected period
+				placeholder: actions.length === 0 ? placeholder : undefined
 			})
 		}
 	};
