@@ -23,6 +23,8 @@
 		"framer-motion": "^12.40.0",
 		"hashtag-regex": "^2.2.0",
 		"html2canvas-pro": "^2.0.2",
+		"linkify-plugin-hashtag": "^4.3.3",
+		"linkify-react": "^4.3.3",
 		"react": "^19.2.0",
 		"react-chartjs-2": "^5.3.1",
 		"react-dom": "^19.2.0",

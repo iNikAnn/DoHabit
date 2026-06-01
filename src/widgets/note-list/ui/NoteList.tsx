@@ -155,7 +155,6 @@ function NoteList(props: NoteListProps) {
 							openNoteTagsMenu({
 								title: selectedYear === 'All' ? 'All tags' : `Tags for ${selectedYear}`,
 								notes: yearNotes,
-								activeTag,
 								onSetTag: setActiveTag
 							})
 						}

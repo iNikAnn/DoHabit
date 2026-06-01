@@ -1,6 +1,7 @@
 import styles from './NoteCard.module.css';
 import type { Note } from '../model/types';
 import { formatDate } from '@shared/lib/date-time';
+import NoteText from './note-text/NoteText';
 
 interface NoteCardProps {
 	note: Note;
@@ -20,9 +21,7 @@ function NoteCard(props: NoteCardProps) {
 			className={styles.note}
 			onClick={onClick}
 		>
-			<div className={styles.text}>
-				{note.text}
-			</div>
+			<NoteText text={note.text} />
 
 			<div className={styles.description}>
 				<div className={styles.date}>

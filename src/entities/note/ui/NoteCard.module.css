@@ -16,12 +16,6 @@
 	border-radius: var(--border-radius-secondary);
 }
 
-/* text */
-.text {
-	overflow: hidden;
-	line-height: 1.2rem;
-}
-
 /* description */
 .description {
 	display: flex;

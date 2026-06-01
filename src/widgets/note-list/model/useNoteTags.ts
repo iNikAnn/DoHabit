@@ -6,7 +6,6 @@ import type { PlaceholderProps } from '@shared/ui/placeholder/types';
 interface OpenMenuParams {
 	title: string,
 	notes: Note[];
-	activeTag: string | null;
 	onSetTag: (tag: string) => void;
 }
 
@@ -19,7 +18,6 @@ function useNoteTags() {
 	const getActions = (params: OpenMenuParams): DrawerAction[] => {
 		const {
 			notes,
-			activeTag,
 			onSetTag
 		} = params;
 
@@ -27,7 +25,6 @@ function useNoteTags() {
 
 		return tags.map((tag) => ({
 			label: tag,
-			indicator: { type: tag === activeTag ? 'checkmark' : 'none' },
 			onClick: () => onSetTag(tag)
 		}));
 	};
