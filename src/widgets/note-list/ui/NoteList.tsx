@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { groupBy } from 'es-toolkit';
 import { useNoteActions } from '../model/useNoteActions';
-import { cardVariants } from '../model/animations';
+import { cardVariants, monthLabelVariants } from '../model/animations';
 import SortButton from './sort-button/SortButton';
 import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
@@ -139,9 +139,18 @@ function NoteList(props: NoteListProps) {
 									className={styles.monthLabelWrapper}
 									data-first-group={index === 0 ? 'true' : undefined}
 								>
-									<small className={styles.monthLabel}>
-										{MONTHS[monthIndex]}
-									</small>
+									<AnimatePresence mode='popLayout' propagate>
+										<motion.small
+											key={groupKey}
+											className={styles.monthLabel}
+											variants={monthLabelVariants}
+											initial='initial'
+											animate='animate'
+											exit='exit'
+										>
+											{MONTHS[monthIndex]}
+										</motion.small>
+									</AnimatePresence>
 								</div>
 
 								<ul className={styles.noteList}>
