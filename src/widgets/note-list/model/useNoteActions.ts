@@ -64,7 +64,7 @@ function useNoteActions() {
 				}
 			}
 		];
-	}
+	};
 
 	return {
 		openNoteMenu: ({ note, ...rest }: OpenMenuParams) => {

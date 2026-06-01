@@ -1,16 +1,19 @@
 import styles from './NoteCard.module.css';
 import type { Note } from '../model/types';
 import { formatDate } from '@shared/lib/date-time';
+import NoteText from './note-text/NoteText';
 
 interface NoteCardProps {
 	note: Note;
-	onClick: () => void;
+	onCardClick: () => void;
+	onTagClick: (tag: string) => void;
 }
 
 function NoteCard(props: NoteCardProps) {
 	const {
 		note,
-		onClick
+		onCardClick,
+		onTagClick
 	} = props;
 
 	const dateTimeStr = formatDate(new Date(note.createdAt), { includeTime: true });
@@ -18,11 +21,12 @@ function NoteCard(props: NoteCardProps) {
 	return (
 		<div
 			className={styles.note}
-			onClick={onClick}
+			onClick={onCardClick}
 		>
-			<div className={styles.text}>
-				{note.text}
-			</div>
+			<NoteText
+				text={note.text}
+				onTagClick={onTagClick}
+			/>
 
 			<div className={styles.description}>
 				<div className={styles.date}>

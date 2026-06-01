@@ -3,13 +3,16 @@ import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { groupBy } from 'es-toolkit';
 import { useNoteActions } from '../model/useNoteActions';
-import { cardVariants } from '../model/animations';
+import { useNoteTags } from '../model/useNoteTags';
+import { cardVariants, monthLabelVariants } from '../model/animations';
 import SortButton from './sort-button/SortButton';
+import TagButton from './tag-button/TagButton';
 import { type Note, NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { MONTHS } from '@shared/const';
 import { extractYearsFromTimeline, getYearBoundaries } from '@shared/lib/date-time';
 import { useIntersectionObserver } from '@shared/lib/dom';
+import { extractUniqueTags } from '@shared/lib/text';
 import { Placeholder, SegmentedControl } from '@shared/ui';
 
 interface NoteListProps {
@@ -30,11 +33,17 @@ function NoteList(props: NoteListProps) {
 		onEdit
 	} = props;
 
+	// Core data and drawer action hooks
 	const notes = useNotesStore((s) => s.notes);
 	const { openNoteMenu } = useNoteActions();
+	const { openNoteTagsMenu } = useNoteTags();
 
+	// Pagination state
 	const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
+
+	// Active layout filters and sorting rules
 	const [selectedYear, setSelectedYear] = useState<'All' | number>('All');
+	const [activeTag, setActiveTag] = useState<string | null>(null);
 	const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
 
 	/**
@@ -54,7 +63,7 @@ function NoteList(props: NoteListProps) {
 	);
 
 	/**
-	 * Filter by selected year.
+	 * Filter notes by selected year.
 	 */
 	const yearNotes = useMemo(() => {
 		if (selectedYear === 'All') return scopeNotes;
@@ -64,14 +73,26 @@ function NoteList(props: NoteListProps) {
 	}, [scopeNotes, selectedYear]);
 
 	/**
+	 * Filter year-specific notes by selected hashtag if active.
+	 */
+	const taggedNotes = useMemo(() => {
+		if (!activeTag) return yearNotes;
+
+		return yearNotes.filter((n) => {
+			const tags = extractUniqueTags(n.text);
+			return tags.includes(activeTag);
+		});
+	}, [activeTag, yearNotes]);
+
+	/**
 	 * Derives the sorted notes list based on the active sort order.
 	 */
 	const sortedNotes = useMemo(() => (
 		// Reverses pre-sorted ascending array to achieve descending order
 		sortOrder === 'desc'
-			? yearNotes.toReversed()
-			: yearNotes
-	), [sortOrder, yearNotes]);
+			? taggedNotes.toReversed()
+			: taggedNotes
+	), [sortOrder, taggedNotes]);
 
 	const visibleNotes = useMemo(
 		() => sortedNotes.slice(0, visibleCount),
@@ -119,7 +140,25 @@ function NoteList(props: NoteListProps) {
 				<SegmentedControl
 					options={['All', ...availableYears].map((v) => ({ value: String(v) }))}
 					value={String(selectedYear)}
-					onChange={(v) => setSelectedYear(v === 'All' ? 'All' : Number(v))}
+					onChange={(v) => {
+						setActiveTag(null);
+						setSelectedYear(v === 'All' ? 'All' : Number(v));
+					}}
+				/>
+
+				<TagButton
+					isActive={Boolean(activeTag)}
+					onClick={() => {
+						if (activeTag) {
+							setActiveTag(null);
+						} else {
+							openNoteTagsMenu({
+								title: selectedYear === 'All' ? 'All tags' : `Tags for ${selectedYear}`,
+								notes: yearNotes,
+								onSetTag: setActiveTag
+							})
+						}
+					}}
 				/>
 
 				<SortButton
@@ -139,9 +178,18 @@ function NoteList(props: NoteListProps) {
 									className={styles.monthLabelWrapper}
 									data-first-group={index === 0 ? 'true' : undefined}
 								>
-									<small className={styles.monthLabel}>
-										{MONTHS[monthIndex]}
-									</small>
+									<AnimatePresence mode='popLayout' propagate>
+										<motion.small
+											key={groupKey}
+											className={styles.monthLabel}
+											variants={monthLabelVariants}
+											initial='initial'
+											animate='animate'
+											exit='exit'
+										>
+											{MONTHS[monthIndex]}
+										</motion.small>
+									</AnimatePresence>
 								</div>
 
 								<ul className={styles.noteList}>
@@ -162,7 +210,8 @@ function NoteList(props: NoteListProps) {
 											>
 												<NoteCard
 													note={note}
-													onClick={() => openNoteMenu({ note, onEdit })}
+													onCardClick={() => openNoteMenu({ note, onEdit })}
+													onTagClick={setActiveTag}
 												/>
 											</motion.li>
 										))}

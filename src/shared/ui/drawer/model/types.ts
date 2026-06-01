@@ -1,4 +1,5 @@
 import { type ButtonProps } from '@shared/ui';
+import type { PlaceholderProps } from '@shared/ui/placeholder/types';
 
 export interface DrawerAction extends ButtonProps {
 	label: string;
@@ -7,6 +8,7 @@ export interface DrawerAction extends ButtonProps {
 export interface DrawerContent {
 	title: string;
 	actions?: DrawerAction[];
+	placeholder?: PlaceholderProps
 }
 
 export interface DrawerState {

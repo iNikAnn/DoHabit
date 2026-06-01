@@ -4,7 +4,7 @@ import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
 import { variants } from '../model/animations';
 import { useDrawerStore } from '../model/store';
 import { useNativeBackClose } from '@shared/lib/dom';
-import { Button, Overlay } from '@shared/ui';
+import { Button, Overlay, Placeholder } from '@shared/ui';
 
 /**
  * Interactive bottom sheet component controlled via global state.
@@ -43,7 +43,7 @@ function Drawer() {
 							<div className={styles.handle} />
 							<h3 className={styles.title}>{content.title}</h3>
 
-							{content.actions && (
+							{content.actions && content.actions.length > 0 && (
 								<ul
 									className={styles.actions}
 									onClick={closeDrawer}
@@ -63,6 +63,14 @@ function Drawer() {
 										</li>
 									))}
 								</ul>
+							)}
+
+							{content.placeholder && (
+								<div className={styles.placeholderWrapper}>
+									<Placeholder
+										content={content.placeholder.content}
+									/>
+								</div>
 							)}
 						</motion.div>,
 						document.body

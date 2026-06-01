@@ -2,7 +2,7 @@
 	"name": "dohabit",
 	"description": "Build lasting habits with zero friction. DoHabit is a minimalist, offline tracker. No accounts—just your progress, charts, and a personal habit journal.",
 	"private": true,
-	"version": "0.42.0",
+	"version": "0.43.0",
 	"homepage": "https://inikann.github.io/DoHabit/",
 	"type": "module",
 	"scripts": {
@@ -21,7 +21,10 @@
 		"clsx": "^2.1.1",
 		"es-toolkit": "^1.46.1",
 		"framer-motion": "^12.40.0",
+		"hashtag-regex": "^2.2.0",
 		"html2canvas-pro": "^2.0.2",
+		"linkify-plugin-hashtag": "^4.3.3",
+		"linkify-react": "^4.3.3",
 		"react": "^19.2.0",
 		"react-chartjs-2": "^5.3.1",
 		"react-dom": "^19.2.0",
@@ -34,6 +37,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
+		"@types/hashtag-regex": "^2.0.3",
 		"@types/node": "^24.6.2",
 		"@types/react": "^19.2.0",
 		"@types/react-dom": "^19.2.0",
