@@ -52,6 +52,19 @@
 	box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
 }
 
+/* placeholderWrapper */
+.placeholderWrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.placeholderWrapper > div {
+	position: static;
+	top: unset;
+	left: unset;
+	transform: unset;
+}
+
 @media screen and (width >= 576px) {
 	.drawer {
 		left: calc(50% - 222px);
