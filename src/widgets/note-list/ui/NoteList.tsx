@@ -18,6 +18,7 @@ import { Placeholder, SegmentedControl } from '@shared/ui';
 interface NoteListProps {
 	habitId?: string;
 	onEdit: (note: Note) => void;
+	onScrollTop: (options?: { behavior?: 'auto' | 'smooth' }) => void;
 }
 
 const ITEMS_PER_PAGE = 15;
@@ -30,7 +31,8 @@ const observerOptions = { scrollMargin: '220px' };
 function NoteList(props: NoteListProps) {
 	const {
 		habitId,
-		onEdit
+		onEdit,
+		onScrollTop
 	} = props;
 
 	// Core data and drawer action hooks
@@ -156,7 +158,7 @@ function NoteList(props: NoteListProps) {
 								title: selectedYear === 'All' ? 'All tags' : `Tags for ${selectedYear}`,
 								notes: yearNotes,
 								onSetTag: setActiveTag
-							})
+							});
 						}
 					}}
 				/>
@@ -196,7 +198,7 @@ function NoteList(props: NoteListProps) {
 									<AnimatePresence mode='popLayout' propagate>
 										{notes.map((note) => (
 											<motion.li
-												key={`${note.id}_${sortOrder}`} // Force remount on sorting to prevent motion glitching on short lists
+												key={`${note.id}_${sortOrder}_${activeTag}`} // Reset layout animation state on list updates to avoid layout shifts
 												variants={cardVariants}
 												initial='initial'
 												animate='animate'
@@ -211,7 +213,10 @@ function NoteList(props: NoteListProps) {
 												<NoteCard
 													note={note}
 													onCardClick={() => openNoteMenu({ note, onEdit })}
-													onTagClick={setActiveTag}
+													onTagClick={(tag: string) => {
+														onScrollTop({ behavior: 'auto' });
+														setActiveTag(tag);
+													}}
 												/>
 											</motion.li>
 										))}

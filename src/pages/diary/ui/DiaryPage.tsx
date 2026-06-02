@@ -80,13 +80,13 @@ function DiaryPage() {
 	 * Instantly hides the action button
 	 * and sets a DOM flag to prevent scroll listener interference.
 	 */
-	const handleScrollToTop = () => {
+	const handleScrollToTop = (options?: { behavior?: 'auto' | 'smooth' }) => {
 		const el = document.getElementById(SCROLL_CONTAINER_ID);
 		if (!el) return;
 
 		el.setAttribute(SCROLLING_UP_ATTR, 'true');
 		setShowScrollTop(false);
-		scrollToTop(el);
+		scrollToTop(el, options);
 	};
 
 	return (
@@ -94,6 +94,7 @@ function DiaryPage() {
 			<NoteList
 				habitId={habitId}
 				onEdit={handleEditNote}
+				onScrollTop={handleScrollToTop}
 			/>
 
 			<NoteForm
