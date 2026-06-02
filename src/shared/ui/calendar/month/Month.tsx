@@ -55,7 +55,8 @@ function Month(props: Props) {
 				style={{
 					color: isCompleted ? 'inherit' : softenedColor,
 					backgroundColor: isCompleted ? baseColor : darkenedColor,
-					border: (isToday && highlightToday) ? '2px solid var(--color-primary)' : ''
+					outline: (isToday && highlightToday) ? '2px solid var(--color-primary)' : '',
+					outlineOffset: '-2px'
 				}}
 				className={styles.day}
 			>

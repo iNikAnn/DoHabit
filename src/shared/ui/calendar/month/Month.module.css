@@ -10,23 +10,20 @@
 /* weekday */
 .weekday {
 	/* outline: 1px solid red; */
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	margin-bottom: 7px;
 }
 
 .weekday,
 .day {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-size: 0.7rem;
 	font-weight: bold;
 }
 
 /* day */
 .day {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	aspect-ratio: 1 / 1;
 	border-radius: 6px;
 }
