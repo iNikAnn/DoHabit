@@ -5,7 +5,6 @@ import { throttle } from 'es-toolkit';
 import DiaryToolbar from './diary-toolbar/DiaryToolbar';
 import { NoteForm } from '@widgets/note-form';
 import { NoteList } from '@widgets/note-list';
-import { type Note } from '@entities/note';
 import { scrollToTop } from '@shared/lib/dom';
 
 const SCROLL_CONTAINER_ID = 'modalChildrenWrapper';
@@ -14,40 +13,11 @@ const SCROLLING_UP_ATTR = 'data-scrolling-up';
 
 /**
  * Main diary page component.
- * Coordinates note creation, editing, and filtered feed display.
  */
 function DiaryPage() {
 	const location = useLocation();
 	const [showScrollTop, setShowScrollTop] = useState(false);
-	const [editingNoteId, setEditingNoteId] = useState<string>();
-	const [isFormActive, setIsFormActive] = useState(false);
-	const [noteFormInput, setNoteFormInput] = useState('');
-
 	const { habitId, currentStreak } = location.state ?? {};
-
-	/**
-	 * Opens the form in edit mode and fills it with note data.
-	 */
-	const handleEditNote = (note: Note) => {
-		setEditingNoteId(note.id);
-		setNoteFormInput(note.text);
-		setIsFormActive(true);
-	};
-
-	/**
-	 * Handle closing the note form.
-	 * Keeps text as draft if user just closed new note form.
-	 */
-	const handleNoteFormClose = (shouldClear = false) => {
-		// Clear input on submit or when finishing edit mode
-		if (shouldClear) {
-			setNoteFormInput('');
-		}
-
-		// Reset edit state and hide form
-		setEditingNoteId(undefined);
-		setIsFormActive(false);
-	};
 
 	/**
 	 * Tracks the scroll position to toggle the "Up" button,
@@ -74,7 +44,6 @@ function DiaryPage() {
 		return () => el.removeEventListener('scroll', handleScrollTop);
 	}, []);
 
-
 	/**
 	 * Triggers smooth scrolling to the top of the container.
 	 * Instantly hides the action button
@@ -93,25 +62,17 @@ function DiaryPage() {
 		<div className={styles.diary}>
 			<NoteList
 				habitId={habitId}
-				onEdit={handleEditNote}
 				onScrollTop={handleScrollToTop}
 			/>
 
 			<NoteForm
-				input={noteFormInput}
 				habitId={habitId}
 				streak={currentStreak}
-				editingNoteId={editingNoteId}
-				isFormActive={isFormActive}
-				onChange={setNoteFormInput}
-				onClose={handleNoteFormClose}
 			/>
 
 			<DiaryToolbar
-				showToolbar={!isFormActive}
 				showScrollTop={showScrollTop}
 				onScrollTop={handleScrollToTop}
-				onActivate={() => setIsFormActive(true)}
 			/>
 		</div>
 	);
