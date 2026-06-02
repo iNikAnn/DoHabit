@@ -2,12 +2,11 @@ import styles from './DiaryToolbar.module.css';
 import { FaPlus } from 'react-icons/fa';
 import { Button } from '@shared/ui';
 import { AnimatePresence, type Variants } from 'framer-motion';
+import { useNoteFormStore } from '@features/manage-note';
 
 interface DiaryToolbarProps {
-	showToolbar: boolean;
 	showScrollTop: boolean;
 	onScrollTop: () => void;
-	onActivate: () => void;
 }
 
 const variants: Variants = {
@@ -37,11 +36,12 @@ const variants: Variants = {
 
 function DiaryToolbar(props: DiaryToolbarProps) {
 	const {
-		showToolbar,
 		showScrollTop,
 		onScrollTop,
-		onActivate
 	} = props;
+
+	const showToolbar = useNoteFormStore((s) => s.isOpen) === false;
+	const openNoteForm = useNoteFormStore((s) => s.openCreate);
 
 	return (
 		<div className={styles.toolbar}>
@@ -72,7 +72,7 @@ function DiaryToolbar(props: DiaryToolbarProps) {
 						animate='animate'
 						exit='exit'
 
-						onClick={onActivate}
+						onClick={openNoteForm}
 					>
 						<FaPlus />
 					</Button>

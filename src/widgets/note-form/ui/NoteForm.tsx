@@ -5,18 +5,14 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { toast } from 'sonner';
 import TextareaAutosize from 'react-textarea-autosize';
 import { IoSend } from "react-icons/io5";
+import { useNoteFormStore } from '@features/manage-note';
 import { useNotesStore } from '@entities/note';
 import { useNativeBackClose } from '@shared/lib/dom';
 import { Button, Overlay } from '@shared/ui';
 
 interface Props {
-	input: string;
 	habitId?: string;
 	streak?: number,
-	editingNoteId?: string;
-	isFormActive: boolean;
-	onChange: (v: string) => void;
-	onClose: (shouldClear?: boolean) => void;
 }
 
 const isDev = import.meta.env.DEV;
@@ -26,17 +22,22 @@ const isDev = import.meta.env.DEV;
  */
 function NoteForm(props: Props) {
 	const {
-		input,
 		habitId,
-		streak,
-		editingNoteId,
-		isFormActive,
-		onChange,
-		onClose
+		streak
 	} = props;
 
+	// Form state and user input data
+	const isOpen = useNoteFormStore((s) => s.isOpen);
+	const draftText = useNoteFormStore((s) => s.draftText);
+	const editingNoteId = useNoteFormStore((s) => s.editingNoteId);
+	const isEditMode = !!editingNoteId;
+
+	// Actions and internal event handlers
+	const setDraftText = useNoteFormStore((s) => s.setDraftText);
 	const notesDispatch = useNotesStore((s) => s.notesDispatch);
-	useNativeBackClose(isFormActive, () => onClose(Boolean(editingNoteId)));
+	const closeForm = useNoteFormStore((s) => s.closeForm);
+
+	useNativeBackClose(isOpen, () => closeForm(isEditMode));
 
 	/**
 	 * Handles note submission.
@@ -45,14 +46,12 @@ function NoteForm(props: Props) {
 	const handleSubmitForm = (e?: React.SubmitEvent<HTMLFormElement>) => {
 		e?.preventDefault();
 
-		const isEditMode = !!editingNoteId;
-
 		if (isEditMode) {
 			notesDispatch({
 				type: 'editNote',
 				payload: {
 					noteId: editingNoteId,
-					newText: input.trim()
+					newText: draftText.trim()
 				}
 			});
 		} else {
@@ -63,7 +62,7 @@ function NoteForm(props: Props) {
 						id: isDev ? String(Math.random()) : crypto.randomUUID(),
 						habitId,
 						streak: streak || undefined, // Avoid saving zero streaks
-						text: input.trim(),
+						text: draftText.trim(),
 						createdAt: Date.now()
 					}
 				}
@@ -71,7 +70,7 @@ function NoteForm(props: Props) {
 		}
 
 		// Close form, clear input, show toast
-		onClose(true);
+		closeForm(true);
 		toast.success(isEditMode ? 'Changes saved!' : 'Note created!');
 	};
 
@@ -87,11 +86,11 @@ function NoteForm(props: Props) {
 
 	return (
 		<AnimatePresence initial={false}>
-			{isFormActive && (
+			{isOpen && (
 				<>
 					<Overlay
 						key='note-form-dialog'
-						onClick={() => onClose(Boolean(editingNoteId))}
+						onClick={() => closeForm(isEditMode)}
 					/>
 
 					{createPortal(
@@ -112,11 +111,11 @@ function NoteForm(props: Props) {
 								id='note-input'
 								minRows={1}
 								maxRows={10}
-								value={input}
+								value={draftText}
 								placeholder='Enter your note here...'
 								autoFocus
 								autoComplete='off'
-								onChange={(e) => onChange(e.target.value)}
+								onChange={(e) => setDraftText(e.target.value)}
 								onKeyDown={handleKeyDown}
 							/>
 
@@ -131,7 +130,7 @@ function NoteForm(props: Props) {
 								transition={{ duration: 0.2 }}
 
 								className={styles.actionButton}
-								disabled={!input.trim()}
+								disabled={!draftText.trim()}
 							/>
 						</motion.form>,
 						document.body

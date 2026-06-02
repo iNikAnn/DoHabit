@@ -7,7 +7,8 @@ import { useNoteTags } from '../model/useNoteTags';
 import { cardVariants, monthLabelVariants } from '../model/animations';
 import SortButton from './sort-button/SortButton';
 import TagButton from './tag-button/TagButton';
-import { type Note, NoteCard, useNotesStore } from '@entities/note';
+import { useNoteFormStore } from '@features/manage-note';
+import { NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { MONTHS } from '@shared/const';
 import { extractYearsFromTimeline, getYearBoundaries } from '@shared/lib/date-time';
@@ -17,7 +18,6 @@ import { Placeholder, SegmentedControl } from '@shared/ui';
 
 interface NoteListProps {
 	habitId?: string;
-	onEdit: (note: Note) => void;
 	onScrollTop: (options?: { behavior?: 'auto' | 'smooth' }) => void;
 }
 
@@ -31,12 +31,14 @@ const observerOptions = { scrollMargin: '220px' };
 function NoteList(props: NoteListProps) {
 	const {
 		habitId,
-		onEdit,
 		onScrollTop
 	} = props;
 
 	// Core data and drawer action hooks
 	const notes = useNotesStore((s) => s.notes);
+
+	// Actions and menu controls
+	const openNoteForm = useNoteFormStore((s) => s.openEdit);
 	const { openNoteMenu } = useNoteActions();
 	const { openNoteTagsMenu } = useNoteTags();
 
@@ -212,7 +214,7 @@ function NoteList(props: NoteListProps) {
 											>
 												<NoteCard
 													note={note}
-													onCardClick={() => openNoteMenu({ note, onEdit })}
+													onCardClick={() => openNoteMenu({ note, onEdit: openNoteForm })}
 													onTagClick={(tag: string) => {
 														onScrollTop({ behavior: 'auto' });
 														setActiveTag(tag);
