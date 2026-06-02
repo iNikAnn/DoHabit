@@ -1,5 +1,5 @@
-import { FaPlus } from 'react-icons/fa';
 import styles from './DiaryToolbar.module.css';
+import { FaPlus } from 'react-icons/fa';
 import { Button } from '@shared/ui';
 import { AnimatePresence, type Variants } from 'framer-motion';
 
