@@ -1,4 +1,4 @@
-import type { AppRouteKey } from './paths';
+import { getModalPath, type AppRouteKey } from './paths';
 import type { RouteStateMap } from './types';
 
 /**
@@ -12,4 +12,17 @@ export function getInitialRouteState<T extends AppRouteKey>(): RouteStateMap[T] 
 	const pageState = rawState?.usr ?? rawState;
 
 	return pageState as RouteStateMap[T];
+}
+
+/**
+ * Generates a typed route configuration object for navigation.
+ */
+export function getNavigationTarget<T extends AppRouteKey>(
+	route: T,
+	state: { modalTitle: string } & (RouteStateMap[T] extends null ? object : RouteStateMap[T])
+) {
+	return {
+		to: getModalPath(route),
+		state
+	};
 }
