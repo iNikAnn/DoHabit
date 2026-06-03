@@ -3,7 +3,7 @@ import { FaChartSimple } from 'react-icons/fa6';
 import { MdLibraryBooks } from 'react-icons/md';
 import { type Habit, useHabitsStore } from '@entities/habit';
 import { takeScreenshot } from '@shared/lib/dom';
-import { getModalPath } from '@shared/lib/router';
+import { getNavigationTarget } from '@shared/lib/router';
 import { type ColorVariants } from '@shared/lib/theme';
 import { type DrawerAction, useDrawerStore } from '@shared/ui';
 
@@ -57,11 +57,10 @@ function useHabitActions() {
 
 			// Open habit editor
 			{
-				to: getModalPath('HABIT_EDITOR'),
-				state: {
+				...getNavigationTarget('HABIT_EDITOR', {
 					modalTitle: 'Edit habit',
 					habitId: habit.id
-				},
+				}),
 				icon: FaPencilAlt,
 				label: 'Edit Habit',
 				indicator: { type: 'arrow' },
@@ -78,14 +77,10 @@ function useHabitActions() {
 
 			// Open habit statistics
 			{
-				to: getModalPath('STATISTICS'),
-				state: {
+				...getNavigationTarget('STATISTICS', {
 					modalTitle: habit.title,
-					completedDays: habit.completedDays,
-					colorVariants: colorVariants,
-					colorIndex: habit.colorIndex,
-					frequency: habit.frequency
-				},
+					habitId: habit.id
+				}),
 				icon: FaChartSimple,
 				label: 'Statistics',
 				indicator: { type: 'arrow' },
@@ -94,12 +89,11 @@ function useHabitActions() {
 
 			// Open habit diary
 			{
-				to: getModalPath('DIARY'),
-				state: {
+				...getNavigationTarget('DIARY', {
 					modalTitle: habit.title,
 					habitId: habit.id,
 					currentStreak
-				},
+				}),
 				icon: MdLibraryBooks,
 				label: 'Diary',
 				indicator: { type: 'arrow' },

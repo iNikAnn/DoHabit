@@ -1,31 +1,25 @@
 import styles from './HabitStatisticsPage.module.css';
 import { useState } from 'react';
-import { useLocation } from 'react-router';
 import { type ChartOptions } from 'chart.js';
 import { MonthlyChart } from '@widgets/habit-stats/monthly-chart';
 import { StreakHistory } from '@widgets/habit-stats/streak-history';
 import { StreakOverview } from '@widgets/habit-stats/streak-overview';
 import { TotalCompletedMetric } from '@widgets/habit-stats/total-completed-metric';
 import { WeekdayChart } from '@widgets/habit-stats/weekday-chart';
-import { type CompletedDay, getStreaks } from '@entities/habit';
-import { type ColorVariants } from '@shared/lib/theme';
+import { getStreaks, useHabitsStore } from '@entities/habit';
+import { getAppPalette } from '@shared/lib/theme';
 import { YearPicker } from '@shared/ui';
-
-interface LocationState {
-	completedDays: CompletedDay[];
-	colorVariants: ColorVariants;
-}
+import { useInitialRouteState } from '@shared/lib/router';
 
 function HabitStatisticsPage() {
-	const location = useLocation();
-	const state = location.state as LocationState;
+	const { habitId } = useInitialRouteState<'STATISTICS'>();
+	const habits = useHabitsStore((s) => s.habits);
+	const habit = habits.find((h) => h.id === habitId);
 
-	const {
-		completedDays = [],
-		colorVariants
-	} = state ?? {};
-
+	const colorVariants = getAppPalette()[habit ? habit.colorIndex : 0];
 	const { baseColor, darkenedColor } = colorVariants;
+
+	const completedDays = habit ? habit.completedDays : [];
 
 	// --- Selected Year:START ---
 	const currYear = new Date().getFullYear();
