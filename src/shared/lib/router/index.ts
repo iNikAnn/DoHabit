@@ -1,3 +1,4 @@
-export type { Direction } from './types';
+export { useInitialRouteState } from './use-initial-route-state/useInitialRouteState';
 export { DirectionContext } from './directionContext';
-export { ROUTES, type AppRoute, getModalPath } from './paths';
+export { ROUTES, type AppRouteKey, getModalPath } from './paths';
+export type { Direction } from './types';
