@@ -1,6 +1,6 @@
 import { MdAddToPhotos } from 'react-icons/md';
 import { CalendarIcon, TableIcon } from '@shared/assets';
-import { getModalPath } from '@shared/const';
+import { getModalPath } from '@shared/lib/router';
 import { Placeholder } from '@shared/ui';
 
 interface Props {

@@ -2,8 +2,8 @@ import { FaCalendarCheck, FaCalendarTimes, FaPencilAlt, FaShareAlt } from 'react
 import { FaChartSimple } from 'react-icons/fa6';
 import { MdLibraryBooks } from 'react-icons/md';
 import { type Habit, useHabitsStore } from '@entities/habit';
-import { getModalPath } from '@shared/const';
 import { takeScreenshot } from '@shared/lib/dom';
+import { getModalPath } from '@shared/lib/router';
 import { type ColorVariants } from '@shared/lib/theme';
 import { type DrawerAction, useDrawerStore } from '@shared/ui';
 

@@ -2,7 +2,7 @@ import { HiArchiveBox } from 'react-icons/hi2';
 import { FaGithub, FaPaintBrush } from 'react-icons/fa';
 import { BsFillDatabaseFill } from 'react-icons/bs';
 import { IoIosMail } from 'react-icons/io';
-import { getModalPath } from '@shared/const';
+import { getModalPath } from '@shared/lib/router';
 import type { ListItemProps } from '@shared/ui';
 
 function useListItems() {

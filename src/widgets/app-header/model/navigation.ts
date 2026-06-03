@@ -1,12 +1,7 @@
-// icons
 import { FaAward, FaBars, FaPlus } from 'react-icons/fa';
 import { MdLibraryBooks } from 'react-icons/md';
-
-// types
 import type { NavItem } from './types';
-
-// utils
-import { getModalPath } from '@shared/const';
+import { getModalPath } from '@shared/lib/router';
 
 export const NAV_ITEMS: NavItem[] = [
 	{
