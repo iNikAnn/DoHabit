@@ -18,13 +18,13 @@ function AppHeader() {
 			<nav>
 				<ul className={styles.navList}>
 					{NAV_ITEMS.map((item) => {
-						const { path, title, icon: Icon } = item;
+						const { to, state, icon: Icon } = item;
 
 						return (
 							<Button
-								key={item.path}
-								to={path}
-								state={{ modalTitle: title }}
+								key={item.to}
+								to={to}
+								state={state}
 								className={styles.navItem}
 							>
 								<Icon />
