@@ -2,7 +2,7 @@
 	"name": "dohabit",
 	"description": "Build lasting habits with zero friction. DoHabit is a minimalist, offline tracker. No accounts—just your progress, charts, and a personal habit journal.",
 	"private": true,
-	"version": "0.43.2",
+	"version": "0.43.3",
 	"homepage": "https://inikann.github.io/DoHabit/",
 	"type": "module",
 	"scripts": {

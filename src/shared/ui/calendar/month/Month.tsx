@@ -1,3 +1,4 @@
+import { WEEKDAYS } from '@shared/const';
 import styles from './Month.module.css';
 import { formatDate } from '@shared/lib/date-time';
 import type { ColorVariants } from '@shared/lib/theme';
@@ -66,7 +67,7 @@ function Month(props: Props) {
 	});
 
 	const weekdays = showDayNames
-		? ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((weekday, index) => {
+		? [...WEEKDAYS.slice(1), 'Sunday'].map((weekday, index) => {
 			const isToday = ((index + 1) % 7) === today.getDay();
 			const isCurrentMonth = today.getMonth() === monthDate.getMonth();
 
@@ -76,7 +77,7 @@ function Month(props: Props) {
 					style={{ color: (isToday && isCurrentMonth) ? 'inherit' : softenedColor }}
 					className={styles.weekday}
 				>
-					{weekday}
+					{weekday.slice(0, 2)}
 				</div>
 			);
 		})
@@ -84,8 +85,15 @@ function Month(props: Props) {
 
 	return (
 		<div className={styles.month}>
-			{weekdays}
-			{days}
+			{showDayNames && (
+				<div className={styles.weekdaysGrid}>
+					{weekdays}
+				</div>
+			)}
+
+			<div className={styles.daysGrid}>
+				{days}
+			</div>
 		</div>
 	);
 }
