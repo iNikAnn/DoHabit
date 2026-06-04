@@ -19,7 +19,7 @@ export function getInitialRouteState<T extends AppRouteKey>(): RouteStateMap[T] 
  */
 export function getNavigationTarget<T extends AppRouteKey>(
 	route: T,
-	state: { modalTitle: string } & (RouteStateMap[T] extends null ? object : RouteStateMap[T])
+	state: { modalTitle: string } & RouteStateMap[T]
 ) {
 	return {
 		to: getModalPath(route),

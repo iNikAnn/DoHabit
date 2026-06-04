@@ -2,7 +2,7 @@ import { HiArchiveBox } from 'react-icons/hi2';
 import { FaGithub, FaPaintBrush } from 'react-icons/fa';
 import { BsFillDatabaseFill } from 'react-icons/bs';
 import { IoIosMail } from 'react-icons/io';
-import { getModalPath } from '@shared/lib/router';
+import { getNavigationTarget } from '@shared/lib/router';
 import type { ListItemProps } from '@shared/ui';
 
 function useListItems() {
@@ -12,8 +12,9 @@ function useListItems() {
 			iconProps: { color: '#7b68ee' },
 			title: 'Archive',
 			description: 'View or manage archived habits',
-			to: getModalPath('ARCHIVE'),
-			state: { modalTitle: 'Archive' },
+			...getNavigationTarget('ARCHIVE', {
+				modalTitle: 'Archive'
+			}),
 			indicator: { type: 'arrow' }
 		},
 		{
@@ -21,8 +22,9 @@ function useListItems() {
 			iconProps: { color: '#ffa420' },
 			title: 'Appearance',
 			description: 'Customize the app\'s look',
-			to: getModalPath('APPEARANCE'),
-			state: { modalTitle: 'Appearance' },
+			...getNavigationTarget('APPEARANCE', {
+				modalTitle: 'Appearance'
+			}),
 			indicator: { type: 'arrow' }
 		},
 		{
@@ -30,8 +32,9 @@ function useListItems() {
 			iconProps: { color: '#77dd77' },
 			title: 'Data Management',
 			description: 'Backup, restore, or clear app data',
-			to: getModalPath('DATA_MANAGEMENT'),
-			state: { modalTitle: 'Data Management' },
+			...getNavigationTarget('DATA_MANAGEMENT', {
+				modalTitle: 'Data Management'
+			}),
 			indicator: { type: 'arrow' }
 		}
 	];
