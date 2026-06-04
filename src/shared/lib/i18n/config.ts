@@ -1,6 +1,6 @@
 import type { LanguageMap } from './types';
-import { en } from './locales/en';
-import { ru } from './locales/ru';
+import en from './locales/en.json';
+import ru from './locales/ru.json';
 
 export const resources = {
 	en: { translation: en },

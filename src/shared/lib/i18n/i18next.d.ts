@@ -1,5 +1,5 @@
 import 'i18next';
-import { en } from './locales/en';
+import en from './locales/en.json';
 import { AppLanguageCode } from './types';
 
 declare module 'i18next' {

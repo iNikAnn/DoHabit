@@ -1,5 +1,5 @@
 import type { resources } from './config';
-import type { en } from './locales/en';
+import type en from './locales/en.json';
 
 export type TranslationSchema = typeof en;
 
