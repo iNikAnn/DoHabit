@@ -1,6 +1,7 @@
 import '@app/styles/index.css';
 import { createRoot } from 'react-dom/client';
 import { App } from '@app/App';
+import '@app/providers/i18n';
 import ErrorFallback from '@app/components/error-fallback/ErrorFallback';
 import { BrowserRouter } from 'react-router';
 import { ErrorBoundary } from 'react-error-boundary';
