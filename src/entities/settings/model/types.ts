@@ -1,5 +1,8 @@
+import type { AppLanguageCode } from '@shared/lib/i18n/types';
+
 export interface Settings {
 	theme?: 'light' | 'dark';
+	language?: AppLanguageCode;
 	calendarView?: 'default' | 'compact';
 	calendarHighlightToday: boolean;
 	calendarShowDayNames: boolean;
