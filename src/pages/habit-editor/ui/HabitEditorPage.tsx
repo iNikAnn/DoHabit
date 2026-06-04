@@ -1,13 +1,12 @@
 import styles from './HabitEditorPage.module.css';
-import { useLocation } from 'react-router';
 import { HabitForm } from '@widgets/habit-form';
+import { useInitialRouteState } from '@shared/lib/router';
 
 /**
  * Entry point for creating or modifying habits.
  */
 function HabitEditorPage() {
-	const location = useLocation();
-	const habitId = location.state?.habitId as string | undefined;
+	const { habitId } = useInitialRouteState<'HABIT_EDITOR'>();
 
 	return (
 		<div className={styles.wrapper}>

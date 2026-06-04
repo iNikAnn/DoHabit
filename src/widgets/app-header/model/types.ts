@@ -1,7 +1,7 @@
 import { type IconType } from 'react-icons';
 
 export interface NavItem {
-	path: string;
-	title: string;
+	to: string;
+	state: Record<string, unknown>;
 	icon: IconType;
 }

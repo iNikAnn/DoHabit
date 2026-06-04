@@ -1,6 +1,6 @@
 import { MdAddToPhotos } from 'react-icons/md';
 import { CalendarIcon, TableIcon } from '@shared/assets';
-import { getModalPath } from '@shared/const';
+import { getNavigationTarget } from '@shared/lib/router';
 import { Placeholder } from '@shared/ui';
 
 interface Props {
@@ -26,8 +26,9 @@ function HabitListEmpty({ isArchive }: Props) {
 			action={{
 				label: 'Create First Habit',
 				icon: <MdAddToPhotos />,
-				to: getModalPath('HABIT_EDITOR'),
-				state: { modalTitle: 'Create new habit' }
+				...getNavigationTarget('HABIT_EDITOR', {
+					modalTitle: 'Create new habit'
+				})
 			}}
 		/>
 	);
