@@ -1,7 +1,7 @@
 import useListItems from '../model/useListItems';
 import { List } from '@shared/ui';
 
-function ThemeSettings() {
+function InterfaceSettings() {
 	const { listItems } = useListItems();
 
 	return (
@@ -11,4 +11,4 @@ function ThemeSettings() {
 	);
 }
 
-export { ThemeSettings };
+export { InterfaceSettings };

@@ -1,6 +1,6 @@
 import styles from './AppearancePage.module.css';
 import { CalendarSettings } from '@widgets/calendar-settings';
-import { ThemeSettings } from '@widgets/theme-settings';
+import { InterfaceSettings } from '@widgets/interface-settings';
 
 /**
  * UI customization page.
@@ -8,7 +8,7 @@ import { ThemeSettings } from '@widgets/theme-settings';
 function AppearancePage() {
 	return (
 		<section className={styles.appearance}>
-			<ThemeSettings />
+			<InterfaceSettings />
 			<CalendarSettings />
 		</section>
 	);
