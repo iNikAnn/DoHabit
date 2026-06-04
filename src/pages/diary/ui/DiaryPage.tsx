@@ -1,11 +1,11 @@
 import styles from './DiaryPage.module.css';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
 import { throttle } from 'es-toolkit';
 import DiaryToolbar from './diary-toolbar/DiaryToolbar';
 import { NoteForm } from '@widgets/note-form';
 import { NoteList } from '@widgets/note-list';
 import { scrollToTop } from '@shared/lib/dom';
+import { useInitialRouteState } from '@shared/lib/router';
 
 const SCROLL_CONTAINER_ID = 'modalChildrenWrapper';
 const SCROLL_THRESHOLD = 600;
@@ -15,9 +15,8 @@ const SCROLLING_UP_ATTR = 'data-scrolling-up';
  * Main diary page component.
  */
 function DiaryPage() {
-	const location = useLocation();
+	const { habitId, currentStreak } = useInitialRouteState<'DIARY'>();
 	const [showScrollTop, setShowScrollTop] = useState(false);
-	const { habitId, currentStreak } = location.state ?? {};
 
 	/**
 	 * Tracks the scroll position to toggle the "Up" button,

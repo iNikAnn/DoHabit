@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { getInitialRouteState } from '../helpers';
-import type { AppRouteKey } from '../paths';
-import type { RouteStateMap } from '../types';
+import type { AppRouteKey, PageState } from '../types';
 
 function useInitialRouteState<T extends AppRouteKey>() {
-	const [pageState] = useState<Partial<RouteStateMap[T]>>(
+	const [pageState] = useState<Partial<PageState<T>>>(
 		() => getInitialRouteState<T>() ?? {}
 	);
 
