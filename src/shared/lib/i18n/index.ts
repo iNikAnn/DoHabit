@@ -1,0 +1,1 @@
+export { resources, SUPPORTED_LANGUAGES } from './config';
