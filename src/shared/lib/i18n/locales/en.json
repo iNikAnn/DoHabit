@@ -2,6 +2,7 @@
 	"common": {
 		"all": "All",
 		"app": "App",
+		"day": "Day",
 		"end": "End",
 		"icon": "Icon",
 		"showLess": "Show less",
@@ -19,6 +20,7 @@
 	"habits": {
 		"actionDoneYesterday": "Done Y'day",
 		"actionUndoYesterday": "Undo Y'day",
+		"archive": "Archive habit",
 		"btnAlreadyAtBottom": "Already at Bottom",
 		"btnAlreadyAtTop": "Already at Top",
 		"btnMoveToBottom": "Move to Bottom",
@@ -26,9 +28,11 @@
 		"btnStepDown": "Step Down",
 		"btnStepUp": "Step Up",
 		"chartCompletionsLabel": "Completions",
+		"create": "Create habit",
 		"createFirst": "Create first habit",
 		"createNew": "Create new habit",
 		"currentStreakTitle": "Current",
+		"delete": "Delete habit",
 		"edit": "Edit habit",
 		"emptyActiveDescription": "Why not create one now?",
 		"emptyActiveTitle": "No active habits found",
@@ -39,6 +43,12 @@
 		"longestStreakTitle": "Longest",
 		"monthlyChartTitle": "Completions / Month",
 		"notes": "Diary",
+		"sectionColorDescription": "Dots mark colors already in use. You can still reuse them.",
+		"sectionColorTitle": "Color",
+		"sectionFrequencyDescription": "Times per day you want to repeat this habit.",
+		"sectionFrequencyTitle": "Frequency",
+		"sectionIconDescription": "Faded icons are already in use. You can still reuse them.",
+		"sectionIconTitle": "Icon",
 		"sectionNameTitle": "Name",
 		"sectionOrderDescription": "The habit's position in your list.",
 		"sectionOrderTitle": "Order",
@@ -48,6 +58,7 @@
 		"streakHistoryDesc": "Shows streaks of 2 days or more.",
 		"streakHistoryTitle": "Streak history",
 		"totalCompletedTitle": "Total completed days",
+		"update": "Save changes",
 		"weekdayChartTitle": "Completions / Weekday"
 	},
 	"notes": {

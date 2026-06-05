@@ -1,5 +1,6 @@
 import styles from './HabitIconPicker.module.css';
 import { type ElementType, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { groupBy, pick, upperFirst } from 'es-toolkit';
 import { type Habit, HABIT_ICONS } from '@entities/habit';
 import { Button, SectionHeader } from '@shared/ui';
@@ -10,6 +11,8 @@ interface Props {
 }
 
 function HabitIconPicker({ habits, initialIconTitle = 'default' }: Props) {
+	const { t } = useTranslation();
+
 	const [showMore, setShowMore] = useState(false);
 	const [selectedIcon, setSelectedIcon] = useState(initialIconTitle);
 
@@ -19,21 +22,21 @@ function HabitIconPicker({ habits, initialIconTitle = 'default' }: Props) {
 	// Only show the 'Featured' group unless 'showMore' is toggled
 	const visibleIcons = showMore
 		? groupedIcons
-		: pick(groupedIcons, ['featured']);
+		: pick(groupedIcons, ['featured']); // eslint-disable-line
 
 	return (
 		<section>
 			<SectionHeader
-				title='Icon'
+				title={t('habits.sectionIconTitle')}
 				description={habits.length > 0
-					? 'Faded icons are already in use. You can still reuse them.'
+					? t('habits.sectionIconDescription')
 					: undefined}
 				extra={(
 					<Button
 						variant='text'
 						onClick={() => setShowMore((state) => !state)}
 					>
-						{'Show ' + (showMore ? 'less' : 'more')}
+						{showMore ? t('common.showLess') : t('common.showMore')}
 					</Button>
 				)}
 			/>

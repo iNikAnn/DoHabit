@@ -1,6 +1,8 @@
 import styles from './HabitForm.module.css';
 import { type KeyboardEventHandler, type SubmitEventHandler, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
+import { startCase } from 'es-toolkit';
 import { MdAddToPhotos } from 'react-icons/md';
 import HabitTitleInput from './title-input/HabitTitleInput';
 import HabitFrequencyField from './frequency-field/HabitFrequencyField';
@@ -21,6 +23,7 @@ interface HabitFormProps {
  * Habit creation and editing form.
  */
 function HabitForm({ habitId }: HabitFormProps) {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 
 	// Form state
@@ -119,7 +122,9 @@ function HabitForm({ habitId }: HabitFormProps) {
 					className={styles.submitButton}
 					disabled={title.trim().length === 0 || isDuplicate}
 				>
-					{isEditMode ? 'Save Changes' : 'Create Habit'}
+					{startCase(isEditMode
+						? t('habits.update')
+						: t('habits.create'))}
 				</Button>
 			</div>
 		</form>

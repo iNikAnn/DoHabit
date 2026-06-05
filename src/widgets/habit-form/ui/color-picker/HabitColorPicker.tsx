@@ -1,4 +1,5 @@
 import styles from './HabitColorPicker.module.css';
+import { useTranslation } from 'react-i18next';
 import { type Habit } from '@entities/habit';
 import { getAppPalette } from '@shared/lib/theme';
 import { SectionHeader } from '@shared/ui';
@@ -9,6 +10,7 @@ interface Props {
 }
 
 function HabitColorPicker({ habits, initialColorIndex = 0 }: Props) {
+	const { t } = useTranslation();
 	const palette = getAppPalette();
 	const usedColors = new Set(habits.map((h) => h.colorIndex));
 
@@ -41,9 +43,9 @@ function HabitColorPicker({ habits, initialColorIndex = 0 }: Props) {
 	return (
 		<section>
 			<SectionHeader
-				title='Color'
+				title={t('habits.sectionColorTitle')}
 				description={habits.length > 0
-					? 'Dots mark colors already in use. You can still reuse them.'
+					? t('habits.sectionColorDescription')
 					: undefined}
 			/>
 

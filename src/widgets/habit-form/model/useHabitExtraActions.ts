@@ -1,20 +1,23 @@
+import { useTranslation } from 'react-i18next';
+import { FaTrash } from 'react-icons/fa';
+import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
 import { archiveHabit } from '@features/archive-habit';
 import { removeHabit } from '@features/remove-habit';
 import { type DrawerAction } from '@shared/ui';
-import { FaTrash } from 'react-icons/fa';
-import { HiArchiveBoxArrowDown } from 'react-icons/hi2';
 
 function useHabitExtraActions(habitId: string, onSuccess: () => void): DrawerAction[] {
+	const { t } = useTranslation();
+
 	const actions: DrawerAction[] = [
 		{
 			icon: FaTrash,
-			label: 'Delete Habit',
+			label: t('habits.delete'),
 			variant: 'danger',
 			onClick: () => removeHabit(habitId, onSuccess)
 		},
 		{
 			icon: HiArchiveBoxArrowDown,
-			label: 'Archive Habit',
+			label: t('habits.archive'),
 			onClick: () => archiveHabit(habitId, onSuccess)
 		}
 	];

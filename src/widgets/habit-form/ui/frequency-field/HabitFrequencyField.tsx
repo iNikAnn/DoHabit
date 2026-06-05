@@ -1,6 +1,7 @@
 import styles from './HabitFrequencyField.module.css';
-import { Button, SectionHeader } from '@shared/ui';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Button, SectionHeader } from '@shared/ui';
 
 interface Props {
 	initialFrequency?: number;
@@ -9,6 +10,7 @@ interface Props {
 const MAX_FREQUENCY = 6;
 
 function HabitFrequencyField({ initialFrequency = 1 }: Props) {
+	const { t } = useTranslation();
 	const [frequency, setFrequency] = useState(initialFrequency);
 
 	const handleClick = (action: 'increment' | 'decrement') => {
@@ -24,8 +26,8 @@ function HabitFrequencyField({ initialFrequency = 1 }: Props) {
 	return (
 		<section>
 			<SectionHeader
-				title='Frequency'
-				description='Times per day you want to repeat this habit.'
+				title={t('habits.sectionFrequencyTitle')}
+				description={t('habits.sectionFrequencyDescription')}
 			/>
 
 			<div className={styles.content}>
@@ -40,7 +42,7 @@ function HabitFrequencyField({ initialFrequency = 1 }: Props) {
 						readOnly
 					/>
 
-					<div>/ Day</div>
+					<div>/ {t('common.day')}</div>
 				</div>
 
 				<div className={styles.buttonsWrapper}>
