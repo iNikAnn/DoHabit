@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { FaCalendarCheck, FaCalendarTimes, FaPencilAlt, FaShareAlt } from 'react-icons/fa';
 import { FaChartSimple } from 'react-icons/fa6';
 import { MdLibraryBooks } from 'react-icons/md';
@@ -22,6 +23,7 @@ interface OpenMenuParams {
  * Hook to manage drawer menu logic.
  */
 function useHabitActions() {
+	const { t } = useTranslation();
 	const habitsDispatch = useHabitsStore((s) => s.habitsDispatch);
 	const openDrawer = useDrawerStore((s) => s.open);
 
@@ -43,7 +45,9 @@ function useHabitActions() {
 			// Done/Undo yestarday
 			{
 				icon: isYdayCompleted ? FaCalendarTimes : FaCalendarCheck,
-				label: (isYdayCompleted ? 'Undo' : 'Done') + ' Y\'day',
+				label: isYdayCompleted
+					? t('habits.actionUndoYesterday')
+					: t('habits.actionDoneYesterday'),
 				onClick: () => habitsDispatch({
 					type: 'toggleYesterdayStatus',
 					payload: {
@@ -58,11 +62,11 @@ function useHabitActions() {
 			// Open habit editor
 			{
 				...getNavigationTarget('HABIT_EDITOR', {
-					modalTitle: 'Edit habit',
+					modalTitle: t('habits.edit'),
 					habitId: habit.id
 				}),
 				icon: FaPencilAlt,
-				label: 'Edit Habit',
+				label: t('habits.edit'),
 				indicator: { type: 'arrow' },
 				style: { backgroundColor: darkenedColor }
 			},
@@ -70,7 +74,7 @@ function useHabitActions() {
 			// Share habit
 			{
 				icon: FaShareAlt,
-				label: 'Share Habit',
+				label: t('habits.share'),
 				onClick: () => takeScreenshot(cardElement),
 				style: { backgroundColor: darkenedColor }
 			},
@@ -82,12 +86,12 @@ function useHabitActions() {
 					habitId: habit.id
 				}),
 				icon: FaChartSimple,
-				label: 'Statistics',
+				label: t('habits.statistics'),
 				indicator: { type: 'arrow' },
 				style: { backgroundColor: darkenedColor }
 			},
 
-			// Open habit diary
+			// Open habit notes
 			{
 				...getNavigationTarget('DIARY', {
 					modalTitle: habit.title,
@@ -95,7 +99,7 @@ function useHabitActions() {
 					currentStreak
 				}),
 				icon: MdLibraryBooks,
-				label: 'Diary',
+				label: t('habits.notes'),
 				indicator: { type: 'arrow' },
 				style: { backgroundColor: darkenedColor }
 			}

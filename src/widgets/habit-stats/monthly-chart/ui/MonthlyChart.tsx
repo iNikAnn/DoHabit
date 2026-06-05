@@ -1,6 +1,7 @@
 import type { ChartOptions, ChartData } from 'chart.js';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler } from 'chart.js';
 import { FaCalendarAlt } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import { Line } from 'react-chartjs-2';
 import { type CompletedDay, getCompletionCountPerMonth } from '@entities/habit';
 import { MONTHS } from '@shared/const';
@@ -15,6 +16,7 @@ interface Props {
 }
 
 function MonthlyChart({ options, days, color }: Props) {
+	const { t } = useTranslation();
 	const data = getCompletionCountPerMonth(days);
 
 	// Canvas API doesn't support CSS color functions, so resolve them manually here.
@@ -30,7 +32,7 @@ function MonthlyChart({ options, days, color }: Props) {
 		data: {
 			labels: [...MONTHS.map((m) => m.slice(0, 3))],
 			datasets: [{
-				label: 'MonthlyChart',
+				label: t('habits.chartCompletionsLabel'),
 				data,
 
 				pointBackgroundColor: '#e6e6e6',
@@ -60,7 +62,7 @@ function MonthlyChart({ options, days, color }: Props) {
 
 	return (
 		<Card
-			title='Completions / Month'
+			title={t('habits.monthlyChartTitle')}
 			extra={<FaCalendarAlt style={{ color }} />}
 		>
 			<Line {...config} />

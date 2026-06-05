@@ -1,8 +1,9 @@
 import styles from './HabitOrderField.module.css';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { type Habit } from '@entities/habit';
 import { Button, SectionHeader } from '@shared/ui';
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 
 interface Props {
 	habits: Habit[];
@@ -10,6 +11,7 @@ interface Props {
 }
 
 function HabitOrderField({ habits, habit }: Props) {
+	const { t } = useTranslation();
 	const activeHabits = habits.filter((h) => !h.isArchived);
 	const habitsCount = activeHabits.length;
 
@@ -41,8 +43,8 @@ function HabitOrderField({ habits, habit }: Props) {
 	return (
 		<section style={{ pointerEvents: 'none' }}>
 			<SectionHeader
-				title='Order'
-				description={`The habit's position in your list.`}
+				title={t('habits.sectionOrderTitle')}
+				description={t('habits.sectionOrderDescription')}
 			/>
 
 			<div className={styles.content}>
@@ -64,7 +66,7 @@ function HabitOrderField({ habits, habit }: Props) {
 							onClick={() => handleChangeOrder('down')}
 							disabled={currentOrder === habitsCount}
 						>
-							Step Down
+							{t('habits.btnStepDown')}
 						</Button>
 
 						<Button
@@ -73,7 +75,7 @@ function HabitOrderField({ habits, habit }: Props) {
 							onClick={() => handleChangeOrder('up')}
 							disabled={currentOrder === 1}
 						>
-							Step Up
+							{t('habits.btnStepUp')}
 						</Button>
 					</div>
 				</div>
@@ -84,7 +86,9 @@ function HabitOrderField({ habits, habit }: Props) {
 						onClick={() => handleChangeOrder('bottom')}
 						disabled={currentOrder === habitsCount}
 					>
-						{currentOrder === habitsCount ? 'Already at' : 'Move to'} Bottom
+						{currentOrder === habitsCount
+							? t('habits.btnAlreadyAtBottom')
+							: t('habits.btnMoveToBottom')}
 					</Button>
 
 					<Button
@@ -92,7 +96,9 @@ function HabitOrderField({ habits, habit }: Props) {
 						onClick={() => handleChangeOrder('top')}
 						disabled={currentOrder === 1}
 					>
-						{currentOrder === 1 ? 'Already at' : 'Move to'} Top
+						{currentOrder === 1
+							? t('habits.btnAlreadyAtTop')
+							: t('habits.btnMoveToTop')}
 					</Button>
 				</div>
 			</div>
