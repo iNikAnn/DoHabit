@@ -1,4 +1,8 @@
 {
+	"achievements": {
+		"emptyDesc": "Unlock rare achievements by using the app regularly!",
+		"emptyTitle": "No Achievements Yet"
+	},
 	"common": {
 		"all": "All",
 		"app": "App",
@@ -78,6 +82,25 @@
 		}
 	},
 	"settings": {
+		"calendar": {
+			"calendarTypeDescription": "Current: {{type}}",
+			"calendarTypeTitle": "Compact calendar view",
+			"compact": "Compact",
+			"default": "Default",
+			"highlightTodayTitle": "Highlight today",
+			"showDayNumbersDesc": "Applies to the default calendar only",
+			"showDayNumbersTitle": "Show day numbers",
+			"showWeekdayNamesDesc": "Applies to the default calendar only",
+			"showWeekdayNamesTitle": "Show weekday names"
+		},
+		"data-management": {
+			"backupExportDesc": "Save a backup data to your device",
+			"backupExportTitle": "Export",
+			"backupImportDesc": "Upload your app data from a backup file",
+			"backupImportTitle": "Import",
+			"dangerClearAllDesc": "Delete all application data",
+			"dangerClearAllTitle": "Clear all"
+		},
 		"langDescription": "Current: {{lang}}",
 		"langSelectTitle": "Select language",
 		"langTitle": "Language",

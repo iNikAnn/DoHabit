@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { FaDownload, FaUpload } from 'react-icons/fa6';
 import { ImFire } from 'react-icons/im';
 import { clearAppData } from '@features/data-management/clear-data';
@@ -6,19 +7,20 @@ import { importAppData } from '@features/data-management/import-data';
 import type { ListItemProps } from '@shared/ui';
 
 function useListItems() {
+	const { t } = useTranslation();
 	const backupItems: ListItemProps[] = [
 		{
 			icon: FaUpload,
 			iconProps: { color: '#4cbe57' },
-			title: 'Export',
-			description: 'Save a backup data to your device',
+			title: t('settings.data-management.backupExportTitle'),
+			description: t('settings.data-management.backupExportDesc'),
 			onClick: exportAppData
 		},
 		{
 			icon: FaDownload,
 			iconProps: { color: '#728ad8' },
-			title: 'Import',
-			description: 'Upload your app data from a backup file',
+			title: t('settings.data-management.backupImportTitle'),
+			description: t('settings.data-management.backupImportDesc'),
 			onClick: importAppData
 		}
 	];
@@ -27,8 +29,8 @@ function useListItems() {
 		{
 			icon: ImFire,
 			iconProps: { color: 'IndianRed' },
-			title: 'Clear All',
-			description: 'Delete all application data',
+			title: t('settings.data-management.dangerClearAllTitle'),
+			description: t('settings.data-management.dangerClearAllDesc'),
 			onClick: clearAppData
 		}
 	];
