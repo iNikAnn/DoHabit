@@ -30,7 +30,8 @@
 		"streakHistoryDesc": "Shows streaks of 2 days or more.",
 		"streakHistoryTitle": "Streak history",
 		"totalCompletedTitle": "Total completed days",
-		"weekdayChartTitle": "Completions / Weekday"
+		"weekdayChartTitle": "Completions / Weekday",
+		"monthlyChartTitle": "Completions / Month"
 	},
 	"notes": {
 		"copy": "Copy text",

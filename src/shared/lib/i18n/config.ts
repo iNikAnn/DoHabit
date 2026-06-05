@@ -7,6 +7,7 @@ export const resources = {
 	ru: { translation: ru },
 };
 
+/* eslint-disable i18next/no-literal-string */
 export const languageMap: LanguageMap = {
 	en: { code: 'en', label: 'English' },
 	ru: { code: 'ru', label: 'Русский' }

@@ -66,14 +66,18 @@ export default defineConfig([
 						'name',
 						'autoComplete',
 						'indicator',
-						'drag'
+						'drag',
+						'color'
 					]
 				},
 				'object-properties': {
 					include: [],
 					exclude: [
 						'[A-Z_-]+',
-						'variant'
+						'variant',
+						'type',
+						'color',
+						'pointBackgroundColor'
 					],
 				},
 				words: {
@@ -94,6 +98,7 @@ export default defineConfig([
 						'removeEventListener',
 						'postMessage',
 						'getElementById',
+						'createElement',
 						'dispatch',
 						'commit',
 						'includes',
@@ -101,7 +106,9 @@ export default defineConfig([
 						'endsWith',
 						'startsWith',
 						'onScrollTop',
-						'notesDispatch'
+						'notesDispatch',
+						'settingsDispatch',
+						'addColorStop'
 					],
 				},
 			}]

@@ -7,4 +7,5 @@
 		"react",
 		"i18next"
 	],
+	"i18n-ally.keystyle": "nested",
 }
