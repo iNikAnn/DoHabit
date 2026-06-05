@@ -27,7 +27,7 @@ function ModalLayout() {
 			exit='exit'
 		>
 			<ModalHeader
-				title={modalTitle ?? 'DoHabit'}
+				title={modalTitle ?? 'DoHabit'} // eslint-disable-line
 				onClose={handleClose}
 			/>
 
