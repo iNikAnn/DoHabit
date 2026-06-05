@@ -2,6 +2,7 @@ import styles from './NoteForm.module.css';
 import { type KeyboardEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import TextareaAutosize from 'react-textarea-autosize';
 import { IoSend } from "react-icons/io5";
@@ -25,6 +26,9 @@ function NoteForm(props: Props) {
 		habitId,
 		streak
 	} = props;
+
+	// UI localization
+	const { t } = useTranslation();
 
 	// Form state and user input data
 	const isOpen = useNoteFormStore((s) => s.isOpen);
@@ -71,7 +75,12 @@ function NoteForm(props: Props) {
 
 		// Close form, clear input, show toast
 		closeForm(true);
-		toast.success(isEditMode ? 'Changes saved!' : 'Note created!');
+
+		toast.success(
+			isEditMode
+				? t('notes.notifications.editSuccess')
+				: t('notes.notifications.createSuccess')
+		);
 	};
 
 	/**
@@ -112,7 +121,7 @@ function NoteForm(props: Props) {
 								minRows={1}
 								maxRows={10}
 								value={draftText}
-								placeholder='Enter your note here...'
+								placeholder={t('notes.inputPlaceholder')}
 								autoFocus
 								autoComplete='off'
 								onChange={(e) => setDraftText(e.target.value)}

@@ -22,7 +22,7 @@ interface NoteListProps {
 
 const ALL_YEARS_FILTER = 'All';
 const ITEMS_PER_PAGE = 15;
-const observerOptions = { scrollMargin: '220px' };
+const OBSERVER_OPTIONS = { scrollMargin: '220px' };
 
 /**
  * Note list widget.
@@ -127,7 +127,7 @@ function NoteList(props: NoteListProps) {
 	const loadMoreRef = useIntersectionObserver({
 		onIntersect: useCallback(() => setVisibleCount((prev) => prev + ITEMS_PER_PAGE), []),
 		enabled: visibleNotes.length < yearNotes.length,
-		options: observerOptions
+		options: OBSERVER_OPTIONS
 	});
 
 	// 1. Handle empty state
@@ -136,8 +136,8 @@ function NoteList(props: NoteListProps) {
 			<Placeholder
 				content={{
 					image: <InformationIcon />,
-					title: t('diary.emptyTitle'),
-					description: t('diary.emptyDescription')
+					title: t('notes.emptyTitle'),
+					description: t('notes.emptyDescription')
 				}}
 			/>
 		);

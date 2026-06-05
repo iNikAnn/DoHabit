@@ -1,16 +1,18 @@
+import { useTranslation } from 'react-i18next';
 import { FaFont } from 'react-icons/fa';
 import { FaMoon, FaSun } from 'react-icons/fa6';
 import { useSettingsStore } from '@entities/settings';
 import { type DrawerAction } from '@shared/ui';
 
 function useThemeActions() {
+	const { t } = useTranslation();
 	const settings = useSettingsStore((s) => s.settings);
 	const settingsDispatch = useSettingsStore((s) => s.settingsDispatch);
 
 	const themeActions: DrawerAction[] = [
 		{
 			icon: FaFont,
-			label: 'Auto',
+			label: t('theme.auto'),
 			indicator: { type: !settings.theme ? 'checkmark' : 'none' },
 			onClick: () => settingsDispatch({
 				type: 'updateSettings',
@@ -20,7 +22,7 @@ function useThemeActions() {
 		{
 			icon: FaSun,
 			iconProps: { color: '#e3bb44' },
-			label: 'Light',
+			label: t('theme.light'),
 			indicator: { type: settings.theme === 'light' ? 'checkmark' : 'none' },
 			onClick: () => settingsDispatch({
 				type: 'updateSettings',
@@ -30,7 +32,7 @@ function useThemeActions() {
 		{
 			icon: FaMoon,
 			iconProps: { color: '#5070b5' },
-			label: 'Dark',
+			label: t('theme.dark'),
 			indicator: { type: settings.theme === 'dark' ? 'checkmark' : 'none' },
 			onClick: () => settingsDispatch({
 				type: 'updateSettings',

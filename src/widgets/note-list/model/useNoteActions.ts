@@ -26,7 +26,7 @@ function useNoteActions() {
 			// Delete note
 			{
 				icon: FaTrash,
-				label: 'Delete Note',
+				label: t('notes.delete'),
 				variant: 'danger',
 				onClick: () => removeNote(
 					note.id,
@@ -37,21 +37,21 @@ function useNoteActions() {
 			// Edit note
 			{
 				icon: FaPencilAlt,
-				label: 'Edit Note',
+				label: t('notes.edit'),
 				onClick: () => onEdit(note)
 			},
 
 			// Copy to clipboard
 			{
 				icon: FaCopy,
-				label: 'Copy Text',
+				label: t('notes.copy'),
 				onClick: async () => {
 					const success = await copyToClipboard({ text: note.text });
 
 					if (success) {
-						toast.success('Copied!');
+						toast.success(t('notes.notifications.copySuccess'));
 					} else {
-						toast.error('Copy failed.');
+						toast.error(t('notes.notifications.copyError'));
 					}
 				}
 			}

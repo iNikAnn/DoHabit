@@ -1,6 +1,7 @@
 import styles from './Drawer.module.css';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
+import { startCase } from 'es-toolkit';
 import { variants } from '../model/animations';
 import { useDrawerStore } from '../model/store';
 import { useNativeBackClose } from '@shared/lib/dom';
@@ -58,7 +59,7 @@ function Drawer() {
 												}}
 												{...rest}
 											>
-												{label}
+												{startCase(label)}
 											</Button>
 										</li>
 									))}

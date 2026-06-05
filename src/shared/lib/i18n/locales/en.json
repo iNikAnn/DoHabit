@@ -6,12 +6,10 @@
 		"support": "Support",
 		"version": "Version"
 	},
-	"diary": {
-		"emptyDescription": "Add your first note to start tracking your progress and thoughts.",
-		"emptyTitle": "Diary is empty"
-	},
 	"filters": {
 		"allTags": "All tags",
+		"noTagsDescription": "To create a tag, simply add a hashtag (#) before any word while writing a note.",
+		"noTagsTitle": "No tags found",
 		"tagsForYear": "Tags for {{year}}"
 	},
 	"habits": {
@@ -22,5 +20,26 @@
 		"emptyArchivedDescription": "You can archive a habit by editing it.",
 		"emptyArchivedTitle": "No archived habits found",
 		"streak": "Streak"
+	},
+	"notes": {
+		"copy": "Copy text",
+		"delete": "Delete note",
+		"deleteConfirm": "Are you sure you want to delete this note?",
+		"edit": "Edit note",
+		"emptyDescription": "Add your first note to start tracking your progress and thoughts.",
+		"emptyTitle": "Diary is empty",
+		"inputPlaceholder": "Enter your note here...",
+		"notifications": {
+			"copyError": "Copy failed.",
+			"copySuccess": "Copied!",
+			"createSuccess": "Note created!",
+			"deleteSuccess": "Note deleted!",
+			"editSuccess": "Changes saved!"
+		}
+	},
+	"theme": {
+		"auto": "Auto",
+		"dark": "Dark",
+		"light": "Light"
 	}
 }
