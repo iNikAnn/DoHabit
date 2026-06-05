@@ -8,7 +8,14 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import i18next from 'eslint-plugin-i18next';
 
 export default defineConfig([
-	globalIgnores(['dist']),
+	globalIgnores([
+		'dist',
+		'public',
+		'vite.config.ts',
+		'eslint.config.ts',
+		'pwa-assets.config.ts',
+		'stylelint.config.ts'
+	]),
 	i18next.configs['flat/recommended'],
 	{
 		files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
@@ -30,7 +37,74 @@ export default defineConfig([
 		},
 		rules: {
 			'@typescript-eslint/no-unused-vars': 'warn',
-			'@typescript-eslint/no-explicit-any': 'off'
+			'@typescript-eslint/no-explicit-any': 'off',
+			'i18next/no-literal-string': ['warn', {
+				mode: 'all',
+				'jsx-attributes': {
+					include: [
+						'placeholder'
+					],
+					exclude: [
+						'className',
+						'styleName',
+						'style',
+						'type',
+						'key',
+						'id',
+						'width',
+						'height',
+						'variant',
+						'type',
+						'mode',
+						'transition',
+						'initial',
+						'animate',
+						'exit',
+						'layout',
+						'behavior',
+						'action',
+						'name',
+						'autoComplete',
+						'indicator',
+						'drag'
+					]
+				},
+				'object-properties': {
+					include: [],
+					exclude: [
+						'[A-Z_-]+',
+						'variant'
+					],
+				},
+				words: {
+					exclude: [
+						'[0-9!-/:-@[-`{-~]+',
+						'[A-Z_-]+',
+						/^\p{Emoji}+$/u,
+						'asc',
+						'desc'
+					],
+				},
+				callees: {
+					exclude: [
+						'i18n(ext)?',
+						't',
+						'require',
+						'addEventListener',
+						'removeEventListener',
+						'postMessage',
+						'getElementById',
+						'dispatch',
+						'commit',
+						'includes',
+						'indexOf',
+						'endsWith',
+						'startsWith',
+						'onScrollTop',
+						'notesDispatch'
+					],
+				},
+			}]
 		}
 	}
 ]);

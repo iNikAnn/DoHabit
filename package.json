@@ -9,7 +9,7 @@
 		"type-check": "tsc -b",
 		"dev": "vite",
 		"build": "tsc -b && vite build",
-		"lint": "eslint .",
+		"lint": "eslint src",
 		"lint:css": "stylelint 'src/**/*.css'",
 		"preview": "vite preview",
 		"predeploy": "npm run build",
