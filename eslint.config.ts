@@ -111,7 +111,11 @@ export default defineConfig([
 						'completed',
 						'updated',
 						'hidden',
-						'auto'
+						'auto',
+						'forward',
+						'backward',
+						'true',
+						'false'
 					],
 				},
 				callees: {
