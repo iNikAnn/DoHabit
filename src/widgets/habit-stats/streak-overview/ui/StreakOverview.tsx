@@ -1,4 +1,5 @@
 import styles from './StreakOverview.module.css';
+import { useTranslation } from 'react-i18next';
 import { FaAward } from 'react-icons/fa';
 import { Card } from '@shared/ui';
 
@@ -18,6 +19,8 @@ function StreakOverview(props: StreakOverviewProps) {
 		color
 	} = props;
 
+	const { t } = useTranslation();
+
 	const percentageDifference = Math.floor(
 		((currentStreak - longestStreak) / (longestStreak || 1)) * 100
 	);
@@ -25,7 +28,7 @@ function StreakOverview(props: StreakOverviewProps) {
 	return (
 		<div className={styles.wrapper}>
 			<Card
-				title='Current'
+				title={t('habits.currentStreakTitle')}
 				extra={(
 					<div style={{ color: percentageDifference < 0 ? 'IndianRed' : '#57a639' }}>
 						{percentageDifference + '%'}
@@ -38,7 +41,7 @@ function StreakOverview(props: StreakOverviewProps) {
 			</Card>
 
 			<Card
-				title='Longest'
+				title={t('habits.longestStreakTitle')}
 				extra={<FaAward style={{ color }} />}
 			>
 				<div className={styles.content}>

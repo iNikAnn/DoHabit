@@ -4,6 +4,7 @@ import { FaBinoculars } from 'react-icons/fa';
 import { type ColorVariants } from '@shared/lib/theme';
 import { type Streak } from '@shared/model';
 import { Button, Card } from '@shared/ui';
+import { useTranslation } from 'react-i18next';
 
 interface StreakHistoryProps {
 	streaks: Streak[];
@@ -19,6 +20,7 @@ function StreakHistory(props: StreakHistoryProps) {
 		colorVariants
 	} = props;
 
+	const { t } = useTranslation();
 	const { baseColor, darkenedColor } = colorVariants;
 	const [listLength, setListLength] = useState(5);
 	const streakList = streaks.slice(0, listLength);
@@ -31,8 +33,8 @@ function StreakHistory(props: StreakHistoryProps) {
 	// 2. Render list
 	return (
 		<Card
-			title='Streak History'
-			description='Shows streaks of 2 days or more.'
+			title={t('habits.streakHistoryTitle')}
+			description={t('habits.streakHistoryDesc')}
 			extra={<FaBinoculars style={{ color: baseColor }} />}
 		>
 			<div className={styles.history}>
@@ -51,14 +53,14 @@ function StreakHistory(props: StreakHistoryProps) {
 								<div className={styles.desc}>
 									<div className={styles.dateWrapper}>
 										<small className={`${styles.label} ${styles.start}`}>
-											Start:
+											{t('common.start')}:
 										</small>
 										<small>{new Date(s.start).toLocaleDateString()}</small>
 									</div>
 
 									<div className={styles.dateWrapper}>
 										<small className={`${styles.label} ${styles.end}`}>
-											End:
+											{t('common.end')}:
 										</small>
 										<small>{new Date(s.end).toLocaleDateString()}</small>
 									</div>
@@ -74,7 +76,7 @@ function StreakHistory(props: StreakHistoryProps) {
 							variant='text'
 							onClick={() => setListLength((curr) => curr + 5)}
 						>
-							Show more
+							{t('common.showMore')}
 						</Button>
 					</div>
 				)}

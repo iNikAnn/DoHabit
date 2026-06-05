@@ -2,7 +2,11 @@
 	"common": {
 		"all": "All",
 		"app": "App",
+		"end": "End",
 		"icon": "Icon",
+		"showLess": "Show less",
+		"showMore": "Show more",
+		"start": "Start",
 		"support": "Support",
 		"version": "Version"
 	},
@@ -13,13 +17,20 @@
 		"tagsForYear": "Tags for {{year}}"
 	},
 	"habits": {
+		"chartCompletionsLabel": "Completions",
 		"createFirst": "Create first habit",
 		"createNew": "Create new habit",
+		"currentStreakTitle": "Current",
 		"emptyActiveDescription": "Why not create one now?",
 		"emptyActiveTitle": "No active habits found",
 		"emptyArchivedDescription": "You can archive a habit by editing it.",
 		"emptyArchivedTitle": "No archived habits found",
-		"streak": "Streak"
+		"longestStreakTitle": "Longest",
+		"streak": "Streak",
+		"streakHistoryDesc": "Shows streaks of 2 days or more.",
+		"streakHistoryTitle": "Streak history",
+		"totalCompletedTitle": "Total completed days",
+		"weekdayChartTitle": "Completions / Weekday"
 	},
 	"notes": {
 		"copy": "Copy text",
@@ -36,6 +47,14 @@
 			"deleteSuccess": "Note deleted!",
 			"editSuccess": "Changes saved!"
 		}
+	},
+	"settings": {
+		"langDescription": "Current: {{lang}}",
+		"langSelectTitle": "Select language",
+		"langTitle": "Language",
+		"themeDescription": "Current: {{theme}}",
+		"themeSelectTitle": "Select theme",
+		"themeTitle": "Theme"
 	},
 	"theme": {
 		"auto": "Auto",

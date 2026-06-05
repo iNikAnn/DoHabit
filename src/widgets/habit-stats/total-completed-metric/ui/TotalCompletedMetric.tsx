@@ -1,4 +1,5 @@
 import styles from './TotalCompletedMetric.module.css';
+import { useTranslation } from 'react-i18next';
 import { FaHashtag } from 'react-icons/fa';
 import { type CompletedDay } from '@entities/habit';
 import { Card } from '@shared/ui';
@@ -12,9 +13,11 @@ interface Props {
  * Displays the total number of completions for a habit over a selected period.
  */
 function TotalCompletedMetric({ days, color }: Props) {
+	const { t } = useTranslation();
+
 	return (
 		<Card
-			title='Total Completed'
+			title={t('habits.totalCompletedTitle')}
 			extra={<FaHashtag style={{ color }} />}
 		>
 			<div className={styles.content}>
