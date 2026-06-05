@@ -8,7 +8,7 @@ function uploadJson(): Promise<boolean> {
 		// Create a hidden input to trigger the native file picker
 		const input = document.createElement('input');
 		input.type = 'file';
-		input.accept = '.json';
+		input.accept = '.json'; // eslint-disable-line
 
 		input.onchange = async (e: Event) => {
 			const target = e.target as HTMLInputElement;

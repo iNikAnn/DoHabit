@@ -47,6 +47,8 @@ export default defineConfig([
 					exclude: [
 						'className',
 						'styleName',
+						/.+Style$/,
+						/.+ClassName$/,
 						'style',
 						'type',
 						'key',
@@ -56,6 +58,7 @@ export default defineConfig([
 						'variant',
 						'type',
 						'mode',
+						'theme',
 						'transition',
 						'initial',
 						'animate',
@@ -67,17 +70,28 @@ export default defineConfig([
 						'autoComplete',
 						'indicator',
 						'drag',
-						'color'
+						'color',
+						'iconSize',
+						'role',
+						'layoutId',
+						'position'
 					]
 				},
 				'object-properties': {
 					include: [],
 					exclude: [
 						'[A-Z_-]+',
+						'className',
+						'style',
+						'action',
 						'variant',
 						'type',
 						'color',
-						'pointBackgroundColor'
+						'pointBackgroundColor',
+						'backgroundColor',
+						'transition',
+						'ease',
+						'path'
 					],
 				},
 				words: {
@@ -85,15 +99,28 @@ export default defineConfig([
 						'[0-9!-/:-@[-`{-~]+',
 						'[A-Z_-]+',
 						/^\p{Emoji}+$/u,
+						/^mailto:.+/,
 						'asc',
-						'desc'
+						'desc',
+						'up',
+						'down',
+						'top',
+						'bottom',
+						'decrement',
+						'increment',
+						'completed',
+						'updated',
+						'hidden',
+						'auto'
 					],
 				},
 				callees: {
 					exclude: [
 						'i18n(ext)?',
 						't',
+						'init',
 						'require',
+						'fetch',
 						'addEventListener',
 						'removeEventListener',
 						'postMessage',
@@ -108,7 +135,14 @@ export default defineConfig([
 						'onScrollTop',
 						'notesDispatch',
 						'settingsDispatch',
-						'addColorStop'
+						'addColorStop',
+						'Error',
+						'console.error',
+						'console.warn',
+						'canvas.toBlob',
+						'toLocaleTimeString',
+						'window.open',
+						/^localStorage\..+/
 					],
 				},
 			}]

@@ -5,7 +5,7 @@ export type ItemIconSize = 'sm' | 'md' | 'lg';
 
 export interface ListItemProps extends ButtonProps {
 	title: string;
-	description: string;
+	description?: string;
 	iconSize?: ItemIconSize;
 	truncateDescription?: boolean;
 	extra?: ReactNode;
