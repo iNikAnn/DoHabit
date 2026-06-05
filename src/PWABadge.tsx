@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { useDialogStore } from '@shared/ui';
 
@@ -6,6 +7,7 @@ function PWABadge() {
 	// You can remove onRegisteredSW callback and registerPeriodicSync function
 	const period = 0;
 
+	const { t } = useTranslation();
 	const openDialog = useDialogStore((s) => s.open);
 
 	const {
@@ -35,15 +37,15 @@ function PWABadge() {
 
 	if (needRefresh) {
 		openDialog({
-			title: 'Update Ready!',
-			text: 'Please click the reload button to sync the latest features.',
+			title: t('app.updateTitle'),
+			text: t('app.updateText'),
 			actions: [
 				{
-					label: 'Reload',
+					label: t('common.reload'),
 					onClick: () => updateServiceWorker(true)
 				},
 				{
-					label: 'Close',
+					label: t('common.close'),
 					onClick: () => handleClose(),
 					style: { backgroundColor: 'var(--bg-color-tertiary)' }
 				}

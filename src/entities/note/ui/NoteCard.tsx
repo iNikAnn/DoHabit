@@ -83,7 +83,7 @@ function NoteCard(props: NoteCardProps) {
 				</div>
 
 				{!!note.streak && (
-					<small>{'Streak: ' + note.streak}</small>
+					<small>{`${t('habits.streak')}: ${note.streak}`}</small>
 				)}
 			</div>
 

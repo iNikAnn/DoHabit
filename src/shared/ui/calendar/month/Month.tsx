@@ -67,6 +67,7 @@ function Month(props: Props) {
 	});
 
 	const weekdays = showDayNames
+		// eslint-disable-next-line
 		? [...WEEKDAYS.slice(1), 'Sunday'].map((weekday, index) => {
 			const isToday = ((index + 1) % 7) === today.getDay();
 			const isCurrentMonth = today.getMonth() === monthDate.getMonth();

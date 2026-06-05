@@ -5,17 +5,28 @@
 		"unlockedDesc": "It seems that new achievements have been unlocked!\nYou can check them in the achievements section.",
 		"unlockedTitle": "Achievement unlocked!"
 	},
+	"app": {
+		"updateText": "Please click the reload button to sync the latest features.",
+		"updateTitle": "Update Ready!"
+	},
 	"common": {
 		"all": "All",
 		"app": "App",
+		"close": "Close",
 		"day": "Day",
 		"end": "End",
 		"icon": "Icon",
+		"reload": "Reload",
 		"showLess": "Show less",
 		"showMore": "Show more",
 		"start": "Start",
 		"support": "Support",
 		"version": "Version"
+	},
+	"error": {
+		"boundaryDesc": "Try reloading. If it doesn’t help, reset the app data (your progress will be saved as a backup).",
+		"boundaryTitle": "Oops! Something went wrong",
+		"resetConfirm": "Backup your data and reset the app?"
 	},
 	"filters": {
 		"allTags": "All tags",
@@ -27,6 +38,7 @@
 		"actionDoneYesterday": "Done Y'day",
 		"actionUndoYesterday": "Undo Y'day",
 		"archive": "Archive habit",
+		"archiveConfirm": "Are you sure you want to archive this habit?",
 		"btnAlreadyAtBottom": "Already at Bottom",
 		"btnAlreadyAtTop": "Already at Top",
 		"btnMoveToBottom": "Move to Bottom",
@@ -62,6 +74,10 @@
 		"sectionOrderDescription": "The habit's position in your list.",
 		"sectionOrderTitle": "Order",
 		"share": "Share habit",
+		"shareDataDesc": "Look at this!",
+		"shareDataTitle": "Share",
+		"shareError": "Failed to generate image.",
+		"shareNotSupported": "Sharing is not supported.",
 		"statistics": "Statistics",
 		"streak": "Streak",
 		"streakHistoryDesc": "Shows streaks of 2 days or more.",

@@ -1,6 +1,5 @@
+import i18n from 'i18next';
 import { habitsStore } from '@entities/habit';
-
-const msg = 'Are you sure you want to archive this habit? Archived habits can be found in the menu under the \'Archive\' section.';
 
 /**
  * Archives a habit and executes a success callback.
@@ -10,7 +9,7 @@ const msg = 'Are you sure you want to archive this habit? Archived habits can be
 function archiveHabit(habitId: string, onSuccess?: () => void) {
 	const habitsDispatch = habitsStore.getState().habitsDispatch;
 
-	if (window.confirm(msg)) {
+	if (window.confirm(i18n.t('habits.archiveConfirm'))) {
 		habitsDispatch({
 			type: 'setHabitArchiveStatus',
 			payload: { habitId, isArchived: true }

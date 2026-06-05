@@ -33,7 +33,7 @@ function WeekdayChart({ options, days, color }: Props) {
 		options: ChartOptions<'bar'>
 	} = {
 		data: {
-			labels: [...WEEKDAYS.slice(1), 'Sun'],
+			labels: [...WEEKDAYS.slice(1), 'Sun'], // eslint-disable-line
 			datasets: [{
 				label: t('habits.chartCompletionsLabel'),
 				data: [...data.slice(1), data[0]!],
