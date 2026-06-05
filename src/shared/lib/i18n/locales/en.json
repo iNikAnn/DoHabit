@@ -1,7 +1,9 @@
 {
 	"achievements": {
 		"emptyDesc": "Unlock rare achievements by using the app regularly!",
-		"emptyTitle": "No Achievements Yet"
+		"emptyTitle": "No Achievements Yet",
+		"unlockedDesc": "It seems that new achievements have been unlocked!\nYou can check them in the achievements section.",
+		"unlockedTitle": "Achievement unlocked!"
 	},
 	"common": {
 		"all": "All",
@@ -45,8 +47,11 @@
 		"errorAlreadyExists": "Already exists.",
 		"inputNamePlaceholder": "Enter habit name...",
 		"longestStreakTitle": "Longest",
+		"manageHabitTitle": "Manage Habit",
 		"monthlyChartTitle": "Completions / Month",
 		"notes": "Diary",
+		"removeConfirm": "Are you sure you want to delete this habit? Deleted data cannot be recovered.",
+		"restoreConfirm": "Are you sure you want to restore this habit?",
 		"sectionColorDescription": "Dots mark colors already in use. You can still reuse them.",
 		"sectionColorTitle": "Color",
 		"sectionFrequencyDescription": "Times per day you want to repeat this habit.",
@@ -64,6 +69,18 @@
 		"totalCompletedTitle": "Total completed days",
 		"update": "Save changes",
 		"weekdayChartTitle": "Completions / Weekday"
+	},
+	"menu": {
+		"appearanceDesc": "Customize the app's look",
+		"appearanceTitle": "Appearance",
+		"archiveDesc": "View or manage archived habits",
+		"archiveTitle": "Archive",
+		"dataMgmtDesc": "Backup, restore, or clear app data",
+		"dataMgmtTitle": "Data Management",
+		"feedbackDesc": "Share feedback or report bugs",
+		"feedbackTitle": "Send Feedback",
+		"githubDesc": "View or contribute to the project",
+		"githubTitle": "GitHub Repository"
 	},
 	"notes": {
 		"copy": "Copy text",
@@ -88,18 +105,35 @@
 			"compact": "Compact",
 			"default": "Default",
 			"highlightTodayTitle": "Highlight today",
+			"sectionTitle": "Calendar",
 			"showDayNumbersDesc": "Applies to the default calendar only",
 			"showDayNumbersTitle": "Show day numbers",
 			"showWeekdayNamesDesc": "Applies to the default calendar only",
 			"showWeekdayNamesTitle": "Show weekday names"
 		},
 		"data-management": {
+			"backupExportConfirm": "Download backup file to your device?",
 			"backupExportDesc": "Save a backup data to your device",
 			"backupExportTitle": "Export",
 			"backupImportDesc": "Upload your app data from a backup file",
+			"backupImportError": "Something went wrong during import.",
+			"backupImportSuccess": "Data imported successfully! The application will now reload.",
 			"backupImportTitle": "Import",
+			"backUpSectionTitle": "Backup",
+			"clearAllConfirm": [
+				"Are you sure you want to delete all application data?\n",
+				"This includes:",
+				"- All your habits",
+				"- All achievements",
+				"- All diary entries\n",
+				"This action cannot be undone!"
+			],
+			"clearAllError": "Action canceled or incorrect phrase.",
+			"clearAllPrompt": "To confirm, type: \"delete data\":",
+			"clearAllSuccess": "All data has been successfully removed. The application will now reload.",
 			"dangerClearAllDesc": "Delete all application data",
-			"dangerClearAllTitle": "Clear all"
+			"dangerClearAllTitle": "Clear all",
+			"dangerSectionTitle": "Danger Zone"
 		},
 		"langDescription": "Current: {{lang}}",
 		"langSelectTitle": "Select language",

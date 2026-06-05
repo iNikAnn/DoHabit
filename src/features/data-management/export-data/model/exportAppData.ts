@@ -1,3 +1,4 @@
+import i18n from 'i18next';
 import { STORAGE_KEYS } from '@shared/const';
 import { formatDate } from '@shared/lib/date-time';
 import { readLocalStorage } from '@shared/lib/local-storage';
@@ -7,7 +8,7 @@ import { readLocalStorage } from '@shared/lib/local-storage';
  */
 function exportAppData() {
 	// Notify user before starting the download
-	if (window.confirm('Download backup file to your device?')) {
+	if (window.confirm(i18n.t('settings.data-management.backupExportConfirm'))) {
 		// Collect data from all storage keys
 		const data = {
 			[STORAGE_KEYS.HABITS]: readLocalStorage(STORAGE_KEYS.HABITS),

@@ -1,12 +1,5 @@
+import i18n from 'i18next';
 import { clearLocalStorage } from '@shared/lib/local-storage';
-
-const warningMessage =
-	'Are you sure you want to delete all application data?\n\n' +
-	'This includes:\n' +
-	'- All your habits\n' +
-	'- All achievements\n' +
-	'- All diary entries\n\n' +
-	'This action cannot be undone!';
 
 /**
  * Completely wipes user app data.
@@ -15,19 +8,19 @@ const warningMessage =
  */
 function clearAppData() {
 	// 1: confirmation dialog
-	if (window.confirm(warningMessage)) {
-		const userInput = prompt('To confirm, type: "delete data":');
+	if (window.confirm(i18n.t('settings.data-management.clearAllConfirm', { joinArrays: '\n' } as any))) {
+		const userInput = prompt(i18n.t('settings.data-management.clearAllPrompt'));
 
 		// 2: manual input check
 		if (userInput?.trim().toLowerCase() === 'delete data') {
 			clearLocalStorage();
 
-			alert('All data has been successfully removed. The application will now reload.');
+			alert(i18n.t('settings.data-management.clearAllSuccess'));
 
 			// Hard redirect to clear state and refresh the app
 			window.location.href = import.meta.env.BASE_URL;
 		} else {
-			alert('Action canceled or incorrect phrase.');
+			alert(i18n.t('settings.data-management.clearAllError'));
 		}
 	}
 }

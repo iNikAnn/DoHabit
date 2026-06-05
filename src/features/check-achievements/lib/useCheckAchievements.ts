@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useIsFirstRender } from '@uidotdev/usehooks';
 import { achievementRules } from '../model/rules';
 import { type AchievementId, ACHIEVEMENTS, useAchievementsStore } from '@entities/achievement';
@@ -10,6 +11,7 @@ import { useDialogStore } from '@shared/ui';
  * Runs validation rules against current stores and unlocks achievements.
  */
 function useCheckAchievements() {
+	const { t } = useTranslation();
 	const isFirstRender = useIsFirstRender();
 	const openDialog = useDialogStore((s) => s.open);
 
@@ -26,21 +28,21 @@ function useCheckAchievements() {
 		if (isFirstRender) {
 			// Bulk unlock on mount (e.g., historical data analysis). Show single generic modal
 			openDialog({
-				title: 'Achievement Unlocked!',
-				text: 'It seems that new achievements have been unlocked!\nYou can check them in the achievements section.'
+				title: t('achievements.unlockedTitle'),
+				text: t('achievements.unlockedDesc')
 			});
 		} else {
 			// Real-time unlock during the session. Show specific achievement details
 			if (!ach) return;
 
 			openDialog({
-				title: 'Achievement Unlocked!',
+				title: t('achievements.unlockedTitle'),
 				imgSrc: ach.icon,
 				text: `"${ach.title}"\n${ach.description}`
 
 			});
 		}
-	}, [isFirstRender, openDialog]);
+	}, [isFirstRender, openDialog, t]);
 
 	// Track state changes and evaluate locked achievements
 	useEffect(() => {
