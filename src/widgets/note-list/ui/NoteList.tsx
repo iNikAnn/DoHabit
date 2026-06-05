@@ -20,6 +20,7 @@ interface NoteListProps {
 	onScrollTop: (options?: { behavior?: 'auto' | 'smooth' }) => void;
 }
 
+const ALL_YEARS_FILTER = 'All';
 const ITEMS_PER_PAGE = 15;
 const observerOptions = { scrollMargin: '220px' };
 
@@ -32,6 +33,9 @@ function NoteList(props: NoteListProps) {
 		habitId,
 		onScrollTop
 	} = props;
+
+	// UI localization
+	const { t } = useTranslation();
 
 	// Core data and drawer action hooks
 	const notes = useNotesStore((s) => s.notes);
@@ -56,7 +60,7 @@ function NoteList(props: NoteListProps) {
 	const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
 	// Active layout filters and sorting rules
-	const [selectedYear, setSelectedYear] = useState<'All' | number>('All');
+	const [selectedYear, setSelectedYear] = useState<'All' | number>(ALL_YEARS_FILTER);
 	const [activeTag, setActiveTag] = useState<string | null>(null);
 	const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
 
@@ -132,8 +136,8 @@ function NoteList(props: NoteListProps) {
 			<Placeholder
 				content={{
 					image: <InformationIcon />,
-					title: 'Diary is empty',
-					description: 'Add your first note to start tracking your progress and thoughts.'
+					title: t('diary.emptyTitle'),
+					description: t('diary.emptyDescription')
 				}}
 			/>
 		);

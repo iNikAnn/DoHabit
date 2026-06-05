@@ -1,6 +1,26 @@
 {
+	"common": {
+		"all": "All",
+		"app": "App",
+		"icon": "Icon",
+		"support": "Support",
+		"version": "Version"
+	},
+	"diary": {
+		"emptyDescription": "Add your first note to start tracking your progress and thoughts.",
+		"emptyTitle": "Diary is empty"
+	},
+	"filters": {
+		"allTags": "All tags",
+		"tagsForYear": "Tags for {{year}}"
+	},
 	"habits": {
+		"createFirst": "Create first habit",
+		"createNew": "Create new habit",
+		"emptyActiveDescription": "Why not create one now?",
 		"emptyActiveTitle": "No active habits found",
-		"emptyArchivedTitle": "No archived habits found"
+		"emptyArchivedDescription": "You can archive a habit by editing it.",
+		"emptyArchivedTitle": "No archived habits found",
+		"streak": "Streak"
 	}
 }
