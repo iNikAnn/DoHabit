@@ -50,6 +50,7 @@
 			"delete": "Delete habit",
 			"doneYesterday": "Done Y'day",
 			"edit": "Edit habit",
+			"notes": "Notes",
 			"share": "Share habit",
 			"undoYesterday": "Undo Y'day",
 			"update": "Save changes"
@@ -197,7 +198,8 @@
 				"desc": "View or contribute to the project",
 				"title": "GitHub Repository"
 			}
-		}
+		},
+		"title": "Menu"
 	},
 	"notes": {
 		"actions": {
@@ -228,6 +230,6 @@
 			"emptyTitle": "No tags found",
 			"forYear": "Tags for {{year}}"
 		},
-		"title": "Diary"
+		"title": "Main diary"
 	}
 }

@@ -50,6 +50,7 @@
 			"delete": "Удалить",
 			"doneYesterday": "Учесть вчера",
 			"edit": "Изменить",
+			"notes": "Заметки",
 			"share": "Поделиться",
 			"undoYesterday": "Сброс вчера",
 			"update": "Сохранить"
@@ -197,7 +198,8 @@
 				"desc": "Исходный код проекта",
 				"title": "GitHub"
 			}
-		}
+		},
+		"title": "Меню"
 	},
 	"notes": {
 		"actions": {
