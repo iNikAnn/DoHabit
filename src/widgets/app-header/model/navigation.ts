@@ -2,30 +2,31 @@ import { FaAward, FaBars, FaPlus } from 'react-icons/fa';
 import { MdLibraryBooks } from 'react-icons/md';
 import type { NavItem } from './types';
 import { getNavigationTarget } from '@shared/lib/router';
+import { t } from 'i18next';
 
-export const NAV_ITEMS: NavItem[] = [
+export const getNavItems = (): NavItem[] => ([
 	{
 		...getNavigationTarget('HABIT_EDITOR', {
-			modalTitle: 'Create new habit'
+			modalTitle: t('habits.actions.createNew')
 		}),
 		icon: FaPlus
 	},
 	{
 		...getNavigationTarget('DIARY', {
-			modalTitle: 'Main diary',
+			modalTitle: t('notes.title'),
 		}),
 		icon: MdLibraryBooks
 	},
 	{
 		...getNavigationTarget('ACHIEVEMENTS', {
-			modalTitle: 'Achievements'
+			modalTitle: t('achievements.title')
 		}),
 		icon: FaAward
 	},
 	{
 		...getNavigationTarget('MENU', {
-			modalTitle: 'Menu'
+			modalTitle: t('menu.title')
 		}),
 		icon: FaBars
 	}
-];
+]);

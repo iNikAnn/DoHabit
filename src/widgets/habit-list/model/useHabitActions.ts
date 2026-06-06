@@ -99,7 +99,7 @@ function useHabitActions() {
 					currentStreak
 				}),
 				icon: MdLibraryBooks,
-				label: t('notes.title'),
+				label: t('habits.actions.notes'),
 				indicator: { type: 'arrow' },
 				style: { backgroundColor: darkenedColor }
 			}
