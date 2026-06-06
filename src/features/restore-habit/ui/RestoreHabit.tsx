@@ -17,7 +17,7 @@ function RestoreHabit({ habitId }: RestoreHabitProps) {
 
 	const handleRestoreHabit = () => {
 		// Simple confirmation to prevent accidental restores
-		if (window.confirm(t('habits.restoreConfirm'))) {
+		if (window.confirm(t('habits.dialogs.restoreConfirm'))) {
 			habitsDispatch({
 				type: 'setHabitArchiveStatus',
 				payload: {

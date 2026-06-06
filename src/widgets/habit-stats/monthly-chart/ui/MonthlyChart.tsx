@@ -32,7 +32,7 @@ function MonthlyChart({ options, days, color }: Props) {
 		data: {
 			labels: [...MONTHS.map((m) => m.slice(0, 3))],
 			datasets: [{
-				label: t('habits.chartCompletionsLabel'),
+				label: t('habits.stats.chartCompletions'),
 				data,
 
 				pointBackgroundColor: '#e6e6e6',
@@ -62,7 +62,7 @@ function MonthlyChart({ options, days, color }: Props) {
 
 	return (
 		<Card
-			title={t('habits.monthlyChartTitle')}
+			title={t('habits.stats.monthlyChartTitle')}
 			extra={<FaCalendarAlt style={{ color }} />}
 		>
 			<Line {...config} />

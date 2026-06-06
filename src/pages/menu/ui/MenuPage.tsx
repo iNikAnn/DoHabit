@@ -8,8 +8,8 @@ import { List } from '@shared/ui';
  * Navigation hub for app settings.
  */
 function MenuPage() {
-	const { appItems, supportItems } = useListItems();
 	const { t } = useTranslation();
+	const { appItems, supportItems } = useListItems();
 
 	return (
 		<section className={styles.page}>

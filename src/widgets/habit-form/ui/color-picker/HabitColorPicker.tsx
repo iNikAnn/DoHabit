@@ -43,9 +43,9 @@ function HabitColorPicker({ habits, initialColorIndex = 0 }: Props) {
 	return (
 		<section>
 			<SectionHeader
-				title={t('habits.sectionColorTitle')}
+				title={t('habits.form.colorTitle')}
 				description={habits.length > 0
-					? t('habits.sectionColorDescription')
+					? t('habits.form.colorDesc')
 					: undefined}
 			/>
 

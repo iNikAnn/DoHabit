@@ -13,12 +13,12 @@ function DataManagementPage() {
 	return (
 		<div className={styles.page}>
 			<List
-				title={t('settings.data-management.backUpSectionTitle')}
+				title={t('menu.dataManagement.backup.sectionTitle')}
 				items={backupItems}
 			/>
 
 			<List
-				title={t('settings.data-management.dangerSectionTitle')}
+				title={t('menu.dataManagement.danger.sectionTitle')}
 				titleStyle={{ color: 'IndianRed' }}
 				listStyle={{ border: '2px solid IndianRed' }}
 				items={dangerItems}

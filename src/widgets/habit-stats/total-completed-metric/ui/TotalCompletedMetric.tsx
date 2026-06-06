@@ -17,7 +17,7 @@ function TotalCompletedMetric({ days, color }: Props) {
 
 	return (
 		<Card
-			title={t('habits.totalCompletedTitle')}
+			title={t('habits.stats.totalCompleted')}
 			extra={<FaHashtag style={{ color }} />}
 		>
 			<div className={styles.content}>

@@ -12,7 +12,7 @@ function useThemeActions() {
 	const themeActions: DrawerAction[] = [
 		{
 			icon: FaFont,
-			label: t('theme.auto'),
+			label: t('common.theme.auto'),
 			indicator: { type: !settings.theme ? 'checkmark' : 'none' },
 			onClick: () => settingsDispatch({
 				type: 'updateSettings',
@@ -22,7 +22,7 @@ function useThemeActions() {
 		{
 			icon: FaSun,
 			iconProps: { color: '#e3bb44' },
-			label: t('theme.light'),
+			label: t('common.theme.light'),
 			indicator: { type: settings.theme === 'light' ? 'checkmark' : 'none' },
 			onClick: () => settingsDispatch({
 				type: 'updateSettings',
@@ -32,7 +32,7 @@ function useThemeActions() {
 		{
 			icon: FaMoon,
 			iconProps: { color: '#5070b5' },
-			label: t('theme.dark'),
+			label: t('common.theme.dark'),
 			indicator: { type: settings.theme === 'dark' ? 'checkmark' : 'none' },
 			onClick: () => settingsDispatch({
 				type: 'updateSettings',

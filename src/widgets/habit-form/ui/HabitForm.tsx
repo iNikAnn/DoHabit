@@ -123,8 +123,8 @@ function HabitForm({ habitId }: HabitFormProps) {
 					disabled={title.trim().length === 0 || isDuplicate}
 				>
 					{startCase(isEditMode
-						? t('habits.update')
-						: t('habits.create'))}
+						? t('habits.actions.update')
+						: t('habits.actions.create'))}
 				</Button>
 			</div>
 		</form>

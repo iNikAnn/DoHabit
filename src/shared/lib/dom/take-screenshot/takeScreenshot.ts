@@ -7,7 +7,7 @@ import html2canvas, { type Options } from 'html2canvas-pro';
 async function takeScreenshot(element: HTMLElement) {
 	// Check if the Web Share API is available
 	if (!navigator?.share) {
-		window.alert(i18n.t('habits.shareNotSupported'));
+		window.alert(i18n.t('habits.share.notSupported'));
 		return;
 	}
 
@@ -29,7 +29,7 @@ async function takeScreenshot(element: HTMLElement) {
 	});
 
 	if (!blob) {
-		window.alert(i18n.t('habits.shareError'));
+		window.alert(i18n.t('habits.share.error'));
 		return;
 	}
 
@@ -37,8 +37,8 @@ async function takeScreenshot(element: HTMLElement) {
 	const file = new File([blob], fileName, { type: 'image/jpeg' });
 
 	const sharedData: ShareData = {
-		title: i18n.t('habits.shareDataTitle'),
-		text: i18n.t('habits.shareDataDesc'),
+		title: i18n.t('habits.share.title'),
+		text: i18n.t('habits.share.desc'),
 		files: [file]
 	};
 

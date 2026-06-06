@@ -8,9 +8,11 @@ import { languageMap } from '@shared/lib/i18n';
 import { type ListItemProps, useDrawerStore } from '@shared/ui';
 
 function useListItems() {
+	// UI localization
+	const { t, i18n } = useTranslation();
+
 	const openDrawer = useDrawerStore((s) => s.open);
 	const settings = useSettingsStore((s) => s.settings);
-	const { t, i18n } = useTranslation();
 
 	const { themeActions } = useThemeActions();
 	const { langActions } = useLangActions();
@@ -23,13 +25,13 @@ function useListItems() {
 				: settings.theme === 'dark'
 					? <FaMoon color='#5070b5' />
 					: <FaFont />,
-			title: t('settings.themeTitle'),
-			description: t('settings.themeDescription', {
-				theme: t(`theme.${settings.theme ?? 'auto'}`)
+			title: t('menu.appearance.theme.title'),
+			description: t('menu.appearance.theme.desc', {
+				theme: t(`common.theme.${settings.theme ?? 'auto'}`)
 			}),
 			onClick: () => {
 				openDrawer({
-					title: t('settings.themeSelectTitle'),
+					title: t('menu.appearance.theme.dialogs.selectThemeTitle'),
 					actions: themeActions
 				})
 			}
@@ -38,13 +40,13 @@ function useListItems() {
 		// lang switcher
 		{
 			icon: FaLanguage,
-			title: t('settings.langTitle'),
-			description: t('settings.langDescription', {
+			title: t('menu.appearance.language.title'),
+			description: t('menu.appearance.language.desc', {
 				lang: languageMap[i18n.language].label
 			}),
 			onClick: () => {
 				openDrawer({
-					title: t('settings.langSelectTitle'),
+					title: t('menu.appearance.language.dialogs.selectTitle'),
 					actions: langActions
 				})
 			}

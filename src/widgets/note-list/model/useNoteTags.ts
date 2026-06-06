@@ -37,8 +37,8 @@ function useNoteTags() {
 
 			const placeholder: PlaceholderProps = {
 				content: {
-					title: t('filters.noTagsTitle'),
-					description: t('filters.noTagsDescription')
+					title: t('notes.tags.emptyTitle'),
+					description: t('notes.tags.emptyDesc')
 				}
 			};
 

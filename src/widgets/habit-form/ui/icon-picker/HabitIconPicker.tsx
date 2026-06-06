@@ -27,9 +27,9 @@ function HabitIconPicker({ habits, initialIconTitle = 'default' }: Props) {
 	return (
 		<section>
 			<SectionHeader
-				title={t('habits.sectionIconTitle')}
+				title={t('habits.form.iconTitle')}
 				description={habits.length > 0
-					? t('habits.sectionIconDescription')
+					? t('habits.form.iconDesc')
 					: undefined}
 				extra={(
 					<Button

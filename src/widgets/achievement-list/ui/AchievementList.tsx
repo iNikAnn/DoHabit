@@ -9,7 +9,9 @@ import { List, Placeholder, useDialogStore } from '@shared/ui';
  * Shows a placeholder if nothing is unlocked yet.
  */
 function AchievementList() {
+	// UI localization
 	const { t } = useTranslation();
+
 	const openDialog = useDialogStore((s) => s.open);
 	const unlockedAt = useAchievementsStore((s) => s.unlockedAt);
 
@@ -42,8 +44,8 @@ function AchievementList() {
 			<Placeholder
 				content={{
 					// TODO: Add icon
-					title: t('achievements.emptyTitle'),
-					description: t('achievements.emptyDesc')
+					title: t('achievements.list.emptyTitle'),
+					description: t('achievements.list.emptyDesc')
 				}}
 			/>
 		);

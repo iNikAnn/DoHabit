@@ -28,15 +28,15 @@ function useCheckAchievements() {
 		if (isFirstRender) {
 			// Bulk unlock on mount (e.g., historical data analysis). Show single generic modal
 			openDialog({
-				title: t('achievements.unlockedTitle'),
-				text: t('achievements.unlockedDesc')
+				title: t('achievements.notification.title'),
+				text: t('achievements.notification.desc')
 			});
 		} else {
 			// Real-time unlock during the session. Show specific achievement details
 			if (!ach) return;
 
 			openDialog({
-				title: t('achievements.unlockedTitle'),
+				title: t('achievements.notification.title'),
 				imgSrc: ach.icon,
 				text: `"${ach.title}"\n${ach.description}`
 

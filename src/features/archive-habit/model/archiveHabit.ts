@@ -9,7 +9,7 @@ import { habitsStore } from '@entities/habit';
 function archiveHabit(habitId: string, onSuccess?: () => void) {
 	const habitsDispatch = habitsStore.getState().habitsDispatch;
 
-	if (window.confirm(i18n.t('habits.archiveConfirm'))) {
+	if (window.confirm(i18n.t('habits.dialogs.archiveConfirm'))) {
 		habitsDispatch({
 			type: 'setHabitArchiveStatus',
 			payload: { habitId, isArchived: true }

@@ -9,10 +9,10 @@ async function importAppData() {
 
 	if (res) {
 		// Notify user and force a reload to apply changes across the app
-		window.alert(i18n.t('settings.data-management.backupImportSuccess'));
+		window.alert(i18n.t('menu.dataManagement.backup.import.notifications.success'));
 		window.location.href = import.meta.env.BASE_URL;
 	} else {
-		window.alert(i18n.t('settings.data-management.backupImportError'));
+		window.alert(i18n.t('menu.dataManagement.backup.import.notifications.error'));
 	}
 }
 

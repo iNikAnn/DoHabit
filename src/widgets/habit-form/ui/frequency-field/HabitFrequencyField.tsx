@@ -26,8 +26,8 @@ function HabitFrequencyField({ initialFrequency = 1 }: Props) {
 	return (
 		<section>
 			<SectionHeader
-				title={t('habits.sectionFrequencyTitle')}
-				description={t('habits.sectionFrequencyDescription')}
+				title={t('habits.form.frequencyTitle')}
+				description={t('habits.form.frequencyDesc')}
 			/>
 
 			<div className={styles.content}>

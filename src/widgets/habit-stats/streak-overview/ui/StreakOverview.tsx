@@ -28,7 +28,7 @@ function StreakOverview(props: StreakOverviewProps) {
 	return (
 		<div className={styles.wrapper}>
 			<Card
-				title={t('habits.currentStreakTitle')}
+				title={t('habits.stats.currentStreak')}
 				extra={(
 					<div style={{ color: percentageDifference < 0 ? 'IndianRed' : '#57a639' }}>
 						{percentageDifference + '%'}
@@ -41,7 +41,7 @@ function StreakOverview(props: StreakOverviewProps) {
 			</Card>
 
 			<Card
-				title={t('habits.longestStreakTitle')}
+				title={t('habits.stats.longestStreak')}
 				extra={<FaAward style={{ color }} />}
 			>
 				<div className={styles.content}>

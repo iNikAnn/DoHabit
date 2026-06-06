@@ -37,7 +37,7 @@ function HabitHeader(props: HabitHeaderProps) {
 					<div className={styles.description}>
 						<small>
 							<span>
-								{t('habits.streak')}
+								{t('habits.stats.streak')}
 							</span>
 
 							<strong>: {currentStreak}</strong>

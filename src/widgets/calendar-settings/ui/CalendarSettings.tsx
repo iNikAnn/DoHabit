@@ -12,7 +12,7 @@ function CalendarSettings() {
 
 	return (
 		<List
-			title={t('settings.calendar.sectionTitle')}
+			title={t('menu.appearance.calendar.sectionTitle')}
 			items={listItems}
 		/>
 	);

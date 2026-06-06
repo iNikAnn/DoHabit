@@ -26,7 +26,7 @@ function useNoteActions() {
 			// Delete note
 			{
 				icon: FaTrash,
-				label: t('notes.delete'),
+				label: t('notes.actions.delete'),
 				variant: 'danger',
 				onClick: () => removeNote(
 					note.id,
@@ -37,14 +37,14 @@ function useNoteActions() {
 			// Edit note
 			{
 				icon: FaPencilAlt,
-				label: t('notes.edit'),
+				label: t('notes.actions.edit'),
 				onClick: () => onEdit(note)
 			},
 
 			// Copy to clipboard
 			{
 				icon: FaCopy,
-				label: t('notes.copy'),
+				label: t('notes.actions.copy'),
 				onClick: async () => {
 					const success = await copyToClipboard({ text: note.text });
 

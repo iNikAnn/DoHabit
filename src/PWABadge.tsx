@@ -37,8 +37,8 @@ function PWABadge() {
 
 	if (needRefresh) {
 		openDialog({
-			title: t('app.updateTitle'),
-			text: t('app.updateText'),
+			title: t('app.update.title'),
+			text: t('app.update.text'),
 			actions: [
 				{
 					label: t('common.reload'),

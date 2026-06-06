@@ -121,7 +121,7 @@ function NoteForm(props: Props) {
 								minRows={1}
 								maxRows={10}
 								value={draftText}
-								placeholder={t('notes.inputPlaceholder')}
+								placeholder={t('notes.form.textPlaceholder')}
 								autoFocus
 								autoComplete='off'
 								onChange={(e) => setDraftText(e.target.value)}

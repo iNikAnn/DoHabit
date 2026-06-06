@@ -9,28 +9,32 @@ import type { ListItemProps } from '@shared/ui';
 function useListItems() {
 	const { t } = useTranslation();
 	const backupItems: ListItemProps[] = [
+		// Export
 		{
 			icon: FaUpload,
 			iconProps: { color: '#4cbe57' },
-			title: t('settings.data-management.backupExportTitle'),
-			description: t('settings.data-management.backupExportDesc'),
+			title: t('menu.dataManagement.backup.export.title'),
+			description: t('menu.dataManagement.backup.export.desc'),
 			onClick: exportAppData
 		},
+
+		// Import
 		{
 			icon: FaDownload,
 			iconProps: { color: '#728ad8' },
-			title: t('settings.data-management.backupImportTitle'),
-			description: t('settings.data-management.backupImportDesc'),
+			title: t('menu.dataManagement.backup.import.title'),
+			description: t('menu.dataManagement.backup.import.desc'),
 			onClick: importAppData
 		}
 	];
 
 	const dangerItems: ListItemProps[] = [
+		// Clear all
 		{
 			icon: ImFire,
 			iconProps: { color: 'IndianRed' },
-			title: t('settings.data-management.dangerClearAllTitle'),
-			description: t('settings.data-management.dangerClearAllDesc'),
+			title: t('menu.dataManagement.danger.clearAll.title'),
+			description: t('menu.dataManagement.danger.clearAll.desc'),
 			onClick: clearAppData
 		}
 	];

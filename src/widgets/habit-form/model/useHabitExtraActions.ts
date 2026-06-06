@@ -11,13 +11,13 @@ function useHabitExtraActions(habitId: string, onSuccess: () => void): DrawerAct
 	const actions: DrawerAction[] = [
 		{
 			icon: FaTrash,
-			label: t('habits.delete'),
+			label: t('habits.actions.delete'),
 			variant: 'danger',
 			onClick: () => removeHabit(habitId, onSuccess)
 		},
 		{
 			icon: HiArchiveBoxArrowDown,
-			label: t('habits.archive'),
+			label: t('habits.actions.archive'),
 			onClick: () => archiveHabit(habitId, onSuccess)
 		}
 	];

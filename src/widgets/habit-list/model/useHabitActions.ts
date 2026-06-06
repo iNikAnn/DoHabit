@@ -46,8 +46,8 @@ function useHabitActions() {
 			{
 				icon: isYdayCompleted ? FaCalendarTimes : FaCalendarCheck,
 				label: isYdayCompleted
-					? t('habits.actionUndoYesterday')
-					: t('habits.actionDoneYesterday'),
+					? t('habits.actions.undoYesterday')
+					: t('habits.actions.doneYesterday'),
 				onClick: () => habitsDispatch({
 					type: 'toggleYesterdayStatus',
 					payload: {
@@ -62,11 +62,11 @@ function useHabitActions() {
 			// Open habit editor
 			{
 				...getNavigationTarget('HABIT_EDITOR', {
-					modalTitle: t('habits.edit'),
+					modalTitle: t('habits.actions.edit'),
 					habitId: habit.id
 				}),
 				icon: FaPencilAlt,
-				label: t('habits.edit'),
+				label: t('habits.actions.edit'),
 				indicator: { type: 'arrow' },
 				style: { backgroundColor: darkenedColor }
 			},
@@ -74,7 +74,7 @@ function useHabitActions() {
 			// Share habit
 			{
 				icon: FaShareAlt,
-				label: t('habits.share'),
+				label: t('habits.actions.share'),
 				onClick: () => takeScreenshot(cardElement),
 				style: { backgroundColor: darkenedColor }
 			},
@@ -86,7 +86,7 @@ function useHabitActions() {
 					habitId: habit.id
 				}),
 				icon: FaChartSimple,
-				label: t('habits.statistics'),
+				label: t('habits.stats.title'),
 				indicator: { type: 'arrow' },
 				style: { backgroundColor: darkenedColor }
 			},
@@ -99,7 +99,7 @@ function useHabitActions() {
 					currentStreak
 				}),
 				icon: MdLibraryBooks,
-				label: t('habits.notes'),
+				label: t('notes.title'),
 				indicator: { type: 'arrow' },
 				style: { backgroundColor: darkenedColor }
 			}

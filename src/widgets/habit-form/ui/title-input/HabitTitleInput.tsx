@@ -15,10 +15,10 @@ function HabitTitleInput({ input, isDuplicate, onChange }: HabitTitleInputProps)
 	return (
 		<section>
 			<SectionHeader
-				title={t('habits.sectionNameTitle')}
+				title={t('habits.form.nameTitle')}
 				extra={isDuplicate ? (
 					<div className={styles.errorMessage}>
-						{t('habits.errorAlreadyExists')}
+						{t('habits.form.errors.alreadyExists')}
 					</div>
 				) : undefined}
 			/>
@@ -34,7 +34,7 @@ function HabitTitleInput({ input, isDuplicate, onChange }: HabitTitleInputProps)
 				)}
 				value={input}
 				onChange={(e) => onChange(e.target.value)}
-				placeholder={t('habits.inputNamePlaceholder')}
+				placeholder={t('habits.form.namePlaceholder')}
 				autoComplete='off'
 			/>
 		</section>

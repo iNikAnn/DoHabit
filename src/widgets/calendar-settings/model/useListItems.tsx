@@ -8,9 +8,9 @@ function useListItems() {
 
 	const listItems: ListItemProps[] = [
 		{
-			title: t('settings.calendar.calendarTypeTitle'),
-			description: t('settings.calendar.calendarTypeDescription', {
-				type: t(`settings.calendar.${settings.calendarView ?? 'default'}`)
+			title: t('menu.appearance.calendar.typeTitle'),
+			description: t('menu.appearance.calendar.typeDesc', {
+				type: t(`menu.appearance.calendar.${settings.calendarView ?? 'default'}`)
 			}),
 			extra: (
 				<Switch
@@ -27,7 +27,7 @@ function useListItems() {
 			)
 		},
 		{
-			title: t('settings.calendar.highlightTodayTitle'),
+			title: t('menu.appearance.calendar.highlightToday.title'),
 			extra: (
 				<Switch
 					isActive={settings.calendarHighlightToday}
@@ -41,8 +41,8 @@ function useListItems() {
 			)
 		},
 		{
-			title: t('settings.calendar.showWeekdayNamesTitle'),
-			description: t('settings.calendar.showWeekdayNamesDesc'),
+			title: t('menu.appearance.calendar.showWeekdayNames.title'),
+			description: t('menu.appearance.calendar.showWeekdayNames.desc'),
 			extra: (
 				<Switch
 					isActive={settings.calendarShowDayNames}
@@ -56,8 +56,8 @@ function useListItems() {
 			)
 		},
 		{
-			title: t('settings.calendar.showDayNumbersTitle'),
-			description: t('settings.calendar.showDayNumbersDesc'),
+			title: t('menu.appearance.calendar.showDayNumbers.title'),
+			description: t('menu.appearance.calendar.showDayNumbers.desc'),
 			extra: (
 				<Switch
 					isActive={settings.calendarShowDayNumbers}

@@ -43,8 +43,8 @@ function HabitOrderField({ habits, habit }: Props) {
 	return (
 		<section style={{ pointerEvents: 'none' }}>
 			<SectionHeader
-				title={t('habits.sectionOrderTitle')}
-				description={t('habits.sectionOrderDescription')}
+				title={t('habits.form.orderTitle')}
+				description={t('habits.form.orderDesc')}
 			/>
 
 			<div className={styles.content}>
@@ -66,7 +66,7 @@ function HabitOrderField({ habits, habit }: Props) {
 							onClick={() => handleChangeOrder('down')}
 							disabled={currentOrder === habitsCount}
 						>
-							{t('habits.btnStepDown')}
+							{t('habits.form.orderSorting.btnStepDown')}
 						</Button>
 
 						<Button
@@ -75,7 +75,7 @@ function HabitOrderField({ habits, habit }: Props) {
 							onClick={() => handleChangeOrder('up')}
 							disabled={currentOrder === 1}
 						>
-							{t('habits.btnStepUp')}
+							{t('habits.form.orderSorting.btnStepUp')}
 						</Button>
 					</div>
 				</div>
@@ -87,8 +87,8 @@ function HabitOrderField({ habits, habit }: Props) {
 						disabled={currentOrder === habitsCount}
 					>
 						{currentOrder === habitsCount
-							? t('habits.btnAlreadyAtBottom')
-							: t('habits.btnMoveToBottom')}
+							? t('habits.form.orderSorting.btnAlreadyAtBottom')
+							: t('habits.form.orderSorting.btnMoveToBottom')}
 					</Button>
 
 					<Button
@@ -97,8 +97,8 @@ function HabitOrderField({ habits, habit }: Props) {
 						disabled={currentOrder === 1}
 					>
 						{currentOrder === 1
-							? t('habits.btnAlreadyAtTop')
-							: t('habits.btnMoveToTop')}
+							? t('habits.form.orderSorting.btnAlreadyAtTop')
+							: t('habits.form.orderSorting.btnMoveToTop')}
 					</Button>
 				</div>
 			</div>

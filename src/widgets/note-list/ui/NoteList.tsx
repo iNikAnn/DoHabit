@@ -20,7 +20,7 @@ interface NoteListProps {
 	onScrollTop: (options?: { behavior?: 'auto' | 'smooth' }) => void;
 }
 
-const ALL_YEARS_FILTER = 'All';
+const ALL_YEARS_FILTER = 'all';
 const ITEMS_PER_PAGE = 15;
 const OBSERVER_OPTIONS = { scrollMargin: '220px' };
 
@@ -60,7 +60,7 @@ function NoteList(props: NoteListProps) {
 	const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
 	// Active layout filters and sorting rules
-	const [selectedYear, setSelectedYear] = useState<'All' | number>(ALL_YEARS_FILTER);
+	const [selectedYear, setSelectedYear] = useState<'all' | number>(ALL_YEARS_FILTER);
 	const [activeTag, setActiveTag] = useState<string | null>(null);
 	const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
 
@@ -76,7 +76,7 @@ function NoteList(props: NoteListProps) {
 	 * Filter notes by selected year.
 	 */
 	const yearNotes = useMemo(() => {
-		if (selectedYear === 'All') return scopeNotes;
+		if (selectedYear === ALL_YEARS_FILTER) return scopeNotes;
 
 		const [start, end] = getYearBoundaries(selectedYear);
 		return scopeNotes.filter((n) => n.createdAt >= start && n.createdAt < end);
@@ -136,8 +136,8 @@ function NoteList(props: NoteListProps) {
 			<Placeholder
 				content={{
 					image: <InformationIcon />,
-					title: t('notes.emptyTitle'),
-					description: t('notes.emptyDescription')
+					title: t('notes.list.emptyTitle'),
+					description: t('notes.list.emptyDesc')
 				}}
 			/>
 		);

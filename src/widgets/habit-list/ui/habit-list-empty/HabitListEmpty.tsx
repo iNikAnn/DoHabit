@@ -16,22 +16,22 @@ function HabitListEmpty({ isArchive }: Props) {
 		<Placeholder
 			content={{
 				image: <TableIcon />,
-				title: t('habits.emptyArchivedTitle'),
-				description: t('habits.emptyArchivedDescription')
+				title: t('habits.list.emptyArchivedTitle'),
+				description: t('habits.list.emptyArchivedDesc')
 			}}
 		/>
 	) : (
 		<Placeholder
 			content={{
 				image: <CalendarIcon />,
-				title: t('habits.emptyActiveTitle'),
-				description: t('habits.emptyActiveDescription')
+				title: t('habits.list.emptyActiveTitle'),
+				description: t('habits.list.emptyActiveDesc')
 			}}
 			action={{
-				label: startCase(t('habits.createFirst')),
+				label: startCase(t('habits.list.createFirst')),
 				icon: <MdAddToPhotos />,
 				...getNavigationTarget('HABIT_EDITOR', {
-					modalTitle: t('habits.createNew')
+					modalTitle: t('habits.list.createFirst')
 				})
 			}}
 		/>

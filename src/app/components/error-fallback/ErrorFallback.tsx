@@ -15,7 +15,7 @@ function ErrorFallback() {
 	};
 
 	const handleBackupAndReset = () => {
-		if (window.confirm(t('error.resetConfirm'))) {
+		if (window.confirm(t('app.errorBoundary.dialogs.resetConfirm'))) {
 			exportAppData();
 			clearLocalStorage();
 			handleReload();
@@ -25,8 +25,8 @@ function ErrorFallback() {
 	return (
 		<Placeholder
 			content={{
-				title: t('error.boundaryTitle'),
-				description: t('error.boundaryDesc')
+				title: t('app.errorBoundary.title'),
+				description: t('app.errorBoundary.desc')
 			}}
 			action={[
 				{

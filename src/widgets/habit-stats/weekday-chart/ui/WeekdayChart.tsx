@@ -35,7 +35,7 @@ function WeekdayChart({ options, days, color }: Props) {
 		data: {
 			labels: [...WEEKDAYS.slice(1), 'Sun'], // eslint-disable-line
 			datasets: [{
-				label: t('habits.chartCompletionsLabel'),
+				label: t('habits.stats.chartCompletions'),
 				data: [...data.slice(1), data[0]!],
 
 				backgroundColor: computedColor,
@@ -48,7 +48,7 @@ function WeekdayChart({ options, days, color }: Props) {
 
 	return (
 		<Card
-			title={t('habits.weekdayChartTitle')}
+			title={t('habits.stats.weekdayChartTitle')}
 			extra={<FaCalendarWeek style={{ color }} />}
 		>
 			<Bar {...config} />

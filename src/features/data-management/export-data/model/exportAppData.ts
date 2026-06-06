@@ -8,7 +8,7 @@ import { readLocalStorage } from '@shared/lib/local-storage';
  */
 function exportAppData() {
 	// Notify user before starting the download
-	if (window.confirm(i18n.t('settings.data-management.backupExportConfirm'))) {
+	if (window.confirm(i18n.t('menu.dataManagement.backup.export.dialogs.exportConfirm'))) {
 		// Collect data from all storage keys
 		const data = {
 			[STORAGE_KEYS.HABITS]: readLocalStorage(STORAGE_KEYS.HABITS),

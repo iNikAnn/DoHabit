@@ -13,30 +13,30 @@ function useListItems() {
 		{
 			icon: HiArchiveBox,
 			iconProps: { color: '#7b68ee' },
-			title: t('menu.archiveTitle'),
-			description: t('menu.archiveDesc'),
+			title: t('menu.archive.title'),
+			description: t('menu.archive.desc'),
 			...getNavigationTarget('ARCHIVE', {
-				modalTitle: t('menu.archiveTitle')
+				modalTitle: t('menu.archive.title')
 			}),
 			indicator: { type: 'arrow' }
 		},
 		{
 			icon: FaPaintBrush,
 			iconProps: { color: '#ffa420' },
-			title: t('menu.appearanceTitle'),
-			description: t('menu.appearanceDesc'),
+			title: t('menu.appearance.title'),
+			description: t('menu.appearance.desc'),
 			...getNavigationTarget('APPEARANCE', {
-				modalTitle: t('menu.appearanceTitle')
+				modalTitle: t('menu.appearance.title')
 			}),
 			indicator: { type: 'arrow' }
 		},
 		{
 			icon: BsFillDatabaseFill,
 			iconProps: { color: '#77dd77' },
-			title: t('menu.dataMgmtTitle'),
-			description: t('menu.dataMgmtDesc'),
+			title: t('menu.dataManagement.title'),
+			description: t('menu.dataManagement.desc'),
 			...getNavigationTarget('DATA_MANAGEMENT', {
-				modalTitle: t('menu.dataMgmtTitle')
+				modalTitle: t('menu.dataManagement.title')
 			}),
 			indicator: { type: 'arrow' }
 		}
@@ -46,16 +46,16 @@ function useListItems() {
 		{
 			icon: FaGithub,
 			iconProps: { color: '#7fc7ff' },
-			title: t('menu.githubTitle'),
-			description: t('menu.githubDesc'),
+			title: t('menu.shared.gitHub.title'),
+			description: t('menu.shared.gitHub.desc'),
 			onClick: () => window.open('https://github.com/iNikAnn/DoHabit', '_blank'),
 			indicator: { type: 'external' }
 		},
 		{
 			icon: IoIosMail,
 			iconProps: { color: '#ffb841' },
-			title: t('menu.feedbackTitle'),
-			description: t('menu.feedbackDesc'),
+			title: t('menu.shared.feedback.title'),
+			description: t('menu.shared.feedback.desc'),
 			onClick: () => window.location.href = 'mailto:ilowen@ya.ru?subject=Feedback%20on%20DoHabit',
 			indicator: { type: 'external' }
 		}

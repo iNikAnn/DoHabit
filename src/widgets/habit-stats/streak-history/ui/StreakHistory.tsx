@@ -33,8 +33,8 @@ function StreakHistory(props: StreakHistoryProps) {
 	// 2. Render list
 	return (
 		<Card
-			title={t('habits.streakHistoryTitle')}
-			description={t('habits.streakHistoryDesc')}
+			title={t('habits.stats.streakHistoryTitle')}
+			description={t('habits.stats.streakHistoryDesc')}
 			extra={<FaBinoculars style={{ color: baseColor }} />}
 		>
 			<div className={styles.history}>

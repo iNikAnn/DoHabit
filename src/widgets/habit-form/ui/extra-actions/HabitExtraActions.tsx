@@ -18,7 +18,7 @@ function HabitExtraActions({ habitId, onSuccess }: HabitExtraActionsProps) {
 		<Button
 			className={styles.button}
 			onClick={() => openDrawer({
-				title: t('habits.manageHabitTitle'),
+				title: t('habits.dialogs.manageTitle'),
 				actions
 			})}
 		>

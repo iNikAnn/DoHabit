@@ -8,7 +8,7 @@ import { notesStore } from '@entities/note';
 * Triggers confirmation before performing the deletion.
 */
 function removeHabit(habitId: string, onSuccess?: () => void) {
-	const msg = i18n.t('habits.removeConfirm')
+	const msg = i18n.t('habits.dialogs.deleteConfirm')
 
 	const habitsDispatch = habitsStore.getState().habitsDispatch;
 	const notesDispatch = notesStore.getState().notesDispatch;
