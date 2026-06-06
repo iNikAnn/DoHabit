@@ -48,11 +48,11 @@
 			"create": "创建习惯",
 			"createNew": "新建习惯",
 			"delete": "删除习惯",
-			"doneYesterday": "昨日已做",
+			"doneYesterday": "补签昨日",
 			"edit": "编辑",
 			"notes": "笔记",
 			"share": "分享习惯",
-			"undoYesterday": "撤销昨日",
+			"undoYesterday": "撤销补签",
 			"update": "保存修改"
 		},
 		"dialogs": {

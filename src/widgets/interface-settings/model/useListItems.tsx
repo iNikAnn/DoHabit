@@ -42,7 +42,7 @@ function useListItems() {
 			icon: FaLanguage,
 			title: t('menu.appearance.language.title'),
 			description: t('menu.appearance.language.desc', {
-				lang: languageMap[i18n.language].label
+				lang: languageMap[i18n.language]?.label ?? 'Unknown'
 			}),
 			onClick: () => {
 				openDrawer({
