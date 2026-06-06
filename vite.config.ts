@@ -124,6 +124,8 @@ export default defineConfig({
 				config: true,
 			},
 
+			includeManifestIcons: false,
+
 			manifest: {
 				name: 'DoHabit',
 				short_name: 'DoHabit',
@@ -183,7 +185,7 @@ export default defineConfig({
 						name: 'Open notes',
 						short_name: 'Notes',
 						description: 'Capture ideas, moods, and reflections in your personal daily diary.',
-						url: '/modal/diary'
+						url: 'modal/diary'
 					}
 				],
 
