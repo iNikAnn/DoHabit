@@ -3,6 +3,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { groupBy } from 'es-toolkit';
 import { FaCheckCircle } from 'react-icons/fa';
+import NoteListToolbar from './toolbar/NoteListToolbar';
 import { useNoteActions } from '../model/useNoteActions';
 import { useNoteTags } from '../model/useNoteTags';
 import { cardVariants, monthLabelVariants } from '../model/animations';
@@ -14,7 +15,6 @@ import { getYearBoundaries } from '@shared/lib/date-time';
 import { useIntersectionObserver } from '@shared/lib/dom';
 import { extractUniqueTags } from '@shared/lib/text';
 import { Placeholder } from '@shared/ui';
-import NoteListToolbar from './toolbar/NoteListToolbar';
 
 interface NoteListProps {
 	habitId?: string;
@@ -207,6 +207,8 @@ function NoteList(props: NoteListProps) {
 											>
 												<NoteCard
 													note={note}
+													isSelected={isSelectionMode && selectedIds.has(note.id)}
+													disableLinks={isSelectionMode}
 													onCardClick={() => {
 														if (isSelectionMode) toggleSelect(note.id);
 														else openNoteMenu({ note, onEdit: openNoteForm });

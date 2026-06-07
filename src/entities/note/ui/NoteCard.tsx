@@ -1,5 +1,6 @@
 import styles from './NoteCard.module.css';
 import { useRef } from 'react';
+import clsx from 'clsx';
 import { useLongPress } from 'use-long-press';
 import type { Note } from '../model/types';
 import NoteText from './note-text/NoteText';
@@ -7,6 +8,8 @@ import { formatDate } from '@shared/lib/date-time';
 
 interface NoteCardProps {
 	note: Note;
+	isSelected: boolean;
+	disableLinks: boolean;
 	onCardClick: () => void;
 	onLongPress: (id: string) => void;
 	onTagClick: (tag: string) => void;
@@ -15,6 +18,8 @@ interface NoteCardProps {
 function NoteCard(props: NoteCardProps) {
 	const {
 		note,
+		isSelected,
+		disableLinks,
 		onCardClick,
 		onLongPress,
 		onTagClick
@@ -59,11 +64,15 @@ function NoteCard(props: NoteCardProps) {
 	return (
 		<div
 			{...bind()}
-			className={styles.note}
+			className={clsx(
+				styles.note,
+				isSelected && styles.isSelected
+			)}
 			onClick={handleClick}
 		>
 			<NoteText
 				text={note.text}
+				disableLinks={disableLinks}
 				onTagClick={onTagClick}
 			/>
 
