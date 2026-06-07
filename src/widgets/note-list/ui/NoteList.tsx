@@ -6,16 +6,15 @@ import { FaCheckCircle } from 'react-icons/fa';
 import { useNoteActions } from '../model/useNoteActions';
 import { useNoteTags } from '../model/useNoteTags';
 import { cardVariants, monthLabelVariants } from '../model/animations';
-import SortButton from './sort-button/SortButton';
-import TagButton from './tag-button/TagButton';
 import { useNoteFormStore } from '@features/manage-note';
 import { NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { MONTHS } from '@shared/const';
-import { extractYearsFromTimeline, getYearBoundaries } from '@shared/lib/date-time';
+import { getYearBoundaries } from '@shared/lib/date-time';
 import { useIntersectionObserver } from '@shared/lib/dom';
 import { extractUniqueTags } from '@shared/lib/text';
-import { Placeholder, SegmentedControl } from '@shared/ui';
+import { Placeholder } from '@shared/ui';
+import NoteListToolbar from './toolbar/NoteListToolbar';
 
 interface NoteListProps {
 	habitId?: string;
@@ -65,14 +64,6 @@ function NoteList(props: NoteListProps) {
 	const scopeNotes = useMemo(
 		() => notes.filter((n) => habitId ? n.habitId === habitId : !n.habitId),
 		[habitId, notes]
-	);
-
-	/**
-	 * Extracts a list of years to populate the timeline filter options.
-	 */
-	const availableYears = useMemo(
-		() => extractYearsFromTimeline(scopeNotes, { order: 'desc' }),
-		[scopeNotes]
 	);
 
 	/**
@@ -149,36 +140,28 @@ function NoteList(props: NoteListProps) {
 	// 2. Render list
 	return (
 		<div className={styles.container}>
-			<div className={styles.toolbar}>
-				<SegmentedControl
-					options={['All', ...availableYears].map((v) => ({ value: String(v) }))}
-					value={String(selectedYear)}
-					onChange={(v) => {
+			<NoteListToolbar
+				notes={scopeNotes}
+				selectedYear={String(selectedYear)}
+				hasActiveTag={Boolean(activeTag)}
+				order={sortOrder}
+				onYearChange={(year) => {
+					setActiveTag(null);
+					setSelectedYear(year === 'All' ? 'All' : Number(year));
+				}}
+				onTagAction={() => {
+					if (activeTag) {
 						setActiveTag(null);
-						setSelectedYear(v === 'All' ? 'All' : Number(v));
-					}}
-				/>
-
-				<TagButton
-					isActive={Boolean(activeTag)}
-					onClick={() => {
-						if (activeTag) {
-							setActiveTag(null);
-						} else {
-							openNoteTagsMenu({
-								title: selectedYear === 'All' ? 'All tags' : `Tags for ${selectedYear}`,
-								notes: yearNotes,
-								onSetTag: setActiveTag
-							});
-						}
-					}}
-				/>
-
-				<SortButton
-					order={sortOrder}
-					onClick={() => setSortOrder((prev) => prev === 'asc' ? 'desc' : 'asc')}
-				/>
-			</div>
+					} else {
+						openNoteTagsMenu({
+							title: selectedYear === 'All' ? 'All tags' : `Tags for ${selectedYear}`,
+							notes: yearNotes,
+							onSetTag: setActiveTag
+						});
+					}
+				}}
+				onOrderChange={() => setSortOrder((prev) => prev === 'asc' ? 'desc' : 'asc')}
+			/>
 
 			<div className={styles.noteGroupsWrapper}>
 				<AnimatePresence mode='popLayout'>
