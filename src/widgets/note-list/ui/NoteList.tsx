@@ -230,7 +230,7 @@ function NoteList(props: NoteListProps) {
 													}}
 													onLongPress={() => {
 														if (isSelectionMode) toggleSelect(note.id);
-														else enterSelectionMode();
+														else enterSelectionMode(note.id);
 													}}
 													onTagClick={(tag: string) => {
 														onScrollTop({ behavior: 'auto' });

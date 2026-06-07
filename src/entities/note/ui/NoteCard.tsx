@@ -1,6 +1,6 @@
 import styles from './NoteCard.module.css';
 import { useRef } from 'react';
-import { useLongPress } from '@uidotdev/usehooks';
+import { useLongPress } from 'use-long-press';
 import type { Note } from '../model/types';
 import { formatDate } from '@shared/lib/date-time';
 import NoteText from './note-text/NoteText';
@@ -33,7 +33,10 @@ function NoteCard(props: NoteCardProps) {
 		onLongPress(note.id);
 	};
 
-	const attrs = useLongPress(handleLongPress, { threshold: 500 });
+	const bind = useLongPress(handleLongPress, {
+		threshold: 300,
+		cancelOnMovement: 10
+	});
 
 	/**
 	 * Handles the standard card click,
@@ -52,7 +55,7 @@ function NoteCard(props: NoteCardProps) {
 
 	return (
 		<div
-			{...attrs}
+			{...bind()}
 			className={styles.note}
 			onClick={handleClick}
 		>
