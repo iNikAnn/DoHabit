@@ -51,5 +51,12 @@ export type NoteAction =
 
 export interface NoteState {
 	notes: Note[];
+
+	// Bulk mode
+	isSelectionMode: boolean;
+	selectedIds: Set<string>;
+	enterSelectionMode: (initialId?: string) => void;
+	toggleSelect: (id: string) => void;
+
 	notesDispatch: (action: NoteAction) => void;
 }

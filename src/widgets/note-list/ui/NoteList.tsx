@@ -2,6 +2,7 @@ import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { groupBy } from 'es-toolkit';
+import { FaCheckCircle } from 'react-icons/fa';
 import { useNoteActions } from '../model/useNoteActions';
 import { useNoteTags } from '../model/useNoteTags';
 import { cardVariants, monthLabelVariants } from '../model/animations';
@@ -36,6 +37,14 @@ function NoteList(props: NoteListProps) {
 
 	// Core data and drawer action hooks
 	const notes = useNotesStore((s) => s.notes);
+
+	// Active state and current items collection for bulk edit mode
+	const isSelectionMode = useNotesStore((s) => s.isSelectionMode);
+	const selectedIds = useNotesStore((s) => s.selectedIds);
+
+	// Management actions to trigger or modify bulk selection state
+	const enterSelectionMode = useNotesStore((s) => s.enterSelectionMode);
+	const toggleSelect = useNotesStore((s) => s.toggleSelect);
 
 	// Actions and menu controls
 	const openNoteForm = useNoteFormStore((s) => s.openEdit);
@@ -201,6 +210,7 @@ function NoteList(props: NoteListProps) {
 										{notes.map((note) => (
 											<motion.li
 												key={`${note.id}_${sortOrder}_${activeTag}`} // Reset layout animation state on list updates to avoid layout shifts
+												style={{ position: 'relative' }}
 												variants={cardVariants}
 												initial='initial'
 												animate='animate'
@@ -214,12 +224,26 @@ function NoteList(props: NoteListProps) {
 											>
 												<NoteCard
 													note={note}
-													onCardClick={() => openNoteMenu({ note, onEdit: openNoteForm })}
+													onCardClick={() => {
+														if (isSelectionMode) toggleSelect(note.id);
+														else openNoteMenu({ note, onEdit: openNoteForm });
+													}}
+													onLongPress={() => {
+														if (isSelectionMode) toggleSelect(note.id);
+														else enterSelectionMode();
+													}}
 													onTagClick={(tag: string) => {
 														onScrollTop({ behavior: 'auto' });
 														setActiveTag(tag);
 													}}
 												/>
+
+												{/* Render checkmark if note is selected in bulk mode */}
+												{(isSelectionMode && selectedIds.has(note.id)) && (
+													<div className={styles.selectedIcon}>
+														<FaCheckCircle />
+													</div>
+												)}
 											</motion.li>
 										))}
 									</AnimatePresence>
