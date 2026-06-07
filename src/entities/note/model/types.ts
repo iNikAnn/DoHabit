@@ -32,7 +32,7 @@ export interface EditNote {
 export interface DeleteNote {
 	type: 'deleteNote';
 	payload: {
-		noteId: string;
+		noteId: string | string[] | Set<string>;
 	};
 }
 
