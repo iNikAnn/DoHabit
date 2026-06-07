@@ -64,6 +64,11 @@ export const useNotesStore = create<NoteState>()(
 				selectedIds: new Set(initialId ? [initialId] : [])
 			})),
 
+			exitSelectionMode: () => set(() => ({
+				isSelectionMode: false,
+				selectedIds: new Set(),
+			})),
+
 			toggleSelect: (id) => set((s) => {
 				const nextSelected = new Set(s.selectedIds);
 
@@ -78,8 +83,8 @@ export const useNotesStore = create<NoteState>()(
 				return { selectedIds: nextSelected, isSelectionMode };
 			}),
 
-			notesDispatch: (actions) => set(
-				(s) => ({ notes: notesReducer(s.notes, actions) })
+			notesDispatch: (action) => set(
+				(s) => ({ notes: notesReducer(s.notes, action) })
 			)
 		}),
 		{

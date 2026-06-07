@@ -56,6 +56,7 @@ export interface NoteState {
 	isSelectionMode: boolean;
 	selectedIds: Set<string>;
 	enterSelectionMode: (initialId?: string) => void;
+	exitSelectionMode: () => void;
 	toggleSelect: (id: string) => void;
 
 	notesDispatch: (action: NoteAction) => void;
