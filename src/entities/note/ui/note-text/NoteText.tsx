@@ -4,12 +4,14 @@ import 'linkify-plugin-hashtag';
 
 interface NoteTextProps {
 	text: string;
+	disableLinks: boolean;
 	onTagClick: (tag: string) => void;
 }
 
 function NoteText(props: NoteTextProps) {
 	const {
 		text,
+		disableLinks,
 		onTagClick
 	} = props;
 
@@ -22,20 +24,24 @@ function NoteText(props: NoteTextProps) {
 
 	return (
 		<div className={styles.note}>
-			<Linkify
-				options={{
-					render: ({ content }) => (
-						<button
-							className={styles.tag}
-							onClick={(e) => handleTagClick(e, content)}
-						>
-							{content}
-						</button>
-					)
-				}}
-			>
-				{text}
-			</Linkify>
+			{disableLinks ? (
+				text
+			) : (
+				<Linkify
+					options={{
+						render: ({ content }) => (
+							<button
+								className={styles.tag}
+								onClick={(e) => handleTagClick(e, content)}
+							>
+								{content}
+							</button>
+						)
+					}}
+				>
+					{text}
+				</Linkify>
+			)}
 		</div>
 	);
 }
