@@ -1,0 +1,1 @@
+export { removeNote } from './model/removeNote';
