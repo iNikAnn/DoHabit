@@ -32,7 +32,7 @@ export interface EditNote {
 export interface DeleteNote {
 	type: 'deleteNote';
 	payload: {
-		noteId: string;
+		noteId: string | string[] | Set<string>;
 	};
 }
 
@@ -51,5 +51,13 @@ export type NoteAction =
 
 export interface NoteState {
 	notes: Note[];
+
+	// Bulk mode
+	isSelectionMode: boolean;
+	selectedIds: Set<string>;
+	enterSelectionMode: (initialId?: string) => void;
+	exitSelectionMode: () => void;
+	toggleSelect: (id: string) => void;
+
 	notesDispatch: (action: NoteAction) => void;
 }

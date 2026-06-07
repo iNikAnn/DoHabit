@@ -6,7 +6,7 @@ interface DeleteNoteParams {
 }
 
 /**
- * Remove a note from the list.
+ * Filter out specified notes by ID.
  */
 function deleteNote(params: DeleteNoteParams): Note[] {
 	const {
@@ -14,7 +14,14 @@ function deleteNote(params: DeleteNoteParams): Note[] {
 		payload: { noteId }
 	} = params;
 
-	return notes.filter((note) => note.id !== noteId);
+	// Convert string, array, or set into an array for Set constructor
+	const idsArray = typeof noteId === 'string'
+		? [noteId]
+		: Array.from(noteId);
+
+	const targetIds = new Set(idsArray);
+
+	return notes.filter((note) => !targetIds.has(note.id));
 }
 
 export { deleteNote };

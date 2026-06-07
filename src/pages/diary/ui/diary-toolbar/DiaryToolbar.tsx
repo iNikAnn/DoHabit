@@ -1,8 +1,11 @@
 import styles from './DiaryToolbar.module.css';
-import { FaPlus } from 'react-icons/fa';
-import { Button } from '@shared/ui';
 import { AnimatePresence, type Variants } from 'framer-motion';
+import { FaPlus, FaTrash } from 'react-icons/fa';
+import { toast } from 'sonner';
 import { useNoteFormStore } from '@features/manage-note';
+import { removeNote } from '@features/remove-note';
+import { useNotesStore } from '@entities/note';
+import { Button } from '@shared/ui';
 
 interface DiaryToolbarProps {
 	showScrollTop: boolean;
@@ -34,47 +37,70 @@ const variants: Variants = {
 	}
 };
 
+const motionProps = {
+	variants,
+	initial: 'initial',
+	animate: 'animate',
+	exit: 'exit'
+}
+
 function DiaryToolbar(props: DiaryToolbarProps) {
 	const {
 		showScrollTop,
 		onScrollTop,
 	} = props;
 
-	const showToolbar = useNoteFormStore((s) => s.isOpen) === false;
+	// Form state
+	const isFormOpen = useNoteFormStore((s) => s.isOpen);
 	const openNoteForm = useNoteFormStore((s) => s.openCreate);
+	const showToolbar = !isFormOpen;
+
+	// Bulk selection state
+	const isSelectionMode = useNotesStore((s) => s.isSelectionMode);
+	const selectedIds = useNotesStore((s) => s.selectedIds);
+	const exitSelectionMode = useNotesStore((s) => s.exitSelectionMode);
 
 	return (
 		<div className={styles.toolbar}>
-			<AnimatePresence initial={false}>
+			<AnimatePresence initial={false} mode='popLayout'>
 				{(showToolbar && showScrollTop) && (
 					<Button
 						key='scroll-to-top-button'
 						className={styles.scrollToTopButton}
-
-						variants={variants}
-						initial='initial'
-						animate='animate'
-						exit='exit'
-
 						onClick={onScrollTop}
+						{...motionProps}
 					>
 						UP
 					</Button>
 				)}
 
-				{showToolbar && (
+				{/* Activate note form button */}
+				{(showToolbar && !isSelectionMode) && (
 					<Button
 						key='activate-note-form-button'
 						className={styles.activateNoteFormButton}
-
-						variants={variants}
-						initial='initial'
-						animate='animate'
-						exit='exit'
-
 						onClick={openNoteForm}
+						{...motionProps}
 					>
 						<FaPlus />
+					</Button>
+				)}
+
+				{/* Bulk selection actions */}
+				{(showToolbar && isSelectionMode) && (
+					<Button
+						key='delete-selected-notes'
+						variant='danger'
+						onClick={() => removeNote(
+							selectedIds,
+							() => {
+								exitSelectionMode();
+								toast.success('Note(s) deleted!');
+							}
+						)}
+						{...motionProps}
+					>
+						<FaTrash />
 					</Button>
 				)}
 			</AnimatePresence>

@@ -1,30 +1,78 @@
 import styles from './NoteCard.module.css';
+import { useRef } from 'react';
+import clsx from 'clsx';
+import { useLongPress } from 'use-long-press';
 import type { Note } from '../model/types';
-import { formatDate } from '@shared/lib/date-time';
 import NoteText from './note-text/NoteText';
+import { formatDate } from '@shared/lib/date-time';
 
 interface NoteCardProps {
 	note: Note;
+	isSelected: boolean;
+	disableLinks: boolean;
 	onCardClick: () => void;
+	onLongPress: (id: string) => void;
 	onTagClick: (tag: string) => void;
 }
 
 function NoteCard(props: NoteCardProps) {
 	const {
 		note,
+		isSelected,
+		disableLinks,
 		onCardClick,
+		onLongPress,
 		onTagClick
 	} = props;
+
+	/**
+	 * Ref to track if a long press event was recently triggered.
+	 */
+	const isLongPressedRef = useRef(false);
+
+	/**
+	 * Handles the long press activation.
+	 */
+	const handleLongPress = () => {
+		isLongPressedRef.current = true;
+		onLongPress(note.id);
+	};
+
+	const bind = useLongPress(handleLongPress, {
+		threshold: 500,
+		cancelOnMovement: 10,
+		onFinish: () => setTimeout(() => {
+			isLongPressedRef.current = false
+		}, 50)
+	});
+
+	/**
+	 * Handles the standard card click,
+	 * preventing action if triggered by a long press.
+	 */
+	const handleClick = () => {
+		if (isLongPressedRef.current) {
+			isLongPressedRef.current = false;
+			return;
+		};
+
+		onCardClick();
+	};
 
 	const dateTimeStr = formatDate(new Date(note.createdAt), { includeTime: true });
 
 	return (
 		<div
-			className={styles.note}
-			onClick={onCardClick}
+			{...bind()}
+			className={clsx(
+				styles.note,
+				isSelected && styles.isSelected
+			)}
+			onClick={handleClick}
 		>
 			<NoteText
 				text={note.text}
+				disableLinks={disableLinks}
 				onTagClick={onTagClick}
 			/>
 

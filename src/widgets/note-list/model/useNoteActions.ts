@@ -1,6 +1,7 @@
 import { toast } from 'sonner';
 import { FaCopy, FaPencilAlt, FaTrash } from 'react-icons/fa';
-import { type Note, useNotesStore } from '@entities/note';
+import { removeNote } from '@features/remove-note';
+import { type Note } from '@entities/note';
 import { copyToClipboard } from '@shared/lib/dom';
 import { type DrawerAction, useDrawerStore } from '@shared/ui';
 
@@ -13,7 +14,6 @@ interface OpenMenuParams {
  * Hook to manage drawer menu logic.
  */
 function useNoteActions() {
-	const notesDispatch = useNotesStore((s) => s.notesDispatch);
 	const openDrawer = useDrawerStore((s) => s.open);
 
 	const getActions = (params: OpenMenuParams): DrawerAction[] => {
@@ -28,18 +28,10 @@ function useNoteActions() {
 				icon: FaTrash,
 				label: 'Delete Note',
 				variant: 'danger',
-				onClick: () => {
-					if (window.confirm('Are you sure you want to delete this note?')) {
-						notesDispatch({
-							type: 'deleteNote',
-							payload: {
-								noteId: note.id
-							}
-						});
-
-						toast.success('Note deleted!');
-					}
-				}
+				onClick: () => removeNote(
+					note.id,
+					() => toast.success('Note deleted!')
+				)
 			},
 
 			// Edit note

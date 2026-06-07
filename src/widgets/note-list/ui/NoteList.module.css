@@ -1,17 +1,8 @@
 /* container */
 .container {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
-}
-
-.toolbar {
-	display: flex;
-	gap: 8px;
-}
-
-.toolbar > div {
-	width: 100%;
 }
 
 .noteGroupsWrapper {
@@ -24,7 +15,13 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+}
 
+.selectedIcon {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	color: var(--accent-color);
 }
 
 .monthLabelWrapper {

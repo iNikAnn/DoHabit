@@ -2,19 +2,19 @@ import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { groupBy } from 'es-toolkit';
+import { FaCheckCircle } from 'react-icons/fa';
+import NoteListToolbar from './toolbar/NoteListToolbar';
 import { useNoteActions } from '../model/useNoteActions';
 import { useNoteTags } from '../model/useNoteTags';
 import { cardVariants, monthLabelVariants } from '../model/animations';
-import SortButton from './sort-button/SortButton';
-import TagButton from './tag-button/TagButton';
 import { useNoteFormStore } from '@features/manage-note';
 import { NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { MONTHS } from '@shared/const';
-import { extractYearsFromTimeline, getYearBoundaries } from '@shared/lib/date-time';
+import { getYearBoundaries } from '@shared/lib/date-time';
 import { useIntersectionObserver } from '@shared/lib/dom';
 import { extractUniqueTags } from '@shared/lib/text';
-import { Placeholder, SegmentedControl } from '@shared/ui';
+import { Placeholder } from '@shared/ui';
 
 interface NoteListProps {
 	habitId?: string;
@@ -37,6 +37,14 @@ function NoteList(props: NoteListProps) {
 	// Core data and drawer action hooks
 	const notes = useNotesStore((s) => s.notes);
 
+	// Active state and current items collection for bulk edit mode
+	const isSelectionMode = useNotesStore((s) => s.isSelectionMode);
+	const selectedIds = useNotesStore((s) => s.selectedIds);
+
+	// Management actions to trigger or modify bulk selection state
+	const enterSelectionMode = useNotesStore((s) => s.enterSelectionMode);
+	const toggleSelect = useNotesStore((s) => s.toggleSelect);
+
 	// Actions and menu controls
 	const openNoteForm = useNoteFormStore((s) => s.openEdit);
 	const { openNoteMenu } = useNoteActions();
@@ -56,14 +64,6 @@ function NoteList(props: NoteListProps) {
 	const scopeNotes = useMemo(
 		() => notes.filter((n) => habitId ? n.habitId === habitId : !n.habitId),
 		[habitId, notes]
-	);
-
-	/**
-	 * Extracts a list of years to populate the timeline filter options.
-	 */
-	const availableYears = useMemo(
-		() => extractYearsFromTimeline(scopeNotes, { order: 'desc' }),
-		[scopeNotes]
 	);
 
 	/**
@@ -140,36 +140,28 @@ function NoteList(props: NoteListProps) {
 	// 2. Render list
 	return (
 		<div className={styles.container}>
-			<div className={styles.toolbar}>
-				<SegmentedControl
-					options={['All', ...availableYears].map((v) => ({ value: String(v) }))}
-					value={String(selectedYear)}
-					onChange={(v) => {
+			<NoteListToolbar
+				notes={scopeNotes}
+				selectedYear={String(selectedYear)}
+				hasActiveTag={Boolean(activeTag)}
+				order={sortOrder}
+				onYearChange={(year) => {
+					setActiveTag(null);
+					setSelectedYear(year === 'All' ? 'All' : Number(year));
+				}}
+				onTagAction={() => {
+					if (activeTag) {
 						setActiveTag(null);
-						setSelectedYear(v === 'All' ? 'All' : Number(v));
-					}}
-				/>
-
-				<TagButton
-					isActive={Boolean(activeTag)}
-					onClick={() => {
-						if (activeTag) {
-							setActiveTag(null);
-						} else {
-							openNoteTagsMenu({
-								title: selectedYear === 'All' ? 'All tags' : `Tags for ${selectedYear}`,
-								notes: yearNotes,
-								onSetTag: setActiveTag
-							});
-						}
-					}}
-				/>
-
-				<SortButton
-					order={sortOrder}
-					onClick={() => setSortOrder((prev) => prev === 'asc' ? 'desc' : 'asc')}
-				/>
-			</div>
+					} else {
+						openNoteTagsMenu({
+							title: selectedYear === 'All' ? 'All tags' : `Tags for ${selectedYear}`,
+							notes: yearNotes,
+							onSetTag: setActiveTag
+						});
+					}
+				}}
+				onOrderChange={() => setSortOrder((prev) => prev === 'asc' ? 'desc' : 'asc')}
+			/>
 
 			<div className={styles.noteGroupsWrapper}>
 				<AnimatePresence mode='popLayout'>
@@ -201,6 +193,7 @@ function NoteList(props: NoteListProps) {
 										{notes.map((note) => (
 											<motion.li
 												key={`${note.id}_${sortOrder}_${activeTag}`} // Reset layout animation state on list updates to avoid layout shifts
+												style={{ position: 'relative' }}
 												variants={cardVariants}
 												initial='initial'
 												animate='animate'
@@ -214,12 +207,28 @@ function NoteList(props: NoteListProps) {
 											>
 												<NoteCard
 													note={note}
-													onCardClick={() => openNoteMenu({ note, onEdit: openNoteForm })}
+													isSelected={isSelectionMode && selectedIds.has(note.id)}
+													disableLinks={isSelectionMode}
+													onCardClick={() => {
+														if (isSelectionMode) toggleSelect(note.id);
+														else openNoteMenu({ note, onEdit: openNoteForm });
+													}}
+													onLongPress={() => {
+														if (isSelectionMode) toggleSelect(note.id);
+														else enterSelectionMode(note.id);
+													}}
 													onTagClick={(tag: string) => {
 														onScrollTop({ behavior: 'auto' });
 														setActiveTag(tag);
 													}}
 												/>
+
+												{/* Render checkmark if note is selected in bulk mode */}
+												{(isSelectionMode && selectedIds.has(note.id)) && (
+													<div className={styles.selectedIcon}>
+														<FaCheckCircle />
+													</div>
+												)}
 											</motion.li>
 										))}
 									</AnimatePresence>

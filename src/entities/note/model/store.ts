@@ -55,14 +55,47 @@ export const useNotesStore = create<NoteState>()(
 		(set) => ({
 			notes: [],
 
-			notesDispatch: (actions) => set(
-				(s) => ({ notes: notesReducer(s.notes, actions) })
+			// Bulk mode
+			isSelectionMode: false,
+			selectedIds: new Set(),
+
+			enterSelectionMode: (initialId) => set(() => ({
+				isSelectionMode: true,
+				selectedIds: new Set(initialId ? [initialId] : [])
+			})),
+
+			exitSelectionMode: () => set(() => ({
+				isSelectionMode: false,
+				selectedIds: new Set(),
+			})),
+
+			toggleSelect: (id) => set((s) => {
+				const nextSelected = new Set(s.selectedIds);
+
+				if (nextSelected.has(id)) {
+					nextSelected.delete(id);
+				} else {
+					nextSelected.add(id);
+				}
+
+				const isSelectionMode = nextSelected.size > 0;
+
+				return { selectedIds: nextSelected, isSelectionMode };
+			}),
+
+			notesDispatch: (action) => set(
+				(s) => ({ notes: notesReducer(s.notes, action) })
 			)
 		}),
 		{
 			name: STORAGE_KEYS.NOTES,
 			storage: createJSONStorage(() => customStorage),
 			version: CURRENT_VERSION,
+
+			partialize: (s) => ({
+				notes: s.notes
+			}),
+
 			migrate: (persistedState, version) => {
 				let newState = persistedState;
 
