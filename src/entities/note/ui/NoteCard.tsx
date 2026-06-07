@@ -2,8 +2,8 @@ import styles from './NoteCard.module.css';
 import { useRef } from 'react';
 import { useLongPress } from 'use-long-press';
 import type { Note } from '../model/types';
-import { formatDate } from '@shared/lib/date-time';
 import NoteText from './note-text/NoteText';
+import { formatDate } from '@shared/lib/date-time';
 
 interface NoteCardProps {
 	note: Note;
@@ -34,8 +34,11 @@ function NoteCard(props: NoteCardProps) {
 	};
 
 	const bind = useLongPress(handleLongPress, {
-		threshold: 300,
-		cancelOnMovement: 10
+		threshold: 500,
+		cancelOnMovement: 10,
+		onFinish: () => setTimeout(() => {
+			isLongPressedRef.current = false
+		}, 50)
 	});
 
 	/**
