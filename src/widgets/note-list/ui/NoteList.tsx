@@ -11,7 +11,7 @@ import { NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
 import { MONTHS } from '@shared/const';
 import { getYearBoundaries } from '@shared/lib/date-time';
-import { useIntersectionObserver } from '@shared/lib/dom';
+import { useIntersectionObserver, useNativeBackClose } from '@shared/lib/dom';
 import { extractUniqueTags } from '@shared/lib/text';
 import { Placeholder } from '@shared/ui';
 
@@ -32,11 +32,16 @@ function NoteList(props: NoteListProps) {
 		habitId,
 		onScrollTop
 	} = props;
+
 	// Core data and drawer action hooks
 	const notes = useNotesStore((s) => s.notes);
 
-	// Active state and current items collection for bulk edit mode
+	// Bulk edit mode subscription
 	const isSelectionMode = useNotesStore((s) => s.isSelectionMode);
+	const exitSelectionMode = useNotesStore((s) => s.exitSelectionMode);
+
+	// Handle back action to exit selection mode
+	useNativeBackClose(isSelectionMode, exitSelectionMode);
 
 	// Management actions to trigger or modify bulk selection state
 	const enterSelectionMode = useNotesStore((s) => s.enterSelectionMode);
