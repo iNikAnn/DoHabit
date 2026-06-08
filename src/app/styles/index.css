@@ -75,6 +75,7 @@ button,
 a,
 [role="button"] {
     -webkit-tap-highlight-color: transparent;
+	cursor: pointer;
 }
 
 input {

@@ -20,7 +20,7 @@ const INDICATOR_ICONS: Record<ButtonIndicator, IconType | null> = {
 
 const whileTap = {
 	filter: 'brightness(0.8)',
-	scale: 0.96,
+	scale: 0.98,
 	transition: { duration: 0.1 }
 };
 
