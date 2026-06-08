@@ -34,3 +34,13 @@
 	gap: 0.4rem;
 	align-items: center;
 }
+
+.selectBadge {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--accent-color);
+}

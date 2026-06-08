@@ -17,13 +17,6 @@
 	gap: 10px;
 }
 
-.selectedIcon {
-	position: absolute;
-	top: 16px;
-	right: 16px;
-	color: var(--accent-color);
-}
-
 .monthLabelWrapper {
 	position: sticky;
 	top: calc(48px + 8px);

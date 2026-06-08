@@ -2,6 +2,7 @@ import styles from './NoteCard.module.css';
 import { useRef } from 'react';
 import clsx from 'clsx';
 import { useLongPress } from 'use-long-press';
+import { FaCheckCircle } from 'react-icons/fa';
 import type { Note } from '../model/types';
 import NoteText from './note-text/NoteText';
 import { formatDate } from '@shared/lib/date-time';
@@ -85,6 +86,13 @@ function NoteCard(props: NoteCardProps) {
 					<small>{'Streak: ' + note.streak}</small>
 				)}
 			</div>
+
+			{/* Render checkmark if note is selected */}
+			{isSelected && (
+				<div className={styles.selectBadge}>
+					<FaCheckCircle />
+				</div>
+			)}
 		</div>
 	);
 }

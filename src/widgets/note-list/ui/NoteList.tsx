@@ -2,7 +2,6 @@ import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { groupBy } from 'es-toolkit';
-import { FaCheckCircle } from 'react-icons/fa';
 import NoteListToolbar from './toolbar/NoteListToolbar';
 import { useNoteActions } from '../model/useNoteActions';
 import { useNoteTags } from '../model/useNoteTags';
@@ -222,13 +221,6 @@ function NoteList(props: NoteListProps) {
 														setActiveTag(tag);
 													}}
 												/>
-
-												{/* Render checkmark if note is selected in bulk mode */}
-												{(isSelectionMode && selectedIds.has(note.id)) && (
-													<div className={styles.selectedIcon}>
-														<FaCheckCircle />
-													</div>
-												)}
 											</motion.li>
 										))}
 									</AnimatePresence>
