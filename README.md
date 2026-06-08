@@ -15,7 +15,3 @@ DoHabit is a straightforward habit tracker that doesn’t require registration. 
 ## 📲 Usage
 
 DoHabit is a Progressive Web App (PWA). To use it, simply visit the [website](https://inikann.github.io/DoHabit/) and click on "Install" in the notification that appears. If the notification does not show up, you can also add it to your Home Screen through the browser menu.
-
-## ⚖️ License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE.txt) file in the root directory for details.
