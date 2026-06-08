@@ -117,6 +117,12 @@ function NoteForm(props: Props) {
 								autoComplete='off'
 								onChange={(e) => setDraftText(e.target.value)}
 								onKeyDown={handleKeyDown}
+
+								// Moves cursor to the end of text
+								onFocus={(e) => {
+									const length = draftText.length;
+									e.currentTarget.setSelectionRange(length, length);
+								}}
 							/>
 
 							<Button
