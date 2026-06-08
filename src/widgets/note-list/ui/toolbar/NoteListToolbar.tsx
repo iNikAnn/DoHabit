@@ -72,55 +72,59 @@ function NoteListToolbar(props: NoteListToolbarProps) {
 	);
 
 	return (
-		<AnimatePresence initial={false} mode='popLayout'>
-			{!isSelectionMode && (
-				<motion.div
-					key='note-list-toolbar'
-					className={styles.toolbar}
-					{...motionProps}
-				>
-					<SegmentedControl
-						options={['All', ...availableYears].map((v) => ({ value: String(v) }))}
-						value={selectedYear}
-						onChange={onYearChange}
-					/>
-
-					<TagButton
-						isActive={hasActiveTag}
-						onClick={onTagAction}
-					/>
-
-					<SortButton
-						order={order}
-						onClick={onOrderChange}
-					/>
-				</motion.div>
-			)}
-
-			{isSelectionMode && (
-				<motion.div
-					key='note-list-selection-toolbar'
-					className={styles.selectionToolbar}
-					{...motionProps}
-				>
-					<div className={styles.selectionInfo}>
-						<div className={styles.selectionCount}>
-							{selectedIds.size}
-						</div>
-
-						<div className={styles.selectionLabel}>
-							Notes Selected
-						</div>
-					</div>
-
-					<Button
-						onClick={exitSelectionMode}
+		<div className={styles.wrapper}>
+			<AnimatePresence initial={false} mode='popLayout'>
+				{!isSelectionMode && (
+					<motion.div
+						key='note-list-toolbar'
+						className={styles.toolbar}
+						{...motionProps}
 					>
-						Cancel
-					</Button>
-				</motion.div>
-			)}
-		</AnimatePresence>
+						<SegmentedControl
+							options={['All', ...availableYears].map((v) => ({ value: String(v) }))}
+							value={selectedYear}
+							onChange={onYearChange}
+						/>
+
+						<div className={styles.toolbarActionsWrapper}>
+							<TagButton
+								isActive={hasActiveTag}
+								onClick={onTagAction}
+							/>
+
+							<SortButton
+								order={order}
+								onClick={onOrderChange}
+							/>
+						</div>
+					</motion.div>
+				)}
+
+				{isSelectionMode && (
+					<motion.div
+						key='note-list-selection-toolbar'
+						className={styles.selectionToolbar}
+						{...motionProps}
+					>
+						<div className={styles.selectionInfo}>
+							<div className={styles.selectionCount}>
+								{selectedIds.size}
+							</div>
+
+							<div className={styles.selectionLabel}>
+								Notes Selected
+							</div>
+						</div>
+
+						<Button
+							onClick={exitSelectionMode}
+						>
+							Cancel
+						</Button>
+					</motion.div>
+				)}
+			</AnimatePresence>
+		</div>
 	);
 }
 

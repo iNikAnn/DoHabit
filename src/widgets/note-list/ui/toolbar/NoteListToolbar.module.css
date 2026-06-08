@@ -1,27 +1,39 @@
+.wrapper {
+	position: sticky;
+	top: 0;
+	z-index: 5;
+	height: calc(48px + 8px);
+	padding-bottom: 8px;
+	background-color: var(--bg);
+}
+
 /* .toolbar */
 .toolbar {
 	display: flex;
 	gap: 8px;
-	height: calc(48px + 8px);
-	padding-bottom: 8px;
-	background-color: var(--bg);
+	height: 100%;
 }
 
-.toolbar > div {
-	width: 100%;
+.toolbar > div:first-child {
+	flex: 1;
+}
+
+.toolbarActionsWrapper {
+	display: flex;
+	gap: 8px;
+	height: 100%;
+}
+
+.toolbarActionsWrapper button {
+	height: 100%;
 }
 
 /* selectionToolbar */
 .selectionToolbar {
-	position: sticky;
-	top: 0;
-	z-index: 5;
 	display: flex;
 	gap: 8px;
 	align-items: center;
-	height: calc(48px + 8px);
-	padding-bottom: 8px;
-	background-color: var(--bg);
+	height: 100%;
 }
 
 .selectionInfo {
@@ -53,6 +65,6 @@
 }
 
 .selectionToolbar button {
-	height: 48px;
+	height: 100%;
 	background-color: var(--bg-color-primary);
 }
