@@ -3,14 +3,13 @@ import { useRef } from 'react';
 import clsx from 'clsx';
 import { useLongPress } from 'use-long-press';
 import { FaCheckCircle } from 'react-icons/fa';
-import type { Note } from '../model/types';
 import NoteText from './note-text/NoteText';
+import { useNotesStore } from '../model/store';
+import type { Note } from '../model/types';
 import { formatDate } from '@shared/lib/date-time';
 
 interface NoteCardProps {
 	note: Note;
-	isSelected: boolean;
-	disableLinks: boolean;
 	onCardClick: () => void;
 	onLongPress: (id: string) => void;
 	onTagClick: (tag: string) => void;
@@ -19,12 +18,13 @@ interface NoteCardProps {
 function NoteCard(props: NoteCardProps) {
 	const {
 		note,
-		isSelected,
-		disableLinks,
 		onCardClick,
 		onLongPress,
 		onTagClick
 	} = props;
+
+	const isSelectionMode = useNotesStore((s) => s.isSelectionMode);
+	const isSelected = useNotesStore((s) => s.isSelectionMode && s.selectedIds.has(note.id));
 
 	/**
 	 * Ref to track if a long press event was recently triggered.
@@ -73,7 +73,7 @@ function NoteCard(props: NoteCardProps) {
 		>
 			<NoteText
 				text={note.text}
-				disableLinks={disableLinks}
+				disableLinks={isSelectionMode}
 				onTagClick={onTagClick}
 			/>
 

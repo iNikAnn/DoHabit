@@ -32,13 +32,11 @@ function NoteList(props: NoteListProps) {
 		habitId,
 		onScrollTop
 	} = props;
-
 	// Core data and drawer action hooks
 	const notes = useNotesStore((s) => s.notes);
 
 	// Active state and current items collection for bulk edit mode
 	const isSelectionMode = useNotesStore((s) => s.isSelectionMode);
-	const selectedIds = useNotesStore((s) => s.selectedIds);
 
 	// Management actions to trigger or modify bulk selection state
 	const enterSelectionMode = useNotesStore((s) => s.enterSelectionMode);
@@ -206,8 +204,6 @@ function NoteList(props: NoteListProps) {
 											>
 												<NoteCard
 													note={note}
-													isSelected={isSelectionMode && selectedIds.has(note.id)}
-													disableLinks={isSelectionMode}
 													onCardClick={() => {
 														if (isSelectionMode) toggleSelect(note.id);
 														else openNoteMenu({ note, onEdit: openNoteForm });
