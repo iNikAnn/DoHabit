@@ -12,7 +12,7 @@ import { Button, Overlay } from '@shared/ui';
 function Dialog() {
 	const content = useDialogStore((s) => s.content);
 	const closeDialog = useDialogStore((s) => s.close);
-	useNativeBackClose(Boolean(content), closeDialog)
+	useNativeBackClose(Boolean(content), closeDialog);
 
 	return (
 		<AnimatePresence>

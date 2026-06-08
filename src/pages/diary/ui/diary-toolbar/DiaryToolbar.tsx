@@ -89,7 +89,7 @@ function DiaryToolbar(props: DiaryToolbarProps) {
 				{/* Bulk selection actions */}
 				{(showToolbar && isSelectionMode) && (
 					<Button
-						key='delete-selected-notes'
+						key='delete-selected-notes-button'
 						variant='danger'
 						onClick={() => removeNote(
 							selectedIds,
