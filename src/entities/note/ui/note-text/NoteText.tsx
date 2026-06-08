@@ -29,14 +29,22 @@ function NoteText(props: NoteTextProps) {
 			) : (
 				<Linkify
 					options={{
-						render: ({ content }) => (
-							<button
-								className={styles.tag}
-								onClick={(e) => handleTagClick(e, content)}
-							>
-								{content}
-							</button>
-						)
+						className: styles.link,
+						target: '_blank',
+						rel: 'noopener noreferrer',
+						attributes: {
+							onClick: (e: Event) => e.stopPropagation()
+						},
+						render: {
+							hashtag: ({ content }) => (
+								<button
+									className={styles.link}
+									onClick={(e) => handleTagClick(e, content)}
+								>
+									{content}
+								</button>
+							)
+						}
 					}}
 				>
 					{text}
