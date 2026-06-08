@@ -19,7 +19,7 @@ function NoteText(props: NoteTextProps) {
 		e.preventDefault();
 		e.stopPropagation();
 
-		if (tag) onTagClick(tag);
+		if (tag) onTagClick(tag.toLowerCase());
 	};
 
 	return (

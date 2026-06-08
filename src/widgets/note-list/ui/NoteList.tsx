@@ -86,7 +86,7 @@ function NoteList(props: NoteListProps) {
 
 		return yearNotes.filter((n) => {
 			const tags = extractUniqueTags(n.text);
-			return tags.includes(activeTag);
+			return tags.includes(activeTag.toLowerCase());
 		});
 	}, [activeTag, yearNotes]);
 
