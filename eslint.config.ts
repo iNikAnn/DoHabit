@@ -97,7 +97,8 @@ export default defineConfig([
 						'exit',
 						'value',
 						'target',
-						'rel'
+						'rel',
+						'length'
 					],
 				},
 				words: {
@@ -152,6 +153,7 @@ export default defineConfig([
 						'canvas.toBlob',
 						'toLocaleTimeString',
 						'window.open',
+						/^Intl\..+/,
 						/^localStorage\..+/
 					],
 				},
