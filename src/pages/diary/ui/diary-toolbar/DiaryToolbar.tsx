@@ -1,5 +1,6 @@
 import styles from './DiaryToolbar.module.css';
 import { AnimatePresence, type Variants } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { FaPlus, FaTrash } from 'react-icons/fa';
 import { toast } from 'sonner';
 import { useNoteFormStore } from '@features/manage-note';
@@ -50,6 +51,9 @@ function DiaryToolbar(props: DiaryToolbarProps) {
 		onScrollTop,
 	} = props;
 
+	// UI localization
+	const { t } = useTranslation();
+
 	// Form state
 	const isFormOpen = useNoteFormStore((s) => s.isOpen);
 	const openNoteForm = useNoteFormStore((s) => s.openCreate);
@@ -95,7 +99,7 @@ function DiaryToolbar(props: DiaryToolbarProps) {
 							selectedIds,
 							() => {
 								exitSelectionMode();
-								toast.success('Note(s) deleted!');
+								toast.success(t('notes.notifications.deleteSuccess'));
 							}
 						)}
 						{...motionProps}

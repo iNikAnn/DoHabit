@@ -1,13 +1,17 @@
 import { useSettingsStore } from '@entities/settings';
 import { type ListItemProps, Switch } from '@shared/ui';
+import { useTranslation } from 'react-i18next';
 
 function useListItems() {
+	const { t } = useTranslation();
 	const { settings, settingsDispatch } = useSettingsStore();
 
 	const listItems: ListItemProps[] = [
 		{
-			title: 'Compact calendar view',
-			description: `Current: ${settings.calendarView === 'compact' ? 'Compact' : 'Default'}`,
+			title: t('menu.appearance.calendar.typeTitle'),
+			description: t('menu.appearance.calendar.typeDesc', {
+				type: t(`menu.appearance.calendar.${settings.calendarView ?? 'default'}`)
+			}),
 			extra: (
 				<Switch
 					isActive={settings.calendarView === 'compact'}
@@ -23,10 +27,7 @@ function useListItems() {
 			)
 		},
 		{
-			title: 'Highlight today\'s date',
-			description: settings.calendarHighlightToday
-				? 'Today is highlighted'
-				: 'Today is not highlighted',
+			title: t('menu.appearance.calendar.highlightToday.title'),
 			extra: (
 				<Switch
 					isActive={settings.calendarHighlightToday}
@@ -40,8 +41,8 @@ function useListItems() {
 			)
 		},
 		{
-			title: 'Show weekday names',
-			description: 'Applies to the default calendar only',
+			title: t('menu.appearance.calendar.showWeekdayNames.title'),
+			description: t('menu.appearance.calendar.showWeekdayNames.desc'),
 			extra: (
 				<Switch
 					isActive={settings.calendarShowDayNames}
@@ -55,8 +56,8 @@ function useListItems() {
 			)
 		},
 		{
-			title: 'Show day numbers',
-			description: 'Applies to the default calendar only',
+			title: t('menu.appearance.calendar.showDayNumbers.title'),
+			description: t('menu.appearance.calendar.showDayNumbers.desc'),
 			extra: (
 				<Switch
 					isActive={settings.calendarShowDayNumbers}

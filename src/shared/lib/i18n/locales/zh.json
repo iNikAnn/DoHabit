@@ -1,0 +1,238 @@
+{
+	"achievements": {
+		"list": {
+			"emptyDesc": "定期使用解锁稀有成就！",
+			"emptyTitle": "暂无成就"
+		},
+		"notification": {
+			"desc": "新成就已解锁！\n可在成就板块查看。",
+			"title": "解锁成就！"
+		},
+		"title": "成就"
+	},
+	"app": {
+		"errorBoundary": {
+			"desc": "请尝试重载。若无效，请重置应用（进度将备份）。",
+			"dialogs": {
+				"resetConfirm": "备份数据并重置应用？"
+			},
+			"title": "糟糕！出错了"
+		},
+		"update": {
+			"text": "请点击重载按钮以同步最新功能。",
+			"title": "更新就绪！"
+		}
+	},
+	"common": {
+		"all": "全部",
+		"app": "应用",
+		"cancel": "取消",
+		"close": "关闭",
+		"day": "天",
+		"end": "结束",
+		"icon": "图标",
+		"reload": "重载",
+		"showLess": "收起",
+		"showMore": "展开",
+		"start": "开始",
+		"support": "支持",
+		"theme": {
+			"auto": "跟随系统",
+			"dark": "深色",
+			"light": "浅色"
+		},
+		"ui": "界面",
+		"version": "版本"
+	},
+	"habits": {
+		"actions": {
+			"archive": "归档习惯",
+			"create": "创建习惯",
+			"createNew": "新建习惯",
+			"delete": "删除习惯",
+			"doneYesterday": "补签昨日",
+			"edit": "编辑",
+			"notes": "笔记",
+			"share": "分享习惯",
+			"undoYesterday": "撤销补签",
+			"update": "保存修改"
+		},
+		"dialogs": {
+			"archiveConfirm": "确定归档此习惯吗？",
+			"deleteConfirm": "确定删除此习惯？数据删除后无法恢复。",
+			"manageTitle": "管理习惯",
+			"restoreConfirm": "确定恢复此习惯吗？"
+		},
+		"form": {
+			"colorDesc": "圆点代表已用颜色，仍可复选。",
+			"colorTitle": "颜色",
+			"errors": {
+				"alreadyExists": "已存在。"
+			},
+			"frequencyDesc": "每日计划重复次数。",
+			"frequencyTitle": "频率",
+			"iconDesc": "变灰图标代表已用，仍可复选。",
+			"iconTitle": "图标",
+			"namePlaceholder": "输入习惯名称...",
+			"nameTitle": "名称",
+			"orderDesc": "习惯在列表中的位置。",
+			"orderSorting": {
+				"btnAlreadyAtBottom": "已在底部",
+				"btnAlreadyAtTop": "已在顶部",
+				"btnMoveToBottom": "移至底部",
+				"btnMoveToTop": "移至顶部",
+				"btnStepDown": "下移",
+				"btnStepUp": "上移"
+			},
+			"orderTitle": "排序"
+		},
+		"list": {
+			"createFirst": "创建首个习惯",
+			"emptyActiveDesc": "现在就去创建一个？",
+			"emptyActiveTitle": "未找到常规习惯",
+			"emptyArchivedDesc": "可在编辑时归档习惯。",
+			"emptyArchivedTitle": "未找到归档习惯"
+		},
+		"share": {
+			"desc": "看这个！",
+			"error": "生成图片失败。",
+			"notSupported": "不支持分享。",
+			"title": "分享"
+		},
+		"stats": {
+			"chartCompletions": "完成数",
+			"currentStreak": "当前",
+			"longestStreak": "最长",
+			"monthlyChartTitle": "每月完成度",
+			"streak": "连续天数",
+			"streakHistoryDesc": "展示连续 2 天以上的记录。",
+			"streakHistoryTitle": "连续记录",
+			"title": "统计",
+			"totalCompleted": "总计完成天数",
+			"weekdayChartTitle": "单周完成度"
+		}
+	},
+	"menu": {
+		"appearance": {
+			"calendar": {
+				"compact": "紧凑",
+				"default": "默认",
+				"highlightToday": {
+					"title": "高亮今天"
+				},
+				"sectionTitle": "日历",
+				"showDayNumbers": {
+					"desc": "仅适用于默认日历",
+					"title": "显示日期数字"
+				},
+				"showWeekdayNames": {
+					"desc": "仅适用于默认日历",
+					"title": "显示星期名称"
+				},
+				"typeDesc": "当前：{{type}}",
+				"typeTitle": "紧凑日历视图"
+			},
+			"desc": "自定义应用外观",
+			"language": {
+				"desc": "当前：{{lang}}",
+				"dialogs": {
+					"selectTitle": "选择语言"
+				},
+				"title": "语言"
+			},
+			"theme": {
+				"desc": "当前：{{theme}}",
+				"dialogs": {
+					"selectThemeTitle": "选择主题"
+				},
+				"selectTitle": "选择主题",
+				"title": "主题"
+			},
+			"title": "外观"
+		},
+		"archive": {
+			"desc": "查看或管理归档习惯",
+			"title": "归档"
+		},
+		"dataManagement": {
+			"backup": {
+				"export": {
+					"desc": "保存备份数据至本地",
+					"dialogs": {
+						"exportConfirm": "下载备份文件？"
+					},
+					"title": "导出"
+				},
+				"import": {
+					"desc": "从备份文件导入应用数据",
+					"notifications": {
+						"error": "导入过程中出错。",
+						"success": "导入成功！应用即将重载。"
+					},
+					"title": "导入"
+				},
+				"sectionTitle": "备份"
+			},
+			"danger": {
+				"clearAll": {
+					"desc": "清除应用所有数据",
+					"dialogs": {
+						"confirm": "确定清除所有数据？\n\n将清空：\n- 所有习惯\n- 所有成就\n- 所有日记\n\n此操作无法撤销！",
+						"prompt": "请输入 \"{{phrase}}\" 以确认："
+					},
+					"notifications": {
+						"error": "操作取消或文本错误。",
+						"success": "数据清除成功！应用即将重载。"
+					},
+					"title": "清空全部"
+				},
+				"sectionTitle": "危险区域"
+			},
+			"desc": "备份、恢复或清除数据",
+			"title": "数据管理"
+		},
+		"shared": {
+			"feedback": {
+				"desc": "反馈意见或报告问题",
+				"title": "发送反馈"
+			},
+			"gitHub": {
+				"desc": "查看代码或贡献项目",
+				"title": "GitHub 仓库"
+			}
+		},
+		"title": "菜单"
+	},
+	"notes": {
+		"actions": {
+			"copy": "复制文本",
+			"delete": "删除笔记",
+			"edit": "编辑"
+		},
+		"dialogs": {
+			"deleteConfirm": "确认删除所选笔记吗？"
+		},
+		"form": {
+			"textPlaceholder": "在这里输入笔记..."
+		},
+		"list": {
+			"emptyDesc": "写下第一条日记来记录进展和想法。",
+			"emptyTitle": "笔记本空空如也",
+			"selected": "已选择笔记"
+		},
+		"notifications": {
+			"copyError": "复制失败。",
+			"copySuccess": "已复制！",
+			"createSuccess": "笔记已创建！",
+			"deleteSuccess": "笔记已删除！",
+			"editSuccess": "修改已保存！"
+		},
+		"tags": {
+			"all": "所有标签",
+			"emptyDesc": "写日记时在词前加井号 (#) 即可创建标签。",
+			"emptyTitle": "未找到标签",
+			"forYear": "{{year}} 年标签"
+		},
+		"title": "笔记"
+	}
+}

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { Note } from '@entities/note';
 import { useDrawerStore, type DrawerAction } from '@shared/ui';
 import { extractUniqueTags } from '@shared/lib/text';
@@ -13,6 +14,7 @@ interface OpenMenuParams {
  * Hook to open the note tags menu with dynamically calculated tags.
  */
 function useNoteTags() {
+	const { t } = useTranslation();
 	const openDrawer = useDrawerStore((s) => s.open);
 
 	const getActions = (params: OpenMenuParams): DrawerAction[] => {
@@ -35,8 +37,8 @@ function useNoteTags() {
 
 			const placeholder: PlaceholderProps = {
 				content: {
-					title: 'No tags found',
-					description: 'To create a tag, simply add a hashtag (#) before any word while writing a note.'
+					title: t('notes.tags.emptyTitle'),
+					description: t('notes.tags.emptyDesc')
 				}
 			};
 
@@ -45,7 +47,7 @@ function useNoteTags() {
 				actions,
 				// Display empty state placeholder if no tags are available in the selected period
 				placeholder: actions.length === 0 ? placeholder : undefined
-			})
+			});
 		}
 	};
 }

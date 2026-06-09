@@ -1,0 +1,238 @@
+{
+	"achievements": {
+		"list": {
+			"emptyDesc": "Собирайте редкие достижения пользуясь приложением!",
+			"emptyTitle": "Достижений нет"
+		},
+		"notification": {
+			"desc": "Вы открыли новые достижения!\nПроверьте их в профиле.",
+			"title": "Новое достижение!"
+		},
+		"title": "Достижения"
+	},
+	"app": {
+		"errorBoundary": {
+			"desc": "Перезагрузите. Или сбросьте данные (прогресс будет сохранен в бэкап-файле).",
+			"dialogs": {
+				"resetConfirm": "Создать бэкап и сбросить?"
+			},
+			"title": "Что-то пошло не так"
+		},
+		"update": {
+			"text": "Для обновления перезагрузите приложения.",
+			"title": "Обновление!"
+		}
+	},
+	"common": {
+		"all": "Все",
+		"app": "Приложение",
+		"cancel": "Отменить",
+		"close": "Закрыть",
+		"day": "День",
+		"end": "Конец",
+		"icon": "Иконка",
+		"reload": "Обновить",
+		"showLess": "Свернуть",
+		"showMore": "Развернуть",
+		"start": "Старт",
+		"support": "Помощь",
+		"theme": {
+			"auto": "Авто",
+			"dark": "Темная",
+			"light": "Светлая"
+		},
+		"ui": "Интерфейс",
+		"version": "Версия"
+	},
+	"habits": {
+		"actions": {
+			"archive": "В архив",
+			"create": "Создать",
+			"createNew": "Новая привычка",
+			"delete": "Удалить",
+			"doneYesterday": "Учесть вчера",
+			"edit": "Изменить",
+			"notes": "Заметки",
+			"share": "Поделиться",
+			"undoYesterday": "Сброс вчера",
+			"update": "Сохранить"
+		},
+		"dialogs": {
+			"archiveConfirm": "Архивировать привычку?",
+			"deleteConfirm": "Удалить привычку? Восстановить удаленную привычку нельзя.",
+			"manageTitle": "Привычка",
+			"restoreConfirm": "Восстановить привычку?"
+		},
+		"form": {
+			"colorDesc": "Точки — занятые цвета. Их можно выбрать повторно.",
+			"colorTitle": "Цвет",
+			"errors": {
+				"alreadyExists": "Уже есть."
+			},
+			"frequencyDesc": "Повторений привычки в день.",
+			"frequencyTitle": "Частота",
+			"iconDesc": "Темные иконки уже заняты. Их можно выбрать повторно.",
+			"iconTitle": "Иконка",
+			"namePlaceholder": "Название...",
+			"nameTitle": "Имя",
+			"orderDesc": "Позиция в списке.",
+			"orderSorting": {
+				"btnAlreadyAtBottom": "Уже внизу",
+				"btnAlreadyAtTop": "Уже вверху",
+				"btnMoveToBottom": "В самый низ",
+				"btnMoveToTop": "В самый верх",
+				"btnStepDown": "Вниз",
+				"btnStepUp": "Вверх"
+			},
+			"orderTitle": "Порядок"
+		},
+		"list": {
+			"createFirst": "Создать привычку",
+			"emptyActiveDesc": "Создайте первую сейчас",
+			"emptyActiveTitle": "Список привычек пуст",
+			"emptyArchivedDesc": "Добавить привычку в архив можно из меню редактирования.",
+			"emptyArchivedTitle": "Архив пуст"
+		},
+		"share": {
+			"desc": "Смотри!",
+			"error": "Что-то пошло не так :(.",
+			"notSupported": "Функция недоступна.",
+			"title": "Поделиться"
+		},
+		"stats": {
+			"chartCompletions": "Выполнено",
+			"currentStreak": "Текущая",
+			"longestStreak": "Лучшая",
+			"monthlyChartTitle": "Выполнения / Месяц",
+			"streak": "Серия",
+			"streakHistoryDesc": "Серии от 2 дней.",
+			"streakHistoryTitle": "История серий",
+			"title": "Статистика",
+			"totalCompleted": "Всего выполненных дней",
+			"weekdayChartTitle": "Выполнения / День недели"
+		}
+	},
+	"menu": {
+		"appearance": {
+			"calendar": {
+				"compact": "Компактный",
+				"default": "Обычный",
+				"highlightToday": {
+					"title": "Подсвечивать сегодня"
+				},
+				"sectionTitle": "Календарь",
+				"showDayNumbers": {
+					"desc": "Только для обычного календаря",
+					"title": "Номера дней"
+				},
+				"showWeekdayNames": {
+					"desc": "Только для обычного календаря",
+					"title": "Дни недели"
+				},
+				"typeDesc": "Текущий: {{type}}",
+				"typeTitle": "Вид календаря"
+			},
+			"desc": "Внешний вид приложения",
+			"language": {
+				"desc": "Текущий: {{lang}}",
+				"dialogs": {
+					"selectTitle": "Язык"
+				},
+				"title": "Язык"
+			},
+			"theme": {
+				"desc": "Текущая: {{theme}}",
+				"dialogs": {
+					"selectThemeTitle": "Тема"
+				},
+				"selectTitle": "Тема",
+				"title": "Тема"
+			},
+			"title": "Внешний вид"
+		},
+		"archive": {
+			"desc": "Архивные привычки",
+			"title": "Архив"
+		},
+		"dataManagement": {
+			"backup": {
+				"export": {
+					"desc": "Сохранить бэкап на устройство",
+					"dialogs": {
+						"exportConfirm": "Скачать файл бэкапа?"
+					},
+					"title": "Экспорт"
+				},
+				"import": {
+					"desc": "Загрузить бэкап из файла",
+					"notifications": {
+						"error": "Ошибка импорта.",
+						"success": "Импорт успешен! Перезагрузка..."
+					},
+					"title": "Импорт"
+				},
+				"sectionTitle": "Бэкап"
+			},
+			"danger": {
+				"clearAll": {
+					"desc": "Удалить все данные",
+					"dialogs": {
+						"confirm": "Удалить все данные?\n\nЭто сотрет:\n- Привычки\n- Достижения\n- Дневник\n\nЭто навсегда!",
+						"prompt": "Введите для сброса: \"{{phrase}}\":"
+					},
+					"notifications": {
+						"error": "Отмена или неверный текст.",
+						"success": "Данные удалены. Перезагрузка..."
+					},
+					"title": "Сброс"
+				},
+				"sectionTitle": "Опасная зона"
+			},
+			"desc": "Бэкап, восстановление и сброс",
+			"title": "Данные"
+		},
+		"shared": {
+			"feedback": {
+				"desc": "Оставить отзыв или баг",
+				"title": "Отзыв"
+			},
+			"gitHub": {
+				"desc": "Исходный код проекта",
+				"title": "GitHub"
+			}
+		},
+		"title": "Меню"
+	},
+	"notes": {
+		"actions": {
+			"copy": "Копировать",
+			"delete": "Удалить",
+			"edit": "Изменить"
+		},
+		"dialogs": {
+			"deleteConfirm": "Удалить выбранную заметку(и)?"
+		},
+		"form": {
+			"textPlaceholder": "Текст заметки..."
+		},
+		"list": {
+			"emptyDesc": "Напишите что-нибудь, чтобы начать дневник.",
+			"emptyTitle": "Дневник пуст",
+			"selected": "Выбрано заметок"
+		},
+		"notifications": {
+			"copyError": "Ошибка.",
+			"copySuccess": "Скопировано!",
+			"createSuccess": "Создано!",
+			"deleteSuccess": "Удалено!",
+			"editSuccess": "Сохранено!"
+		},
+		"tags": {
+			"all": "Все теги",
+			"emptyDesc": "Добавьте хэштег (#) перед словом в заметке.",
+			"emptyTitle": "Тегов нет",
+			"forYear": "Теги за {{year}}"
+		},
+		"title": "Дневник"
+	}
+}

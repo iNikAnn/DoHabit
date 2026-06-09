@@ -1,7 +1,8 @@
 import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { groupBy } from 'es-toolkit';
+import { groupBy, startCase } from 'es-toolkit';
+import { useTranslation } from 'react-i18next';
 import NoteListToolbar from './toolbar/NoteListToolbar';
 import { useNoteActions } from '../model/useNoteActions';
 import { useNoteTags } from '../model/useNoteTags';
@@ -9,8 +10,7 @@ import { cardVariants, monthLabelVariants } from '../model/animations';
 import { useNoteFormStore } from '@features/manage-note';
 import { NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
-import { MONTHS } from '@shared/const';
-import { getYearBoundaries } from '@shared/lib/date-time';
+import { getMonthLabels, getYearBoundaries } from '@shared/lib/date-time';
 import { useIntersectionObserver, useNativeBackClose } from '@shared/lib/dom';
 import { extractUniqueTags } from '@shared/lib/text';
 import { Placeholder } from '@shared/ui';
@@ -20,8 +20,9 @@ interface NoteListProps {
 	onScrollTop: (options?: { behavior?: 'auto' | 'smooth' }) => void;
 }
 
+const ALL_YEARS_FILTER = 'all';
 const ITEMS_PER_PAGE = 15;
-const observerOptions = { scrollMargin: '220px' };
+const OBSERVER_OPTIONS = { scrollMargin: '220px' };
 
 /**
  * Note list widget.
@@ -32,6 +33,9 @@ function NoteList(props: NoteListProps) {
 		habitId,
 		onScrollTop
 	} = props;
+
+	// UI localization
+	const { t, i18n } = useTranslation();
 
 	// Core data and drawer action hooks
 	const notes = useNotesStore((s) => s.notes);
@@ -56,7 +60,7 @@ function NoteList(props: NoteListProps) {
 	const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
 	// Active layout filters and sorting rules
-	const [selectedYear, setSelectedYear] = useState<'All' | number>('All');
+	const [selectedYear, setSelectedYear] = useState<'all' | number>(ALL_YEARS_FILTER);
 	const [activeTag, setActiveTag] = useState<string | null>(null);
 	const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
 
@@ -72,7 +76,7 @@ function NoteList(props: NoteListProps) {
 	 * Filter notes by selected year.
 	 */
 	const yearNotes = useMemo(() => {
-		if (selectedYear === 'All') return scopeNotes;
+		if (selectedYear === ALL_YEARS_FILTER) return scopeNotes;
 
 		const [start, end] = getYearBoundaries(selectedYear);
 		return scopeNotes.filter((n) => n.createdAt >= start && n.createdAt < end);
@@ -123,8 +127,10 @@ function NoteList(props: NoteListProps) {
 	const loadMoreRef = useIntersectionObserver({
 		onIntersect: useCallback(() => setVisibleCount((prev) => prev + ITEMS_PER_PAGE), []),
 		enabled: visibleNotes.length < yearNotes.length,
-		options: observerOptions
+		options: OBSERVER_OPTIONS
 	});
+
+	const monthLabels = useMemo(() => getMonthLabels(i18n.language), [i18n.language]);
 
 	// 1. Handle empty state
 	if (scopeNotes.length === 0) {
@@ -132,8 +138,8 @@ function NoteList(props: NoteListProps) {
 			<Placeholder
 				content={{
 					image: <InformationIcon />,
-					title: 'Diary is empty',
-					description: 'Add your first note to start tracking your progress and thoughts.'
+					title: t('notes.list.emptyTitle'),
+					description: t('notes.list.emptyDesc')
 				}}
 			/>
 		);
@@ -149,14 +155,16 @@ function NoteList(props: NoteListProps) {
 				order={sortOrder}
 				onYearChange={(year) => {
 					setActiveTag(null);
-					setSelectedYear(year === 'All' ? 'All' : Number(year));
+					setSelectedYear(year === ALL_YEARS_FILTER ? ALL_YEARS_FILTER : Number(year));
 				}}
 				onTagAction={() => {
 					if (activeTag) {
 						setActiveTag(null);
 					} else {
 						openNoteTagsMenu({
-							title: selectedYear === 'All' ? 'All tags' : `Tags for ${selectedYear}`,
+							title: selectedYear === ALL_YEARS_FILTER
+								? t('notes.tags.all')
+								: t('notes.tags.forYear', { year: selectedYear }),
 							notes: yearNotes,
 							onSetTag: setActiveTag
 						});
@@ -185,7 +193,7 @@ function NoteList(props: NoteListProps) {
 											animate='animate'
 											exit='exit'
 										>
-											{MONTHS[monthIndex]}
+											{startCase(monthLabels[monthIndex])}
 										</motion.small>
 									</AnimatePresence>
 								</div>

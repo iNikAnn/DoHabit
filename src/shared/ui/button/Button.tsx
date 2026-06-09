@@ -3,6 +3,7 @@ import type { ButtonIndicator, ButtonProps } from './types';
 import type { IconType } from 'react-icons';
 import { Link } from 'react-router';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { LuExternalLink } from 'react-icons/lu';
 import { IoIosArrowForward } from 'react-icons/io';
 import { FaCheck } from 'react-icons/fa';
@@ -43,13 +44,16 @@ function Button(props: ButtonProps) {
 		...rest
 	} = props;
 
+	// UI localization
+	const { t } = useTranslation();
+
 	const classes = `${styles.button} ${styles[variant ?? '']} ${className ?? ''}`.trim();
 	const Indicator = indicator ? INDICATOR_ICONS[indicator.type] : null;
 
 	const innerContent = (
 		<>
 			{typeof icon === 'string'
-				? <img src={icon} alt='icon' />
+				? <img src={icon} alt={t('common.icon')} />
 				: renderIcon(icon, iconProps)}
 			{children}
 			{Indicator && <Indicator style={indicator?.style} className={styles.indicator} />}

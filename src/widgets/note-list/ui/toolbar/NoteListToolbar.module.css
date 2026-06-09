@@ -5,6 +5,7 @@
 	height: calc(48px + 8px);
 	padding-bottom: 8px;
 	background-color: var(--bg);
+	box-shadow: 0 5px 5px color-mix(in srgb, var(--bg) 50%, transparent);
 }
 
 /* .toolbar */
@@ -66,5 +67,6 @@
 
 .selectionToolbar button {
 	height: 100%;
+	text-wrap: nowrap;
 	background-color: var(--bg-color-primary);
 }

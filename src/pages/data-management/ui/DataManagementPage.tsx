@@ -1,22 +1,24 @@
 import styles from './DataManagementPage.module.css';
 import useListItems from '../model/useListItems';
 import { List } from '@shared/ui';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Handles data export and import (JSON backups).
  */
 function DataManagementPage() {
+	const { t } = useTranslation();
 	const { backupItems, dangerItems } = useListItems();
 
 	return (
 		<div className={styles.page}>
 			<List
-				title='Backup'
+				title={t('menu.dataManagement.backup.sectionTitle')}
 				items={backupItems}
 			/>
 
 			<List
-				title='Danger Zone'
+				title={t('menu.dataManagement.danger.sectionTitle')}
 				titleStyle={{ color: 'IndianRed' }}
 				listStyle={{ border: '2px solid IndianRed' }}
 				items={dangerItems}

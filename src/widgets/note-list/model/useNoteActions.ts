@@ -1,4 +1,5 @@
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 import { FaCopy, FaPencilAlt, FaTrash } from 'react-icons/fa';
 import { removeNote } from '@features/remove-note';
 import { type Note } from '@entities/note';
@@ -14,6 +15,7 @@ interface OpenMenuParams {
  * Hook to manage drawer menu logic.
  */
 function useNoteActions() {
+	const { t } = useTranslation();
 	const openDrawer = useDrawerStore((s) => s.open);
 
 	const getActions = (params: OpenMenuParams): DrawerAction[] => {
@@ -26,32 +28,32 @@ function useNoteActions() {
 			// Delete note
 			{
 				icon: FaTrash,
-				label: 'Delete Note',
+				label: t('notes.actions.delete'),
 				variant: 'danger',
 				onClick: () => removeNote(
 					note.id,
-					() => toast.success('Note deleted!')
+					() => toast.success(t('notes.notifications.deleteSuccess'))
 				)
 			},
 
 			// Edit note
 			{
 				icon: FaPencilAlt,
-				label: 'Edit Note',
+				label: t('notes.actions.edit'),
 				onClick: () => onEdit(note)
 			},
 
 			// Copy to clipboard
 			{
 				icon: FaCopy,
-				label: 'Copy Text',
+				label: t('notes.actions.copy'),
 				onClick: async () => {
 					const success = await copyToClipboard({ text: note.text });
 
 					if (success) {
-						toast.success('Copied!');
+						toast.success(t('notes.notifications.copySuccess'));
 					} else {
-						toast.error('Copy failed.');
+						toast.error(t('notes.notifications.copyError'));
 					}
 				}
 			}

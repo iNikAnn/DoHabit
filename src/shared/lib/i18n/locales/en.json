@@ -1,0 +1,238 @@
+{
+	"achievements": {
+		"list": {
+			"emptyDesc": "Unlock rare achievements by using the app regularly!",
+			"emptyTitle": "No Achievements Yet"
+		},
+		"notification": {
+			"desc": "It seems that new achievements have been unlocked!\nYou can check them in the achievements section.",
+			"title": "Achievement unlocked!"
+		},
+		"title": "Achievements"
+	},
+	"app": {
+		"errorBoundary": {
+			"desc": "Try reloading. If it doesn’t help, reset the app data (your progress will be saved as a backup).",
+			"dialogs": {
+				"resetConfirm": "Backup your data and reset the app?"
+			},
+			"title": "Oops! Something went wrong"
+		},
+		"update": {
+			"text": "Please click the reload button to sync the latest features.",
+			"title": "Update Ready!"
+		}
+	},
+	"common": {
+		"all": "All",
+		"app": "App",
+		"cancel": "Cancel",
+		"close": "Close",
+		"day": "Day",
+		"end": "End",
+		"icon": "Icon",
+		"reload": "Reload",
+		"showLess": "Show less",
+		"showMore": "Show more",
+		"start": "Start",
+		"support": "Support",
+		"theme": {
+			"auto": "Auto",
+			"dark": "Dark",
+			"light": "Light"
+		},
+		"ui": "Interface",
+		"version": "Version"
+	},
+	"habits": {
+		"actions": {
+			"archive": "Archive habit",
+			"create": "Create habit",
+			"createNew": "Create new habit",
+			"delete": "Delete habit",
+			"doneYesterday": "Done Y'day",
+			"edit": "Edit habit",
+			"notes": "Notes",
+			"share": "Share habit",
+			"undoYesterday": "Undo Y'day",
+			"update": "Save changes"
+		},
+		"dialogs": {
+			"archiveConfirm": "Are you sure you want to archive this habit?",
+			"deleteConfirm": "Are you sure you want to delete this habit? Deleted data cannot be recovered.",
+			"manageTitle": "Manage Habit",
+			"restoreConfirm": "Are you sure you want to restore this habit?"
+		},
+		"form": {
+			"colorDesc": "Dots mark colors already in use. You can still reuse them.",
+			"colorTitle": "Color",
+			"errors": {
+				"alreadyExists": "Already exists."
+			},
+			"frequencyDesc": "Times per day you want to repeat this habit.",
+			"frequencyTitle": "Frequency",
+			"iconDesc": "Faded icons are already in use. You can still reuse them.",
+			"iconTitle": "Icon",
+			"namePlaceholder": "Enter habit name...",
+			"nameTitle": "Name",
+			"orderDesc": "The habit's position in your list.",
+			"orderSorting": {
+				"btnAlreadyAtBottom": "Already at Bottom",
+				"btnAlreadyAtTop": "Already at Top",
+				"btnMoveToBottom": "Move to Bottom",
+				"btnMoveToTop": "Move to Top",
+				"btnStepDown": "Step Down",
+				"btnStepUp": "Step Up"
+			},
+			"orderTitle": "Order"
+		},
+		"list": {
+			"createFirst": "Create first habit",
+			"emptyActiveDesc": "Why not create one now?",
+			"emptyActiveTitle": "No active habits found",
+			"emptyArchivedDesc": "You can archive a habit by editing it.",
+			"emptyArchivedTitle": "No archived habits found"
+		},
+		"share": {
+			"desc": "Look at this!",
+			"error": "Failed to generate image.",
+			"notSupported": "Sharing is not supported.",
+			"title": "Share"
+		},
+		"stats": {
+			"chartCompletions": "Completions",
+			"currentStreak": "Current",
+			"longestStreak": "Longest",
+			"monthlyChartTitle": "Completions / Month",
+			"streak": "Streak",
+			"streakHistoryDesc": "Shows streaks of 2 days or more.",
+			"streakHistoryTitle": "Streak history",
+			"title": "Statistics",
+			"totalCompleted": "Total completed days",
+			"weekdayChartTitle": "Completions / Weekday"
+		}
+	},
+	"menu": {
+		"appearance": {
+			"calendar": {
+				"compact": "Compact",
+				"default": "Default",
+				"highlightToday": {
+					"title": "Highlight today"
+				},
+				"sectionTitle": "Calendar",
+				"showDayNumbers": {
+					"desc": "Applies to the default calendar only",
+					"title": "Show day numbers"
+				},
+				"showWeekdayNames": {
+					"desc": "Applies to the default calendar only",
+					"title": "Show weekday names"
+				},
+				"typeDesc": "Current: {{type}}",
+				"typeTitle": "Compact calendar view"
+			},
+			"desc": "Customize the app's look",
+			"language": {
+				"desc": "Current: {{lang}}",
+				"dialogs": {
+					"selectTitle": "Select language"
+				},
+				"title": "Language"
+			},
+			"theme": {
+				"desc": "Current: {{theme}}",
+				"dialogs": {
+					"selectThemeTitle": "Select theme"
+				},
+				"selectTitle": "Select theme",
+				"title": "Theme"
+			},
+			"title": "Appearance"
+		},
+		"archive": {
+			"desc": "View or manage archived habits",
+			"title": "Archive"
+		},
+		"dataManagement": {
+			"backup": {
+				"export": {
+					"desc": "Save a backup data to your device",
+					"dialogs": {
+						"exportConfirm": "Download backup file to your device?"
+					},
+					"title": "Export"
+				},
+				"import": {
+					"desc": "Upload your app data from a backup file",
+					"notifications": {
+						"error": "Something went wrong during import.",
+						"success": "Data imported successfully! The application will now reload."
+					},
+					"title": "Import"
+				},
+				"sectionTitle": "Backup"
+			},
+			"danger": {
+				"clearAll": {
+					"desc": "Delete all application data",
+					"dialogs": {
+						"confirm": "Are you sure you want to delete all application data?\n\nThis includes:\n- All your habits\n- All achievements\n- All diary entries\n\nThis action cannot be undone!",
+						"prompt": "To confirm, type: \"{{phrase}}\":"
+					},
+					"notifications": {
+						"error": "Action canceled or incorrect phrase.",
+						"success": "All data has been successfully removed. The application will now reload."
+					},
+					"title": "Clear all"
+				},
+				"sectionTitle": "Danger Zone"
+			},
+			"desc": "Backup, restore, or clear app data",
+			"title": "Data Management"
+		},
+		"shared": {
+			"feedback": {
+				"desc": "Share feedback or report bugs",
+				"title": "Send Feedback"
+			},
+			"gitHub": {
+				"desc": "View or contribute to the project",
+				"title": "GitHub Repository"
+			}
+		},
+		"title": "Menu"
+	},
+	"notes": {
+		"actions": {
+			"copy": "Copy text",
+			"delete": "Delete note",
+			"edit": "Edit note"
+		},
+		"dialogs": {
+			"deleteConfirm": "Are you sure you want to delete this note(s)?"
+		},
+		"form": {
+			"textPlaceholder": "Enter your note here..."
+		},
+		"list": {
+			"emptyDesc": "Add your first note to start tracking your progress and thoughts.",
+			"emptyTitle": "Diary is empty",
+			"selected": "Notes Selected"
+		},
+		"notifications": {
+			"copyError": "Copy failed.",
+			"copySuccess": "Copied!",
+			"createSuccess": "Note created!",
+			"deleteSuccess": "Note(s) deleted!",
+			"editSuccess": "Changes saved!"
+		},
+		"tags": {
+			"all": "All tags",
+			"emptyDesc": "To create a tag, simply add a hashtag (#) before any word while writing a note.",
+			"emptyTitle": "No tags found",
+			"forYear": "Tags for {{year}}"
+		},
+		"title": "Main diary"
+	}
+}

@@ -37,4 +37,5 @@
 	margin: 0 auto;
 	background-color: var(--bg-color-secondary);
 	border-radius: var(--border-radius-tertiary);
+	box-shadow: 0 0 10px color-mix(in srgb, var(--bg) 50%, transparent);
 }

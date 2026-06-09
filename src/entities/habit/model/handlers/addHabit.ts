@@ -7,6 +7,8 @@ interface AddHabitParams {
 	payload: AddHabit['payload'];
 }
 
+const isDev = import.meta.env.DEV;
+
 /**
  * Adds a new habit to the beginning of the list.
  */
@@ -19,7 +21,7 @@ function addHabit(params: AddHabitParams): Habit[] {
 	const now = new Date();
 
 	const newHabit: Habit = {
-		id: crypto.randomUUID(),
+		id: isDev ? String(Math.random()) : crypto.randomUUID(),
 		...mapHabitData(data),
 		completedDays: [],
 		currentProgress: 0,

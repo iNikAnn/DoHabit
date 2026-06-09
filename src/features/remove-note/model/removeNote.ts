@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { notesStore, type DeleteNote } from '@entities/note';
 
 type NoteId = DeleteNote['payload']['noteId'];
@@ -8,7 +9,7 @@ type NoteId = DeleteNote['payload']['noteId'];
 function removeNote(noteId: NoteId, onSuccess?: () => void) {
 	const notesDispatch = notesStore.getState().notesDispatch;
 
-	if (window.confirm('Are you sure you want to delete this note(s)?')) {
+	if (window.confirm(t('notes.dialogs.deleteConfirm'))) {
 		notesDispatch({
 			type: 'deleteNote',
 			payload: {

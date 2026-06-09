@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { exportAppData } from '@features/data-management/export-data';
 import { clearLocalStorage } from '@shared/lib/local-storage';
 import { Placeholder } from '@shared/ui';
@@ -7,12 +8,14 @@ import { Placeholder } from '@shared/ui';
  * Provides options to reload or clear data.
  */
 function ErrorFallback() {
+	const { t } = useTranslation();
+
 	const handleReload = () => {
 		window.location.href = import.meta.env.BASE_URL;
 	};
 
 	const handleBackupAndReset = () => {
-		if (window.confirm('Backup your data and reset the app?')) {
+		if (window.confirm(t('app.errorBoundary.dialogs.resetConfirm'))) {
 			exportAppData();
 			clearLocalStorage();
 			handleReload();
@@ -22,8 +25,8 @@ function ErrorFallback() {
 	return (
 		<Placeholder
 			content={{
-				title: 'Oops! Something went wrong',
-				description: 'Try reloading. If it doesn’t help, reset the app data (your progress will be saved as a backup).'
+				title: t('app.errorBoundary.title'),
+				description: t('app.errorBoundary.desc')
 			}}
 			action={[
 				{

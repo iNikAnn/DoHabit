@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { Achievement, AchievementId } from '@entities/achievement';
 import { ACHIEVEMENTS, useAchievementsStore } from '@entities/achievement';
 import type { ListItemProps } from '@shared/ui';
@@ -8,6 +9,9 @@ import { List, Placeholder, useDialogStore } from '@shared/ui';
  * Shows a placeholder if nothing is unlocked yet.
  */
 function AchievementList() {
+	// UI localization
+	const { t } = useTranslation();
+
 	const openDialog = useDialogStore((s) => s.open);
 	const unlockedAt = useAchievementsStore((s) => s.unlockedAt);
 
@@ -40,8 +44,8 @@ function AchievementList() {
 			<Placeholder
 				content={{
 					// TODO: Add icon
-					title: 'No Achievements Yet',
-					description: 'Unlock rare achievements by using the app regularly!'
+					title: t('achievements.list.emptyTitle'),
+					description: t('achievements.list.emptyDesc')
 				}}
 			/>
 		);

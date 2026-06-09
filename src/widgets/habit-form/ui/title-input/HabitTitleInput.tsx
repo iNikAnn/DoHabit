@@ -1,6 +1,7 @@
-import { SectionHeader } from '@shared/ui';
 import styles from './HabitTitleInput.module.css';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
+import { SectionHeader } from '@shared/ui';
 
 interface HabitTitleInputProps {
 	input: string;
@@ -9,13 +10,15 @@ interface HabitTitleInputProps {
 }
 
 function HabitTitleInput({ input, isDuplicate, onChange }: HabitTitleInputProps) {
+	const { t } = useTranslation();
+
 	return (
 		<section>
 			<SectionHeader
-				title='Name'
+				title={t('habits.form.nameTitle')}
 				extra={isDuplicate ? (
 					<div className={styles.errorMessage}>
-						Already exists.
+						{t('habits.form.errors.alreadyExists')}
 					</div>
 				) : undefined}
 			/>
@@ -31,7 +34,7 @@ function HabitTitleInput({ input, isDuplicate, onChange }: HabitTitleInputProps)
 				)}
 				value={input}
 				onChange={(e) => onChange(e.target.value)}
-				placeholder='Enter habit name...'
+				placeholder={t('habits.form.namePlaceholder')}
 				autoComplete='off'
 			/>
 		</section>
