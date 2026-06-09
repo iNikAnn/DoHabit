@@ -1,6 +1,7 @@
-import { WEEKDAYS } from '@shared/const';
 import styles from './Month.module.css';
-import { formatDate } from '@shared/lib/date-time';
+import { startCase } from 'es-toolkit';
+import { useTranslation } from 'react-i18next';
+import { formatDate, getWeekdayLabels } from '@shared/lib/date-time';
 import type { ColorVariants } from '@shared/lib/theme';
 
 interface Props {
@@ -30,6 +31,9 @@ function Month(props: Props) {
 		showDayNames,
 		showDayNumbers
 	} = props;
+
+	// UI localization
+	const { i18n } = useTranslation();
 
 	const year = monthDate.getFullYear();
 	const month = monthDate.getMonth();
@@ -66,9 +70,11 @@ function Month(props: Props) {
 		);
 	});
 
+	const lang = i18n.language;
+	const weekdayLables = getWeekdayLabels(lang, { length: lang === 'zh' ? 'narrow' : 'short' });
+
 	const weekdays = showDayNames
-		// eslint-disable-next-line
-		? [...WEEKDAYS.slice(1), 'Sunday'].map((weekday, index) => {
+		? weekdayLables.map((weekday, index) => {
 			const isToday = ((index + 1) % 7) === today.getDay();
 			const isCurrentMonth = today.getMonth() === monthDate.getMonth();
 
@@ -78,7 +84,7 @@ function Month(props: Props) {
 					style={{ color: (isToday && isCurrentMonth) ? 'inherit' : softenedColor }}
 					className={styles.weekday}
 				>
-					{weekday.slice(0, 2)}
+					{startCase(weekday.slice(0, 2))}
 				</div>
 			);
 		})

@@ -1,7 +1,7 @@
 import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { groupBy } from 'es-toolkit';
+import { groupBy, startCase } from 'es-toolkit';
 import { useTranslation } from 'react-i18next';
 import NoteListToolbar from './toolbar/NoteListToolbar';
 import { useNoteActions } from '../model/useNoteActions';
@@ -10,8 +10,7 @@ import { cardVariants, monthLabelVariants } from '../model/animations';
 import { useNoteFormStore } from '@features/manage-note';
 import { NoteCard, useNotesStore } from '@entities/note';
 import { InformationIcon } from '@shared/assets';
-import { MONTHS } from '@shared/const';
-import { getYearBoundaries } from '@shared/lib/date-time';
+import { getMonthLabels, getYearBoundaries } from '@shared/lib/date-time';
 import { useIntersectionObserver, useNativeBackClose } from '@shared/lib/dom';
 import { extractUniqueTags } from '@shared/lib/text';
 import { Placeholder } from '@shared/ui';
@@ -36,7 +35,7 @@ function NoteList(props: NoteListProps) {
 	} = props;
 
 	// UI localization
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 
 	// Core data and drawer action hooks
 	const notes = useNotesStore((s) => s.notes);
@@ -131,6 +130,8 @@ function NoteList(props: NoteListProps) {
 		options: OBSERVER_OPTIONS
 	});
 
+	const monthLabels = useMemo(() => getMonthLabels(i18n.language), [i18n.language]);
+
 	// 1. Handle empty state
 	if (scopeNotes.length === 0) {
 		return (
@@ -192,7 +193,7 @@ function NoteList(props: NoteListProps) {
 											animate='animate'
 											exit='exit'
 										>
-											{MONTHS[monthIndex]}
+											{startCase(monthLabels[monthIndex])}
 										</motion.small>
 									</AnimatePresence>
 								</div>

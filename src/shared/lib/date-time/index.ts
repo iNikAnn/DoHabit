@@ -4,5 +4,6 @@ export { extractYearsFromTimeline } from './extract-years-from-timeline/extractY
 export { formatDate } from './format-date/formatDate';
 export { getDatesRange } from './get-dates-range/getDatesRange';
 export { getMonthLabels } from './get-month-labels/getMonthLabels';
+export { getWeekdayLabels } from './get-weekday-labels/getWeekdayLabels';
 export { getYearBoundaries } from './get-year-boundaries/getYearBoundaries';
 export { getYesterday } from './get-yesterday/getYesterday';
