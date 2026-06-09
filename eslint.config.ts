@@ -91,7 +91,13 @@ export default defineConfig([
 						'backgroundColor',
 						'transition',
 						'ease',
-						'path'
+						'path',
+						'initial',
+						'animate',
+						'exit',
+						'value',
+						'target',
+						'rel'
 					],
 				},
 				words: {
