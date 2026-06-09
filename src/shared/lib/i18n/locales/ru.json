@@ -26,6 +26,7 @@
 	"common": {
 		"all": "Все",
 		"app": "Приложение",
+		"cancel": "Отменить",
 		"close": "Закрыть",
 		"day": "День",
 		"end": "Конец",
@@ -40,6 +41,7 @@
 			"dark": "Темная",
 			"light": "Светлая"
 		},
+		"ui": "Интерфейс",
 		"version": "Версия"
 	},
 	"habits": {
@@ -205,17 +207,18 @@
 		"actions": {
 			"copy": "Копировать",
 			"delete": "Удалить",
-			"edit": "Ред."
+			"edit": "Изменить"
 		},
 		"dialogs": {
-			"deleteConfirm": "Удалить запись?"
+			"deleteConfirm": "Удалить выбранную заметку(и)?"
 		},
 		"form": {
 			"textPlaceholder": "Текст заметки..."
 		},
 		"list": {
 			"emptyDesc": "Напишите что-нибудь, чтобы начать дневник.",
-			"emptyTitle": "Дневник пуст"
+			"emptyTitle": "Дневник пуст",
+			"selected": "Выбрано заметок"
 		},
 		"notifications": {
 			"copyError": "Ошибка.",

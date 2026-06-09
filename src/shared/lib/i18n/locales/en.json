@@ -26,6 +26,7 @@
 	"common": {
 		"all": "All",
 		"app": "App",
+		"cancel": "Cancel",
 		"close": "Close",
 		"day": "Day",
 		"end": "End",
@@ -40,6 +41,7 @@
 			"dark": "Dark",
 			"light": "Light"
 		},
+		"ui": "Interface",
 		"version": "Version"
 	},
 	"habits": {
@@ -208,20 +210,21 @@
 			"edit": "Edit note"
 		},
 		"dialogs": {
-			"deleteConfirm": "Are you sure you want to delete this note?"
+			"deleteConfirm": "Are you sure you want to delete this note(s)?"
 		},
 		"form": {
 			"textPlaceholder": "Enter your note here..."
 		},
 		"list": {
 			"emptyDesc": "Add your first note to start tracking your progress and thoughts.",
-			"emptyTitle": "Diary is empty"
+			"emptyTitle": "Diary is empty",
+			"selected": "Notes Selected"
 		},
 		"notifications": {
 			"copyError": "Copy failed.",
 			"copySuccess": "Copied!",
 			"createSuccess": "Note created!",
-			"deleteSuccess": "Note deleted!",
+			"deleteSuccess": "Note(s) deleted!",
 			"editSuccess": "Changes saved!"
 		},
 		"tags": {

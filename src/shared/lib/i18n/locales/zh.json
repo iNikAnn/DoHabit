@@ -26,6 +26,7 @@
 	"common": {
 		"all": "全部",
 		"app": "应用",
+		"cancel": "取消",
 		"close": "关闭",
 		"day": "天",
 		"end": "结束",
@@ -40,6 +41,7 @@
 			"dark": "深色",
 			"light": "浅色"
 		},
+		"ui": "界面",
 		"version": "版本"
 	},
 	"habits": {
@@ -204,24 +206,25 @@
 	"notes": {
 		"actions": {
 			"copy": "复制文本",
-			"delete": "删除日记",
+			"delete": "删除笔记",
 			"edit": "编辑"
 		},
 		"dialogs": {
-			"deleteConfirm": "确定删除这条日记？"
+			"deleteConfirm": "确认删除所选笔记吗？"
 		},
 		"form": {
-			"textPlaceholder": "在这里输入日记..."
+			"textPlaceholder": "在这里输入笔记..."
 		},
 		"list": {
 			"emptyDesc": "写下第一条日记来记录进展和想法。",
-			"emptyTitle": "日记本空空如也"
+			"emptyTitle": "笔记本空空如也",
+			"selected": "已选择笔记"
 		},
 		"notifications": {
 			"copyError": "复制失败。",
 			"copySuccess": "已复制！",
-			"createSuccess": "日记已创建！",
-			"deleteSuccess": "日记已删除！",
+			"createSuccess": "笔记已创建！",
+			"deleteSuccess": "笔记已删除！",
 			"editSuccess": "修改已保存！"
 		},
 		"tags": {
@@ -230,6 +233,6 @@
 			"emptyTitle": "未找到标签",
 			"forYear": "{{year}} 年标签"
 		},
-		"title": "日记"
+		"title": "笔记"
 	}
 }
