@@ -66,5 +66,6 @@
 
 .selectionToolbar button {
 	height: 100%;
+	text-wrap: nowrap;
 	background-color: var(--bg-color-primary);
 }

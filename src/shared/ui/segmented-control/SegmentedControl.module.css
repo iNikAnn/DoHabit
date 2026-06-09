@@ -18,6 +18,7 @@
 	height: 40px;
 	padding: 0 16px;
 	color:var(--color-secondary);
+	text-wrap: nowrap;
 	background-color: unset;
 }
 
