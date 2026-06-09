@@ -1,6 +1,7 @@
 import styles from './NoteListToolbar.module.css';
 import { useMemo } from 'react';
 import { AnimatePresence, motion, type Transition, type Variants } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import TagButton from '../tag-button/TagButton';
 import SortButton from '../sort-button/SortButton';
 import { useNotesStore, type Note } from '@entities/note';
@@ -59,6 +60,9 @@ function NoteListToolbar(props: NoteListToolbarProps) {
 		onOrderChange
 	} = props;
 
+	// UI localization
+	const { t } = useTranslation();
+
 	const isSelectionMode = useNotesStore((s) => s.isSelectionMode);
 	const selectedIds = useNotesStore((s) => s.selectedIds);
 	const exitSelectionMode = useNotesStore((s) => s.exitSelectionMode);
@@ -81,7 +85,10 @@ function NoteListToolbar(props: NoteListToolbarProps) {
 						{...motionProps}
 					>
 						<SegmentedControl
-							options={['All', ...availableYears].map((v) => ({ value: String(v) }))}
+							options={[
+								{ value: 'all', label: t('common.all') },
+								...availableYears.map((v) => ({ value: String(v) }))
+							]}
 							value={selectedYear}
 							onChange={onYearChange}
 						/>
@@ -112,14 +119,14 @@ function NoteListToolbar(props: NoteListToolbarProps) {
 							</div>
 
 							<div className={styles.selectionLabel}>
-								Notes Selected
+								{t('notes.list.selected')}
 							</div>
 						</div>
 
 						<Button
 							onClick={exitSelectionMode}
 						>
-							Cancel
+							{t('common.cancel')}
 						</Button>
 					</motion.div>
 				)}

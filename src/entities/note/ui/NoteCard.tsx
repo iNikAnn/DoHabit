@@ -1,5 +1,6 @@
 import styles from './NoteCard.module.css';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import { useLongPress } from 'use-long-press';
 import { FaCheckCircle } from 'react-icons/fa';
@@ -22,6 +23,9 @@ function NoteCard(props: NoteCardProps) {
 		onLongPress,
 		onTagClick
 	} = props;
+
+	// UI localization
+	const { t } = useTranslation();
 
 	const isSelectionMode = useNotesStore((s) => s.isSelectionMode);
 	const isSelected = useNotesStore((s) => s.isSelectionMode && s.selectedIds.has(note.id));

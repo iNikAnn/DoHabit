@@ -1,4 +1,5 @@
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 import { FaCopy, FaPencilAlt, FaTrash } from 'react-icons/fa';
 import { removeNote } from '@features/remove-note';
 import { type Note } from '@entities/note';
@@ -14,6 +15,7 @@ interface OpenMenuParams {
  * Hook to manage drawer menu logic.
  */
 function useNoteActions() {
+	const { t } = useTranslation();
 	const openDrawer = useDrawerStore((s) => s.open);
 
 	const getActions = (params: OpenMenuParams): DrawerAction[] => {
@@ -30,7 +32,7 @@ function useNoteActions() {
 				variant: 'danger',
 				onClick: () => removeNote(
 					note.id,
-					() => toast.success('Note deleted!')
+					() => toast.success(t('notes.notifications.deleteSuccess'))
 				)
 			},
 

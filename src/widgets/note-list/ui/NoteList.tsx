@@ -2,6 +2,7 @@ import styles from './NoteList.module.css';
 import { useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { groupBy } from 'es-toolkit';
+import { useTranslation } from 'react-i18next';
 import NoteListToolbar from './toolbar/NoteListToolbar';
 import { useNoteActions } from '../model/useNoteActions';
 import { useNoteTags } from '../model/useNoteTags';
@@ -153,14 +154,16 @@ function NoteList(props: NoteListProps) {
 				order={sortOrder}
 				onYearChange={(year) => {
 					setActiveTag(null);
-					setSelectedYear(year === 'All' ? 'All' : Number(year));
+					setSelectedYear(year === ALL_YEARS_FILTER ? ALL_YEARS_FILTER : Number(year));
 				}}
 				onTagAction={() => {
 					if (activeTag) {
 						setActiveTag(null);
 					} else {
 						openNoteTagsMenu({
-							title: selectedYear === 'All' ? 'All tags' : `Tags for ${selectedYear}`,
+							title: selectedYear === ALL_YEARS_FILTER
+								? t('notes.tags.all')
+								: t('notes.tags.forYear', { year: selectedYear }),
 							notes: yearNotes,
 							onSetTag: setActiveTag
 						});
