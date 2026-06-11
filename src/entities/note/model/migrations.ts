@@ -1,3 +1,5 @@
+import { get } from 'idb-keyval';
+
 export const noteMigrations: Record<number, (state: any) => any> = {
 	0: (state) => state,
 	1: migrateToV1
@@ -9,8 +11,8 @@ export const noteMigrations: Record<number, (state: any) => any> = {
  * - Adds unique 'id' to each note.
  * - Renames 'creationDate' to 'createdAt' and converts it to Unix timestamp (number).
  */
-function migrateToV1(state: any) {
-	const rawHabits = localStorage.getItem('dohabit-habits-storage');
+async function migrateToV1(state: any) {
+	const rawHabits = await get('dohabit-habits-storage'); // eslint-disable-line
 
 	// Default fallback state
 	const currentState = { ...state, notes: state?.notes ?? [] };
@@ -18,8 +20,7 @@ function migrateToV1(state: any) {
 	try {
 		if (!rawHabits) return currentState;
 
-		const habitsData = JSON.parse(rawHabits);
-		const habits = habitsData?.state?.habits ?? [];
+		const habits = rawHabits?.state?.habits ?? [];
 
 		// Extract notes from all habits
 		const habitNotes = habits.flatMap((h: any) => {
