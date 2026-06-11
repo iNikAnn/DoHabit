@@ -1,9 +1,10 @@
-import { writeLocalStorage } from '@shared/lib/local-storage';
+import { set } from 'idb-keyval';
+import { STORAGE_KEYS } from '@shared/const';
 
 /**
  * Opens a file picker to select a JSON file and writes its content to localStorage.
  */
-function uploadJson(): Promise<boolean> {
+async function uploadJson(): Promise<boolean> {
 	return new Promise((resolve) => {
 		// Create a hidden input to trigger the native file picker
 		const input = document.createElement('input');
@@ -31,13 +32,22 @@ function uploadJson(): Promise<boolean> {
 					return;
 				}
 
-				// Iterate through keys and dump everything into localStorage
-				for (const key in parsedData) {
-					if (!Object.hasOwn(parsedData, key)) continue;
+				// Write all storage keys concurrently
+				const modernKeys = new Set<string>(Object.values(STORAGE_KEYS));
 
-					const value = parsedData[key];
-					writeLocalStorage(key, value);
-				}
+				const uploadPromises = Object.entries(parsedData).map(([key, value]) => {
+					// TODO: Remove this legacy fallback block on release version
+					const isModernKey = modernKeys.has(key);
+
+					if (isModernKey) {
+						return set(key, value);
+					}
+
+					// Fallback for legacy backups to trigger native runtime migrations
+					localStorage.setItem(key, typeof value === 'string' ? value : JSON.stringify(value));
+				});
+
+				await Promise.all(uploadPromises);
 
 				resolve(true);
 			} catch (error) {
