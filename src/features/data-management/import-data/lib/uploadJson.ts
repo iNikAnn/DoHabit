@@ -1,10 +1,7 @@
-import { set } from 'idb-keyval';
-import { STORAGE_KEYS } from '@shared/const';
-
 /**
- * Opens a file picker to select a JSON file and writes its content to localStorage.
+ * Opens a file picker to select a JSON file.
  */
-async function uploadJson(): Promise<boolean> {
+async function uploadJson(): Promise<null | Record<string, unknown>> {
 	return new Promise((resolve) => {
 		// Create a hidden input to trigger the native file picker
 		const input = document.createElement('input');
@@ -16,7 +13,7 @@ async function uploadJson(): Promise<boolean> {
 			const file = target.files?.[0];
 
 			if (!file) {
-				resolve(false);
+				resolve(null);
 				return;
 			}
 
@@ -28,35 +25,19 @@ async function uploadJson(): Promise<boolean> {
 				// Make sure data is a valid object
 				if (typeof parsedData !== 'object' || parsedData === null) {
 					console.error('Invalid JSON format.');
-					resolve(false);
+					resolve(null);
 					return;
 				}
 
-				// Write all storage keys concurrently
-				const modernKeys = new Set<string>(Object.values(STORAGE_KEYS));
-
-				const uploadPromises = Object.entries(parsedData).map(([key, value]) => {
-					// TODO: Remove this legacy fallback block on release version
-					const isModernKey = modernKeys.has(key);
-
-					if (isModernKey) {
-						return set(key, value);
-					}
-
-					// Fallback for legacy backups to trigger native runtime migrations
-					localStorage.setItem(key, typeof value === 'string' ? value : JSON.stringify(value));
-				});
-
-				await Promise.all(uploadPromises);
-
-				resolve(true);
+				resolve(parsedData);
 			} catch (error) {
 				console.error('Error reading the file:', error);
-				resolve(false);
+				resolve(null);
 			}
 		};
 
-		input.onerror = () => resolve(false);
+		input.oncancel = () => resolve(null);
+		input.onerror = () => resolve(null);
 
 		// Trigger the picker
 		input.click();
