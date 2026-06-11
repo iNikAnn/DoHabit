@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import { type AchievementState } from './types';
 import { persist, type PersistStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
+import { type AchievementState } from './types';
 import { STORAGE_KEYS } from '@shared/const';
 
 const idbStorage: PersistStorage<unknown> = {
@@ -56,14 +56,22 @@ export const useAchievementsStore = create<AchievementState>()(
 						[id]: new Date().getTime()
 					}
 				};
-			})
+			}),
+
+			_hasHydrated: false,
+			setHasHydrated: (state) => set(() => ({ _hasHydrated: state }))
 		}),
 		{
 			name: STORAGE_KEYS.ACHIEVEMENTS,
 			storage: idbStorage,
+
 			partialize: (s) => ({
 				unlockedAt: s.unlockedAt
-			})
+			}),
+
+			onRehydrateStorage: () => (s) => {
+				s?.setHasHydrated(true);
+			}
 		}
 	)
 );

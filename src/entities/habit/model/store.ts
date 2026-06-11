@@ -76,7 +76,10 @@ export const useHabitsStore = create<HabitState>()(
 
 			habitsDispatch: (action) => set(
 				(s) => ({ habits: habitsReducer(s.habits, action) })
-			)
+			),
+
+			_hasHydrated: false,
+			setHasHydrated: (state) => set(() => ({ _hasHydrated: state }))
 		}),
 		{
 			name: STORAGE_KEYS.HABITS,
@@ -101,6 +104,10 @@ export const useHabitsStore = create<HabitState>()(
 
 				return newState;
 			},
+
+			onRehydrateStorage: () => (s) => {
+				s?.setHasHydrated(true);
+			}
 		}
 	)
 );

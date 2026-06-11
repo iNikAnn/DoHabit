@@ -24,4 +24,7 @@ export interface AchievementState {
 	// Stores key-value as { "achievement-id": "1234567890123" }
 	unlockedAt: Partial<Record<AchievementId, number>>;
 	unlock: (id: AchievementId) => void;
+
+	_hasHydrated: boolean;
+	setHasHydrated: (state: boolean) => void;
 }

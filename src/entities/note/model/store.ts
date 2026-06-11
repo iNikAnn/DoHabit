@@ -91,7 +91,10 @@ export const useNotesStore = create<NoteState>()(
 
 			notesDispatch: (action) => set(
 				(s) => ({ notes: notesReducer(s.notes, action) })
-			)
+			),
+
+			_hasHydrated: false,
+			setHasHydrated: (state) => set(() => ({ _hasHydrated: state }))
 		}),
 		{
 			name: STORAGE_KEYS.NOTES,
@@ -116,6 +119,10 @@ export const useNotesStore = create<NoteState>()(
 
 				return newState;
 			},
+
+			onRehydrateStorage: () => (s) => {
+				s?.setHasHydrated(true);
+			}
 		}
 	)
 );
