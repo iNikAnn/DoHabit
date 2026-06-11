@@ -1,10 +1,14 @@
 import i18n from 'i18next';
 import { uploadJson } from '../lib/uploadJson';
+import { clearAppData } from '@features/data-management/clear-data';
 
 /**
  * Orchestrates the application data import process.
  */
 async function importAppData() {
+	// Wipe old data first so migrations handle legacy backups correctly
+	await clearAppData({ skipConfirmation: true, skipRedirect: true });
+
 	const res = await uploadJson();
 
 	if (res) {
