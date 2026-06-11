@@ -1,22 +1,28 @@
 import i18n from 'i18next';
+import { get } from 'idb-keyval';
 import { STORAGE_KEYS } from '@shared/const';
 import { formatDate } from '@shared/lib/date-time';
-import { readLocalStorage } from '@shared/lib/local-storage';
 
 /**
  * Downloads a JSON file containing app data.
  */
-function exportAppData() {
+async function exportAppData() {
 	// Notify user before starting the download
 	if (window.confirm(i18n.t('menu.dataManagement.backup.export.dialogs.exportConfirm'))) {
 		// Collect data from all storage keys
-		const data = {
-			[STORAGE_KEYS.HABITS]: readLocalStorage(STORAGE_KEYS.HABITS),
-			[STORAGE_KEYS.NOTES]: readLocalStorage(STORAGE_KEYS.NOTES),
-			[STORAGE_KEYS.ACHIEVEMENTS]: readLocalStorage(STORAGE_KEYS.ACHIEVEMENTS)
+		const [habits, notes, achievements] = await Promise.all([
+			get(STORAGE_KEYS.HABITS),
+			get(STORAGE_KEYS.NOTES),
+			get(STORAGE_KEYS.ACHIEVEMENTS)
+		]);
+
+		const dataToExport = {
+			[STORAGE_KEYS.HABITS]: habits,
+			[STORAGE_KEYS.NOTES]: notes,
+			[STORAGE_KEYS.ACHIEVEMENTS]: achievements
 		};
 
-		const jsonStr = JSON.stringify(data);
+		const jsonStr = JSON.stringify(dataToExport);
 		const blob = new Blob([jsonStr], { type: 'application/json' });
 		const url = URL.createObjectURL(blob);
 
