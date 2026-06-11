@@ -1,6 +1,5 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useIsFirstRender } from '@uidotdev/usehooks';
 import { achievementRules } from '../model/rules';
 import { type AchievementId, ACHIEVEMENTS, useAchievementsStore } from '@entities/achievement';
 import { useHabitsStore } from '@entities/habit';
@@ -12,41 +11,39 @@ import { useDialogStore } from '@shared/ui';
  */
 function useCheckAchievements() {
 	const { t } = useTranslation();
-	const isFirstRender = useIsFirstRender();
 	const openDialog = useDialogStore((s) => s.open);
 
 	const habits = useHabitsStore((s) => s.habits);
+	const isHabitsReady = useHabitsStore((s) => s._hasHydrated);
+
 	const notes = useNotesStore((s) => s.notes);
+	const isNotesReady = useNotesStore((s) => s._hasHydrated);
 
 	const unlockedAt = useAchievementsStore((s) => s.unlockedAt);
+	const isAchievementsReady = useAchievementsStore((state) => state._hasHydrated);
 	const unlock = useAchievementsStore((s) => s.unlock);
+
+	const isInitialCheck = useRef(true);
+	const isReady = isHabitsReady && isNotesReady && isAchievementsReady;
 
 	// Shows modal dialog when an achievement is unlocked
 	const notifyUnlock = useCallback((id: AchievementId) => {
 		const ach = ACHIEVEMENTS.find((a) => a.id === id);
+		if (!ach) return;
 
-		if (isFirstRender) {
-			// Bulk unlock on mount (e.g., historical data analysis). Show single generic modal
-			openDialog({
-				title: t('achievements.notification.title'),
-				text: t('achievements.notification.desc')
-			});
-		} else {
-			// Real-time unlock during the session. Show specific achievement details
-			if (!ach) return;
-
-			openDialog({
-				title: t('achievements.notification.title'),
-				imgSrc: ach.icon,
-				text: `"${ach.title}"\n${ach.description}`
-
-			});
-		}
-	}, [isFirstRender, openDialog, t]);
+		openDialog({
+			title: t('achievements.notification.title'),
+			imgSrc: ach.icon,
+			text: `"${ach.title}"\n${ach.description}`
+		});
+	}, [openDialog, t]);
 
 	// Track state changes and evaluate locked achievements
 	useEffect(() => {
+		if (!isReady) return;
+
 		const context = { habits, notes };
+		let hasBulkUnlock = false;
 
 		(Object.keys(achievementRules) as AchievementId[]).forEach((id) => {
 			// Skip checking if already unlocked
@@ -54,12 +51,30 @@ function useCheckAchievements() {
 
 			const checkFn = achievementRules[id];
 
+			// Unlock achievement if validation rules pass
 			if (checkFn(context)) {
 				unlock(id);
-				notifyUnlock(id);
+
+				if (isInitialCheck.current) {
+					hasBulkUnlock = true;
+				} else {
+					notifyUnlock(id);
+				}
 			}
 		});
-	}, [habits, notifyUnlock, notes, unlock, unlockedAt]);
+
+		// Trigger generic modal once after data analysis on mount
+		if (isInitialCheck.current) {
+			if (hasBulkUnlock) {
+				openDialog({
+					title: t('achievements.notification.title'),
+					text: t('achievements.notification.desc')
+				});
+			}
+
+			isInitialCheck.current = false;
+		}
+	}, [habits, isReady, notes, notifyUnlock, openDialog, t, unlock, unlockedAt]);
 }
 
 export { useCheckAchievements };

@@ -60,4 +60,7 @@ export interface NoteState {
 	toggleSelect: (id: string) => void;
 
 	notesDispatch: (action: NoteAction) => void;
+
+	_hasHydrated: boolean;
+	setHasHydrated: (state: boolean) => void;
 }

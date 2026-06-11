@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
+import { persist, type PersistStorage } from 'zustand/middleware';
+import { get, set, del } from 'idb-keyval';
 import type { NoteState } from './types';
 import { notesReducer } from './reducer';
 import { noteMigrations } from './migrations';
@@ -7,14 +8,14 @@ import { STORAGE_KEYS } from '@shared/const';
 
 const CURRENT_VERSION = 1;
 
-const customStorage = {
-	getItem: (key: string) => {
+const idbStorage: PersistStorage<unknown> = {
+	getItem: async (key) => {
 		// Fallback to old 'mainDiary' key if the new one doesn't exist yet
-		const raw = localStorage.getItem(key) ?? localStorage.getItem('mainDiary');
+		const raw = (await get(key)) ?? localStorage.getItem(key) ?? localStorage.getItem('mainDiary');
 		if (!raw) return null;
 
 		try {
-			let data = JSON.parse(raw);
+			let data = typeof raw === 'string' ? JSON.parse(raw) : raw;
 			let needsSave = false;
 
 			// MIGRATION: Convert old raw array [{}, {}]
@@ -25,26 +26,31 @@ const customStorage = {
 					version: 0
 				};
 
-				localStorage.removeItem('mainDiary');
 				needsSave = true;
 			}
 
-			const jsonString = JSON.stringify(data);
-
 			// Sync storage if data structure or habits were changed during load
-			if (needsSave) {
-				localStorage.setItem(key, jsonString);
+			if (needsSave || localStorage.getItem(key) || localStorage.getItem('mainDiary')) {
+				await set(key, data);
+
+				localStorage.removeItem(key);
+				localStorage.removeItem('mainDiary');
 			}
 
-			return jsonString;
+			return data;
 		} catch (error) {
 			console.error('Failed to parse storage data:', error);
 			return null;
 		}
 	},
 
-	setItem: (key: string, value: string) => localStorage.setItem(key, value),
-	removeItem: (key: string) => localStorage.removeItem(key)
+	setItem: async (key, value) => {
+		await set(key, value);
+	},
+
+	removeItem: async (key) => {
+		await del(key);
+	}
 }
 
 /**
@@ -85,18 +91,21 @@ export const useNotesStore = create<NoteState>()(
 
 			notesDispatch: (action) => set(
 				(s) => ({ notes: notesReducer(s.notes, action) })
-			)
+			),
+
+			_hasHydrated: false,
+			setHasHydrated: (state) => set(() => ({ _hasHydrated: state }))
 		}),
 		{
 			name: STORAGE_KEYS.NOTES,
-			storage: createJSONStorage(() => customStorage),
+			storage: idbStorage,
 			version: CURRENT_VERSION,
 
 			partialize: (s) => ({
 				notes: s.notes
 			}),
 
-			migrate: (persistedState, version) => {
+			migrate: async (persistedState, version) => {
 				let newState = persistedState;
 
 				for (let i = version; i < CURRENT_VERSION; i++) {
@@ -104,12 +113,16 @@ export const useNotesStore = create<NoteState>()(
 
 					if (migration) {
 						console.log(`Migrating notes from v${i} to v${i + 1}`);
-						newState = migration(newState);
+						newState = await migration(newState);
 					}
 				}
 
 				return newState;
 			},
+
+			onRehydrateStorage: () => (s) => {
+				s?.setHasHydrated(true);
+			}
 		}
 	)
 );

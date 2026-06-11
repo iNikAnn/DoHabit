@@ -1,9 +1,7 @@
-import { writeLocalStorage } from '@shared/lib/local-storage';
-
 /**
- * Opens a file picker to select a JSON file and writes its content to localStorage.
+ * Opens a file picker to select a JSON file.
  */
-function uploadJson(): Promise<boolean> {
+async function uploadJson(): Promise<null | Record<string, unknown>> {
 	return new Promise((resolve) => {
 		// Create a hidden input to trigger the native file picker
 		const input = document.createElement('input');
@@ -15,7 +13,7 @@ function uploadJson(): Promise<boolean> {
 			const file = target.files?.[0];
 
 			if (!file) {
-				resolve(false);
+				resolve(null);
 				return;
 			}
 
@@ -27,26 +25,19 @@ function uploadJson(): Promise<boolean> {
 				// Make sure data is a valid object
 				if (typeof parsedData !== 'object' || parsedData === null) {
 					console.error('Invalid JSON format.');
-					resolve(false);
+					resolve(null);
 					return;
 				}
 
-				// Iterate through keys and dump everything into localStorage
-				for (const key in parsedData) {
-					if (!Object.hasOwn(parsedData, key)) continue;
-
-					const value = parsedData[key];
-					writeLocalStorage(key, value);
-				}
-
-				resolve(true);
+				resolve(parsedData);
 			} catch (error) {
 				console.error('Error reading the file:', error);
-				resolve(false);
+				resolve(null);
 			}
 		};
 
-		input.onerror = () => resolve(false);
+		input.oncancel = () => resolve(null);
+		input.onerror = () => resolve(null);
 
 		// Trigger the picker
 		input.click();

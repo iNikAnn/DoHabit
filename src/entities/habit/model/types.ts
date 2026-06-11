@@ -91,4 +91,7 @@ export type HabitAction =
 export interface HabitState {
 	habits: Habit[];
 	habitsDispatch: (action: HabitAction) => void;
+
+	_hasHydrated: boolean;
+	setHasHydrated: (state: boolean) => void;
 }

@@ -35,7 +35,7 @@ function useListItems() {
 			iconProps: { color: 'IndianRed' },
 			title: t('menu.dataManagement.danger.clearAll.title'),
 			description: t('menu.dataManagement.danger.clearAll.desc'),
-			onClick: clearAppData
+			onClick: () => clearAppData()
 		}
 	];
 

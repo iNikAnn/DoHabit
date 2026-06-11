@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
+import { persist, type PersistStorage } from 'zustand/middleware';
+import { get, set, del } from 'idb-keyval';
 import type { HabitState } from './types';
 import habitsReducer from './reducer';
 import { habitMigrations } from './migrations';
@@ -7,14 +8,14 @@ import { STORAGE_KEYS } from '@shared/const';
 
 const CURRENT_VERSION = 2;
 
-const customStorage = {
-	getItem: (key: string) => {
+const idbStorage: PersistStorage<unknown> = {
+	getItem: async (key) => {
 		// Fallback to old 'habits' key if the new one doesn't exist yet
-		const raw = localStorage.getItem(key) ?? localStorage.getItem('habits');
+		const raw = (await get(key)) ?? localStorage.getItem(key) ?? localStorage.getItem('habits');
 		if (!raw) return null;
 
 		try {
-			let data = JSON.parse(raw);
+			let data = typeof raw === 'string' ? JSON.parse(raw) : raw;
 			let needsSave = false;
 
 			// MIGRATION: Convert old raw array [{}, {}]
@@ -24,8 +25,6 @@ const customStorage = {
 					state: { habits: data },
 					version: 0
 				};
-
-				localStorage.removeItem('habits');
 				needsSave = true;
 			}
 
@@ -43,22 +42,28 @@ const customStorage = {
 				localStorage.removeItem('dohabit_notes_migrated');
 			}
 
-			const jsonString = JSON.stringify(data);
-
 			// Sync storage if data structure or habits were changed during load
-			if (needsSave) {
-				localStorage.setItem(key, jsonString);
+			if (needsSave || localStorage.getItem(key) || localStorage.getItem('habits')) {
+				await set(key, data);
+
+				localStorage.removeItem(key);
+				localStorage.removeItem('habits');
 			}
 
-			return jsonString;
+			return data;
 		} catch (error) {
 			console.error('Failed to parse storage data:', error);
 			return null;
 		}
 	},
 
-	setItem: (key: string, value: string) => localStorage.setItem(key, value),
-	removeItem: (key: string) => localStorage.removeItem(key)
+	setItem: async (key, value) => {
+		await set(key, value);
+	},
+
+	removeItem: async (key) => {
+		await del(key);
+	}
 }
 
 /**
@@ -71,12 +76,20 @@ export const useHabitsStore = create<HabitState>()(
 
 			habitsDispatch: (action) => set(
 				(s) => ({ habits: habitsReducer(s.habits, action) })
-			)
+			),
+
+			_hasHydrated: false,
+			setHasHydrated: (state) => set(() => ({ _hasHydrated: state }))
 		}),
 		{
 			name: STORAGE_KEYS.HABITS,
-			storage: createJSONStorage(() => customStorage),
+			storage: idbStorage,
 			version: CURRENT_VERSION,
+
+			partialize: (s) => ({
+				habits: s.habits
+			}),
+
 			migrate: (persistedState, version) => {
 				let newState = persistedState;
 
@@ -91,6 +104,10 @@ export const useHabitsStore = create<HabitState>()(
 
 				return newState;
 			},
+
+			onRehydrateStorage: () => (s) => {
+				s?.setHasHydrated(true);
+			}
 		}
 	)
 );
