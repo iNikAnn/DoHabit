@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import HabitListEmpty from '../habit-list-empty/HabitListEmpty';
 import { getHabitStats } from '../../lib/getHabitStats';
+import { getCardMotionProps } from '../../model/animations';
 import { useHabitActions } from '../../model/useHabitActions';
 import { RestoreHabit } from '@features/restore-habit';
 import { UpdateHabitProgress } from '@features/update-habit-progress';
@@ -25,6 +26,7 @@ function HabitList(props: HabitListProps) {
 	} = props;
 
 	const habits = useHabitsStore((s) => s.habits);
+	const isHabitsReady = useHabitsStore((s) => s._hasHydrated);
 	const settings = useSettingsStore((s) => s.settings);
 	const palette = getAppPalette();
 	const { openHabitMenu } = useHabitActions();
@@ -32,16 +34,21 @@ function HabitList(props: HabitListProps) {
 	// Filter habits based on mode
 	const filteredHabits = habits.filter((h) => isArchive ? h.isArchived : !h.isArchived);
 
-	// 1. Handle empty state
+	// 1. Wait until storage initialization completes
+	if (!isHabitsReady) {
+		return null;
+	}
+
+	// 2. Handle empty state
 	if (filteredHabits.length === 0) {
 		return <HabitListEmpty isArchive={isArchive} />;
 	}
 
-	// 2. Render list
+	// 3. Render list
 	return (
 		<ul className={clsx(styles.habitList, isArchive && styles.isArchive)}>
-			<AnimatePresence initial={false}>
-				{filteredHabits.map((habit) => {
+			<AnimatePresence>
+				{filteredHabits.map((habit, index) => {
 					const colorVariants = palette[habit.colorIndex] ?? palette[0]!;
 					const habitStats = getHabitStats(habit);
 
@@ -73,6 +80,7 @@ function HabitList(props: HabitListProps) {
 								scale: 0.98,
 								transition: { duration: 0.1 }
 							}}
+							{...getCardMotionProps(index)}
 						>
 							<HabitCard
 								habit={habit}
