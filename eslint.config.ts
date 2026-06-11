@@ -148,13 +148,13 @@ export default defineConfig([
 						'settingsDispatch',
 						'addColorStop',
 						'Error',
-						'console.error',
-						'console.warn',
 						'canvas.toBlob',
 						'toLocaleTimeString',
 						'window.open',
 						/^Intl\..+/,
-						/^localStorage\..+/
+						/^localStorage\..+/,
+						/^console\..+/,
+						/^indexedDB\..+/
 					],
 				},
 			}]
