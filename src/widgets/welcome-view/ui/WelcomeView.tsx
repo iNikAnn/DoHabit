@@ -71,10 +71,15 @@ function WelcomeView() {
 							<li key={b.text} className={styles.benefitItem}>
 								{b.icon}
 
-								<Trans
-									defaults={b.text}
-									components={{ bold: <strong className={styles.highlight} /> }}
-								/>
+								<div className={styles.benefitText}>
+									<Trans
+										defaults={b.text}
+										components={{
+											bold: <strong className={styles.benefitTitle} />,
+											desc: <span className={styles.benefitDescription} />
+										}}
+									/>
+								</div>
 							</li>
 						))}
 					</ul>
@@ -100,7 +105,7 @@ function WelcomeView() {
 				{/* Right side */}
 				<div className={styles.imageColumn}>
 					<img
-						src={`${BASE_URL}/assets/img/194_sdfsldjhfs.png`}
+						src={`${BASE_URL}/assets/img/welcome-hero-screenshot.png`}
 						alt='screenshot'
 						className={styles.screenshot}
 					/>
