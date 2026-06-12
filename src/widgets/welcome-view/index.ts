@@ -1,0 +1,1 @@
+export { WelcomeView } from './ui/WelcomeView';

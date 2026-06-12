@@ -3,7 +3,7 @@
 	"description": "Build lasting habits with zero friction. DoHabit is a minimalist, offline tracker. No accounts—just your progress, charts, and a personal habit journal.",
 	"private": true,
 	"license": "AGPL-3.0-only",
-	"version": "0.46.0",
+	"version": "0.47.0",
 	"homepage": "https://inikann.github.io/DoHabit/",
 	"type": "module",
 	"scripts": {
