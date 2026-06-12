@@ -48,7 +48,7 @@ function WelcomeView() {
 							className={styles.logoImg}
 						/>
 
-						{/* disable-eslint-line */}
+						{/* eslint-disable-next-line */}
 						<h2>DoHabit</h2>
 					</div>
 

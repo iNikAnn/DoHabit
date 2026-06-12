@@ -234,5 +234,19 @@
 			"forYear": "Tags for {{year}}"
 		},
 		"title": "Main diary"
+	},
+	"welcome": {
+		"titleLine1": "Build your routine.",
+		"titleLine2": "Own your data.",
+		"description": "A lightweight assistant featuring visual statistics, streak achievements, and a built-in progress journal.",
+		"benefits": {
+			"privacy": "<bold>100% Private.</bold> <desc>No accounts, no servers.</desc>",
+			"offline": "<bold>Offline First.</bold> <desc>Works anytime, everywhere.</desc>",
+			"simplicity": "<bold>Zero Friction.</bold> <desc>Open and start instantly.</desc>"
+		},
+		"actions": {
+			"install": "Install on Device",
+			"continue": "Continue in Browser"
+		}
 	}
 }
