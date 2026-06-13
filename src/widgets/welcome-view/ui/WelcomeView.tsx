@@ -161,7 +161,7 @@ function WelcomeView() {
 				{/* Right side */}
 				<div className={styles.imageColumn}>
 					<img
-						src={`${BASE_URL}/assets/img/welcome-hero-screenshot.png`}
+						src={`${BASE_URL}/assets/img/welcome-hero-screenshot.webp`}
 						alt={t('common.screenshot')}
 						className={styles.screenshot}
 					/>
