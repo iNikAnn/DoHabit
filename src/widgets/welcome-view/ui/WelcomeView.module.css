@@ -1,0 +1,215 @@
+.page {
+	position: fixed;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: linear-gradient(var(--bg), var(--bg-color-secondary));
+}
+
+.contentWrapper {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	max-width: 1440px;
+	padding: 64px;
+}
+
+/* Left side */
+.textColumn {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 16px;
+	container-type: inline-size;
+}
+
+.logoWrapper {
+	z-index: 5;
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.logoImg {
+	width: 32px;
+	height: 32px;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+	font-size: 3.6rem;
+	font-weight: 900;
+	white-space: nowrap;
+}
+
+.description {
+	max-width: 50ch;
+	font-size: 1.2rem;
+	font-weight: 200;
+	color: var(--color-secondary);
+}
+
+.benefitsList {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 8px;
+	margin-top: 16px;
+}
+
+.benefitItem {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+	padding: 16px;
+	padding-right: 8px;
+	font-size: 1.4rem;
+	border: 2px solid var(--bg-color-secondary);
+	border-radius: var(--border-radius-secondary);
+}
+
+.benefitItem svg {
+	color: var(--color-primary);
+}
+
+.benefitTitle {
+	display: block;
+	color: var(--color-primary);
+}
+
+.benefitDescription {
+	font-size: 1rem;
+	color: var(--color-secondary);
+}
+
+.actions {
+	display: flex;
+	gap: 16px;
+	margin-top: 16px;
+}
+
+.actions button {
+	height: 48px;
+	padding: 0 24px;
+	font-size: 1rem;
+}
+
+/* Right side */
+.imageColumn {
+	display: flex;
+	flex: 0 0 55%;
+	align-items: center;
+	justify-content: center;
+
+	/* outline: 1px solid tomato; */
+}
+
+.screenshot {
+	display: block;
+	max-width: 100%;
+	object-fit: contain;
+	transform: scale(1.25);
+}
+
+.highlight {
+	color: var(--color-primary);
+}
+
+@media screen and (width >= 768px) {
+	.imageColumn {
+		margin-right: -50px;
+	}
+}
+
+@media screen and (width < 768px) {
+	.page {
+		height: 100dvh;
+		background: unset;
+	}
+
+	.contentWrapper {
+		flex-direction: column;
+		height: 100%;
+		padding: 0;
+	}
+
+	.logoWrapper,
+	.title,
+	.description {
+		padding: 0 16px;
+	}
+
+	.textColumn {
+		position: relative;
+		z-index: 2;
+		flex: 0 0 auto;
+		width: 100%;
+		padding: 0 16px 32px;
+		margin-top: auto;
+		background: linear-gradient(
+			to bottom,
+			transparent 0,
+			transparent 40px,
+			var(--bg) 40px,
+			var(--bg-color-secondary)
+		);
+	}
+
+	/**
+	 * Top overlay gradient to smoothly hide scrolling content.
+	 */
+	.textColumn::before {
+		position: absolute;
+		top: -40px;
+		left: 0;
+		width: 100%;
+		height: 80px;
+		content: '';
+		background: linear-gradient(
+            to top,
+            var(--bg) 0%,
+            transparent 100%
+        );
+	}
+
+	.title {
+		font-size: 2.4rem;
+	}
+
+	.benefitItem {
+		gap: 8px;
+	}
+
+	.benefitDescription {
+		display: none;
+	}
+
+	.benefitTitle {
+		font-size: 1rem;
+	}
+
+	.actions {
+		flex-direction: column;
+	}
+
+	.imageColumn {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 1;
+	}
+}
+
+/**
+ * Prevent text wrapping on small screens by scaling font-size relative to container width.
+ */
+@media screen and (width < 500px) {
+	.title {
+		font-size: clamp(1rem, 8.5cqw, 2.2rem);
+	}
+}

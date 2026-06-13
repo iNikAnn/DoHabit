@@ -5,6 +5,15 @@ import '@app/providers/i18n';
 import ErrorFallback from '@app/components/error-fallback/ErrorFallback';
 import { BrowserRouter } from 'react-router';
 import { ErrorBoundary } from 'react-error-boundary';
+import { pwaStore } from '@shared/model';
+
+/**
+ * Intercept native PWA install prompt to handle it via application UI.
+ */
+window.addEventListener('beforeinstallprompt', (e) => {
+	e.preventDefault();
+	pwaStore.getState().setDeferredPrompt(e as any);
+});
 
 const root = createRoot(document.getElementById('root')!);
 root.render(
