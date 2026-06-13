@@ -31,7 +31,9 @@
 		"day": "天",
 		"end": "结束",
 		"icon": "图标",
+		"logo": "标志",
 		"reload": "重载",
+		"screenshot": "截图",
 		"showLess": "收起",
 		"showMore": "展开",
 		"start": "开始",
@@ -234,5 +236,32 @@
 			"forYear": "{{year}} 年标签"
 		},
 		"title": "笔记"
+	},
+	"welcome": {
+		"actions": {
+			"continue": "在浏览器中继续",
+			"install": "安装到设备"
+		},
+		"benefits": {
+			"offline": {
+				"desc": "无需任何网络连接。",
+				"title": "纯离线运行"
+			},
+			"privacy": {
+				"desc": "无需账号，无需服务器。",
+				"title": "100% 隐私保护"
+			},
+			"secure": {
+				"desc": "你的数据，完全由你控制。",
+				"title": "数据归你所有"
+			},
+			"simplicity": {
+				"desc": "跳过设置，立即开始记录。",
+				"title": "即开即用"
+			}
+		},
+		"description": "轻量级助手：包含直观统计、连续成就和内置进度日志。",
+		"titleLine1": "建立你的习惯。",
+		"titleLine2": "掌握你的数据。"
 	}
 }
