@@ -1,21 +1,67 @@
 import styles from './WelcomeView.module.css';
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaLock, FaPlane, FaShieldAlt } from 'react-icons/fa';
 import { FaBoltLightning } from 'react-icons/fa6';
-import { Button } from '@shared/ui';
+import { useSettingsStore } from '@entities/settings';
+import { Button, useDialogStore } from '@shared/ui';
+import { usePwaStatus } from '@shared/lib/dom';
+import { pwaStore, usePwaStore } from '@shared/model';
 
 const BASE_URL = import.meta.env.BASE_URL;
 
 function WelcomeView() {
+	// UI localization
 	const { t } = useTranslation();
 
-	const handleInstallPwa = () => {
+	// PWA installation state
+	const deferredPrompt = usePwaStore((s) => s.deferredPrompt);
+	const status = usePwaStatus(deferredPrompt);
 
+	// Global stores
+	const settingsDispatch = useSettingsStore((s) => s.settingsDispatch);
+	const openDialog = useDialogStore((s) => s.open);
+
+	/**
+	 * Process PWA installation flow or trigger platform-specific instructions.
+	 */
+	const handleInstall = async () => {
+		if (status === 'INSTALLED') return;
+
+		if (status === 'IOS_MANUAL') {
+			openDialog({
+				title: t('welcome.pwa.ios.title'),
+				text: t('welcome.pwa.ios.steps')
+			});
+			return;
+		}
+
+		if (status === 'BROWSER_ONLY') {
+			openDialog({
+				title: t('welcome.pwa.chromeNudge.title'),
+				text: t('welcome.pwa.chromeNudge.text')
+			});
+			return;
+		}
+
+		if (status === 'CAN_INSTALL' && deferredPrompt) {
+			await deferredPrompt.prompt();
+			const { outcome } = await deferredPrompt.userChoice;
+
+			if (outcome === 'accepted') {
+				pwaStore.getState().setDeferredPrompt(null);
+			}
+		}
 	};
 
+	/**
+	 * Mark welcome screen as completed and proceed to the application.
+	 */
 	const handleContinue = () => {
-
+		settingsDispatch({
+			type: 'updateSettings',
+			payload: { hasSeenWelcome: true }
+		});
 	};
 
 	const benefits: {
@@ -95,18 +141,20 @@ function WelcomeView() {
 					</ul>
 
 					<div className={styles.actions}>
-						<Button
-							onClick={handleInstallPwa}
-						>
-							{t('welcome.actions.install')}
+						<Button onClick={status === 'INSTALLED' ? handleContinue : handleInstall}>
+							{status === 'INSTALLED'
+								? t('common.continue')
+								: t('welcome.actions.install')}
 						</Button>
 
-						<Button
-							variant='secondary'
-							onClick={handleContinue}
-						>
-							{t('welcome.actions.continue')}
-						</Button>
+						{status !== 'INSTALLED' && (
+							<Button
+								variant='secondary'
+								onClick={handleContinue}
+							>
+								{t('welcome.actions.continue')}
+							</Button>
+						)}
 					</div>
 				</div>
 
