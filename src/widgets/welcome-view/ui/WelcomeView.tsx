@@ -1,7 +1,8 @@
 import styles from './WelcomeView.module.css';
 import type { ReactNode } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-import { FaPlane, FaShieldAlt, FaStar } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import { FaLock, FaPlane, FaShieldAlt } from 'react-icons/fa';
+import { FaBoltLightning } from 'react-icons/fa6';
 import { Button } from '@shared/ui';
 
 const BASE_URL = import.meta.env.BASE_URL;
@@ -18,20 +19,29 @@ function WelcomeView() {
 	};
 
 	const benefits: {
-		icon: ReactNode,
-		text: string
+		icon: ReactNode;
+		title: string;
+		description: string;
 	}[] = [
 			{
-				icon: <FaShieldAlt className={styles.highlight} />,
-				text: t('welcome.benefits.privacy')
+				icon: <FaShieldAlt color='#10B981' />,
+				title: t('welcome.benefits.privacy.title'),
+				description: t('welcome.benefits.privacy.desc')
 			},
 			{
-				icon: <FaPlane className={styles.highlight} />,
-				text: t('welcome.benefits.offline')
+				icon: <FaLock color='#3B82F6' />,
+				title: t('welcome.benefits.secure.title'),
+				description: t('welcome.benefits.secure.desc')
 			},
 			{
-				icon: <FaStar className={styles.highlight} />,
-				text: t('welcome.benefits.simplicity')
+				icon: <FaPlane color='#F59E0B' />,
+				title: t('welcome.benefits.offline.title'),
+				description: t('welcome.benefits.offline.desc')
+			},
+			{
+				icon: <FaBoltLightning color='#8B5CF6' />,
+				title: t('welcome.benefits.simplicity.title'),
+				description: t('welcome.benefits.simplicity.desc')
 			}
 		];
 
@@ -44,7 +54,7 @@ function WelcomeView() {
 					<div className={styles.logoWrapper}>
 						<img
 							src={`${BASE_URL}/assets/brand/logo192-alpha.png`}
-							alt='logo'
+							alt={t('common.logo')}
 							className={styles.logoImg}
 						/>
 
@@ -68,17 +78,17 @@ function WelcomeView() {
 
 					<ul className={styles.benefitsList}>
 						{benefits.map((b) => (
-							<li key={b.text} className={styles.benefitItem}>
+							<li key={b.title} className={styles.benefitItem}>
 								{b.icon}
 
-								<div className={styles.benefitText}>
-									<Trans
-										defaults={b.text}
-										components={{
-											bold: <strong className={styles.benefitTitle} />,
-											desc: <span className={styles.benefitDescription} />
-										}}
-									/>
+								<div>
+									<strong className={styles.benefitTitle}>
+										{b.title}
+									</strong>
+
+									<small className={styles.benefitDescription}>
+										{b.description}
+									</small>
 								</div>
 							</li>
 						))}
@@ -106,7 +116,7 @@ function WelcomeView() {
 				<div className={styles.imageColumn}>
 					<img
 						src={`${BASE_URL}/assets/img/welcome-hero-screenshot.png`}
-						alt='screenshot'
+						alt={t('common.screenshot')}
 						className={styles.screenshot}
 					/>
 				</div>
