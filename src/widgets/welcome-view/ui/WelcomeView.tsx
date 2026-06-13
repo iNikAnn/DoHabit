@@ -97,7 +97,6 @@ function WelcomeView() {
 					<div className={styles.actions}>
 						<Button
 							onClick={handleInstallPwa}
-							className={styles.installButton}
 						>
 							{t('welcome.actions.install')}
 						</Button>
@@ -105,7 +104,6 @@ function WelcomeView() {
 						<Button
 							variant='secondary'
 							onClick={handleContinue}
-							className={styles.skipButton}
 						>
 							{t('welcome.actions.continue')}
 						</Button>
