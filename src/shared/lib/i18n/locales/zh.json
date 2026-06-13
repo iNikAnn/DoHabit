@@ -261,6 +261,16 @@
 			}
 		},
 		"description": "轻量级助手：包含直观统计、连续成就和内置进度日志。",
+		"pwa": {
+			"chromeNudge": {
+				"text": "基于 Chromium 的浏览器支持原生安装。\n请在 Google Chrome 中打开此应用以将其安装到您的设备上。",
+				"title": "需要 Google Chrome"
+			},
+			"ios": {
+				"steps": "在 Safari 浏览器中打开此页面，点击浏览器菜单中的“分享”图标，然后选择“添加到主屏幕”。",
+				"title": "在 iOS 上安装"
+			}
+		},
 		"titleLine1": "建立你的习惯。",
 		"titleLine2": "掌握你的数据。"
 	}

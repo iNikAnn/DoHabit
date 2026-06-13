@@ -28,6 +28,7 @@
 		"app": "App",
 		"cancel": "Cancel",
 		"close": "Close",
+		"continue": "Continue",
 		"day": "Day",
 		"end": "End",
 		"icon": "Icon",
@@ -261,6 +262,16 @@
 			}
 		},
 		"description": "A lightweight assistant featuring visual statistics, streak achievements, and a built-in progress journal.",
+		"pwa": {
+			"chromeNudge": {
+				"text": "Native installation is supported in Chromium-based browsers.\nPlease open this app in Google Chrome to install it on your device.",
+				"title": "Google Chrome Required"
+			},
+			"ios": {
+				"steps": "Open this page in Safari, tap the 'Share' icon in your browser menu, and select 'Add to Home Screen'.",
+				"title": "Install on iOS"
+			}
+		},
 		"titleLine1": "Build your routine.",
 		"titleLine2": "Own your data."
 	}
