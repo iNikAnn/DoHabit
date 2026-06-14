@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { getCardMotionProps } from '../../model/animations';
 import { useHabitActions } from '../../model/useHabitActions';
@@ -26,7 +26,7 @@ const HabitListItem = memo((props: HabitListItemProps) => {
 	} = props;
 
 	const settings = useSettingsStore((s) => s.settings);
-	const habitStats = getHabitStats(habit);
+	const habitStats = useMemo(() => getHabitStats(habit), [habit]);
 	const { openHabitMenu } = useHabitActions();
 
 	const headerAction = isArchive

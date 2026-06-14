@@ -1,4 +1,5 @@
 import styles from './Calendar.module.css';
+import { useMemo } from 'react';
 import Month from '../month/Month';
 import { countDaysBetween, getDatesRange } from '@shared/lib/date-time';
 import type { ColorVariants } from '@shared/lib/theme';
@@ -10,6 +11,8 @@ interface CalendarProps {
 	showDayNumbers?: boolean;
 	getCompletedDates: (days: string[]) => Set<string>;
 }
+
+const VISIBLE_MONTHS_COUNT = 2;
 
 /**
  * Main calendar component.
@@ -24,26 +27,35 @@ function Calendar(props: CalendarProps) {
 	} = props;
 
 	const now = new Date();
-	const visibleMonthsCount = 2;
+	const currentYear = now.getFullYear();
+	const currentMonth = now.getMonth();
 
 	// Set range boundaries
-	const firstDay = new Date(now.getFullYear(), now.getMonth() - visibleMonthsCount + 1, 1);
-	const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+	const firstDay = useMemo(
+		() => new Date(currentYear, currentMonth - VISIBLE_MONTHS_COUNT + 1, 1),
+		[currentMonth, currentYear]
+	);
+
+	const lastDay = new Date(currentYear, currentMonth + 1, 0);
 
 	// Get total days including start and end dates
 	const daysCount = countDaysBetween(firstDay, lastDay) + 2;
 
 	// Create date strings and get status set
-	const datesRange = getDatesRange(daysCount, { from: firstDay });
+	const datesRange = useMemo(
+		() => getDatesRange(daysCount, { from: firstDay }),
+		[daysCount, firstDay]
+	);
+
 	const completedSet = getCompletedDates(datesRange);
 
 	return (
 		<div
-			style={{ gridTemplateColumns: `repeat(${visibleMonthsCount}, 1fr)` }}
+			style={{ gridTemplateColumns: `repeat(${VISIBLE_MONTHS_COUNT}, 1fr)` }}
 			className={styles.calendar}
 		>
-			{Array.from({ length: visibleMonthsCount }).map((_, i) => {
-				const monthDate = new Date(now.getFullYear(), now.getMonth() - i, 1);
+			{Array.from({ length: VISIBLE_MONTHS_COUNT }).map((_, i) => {
+				const monthDate = new Date(currentYear, currentMonth - i, 1);
 
 				return (
 					<Month
