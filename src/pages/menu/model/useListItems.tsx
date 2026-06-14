@@ -9,7 +9,7 @@ import type { ListItemProps } from '@shared/ui';
 function useListItems() {
 	const { t } = useTranslation();
 
-	const appItems: ListItemProps[] = [
+	const habitItems: ListItemProps[] = [
 		{
 			icon: HiArchiveBox,
 			iconProps: { color: '#7b68ee' },
@@ -20,6 +20,9 @@ function useListItems() {
 			}),
 			indicator: { type: 'arrow' }
 		},
+	];
+
+	const settingsItems: ListItemProps[] = [
 		{
 			icon: FaPaintBrush,
 			iconProps: { color: '#ffa420' },
@@ -62,7 +65,8 @@ function useListItems() {
 	];
 
 	return {
-		appItems,
+		habitItems,
+		settingsItems,
 		supportItems
 	};
 }

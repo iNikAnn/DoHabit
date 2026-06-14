@@ -9,13 +9,18 @@ import { List } from '@shared/ui';
  */
 function MenuPage() {
 	const { t } = useTranslation();
-	const { appItems, supportItems } = useListItems();
+	const { habitItems, settingsItems, supportItems } = useListItems();
 
 	return (
 		<section className={styles.page}>
 			<List
-				title={t('common.app')}
-				items={appItems}
+				title={t('common.habits')}
+				items={habitItems}
+			/>
+
+			<List
+				title={t('common.settings')}
+				items={settingsItems}
 			/>
 
 			<List
