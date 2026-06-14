@@ -2,6 +2,7 @@ import styles from './CompactCalendar.module.css';
 import clsx from 'clsx';
 import type { ColorVariants } from '@shared/lib/theme';
 import { formatDate, getDatesRange } from '@shared/lib/date-time';
+import { useMemo } from 'react';
 
 interface Props {
 	weeksCount?: number;
@@ -25,12 +26,16 @@ function CompactCalendar(props: Props) {
 	} = props;
 
 	const now = new Date();
+	const todayStr = formatDate(now);
 	const currentDayIndex = now.getDay();
 
 	// Total days: full previous weeks + days in current week
 	const totalDays = 7 * (weeksCount - 1) + (currentDayIndex || 7);
 
-	const dateRange = getDatesRange(totalDays, { to: now });
+	const dateRange = useMemo(
+		() => getDatesRange(totalDays, { to: todayStr }),
+		[todayStr, totalDays]
+	);
 
 	// Group into weeks (columns)
 	const weeks: string[][] = [];
@@ -48,7 +53,7 @@ function CompactCalendar(props: Props) {
 			{weeks.map((week, weekIndex) => (
 				<div key={weekIndex} className={styles.week}>
 					{week.map((date) => {
-						const isToday = date === formatDate(now);
+						const isToday = date === todayStr;
 						const isCompleted = completedSet.has(date);
 
 						return (
