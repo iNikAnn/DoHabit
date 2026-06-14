@@ -13,9 +13,7 @@ export type AchievementType = keyof AchievementIdMap;
 export type AchievementId<T extends AchievementType = AchievementType> = AchievementIdMap[T];
 
 export interface Achievement {
-	id: string;
-	title: string;
-	description: string;
+	id: AchievementId;
 	icon: string;
 	isSecret?: boolean;
 }

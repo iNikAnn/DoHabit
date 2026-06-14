@@ -31,10 +31,13 @@ function useCheckAchievements() {
 		const ach = ACHIEVEMENTS.find((a) => a.id === id);
 		if (!ach) return;
 
+		const title = t(`achievements.items.${ach.id}.title`);
+		const description = t(`achievements.items.${ach.id}.desc`);
+
 		openDialog({
 			title: t('achievements.notification.title'),
 			imgSrc: ach.icon,
-			text: `"${ach.title}"\n${ach.description}`
+			text: `"${title}"\n${description}`
 		});
 	}, [openDialog, t]);
 

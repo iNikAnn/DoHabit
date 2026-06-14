@@ -20,10 +20,10 @@ function AchievementList() {
 		const unlockDate = unlockedAt[a.id as AchievementId] ?? '';
 
 		openDialog({
-			title: a.title,
+			title: t(`achievements.items.${a.id}.title`),
 			subTitle: `Unlock Date: ${new Date(unlockDate).toLocaleDateString()}`,
 			imgSrc: a.icon,
-			text: a.description
+			text: t(`achievements.items.${a.id}.desc`)
 		});
 	};
 
@@ -32,8 +32,8 @@ function AchievementList() {
 		.filter((a) => unlockedAt[a.id])
 		.sort((a, b) => unlockedAt[b.id]! - unlockedAt[a.id]!)
 		.map((a) => ({
-			title: a.title,
-			description: a.description,
+			title: t(`achievements.items.${a.id}.title`),
+			description: t(`achievements.items.${a.id}.desc`),
 			icon: a.icon,
 			onClick: () => handleShowDetails(a)
 		}));

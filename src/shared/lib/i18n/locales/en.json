@@ -1,5 +1,67 @@
 {
 	"achievements": {
+		"items": {
+			"accumulated-year": {
+				"desc": "You completed a habit 365 times! Sure, there were gaps, weeks of laziness, and existential crises... but hey, mathematically, it adds up to a whole year!",
+				"title": "A Year... Sort Of"
+			},
+			"diane-morning-log": {
+				"desc": "“Diane, 7:30 AM...” You've written a note before 9:00. Grab a damn good cup of coffee and a donut — Agent Cooper would definitely approve of your morning routine!",
+				"title": "Good Morning, Diane"
+			},
+			"fresh-start": {
+				"desc": "Welcome aboard! You have just created your very first habit. Let’s make it stick.",
+				"title": "Fresh Start"
+			},
+			"gotham-protector": {
+				"desc": "You wrote a note after 01:00. What's keeping you awake? Are you protecting Gotham, or just overthinking again?",
+				"title": "The Dark Knight"
+			},
+			"gravity-falls-journal": {
+				"desc": "You are actively writing down your thoughts and anomalies. Somewhere in Oregon, Dipper Pines is desperately trying to find your notebook to solve the mysteries of your life!",
+				"title": "Journal #4"
+			},
+			"habit-vacation-over": {
+				"desc": "You've returned to your habit after a gap of 21+ days. Just a friendly reminder: the rule was to stick with it for 21 days straight to form a habit, not to take a 3-week vacation from it! But hey, welcome back!",
+				"title": "Habit Formation"
+			},
+			"ill-be-back": {
+				"desc": "You've archived 5 habits — because why actually do them when you can just collect?",
+				"title": "I'll Be Back"
+			},
+			"main-quest-abandoned": {
+				"desc": "The world is ending, Alduin is here, but you've ignored this habit for 7 days straight. Classic Dragonborn behavior. Let's guess, you went to chase butterflies instead?",
+				"title": "The Dragonborn Can Wait"
+			},
+			"new-years-resolution": {
+				"desc": "You broke the curse! Started and completed a habit on January 1st while everyone else is still asleep.",
+				"title": "New Year, New Me"
+			},
+			"not-twitter-approved": {
+				"desc": "Kudos! You've crafted a note longer than 140 characters. Back in the day, this would never fit in a tweet, but you are free from those ancient limits now. Write on!",
+				"title": "Not Twitter-Approved"
+			},
+			"overachiever-day": {
+				"desc": "Wow, three habits in one day! Who knew you had this much free time? Procrastination looks good on you!",
+				"title": "Overachiever of the Day!"
+			},
+			"perfect-day": {
+				"desc": "You've got 3 or more habits, and you've accomplished every single one!",
+				"title": "Perfect Day!"
+			},
+			"perfect-year": {
+				"desc": "365 days of absolute discipline. You started on January 1st and didn’t miss a single day all year round.",
+				"title": "Calendar Conqueror"
+			},
+			"time-traveler": {
+				"desc": "You've officially mastered the art of pretending to be productive — five times!",
+				"title": "I Swear I Did It!"
+			},
+			"tolstoy-mode": {
+				"desc": "Impressive! The total character count in your notes could give Leo Tolstoy a run for his money.",
+				"title": "War and Peace and More"
+			}
+		},
 		"list": {
 			"emptyDesc": "Unlock rare achievements by using the app regularly!",
 			"emptyTitle": "No Achievements Yet"
