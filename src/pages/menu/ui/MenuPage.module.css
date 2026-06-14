@@ -8,7 +8,13 @@
 
 /* footer */
 .footer {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
 	margin-top: auto;
+}
+
+.version {
 	color: gray;
 	text-align: center;
 }
