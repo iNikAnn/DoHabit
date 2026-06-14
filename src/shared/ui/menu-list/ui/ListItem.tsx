@@ -40,12 +40,14 @@ function ListItem(props: ListItemProps) {
 					{title}
 				</h3>
 
-				<small className={clsx(
-					styles.description,
-					truncateDescription && styles.truncate
-				)}>
-					{description}
-				</small>
+				{description && (
+					<small className={clsx(
+						styles.description,
+						truncateDescription && styles.truncate
+					)}>
+						{description}
+					</small>
+				)}
 			</div>
 
 			{extra && (
