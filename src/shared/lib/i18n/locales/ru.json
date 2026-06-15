@@ -1,5 +1,67 @@
 {
 	"achievements": {
+		"items": {
+			"accumulated-year": {
+				"desc": "",
+				"title": ""
+			},
+			"diane-morning-log": {
+				"desc": "",
+				"title": ""
+			},
+			"fresh-start": {
+				"desc": "",
+				"title": ""
+			},
+			"gotham-protector": {
+				"desc": "",
+				"title": ""
+			},
+			"gravity-falls-journal": {
+				"desc": "",
+				"title": ""
+			},
+			"habit-vacation-over": {
+				"desc": "",
+				"title": ""
+			},
+			"ill-be-back": {
+				"desc": "",
+				"title": ""
+			},
+			"main-quest-abandoned": {
+				"desc": "",
+				"title": ""
+			},
+			"new-years-resolution": {
+				"desc": "",
+				"title": ""
+			},
+			"not-twitter-approved": {
+				"desc": "",
+				"title": ""
+			},
+			"overachiever-day": {
+				"desc": "",
+				"title": ""
+			},
+			"perfect-day": {
+				"desc": "",
+				"title": ""
+			},
+			"perfect-year": {
+				"desc": "",
+				"title": ""
+			},
+			"time-traveler": {
+				"desc": "",
+				"title": ""
+			},
+			"tolstoy-mode": {
+				"desc": "",
+				"title": ""
+			}
+		},
 		"list": {
 			"emptyDesc": "Собирайте редкие достижения пользуясь приложением!",
 			"emptyTitle": "Достижений нет"
