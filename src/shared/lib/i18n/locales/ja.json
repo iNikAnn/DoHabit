@@ -1,0 +1,342 @@
+{
+	"achievements": {
+		"items": {
+			"accumulated-year": {
+				"desc": "",
+				"title": ""
+			},
+			"diane-morning-log": {
+				"desc": "",
+				"title": ""
+			},
+			"fresh-start": {
+				"desc": "",
+				"title": ""
+			},
+			"gotham-protector": {
+				"desc": "",
+				"title": ""
+			},
+			"gravity-falls-journal": {
+				"desc": "",
+				"title": ""
+			},
+			"habit-vacation-over": {
+				"desc": "",
+				"title": ""
+			},
+			"ill-be-back": {
+				"desc": "",
+				"title": ""
+			},
+			"main-quest-abandoned": {
+				"desc": "",
+				"title": ""
+			},
+			"new-years-resolution": {
+				"desc": "",
+				"title": ""
+			},
+			"not-twitter-approved": {
+				"desc": "",
+				"title": ""
+			},
+			"overachiever-day": {
+				"desc": "",
+				"title": ""
+			},
+			"perfect-day": {
+				"desc": "",
+				"title": ""
+			},
+			"perfect-year": {
+				"desc": "",
+				"title": ""
+			},
+			"time-traveler": {
+				"desc": "",
+				"title": ""
+			},
+			"tolstoy-mode": {
+				"desc": "",
+				"title": ""
+			}
+		},
+		"list": {
+			"emptyDesc": "",
+			"emptyTitle": ""
+		},
+		"notification": {
+			"desc": "",
+			"title": ""
+		},
+		"title": ""
+	},
+	"app": {
+		"errorBoundary": {
+			"desc": "",
+			"dialogs": {
+				"resetConfirm": ""
+			},
+			"title": ""
+		},
+		"update": {
+			"text": "",
+			"title": ""
+		}
+	},
+	"common": {
+		"all": "",
+		"app": "",
+		"cancel": "",
+		"close": "",
+		"continue": "",
+		"day": "",
+		"end": "",
+		"habits": "",
+		"icon": "",
+		"logo": "",
+		"reload": "",
+		"screenshot": "",
+		"settings": "",
+		"showLess": "",
+		"showMore": "",
+		"start": "",
+		"support": "",
+		"theme": {
+			"auto": "",
+			"dark": "",
+			"light": ""
+		},
+		"ui": "",
+		"version": ""
+	},
+	"habits": {
+		"actions": {
+			"archive": "",
+			"create": "",
+			"createNew": "",
+			"delete": "",
+			"doneYesterday": "",
+			"edit": "",
+			"notes": "",
+			"share": "",
+			"undoYesterday": "",
+			"update": ""
+		},
+		"dialogs": {
+			"archiveConfirm": "",
+			"deleteConfirm": "",
+			"manageTitle": "",
+			"restoreConfirm": ""
+		},
+		"form": {
+			"colorDesc": "",
+			"colorTitle": "",
+			"errors": {
+				"alreadyExists": ""
+			},
+			"frequencyDesc": "",
+			"frequencyTitle": "",
+			"iconDesc": "",
+			"iconTitle": "",
+			"namePlaceholder": "",
+			"nameTitle": "",
+			"orderDesc": "",
+			"orderSorting": {
+				"btnAlreadyAtBottom": "",
+				"btnAlreadyAtTop": "",
+				"btnMoveToBottom": "",
+				"btnMoveToTop": "",
+				"btnStepDown": "",
+				"btnStepUp": ""
+			},
+			"orderTitle": ""
+		},
+		"list": {
+			"createFirst": "",
+			"emptyActiveDesc": "",
+			"emptyActiveTitle": "",
+			"emptyArchivedDesc": "",
+			"emptyArchivedTitle": ""
+		},
+		"share": {
+			"desc": "",
+			"error": "",
+			"notSupported": "",
+			"title": ""
+		},
+		"stats": {
+			"chartCompletions": "",
+			"currentStreak": "",
+			"longestStreak": "",
+			"monthlyChartTitle": "",
+			"streak": "",
+			"streakHistoryDesc": "",
+			"streakHistoryTitle": "",
+			"title": "",
+			"totalCompleted": "",
+			"weekdayChartTitle": ""
+		}
+	},
+	"menu": {
+		"appearance": {
+			"calendar": {
+				"compact": "",
+				"default": "",
+				"highlightToday": {
+					"title": ""
+				},
+				"sectionTitle": "",
+				"showDayNumbers": {
+					"desc": "",
+					"title": ""
+				},
+				"showWeekdayNames": {
+					"desc": "",
+					"title": ""
+				},
+				"typeDesc": "",
+				"typeTitle": ""
+			},
+			"desc": "",
+			"language": {
+				"desc": "",
+				"dialogs": {
+					"selectTitle": ""
+				},
+				"title": ""
+			},
+			"theme": {
+				"desc": "",
+				"dialogs": {
+					"selectThemeTitle": ""
+				},
+				"selectTitle": "",
+				"title": ""
+			},
+			"title": ""
+		},
+		"archive": {
+			"desc": "",
+			"title": ""
+		},
+		"dataManagement": {
+			"backup": {
+				"export": {
+					"desc": "",
+					"dialogs": {
+						"exportConfirm": ""
+					},
+					"title": ""
+				},
+				"import": {
+					"desc": "",
+					"notifications": {
+						"error": "",
+						"success": ""
+					},
+					"title": ""
+				},
+				"sectionTitle": ""
+			},
+			"danger": {
+				"clearAll": {
+					"desc": "",
+					"dialogs": {
+						"confirm": "",
+						"prompt": ""
+					},
+					"notifications": {
+						"error": "",
+						"success": ""
+					},
+					"title": ""
+				},
+				"sectionTitle": ""
+			},
+			"desc": "",
+			"title": ""
+		},
+		"shared": {
+			"feedback": {
+				"desc": "",
+				"title": ""
+			},
+			"gitHub": {
+				"desc": "",
+				"title": ""
+			}
+		},
+		"title": ""
+	},
+	"notes": {
+		"actions": {
+			"copy": "",
+			"delete": "",
+			"edit": ""
+		},
+		"dialogs": {
+			"deleteConfirm": ""
+		},
+		"form": {
+			"textPlaceholder": ""
+		},
+		"list": {
+			"emptyDesc": "",
+			"emptyTitle": "",
+			"selected": ""
+		},
+		"notifications": {
+			"copyError": "",
+			"copySuccess": "",
+			"createSuccess": "",
+			"deleteSuccess": "",
+			"editSuccess": ""
+		},
+		"tags": {
+			"all": "",
+			"emptyDesc": "",
+			"emptyTitle": "",
+			"forYear": ""
+		},
+		"title": ""
+	},
+	"welcome": {
+		"actions": {
+			"continue": "",
+			"install": ""
+		},
+		"benefits": {
+			"offline": {
+				"desc": "",
+				"title": ""
+			},
+			"privacy": {
+				"desc": "",
+				"title": ""
+			},
+			"secure": {
+				"desc": "",
+				"title": ""
+			},
+			"simplicity": {
+				"desc": "",
+				"title": ""
+			}
+		},
+		"description": "",
+		"pwa": {
+			"chromeNudge": {
+				"text": "",
+				"title": ""
+			},
+			"ios": {
+				"steps": "",
+				"title": ""
+			}
+		},
+		"titleLine1": "",
+		"titleLine2": ""
+	}
+}
