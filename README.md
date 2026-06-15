@@ -8,11 +8,11 @@
 
 ## 🔥 Why DoHabit?
 
-While other trackers demand subscriptions and collect your data, DoHabit focuses on speed and absolute privacy:
+Unlike bloated, subscription-based trackers, DoHabit focuses strictly on privacy and speed:
 
-*   **🔒 100% Private:** Built on a Local-First architecture (IndexedDB). Your habits and journals never leave your device.
+*   **🔒 100% Private:** Built on a Local-First architecture. Your data never leaves your device.
 *   **⚡ Zero Friction:** No sign-ups, no emails, no passwords. Ready to use in exactly 1 second.
-*   **✈️ True Offline:** Fully functional without an internet connection-perfect for flights, subways, or remote areas.
+*   **✈️ True Offline:** Works flawlessly without internet-perfect for flights or subways.
 *   **✨ Premium Feel:** A distraction-free minimalist interface powered by smooth animations.
 
 ## 🗃️ Core Features
