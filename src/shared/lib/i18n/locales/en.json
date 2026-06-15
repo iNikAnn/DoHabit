@@ -260,8 +260,8 @@
 		},
 		"shared": {
 			"feedback": {
-				"desc": "Share feedback or report bugs",
-				"title": "Send Feedback"
+				"desc": "Report bugs or suggest new features",
+				"title": "Report an Issue"
 			},
 			"gitHub": {
 				"desc": "View or contribute to the project",

@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { HiArchiveBox } from 'react-icons/hi2';
-import { FaGithub, FaPaintBrush } from 'react-icons/fa';
+import { FaBug, FaGithub, FaPaintBrush } from 'react-icons/fa';
 import { BsFillDatabaseFill } from 'react-icons/bs';
-import { IoIosMail } from 'react-icons/io';
 import { getNavigationTarget } from '@shared/lib/router';
 import type { ListItemProps } from '@shared/ui';
 
@@ -55,11 +54,11 @@ function useListItems() {
 			indicator: { type: 'external' }
 		},
 		{
-			icon: IoIosMail,
-			iconProps: { color: '#ffb841' },
+			icon: FaBug,
+			iconProps: { color: '#EF4444' },
 			title: t('menu.shared.feedback.title'),
 			description: t('menu.shared.feedback.desc'),
-			onClick: () => window.location.href = 'mailto:ilowen@ya.ru?subject=Feedback%20on%20DoHabit',
+			onClick: () => window.open('https://github.com/iNikAnn/DoHabit/issues/new', '_blank'),
 			indicator: { type: 'external' }
 		}
 	];

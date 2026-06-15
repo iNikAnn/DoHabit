@@ -36,7 +36,6 @@ function MenuPage() {
 					<List
 						title='PWA'
 						titleStyle={{ color: '#2db78b' }}
-						listStyle={{ border: '2px solid #2db78b' }}
 						items={[{
 							icon: <MdInstallMobile color='#2db78b' />,
 							title: t('welcome.actions.install'),
