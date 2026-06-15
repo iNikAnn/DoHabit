@@ -10,6 +10,7 @@ i18n
 		supportedLngs: Object.keys(resources),
 		resources,
 		fallbackLng: 'en',
+		returnEmptyString: false,
 		detection: {
 			// Extracts only the base language code (e.g., "en" from "en-US")
 			// before passing it to i18next and before saving to localStorage
