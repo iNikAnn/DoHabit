@@ -4,7 +4,7 @@
 
 **DoHabit** is a lightweight, local-first habit tracker designed to respect your privacy. No registration, no ads, no cloud tracking - just open it and start building your routine instantly.
 
-[🎯 Launch App](https://inikann.github.io/DoHabit/)
+[🎯 Launch App](https://dohabit.app/)
 
 ## 🔥 Why DoHabit?
 
@@ -35,11 +35,11 @@ Unlike bloated, subscription-based trackers, DoHabit focuses strictly on privacy
 DoHabit is a Progressive Web App (PWA). Follow the instructions for your device:
 
 ### Android / Desktop (Chrome Required)
-1. Open [DoHabit](https://inikann.github.io/DoHabit/) in **Google Chrome**.
+1. Open [DoHabit](https://dohabit.app/) in **Google Chrome**.
 2. Tap the **"Install"** prompt in the address bar.
 3. *Alternative:* Open Chrome menu (three dots) → **"Save and share"** → **"Install app"**.
 
 ### iOS / Apple (Safari Required)
-1. Open [DoHabit](https://inikann.github.io/DoHabit/) in **Safari**.
+1. Open [DoHabit](https://dohabit.app/) in **Safari**.
 2. Tap the **"Share"** button at the bottom of the screen.
 3. Scroll down and select **"Add to Home Screen"**.
