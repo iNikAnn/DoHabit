@@ -12,7 +12,13 @@ const BACKGROUND_COLOR_DARK = '#000000';
 const APP_TITLE = 'DoHabit | Build Habits, Break Limits & Crush Your Goals';
 const OG_BANNER_URL = '/assets/img/Repo-Card-Template.jpg';
 
-const APP_URL = new URL(pkg.homepage);
+const BUILD_TARGET = process.env.BUILD_TARGET;
+
+const HOMEPAGE = BUILD_TARGET === 'cloudflare'
+	? 'https://dohabit.app/'
+	: pkg.homepage;
+
+const APP_URL = new URL(HOMEPAGE);
 const APP_BASE = APP_URL.pathname;
 const APP_DOMAIN = APP_URL.hostname;
 
@@ -69,7 +75,7 @@ export default defineConfig({
 				// OG
 				{
 					property: 'og:url',
-					content: pkg.homepage
+					content: HOMEPAGE
 				},
 				{
 					property: 'og:type',
@@ -98,7 +104,7 @@ export default defineConfig({
 				},
 				{
 					property: 'twitter:url',
-					content: pkg.homepage
+					content: HOMEPAGE
 				},
 				{
 					name: 'twitter:title',
