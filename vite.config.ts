@@ -6,10 +6,11 @@ import react from '@vitejs/plugin-react';
 import htmlPlugin from 'vite-plugin-html-config';
 import pkg from './package.json';
 
+const APP_NAME = 'DoHabit';
 const THEME_COLOR_DARK = '#000000';
 const THEME_COLOR_LIGHT = '#ffffff';
 const BACKGROUND_COLOR_DARK = '#000000';
-const APP_TITLE = 'DoHabit | Build Habits, Break Limits & Crush Your Goals';
+const APP_TITLE = `${APP_NAME} | Build Habits, Break Limits & Crush Your Goals`;
 const OG_BANNER_URL = '/assets/img/Repo-Card-Template.jpg';
 
 const PRODUCTION_URL = 'https://dohabit.app/';
@@ -90,6 +91,10 @@ export default defineConfig({
 					content: 'website'
 				},
 				{
+					property: 'og:site_name',
+					content: APP_NAME
+				},
+				{
 					property: 'og:title',
 					content: APP_TITLE
 				},
@@ -141,8 +146,8 @@ export default defineConfig({
 			includeManifestIcons: false,
 
 			manifest: {
-				name: 'DoHabit',
-				short_name: 'DoHabit',
+				name: APP_NAME,
+				short_name: APP_NAME,
 				description: pkg.description,
 				prefer_related_applications: false,
 
