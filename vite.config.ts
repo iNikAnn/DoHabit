@@ -131,7 +131,35 @@ export default defineConfig({
 					name: 'twitter:image',
 					content: OG_BANNER_URL
 				}
-			]
+			],
+
+			headScripts: [
+				// Structured Data
+				// https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
+				{
+					type: 'application/ld+json',
+					content: JSON.stringify([
+						{
+							'@context': 'https://schema.org',
+							'@type': 'WebSite',
+							'name': APP_NAME,
+							'url': PRODUCTION_URL
+						},
+						{
+							'@context': 'https://schema.org',
+							'@type': 'WebApplication',
+							'name': APP_NAME,
+							'operatingSystem': 'Windows, macOS, Android, iOS, Linux',
+							'applicationCategory': 'LifestyleApplication',
+							'offers': {
+								'@type': 'Offer',
+								'price': '0',
+								'priceCurrency': 'USD'
+							}
+						}
+					])
+				}
+			],
 		}),
 
 		VitePWA({
