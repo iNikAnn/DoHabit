@@ -34,8 +34,6 @@ function MenuPage() {
 			<div className={styles.footer}>
 				{status !== 'INSTALLED' && (
 					<List
-						title='PWA'
-						titleStyle={{ color: '#2db78b' }}
 						items={[{
 							icon: <MdInstallMobile color='#2db78b' />,
 							title: t('welcome.actions.install'),
