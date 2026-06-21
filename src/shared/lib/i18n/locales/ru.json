@@ -181,6 +181,10 @@
 	},
 	"menu": {
 		"appearance": {
+			"animations": {
+				"desc": "Эффекты и переходы",
+				"title": "Анимации"
+			},
 			"calendar": {
 				"compact": "Компактный",
 				"default": "Обычный",

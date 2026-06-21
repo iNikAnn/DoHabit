@@ -181,6 +181,10 @@
 	},
 	"menu": {
 		"appearance": {
+			"animations": {
+				"desc": "Transitions and UI effects",
+				"title": "Animations"
+			},
 			"calendar": {
 				"compact": "Compact",
 				"default": "Default",

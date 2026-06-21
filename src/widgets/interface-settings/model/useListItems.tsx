@@ -59,8 +59,8 @@ function useListItems() {
 		{
 			icon: FaMagic,
 			iconProps: { color: '#d483e2' },
-			title: 'Animations',
-			description: 'Transitions and UI effects',
+			title: t('menu.appearance.animations.title'),
+			description: t('menu.appearance.animations.desc'),
 			extra: (
 				<Switch
 					isActive={settings.isAnimationsEnabled}

@@ -181,6 +181,10 @@
 	},
 	"menu": {
 		"appearance": {
+			"animations": {
+				"desc": "界面过渡与特效",
+				"title": "动画效果"
+			},
 			"calendar": {
 				"compact": "紧凑",
 				"default": "默认",
