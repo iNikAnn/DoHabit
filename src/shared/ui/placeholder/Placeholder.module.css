@@ -29,7 +29,11 @@
 	color: var(--color-secondary);
 }
 
-.actionsWrapper {
+.actions {
 	display: flex;
 	gap: 16px;
+}
+
+.actionButton {
+	height: 48px;
 }

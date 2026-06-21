@@ -108,7 +108,7 @@ function HabitForm({ habitId }: HabitFormProps) {
 				initialIconTitle={currentHabit?.iconTitle}
 			/>
 
-			<div className={styles.submitButtonWrapper}>
+			<div className={styles.actions}>
 				{(isEditMode && habitId) && (
 					<HabitExtraActions
 						habitId={habitId}

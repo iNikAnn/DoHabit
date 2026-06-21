@@ -12,14 +12,14 @@
 	display: flex;
 	gap: 8px;
 	justify-content: flex-end;
-	height: 48px;
+	height: 56px;
 	padding: 0 32px;
 	pointer-events: none;
 }
 
 .toolbar button {
-	width: 48px;
-	height: 48px;
+	height: 100%;
+	aspect-ratio: 1;
 	pointer-events: auto;
 }
 
