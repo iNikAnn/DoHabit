@@ -46,6 +46,7 @@ export const useSettingsStore = create<SettingsState>()(
 	persist(
 		(set) => ({
 			settings: {
+				isAnimationsEnabled: true,
 				calendarHighlightToday: true,
 				calendarShowDayNames: true,
 				calendarShowDayNumbers: true

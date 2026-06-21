@@ -1,30 +1,34 @@
 import './styles/App.css';
+import { MotionConfig } from 'framer-motion';
 import { Toaster } from 'sonner'
 import { AppRouter } from './providers';
+import PWABadge from '../PWABadge';
 import { useCheckAchievements } from '@features/check-achievements';
-import { useTheme } from '@entities/settings';
+import { useSettingsStore, useTheme } from '@entities/settings';
 import { Dialog, Drawer } from '@shared/ui';
-import PWABadge from '@/PWABadge';
 
 function App() {
+	const settings = useSettingsStore((s) => s.settings);
 	const theme = useTheme();
 	useCheckAchievements();
 
 	return (
-		<main className='App'>
-			<AppRouter />
-			<Dialog />
-			<Drawer />
+		<MotionConfig skipAnimations={!settings.isAnimationsEnabled}>
+			<main className='App'>
+				<AppRouter />
+				<Dialog />
+				<Drawer />
 
-			<Toaster
-				position='top-center'
-				theme={theme ?? 'system'}
-				richColors
-				toastOptions={{ className: 'toast' }}
-			/>
+				<Toaster
+					position='top-center'
+					theme={theme ?? 'system'}
+					richColors
+					toastOptions={{ className: 'toast' }}
+				/>
 
-			<PWABadge />
-		</main>
+				<PWABadge />
+			</main>
+		</MotionConfig>
 	);
 }
 

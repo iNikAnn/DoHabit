@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { FaFont, FaLanguage } from 'react-icons/fa6';
 import { FaMoon, FaSun } from 'react-icons/fa6';
+import { FaMagic } from 'react-icons/fa';
 import useThemeActions from './useThemeActions';
 import useLangActions from './useLangActions';
 import { useSettingsStore } from '@entities/settings';
 import { languageMap } from '@shared/lib/i18n';
-import { type ListItemProps, useDrawerStore } from '@shared/ui';
+import { type ListItemProps, Switch, useDrawerStore } from '@shared/ui';
 
 function useListItems() {
 	// UI localization
@@ -13,6 +14,7 @@ function useListItems() {
 
 	const openDrawer = useDrawerStore((s) => s.open);
 	const settings = useSettingsStore((s) => s.settings);
+	const settingsDispatch = useSettingsStore((s) => s.settingsDispatch);
 
 	const { themeActions } = useThemeActions();
 	const { langActions } = useLangActions();
@@ -40,6 +42,7 @@ function useListItems() {
 		// lang switcher
 		{
 			icon: FaLanguage,
+			iconProps: { color: '#83e690' },
 			title: t('menu.appearance.language.title'),
 			description: t('menu.appearance.language.desc', {
 				lang: languageMap[i18n.language]?.label ?? 'Unknown'
@@ -50,6 +53,25 @@ function useListItems() {
 					actions: langActions
 				})
 			}
+		},
+
+		// animations
+		{
+			icon: FaMagic,
+			iconProps: { color: '#d483e2' },
+			title: 'Animations',
+			description: 'Transitions and UI effects',
+			extra: (
+				<Switch
+					isActive={settings.isAnimationsEnabled}
+					onClick={() => settingsDispatch({
+						type: 'updateSettings',
+						payload: {
+							isAnimationsEnabled: !settings.isAnimationsEnabled
+						}
+					})}
+				/>
+			)
 		}
 	];
 

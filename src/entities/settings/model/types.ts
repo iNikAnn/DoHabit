@@ -3,6 +3,7 @@ import type { AppLanguageCode } from '@shared/lib/i18n/types';
 export interface Settings {
 	theme?: 'light' | 'dark';
 	language?: AppLanguageCode;
+	isAnimationsEnabled: boolean;
 	hasSeenWelcome?: boolean;
 	calendarView?: 'default' | 'compact';
 	calendarHighlightToday: boolean;
