@@ -11,6 +11,7 @@ function ListItem(props: ListItemProps) {
 	const {
 		title,
 		description,
+		descriptionStyle,
 		iconSize,
 		truncateDescription,
 		indicator = {},
@@ -41,10 +42,13 @@ function ListItem(props: ListItemProps) {
 				</h3>
 
 				{description && (
-					<small className={clsx(
-						styles.description,
-						truncateDescription && styles.truncate
-					)}>
+					<small
+						style={descriptionStyle}
+						className={clsx(
+							styles.description,
+							truncateDescription && styles.truncate
+						)}
+					>
 						{description}
 					</small>
 				)}
