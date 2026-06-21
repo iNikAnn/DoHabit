@@ -6,6 +6,7 @@ import useThemeActions from './useThemeActions';
 import useLangActions from './useLangActions';
 import { useSettingsStore } from '@entities/settings';
 import { languageMap } from '@shared/lib/i18n';
+import { useSystemMotion } from '@shared/lib/react';
 import { type ListItemProps, Switch, useDrawerStore } from '@shared/ui';
 
 function useListItems() {
@@ -15,6 +16,7 @@ function useListItems() {
 	const openDrawer = useDrawerStore((s) => s.open);
 	const settings = useSettingsStore((s) => s.settings);
 	const settingsDispatch = useSettingsStore((s) => s.settingsDispatch);
+	const hasReducedMotion = useSystemMotion();
 
 	const { themeActions } = useThemeActions();
 	const { langActions } = useLangActions();
@@ -60,7 +62,10 @@ function useListItems() {
 			icon: FaMagic,
 			iconProps: { color: '#d483e2' },
 			title: t('menu.appearance.animations.title'),
-			description: t('menu.appearance.animations.desc'),
+			description: hasReducedMotion
+				? t('menu.appearance.animations.disabledBySystem')
+				: t('menu.appearance.animations.desc'),
+			descriptionStyle: hasReducedMotion ? { color: 'indianRed' } : undefined,
 			extra: (
 				<Switch
 					isActive={settings.isAnimationsEnabled}

@@ -6,14 +6,16 @@ import PWABadge from '../PWABadge';
 import { useCheckAchievements } from '@features/check-achievements';
 import { useSettingsStore, useTheme } from '@entities/settings';
 import { Dialog, Drawer } from '@shared/ui';
+import { useSystemMotion } from '@shared/lib/react';
 
 function App() {
 	const settings = useSettingsStore((s) => s.settings);
+	const hasReducedMotion = useSystemMotion();
 	const theme = useTheme();
 	useCheckAchievements();
 
 	return (
-		<MotionConfig skipAnimations={!settings.isAnimationsEnabled}>
+		<MotionConfig skipAnimations={!settings.isAnimationsEnabled || hasReducedMotion}>
 			<main className='App'>
 				<AppRouter />
 				<Dialog />
