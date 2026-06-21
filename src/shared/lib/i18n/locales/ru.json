@@ -183,6 +183,7 @@
 		"appearance": {
 			"animations": {
 				"desc": "Эффекты и переходы",
+				"disabledBySystem": "Включено «Уменьшение движения» в системе",
 				"title": "Анимации"
 			},
 			"calendar": {

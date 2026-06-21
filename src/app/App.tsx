@@ -5,8 +5,8 @@ import { AppRouter } from './providers';
 import PWABadge from '../PWABadge';
 import { useCheckAchievements } from '@features/check-achievements';
 import { useSettingsStore, useTheme } from '@entities/settings';
-import { Dialog, Drawer } from '@shared/ui';
 import { useSystemMotion } from '@shared/lib/react';
+import { Dialog, Drawer } from '@shared/ui';
 
 function App() {
 	const settings = useSettingsStore((s) => s.settings);

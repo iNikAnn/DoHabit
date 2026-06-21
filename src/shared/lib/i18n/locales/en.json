@@ -183,6 +183,7 @@
 		"appearance": {
 			"animations": {
 				"desc": "Transitions and UI effects",
+				"disabledBySystem": "Disabled via system Reduced Motion",
 				"title": "Animations"
 			},
 			"calendar": {

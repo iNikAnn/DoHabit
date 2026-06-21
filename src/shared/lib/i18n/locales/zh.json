@@ -183,6 +183,7 @@
 		"appearance": {
 			"animations": {
 				"desc": "界面过渡与特效",
+				"disabledBySystem": "系统已开启“减弱动态效果”",
 				"title": "动画效果"
 			},
 			"calendar": {

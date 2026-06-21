@@ -151,7 +151,7 @@ export default defineConfig([
 						'canvas.toBlob',
 						'toLocaleTimeString',
 						'window.open',
-						'window.matchMedia',
+						'matchMedia',
 						/^Intl\..+/,
 						/^localStorage\..+/,
 						/^console\..+/,
