@@ -36,6 +36,18 @@ input[type='number'] {
 	--input-height-primary: 3rem;
 }
 
+/* Override LightningCSS polyfill variables when dark theme is forced */
+html[style*="color-scheme: dark"] {
+	--lightningcss-light: ;
+  	--lightningcss-dark: initial;
+}
+
+/* Override LightningCSS polyfill variables when light theme is forced */
+html[style*="color-scheme: light"] {
+  	--lightningcss-light: initial;
+  	--lightningcss-dark: ;
+}
+
 html,
 body {
 	overscroll-behavior-y: contain;
