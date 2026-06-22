@@ -7,6 +7,12 @@
 	border-radius: var(--border-radius-secondary) !important;
 }
 
+.paletteItem {
+  	--base-color: light-dark(oklch(80% 0.2 var(--hue)), oklch(60% 0.13 var(--hue)));
+  	--darkened-color: light-dark(oklch(96% 0.02 var(--hue)), oklch(30% 0.01 var(--hue)));
+  	--softened-color: light-dark(oklch(70% 0.04 var(--hue)), oklch(58% 0.03 var(--hue)));
+}
+
 @media screen and (width >= 576px) {
 	.App {
 		width: var(--app-width);
