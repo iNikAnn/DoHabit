@@ -2,13 +2,11 @@ import styles from './Month.module.css';
 import { startCase } from 'es-toolkit';
 import { useTranslation } from 'react-i18next';
 import { formatDate, getWeekdayLabels } from '@shared/lib/date-time';
-import type { ColorVariants } from '@shared/lib/theme';
 
 interface Props {
 	today: Date;
 	monthDate: Date;
 	completedSet: Set<string>;
-	colorVariants: ColorVariants;
 	highlightToday?: boolean;
 	showDayNames?: boolean;
 	showDayNumbers?: boolean;
@@ -22,11 +20,6 @@ function Month(props: Props) {
 		today,
 		monthDate,
 		completedSet,
-		colorVariants: {
-			baseColor,
-			darkenedColor,
-			softenedColor
-		},
 		highlightToday,
 		showDayNames,
 		showDayNumbers
@@ -58,10 +51,14 @@ function Month(props: Props) {
 			<div
 				key={dayNum}
 				style={{
-					color: isCompleted ? 'inherit' : softenedColor,
-					backgroundColor: isCompleted ? baseColor : darkenedColor,
+					color: isCompleted
+						? 'inherit'
+						: 'var(--habit-color-soft)',
+					backgroundColor: isCompleted
+						? 'var(--habit-color-base)'
+						: 'var(--habit-color-dark)',
 					outline: (isToday && highlightToday) ? '2px solid var(--color-primary)' : '',
-					outlineOffset: '-2px'
+					outlineOffset: '-2px',
 				}}
 				className={styles.day}
 			>
@@ -81,7 +78,11 @@ function Month(props: Props) {
 			return (
 				<div
 					key={weekday}
-					style={{ color: (isToday && isCurrentMonth) ? 'inherit' : softenedColor }}
+					style={{
+						color: (isToday && isCurrentMonth)
+							? 'inherit'
+							: 'var(--habit-color-soft)',
+					}}
 					className={styles.weekday}
 				>
 					{startCase(weekday.slice(0, 2))}

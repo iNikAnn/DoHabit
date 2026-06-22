@@ -22,12 +22,6 @@ function WeekdayChart({ options, days, color }: Props) {
 	const { t, i18n } = useTranslation();
 	const data = getCompletionCountPerDay(days);
 
-	// FIXME: Canvas API doesn't support CSS color functions, so resolve them manually here.
-	const tempDiv = document.createElement('div');
-	tempDiv.style.color = color;
-	document.body.append(tempDiv);
-	const computedColor = getComputedStyle(tempDiv).color;
-
 	const config: {
 		data: ChartData<'bar'>,
 		options: ChartOptions<'bar'>
@@ -37,8 +31,7 @@ function WeekdayChart({ options, days, color }: Props) {
 			datasets: [{
 				label: t('habits.stats.chartCompletions'),
 				data: [...data.slice(1), data[0]!],
-
-				backgroundColor: computedColor,
+				backgroundColor: color,
 				borderRadius: 10,
 				borderSkipped: false
 			}]

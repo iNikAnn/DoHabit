@@ -1,12 +1,10 @@
 import styles from './CompactCalendar.module.css';
 import clsx from 'clsx';
-import type { ColorVariants } from '@shared/lib/theme';
 import { formatDate, getDatesRange } from '@shared/lib/date-time';
 import { useMemo } from 'react';
 
 interface Props {
 	weeksCount?: number;
-	colorVariants: ColorVariants;
 	highlightToday?: boolean;
 	getCompletedDates: (days: string[]) => Set<string>;
 }
@@ -17,10 +15,6 @@ interface Props {
 function CompactCalendar(props: Props) {
 	const {
 		weeksCount = 20,
-		colorVariants: {
-			baseColor,
-			darkenedColor
-		},
 		highlightToday,
 		getCompletedDates
 	} = props;
@@ -59,7 +53,11 @@ function CompactCalendar(props: Props) {
 						return (
 							<div
 								key={date}
-								style={{ backgroundColor: isCompleted ? baseColor : darkenedColor }}
+								style={{
+									backgroundColor: isCompleted
+										? 'var(--habit-color-base)'
+										: 'var(--habit-color-dark)',
+								}}
 								className={clsx(
 									styles.day,
 									(isToday && highlightToday) && styles.today

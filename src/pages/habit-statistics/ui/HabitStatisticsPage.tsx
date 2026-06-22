@@ -1,5 +1,6 @@
 import styles from './HabitStatisticsPage.module.css';
 import { useState } from 'react';
+import clsx from 'clsx';
 import { type ChartOptions } from 'chart.js';
 import { MonthlyChart } from '@widgets/habit-stats/monthly-chart';
 import { StreakHistory } from '@widgets/habit-stats/streak-history';
@@ -54,8 +55,19 @@ function HabitStatisticsPage() {
 		}
 	};
 
+	// FIXME: Canvas API doesn't support CSS color functions, so resolve them manually here.
+	const tempDiv = document.createElement('div');
+	tempDiv.className = clsx('paletteItem', styles.statistics);
+	tempDiv.style.setProperty('--hue', colorVariants.style['--hue']);
+	tempDiv.style.color = baseColor;
+	document.querySelector('.App')?.append(tempDiv);
+	const computedColor = getComputedStyle(tempDiv).color;
+
 	return (
-		<div className={styles.statistics}>
+		<div
+			style={colorVariants.style}
+			className={clsx('paletteItem', styles.statistics)}
+		>
 			<YearPicker
 				value={selectedYear}
 				min={earliestYear}
@@ -72,7 +84,7 @@ function HabitStatisticsPage() {
 			<WeekdayChart
 				days={selectedDays}
 				options={chartOptions as ChartOptions<'bar'>}
-				color={baseColor}
+				color={computedColor}
 			/>
 
 			<TotalCompletedMetric
@@ -83,7 +95,7 @@ function HabitStatisticsPage() {
 			<MonthlyChart
 				days={selectedDays}
 				options={chartOptions as ChartOptions<'line'>}
-				color={baseColor}
+				color={computedColor}
 			/>
 
 			<StreakHistory

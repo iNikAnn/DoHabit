@@ -98,7 +98,10 @@ export default defineConfig([
 						'value',
 						'target',
 						'rel',
-						'length'
+						'length',
+						'baseColor',
+						'darkenedColor',
+						'softenedColor'
 					],
 				},
 				words: {
@@ -152,6 +155,8 @@ export default defineConfig([
 						'toLocaleTimeString',
 						'window.open',
 						'matchMedia',
+						'setProperty',
+						'querySelector',
 						/^Intl\..+/,
 						/^localStorage\..+/,
 						/^console\..+/,

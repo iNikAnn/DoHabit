@@ -2,10 +2,8 @@ import styles from './Calendar.module.css';
 import { useMemo } from 'react';
 import Month from '../month/Month';
 import { countDaysBetween, getDatesRange } from '@shared/lib/date-time';
-import type { ColorVariants } from '@shared/lib/theme';
 
 interface CalendarProps {
-	colorVariants: ColorVariants;
 	highlightToday?: boolean;
 	showDayNames?: boolean;
 	showDayNumbers?: boolean;
@@ -19,7 +17,6 @@ const VISIBLE_MONTHS_COUNT = 2;
  */
 function Calendar(props: CalendarProps) {
 	const {
-		colorVariants,
 		highlightToday,
 		showDayNames,
 		showDayNumbers,
@@ -63,7 +60,6 @@ function Calendar(props: CalendarProps) {
 						today={now}
 						monthDate={monthDate}
 						completedSet={completedSet}
-						colorVariants={colorVariants}
 						highlightToday={highlightToday}
 						showDayNames={showDayNames}
 						showDayNumbers={showDayNumbers}

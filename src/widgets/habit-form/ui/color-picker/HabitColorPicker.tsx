@@ -14,14 +14,14 @@ function HabitColorPicker({ habits, initialColorIndex = 0 }: Props) {
 	const palette = getAppPalette();
 	const usedColors = new Set(habits.map((h) => h.colorIndex));
 
-	const colorList = palette.map(({ baseColor }, index) => {
+	const colorList = palette.map(({ baseColor, style }, index) => {
 		const isUsed = usedColors.has(index);
 
 		return (
 			<label
-				key={baseColor}
-				style={{ backgroundColor: baseColor }}
-				className={styles.label}
+				key={`${baseColor}-${style['--hue']}`}
+				style={{ backgroundColor: baseColor, ...style }}
+				className={`paletteItem ${styles.label}`}
 			>
 				<input
 					type='radio'

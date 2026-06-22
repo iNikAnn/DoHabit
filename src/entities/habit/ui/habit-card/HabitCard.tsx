@@ -1,5 +1,6 @@
 import styles from './HabitCard.module.css';
 import { type CSSProperties, type ReactNode } from 'react';
+import clsx from 'clsx';
 import type { Habit } from '../../model/types';
 import HabitHeader from '../habit-header/HabitHeader';
 import { type ColorVariants } from '@shared/lib/theme';
@@ -27,13 +28,14 @@ function HabitCard(props: HabitCardProps) {
 	const style = {
 		'--habit-color-base': colorVariants.baseColor,
 		'--habit-color-dark': colorVariants.darkenedColor,
-		'--habit-color-soft': colorVariants.softenedColor
+		'--habit-color-soft': colorVariants.softenedColor,
+		...colorVariants.style
 	} as CSSProperties;
 
 	return (
 		<div
 			style={style}
-			className={styles.habit}
+			className={clsx('paletteItem', styles.habit)}
 			onClick={onClick}
 		>
 			<HabitHeader

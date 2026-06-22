@@ -34,7 +34,6 @@ const HabitListItem = memo((props: HabitListItemProps) => {
 		: <UpdateHabitProgress habit={habit} />;
 
 	const calendarProps = {
-		colorVariants,
 		highlightToday: settings.calendarHighlightToday,
 		showDayNames: settings.calendarShowDayNames,
 		showDayNumbers: settings.calendarShowDayNumbers,

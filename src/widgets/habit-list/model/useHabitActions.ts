@@ -7,6 +7,7 @@ import { takeScreenshot } from '@shared/lib/dom';
 import { getNavigationTarget } from '@shared/lib/router';
 import { type ColorVariants } from '@shared/lib/theme';
 import { type DrawerAction, useDrawerStore } from '@shared/ui';
+import type { CSSProperties } from 'react';
 
 interface OpenMenuParams {
 	habit: Habit;
@@ -39,7 +40,12 @@ function useHabitActions() {
 			cardElement
 		} = params;
 
-		const { darkenedColor } = colorVariants;
+		const { darkenedColor, style } = colorVariants;
+
+		const buttonStyle: CSSProperties = {
+			backgroundColor: darkenedColor,
+			...style
+		};
 
 		return [
 			// Done/Undo yestarday
@@ -56,7 +62,8 @@ function useHabitActions() {
 						isTodayCompleted
 					}
 				}),
-				style: { backgroundColor: darkenedColor }
+				style: buttonStyle,
+				className: 'paletteItem'
 			},
 
 			// Open habit editor
@@ -68,7 +75,8 @@ function useHabitActions() {
 				icon: FaPencilAlt,
 				label: t('habits.actions.edit'),
 				indicator: { type: 'arrow' },
-				style: { backgroundColor: darkenedColor }
+				style: buttonStyle,
+				className: 'paletteItem'
 			},
 
 			// Share habit
@@ -76,7 +84,8 @@ function useHabitActions() {
 				icon: FaShareAlt,
 				label: t('habits.actions.share'),
 				onClick: () => takeScreenshot(cardElement),
-				style: { backgroundColor: darkenedColor }
+				style: buttonStyle,
+				className: 'paletteItem'
 			},
 
 			// Open habit statistics
@@ -88,7 +97,8 @@ function useHabitActions() {
 				icon: FaChartSimple,
 				label: t('habits.stats.title'),
 				indicator: { type: 'arrow' },
-				style: { backgroundColor: darkenedColor }
+				style: buttonStyle,
+				className: 'paletteItem'
 			},
 
 			// Open habit notes
@@ -101,7 +111,8 @@ function useHabitActions() {
 				icon: MdLibraryBooks,
 				label: t('habits.actions.notes'),
 				indicator: { type: 'arrow' },
-				style: { backgroundColor: darkenedColor }
+				style: buttonStyle,
+				className: 'paletteItem'
 			}
 		];
 	};

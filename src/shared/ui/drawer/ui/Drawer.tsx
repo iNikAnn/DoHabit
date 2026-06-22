@@ -5,6 +5,7 @@ import { variants } from '../model/animations';
 import { useDrawerStore } from '../model/store';
 import { useNativeBackClose } from '@shared/lib/dom';
 import { Button, Overlay, Placeholder } from '@shared/ui';
+import clsx from 'clsx';
 
 /**
  * Interactive bottom sheet component controlled via global state.
@@ -48,10 +49,10 @@ function Drawer() {
 									className={styles.actions}
 									onClick={closeDrawer}
 								>
-									{content.actions.map(({ label, indicator, ...rest }) => (
+									{content.actions.map(({ label, className, indicator, ...rest }) => (
 										<li key={label}>
 											<Button
-												className={styles.actionButton}
+												className={clsx(className, styles.actionButton)}
 												indicator={{
 													type: indicator?.type ?? 'none',
 													style: { color: 'var(--color-secondary)', ...indicator?.style }
