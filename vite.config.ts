@@ -14,9 +14,9 @@ const APP_TITLE = `${APP_NAME} | Build Habits, Break Limits & Crush Your Goals`;
 const OG_BANNER_URL = '/assets/img/Repo-Card-Template.jpg';
 
 const PRODUCTION_URL = 'https://dohabit.app/';
-const BUILD_TARGET = process.env.BUILD_TARGET;
+const RELEASE_STAGE = process.env.RELEASE_STAGE;
 
-const HOMEPAGE = BUILD_TARGET === 'cloudflare'
+const HOMEPAGE = RELEASE_STAGE === 'production'
 	? PRODUCTION_URL
 	: pkg.homepage;
 

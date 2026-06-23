@@ -14,7 +14,7 @@
 		"lint:css": "stylelint 'src/**/*.css'",
 		"preview": "vite preview",
 		"deploy:test": "npm run build && gh-pages -b gh-pages -d dist -m",
-		"deploy:prod": "BUILD_TARGET=cloudflare npm run build && npx wrangler pages deploy dist --project-name=dohabit --commit-message"
+		"deploy:prod": "RELEASE_STAGE=production npm run build && npx wrangler pages deploy dist --project-name=dohabit --commit-message"
 	},
 	"dependencies": {
 		"@uidotdev/usehooks": "^2.4.1",

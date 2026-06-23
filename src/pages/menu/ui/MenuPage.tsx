@@ -2,9 +2,11 @@ import styles from './MenuPage.module.css';
 import { useTranslation } from 'react-i18next';
 import { MdInstallMobile } from 'react-icons/md';
 import useListItems from '../model/useListItems';
-import packageJson from '../../../../package.json';
+import pkg from '../../../../package.json';
 import { usePwaInstall } from '@features/pwa-install';
 import { List } from '@shared/ui';
+
+const isTest = import.meta.env.RELEASE_STAGE !== 'production';
 
 /**
  * Navigation hub for app settings.
@@ -43,11 +45,10 @@ function MenuPage() {
 				)}
 
 				<small className={styles.version}>
-					<span>
-						{t('common.version')}
-					</span>
+					<span>{t('common.version')}</span>
 
-					<span>: {packageJson.version}</span>
+					<span>: {pkg.version}</span>
+					{isTest && <span> TEST</span>}
 				</small>
 			</div>
 		</section>
