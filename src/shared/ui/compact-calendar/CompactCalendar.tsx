@@ -9,7 +9,7 @@ interface Props {
 	getCompletedDates: (days: string[]) => Set<string>;
 }
 
-const CELL_SIZE = 15;
+const DPR = window.devicePixelRatio ?? 1;
 const GAP = 3;
 const RADIUS = 2;
 
@@ -47,8 +47,6 @@ function CompactCalendar(props: Props) {
 	const completedSet = getCompletedDates(dateRange);
 
 	const canvasRef = useRef<HTMLCanvasElement>(null);
-	const canvasWidth = weeks.length * (CELL_SIZE + GAP) - GAP;
-	const canvasHeight = 7 * (CELL_SIZE + GAP) - GAP;
 
 	/**
 	 * Renders the habit calendar grid onto the canvas.
@@ -59,6 +57,13 @@ function CompactCalendar(props: Props) {
 
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
+
+		const logicalWidth = canvas.clientWidth;
+		const cellSize = (logicalWidth - GAP * (weeksCount - 1)) / weeksCount;
+		const logicalHeight = 7 * (cellSize + GAP) - GAP;
+
+		canvas.width = logicalWidth * DPR;
+		canvas.height = logicalHeight * DPR;
 
 		canvas.style.borderColor = 'var(--color-primary)';
 		canvas.style.color = 'var(--habit-color-base)';
@@ -74,43 +79,42 @@ function CompactCalendar(props: Props) {
 		canvas.style.color = '';
 		canvas.style.backgroundColor = '';
 
-		ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+		ctx.setTransform(1, 0, 0, 1, 0, 0);
+		ctx.scale(DPR, DPR);
+		ctx.clearRect(0, 0, logicalWidth, logicalHeight);
 
 		weeks.forEach((week, weekIndex) => {
 			week.forEach((day, dayIndex) => {
 				const isToday = day === todayStr;
 				const isCompleted = completedSet.has(day);
 
-				const x = weekIndex * (CELL_SIZE + GAP);
-				const y = dayIndex * (CELL_SIZE + GAP);
+				const x = weekIndex * (cellSize + GAP);
+				const y = dayIndex * (cellSize + GAP);
 
 				ctx.fillStyle = isCompleted ? baseColor : darkColor;
 
 				ctx.beginPath();
-				ctx.roundRect(x, y, CELL_SIZE, CELL_SIZE, RADIUS);
+				ctx.roundRect(x, y, cellSize, cellSize, RADIUS);
 				ctx.fill();
 
 				if (isToday && highlightToday) {
 					ctx.strokeStyle = strokeColor;
 					ctx.lineWidth = 2;
 					ctx.beginPath();
-					ctx.roundRect(x + 1, y + 1, CELL_SIZE - 2, CELL_SIZE - 2, RADIUS);
+					ctx.roundRect(x + 1, y + 1, cellSize - 2, cellSize - 2, RADIUS);
 					ctx.stroke();
 				}
 			});
 		});
-	}, [canvasHeight, canvasWidth, completedSet, highlightToday, todayStr, weeks]);
+	}, [completedSet, highlightToday, todayStr, weeks, weeksCount]);
 
 	return (
 		<canvas
 			ref={canvasRef}
-			width={canvasWidth}
-			height={canvasHeight}
 			style={{
 				display: 'block',
 				width: '100%',
-				height: 'auto',
-				imageRendering: 'pixelated'
+				height: 'auto'
 			}}
 		/>
 	);
