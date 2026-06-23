@@ -102,7 +102,8 @@ export default defineConfig([
 						'length',
 						'baseColor',
 						'darkenedColor',
-						'softenedColor'
+						'softenedColor',
+						'accentColor',
 					],
 				},
 				words: {
@@ -117,6 +118,8 @@ export default defineConfig([
 						'down',
 						'top',
 						'bottom',
+						'center',
+						'middle',
 						'decrement',
 						'increment',
 						'completed',
@@ -126,7 +129,7 @@ export default defineConfig([
 						'forward',
 						'backward',
 						'true',
-						'false'
+						'false',
 					],
 				},
 				callees: {
