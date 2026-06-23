@@ -3,7 +3,7 @@
 	"description": "Build lasting habits with zero friction. DoHabit is a minimalist, offline tracker. No accounts—just your progress, charts, and a personal habit journal.",
 	"private": true,
 	"license": "AGPL-3.0-only",
-	"version": "0.47.8",
+	"version": "0.47.9",
 	"homepage": "https://inikann.github.io/DoHabit/",
 	"type": "module",
 	"scripts": {
@@ -13,8 +13,8 @@
 		"lint": "eslint src",
 		"lint:css": "stylelint 'src/**/*.css'",
 		"preview": "vite preview",
-		"deploy:test": "npm run build && gh-pages -b gh-pages -d dist -m",
-		"deploy:prod": "RELEASE_STAGE=production npm run build && npx wrangler pages deploy dist --project-name=dohabit --commit-message"
+		"deploy:test": "VITE_TEST_BUILD=true npm run build && gh-pages -b gh-pages -d dist -m",
+		"deploy:prod": "npm run build && npx wrangler pages deploy dist --project-name=dohabit --commit-message"
 	},
 	"dependencies": {
 		"@uidotdev/usehooks": "^2.4.1",

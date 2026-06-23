@@ -14,11 +14,11 @@ const APP_TITLE = `${APP_NAME} | Build Habits, Break Limits & Crush Your Goals`;
 const OG_BANNER_URL = '/assets/img/Repo-Card-Template.jpg';
 
 const PRODUCTION_URL = 'https://dohabit.app/';
-const RELEASE_STAGE = process.env.RELEASE_STAGE;
+const IS_TEST_BUILD = process.env.VITE_TEST_BUILD === 'true';
 
-const HOMEPAGE = RELEASE_STAGE === 'production'
-	? PRODUCTION_URL
-	: pkg.homepage;
+const HOMEPAGE = IS_TEST_BUILD
+	? pkg.homepage
+	: PRODUCTION_URL;
 
 const APP_URL = new URL(HOMEPAGE);
 const APP_BASE = APP_URL.pathname;

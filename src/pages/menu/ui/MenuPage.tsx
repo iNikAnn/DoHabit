@@ -6,7 +6,7 @@ import pkg from '../../../../package.json';
 import { usePwaInstall } from '@features/pwa-install';
 import { List } from '@shared/ui';
 
-const isTest = import.meta.env.RELEASE_STAGE !== 'production';
+const isTest = import.meta.env.VITE_TEST_BUILD === 'true';
 
 /**
  * Navigation hub for app settings.
