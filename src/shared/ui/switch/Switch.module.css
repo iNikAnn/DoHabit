@@ -5,12 +5,31 @@
 
 .switch {
 	/* outline: 1px solid tomato; */
+	display: inline-block;
+	cursor: pointer;
 	position: relative;
 	width: calc(var(--indicator-width) * 3);
 	height: calc(var(--indicator-width) + var(--switch-padding) * 2);
 	background-color: var(--bg-color-primary);
 	border: 2px solid var(--bg-color-tertiary);
 	border-radius: 40px;
+}
+
+.switch:has(.input:focus-visible) {
+	outline: 2px solid dodgerblue;
+	outline-offset: 2px;
+}
+
+.input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
 }
 
 .indicator {

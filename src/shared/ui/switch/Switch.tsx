@@ -11,16 +11,19 @@ interface Props {
  */
 function Switch({ isActive, onClick }: Props) {
 	return (
-		<div
-			role='button'
-			className={styles.switch}
-			onClick={onClick}
-		>
+		<label className={styles.switch}>
+			<input
+				type='checkbox'
+				className={styles.input}
+				checked={isActive}
+				onChange={onClick}
+				{...{ switch: '' } as any}
+			/>
 			<div className={clsx(
 				styles.indicator,
 				isActive && styles.active
 			)} />
-		</div>
+		</label>
 	);
 }
 
