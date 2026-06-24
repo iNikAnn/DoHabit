@@ -1,6 +1,6 @@
 import styles from './MainPage.module.css';
 import { motion } from 'framer-motion';
-import { variants } from '../model/page.animations';
+import { pageMotionProps } from '../model/page.animations';
 import { AppHeader } from '@widgets/app-header';
 import { HabitList } from '@widgets/habit-list';
 import { WelcomeView } from '@widgets/welcome-view';
@@ -18,10 +18,7 @@ function MainPage() {
 	return (
 		<motion.div
 			className={styles.mainPage}
-			variants={variants}
-			initial='initial'
-			animate='animate'
-			exit='exit'
+			{...pageMotionProps}
 		>
 			<AppHeader />
 

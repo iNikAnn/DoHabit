@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from 'react-router';
 import { motion } from 'framer-motion'
 import ModalHeader from './ModalHeader';
 import { DirectionContext, useInitialRouteState } from '@shared/lib/router';
-import { variants } from '../model/modal.animations';
+import { modalMotionProps } from '../model/modal.animations';
 
 /**
  * Shared layout for all modal routes.
@@ -21,10 +21,7 @@ function ModalLayout() {
 		<motion.div
 			className={styles.modal}
 			custom={direction}
-			variants={variants}
-			initial='initial'
-			animate="animate"
-			exit='exit'
+			{...modalMotionProps}
 		>
 			<ModalHeader
 				title={modalTitle ?? 'DoHabit'} // eslint-disable-line
