@@ -5,7 +5,7 @@
 
 .switch {
 	/* outline: 1px solid tomato; */
-	display: inline-block;
+	display: flex;
 	cursor: pointer;
 	position: relative;
 	width: calc(var(--indicator-width) * 3);
@@ -22,14 +22,9 @@
 
 .input {
 	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border-width: 0;
+	left: 0;
+	appearance: none;
+	opacity: 0;
 }
 
 .indicator {
