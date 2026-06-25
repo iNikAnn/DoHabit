@@ -1,12 +1,13 @@
 import styles from './Button.module.css';
-import type { ButtonIndicator, ButtonProps } from './types';
-import type { IconType } from 'react-icons';
+import clsx from 'clsx';
 import { Link } from 'react-router';
+import type { IconType } from 'react-icons';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { LuExternalLink } from 'react-icons/lu';
 import { IoIosArrowForward } from 'react-icons/io';
 import { FaCheck } from 'react-icons/fa';
+import type { ButtonIndicator, ButtonProps } from './types';
 import { renderIcon } from '@shared/lib/react';
 
 // Motion-enhanced Link
@@ -47,14 +48,17 @@ function Button(props: ButtonProps) {
 	// UI localization
 	const { t } = useTranslation();
 
-	const classes = `${styles.button} ${styles[variant ?? '']} ${className ?? ''}`.trim();
+	const classes = clsx(
+		styles.button,
+		variant && styles[variant],
+		className
+	);
+
 	const Indicator = indicator ? INDICATOR_ICONS[indicator.type] : null;
 
 	const innerContent = (
 		<>
-			{typeof icon === 'string'
-				? <img src={icon} alt={t('common.icon')} />
-				: renderIcon(icon, iconProps)}
+			{renderIcon(icon, { alt: t('common.icon'), ...iconProps })}
 			{children}
 			{Indicator && <Indicator style={indicator?.style} className={styles.indicator} />}
 		</>
