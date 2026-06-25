@@ -5,6 +5,11 @@
 				"desc": "You completed a habit 365 times! Sure, there were gaps, weeks of laziness, and existential crises... but hey, mathematically, it adds up to a whole year!",
 				"title": "A Year... Sort Of"
 			},
+			"compact-calendar": {
+				"desc": "Boom! You have switched your calendar to a compact view. Maximum density, zero distraction.",
+				"hint": "Enable compact calendar",
+				"title": "Space Saver"
+			},
 			"diane-morning-log": {
 				"desc": "“Diane, 7:30 AM...” You've written a note before 9:00. Grab a damn good cup of coffee and a donut — Agent Cooper would definitely approve of your morning routine!",
 				"title": "Good Morning, Diane"

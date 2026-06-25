@@ -1,11 +1,13 @@
-import { HABIT_ACHIEVEMENTS, NOTE_ACHIEVEMENTS } from './achievements';
+import { HABIT_ACHIEVEMENTS, NOTE_ACHIEVEMENTS, OTHER_ACHIEVEMENTS } from './achievements';
 
 export type HabitAchievementId = typeof HABIT_ACHIEVEMENTS[number]['id'];
 export type NoteAchievementId = typeof NOTE_ACHIEVEMENTS[number]['id'];
+export type OtherAchievementId = typeof OTHER_ACHIEVEMENTS[number]['id'];
 
 type AchievementIdMap = {
 	habit: HabitAchievementId;
 	note: NoteAchievementId;
+	other: OtherAchievementId;
 };
 
 export type AchievementType = keyof AchievementIdMap;

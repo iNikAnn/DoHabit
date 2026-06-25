@@ -1,6 +1,11 @@
 {
 	"achievements": {
 		"items": {
+			"compact-calendar": {
+				"desc": "",
+				"hint": "",
+				"title": ""
+			},
 			"accumulated-year": {
 				"desc": "",
 				"title": ""

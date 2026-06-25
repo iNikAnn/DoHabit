@@ -15,6 +15,9 @@ import notTwitterApprovedIcon from '../assets/not-twitter-approved.svg';
 import dianeMorningLogIcon from '../assets/diane-morning-log.svg';
 import gothamProtectorIcon from '../assets/gotham-protector.svg';
 import tolstoyModeIcon from '../assets/tolstoy-mode.svg';
+
+import compactCalendarIcon from '../assets/compact-calendar.svg';
+
 import type { Achievement } from './types';
 
 export const HABIT_ACHIEVEMENTS = [
@@ -157,8 +160,15 @@ export const NOTE_ACHIEVEMENTS = [
 	},
 ] as const;
 
+export const OTHER_ACHIEVEMENTS = [
+	{
+		id: 'compact-calendar',
+		icon: compactCalendarIcon
+	}
+] as const;
 
 export const ACHIEVEMENTS = [
 	...HABIT_ACHIEVEMENTS,
-	...NOTE_ACHIEVEMENTS
+	...NOTE_ACHIEVEMENTS,
+	...OTHER_ACHIEVEMENTS
 ] as Achievement[];

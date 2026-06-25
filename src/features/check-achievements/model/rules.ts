@@ -2,7 +2,7 @@ import type { AchievementRules } from './types';
 import { getStreaks, getTodayProgress } from '@entities/habit';
 import { countDaysBetween, formatDate } from '@shared/lib/date-time';
 
-const habitAhievementRules: AchievementRules<'habit'> = {
+const habitAchievementRules: AchievementRules<'habit'> = {
 	'fresh-start': ({ habits }) => habits.length > 0,
 
 	'main-quest-abandoned': ({ habits }) => habits.some((h) => {
@@ -114,7 +114,7 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 	}))
 };
 
-const noteAhievementRules: AchievementRules<'note'> = {
+const noteAchievementRules: AchievementRules<'note'> = {
 	'first-note': ({ notes }) => notes.length > 0,
 
 	'gravity-falls-journal': ({ notes }) => notes.length >= 7,
@@ -153,7 +153,12 @@ const noteAhievementRules: AchievementRules<'note'> = {
 	}
 };
 
+const otherAchievementsRules: AchievementRules<'other'> = {
+	'compact-calendar': ({ settings }) => settings.calendarView === 'compact'
+};
+
 export const achievementRules = {
-	...habitAhievementRules,
-	...noteAhievementRules
+	...habitAchievementRules,
+	...noteAchievementRules,
+	...otherAchievementsRules
 };

@@ -5,6 +5,7 @@ import { type AchievementId, ACHIEVEMENTS, useAchievementsStore } from '@entitie
 import { useHabitsStore } from '@entities/habit';
 import { useNotesStore } from '@entities/note';
 import { useDialogStore } from '@shared/ui';
+import { useSettingsStore } from '@entities/settings';
 
 /**
  * Runs validation rules against current stores and unlocks achievements.
@@ -12,6 +13,8 @@ import { useDialogStore } from '@shared/ui';
 function useCheckAchievements() {
 	const { t } = useTranslation();
 	const openDialog = useDialogStore((s) => s.open);
+
+	const settings = useSettingsStore((s) => s.settings);
 
 	const habits = useHabitsStore((s) => s.habits);
 	const isHabitsReady = useHabitsStore((s) => s._hasHydrated);
@@ -45,7 +48,7 @@ function useCheckAchievements() {
 	useEffect(() => {
 		if (!isReady) return;
 
-		const context = { habits, notes };
+		const context = { settings, habits, notes };
 		let hasBulkUnlock = false;
 
 		(Object.keys(achievementRules) as AchievementId[]).forEach((id) => {
@@ -77,7 +80,7 @@ function useCheckAchievements() {
 
 			isInitialCheck.current = false;
 		}
-	}, [habits, isReady, notes, notifyUnlock, openDialog, t, unlock, unlockedAt]);
+	}, [habits, isReady, notes, notifyUnlock, openDialog, settings, t, unlock, unlockedAt]);
 }
 
 export { useCheckAchievements };
