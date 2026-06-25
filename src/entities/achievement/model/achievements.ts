@@ -9,11 +9,13 @@ import newYearsResolutionIcon from '../assets/new-years-resolution.svg';
 import accumulatedYearIcon from '../assets/accumulated-year.svg';
 import perfectYearIcon from '../assets/perfect-year.svg';
 
+import firstNoteIcon from '../assets/first-note.svg';
 import gravityFallsJournalIcon from '../assets/gravity-falls-journal.svg';
 import notTwitterApprovedIcon from '../assets/not-twitter-approved.svg';
 import dianeMorningLogIcon from '../assets/diane-morning-log.svg';
 import gothamProtectorIcon from '../assets/gotham-protector.svg';
 import tolstoyModeIcon from '../assets/tolstoy-mode.svg';
+import type { Achievement } from './types';
 
 export const HABIT_ACHIEVEMENTS = [
 	// {
@@ -74,7 +76,6 @@ export const HABIT_ACHIEVEMENTS = [
 	{
 		id: 'fresh-start',
 		icon: firstHabitIcon,
-		isSecret: true
 	},
 	{
 		id: 'main-quest-abandoned',
@@ -126,6 +127,10 @@ export const HABIT_ACHIEVEMENTS = [
 
 export const NOTE_ACHIEVEMENTS = [
 	{
+		id: 'first-note',
+		icon: firstNoteIcon
+	},
+	{
 		id: 'gravity-falls-journal',
 		icon: gravityFallsJournalIcon,
 		isSecret: true
@@ -156,4 +161,4 @@ export const NOTE_ACHIEVEMENTS = [
 export const ACHIEVEMENTS = [
 	...HABIT_ACHIEVEMENTS,
 	...NOTE_ACHIEVEMENTS
-];
+] as Achievement[];

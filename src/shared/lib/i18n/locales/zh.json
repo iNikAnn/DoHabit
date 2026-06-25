@@ -9,8 +9,14 @@
 				"desc": "",
 				"title": ""
 			},
+			"first-note": {
+				"desc": "",
+				"hint": "创建第一个笔记",
+				"title": ""
+			},
 			"fresh-start": {
 				"desc": "",
+				"hint": "创建第一个习惯",
 				"title": ""
 			},
 			"gotham-protector": {

@@ -115,6 +115,8 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 };
 
 const noteAhievementRules: AchievementRules<'note'> = {
+	'first-note': ({ notes }) => notes.length > 0,
+
 	'gravity-falls-journal': ({ notes }) => notes.length >= 7,
 
 	'not-twitter-approved': ({ notes }) => {

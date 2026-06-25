@@ -9,8 +9,14 @@
 				"desc": "“Diane, 7:30 AM...” You've written a note before 9:00. Grab a damn good cup of coffee and a donut — Agent Cooper would definitely approve of your morning routine!",
 				"title": "Good Morning, Diane"
 			},
+			"first-note": {
+				"desc": "You have just created your very first note. Keep capturing your thoughts.",
+				"hint": "Create your first note",
+				"title": "First Note"
+			},
 			"fresh-start": {
 				"desc": "Welcome aboard! You have just created your very first habit. Let’s make it stick.",
+				"hint": "Create your first habit",
 				"title": "Fresh Start"
 			},
 			"gotham-protector": {

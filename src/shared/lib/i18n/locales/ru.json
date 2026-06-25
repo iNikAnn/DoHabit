@@ -9,8 +9,14 @@
 				"desc": "",
 				"title": ""
 			},
+			"first-note": {
+				"desc": "",
+				"hint": "Создай первую заметку",
+				"title": ""
+			},
 			"fresh-start": {
 				"desc": "",
+				"hint": "Создай первую привычку",
 				"title": ""
 			},
 			"gotham-protector": {
