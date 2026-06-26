@@ -331,8 +331,11 @@
 		"title": "Main diary"
 	},
 	"storageInfo": {
-		"action": "Backup regularly. The backup is a tiny JSON file you can move to any device.",
+		"actions": {
+			"confirm": "I understand"
+		},
 		"intro": "The app stores all data directly on your device.",
+		"notice": "Backup regularly. The backup is a tiny JSON file you can move to any device.",
 		"privacy": "Total privacy: no remote servers, no cloud sync, and no trackers. Your data is strictly yours.",
 		"pwa": "For better safety, install this app on your home screen. Installed PWA storage is protected by the OS and rarely cleared automatically.",
 		"warning": "If you use it through a regular browser, clearing history or cache will erase your habits."

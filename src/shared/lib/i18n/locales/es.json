@@ -331,8 +331,11 @@
 		"title": ""
 	},
 	"storageInfo": {
-		"action": "",
+		"actions": {
+			"confirm": ""
+		},
 		"intro": "",
+		"notice": "",
 		"privacy": "",
 		"pwa": "",
 		"warning": ""

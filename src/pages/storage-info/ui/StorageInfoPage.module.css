@@ -1,49 +1,47 @@
-/* Main container layout */
 .page {
   display: flex;
   flex-direction: column;
   gap: 24px;
-
-  /* padding: 1.25rem; */
 }
 
-/* Bold introduction text */
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
 .intro {
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.4;
 }
 
-/* Base style for regular paragraph blocks */
 .pwa {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-/* Highlighted privacy note container */
 .privacy {
   padding: 16px;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.4;
   background-color: rgb(59 130 246 / 8%);
   border-left: 4px solid var(--accent-color);
   border-radius: var(--border-radius-tertiary);
 }
 
-/* High-priority data loss warning box */
 .warning {
   padding: 16px;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.4;
   color: indianred;
   background-color: rgb(239 68 68 / 8%);
   border-left: 4px solid indianred;
   border-radius: var(--border-radius-tertiary);
 }
 
-/* Final call to action block */
 .action {
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.4;
 }
