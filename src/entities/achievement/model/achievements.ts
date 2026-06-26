@@ -1,6 +1,7 @@
 import firstHabitIcon from '../assets/fresh-start.svg';
 import mainQuestAbandonedIcon from '../assets/main-quest-abandoned.svg';
 import habitVacationOverIcon from '../assets/habit-vacation-over.svg';
+import firstArchiveIcon from '../assets/first-archive.svg';
 import illBeBackIcon from '../assets/ill-be-back.svg';
 import overachieverDayIcon from '../assets/overachiever-day.svg';
 import perfectDayIcon from '../assets/perfect-day.svg';
@@ -92,7 +93,7 @@ export const HABIT_ACHIEVEMENTS = [
 	},
 	{
 		id: 'first-archive',
-		icon: ''
+		icon: firstArchiveIcon
 	},
 	{
 		id: 'ill-be-back',
