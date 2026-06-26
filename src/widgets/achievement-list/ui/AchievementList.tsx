@@ -1,13 +1,13 @@
+import styles from './AchievementList.module.css';
 import { useCallback, useMemo } from 'react';
+import { groupBy } from 'es-toolkit';
 import { useTranslation } from 'react-i18next';
 import type { Achievement } from '@entities/achievement';
 import { ACHIEVEMENTS, useAchievementsStore } from '@entities/achievement';
-import type { ListItemProps } from '@shared/ui';
-import { List, Placeholder, useDialogStore } from '@shared/ui';
+import { List, useDialogStore } from '@shared/ui';
 
 /**
  * Render a sorted list of unlocked user achievements.
- * Shows a placeholder if nothing is unlocked yet.
  */
 function AchievementList() {
 	// UI localization
@@ -28,47 +28,59 @@ function AchievementList() {
 		});
 	}, [openDialog, t, unlockedAt]);
 
-	// Filter, sort by newest unlock date, and map to list items
-	const achievements: ListItemProps[] = useMemo(() => (
-		ACHIEVEMENTS
+	/**
+	 * Filter visible achievements, sort by newest unlock,
+	 * transform to item schema, and group by type
+	 */
+	const achievements = useMemo(() => {
+		const allAchievements = ACHIEVEMENTS
 			.filter((a) => unlockedAt[a.id] || !a.isSecret)
 			.sort((a, b) => (unlockedAt[b.id] ?? 0) - (unlockedAt[a.id] ?? 0))
 			.map((a) => {
-				const isLocked = !unlockedAt[a.id];
+				const isUnlocked = !!unlockedAt[a.id];
 				const hintKey = `achievements.items.${a.id}.hint`;
 
 				return {
+					id: a.id,
+					group: a.isSecret ? 'secret' : 'onboarding', // eslint-disable-line
 					title: t(`achievements.items.${a.id}.title`),
-					description: isLocked
-						? i18n.exists(hintKey) ? t(hintKey as any) : undefined
-						: t(`achievements.items.${a.id}.desc`),
+					description: isUnlocked
+						? t(`achievements.items.${a.id}.desc`)
+						: i18n.exists(hintKey) ? t(hintKey as any) : undefined,
 					icon: a.icon,
-					iconProps: isLocked ? { style: { filter: 'saturate(0)' } } : {},
-					onClick: isLocked ? undefined : () => handleShowDetails(a)
+					iconProps: isUnlocked ? {} : { style: { filter: 'saturate(0)' } },
+					onClick: isUnlocked ? () => handleShowDetails(a) : undefined
 				};
-			})
-	), [handleShowDetails, i18n, t, unlockedAt]);
+			});
 
-	// 1. Handle empty state
-	if (achievements.length === 0) {
-		return (
-			<Placeholder
-				content={{
-					// TODO: Add icon
-					title: t('achievements.list.emptyTitle'),
-					description: t('achievements.list.emptyDesc')
-				}}
-			/>
-		);
-	}
+		return groupBy(allAchievements, (a) => a.group);
+	}, [handleShowDetails, i18n, t, unlockedAt]);
 
-	// 2. Render list
+	const onboardingItems = achievements['onboarding'] || [];
+	const totalOnboarding = onboardingItems.length;
+	const unlockedOnboarding = onboardingItems.filter((i) => unlockedAt[i.id]).length;
+	const onboardingProgress = totalOnboarding > 0 ? `${unlockedOnboarding}/${totalOnboarding}` : '';
+
 	return (
-		<List
-			items={achievements}
-			iconSize='lg'
-			truncateDescription
-		/>
+		<div className={styles.container}>
+			{achievements['secret'] && achievements['secret'].length > 0 && (
+				<List
+					items={achievements['secret']}
+					iconSize='lg'
+					truncateDescription
+				/>
+			)}
+
+			{onboardingItems.length > 0 && (
+				<List
+					title={t('achievements.groups.onboarding')}
+					extra={onboardingProgress}
+					items={achievements['onboarding']}
+					iconSize='lg'
+					truncateDescription
+				/>
+			)}
+		</div>
 	);
 }
 

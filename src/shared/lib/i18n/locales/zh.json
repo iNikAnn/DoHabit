@@ -1,5 +1,8 @@
 {
 	"achievements": {
+		"groups": {
+			"onboarding": "新手入门"
+		},
 		"items": {
 			"accumulated-year": {
 				"desc": "",

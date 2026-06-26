@@ -1,5 +1,8 @@
 {
 	"achievements": {
+		"groups": {
+			"onboarding": "Первые шаги"
+		},
 		"items": {
 			"accumulated-year": {
 				"desc": "",

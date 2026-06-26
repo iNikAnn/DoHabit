@@ -1,5 +1,8 @@
 {
 	"achievements": {
+		"groups": {
+			"onboarding": "Getting Started"
+		},
 		"items": {
 			"accumulated-year": {
 				"desc": "You completed a habit 365 times! Sure, there were gaps, weeks of laziness, and existential crises... but hey, mathematically, it adds up to a whole year!",
