@@ -111,6 +111,7 @@
 		"end": "",
 		"habits": "",
 		"icon": "",
+		"info": "",
 		"logo": "",
 		"reload": "",
 		"screenshot": "",
@@ -197,6 +198,11 @@
 	},
 	"menu": {
 		"appearance": {
+			"animations": {
+				"desc": "",
+				"disabledBySystem": "",
+				"title": ""
+			},
 			"calendar": {
 				"compact": "",
 				"default": "",
@@ -272,6 +278,16 @@
 				"sectionTitle": ""
 			},
 			"desc": "",
+			"info": {
+				"storage": {
+					"description": "",
+					"dialogs": {
+						"text": "",
+						"title": ""
+					},
+					"title": ""
+				}
+			},
 			"title": ""
 		},
 		"shared": {

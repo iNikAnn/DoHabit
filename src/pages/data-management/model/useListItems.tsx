@@ -4,10 +4,28 @@ import { ImFire } from 'react-icons/im';
 import { clearAppData } from '@features/data-management/clear-data';
 import { exportAppData } from '@features/data-management/export-data';
 import { importAppData } from '@features/data-management/import-data';
-import type { ListItemProps } from '@shared/ui';
+import { useDialogStore, type ListItemProps } from '@shared/ui';
+import { FaInfoCircle } from 'react-icons/fa';
 
 function useListItems() {
 	const { t } = useTranslation();
+	const openDialog = useDialogStore((s) => s.open);
+
+	const infoItems: ListItemProps[] = [
+		{
+			icon: FaInfoCircle,
+			iconProps: { color: '#2ca5e1' },
+			title: t('menu.dataManagement.info.storage.title'),
+			description: t('menu.dataManagement.info.storage.description'),
+			onClick: () => {
+				openDialog({
+					title: t('menu.dataManagement.info.storage.dialogs.title'),
+					text: t('menu.dataManagement.info.storage.dialogs.text')
+				});
+			}
+		}
+	];
+
 	const backupItems: ListItemProps[] = [
 		// Export
 		{
@@ -40,6 +58,7 @@ function useListItems() {
 	];
 
 	return {
+		infoItems,
 		backupItems,
 		dangerItems
 	};

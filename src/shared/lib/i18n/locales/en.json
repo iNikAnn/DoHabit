@@ -111,6 +111,7 @@
 		"end": "End",
 		"habits": "Habits",
 		"icon": "Icon",
+		"info": "Information",
 		"logo": "logo",
 		"reload": "Reload",
 		"screenshot": "screenshot",
@@ -277,6 +278,16 @@
 				"sectionTitle": "Danger Zone"
 			},
 			"desc": "Backup, restore, or clear app data",
+			"info": {
+				"storage": {
+					"description": "How and where your habit data is stored",
+					"dialogs": {
+						"text": "The app stores all data directly on your device.\n\nIf you use it through a regular browser, the data lives in the browser cache. Clearing your browser history or cache will erase your habits.\n\nBackup regularly to avoid losing progress.",
+						"title": "Data Storage Info"
+					},
+					"title": "Data Storage"
+				}
+			},
 			"title": "Data Management"
 		},
 		"shared": {
