@@ -281,10 +281,6 @@
 			"info": {
 				"storage": {
 					"description": "How and where your habit data is stored",
-					"dialogs": {
-						"text": "The app stores all data directly on your device.\n\nIf you use it through a regular browser, the data lives in the browser cache. Clearing your browser history or cache will erase your habits.\n\nBackup regularly to avoid losing progress.",
-						"title": "Data Storage Info"
-					},
 					"title": "Data Storage"
 				}
 			},
@@ -333,6 +329,13 @@
 			"forYear": "Tags for {{year}}"
 		},
 		"title": "Main diary"
+	},
+	"storageInfo": {
+		"action": "Backup regularly. The backup is a tiny JSON file you can move to any device.",
+		"intro": "The app stores all data directly on your device.",
+		"privacy": "Total privacy: no remote servers, no cloud sync, and no trackers. Your data is strictly yours.",
+		"pwa": "For better safety, install this app on your home screen. Installed PWA storage is protected by the OS and rarely cleared automatically.",
+		"warning": "If you use it through a regular browser, clearing history or cache will erase your habits."
 	},
 	"welcome": {
 		"actions": {

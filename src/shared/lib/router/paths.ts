@@ -12,5 +12,6 @@ export const ROUTES = {
 	DIARY: 'diary',
 	HABIT_EDITOR: 'habit-editor',
 	MENU: 'menu',
-	STATISTICS: 'habit-statistics'
+	STATISTICS: 'habit-statistics',
+	STORAGE_INFO: 'menu/data-management/storage-info'
 } as const;

@@ -10,6 +10,7 @@ import { MenuPage } from '@pages/menu';
 import { HabitStatisticsPage } from '@pages/habit-statistics';
 import { ROUTES, type AppRouteKey } from '@shared/lib/router';
 import { ModalLayout } from '@shared/ui';
+import { StorageInfoPage } from '@pages/storage-info';
 
 /**
  * Individual route definitions for modal sub-pages.
@@ -46,6 +47,10 @@ export const modalChildRoutes: Record<AppRouteKey, RouteObject> = {
 	STATISTICS: {
 		path: ROUTES.STATISTICS,
 		element: <HabitStatisticsPage />
+	},
+	STORAGE_INFO: {
+		path: ROUTES.STORAGE_INFO,
+		element: <StorageInfoPage />
 	}
 };
 

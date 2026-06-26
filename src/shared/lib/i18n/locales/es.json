@@ -281,10 +281,6 @@
 			"info": {
 				"storage": {
 					"description": "",
-					"dialogs": {
-						"text": "",
-						"title": ""
-					},
 					"title": ""
 				}
 			},
@@ -333,6 +329,13 @@
 			"forYear": ""
 		},
 		"title": ""
+	},
+	"storageInfo": {
+		"action": "",
+		"intro": "",
+		"privacy": "",
+		"pwa": "",
+		"warning": ""
 	},
 	"welcome": {
 		"actions": {
