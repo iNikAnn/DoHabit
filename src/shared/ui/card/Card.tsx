@@ -1,12 +1,14 @@
 import styles from './Card.module.css';
 import { type ReactNode } from 'react';
 import CardHeader from './CardHeader';
+import clsx from 'clsx';
 
 interface CardProps {
 	title?: string;
 	description?: string;
 	extra?: ReactNode;
 	children: React.ReactNode;
+	childrenClassName?: string;
 }
 
 function Card(props: CardProps) {
@@ -14,7 +16,8 @@ function Card(props: CardProps) {
 		title,
 		description,
 		extra,
-		children
+		children,
+		childrenClassName
 	} = props;
 
 	return (
@@ -28,7 +31,7 @@ function Card(props: CardProps) {
 			)}
 
 			{children && (
-				<div>
+				<div className={clsx(styles.body, childrenClassName)}>
 					{children}
 				</div>
 			)}
