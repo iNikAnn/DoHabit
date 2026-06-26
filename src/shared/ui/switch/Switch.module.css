@@ -5,12 +5,26 @@
 
 .switch {
 	/* outline: 1px solid tomato; */
+	display: flex;
+	cursor: pointer;
 	position: relative;
 	width: calc(var(--indicator-width) * 3);
 	height: calc(var(--indicator-width) + var(--switch-padding) * 2);
 	background-color: var(--bg-color-primary);
 	border: 2px solid var(--bg-color-tertiary);
 	border-radius: 40px;
+}
+
+.switch:has(.input:focus-visible) {
+	outline: 2px solid dodgerblue;
+	outline-offset: 2px;
+}
+
+.input {
+	position: absolute;
+	left: 0;
+	appearance: none;
+	opacity: 0;
 }
 
 .indicator {
