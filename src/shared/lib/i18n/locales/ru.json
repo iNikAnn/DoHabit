@@ -69,6 +69,11 @@
 				"desc": "",
 				"title": ""
 			},
+			"storage_info": {
+				"desc": "",
+				"hint": "Прочитать о хранении данных",
+				"title": ""
+			},
 			"time-traveler": {
 				"desc": "",
 				"title": ""

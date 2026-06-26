@@ -156,7 +156,9 @@ const noteAchievementRules: AchievementRules<'note'> = {
 };
 
 const otherAchievementsRules: AchievementRules<'other'> = {
-	'compact-calendar': ({ settings }) => settings.calendarView === 'compact'
+	'compact-calendar': ({ settings }) => settings.calendarView === 'compact',
+
+	'storage_info': ({ settings }) => Boolean(settings.hasSeenStorageInfo)
 };
 
 export const achievementRules = {

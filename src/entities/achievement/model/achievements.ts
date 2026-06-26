@@ -18,6 +18,7 @@ import gothamProtectorIcon from '../assets/gotham-protector.svg';
 import tolstoyModeIcon from '../assets/tolstoy-mode.svg';
 
 import compactCalendarIcon from '../assets/compact-calendar.svg';
+import storageInfoIcon from '../assets/storage_info.svg';
 
 import type { Achievement } from './types';
 
@@ -169,6 +170,10 @@ export const OTHER_ACHIEVEMENTS = [
 	{
 		id: 'compact-calendar',
 		icon: compactCalendarIcon
+	},
+	{
+		id: 'storage_info',
+		icon: storageInfoIcon
 	}
 ] as const;
 

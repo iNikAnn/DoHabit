@@ -69,6 +69,11 @@
 				"desc": "365 days of absolute discipline. You started on January 1st and didn’t miss a single day all year round.",
 				"title": "Calendar Conqueror"
 			},
+			"storage_info": {
+				"desc": "Read the data storage information to know how your habits are saved.",
+				"hint": "Read data storage info",
+				"title": "Data Guardian"
+			},
 			"time-traveler": {
 				"desc": "You've officially mastered the art of pretending to be productive — five times!",
 				"title": "I Swear I Did It!"

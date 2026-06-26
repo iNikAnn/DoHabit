@@ -69,6 +69,11 @@
 				"desc": "",
 				"title": ""
 			},
+			"storage_info": {
+				"desc": "阅读数据存储说明，了解您的习惯数据是如何保存的。",
+				"hint": "阅读存储说明",
+				"title": "数据守护者"
+			},
 			"time-traveler": {
 				"desc": "",
 				"title": ""
