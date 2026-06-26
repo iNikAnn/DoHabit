@@ -4,20 +4,26 @@
 }
 
 .switch {
+	position: relative;
+
 	/* outline: 1px solid tomato; */
 	display: flex;
-	cursor: pointer;
-	position: relative;
 	width: calc(var(--indicator-width) * 3);
 	height: calc(var(--indicator-width) + var(--switch-padding) * 2);
-	background-color: var(--bg-color-primary);
+	cursor: pointer;
+	background-color: var(--bg);
 	border: 2px solid var(--bg-color-tertiary);
 	border-radius: 40px;
 }
 
+.switch.disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
 .switch:has(.input:focus-visible) {
-	outline: 2px solid dodgerblue;
-	outline-offset: 2px;
+	outline: 2px solid var(--accent-color);
+	outline-offset: -2px;
 }
 
 .input {
@@ -41,5 +47,5 @@
 
 .indicator.active {
 	left: calc(100% - var(--indicator-width) - var(--switch-padding));
-	background-color: dodgerblue;
+	background-color: var(--accent-color);
 }

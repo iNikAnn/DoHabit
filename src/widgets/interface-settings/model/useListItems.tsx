@@ -69,6 +69,7 @@ function useListItems() {
 			extra: (
 				<Switch
 					isActive={settings.isAnimationsEnabled}
+					disabled={hasReducedMotion}
 					onClick={() => settingsDispatch({
 						type: 'updateSettings',
 						payload: {

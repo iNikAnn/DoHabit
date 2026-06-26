@@ -3,22 +3,30 @@ import clsx from 'clsx';
 
 interface Props {
 	isActive: boolean;
+	disabled?: boolean;
 	onClick: (...args: any) => void;
 }
 
 /**
  * Toggle switch component.
  */
-function Switch({ isActive, onClick }: Props) {
+function Switch({ isActive, disabled, onClick }: Props) {
 	return (
-		<label className={styles.switch}>
+		<label
+			className={clsx(
+				styles.switch,
+				disabled && styles.disabled
+			)}
+		>
 			<input
 				type='checkbox'
 				className={styles.input}
 				checked={isActive}
 				onChange={onClick}
 				{...{ switch: '' } as any}
+				disabled={disabled}
 			/>
+
 			<div className={clsx(
 				styles.indicator,
 				isActive && styles.active
