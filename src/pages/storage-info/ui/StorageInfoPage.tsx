@@ -1,3 +1,4 @@
+import { Card } from '@shared/ui';
 import styles from './StorageInfoPage.module.css';
 import { useTranslation } from 'react-i18next';
 
@@ -14,9 +15,11 @@ function StorageInfoPage() {
 				{t('storageInfo.privacy')}
 			</div>
 
-			<p className={styles.pwa}>
-				{t('storageInfo.pwa')}
-			</p>
+			<Card>
+				<p className={styles.pwa}>
+					{t('storageInfo.pwa')}
+				</p>
+			</Card>
 
 			<div className={styles.warning}>
 				{t('storageInfo.warning')}

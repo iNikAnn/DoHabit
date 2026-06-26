@@ -3,7 +3,7 @@ import { type ReactNode } from 'react';
 import CardHeader from './CardHeader';
 
 interface CardProps {
-	title: string;
+	title?: string;
 	description?: string;
 	extra?: ReactNode;
 	children: React.ReactNode;
@@ -19,15 +19,19 @@ function Card(props: CardProps) {
 
 	return (
 		<div className={styles.card}>
-			<CardHeader
-				title={title}
-				description={description}
-				extra={extra}
-			/>
+			{title && (
+				<CardHeader
+					title={title}
+					description={description}
+					extra={extra}
+				/>
+			)}
 
-			<div className={styles.childrenWrapepr}>
-				{children}
-			</div>
+			{children && (
+				<div>
+					{children}
+				</div>
+			)}
 		</div>
 	);
 }
