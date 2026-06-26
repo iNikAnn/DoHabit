@@ -91,6 +91,10 @@ export const HABIT_ACHIEVEMENTS = [
 		isSecret: true
 	},
 	{
+		id: 'first-archive',
+		icon: ''
+	},
+	{
 		id: 'ill-be-back',
 		icon: illBeBackIcon,
 		isSecret: true

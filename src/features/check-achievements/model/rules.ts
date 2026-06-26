@@ -28,6 +28,8 @@ const habitAchievementRules: AchievementRules<'habit'> = {
 		return gap >= 21;
 	}),
 
+	'first-archive': ({ habits }) => habits.some((h) => h.isArchived),
+
 	'ill-be-back': ({ habits }) => {
 		// Fast exit: need at least 5 habits
 		if (habits.length < 5) return false;

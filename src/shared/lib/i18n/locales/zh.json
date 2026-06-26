@@ -14,6 +14,11 @@
 				"desc": "",
 				"title": ""
 			},
+			"first-archive": {
+				"desc": "",
+				"hint": "归档一个习惯",
+				"title": ""
+			},
 			"first-note": {
 				"desc": "",
 				"hint": "创建第一个笔记",

@@ -1,17 +1,22 @@
 {
 	"achievements": {
 		"items": {
+			"accumulated-year": {
+				"desc": "",
+				"title": ""
+			},
 			"compact-calendar": {
 				"desc": "",
 				"hint": "",
 				"title": ""
 			},
-			"accumulated-year": {
+			"diane-morning-log": {
 				"desc": "",
 				"title": ""
 			},
-			"diane-morning-log": {
+			"first-archive": {
 				"desc": "",
+				"hint": "",
 				"title": ""
 			},
 			"first-note": {

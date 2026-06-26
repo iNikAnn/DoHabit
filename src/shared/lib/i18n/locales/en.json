@@ -14,6 +14,11 @@
 				"desc": "“Diane, 7:30 AM...” You've written a note before 9:00. Grab a damn good cup of coffee and a donut — Agent Cooper would definitely approve of your morning routine!",
 				"title": "Good Morning, Diane"
 			},
+			"first-archive": {
+				"desc": "Out of sight, but not forgotten. You have successfully archived your very first habit.",
+				"hint": "Archive a habit",
+				"title": "Clean Slate"
+			},
 			"first-note": {
 				"desc": "You have just created your very first note. Keep capturing your thoughts.",
 				"hint": "Create your first note",
