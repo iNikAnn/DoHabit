@@ -17,6 +17,8 @@ function Switch({ isActive, disabled, onClick }: Props) {
 				styles.switch,
 				disabled && styles.disabled
 			)}
+			onClick={(e) => e.stopPropagation()}
+			onPointerDownCapture={((e) => e.stopPropagation())}
 		>
 			<input
 				type='checkbox'
