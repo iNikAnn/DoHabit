@@ -1,16 +1,35 @@
 {
 	"achievements": {
+		"groups": {
+			"onboarding": "Getting Started"
+		},
 		"items": {
 			"accumulated-year": {
 				"desc": "You completed a habit 365 times! Sure, there were gaps, weeks of laziness, and existential crises... but hey, mathematically, it adds up to a whole year!",
 				"title": "A Year... Sort Of"
 			},
+			"compact-calendar": {
+				"desc": "Boom! You have switched your calendar to a compact view. Maximum density, zero distraction.",
+				"hint": "Enable compact calendar",
+				"title": "Space Saver"
+			},
 			"diane-morning-log": {
 				"desc": "“Diane, 7:30 AM...” You've written a note before 9:00. Grab a damn good cup of coffee and a donut — Agent Cooper would definitely approve of your morning routine!",
 				"title": "Good Morning, Diane"
 			},
+			"first-archive": {
+				"desc": "Out of sight, but not forgotten. You have successfully archived your very first habit.",
+				"hint": "Archive a habit",
+				"title": "Clean Slate"
+			},
+			"first-note": {
+				"desc": "You have just created your very first note. Keep capturing your thoughts.",
+				"hint": "Create your first note",
+				"title": "First Note"
+			},
 			"fresh-start": {
 				"desc": "Welcome aboard! You have just created your very first habit. Let’s make it stick.",
+				"hint": "Create your first habit",
 				"title": "Fresh Start"
 			},
 			"gotham-protector": {
@@ -52,6 +71,11 @@
 			"perfect-year": {
 				"desc": "365 days of absolute discipline. You started on January 1st and didn’t miss a single day all year round.",
 				"title": "Calendar Conqueror"
+			},
+			"storage_info": {
+				"desc": "Read the data storage information to know how your habits are saved.",
+				"hint": "Read data storage info",
+				"title": "Data Guardian"
 			},
 			"time-traveler": {
 				"desc": "You've officially mastered the art of pretending to be productive — five times!",
@@ -95,6 +119,7 @@
 		"end": "End",
 		"habits": "Habits",
 		"icon": "Icon",
+		"info": "Information",
 		"logo": "logo",
 		"reload": "Reload",
 		"screenshot": "screenshot",
@@ -261,6 +286,12 @@
 				"sectionTitle": "Danger Zone"
 			},
 			"desc": "Backup, restore, or clear app data",
+			"info": {
+				"storage": {
+					"description": "How and where your habit data is stored",
+					"title": "Data Storage"
+				}
+			},
 			"title": "Data Management"
 		},
 		"shared": {
@@ -306,6 +337,16 @@
 			"forYear": "Tags for {{year}}"
 		},
 		"title": "Main diary"
+	},
+	"storageInfo": {
+		"actions": {
+			"confirm": "I understand"
+		},
+		"intro": "The app stores all data directly on your device.",
+		"notice": "Backup regularly. The backup is a tiny JSON file you can move to any device.",
+		"privacy": "Total privacy: no remote servers, no cloud sync, and no trackers. Your data is strictly yours.",
+		"pwa": "For better safety, install this app on your home screen. Installed PWA storage is protected by the OS and rarely cleared automatically.",
+		"warning": "If you use it through a regular browser, clearing history or cache will erase your habits."
 	},
 	"welcome": {
 		"actions": {

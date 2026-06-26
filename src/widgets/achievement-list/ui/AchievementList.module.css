@@ -1,5 +1,4 @@
-.page {
-	position: relative;
+.container {
 	display: flex;
 	flex-direction: column;
 	gap: 32px;

@@ -8,10 +8,15 @@ import { useTranslation } from 'react-i18next';
  */
 function DataManagementPage() {
 	const { t } = useTranslation();
-	const { backupItems, dangerItems } = useListItems();
+	const { infoItems, backupItems, dangerItems } = useListItems();
 
 	return (
 		<div className={styles.page}>
+			<List
+				title={t('common.info')}
+				items={infoItems}
+			/>
+
 			<List
 				title={t('menu.dataManagement.backup.sectionTitle')}
 				items={backupItems}

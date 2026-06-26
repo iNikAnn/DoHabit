@@ -1,16 +1,35 @@
 {
 	"achievements": {
+		"groups": {
+			"onboarding": "新手入门"
+		},
 		"items": {
 			"accumulated-year": {
 				"desc": "",
+				"title": ""
+			},
+			"compact-calendar": {
+				"desc": "",
+				"hint": "开启紧凑型日历",
 				"title": ""
 			},
 			"diane-morning-log": {
 				"desc": "",
 				"title": ""
 			},
+			"first-archive": {
+				"desc": "",
+				"hint": "归档一个习惯",
+				"title": ""
+			},
+			"first-note": {
+				"desc": "",
+				"hint": "创建第一个笔记",
+				"title": ""
+			},
 			"fresh-start": {
 				"desc": "",
+				"hint": "创建第一个习惯",
 				"title": ""
 			},
 			"gotham-protector": {
@@ -52,6 +71,11 @@
 			"perfect-year": {
 				"desc": "",
 				"title": ""
+			},
+			"storage_info": {
+				"desc": "阅读数据存储说明，了解您的习惯数据是如何保存的。",
+				"hint": "阅读存储说明",
+				"title": "数据守护者"
 			},
 			"time-traveler": {
 				"desc": "",
@@ -95,6 +119,7 @@
 		"end": "结束",
 		"habits": "习惯",
 		"icon": "图标",
+		"info": "消息",
 		"logo": "标志",
 		"reload": "重载",
 		"screenshot": "截图",
@@ -261,6 +286,12 @@
 				"sectionTitle": "危险区域"
 			},
 			"desc": "备份、恢复或清除数据",
+			"info": {
+				"storage": {
+					"description": "关于您的习惯数据保存在哪里",
+					"title": "数据存储"
+				}
+			},
 			"title": "数据管理"
 		},
 		"shared": {
@@ -306,6 +337,16 @@
 			"forYear": "{{year}} 年标签"
 		},
 		"title": "笔记"
+	},
+	"storageInfo": {
+		"actions": {
+			"confirm": "我知道了"
+		},
+		"intro": "应用将所有数据直接存储在您的设备上。",
+		"notice": "请定期备份。备份文件是一个很小的 JSON 文件，您可以轻松将其转移到任何设备上。",
+		"privacy": "完全隐私：无远程服务器、无云端同步、无追踪器。您的数据完全属于您自己。",
+		"pwa": "为了更安全地保存数据，请将此应用添加到主屏幕。已安装的 PWA 存储受操作系统保护，极少会被自动清除。",
+		"warning": "如果您通过普通浏览器使用它，清除历史记录或缓存将会抹除您的习惯数据。"
 	},
 	"welcome": {
 		"actions": {

@@ -2,7 +2,7 @@ import type { AchievementRules } from './types';
 import { getStreaks, getTodayProgress } from '@entities/habit';
 import { countDaysBetween, formatDate } from '@shared/lib/date-time';
 
-const habitAhievementRules: AchievementRules<'habit'> = {
+const habitAchievementRules: AchievementRules<'habit'> = {
 	'fresh-start': ({ habits }) => habits.length > 0,
 
 	'main-quest-abandoned': ({ habits }) => habits.some((h) => {
@@ -27,6 +27,8 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 
 		return gap >= 21;
 	}),
+
+	'first-archive': ({ habits }) => habits.some((h) => h.isArchived),
 
 	'ill-be-back': ({ habits }) => {
 		// Fast exit: need at least 5 habits
@@ -114,7 +116,9 @@ const habitAhievementRules: AchievementRules<'habit'> = {
 	}))
 };
 
-const noteAhievementRules: AchievementRules<'note'> = {
+const noteAchievementRules: AchievementRules<'note'> = {
+	'first-note': ({ notes }) => notes.length > 0,
+
 	'gravity-falls-journal': ({ notes }) => notes.length >= 7,
 
 	'not-twitter-approved': ({ notes }) => {
@@ -151,7 +155,14 @@ const noteAhievementRules: AchievementRules<'note'> = {
 	}
 };
 
+const otherAchievementsRules: AchievementRules<'other'> = {
+	'compact-calendar': ({ settings }) => settings.calendarView === 'compact',
+
+	'storage_info': ({ settings }) => Boolean(settings.hasSeenStorageInfo)
+};
+
 export const achievementRules = {
-	...habitAhievementRules,
-	...noteAhievementRules
+	...habitAchievementRules,
+	...noteAchievementRules,
+	...otherAchievementsRules
 };

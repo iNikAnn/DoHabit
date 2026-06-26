@@ -1,0 +1,47 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.intro {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.pwa {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.privacy {
+  padding: 16px;
+  font-size: 1rem;
+  line-height: 1.4;
+  background-color: rgb(59 130 246 / 8%);
+  border-left: 4px solid var(--accent-color);
+  border-radius: var(--border-radius-tertiary);
+}
+
+.warning {
+  padding: 16px;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: indianred;
+  background-color: rgb(239 68 68 / 8%);
+  border-left: 4px solid indianred;
+  border-radius: var(--border-radius-tertiary);
+}
+
+.action {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}

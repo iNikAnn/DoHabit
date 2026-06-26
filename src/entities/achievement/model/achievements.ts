@@ -1,6 +1,7 @@
 import firstHabitIcon from '../assets/fresh-start.svg';
 import mainQuestAbandonedIcon from '../assets/main-quest-abandoned.svg';
 import habitVacationOverIcon from '../assets/habit-vacation-over.svg';
+import firstArchiveIcon from '../assets/first-archive.svg';
 import illBeBackIcon from '../assets/ill-be-back.svg';
 import overachieverDayIcon from '../assets/overachiever-day.svg';
 import perfectDayIcon from '../assets/perfect-day.svg';
@@ -9,11 +10,17 @@ import newYearsResolutionIcon from '../assets/new-years-resolution.svg';
 import accumulatedYearIcon from '../assets/accumulated-year.svg';
 import perfectYearIcon from '../assets/perfect-year.svg';
 
+import firstNoteIcon from '../assets/first-note.svg';
 import gravityFallsJournalIcon from '../assets/gravity-falls-journal.svg';
 import notTwitterApprovedIcon from '../assets/not-twitter-approved.svg';
 import dianeMorningLogIcon from '../assets/diane-morning-log.svg';
 import gothamProtectorIcon from '../assets/gotham-protector.svg';
 import tolstoyModeIcon from '../assets/tolstoy-mode.svg';
+
+import compactCalendarIcon from '../assets/compact-calendar.svg';
+import storageInfoIcon from '../assets/storage_info.svg';
+
+import type { Achievement } from './types';
 
 export const HABIT_ACHIEVEMENTS = [
 	// {
@@ -74,7 +81,6 @@ export const HABIT_ACHIEVEMENTS = [
 	{
 		id: 'fresh-start',
 		icon: firstHabitIcon,
-		isSecret: true
 	},
 	{
 		id: 'main-quest-abandoned',
@@ -85,6 +91,10 @@ export const HABIT_ACHIEVEMENTS = [
 		id: 'habit-vacation-over',
 		icon: habitVacationOverIcon,
 		isSecret: true
+	},
+	{
+		id: 'first-archive',
+		icon: firstArchiveIcon
 	},
 	{
 		id: 'ill-be-back',
@@ -126,6 +136,10 @@ export const HABIT_ACHIEVEMENTS = [
 
 export const NOTE_ACHIEVEMENTS = [
 	{
+		id: 'first-note',
+		icon: firstNoteIcon
+	},
+	{
 		id: 'gravity-falls-journal',
 		icon: gravityFallsJournalIcon,
 		isSecret: true
@@ -152,8 +166,19 @@ export const NOTE_ACHIEVEMENTS = [
 	},
 ] as const;
 
+export const OTHER_ACHIEVEMENTS = [
+	{
+		id: 'compact-calendar',
+		icon: compactCalendarIcon
+	},
+	{
+		id: 'storage_info',
+		icon: storageInfoIcon
+	}
+] as const;
 
 export const ACHIEVEMENTS = [
 	...HABIT_ACHIEVEMENTS,
-	...NOTE_ACHIEVEMENTS
-];
+	...NOTE_ACHIEVEMENTS,
+	...OTHER_ACHIEVEMENTS
+] as Achievement[];

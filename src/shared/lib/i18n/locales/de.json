@@ -1,16 +1,35 @@
 {
 	"achievements": {
+		"groups": {
+			"onboarding": ""
+		},
 		"items": {
 			"accumulated-year": {
 				"desc": "",
+				"title": ""
+			},
+			"compact-calendar": {
+				"desc": "",
+				"hint": "",
 				"title": ""
 			},
 			"diane-morning-log": {
 				"desc": "",
 				"title": ""
 			},
+			"first-archive": {
+				"desc": "",
+				"hint": "",
+				"title": ""
+			},
+			"first-note": {
+				"desc": "",
+				"hint": "",
+				"title": ""
+			},
 			"fresh-start": {
 				"desc": "",
+				"hint": "",
 				"title": ""
 			},
 			"gotham-protector": {
@@ -51,6 +70,11 @@
 			},
 			"perfect-year": {
 				"desc": "",
+				"title": ""
+			},
+			"storage_info": {
+				"desc": "",
+				"hint": "",
 				"title": ""
 			},
 			"time-traveler": {
@@ -95,6 +119,7 @@
 		"end": "",
 		"habits": "",
 		"icon": "",
+		"info": "",
 		"logo": "",
 		"reload": "",
 		"screenshot": "",
@@ -181,6 +206,11 @@
 	},
 	"menu": {
 		"appearance": {
+			"animations": {
+				"desc": "",
+				"disabledBySystem": "",
+				"title": ""
+			},
 			"calendar": {
 				"compact": "",
 				"default": "",
@@ -256,6 +286,12 @@
 				"sectionTitle": ""
 			},
 			"desc": "",
+			"info": {
+				"storage": {
+					"description": "",
+					"title": ""
+				}
+			},
 			"title": ""
 		},
 		"shared": {
@@ -301,6 +337,16 @@
 			"forYear": ""
 		},
 		"title": ""
+	},
+	"storageInfo": {
+		"actions": {
+			"confirm": ""
+		},
+		"intro": "",
+		"notice": "",
+		"privacy": "",
+		"pwa": "",
+		"warning": ""
 	},
 	"welcome": {
 		"actions": {

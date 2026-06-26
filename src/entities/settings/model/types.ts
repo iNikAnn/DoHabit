@@ -5,6 +5,7 @@ export interface Settings {
 	language?: AppLanguageCode;
 	isAnimationsEnabled: boolean;
 	hasSeenWelcome?: boolean;
+	hasSeenStorageInfo?: boolean;
 	calendarView?: 'default' | 'compact';
 	calendarHighlightToday: boolean;
 	calendarShowDayNames: boolean;

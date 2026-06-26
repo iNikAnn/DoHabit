@@ -1,13 +1,28 @@
 import { useTranslation } from 'react-i18next';
 import { FaDownload, FaUpload } from 'react-icons/fa6';
 import { ImFire } from 'react-icons/im';
+import { FaInfoCircle } from 'react-icons/fa';
 import { clearAppData } from '@features/data-management/clear-data';
 import { exportAppData } from '@features/data-management/export-data';
 import { importAppData } from '@features/data-management/import-data';
-import type { ListItemProps } from '@shared/ui';
+import { type ListItemProps } from '@shared/ui';
+import { getNavigationTarget } from '@shared/lib/router';
 
 function useListItems() {
 	const { t } = useTranslation();
+
+	const infoItems: ListItemProps[] = [
+		{
+			icon: FaInfoCircle,
+			iconProps: { color: '#2ca5e1' },
+			title: t('menu.dataManagement.info.storage.title'),
+			description: t('menu.dataManagement.info.storage.description'),
+			...getNavigationTarget('STORAGE_INFO', {
+				modalTitle: t('menu.dataManagement.info.storage.title')
+			})
+		}
+	];
+
 	const backupItems: ListItemProps[] = [
 		// Export
 		{
@@ -40,6 +55,7 @@ function useListItems() {
 	];
 
 	return {
+		infoItems,
 		backupItems,
 		dangerItems
 	};
