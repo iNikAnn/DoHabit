@@ -96,11 +96,13 @@ function NoteListToolbar(props: NoteListToolbarProps) {
 						<div className={styles.toolbarActionsWrapper}>
 							<TagButton
 								isActive={hasActiveTag}
+								className={styles.actionSquare}
 								onClick={onTagAction}
 							/>
 
 							<SortButton
 								order={order}
+								className={styles.actionSquare}
 								onClick={onOrderChange}
 							/>
 						</div>

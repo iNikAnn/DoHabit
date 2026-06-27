@@ -1,7 +1,5 @@
 .sortButton {
 	flex-shrink: 0;
-	height: 100%;
-	aspect-ratio: 1;
 	background-color: var(--bg-color-primary);
 }
 

@@ -1,9 +1,14 @@
+:root {
+	--toolbar-height: 56px;
+	--toolbar-padding-bottom: 8px;
+}
+
 .wrapper {
 	position: sticky;
 	top: 0;
 	z-index: 5;
-	height: calc(56px + 8px);
-	padding-bottom: 8px;
+	height: calc(var(--toolbar-height) + var(--toolbar-padding-bottom));
+	padding-bottom: var(--toolbar-padding-bottom);
 	background-color: var(--bg);
 	box-shadow: 0 5px 5px color-mix(in srgb, var(--bg) 50%, transparent);
 }
@@ -22,10 +27,6 @@
 .toolbarActionsWrapper {
 	display: flex;
 	gap: 8px;
-	height: 100%;
-}
-
-.toolbarActionsWrapper button {
 	height: 100%;
 }
 
@@ -66,8 +67,14 @@
 }
 
 .selectionToolbar button {
-	height: 100%;
+	height: var(--toolbar-height);
 	padding: 0 16px;
 	text-wrap: nowrap;
 	background-color: var(--bg-color-primary);
+}
+
+/* action */
+.actionSquare {
+	width: var(--toolbar-height);
+	height: var(--toolbar-height);
 }

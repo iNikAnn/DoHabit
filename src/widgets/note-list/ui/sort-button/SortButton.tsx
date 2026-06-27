@@ -1,19 +1,21 @@
 import styles from './SortButton.module.css';
 import clsx from 'clsx';
+import { FaArrowDown } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Button } from '@shared/ui';
-import { FaArrowDown } from 'react-icons/fa';
 
 interface SortButtonProps {
 	order: 'asc' | 'desc';
+	className?: string;
 	onClick: () => void;
 }
 
-function SortButton({ order, onClick }: SortButtonProps) {
+function SortButton({ order, className, onClick }: SortButtonProps) {
 	return (
 		<Button
 			className={clsx(
 				styles.sortButton,
+				className,
 				order === 'asc' && styles.active
 			)}
 			onClick={onClick}
