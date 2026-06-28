@@ -5,6 +5,7 @@ export { formatDate } from './format-date/formatDate';
 export { getDatesRange } from './get-dates-range/getDatesRange';
 export { getDaysInMonth } from './get-days-in-month/getDaysInMonth';
 export { getMonthLabels } from './get-month-labels/getMonthLabels';
+export { getMonthStartOffset } from './get-month-start-offset/getMonthStartOffset';
 export { getWeekdayLabels } from './get-weekday-labels/getWeekdayLabels';
 export { getYearBoundaries } from './get-year-boundaries/getYearBoundaries';
 export { getYesterday } from './get-yesterday/getYesterday';

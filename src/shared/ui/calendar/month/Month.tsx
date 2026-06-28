@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { startCase } from 'es-toolkit';
 import { useTranslation } from 'react-i18next';
-import { formatDate, getDaysInMonth, getWeekdayLabels } from '@shared/lib/date-time';
+import { formatDate, getDaysInMonth, getMonthStartOffset, getWeekdayLabels } from '@shared/lib/date-time';
 
 interface Props {
 	today: Date;
@@ -42,8 +42,8 @@ function Month(props: Props) {
 
 	// Get total days and empty cells before first day
 	const daysInMonth = getDaysInMonth(monthDate);
-	const shift = (new Date(year, month, 1).getDay() || 7) - 1;
-	const totalCells = shift + daysInMonth;
+	const startOffset = getMonthStartOffset(monthDate);
+	const totalCells = startOffset + daysInMonth;
 	const rows = Math.ceil(totalCells / COLS) + (showDayNames ? 1 : 0);
 
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -110,14 +110,14 @@ function Month(props: Props) {
 		}
 
 		for (let i = 0; i < totalCells; i++) {
-			if (i < shift) continue;
+			if (i < startOffset) continue;
 
 			const col = i % COLS;
 			const row = Math.floor(i / COLS);
 			const x = col * (cellSize + GAP);
 			const y = shiftY + row * (cellSize + GAP);
 
-			const dayNum = i - shift + 1;
+			const dayNum = i - startOffset + 1;
 			const dayStr = `${year}-${monthStr}-${String(dayNum).padStart(2, '0')}`;
 
 			const isToday = dayStr === formatDate(today);
@@ -142,7 +142,7 @@ function Month(props: Props) {
 				ctx.fillText(String(dayNum), x + cellSize / 2, y + cellSize / 2 + fontOffset);
 			}
 		}
-	}, [completedSet, highlightToday, month, monthStr, rows, shift, showDayNames, showDayNumbers, today, totalCells, weekdayLables, year]);
+	}, [completedSet, highlightToday, month, monthStr, rows, startOffset, showDayNames, showDayNumbers, today, totalCells, weekdayLables, year]);
 
 	return (
 		<canvas
@@ -158,9 +158,9 @@ function Month(props: Props) {
 	// TODO: Remove this legacy DOM-based rendering after verifying canvas stability and performance
 	// const days = Array.from({ length: totalCells }, (_, i) => {
 	// 	// Render empty slots for correct weekday alignment
-	// 	if (i < shift) return <div key={`empty-${i}`} className={styles.day} />;
+	// 	if (i < startOffset) return <div key={`empty-${i}`} className={styles.day} />;
 
-	// 	const dayNum = i - shift + 1;
+	// 	const dayNum = i - startOffset + 1;
 	// 	const dayStr = `${year}-${monthStr}-${String(dayNum).padStart(2, '0')}`;
 
 	// 	const isToday = dayStr === formatDate(today);
