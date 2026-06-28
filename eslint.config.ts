@@ -170,5 +170,13 @@ export default defineConfig([
 				},
 			}]
 		}
+	},
+
+	// Disable literal string linting for test files
+	{
+		files: ['src/**/*.test.{ts,tsx}'],
+		rules: {
+			'i18next/no-literal-string': 'off'
+		}
 	}
 ]);
