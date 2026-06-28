@@ -1,6 +1,7 @@
 import { VitePWA } from 'vite-plugin-pwa';
 import svgr from 'vite-plugin-svgr';
-import { defineConfig } from 'vite';
+// import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import htmlPlugin from 'vite-plugin-html-config';
@@ -261,4 +262,22 @@ export default defineConfig({
 				type: 'module',
 			},
 		})],
+
+	test: {
+		coverage: {
+			include: ['src/shared/**/*.ts'],
+			exclude: [
+				'**/const/**',
+				'**/animations.ts',
+				'**/*.animations.ts',
+				'**/paths.ts',
+				'**/index.ts',
+				'**/*.d.ts',
+				'**/types.ts',
+				'**/*.types.ts',
+				'**/config.ts',
+				'**/store.ts'
+			]
+		},
+	}
 });

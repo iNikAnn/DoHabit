@@ -12,6 +12,8 @@ dist
 dist-ssr
 dev-dist
 *.local
+coverage
+.wrangler
 
 # Editor directories and files
 .vscode/*
