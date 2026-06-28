@@ -15,8 +15,8 @@
 		"coverage": "vitest run --coverage",
 		"build": "tsc -b && vitest run && vite build",
 		"preview": "vite preview",
-		"deploy:test": "VITE_TEST_BUILD=true npm run build && gh-pages -b gh-pages -d dist -m",
-		"deploy:prod": "npm run build && npx wrangler pages deploy dist --project-name=dohabit --commit-message"
+		"deploy:test": "VITE_TEST_BUILD=true npm run build && cross-var gh-pages -b gh-pages -d dist -m \"v$npm_package_version\"",
+		"deploy:prod": "npm run build && cross-var npx wrangler pages deploy dist --project-name=dohabit --commit-message \"v$npm_package_version\""
 	},
 	"dependencies": {
 		"@uidotdev/usehooks": "^2.4.1",
@@ -54,6 +54,7 @@
 		"@vite-pwa/assets-generator": "^1.0.2",
 		"@vitejs/plugin-react": "^6.0.2",
 		"@vitest/coverage-v8": "^4.1.9",
+		"cross-var": "^1.1.0",
 		"eslint": "^10.4.0",
 		"eslint-plugin-i18next": "^6.1.4",
 		"eslint-plugin-react-hooks": "^7.1.1",
