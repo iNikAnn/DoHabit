@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { startCase } from 'es-toolkit';
 import { useTranslation } from 'react-i18next';
-import { formatDate, getWeekdayLabels } from '@shared/lib/date-time';
+import { formatDate, getDaysInMonth, getWeekdayLabels } from '@shared/lib/date-time';
 
 interface Props {
 	today: Date;
@@ -41,7 +41,7 @@ function Month(props: Props) {
 	const weekdayLables = getWeekdayLabels(lang, { length: lang === 'zh' ? 'narrow' : 'short' });
 
 	// Get total days and empty cells before first day
-	const daysInMonth = new Date(year, month + 1, 0).getDate();
+	const daysInMonth = getDaysInMonth(monthDate);
 	const shift = (new Date(year, month, 1).getDay() || 7) - 1;
 	const totalCells = shift + daysInMonth;
 	const rows = Math.ceil(totalCells / COLS) + (showDayNames ? 1 : 0);
