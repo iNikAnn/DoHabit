@@ -6,7 +6,7 @@ import pkg from '../../../../package.json';
 import { usePwaInstall } from '@features/pwa-install';
 import { List } from '@shared/ui';
 
-const isTest = import.meta.env.VITE_TEST_BUILD === 'true';
+const TEST_BUILD = import.meta.env.VITE_TEST_BUILD;
 
 /**
  * Navigation hub for app settings.
@@ -48,7 +48,7 @@ function MenuPage() {
 					<span>{t('common.version')}</span>
 
 					<span>: {pkg.version}</span>
-					{isTest && <span> TEST</span>}
+					{TEST_BUILD && <span> {TEST_BUILD}</span>}
 				</small>
 			</div>
 		</section>
