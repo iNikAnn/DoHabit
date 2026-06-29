@@ -16,7 +16,8 @@
 		"build": "tsc -b && vitest run && vite build",
 		"preview": "vite preview",
 		"deploy:test": "VITE_TEST_BUILD=true npm run build && cross-var gh-pages -b gh-pages -d dist -m \"v$npm_package_version\"",
-		"deploy:prod": "npm run build && cross-var npx wrangler pages deploy dist --project-name=dohabit --commit-message \"v$npm_package_version\""
+		"deploy:preview": "VITE_TEST_BUILD=true npm run build && cross-var npx wrangler pages deploy dist --project-name=dohabit --branch=preview --commit-message \"v$npm_package_version\"",
+		"deploy:prod": "npm run build && cross-var npx wrangler pages deploy dist --project-name=dohabit --branch=main --commit-message \"v$npm_package_version\""
 	},
 	"dependencies": {
 		"@uidotdev/usehooks": "^2.4.1",
