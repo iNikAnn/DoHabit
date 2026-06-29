@@ -319,6 +319,10 @@
 			"gitHub": {
 				"desc": "查看代码或贡献项目",
 				"title": "GitHub 仓库"
+			},
+			"support": {
+				"desc": "赞助与排行榜",
+				"title": "支持项目"
 			}
 		},
 		"title": "菜单"

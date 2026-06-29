@@ -319,6 +319,10 @@
 			"gitHub": {
 				"desc": "View or contribute to the project",
 				"title": "GitHub Repository"
+			},
+			"support": {
+				"desc": "Donations and top leaderboard",
+				"title": "Support Project"
 			}
 		},
 		"title": "Menu"
