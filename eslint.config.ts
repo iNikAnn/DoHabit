@@ -99,7 +99,8 @@ export default defineConfig([
 						'length',
 						'width',
 						'height',
-						'bg'
+						'bg',
+						'queryKey'
 					],
 				},
 				words: {
@@ -126,6 +127,8 @@ export default defineConfig([
 						'backward',
 						'true',
 						'false',
+						'username',
+						'recent'
 					],
 				},
 				callees: {

@@ -1,0 +1,13 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "dohabit",
+	"compatibility_date": "2026-06-18",
+	"pages_build_output_dir": "dist",
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "dohabit-db-test",
+			"database_id": "7f746e0a-c6f9-4211-bd8e-2ea4c26c4d52"
+		}
+	]
+}
