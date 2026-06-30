@@ -121,6 +121,7 @@
 		"habits": "Habits",
 		"icon": "Icon",
 		"info": "Information",
+		"loading": "Loading...",
 		"logo": "logo",
 		"password": "Password",
 		"reload": "Reload",
@@ -368,6 +369,13 @@
 		"privacy": "Total privacy: no remote servers, no cloud sync, and no trackers. Your data is strictly yours.",
 		"pwa": "For better safety, install this app on your home screen. Installed PWA storage is protected by the OS and rarely cleared automatically.",
 		"warning": "If you use it through a regular browser, clearing history or cache will erase your habits."
+	},
+	"support": {
+		"allTimeTopTitle": "All time top",
+		"emptyDescription": "Be the first to support this project!",
+		"emptyTitle": "No donations yet",
+		"errorDescription": "Something went wrong. Please try again later.",
+		"errorTitle": "Failed to load data"
 	},
 	"welcome": {
 		"actions": {

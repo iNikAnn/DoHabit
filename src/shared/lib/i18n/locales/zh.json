@@ -121,6 +121,7 @@
 		"habits": "习惯",
 		"icon": "图标",
 		"info": "消息",
+		"loading": "加载中...",
 		"logo": "标志",
 		"password": "密码",
 		"reload": "重载",
@@ -368,6 +369,13 @@
 		"privacy": "完全隐私：无远程服务器、无云端同步、无追踪器。您的数据完全属于您自己。",
 		"pwa": "为了更安全地保存数据，请将此应用添加到主屏幕。已安装的 PWA 存储受操作系统保护，极少会被自动清除。",
 		"warning": "如果您通过普通浏览器使用它，清除历史记录或缓存将会抹除您的习惯数据。"
+	},
+	"support": {
+		"allTimeTopTitle": "总榜贡献",
+		"emptyDescription": "快来成为第一个支持该项目的人吧！",
+		"emptyTitle": "暂无赞助",
+		"errorDescription": "出错了，请稍后再试。",
+		"errorTitle": "数据加载失败"
 	},
 	"welcome": {
 		"actions": {
