@@ -4,21 +4,23 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@shared/ui';
 
-interface ControlOption {
-	value: string;
+interface ControlOption<T extends string> {
+	value: T;
 	label?: string
 }
 
-interface SegmentedControlProps {
-	options: ControlOption[];
-	value: string;
-	onChange: (v: string) => void;
+interface SegmentedControlProps<T extends string> {
+	options: ControlOption<T>[];
+	value: T;
+	className?: string,
+	onChange: (v: T) => void;
 }
 
-function SegmentedControl(props: SegmentedControlProps) {
+function SegmentedControl<T extends string>(props: SegmentedControlProps<T>) {
 	const {
 		options,
 		value,
+		className,
 		onChange
 	} = props;
 
