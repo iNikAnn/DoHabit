@@ -371,11 +371,12 @@
 		"warning": "如果您通过普通浏览器使用它，清除历史记录或缓存将会抹除您的习惯数据。"
 	},
 	"support": {
-		"allTimeTopTitle": "总榜贡献",
+		"allTimeTopTitle": "粉丝贡献榜",
 		"emptyDescription": "快来成为第一个支持该项目的人吧！",
 		"emptyTitle": "暂无赞助",
 		"errorDescription": "出错了，请稍后再试。",
-		"errorTitle": "数据加载失败"
+		"errorTitle": "数据加载失败",
+		"recentTitle": "近期赞助记录"
 	},
 	"welcome": {
 		"actions": {

@@ -371,11 +371,12 @@
 		"warning": "If you use it through a regular browser, clearing history or cache will erase your habits."
 	},
 	"support": {
-		"allTimeTopTitle": "All time top",
+		"allTimeTopTitle": "Top supporters",
 		"emptyDescription": "Be the first to support this project!",
 		"emptyTitle": "No donations yet",
 		"errorDescription": "Something went wrong. Please try again later.",
-		"errorTitle": "Failed to load data"
+		"errorTitle": "Failed to load data",
+		"recentTitle": "Recent donations"
 	},
 	"welcome": {
 		"actions": {
