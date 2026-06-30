@@ -1,22 +1,32 @@
 import styles from './SupportPage.module.css';
-import { Button } from '@shared/ui';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { DonationListTop } from '@widgets/donation-list-top';
+import { DonationListRecent } from '@widgets/donation-list-recent';
+import { SegmentedControl } from '@shared/ui';
 
+/**
+ * Support page with toggleable donation lists.
+ */
 function SupportPage() {
-	const testConnection = async () => {
-		try {
-			const response = await fetch('/api/top');
-			const data = await response.text();
-			alert(data);
-		} catch (error) {
-			console.error('Fetch failed', error);
-		}
-	};
+	const { t } = useTranslation();
+	const [type, setType] = useState<'top' | 'recent'>('top');
 
 	return (
 		<div className={styles.pages}>
-			<Button onClick={testConnection}>
-				Hello
-			</Button>
+			<div className={styles.toolbar}>
+				<SegmentedControl
+					options={[
+						{ value: 'top', label: t('support.topTab') },
+						{ value: 'recent', label: t('support.recentTab') }]
+					}
+					value={type}
+					onChange={setType}
+				/>
+			</div>
+
+			{type === 'top' && <DonationListTop />}
+			{type === 'recent' && <DonationListRecent />}
 		</div>
 	);
 }

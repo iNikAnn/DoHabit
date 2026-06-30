@@ -1,6 +1,13 @@
 .pages {
+	position: relative;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	flex-direction: column;
+	gap: 16px;
 	height: 100%;
+}
+
+.toolbar {
+	position: sticky;
+	top: 0;
+	background-color: var(--bg);
 }

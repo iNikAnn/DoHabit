@@ -376,7 +376,9 @@
 		"emptyTitle": "暂无赞助",
 		"errorDescription": "出错了，请稍后再试。",
 		"errorTitle": "数据加载失败",
-		"recentTitle": "近期赞助记录"
+		"recentTab": "最新",
+		"recentTitle": "近期赞助记录",
+		"topTab": "排行"
 	},
 	"welcome": {
 		"actions": {

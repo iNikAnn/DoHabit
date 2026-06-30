@@ -376,7 +376,9 @@
 		"emptyTitle": "No donations yet",
 		"errorDescription": "Something went wrong. Please try again later.",
 		"errorTitle": "Failed to load data",
-		"recentTitle": "Recent donations"
+		"recentTab": "Recent",
+		"recentTitle": "Recent donations",
+		"topTab": "Top"
 	},
 	"welcome": {
 		"actions": {

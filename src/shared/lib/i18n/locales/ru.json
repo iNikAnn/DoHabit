@@ -376,7 +376,9 @@
 		"emptyTitle": "Здесь пока пусто",
 		"errorDescription": "Что-то пошло не так. Попробуйте позже.",
 		"errorTitle": "Не удалось загрузить данные",
-		"recentTitle": "Последние донаты"
+		"recentTab": "Недавние",
+		"recentTitle": "Последние донаты",
+		"topTab": "Топ"
 	},
 	"welcome": {
 		"actions": {
