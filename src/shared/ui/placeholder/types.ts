@@ -4,7 +4,7 @@ import type { ButtonProps } from '../button/types';
 export interface PlaceholderContent {
 	image?: ReactNode;
 	title: string;
-	description: string;
+	description?: string;
 }
 
 export interface PlaceholderAction extends ButtonProps {

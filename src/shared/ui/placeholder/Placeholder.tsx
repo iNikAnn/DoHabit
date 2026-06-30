@@ -8,7 +8,11 @@ import { Button } from '@shared/ui';
  */
 function Placeholder(props: PlaceholderProps) {
 	const {
-		content,
+		content: {
+			image,
+			title,
+			description
+		},
 		action
 	} = props;
 
@@ -18,14 +22,16 @@ function Placeholder(props: PlaceholderProps) {
 
 	return (
 		<div className={styles.placeholder}>
-			{content.image}
+			{image}
 
 			<div className={styles.textWrapper}>
-				<h3>{content.title}</h3>
+				<h3>{title}</h3>
 
-				<span className={styles.description}>
-					{content.description}
-				</span>
+				{description && (
+					<span className={styles.description}>
+						{description}
+					</span>
+				)}
 			</div>
 
 			{actions && (
