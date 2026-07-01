@@ -8,8 +8,7 @@
 	/* outline: 1px solid tomato; */
 	position: fixed;
 	right: 0;
-	bottom: 0;
-	bottom: var(--safe-area-max-inset-bottom);
+	bottom: env(safe-area-inset-bottom, 0);
 	left: 0;
 	z-index: 240;
 	display: flex;
@@ -37,7 +36,7 @@
 	right: 16px;
 	bottom: 0;
 	bottom: calc(
-		var(--safe-area-max-inset-bottom) +
+		env(safe-area-inset-bottom, 0) +
 		var(--textarea-padding) +
 		0.5rem -
 		25px +
