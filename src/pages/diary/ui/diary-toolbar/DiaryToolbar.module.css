@@ -1,13 +1,7 @@
 .toolbar {
 	position: fixed;
 	right: 0;
-		bottom: calc(
-		var(--safe-area-max-inset-bottom) +
-		32px +
-		0.5rem -
-		25px +
-		1px
-	);
+	bottom: calc(32px + env(safe-area-inset-bottom, 0px));
 	left: 0;
 	display: flex;
 	gap: 8px;
