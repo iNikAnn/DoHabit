@@ -3,8 +3,8 @@ import { useContext } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 import { motion } from 'framer-motion'
 import ModalHeader from './ModalHeader';
-import { DirectionContext, useInitialRouteState } from '@shared/lib/router';
 import { modalMotionProps } from '../model/modal.animations';
+import { DirectionContext, useInitialRouteState } from '@shared/lib/router';
 
 /**
  * Shared layout for all modal routes.

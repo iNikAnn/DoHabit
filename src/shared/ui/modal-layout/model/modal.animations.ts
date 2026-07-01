@@ -5,18 +5,21 @@ const variants: Variants = {
 	initial: (direction: Direction) => {
 		return direction === 'forward'
 			? {
-				x: '20%',
-				opacity: 0
+				x: '50%',
+				opacity: 0,
+				scale: 1
 			}
 			: {
-				x: '-20%',
-				opacity: 0
+				x: '-25%',
+				opacity: 0,
+				scale: 0.92
 			};
 	},
 
 	animate: {
 		x: 0,
 		opacity: 1,
+		scale: 1,
 		transition: {
 			type: 'tween',
 			ease: [0.2, 0, 0, 1],
@@ -25,8 +28,9 @@ const variants: Variants = {
 	},
 
 	exit: (direction: Direction) => ({
-		x: direction === 'forward' ? '-20%' : '20%',
+		x: direction === 'forward' ? '-25%' : '50%',
 		opacity: 0,
+		scale: direction === 'forward' ? 0.92 : 1,
 		transition: {
 			type: 'tween',
 			ease: [0.3, 0, 1, 1],
