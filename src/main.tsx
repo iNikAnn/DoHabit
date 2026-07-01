@@ -19,7 +19,7 @@ const root = createRoot(document.getElementById('root')!);
 root.render(
 	// <React.StrictMode>
 	<BrowserRouter basename={import.meta.env.BASE_URL}>
-		<ErrorBoundary fallback={<ErrorFallback />}>
+		<ErrorBoundary fallbackRender={({ error }) => <ErrorFallback error={error} />}>
 			<App />
 		</ErrorBoundary>
 	</BrowserRouter>

@@ -1,13 +1,18 @@
+import { getErrorMessage } from 'react-error-boundary';
 import { useTranslation } from 'react-i18next';
 import { exportAppData } from '@features/data-management/export-data';
 import { clearLocalStorage } from '@shared/lib/local-storage';
 import { Placeholder } from '@shared/ui';
 
+interface ErrorFallbackProps {
+	error: unknown;
+}
+
 /**
  * Error fallback for the whole app.
  * Provides options to reload or clear data.
  */
-function ErrorFallback() {
+function ErrorFallback({ error }: ErrorFallbackProps) {
 	const { t } = useTranslation();
 
 	const handleReload = () => {
@@ -38,6 +43,12 @@ function ErrorFallback() {
 					label: 'Backup and Reset',
 					color: 'IndianRed',
 					onClick: handleBackupAndReset
+				},
+				{
+					label: 'Show details',
+					variant: 'text',
+					onClick: () => alert(getErrorMessage(error)),
+					style: { width: '100%' }
 				}
 			]}
 		/>
