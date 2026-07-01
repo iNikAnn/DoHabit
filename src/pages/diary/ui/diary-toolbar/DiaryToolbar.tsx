@@ -16,7 +16,7 @@ interface DiaryToolbarProps {
 const variants: Variants = {
 	initial: {
 		scale: 0.5,
-		opacity: 0,
+		opacity: 0
 	},
 
 	animate: {
@@ -25,7 +25,8 @@ const variants: Variants = {
 		transition: {
 			type: 'spring',
 			stiffness: 350,
-			damping: 18
+			damping: 18,
+			delay: 0.2 // Delay animation until previous form closes
 		}
 	},
 
