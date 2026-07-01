@@ -30,17 +30,14 @@ function Placeholder(props: PlaceholderProps) {
 
 			{actions && (
 				<div className={styles.actions}>
-					{actions.map((a) => (
+					{actions.map(({ label, color, ...rest }) => (
 						<Button
-							key={a.label}
-							to={a.to}
-							state={a.state}
-							icon={a.icon}
-							style={{ backgroundColor: a.color }}
+							key={label}
+							style={{ backgroundColor: color }}
 							className={styles.actionButton}
-							onClick={a.onClick}
+							{...rest}
 						>
-							{a.label}
+							{label}
 						</Button>
 					))}
 				</div>

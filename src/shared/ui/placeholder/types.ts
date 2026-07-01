@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react';
+import type { ButtonProps } from '../button/types';
 
 export interface PlaceholderContent {
 	image?: ReactNode;
@@ -6,13 +7,9 @@ export interface PlaceholderContent {
 	description: string;
 }
 
-export interface PlaceholderAction {
+export interface PlaceholderAction extends ButtonProps {
 	label: string;
-	icon?: ReactNode;
 	color?: string;
-	to?: string;
-	state?: { modalTitle: string };
-	onClick?: () => void;
 }
 
 export interface PlaceholderProps {
