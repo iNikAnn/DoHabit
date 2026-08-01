@@ -1,392 +1,395 @@
 {
 	"achievements": {
+		"desc":"進展やマイルストーンを見る",
 		"groups": {
-			"onboarding": ""
+			"onboarding": "始めの一歩"
 		},
 		"items": {
 			"accumulated-year": {
-				"desc": "",
-				"title": ""
+				"desc": "365回習慣化を達成しました!サボっちゃったり毎日じゃなかったかもしれないけど合計すれば一年!",
+				"title": "一年...ってことで"
 			},
 			"compact-calendar": {
-				"desc": "",
-				"hint": "",
-				"title": ""
+				"desc": "コンパクトビューに切り替え完了しました。誘惑一切なしで機能を最大限活用できます",
+				"hint": "コンパクトカレンダーを有効化する",
+				"title": "スペースセーバー"
 			},
 			"diane-morning-log": {
-				"desc": "",
-				"title": ""
+				"desc": "朝9時前にメモを書きました!早起きは三文の徳。今日も気持ちよく一日を始めましょう!",
+				"title": "早起きは三文の徳"
 			},
 			"first-archive": {
-				"desc": "",
-				"hint": "",
-				"title": ""
+				"desc": "初めて習慣をアーカイブしました。",
+				"hint": "習慣をアーカイブする",
+				"title": "新たなスタート"
 			},
 			"first-note": {
-				"desc": "",
-				"hint": "",
-				"title": ""
+				"desc": "最初のノートを作成。今後も思ったことを記し続けてください。",
+				"hint": "初めてノートを作成する",
+				"title": "初ノート"
 			},
 			"fresh-start": {
-				"desc": "",
-				"hint": "",
-				"title": ""
+				"desc": "ようこそ!一つ目の習慣を作成しました。定着させていきましょう!",
+				"hint": "最初の習慣を作成する",
+				"title": "新しい始まり"
 			},
 			"gotham-protector": {
-				"desc": "",
-				"title": ""
+				"desc": "0時を過ぎてからメモを書きました。また考え事ですか?",
+				"title": "夜更かし"
 			},
 			"gravity-falls-journal": {
-				"desc": "",
-				"title": ""
+				"desc": "ノートをたくさん作成しました!今後も書き続けましょう",
+				"title": "観察日記"
 			},
 			"habit-vacation-over": {
-				"desc": "",
-				"title": ""
+				"desc": "21日間の休暇を得て習慣を定着させるために戻ってきました。21日間は習慣化に必要な日数です。",
+				"title": "21日間の休暇"
 			},
 			"ill-be-back": {
-				"desc": "",
-				"title": ""
+				"desc": "5つの習慣をアーカイブしました。",
+				"title": "アイル・ビー・バック"
 			},
 			"main-quest-abandoned": {
-				"desc": "",
-				"title": ""
+				"desc": "7日間習慣化を放置しました。やるべきことがあったのに、また寄り道していたようですね。",
+				"title": "寄り道仙人"
 			},
 			"new-years-resolution": {
-				"desc": "",
-				"title": ""
+				"desc": "元日に習慣を始めて達成しました。今年の抱負も本気ですね。",
+				"title": "抱負達成マシーン"
 			},
 			"not-twitter-approved": {
-				"desc": "",
-				"title": ""
+				"desc": "ツイートの制限である140文字より長いノートを作成しました。もちろんTwitterではないのでこのまま書き続けましょう!",
+				"title": "ツイート突破"
 			},
 			"overachiever-day": {
-				"desc": "",
-				"title": ""
+				"desc": "1日で3つも習慣を達成しました!少し休むべきかもしれないですね。",
+				"title": "MVP達成"
 			},
 			"perfect-day": {
-				"desc": "",
-				"title": ""
+				"desc": "3つ以上の習慣の全てを達成しました!",
+				"title": "完璧な1日"
 			},
 			"perfect-year": {
-				"desc": "",
-				"title": ""
+				"desc": "365日間一日も休まず一月一日から毎日習慣化を続けました",
+				"title": "努力の結晶"
 			},
 			"storage_info": {
-				"desc": "",
-				"hint": "",
-				"title": ""
+				"desc": "個人データの保存方法について読み終えました",
+				"hint": "データ保存方法について読む",
+				"title": "データの番人"
 			},
 			"time-traveler": {
-				"desc": "",
-				"title": ""
+				"desc": "五回も過去の日付で記録しました。本当にその日に...やったはず...ですよね？",
+				"title": "ちゃんとやったもん!"
 			},
 			"tolstoy-mode": {
-				"desc": "",
-				"title": ""
+				"desc": "すごいですね!あなたのノートをまとめたら本が一冊できそうです!",
+				"title": "ベストセラー作家"
 			}
 		},
 		"list": {
-			"emptyDesc": "",
-			"emptyTitle": ""
+			"emptyDesc": "レアな実績をアプリを頻繁に使うことでアンロックしていきましょう!",
+			"emptyTitle": "達成した実績がありません。"
 		},
 		"notification": {
-			"desc": "",
-			"title": ""
+			"desc": "どうやら実績を達成したようです。\n実績タブから確認できます。",
+			"title": "実績解除!"
 		},
-		"title": ""
+		"title": "実績"
 	},
 	"app": {
 		"errorBoundary": {
-			"desc": "",
+			"desc": "リロードしてみてください。もし解決しない場合、アプリのデータをリセットしてみてください(記録されているデータはバックアップとして保存されます)",
 			"dialogs": {
-				"resetConfirm": ""
+				"resetConfirm": "データをバックアップしてアプリをリセットしますか？"
 			},
-			"title": ""
+			"title": "おっと...何か問題が発生したようです。"
 		},
 		"update": {
-			"text": "",
-			"title": ""
+			"text": "リロードボタンをクリックして最新のバージョンに更新してください。",
+			"title": "アップデートの準備ができました!"
 		}
 	},
 	"common": {
-		"all": "",
-		"app": "",
-		"cancel": "",
-		"close": "",
-		"continue": "",
-		"day": "",
-		"end": "",
-		"habits": "",
-		"icon": "",
-		"info": "",
-		"logo": "",
-		"reload": "",
-		"screenshot": "",
-		"settings": "",
-		"showLess": "",
-		"showMore": "",
-		"start": "",
-		"support": "",
+		"all": "全て",
+		"app": "アプリ",
+		"cancel": "キャンセル",
+		"close": "閉じる",
+		"continue": "続ける",
+		"day": "日",
+		"end": "終わり",
+		"habits": "習慣",
+		"icon": "アイコン",
+		"info": "情報",
+		"logo": "ロゴ",
+		"reload": "リロード",
+		"screenshot": "スクリーンショット",
+		"settings": "設定",
+		"showLess": "詳細を隠す",
+		"showMore": "詳細を表示する",
+		"start": "スタート",
+		"support": "サポート",
 		"theme": {
-			"auto": "",
-			"dark": "",
-			"light": ""
+			"auto": "オート",
+			"dark": "ダーク",
+			"light": "ライト"
 		},
-		"ui": "",
-		"version": ""
+		"ui": "インターフェース",
+		"version": "バージョン"
 	},
 	"habits": {
 		"actions": {
-			"archive": "",
-			"create": "",
-			"createNew": "",
-			"delete": "",
-			"doneYesterday": "",
-			"edit": "",
-			"notes": "",
-			"share": "",
-			"undoYesterday": "",
-			"update": ""
+			"archive": "アーカイブ",
+			"create": "作成",
+			"createNew": "習慣を新規作成",
+			"delete": "削除",
+			"doneYesterday": "昨日達成",
+			"edit": "編集",
+			"notes": "ノート",
+			"share": "共有する",
+			"undoYesterday": "昨日の分を元に戻す",
+			"update": "変更を保存する。"
 		},
 		"dialogs": {
-			"archiveConfirm": "",
-			"deleteConfirm": "",
-			"manageTitle": "",
-			"restoreConfirm": ""
+			"archiveConfirm": "この習慣をアーカイブしても大丈夫ですか？",
+			"deleteConfirm": "この習慣を削除しても大丈夫ですか？一度削除した習慣は元には戻せません。",
+			"manageTitle": "習慣を管理する",
+			"restoreConfirm": "習慣を元に戻してもよろしいですか？"
 		},
 		"form": {
-			"colorDesc": "",
-			"colorTitle": "",
+			"colorDesc": "ドットは既に使用している色を表しています。同じ色を複数回使うことも可能です。",
+			"colorTitle": "色",
 			"errors": {
-				"alreadyExists": ""
+				"alreadyExists": "既にあります。"
 			},
-			"frequencyDesc": "",
-			"frequencyTitle": "",
-			"iconDesc": "",
-			"iconTitle": "",
-			"namePlaceholder": "",
-			"nameTitle": "",
-			"orderDesc": "",
+			"frequencyDesc": "1日に習慣を行う頻度",
+			"frequencyTitle": "頻度",
+			"iconDesc": "半透明なアイコンは既に使用されています。再使用も可能です。",
+			"iconTitle": "アイコン",
+			"namePlaceholder": "習慣の名前を入力してください",
+			"nameTitle": "名前",
+			"orderDesc": "習慣のリストの中での位置",
 			"orderSorting": {
-				"btnAlreadyAtBottom": "",
-				"btnAlreadyAtTop": "",
-				"btnMoveToBottom": "",
-				"btnMoveToTop": "",
-				"btnStepDown": "",
-				"btnStepUp": ""
+				"btnAlreadyAtBottom": "既に一番下です",
+				"btnAlreadyAtTop": "既に一番上です",
+				"btnMoveToBottom": "一番下に下げる",
+				"btnMoveToTop": "一番上に上げる",
+				"btnStepDown": "一つ下げる",
+				"btnStepUp": "一つ上げる"
 			},
-			"orderTitle": ""
+			"orderTitle": "順番"
 		},
 		"list": {
-			"createFirst": "",
-			"emptyActiveDesc": "",
-			"emptyActiveTitle": "",
-			"emptyArchivedDesc": "",
-			"emptyArchivedTitle": ""
+			"createFirst": "最初の習慣を作成する",
+			"emptyActiveDesc": "今ひとつ作成するのはいかがですか？",
+			"emptyActiveTitle": "有効な習慣が見つかりませんでした。",
+			"emptyArchivedDesc": "習慣を編集することでアーカイブすることができます",
+			"emptyArchivedTitle": "アーカイブされた習慣は見つかりませんでした。"
 		},
 		"share": {
-			"desc": "",
-			"error": "",
-			"notSupported": "",
-			"title": ""
+			"desc": "見て見て!",
+			"error": "画像生成に失敗しました。",
+			"notSupported": "共有はサポートされていません。",
+			"title": "共有"
 		},
 		"stats": {
-			"chartCompletions": "",
-			"currentStreak": "",
-			"longestStreak": "",
-			"monthlyChartTitle": "",
-			"streak": "",
-			"streakHistoryDesc": "",
-			"streakHistoryTitle": "",
-			"title": "",
-			"weekdayChartTitle": ""
+			"chartCompletions": "完了した習慣",
+			"currentStreak": "現在の連続記録",
+			"longestStreak": "最長",
+			"monthlyChartTitle": "月別の達成度",
+			"streak": "連続記録",
+			"streakHistoryDesc": "連続記録の歴史",
+			"streakHistoryTitle": "ストリークの履歴",
+			"title": "統計",
+			"weekdayChartTitle": "週別の達成度",
+			"weekdayChartDesc":"日別の達成度"
 		}
 	},
 	"menu": {
 		"appearance": {
 			"animations": {
-				"desc": "",
-				"disabledBySystem": "",
-				"title": ""
+				"desc": "エフェクトとトランジション",
+				"disabledBySystem": "動作軽減設定によりブロックされています",
+				"title": "アニメーション"
 			},
 			"calendar": {
-				"compact": "",
-				"default": "",
+				"compact": "コンパクト",
+				"default": "デフォルト",
 				"highlightToday": {
-					"title": ""
+					"title": "今日を強調する"
 				},
-				"sectionTitle": "",
+				"sectionTitle": "カレンダー",
 				"showDayNumbers": {
-					"desc": "",
-					"title": ""
+					"desc": "デフォルトのカレンダーにのみ適用",
+					"title": "日付を表示"
 				},
 				"showWeekdayNames": {
-					"desc": "",
-					"title": ""
+					"desc": "デフォルトのカレンダーにのみ適用",
+					"title": "週の曜日を表示"
 				},
-				"typeDesc": "",
-				"typeTitle": ""
+				"typeDesc": "現在のビュー: {{type}}",
+				"typeTitle": "コンパクトカレンダービュー"
 			},
-			"desc": "",
+			"desc": "アプリの見た目をカスタマイズ",
 			"language": {
-				"desc": "",
+				"desc": "現在使用している言語: {{lang}}",
 				"dialogs": {
-					"selectTitle": ""
+					"selectTitle": "言語を選択してください"
 				},
-				"title": ""
+				"title": "言語"
 			},
 			"theme": {
-				"desc": "",
+				"desc": "現在のテーマ: {{theme}}",
 				"dialogs": {
-					"selectThemeTitle": ""
+					"selectThemeTitle": "テーマを選択"
 				},
-				"selectTitle": "",
-				"title": ""
+				"selectTitle": "テーマを選択",
+				"title": "テーマ"
 			},
-			"title": ""
+			"title": "見た目"
 		},
 		"archive": {
-			"desc": "",
-			"title": ""
+			"desc": "アーカイブされた習慣を確認したり管理します。",
+			"title": "アーカイブ"
 		},
 		"dataManagement": {
 			"backup": {
 				"export": {
-					"desc": "",
+					"desc": "バックアップデータをデバイスに保存します",
 					"dialogs": {
-						"exportConfirm": "",
+						"exportConfirm": "バックアップファイルをデバイスに保存しますか？",
 						"passwordPrompt": "任意: バックアップを暗号化するパスワードを入力してください。空欄のままにすると暗号化せずに JSON としてエクスポートします。"
 					},
-					"title": ""
+					"title": "エクスポート",
+					"passwordPlaceholder":"パスワードを入力してください。"
 				},
 				"import": {
-					"desc": "",
+					"desc": "データをバックアップファイルから読み込む",
 					"dialogs": {
 						"passwordPrompt": "このバックアップは暗号化されています。復号するパスワードを入力してください:"
 					},
 					"notifications": {
-						"error": "",
-						"success": "",
+						"error": "データの読み込みに失敗しました。",
+						"success": "データの読み込みに成功しました。リロードを開始します。",
 						"wrongPassword": "復号に失敗しました。パスワードが間違っているか、ファイルが破損している可能性があります。"
 					},
-					"title": ""
+					"title": "インポート"
 				},
-				"sectionTitle": ""
+				"sectionTitle": "バックアップ"
 			},
 			"danger": {
 				"clearAll": {
-					"desc": "",
+					"desc": "アプリの全データを削除する。",
 					"dialogs": {
-						"confirm": "",
-						"prompt": ""
+						"confirm": "全てのデータを削除しても大丈夫ですか？\n\n削除されるデータには:\n-全ての習慣や\n-全ての達成した実績\n-日記の全てのエントリー\nが含まれます。削除してしまうと元に戻すことはできません。",
+						"prompt": "承認するには、\"{{phrase}}\"と入力してください。 "
 					},
 					"notifications": {
-						"error": "",
-						"success": ""
+						"error": "アクションがキャンセルまたは不明なフレーズです。",
+						"success": "全てのデータを削除し終えました。リロード中です。"
 					},
-					"title": ""
+					"title": "全て消去"
 				},
-				"sectionTitle": ""
+				"sectionTitle": "デンジャーゾーン"
 			},
-			"desc": "",
+			"desc": "アプリのデータを復元、バックアップ、消去する",
 			"info": {
 				"storage": {
-					"description": "",
-					"title": ""
+					"description": "どこにどうやって習慣のデータが保存されているのか",
+					"title": "データストレージ"
 				}
 			},
-			"title": ""
+			"title": "データ管理"
 		},
 		"shared": {
 			"feedback": {
-				"desc": "",
-				"title": ""
+				"desc": "バグの報告や新機能をリクエスト",
+				"title": "問題を報告する"
 			},
 			"gitHub": {
-				"desc": "",
-				"title": ""
+				"desc": "このプロジェクトを閲覧、貢献する",
+				"title": "Githubリポジトリ"
 			}
 		},
-		"title": ""
+		"title": "メニュー"
 	},
 	"notes": {
 		"actions": {
-			"copy": "",
-			"delete": "",
-			"edit": ""
+			"copy": "ノートをコピー",
+			"delete": "ノートを削除する",
+			"edit": "ノートを編集する"
 		},
 		"dialogs": {
-			"deleteConfirm": ""
+			"deleteConfirm": "このノートを削除してもよろしいですか？"
 		},
 		"form": {
-			"textPlaceholder": ""
+			"textPlaceholder": "ノートを入力してください。"
 		},
 		"list": {
-			"emptyDesc": "",
-			"emptyTitle": "",
-			"selected": ""
+			"emptyDesc": "考えや進歩を記録するために最初のノートを作成してください。",
+			"emptyTitle": "日記がありません。",
+			"selected": "ノートを選択しました"
 		},
 		"notifications": {
-			"copyError": "",
-			"copySuccess": "",
-			"createSuccess": "",
-			"deleteSuccess": "",
-			"editSuccess": ""
+			"copyError": "コピーが失敗しました",
+			"copySuccess": "コピー完了",
+			"createSuccess": "ノートを作成しました",
+			"deleteSuccess": "ノートを削除しました",
+			"editSuccess": "変更を保存しました!"
 		},
 		"tags": {
-			"all": "",
-			"emptyDesc": "",
-			"emptyTitle": "",
-			"forYear": ""
+			"all": "全てのタグ",
+			"emptyDesc": "タグを作成するには単語の前にハッシュタグ(#)を追加してください",
+			"emptyTitle": "タグが見つかりません。",
+			"forYear": "{{year}} 年のタグ"
 		},
-		"title": ""
+		"title": "日記"
 	},
 	"storageInfo": {
 		"actions": {
-			"confirm": ""
+			"confirm": "理解しました。"
 		},
-		"intro": "",
-		"notice": "",
-		"privacy": "",
-		"pwa": "",
-		"warning": ""
+		"intro": "このアプリはデータを全て使用されている端末に保存します。",
+		"notice": "バックアップを頻繁に行なってください。バックアップファイルは他のデバイスでも読み込めるJSONファイルです。",
+		"privacy": "完全なプライバシー: あなたのデータはあなたのものです。このアプリでは自動同期やリモートサーバーやトラッキング等を使用していません。",
+		"pwa": "より安全にするにはこのアプリをデバイスにインストールしてください。インストールされたPWAは端末にデータが保存されデータがOSによって削除されることは滅多にありません",
+		"warning": "通常のブラウザで使用する場合キャッシュや履歴を消すとデータが削除されます。"
 	},
 	"welcome": {
 		"actions": {
-			"continue": "",
-			"install": ""
+			"continue": "ブラウザーで続ける",
+			"install": "デバイスにインストール"
 		},
 		"benefits": {
 			"offline": {
-				"desc": "",
-				"title": ""
+				"desc": "インターネット接続は必要ありません",
+				"title": "完全なオフライン機能"
 			},
 			"privacy": {
-				"desc": "",
-				"title": ""
+				"desc": "サーバーもアカウントも必要なし",
+				"title": "100%プライベート"
 			},
 			"secure": {
-				"desc": "",
-				"title": ""
+				"desc": "あなたのデータはあなた自身のものです。あなた自身が管理します。",
+				"title": "データはあなたのもの"
 			},
 			"simplicity": {
-				"desc": "",
-				"title": ""
+				"desc": "面倒な設定は飛ばして習慣化することにフォーカス",
+				"title": "思い立ったらすぐ"
 			}
 		},
-		"description": "",
+		"description": "進歩を記録する日記や、ストリークの実績や可視化された統計機能が組み込まれた軽量なアシスタント",
 		"pwa": {
 			"chromeNudge": {
-				"text": "",
-				"title": ""
+				"text": "Chromium系のブラウザでインストールがサポートされています。\nこのアプリをGoogleChromeで開いてインストールしてください。",
+				"title": "GoogleChromeが必須です"
 			},
 			"ios": {
-				"steps": "",
-				"title": ""
+				"steps": "このページをSafariで開き、「シェア」ボタンをクリックした後「ホームスクリーンに追加」をタップして追加します。",
+				"title": "iOSでのインストール"
 			}
 		},
-		"titleLine1": "",
-		"titleLine2": ""
+		"titleLine1": "習慣を形作りましょう",
+		"titleLine2": "データは自分で管理"
 	}
 }
