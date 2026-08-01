@@ -1,6 +1,6 @@
 {
 	"achievements": {
-		"desc":"進展やマイルストーンを見る",
+		"desc": "進展やマイルストーンを見る",
 		"groups": {
 			"onboarding": "始めの一歩"
 		},
@@ -122,6 +122,7 @@
 		"icon": "アイコン",
 		"info": "情報",
 		"logo": "ロゴ",
+		"password": "パスワード",
 		"reload": "リロード",
 		"screenshot": "スクリーンショット",
 		"settings": "設定",
@@ -193,16 +194,19 @@
 			"title": "共有"
 		},
 		"stats": {
-			"chartCompletions": "完了した習慣",
-			"currentStreak": "現在の連続記録",
+			"chartCompletions": "完了数",
+			"currentStreak": "現在",
 			"longestStreak": "最長",
-			"monthlyChartTitle": "月別の達成度",
-			"streak": "連続記録",
-			"streakHistoryDesc": "連続記録の歴史",
-			"streakHistoryTitle": "ストリークの履歴",
+			"monthlyChartDesc": "月ごとの達成内訳",
+			"monthlyChartTitle": "月別達成数",
+			"streak": "連続",
+			"streakHistoryDesc": "2日以上の連続記録",
+			"streakHistoryTitle": "連続履歴",
 			"title": "統計",
-			"weekdayChartTitle": "週別の達成度",
-			"weekdayChartDesc":"日別の達成度"
+			"totalCompletedDesc": "今年の合計完了回数",
+			"totalCompletedTitle": "総完了数",
+			"weekdayChartDesc": "曜日ごとの達成内訳",
+			"weekdayChartTitle": "曜日別達成数"
 		}
 	},
 	"menu": {
@@ -249,7 +253,7 @@
 			"title": "見た目"
 		},
 		"archive": {
-			"desc": "アーカイブされた習慣を確認したり管理します。",
+			"desc": "保存した習慣の確認と管理",
 			"title": "アーカイブ"
 		},
 		"dataManagement": {
@@ -258,15 +262,21 @@
 					"desc": "バックアップデータをデバイスに保存します",
 					"dialogs": {
 						"exportConfirm": "バックアップファイルをデバイスに保存しますか？",
-						"passwordPrompt": "任意: バックアップを暗号化するパスワードを入力してください。空欄のままにすると暗号化せずに JSON としてエクスポートします。"
+						"passwordPrompt": {
+							"desc": "任意: バックアップを暗号化するパスワードを入力してください。空欄だと暗号化されません。",
+							"submitBtn": "ダウンロード",
+							"title": "バックアップを暗号化"
+						}
 					},
-					"title": "エクスポート",
-					"passwordPlaceholder":"パスワードを入力してください。"
+					"title": "エクスポート"
 				},
 				"import": {
 					"desc": "データをバックアップファイルから読み込む",
 					"dialogs": {
-						"passwordPrompt": "このバックアップは暗号化されています。復号するパスワードを入力してください:"
+						"passwordPrompt": {
+							"desc": "このバックアップは暗号化されています。復号するパスワードを入力してください:",
+							"title": "復号するパスワードを入力"
+						}
 					},
 					"notifications": {
 						"error": "データの読み込みに失敗しました。",
@@ -292,10 +302,10 @@
 				},
 				"sectionTitle": "デンジャーゾーン"
 			},
-			"desc": "アプリのデータを復元、バックアップ、消去する",
+			"desc": "データの復元・バックアップ・消去",
 			"info": {
 				"storage": {
-					"description": "どこにどうやって習慣のデータが保存されているのか",
+					"description": "習慣データの保存場所と方法",
 					"title": "データストレージ"
 				}
 			},
@@ -308,7 +318,7 @@
 			},
 			"gitHub": {
 				"desc": "このプロジェクトを閲覧、貢献する",
-				"title": "Githubリポジトリ"
+				"title": "GitHubリポジトリ"
 			}
 		},
 		"title": "メニュー"
@@ -382,7 +392,7 @@
 		"pwa": {
 			"chromeNudge": {
 				"text": "Chromium系のブラウザでインストールがサポートされています。\nこのアプリをGoogleChromeで開いてインストールしてください。",
-				"title": "GoogleChromeが必須です"
+				"title": "Google Chromeが必須です"
 			},
 			"ios": {
 				"steps": "このページをSafariで開き、「シェア」ボタンをクリックした後「ホームスクリーンに追加」をタップして追加します。",
