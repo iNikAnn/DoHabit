@@ -3,9 +3,9 @@ import { FaDownload, FaUpload } from 'react-icons/fa6';
 import { ImFire } from 'react-icons/im';
 import { FaInfoCircle } from 'react-icons/fa';
 import { clearAppData } from '@features/data-management/clear-data';
-import { BackupPasswordForm, exportAppData } from '@features/data-management/export-data';
+import { exportAppData } from '@features/data-management/export-data';
 import { importAppData } from '@features/data-management/import-data';
-import { useDialogStore, type ListItemProps } from '@shared/ui';
+import { PasswordForm, useDialogStore, type ListItemProps } from '@shared/ui';
 import { getNavigationTarget } from '@shared/lib/router';
 
 function useListItems() {
@@ -35,7 +35,13 @@ function useListItems() {
 			onClick: () => openDialog({
 				title: t('menu.dataManagement.backup.export.dialogs.passwordPrompt.title'),
 				subTitle: t('menu.dataManagement.backup.export.dialogs.passwordPrompt.desc'),
-				children: <BackupPasswordForm variant='export' onSubmit={exportAppData} />
+				children: (
+					<PasswordForm
+						required={false}
+						submitLabel={t('menu.dataManagement.backup.export.dialogs.passwordPrompt.submitBtn')}
+						onSubmit={exportAppData}
+					/>
+				)
 			})
 		},
 

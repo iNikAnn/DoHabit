@@ -4,6 +4,7 @@ import { uploadJson } from '../lib/uploadJson';
 import { clearAppData } from '@features/data-management/clear-data';
 import { STORAGE_KEYS } from '@shared/const';
 import { decryptJsonWithPassword, isEncryptedBackup } from '@shared/lib/crypto';
+import { dialogStore, PasswordForm } from '@shared/ui';
 
 /**
  * Safely imports application backup data from a JSON file.
@@ -19,11 +20,25 @@ async function importAppData() {
 
 	// Decrypt password-protected backups before importing
 	if (isEncryptedBackup(parsedData)) {
-		const password = window.prompt(t('menu.dataManagement.backup.import.dialogs.passwordPrompt'));
-		if (password === null) return;
+		const password = await new Promise<string | null>((resolve) => {
+			dialogStore.getState().open({
+				title: t('menu.dataManagement.backup.import.dialogs.passwordPrompt.title'),
+				subTitle: t('menu.dataManagement.backup.import.dialogs.passwordPrompt.desc'),
+				children: (
+					<PasswordForm
+						onSubmit={(pwd) => resolve(pwd || null)}
+						onClose={() => resolve(null)}
+					/>
+				)
+			});
+		});
+
+		if (!password) return;
 
 		try {
-			parsedData = JSON.parse(await decryptJsonWithPassword(parsedData, password)) as Record<string, unknown>;
+			parsedData = JSON.parse(
+				await decryptJsonWithPassword(parsedData, password)
+			) as Record<string, unknown>;
 		} catch {
 			window.alert(t('menu.dataManagement.backup.import.notifications.wrongPassword'));
 			return;

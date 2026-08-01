@@ -9,6 +9,7 @@ export { List } from './menu-list/ui/List';
 export type { ListItemProps } from './menu-list/model/types';
 export { ModalLayout } from './modal-layout/ui/ModalLayout';
 export { Overlay } from './overlay/Overlay';
+export { PasswordForm } from './password-form/PasswordForm';
 export { Placeholder } from './placeholder/Placeholder';
 export { SectionHeader } from './section-header/SectionHeader';
 export { SegmentedControl } from './segmented-control/SegmentedControl';

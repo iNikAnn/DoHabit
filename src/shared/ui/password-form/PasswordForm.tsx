@@ -1,21 +1,25 @@
-import styles from './BackupPasswordForm.module.css';
+import styles from './PasswordForm.module.css';
 import { useState, type SubmitEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Button, useDialogStore } from '@shared/ui';
 
-interface BackupPasswordFormProps {
-	variant: 'import' | 'export';
+interface PasswordFormProps {
+	minLength?: number;
+	required?: boolean;
+	submitLabel?: string;
 	onSubmit: (password?: string) => void;
 	onClose?: () => void;
 }
 
 /**
- * Password input form for backing up or restoring application data.
+ * Password input form.
  */
-function BackupPasswordForm(props: BackupPasswordFormProps) {
+function PasswordForm(props: PasswordFormProps) {
 	const {
-		variant,
+		minLength = 6,
+		required = true,
+		submitLabel,
 		onSubmit,
 		onClose
 	} = props;
@@ -26,17 +30,16 @@ function BackupPasswordForm(props: BackupPasswordFormProps) {
 	const [password, setPassword] = useState('');
 	const [isVisible, setIsVisible] = useState(false);
 
-	const isExport = variant === 'export';
 	const trimmedPassword = password.trim();
 
-	// Export allows empty password (unencrypted), import strictly requires value
-	const isValid = isExport
-		? trimmedPassword.length === 0 || trimmedPassword.length >= 6
-		: trimmedPassword.length >= 6;
+	// Valid if empty when optional, or meets minimum length when provided
+	const isValid = required
+		? trimmedPassword.length >= minLength
+		: trimmedPassword.length === 0 || trimmedPassword.length >= minLength;
 
 	const handleSubmit: SubmitEventHandler = (e) => {
 		e.preventDefault();
-		onSubmit(password);
+		onSubmit(trimmedPassword);
 		setPassword('');
 		closeDialog();
 	};
@@ -52,13 +55,24 @@ function BackupPasswordForm(props: BackupPasswordFormProps) {
 			onSubmit={handleSubmit}
 		>
 			<div className={styles.inputWrapper}>
+				{/* https://www.chromium.org/developers/design-documents/create-amazing-password-forms/ */}
+				<input
+					type='text'
+					name='username'
+					autoComplete='off'
+					readOnly
+					hidden
+					style={{ display: 'none' }}
+				/>
+
 				<input
 					type={isVisible ? 'text' : 'password'}
+					name='password'
 					autoComplete='current-password'
 					value={password}
 					className={styles.input}
 					onChange={(e) => setPassword(e.target.value)}
-					placeholder={t('menu.dataManagement.backup.export.passwordPlaceholder')}
+					placeholder={t('common.password')}
 				/>
 
 				<Button
@@ -82,13 +96,11 @@ function BackupPasswordForm(props: BackupPasswordFormProps) {
 					type='submit'
 					disabled={!isValid}
 				>
-					{variant === 'export'
-						? t('menu.dataManagement.backup.export.dialogs.passwordPrompt.submitBtn')
-						: t('common.continue')}
+					{submitLabel ?? 'OK'}
 				</Button>
 			</div>
 		</form>
 	);
 }
 
-export { BackupPasswordForm };
+export { PasswordForm };

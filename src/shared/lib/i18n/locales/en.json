@@ -122,6 +122,7 @@
 		"icon": "Icon",
 		"info": "Information",
 		"logo": "logo",
+		"password": "Password",
 		"reload": "Reload",
 		"screenshot": "screenshot",
 		"settings": "Settings",
@@ -196,16 +197,16 @@
 			"chartCompletions": "Completions",
 			"currentStreak": "Current",
 			"longestStreak": "Longest",
-			"monthlyChartTitle": "Completions by month",
 			"monthlyChartDesc": "Distribution of completions across months",
+			"monthlyChartTitle": "Completions by month",
 			"streak": "Streak",
 			"streakHistoryDesc": "Shows streaks of 2 days or more",
 			"streakHistoryTitle": "Streak history",
 			"title": "Statistics",
-			"totalCompletedTitle": "Total completions",
 			"totalCompletedDesc": "Times completed during this year",
-			"weekdayChartTitle": "Completions by weekday",
-			"weekdayChartDesc": "Distribution of completions across days"
+			"totalCompletedTitle": "Total completions",
+			"weekdayChartDesc": "Distribution of completions across days",
+			"weekdayChartTitle": "Completions by weekday"
 		}
 	},
 	"menu": {
@@ -262,25 +263,27 @@
 					"dialogs": {
 						"exportConfirm": "Download backup file to your device?",
 						"passwordPrompt": {
-							"title": "Encrypt Backup",
 							"desc": "Optional: Enter a password to protect your data. If left empty, the backup file will remain unencrypted.",
-							"submitBtn": "Download backup"
+							"submitBtn": "Download backup",
+							"title": "Encrypt Backup"
 						}
 					},
-					"title": "Export",
-					"passwordPlaceholder": "Enter password"
+					"title": "Export"
 				},
 				"import": {
 					"desc": "Upload your app data from a backup file",
+					"dialogs": {
+						"passwordPrompt": {
+							"desc": "Enter password to decrypt backup:",
+							"title": "Decrypt Backup"
+						}
+					},
 					"notifications": {
 						"error": "Something went wrong during import.",
 						"success": "Data imported successfully! The application will now reload.",
 						"wrongPassword": "Decryption failed. The password may be incorrect or the file is corrupted."
 					},
-					"title": "Import",
-					"dialogs": {
-						"passwordPrompt": "This backup is encrypted. Enter the password to decrypt it:"
-					}
+					"title": "Import"
 				},
 				"sectionTitle": "Backup"
 			},
