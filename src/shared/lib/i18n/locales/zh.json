@@ -122,6 +122,7 @@
 		"icon": "图标",
 		"info": "消息",
 		"logo": "标志",
+		"password": "密码",
 		"reload": "重载",
 		"screenshot": "截图",
 		"settings": "设置",
@@ -261,14 +262,21 @@
 					"desc": "保存备份数据至本地",
 					"dialogs": {
 						"exportConfirm": "下载备份文件？",
-						"passwordPrompt": "可选：输入密码以加密备份。留空则导出为未加密的 JSON。"
+						"passwordPrompt": {
+							"desc": "可选：输入密码加密数据。如留空，备份文件将不加密。",
+							"submitBtn": "下载备份",
+							"title": "加密备份"
+						}
 					},
 					"title": "导出"
 				},
 				"import": {
 					"desc": "从备份文件导入应用数据",
 					"dialogs": {
-						"passwordPrompt": "此备份已加密。请输入密码进行解密："
+						"passwordPrompt": {
+							"desc": "输入密码以解密备份：",
+							"title": "解密备份"
+						}
 					},
 					"notifications": {
 						"error": "导入过程中出错。",

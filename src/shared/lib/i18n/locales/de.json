@@ -1,5 +1,6 @@
 {
 	"achievements": {
+		"desc": "",
 		"groups": {
 			"onboarding": ""
 		},
@@ -121,6 +122,7 @@
 		"icon": "",
 		"info": "",
 		"logo": "",
+		"password": "",
 		"reload": "",
 		"screenshot": "",
 		"settings": "",
@@ -195,11 +197,15 @@
 			"chartCompletions": "",
 			"currentStreak": "",
 			"longestStreak": "",
+			"monthlyChartDesc": "",
 			"monthlyChartTitle": "",
 			"streak": "",
 			"streakHistoryDesc": "",
 			"streakHistoryTitle": "",
 			"title": "",
+			"totalCompletedDesc": "",
+			"totalCompletedTitle": "",
+			"weekdayChartDesc": "",
 			"weekdayChartTitle": ""
 		}
 	},
@@ -256,19 +262,26 @@
 					"desc": "",
 					"dialogs": {
 						"exportConfirm": "",
-						"passwordPrompt": "Optional: Passwort eingeben, um das Backup zu verschlüsseln. Leer lassen, um als unverschlüsseltes JSON zu exportieren."
+						"passwordPrompt": {
+							"desc": "",
+							"submitBtn": "",
+							"title": ""
+						}
 					},
 					"title": ""
 				},
 				"import": {
 					"desc": "",
 					"dialogs": {
-						"passwordPrompt": "Dieses Backup ist verschlüsselt. Passwort zum Entschlüsseln eingeben:"
+						"passwordPrompt": {
+							"desc": "",
+							"title": ""
+						}
 					},
 					"notifications": {
 						"error": "",
 						"success": "",
-						"wrongPassword": "Entschlüsselung fehlgeschlagen. Das Passwort ist möglicherweise falsch oder die Datei ist beschädigt."
+						"wrongPassword": ""
 					},
 					"title": ""
 				},

@@ -122,6 +122,7 @@
 		"icon": "Icono",
 		"info": "Información",
 		"logo": "logo",
+		"password": "Contraseña",
 		"reload": "Recargar",
 		"screenshot": "captura de pantalla",
 		"settings": "Ajustes",
@@ -261,14 +262,21 @@
 					"desc": "Guarda una copia en tu dispositivo",
 					"dialogs": {
 						"exportConfirm": "¿Descargar el archivo de copia de seguridad en tu dispositivo?",
-						"passwordPrompt": "Opcional: introduce una contraseña para cifrar la copia de seguridad. Déjalo vacío para exportar como JSON sin cifrar."
+						"passwordPrompt": {
+							"desc": "Opcional: usa clave para proteger datos. Sin clave, la copia no se cifrará.",
+							"submitBtn": "Descargar copia",
+							"title": "Cifrar copia"
+						}
 					},
 					"title": "Exportar"
 				},
 				"import": {
 					"desc": "Restaura tus datos desde una copia de seguridad",
 					"dialogs": {
-						"passwordPrompt": "Esta copia de seguridad está cifrada. Introduce la contraseña para descifrarla:"
+						"passwordPrompt": {
+							"desc": "Clave para descifrar la copia:",
+							"title": "Desproteger"
+						}
 					},
 					"notifications": {
 						"error": "Algo salió mal durante la importación.",
