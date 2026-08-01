@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { ButtonProps } from '@shared/ui';
 
 export interface DialogAction extends ButtonProps {
@@ -9,6 +10,7 @@ export interface DialogContent {
 	subTitle?: string;
 	imgSrc?: string;
 	text?: string;
+	children?: ReactNode;
 	actions?: DialogAction[];
 }
 

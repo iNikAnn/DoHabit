@@ -55,6 +55,8 @@ function Dialog() {
 									</div>
 								)}
 
+								{content.children}
+
 								{content.actions && (
 									<ul
 										className={styles.actions}

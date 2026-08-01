@@ -9,3 +9,5 @@ export const useDialogStore = create<DialogState>(
 		close: () => set({ content: null })
 	})
 );
+
+export const dialogStore = useDialogStore;
