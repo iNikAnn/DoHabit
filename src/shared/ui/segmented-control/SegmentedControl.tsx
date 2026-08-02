@@ -12,7 +12,6 @@ interface ControlOption<T extends string> {
 interface SegmentedControlProps<T extends string> {
 	options: ControlOption<T>[];
 	value: T;
-	className?: string,
 	onChange: (v: T) => void;
 }
 
@@ -20,7 +19,6 @@ function SegmentedControl<T extends string>(props: SegmentedControlProps<T>) {
 	const {
 		options,
 		value,
-		className,
 		onChange
 	} = props;
 
