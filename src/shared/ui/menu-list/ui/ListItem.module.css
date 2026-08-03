@@ -24,6 +24,12 @@
 	height: 16px;
 }
 
+.menuItem.md > svg:first-of-type,
+.menuItem.md > img:first-of-type {
+	width: 36px;
+	height: 36px;
+}
+
 .menuItem.lg > svg:first-of-type,
 .menuItem.lg > img:first-of-type {
 	width: 48px;

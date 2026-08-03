@@ -21,7 +21,9 @@
 
 /* subTitle */
 .subTitle {
-	color: gray;
+	display: block;
+	margin-top: 4px;
+	color: var(--color-secondary);
 }
 
 /* img */
