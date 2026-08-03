@@ -1,10 +1,12 @@
 import styles from './SectionHeader.module.css';
 import { type CSSProperties, type ReactNode } from 'react';
+import clsx from 'clsx';
 import { startCase } from 'es-toolkit';
 
 interface Props {
 	title: string
 	description?: string;
+	className?: string;
 	titleStyle?: CSSProperties;
 	extra?: ReactNode;
 }
@@ -17,12 +19,13 @@ function SectionHeader(props: Props) {
 	const {
 		title,
 		description,
+		className,
 		titleStyle,
 		extra
 	} = props;
 
 	return (
-		<div className={styles.header}>
+		<div className={clsx(styles.header, className)}>
 			<h4
 				style={titleStyle}
 				className={styles.title}
