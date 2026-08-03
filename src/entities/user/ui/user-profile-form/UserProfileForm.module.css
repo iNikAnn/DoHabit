@@ -1,0 +1,45 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.inputHeader {
+	margin: 0;
+}
+
+.input {
+	width: 100%;
+	height: var(--input-height-primary);
+	padding-inline: 16px;
+	background-color: var(--bg);
+	border: 1px solid var(--bg-color-secondary);
+	box-shadow: var(--shadow-lg);
+}
+
+.input:focus {
+	outline: none;
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
+}
+
+.actions button {
+	height: 48px;
+}
+
+.cancelButton {
+	flex: 1;
+}
+
+.submitButton {
+	flex: 2;
+}
