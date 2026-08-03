@@ -1,12 +1,29 @@
 import { useTranslation } from 'react-i18next';
 import { HiArchiveBox } from 'react-icons/hi2';
-import { FaAward, FaBug, FaGithub, FaHeart, FaPaintBrush } from 'react-icons/fa';
+import { FaAward, FaBug, FaGithub, FaHeart, FaPaintBrush, FaUser } from 'react-icons/fa';
 import { BsFillDatabaseFill } from 'react-icons/bs';
+import { UserProfileForm, useUserStore } from '@entities/user';
 import { getNavigationTarget } from '@shared/lib/router';
-import type { ListItemProps } from '@shared/ui';
+import { useDialogStore, type ListItemProps } from '@shared/ui';
 
 function useListItems() {
 	const { t } = useTranslation();
+	const openDialog = useDialogStore((s) => s.open);
+	const user = useUserStore((s) => s.user);
+
+	const profileItems: ListItemProps[] = [
+		{
+			icon: user.avatarUrl ?? <FaUser />,
+			iconProps: { style: { borderRadius: '50%' } },
+			title: user.username ?? t('common.anonymous'),
+			style: { fontSize: '2rem' },
+			onClick: () => openDialog({
+				title: t('user.editProfile'),
+				subTitle: `Client ID: ${user.clientId}`,
+				children: <UserProfileForm />
+			})
+		}
+	];
 
 	const habitItems: ListItemProps[] = [
 		{
@@ -84,6 +101,7 @@ function useListItems() {
 	];
 
 	return {
+		profileItems,
 		habitItems,
 		settingsItems,
 		supportItems

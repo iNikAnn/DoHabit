@@ -108,4 +108,4 @@ function UserProfileForm() {
 	);
 }
 
-export default UserProfileForm;
+export { UserProfileForm };

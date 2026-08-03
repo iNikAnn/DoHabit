@@ -112,8 +112,10 @@
 	},
 	"common": {
 		"all": "All",
+		"anonymous": "Anonym",
 		"app": "App",
 		"cancel": "Cancel",
+		"clear": "Clear",
 		"close": "Close",
 		"continue": "Continue",
 		"day": "Day",
@@ -123,6 +125,7 @@
 		"info": "Information",
 		"loading": "Loading...",
 		"logo": "logo",
+		"ok": "OK",
 		"password": "Password",
 		"reload": "Reload",
 		"screenshot": "screenshot",
@@ -379,6 +382,14 @@
 		"recentTab": "Recent",
 		"recentTitle": "Recent donations",
 		"topTab": "Top"
+	},
+	"user": {
+		"avatarUrl": "Avatar URL",
+		"avatarUrlPlaceholder": "https://example.com/avatar.png",
+		"editProfile": "Edit profile",
+		"username": "Username",
+		"usernameHint": "Letters A-Z, numbers, - and _ (2-20 chars)",
+		"usernamePlaceholder": "Enter username"
 	},
 	"welcome": {
 		"actions": {

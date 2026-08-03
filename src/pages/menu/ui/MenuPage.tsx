@@ -13,11 +13,15 @@ const TEST_BUILD = import.meta.env.VITE_TEST_BUILD;
  */
 function MenuPage() {
 	const { t } = useTranslation();
-	const { habitItems, settingsItems, supportItems } = useListItems();
+	const { profileItems, habitItems, settingsItems, supportItems } = useListItems();
 	const { status, handleInstall } = usePwaInstall();
 
 	return (
 		<section className={styles.page}>
+			<List
+				items={profileItems}
+			/>
+
 			<List
 				title={t('common.habits')}
 				items={habitItems}
