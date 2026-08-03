@@ -1,9 +1,10 @@
 import styles from './SupportPage.module.css';
 import { useState } from 'react';
+import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { DonationListTop } from '@widgets/donation-list-top';
 import { DonationListRecent } from '@widgets/donation-list-recent';
-import { SegmentedControl } from '@shared/ui';
+import { Button, SegmentedControl } from '@shared/ui';
 
 /**
  * Support page with toggleable donation lists.
@@ -27,6 +28,12 @@ function SupportPage() {
 
 			{type === 'top' && <DonationListTop />}
 			{type === 'recent' && <DonationListRecent />}
+
+			<div className={clsx('stuck-to-the-bottom', styles.actions)}>
+				<Button>
+					Donate
+				</Button>
+			</div>
 		</div>
 	);
 }
