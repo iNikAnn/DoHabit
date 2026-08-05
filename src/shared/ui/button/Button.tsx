@@ -34,6 +34,7 @@ function Button(props: ButtonProps) {
 	const {
 		type = 'button',
 		to,
+		target,
 		state,
 		variant,
 		icon,
@@ -69,6 +70,7 @@ function Button(props: ButtonProps) {
 		return (
 			<MotionLink
 				to={to}
+				target={target}
 				state={state}
 				style={style}
 				className={classes}
