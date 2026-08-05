@@ -74,7 +74,9 @@ export default defineConfig([
 						'iconSize',
 						'role',
 						'layoutId',
-						'position'
+						'position',
+						'to',
+						'target'
 					]
 				},
 				'object-properties': {
