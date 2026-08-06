@@ -26,7 +26,12 @@ const NOWPAYMENTS_API_URL = 'https://api.nowpayments.io/v1';
 export const onRequestPost: PagesFunction<Env> = async (context) => {
 	const { request, env } = context;
 
+	const controller = new AbortController();
+	const timeoutId = setTimeout(() => controller.abort(), 10_000);
+
 	try {
+		console.log('Calling NOWPayments', `${NOWPAYMENTS_API_URL}/payment`);
+
 		const body: CreateDonationBody = await request.json();
 		const { clientId, username, amount, message, isAnonymous } = body;
 
@@ -42,6 +47,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 		// Create payment in NOWPayments
 		const npRes = await fetch(`${NOWPAYMENTS_API_URL}/payment`, {
 			method: 'POST',
+			signal: controller.signal,
 			headers: {
 				'x-api-key': env.NOWPAYMENTS_API_KEY,
 				'Content-Type': 'application/json'
@@ -56,7 +62,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 			})
 		});
 
+		console.log('NOWPayments status:', npRes.status);
+
 		if (!npRes.ok) {
+			const text = await npRes.text();
+			console.error('NOWPayments error body:', text);
 			return new Response(JSON.stringify({ error: 'NOWPayments error' }), { status: 502 });
 		}
 
@@ -86,10 +96,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 			}),
 			{
 				status: 200,
-				headers: { 'Content-Type': 'application/json' },
+				headers: { 'Content-Type': 'application/json' }
 			}
 		);
-	} catch {
+	} catch (error) {
+		console.error(error);
 		return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
+	} finally {
+		clearTimeout(timeoutId);
 	}
 }
