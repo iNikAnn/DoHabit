@@ -1,0 +1,46 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.amountBlock {
+	text-align: center;
+}
+
+.amount {
+	font-size: 2.4rem;
+	font-weight: bold;
+}
+
+.amountDescription {
+	color: var(--color-secondary);
+}
+
+.qrWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 75%;
+	padding: 8px;
+	margin: 0 auto;
+	background-color: #fff;
+	border-radius: var(--border-radius-tertiary);
+}
+
+.addressBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	justify-content: center;
+}
+
+.address {
+	padding: 16px 4px;
+	font-family: monospace;
+	font-size: 0.9rem;
+	text-align: center;
+	background-color: var(--bg-color-secondary);
+	border: 1px solid var(--bg-color-tertiary);
+	border-radius: var(--border-radius-tertiary);
+}
