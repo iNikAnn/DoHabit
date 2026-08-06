@@ -1,0 +1,74 @@
+.form,
+.fieldset,
+.section {
+	display: flex;
+	flex-direction: column;
+}
+
+.form,
+.fieldset {
+	gap: 24px;
+}
+
+.section {
+	gap: 16px;
+}
+
+.sectionHeader {
+	margin: 0;
+}
+
+.amountRadioGroup {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 8px;
+}
+
+.amountLabel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 48px;
+	background-color: var(--bg-color-secondary);
+	border-radius: var(--border-radius-tertiary);
+}
+
+.amountLabel:has(input:checked) {
+	font-weight: bold;
+	color: var(--accent-color);
+	background-color: var(--bg-color-tertiary);
+}
+
+.input {
+	width: 100%;
+	height: var(--input-height-primary);
+	padding-inline: 16px;
+	background-color: var(--bg);
+	border: 1px solid var(--bg-color-secondary);
+}
+
+.input:focus {
+	outline: none;
+}
+
+.input:disabled,
+label:has(input:disabled) {
+	opacity: 0.5;
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
+}
+
+.actions button {
+	height: 48px;
+}
+
+.closeButton {
+	flex:1;
+}
+
+.submitButton {
+	flex: 2;
+}
