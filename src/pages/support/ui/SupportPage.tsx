@@ -4,14 +4,23 @@ import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { DonationListTop } from '@widgets/donation-list-top';
 import { DonationListRecent } from '@widgets/donation-list-recent';
-import { Button, SegmentedControl } from '@shared/ui';
+import { DonationForm } from '@features/donate';
+import { Button, SegmentedControl, useDialogStore } from '@shared/ui';
 
 /**
  * Support page with toggleable donation lists.
  */
 function SupportPage() {
 	const { t } = useTranslation();
-	const [type, setType] = useState<'top' | 'recent'>('top');
+	const openDialog = useDialogStore((s) => s.open);
+	const [activeTab, setActiveTab] = useState<'top' | 'recent'>('top');
+
+	const handleOpenDonateModal = () => {
+		openDialog({
+			title: t('support.form.title'),
+			children: <DonationForm />
+		});
+	};
 
 	return (
 		<div className={styles.pages}>
@@ -21,17 +30,17 @@ function SupportPage() {
 						{ value: 'top', label: t('support.topTab') },
 						{ value: 'recent', label: t('support.recentTab') }]
 					}
-					value={type}
-					onChange={setType}
+					value={activeTab}
+					onChange={setActiveTab}
 				/>
 			</div>
 
-			{type === 'top' && <DonationListTop />}
-			{type === 'recent' && <DonationListRecent />}
+			{activeTab === 'top' && <DonationListTop />}
+			{activeTab === 'recent' && <DonationListRecent />}
 
 			<div className={clsx('stuck-to-the-bottom', styles.actions)}>
-				<Button>
-					Donate
+				<Button onClick={handleOpenDonateModal}>
+					{t('support.actions.donate')}
 				</Button>
 			</div>
 		</div>

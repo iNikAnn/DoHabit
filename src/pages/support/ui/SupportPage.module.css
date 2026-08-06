@@ -15,6 +15,7 @@
 .actions {
 	right: 0;
 	left: 0;
+	max-width: var(--app-width);
 	padding-inline: var(--app-inline-padding);
 	margin: 0 auto;
 }
