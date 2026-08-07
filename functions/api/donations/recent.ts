@@ -20,6 +20,6 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 		return Response.json(results);
 	} catch (error) {
 		console.error(error);
-		return new Response('Failed to fetch donations', { status: 500 }); // eslint-disable-line
+		return Response.json({ error: 'Failed to fetch donations' }, { status: 500 });
 	}
-}
+};

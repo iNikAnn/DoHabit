@@ -78,13 +78,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 		);
 
 		if (!isValid) {
-			return new Response('Invalid signature', { status: 400 });
+			return Response.json({ error: 'Invalid signature' }, { status: 400 });
 		}
 
 		const { order_id, payment_status } = payload;
 
 		if (!order_id || !payment_status) {
-			return new Response('Missing required fields', { status: 400 });
+			return Response.json({ error: 'Missing required fields' }, { status: 400 });
 		}
 
 		// Update donation status and payment_id in D1
@@ -97,17 +97,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 			.run();
 
 		if (!result.success) {
-			return new Response('Database update failed', { status: 500 });
+			return Response.json({ error: 'Database update failed' }, { status: 500 });
 		}
 
 		if (result.meta.changes === 0) {
 			console.error(`IPN for unknown order_id: ${order_id}`);
-			return new Response('Order not found', { status: 404 });
+			return Response.json({ error: 'Order not found' }, { status: 404 });
 		}
 
-		return new Response('OK', { status: 200 });
+		return Response.json('OK', { status: 200 });
 	} catch (error) {
 		console.error(error);
-		return new Response('Webhook processing error', { status: 500 });
+		return Response.json({ error: 'Webhook processing error' }, { status: 500 });
 	}
-}
+};

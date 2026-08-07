@@ -1,3 +1,5 @@
+/* eslint-disable i18next/no-literal-string */
+
 interface Env {
 	DB: D1Database;
 	NOWPAYMENTS_API_KEY: string;
@@ -37,7 +39,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
 		// Validate payload
 		if (!clientId || !amount || amount <= 0) {
-			return new Response(JSON.stringify({ error: 'Invalid payload' }), { status: 400 });
+			return Response.json({ error: 'Invalid payload' }, { status: 400 });
 		}
 
 		// Payment metadata
@@ -67,7 +69,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 		if (!npRes.ok) {
 			const text = await npRes.text();
 			console.error('NOWPayments error body:', text);
-			return new Response(JSON.stringify({ error: 'NOWPayments error' }), { status: 502 });
+			return Response.json({ error: 'NOWPayments error' }, { status: 502 });
 		}
 
 		const npData: NpRes = await npRes.json();
@@ -87,13 +89,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 			.run();
 
 		// Return payment details to client
-		return new Response(
-			JSON.stringify({
+		return Response.json(
+			{
 				orderId,
 				payAddress: npData.pay_address,
 				payAmount: npData.pay_amount,
 				payCurrency: npData.pay_currency,
-			}),
+			},
 			{
 				status: 200,
 				headers: { 'Content-Type': 'application/json' }
@@ -101,8 +103,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 		);
 	} catch (error) {
 		console.error(error);
-		return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
+		return Response.json({ error: 'Internal Server Error' }, { status: 500 });
 	} finally {
 		clearTimeout(timeoutId);
 	}
-}
+};
