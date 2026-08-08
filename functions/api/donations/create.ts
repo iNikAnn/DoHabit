@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 interface Env {
 	DB: D1Database;
 	NOWPAYMENTS_API_KEY: string;
