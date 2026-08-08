@@ -13,6 +13,7 @@ interface CreateDonationBody {
 }
 
 interface NpRes {
+	payment_id: string;
 	pay_address: string;
 	pay_amount: number;
 	pay_currency: string;
@@ -74,12 +75,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
 		// Insert pending record into D1
 		await env.DB.prepare(`--sql
-			INSERT INTO donations (client_id, order_id, username, amount, message, status)
-			VALUES (?, ?, ?, ?, ?, 'pending')
+			INSERT INTO donations (client_id, order_id, payment_id, username, amount, message, status)
+			VALUES (?, ?, ?, ?, ?, ?, 'pending')
 		`)
 			.bind(
 				clientId,
 				orderId,
+				npData.payment_id,
 				donorName,
 				amount,
 				message || null
