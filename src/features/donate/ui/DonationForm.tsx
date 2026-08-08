@@ -2,12 +2,14 @@ import styles from './DonationForm.module.css';
 import { useState, type SubmitEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-import { createDonation } from '../api/createDonation';
 import DonationPaymentDetails from './donation-payment-details/DonationPaymentDetails';
+import DonationSuccess from './donation-success/DonationSuccess';
+import { createDonation } from '../api/createDonation';
 import { useUserStore } from '@entities/user';
 import { Button, SectionHeader, useDialogStore } from '@shared/ui';
 
 interface PaymentData {
+	orderId: string;
 	address: string;
 	amount: number;
 	currency: string;
@@ -30,6 +32,8 @@ function DonationForm() {
 	// Form state
 	const [isLoading, setIsLoading] = useState(false);
 	const [paymentData, setPaymentData] = useState<PaymentData | null>(null);
+	const [paymentStatus, setPaymentStatus] = useState('pending');
+
 	const [selectedPreset, setSelectedPreset] = useState<number>(PRESET_AMOUNTS[0]);
 	const [customAmount, setCustomAmount] = useState<number>(0);
 	const [message, setMessage] = useState<string>('');
@@ -65,6 +69,7 @@ function DonationForm() {
 			});
 
 			setPaymentData({
+				orderId: data.orderId,
 				address: data.payAddress,
 				amount: data.payAmount,
 				currency: data.payCurrency
@@ -77,10 +82,17 @@ function DonationForm() {
 		}
 	};
 
+	if (paymentStatus === 'finished') {
+		return <DonationSuccess onClose={closeDialog} />;
+	}
+
 	if (paymentData) {
 		return (
 			<DonationPaymentDetails
 				data={paymentData}
+				status={paymentStatus}
+				onStatusChange={setPaymentStatus}
+				onClose={closeDialog}
 			/>
 		);
 	}
