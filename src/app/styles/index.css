@@ -112,3 +112,10 @@ select {
     font-family: inherit;
     font-size: inherit;
 }
+
+fieldset {
+	min-width: 0;
+	padding: 0;
+	margin: 0;
+	border: none;
+}

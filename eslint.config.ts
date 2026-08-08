@@ -102,7 +102,9 @@ export default defineConfig([
 						'width',
 						'height',
 						'bg',
-						'queryKey'
+						'queryKey',
+						'headers',
+						'error'
 					],
 				},
 				words: {
@@ -112,6 +114,7 @@ export default defineConfig([
 						/^\p{Emoji}+$/u,
 						/^mailto:.+/,
 						'asc',
+						'Anonymous',
 						'desc',
 						'up',
 						'down',
@@ -164,6 +167,7 @@ export default defineConfig([
 						'querySelector',
 						'getContext',
 						'buildStyles',
+						'useState',
 						/^Intl\..+/,
 						/^localStorage\..+/,
 						/^console\..+/,
