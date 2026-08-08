@@ -1,0 +1,46 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: center;
+}
+
+.iconWrapper {
+	position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+}
+
+.iconWrapper::before {
+	position: absolute;
+	z-index: -1;
+    width: 100%;
+    height: 100%;
+	content: '';
+	background-image: radial-gradient(
+        circle at center,
+        rgb(34 197 94 / 60%) 0%,
+        rgb(34 197 94 / 15%) 50%,
+        rgb(34 197 94 / 0%) 75%
+    );
+	border-radius: 50%;
+	filter: blur(12px);
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+	color: rgb(34 197 94);
+}
+
+.title {
+	font-size: 1.6rem;
+	font-weight: bold;
+}
+
+.closeButton {
+	height: 48px;
+}
