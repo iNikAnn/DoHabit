@@ -1,3 +1,5 @@
+import type { PaymentData } from '../model/types';
+
 export interface CreateDonationPayload {
 	clientId: string;
 	username?: string;
@@ -6,17 +8,10 @@ export interface CreateDonationPayload {
 	isAnonymous: boolean;
 }
 
-export interface CreateDonationResponse {
-	orderId: string;
-	payAddress: string;
-	payAmount: number;
-	payCurrency: string;
-}
-
 /**
  * Send donation creation request to backend API.
  */
-async function createDonation(payload: CreateDonationPayload): Promise<CreateDonationResponse> {
+async function createDonation(payload: CreateDonationPayload): Promise<PaymentData> {
 	const res = await fetch('/api/donations/create', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
@@ -27,7 +22,11 @@ async function createDonation(payload: CreateDonationPayload): Promise<CreateDon
 		throw new Error('Failed to create donation invoice');
 	}
 
-	return res.json();
+	const data: PaymentData = await res.json();
+
+	localStorage.setItem('pendingDonation', JSON.stringify(data));
+
+	return data;
 }
 
 export { createDonation };
