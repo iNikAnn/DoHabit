@@ -1,11 +1,13 @@
 import styles from './DonationForm.module.css';
-import { useState, type SubmitEventHandler } from 'react';
+import { useEffect, useState, type SubmitEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import DonationPaymentDetails from './donation-payment-details/DonationPaymentDetails';
 import DonationSuccess from './donation-success/DonationSuccess';
+import { checkDonationStatus } from '../api/checkDonationStatus';
 import { createDonation } from '../api/createDonation';
-import type { PaymentData } from '../model/types';
+import { getStoredDonation } from '../model/getStoredDonation';
+import type { PaymentData, PaymentStatus } from '../model/types';
 import { useUserStore } from '@entities/user';
 import { Button, SectionHeader, useDialogStore } from '@shared/ui';
 
@@ -24,13 +26,37 @@ function DonationForm() {
 	const { clientId, username } = useUserStore((s) => s.user);
 
 	// Form state
-	const [isLoading, setIsLoading] = useState(false);
-	const [paymentData, setPaymentData] = useState<PaymentData | null>(null);
-	const [paymentStatus, setPaymentStatus] = useState('pending');
+	const [paymentData, setPaymentData] = useState<PaymentData | null>(() => getStoredDonation());
+	const [isLoading, setIsLoading] = useState(!!paymentData);
+	const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('waiting');
 
 	const [selectedPreset, setSelectedPreset] = useState<number>(PRESET_AMOUNTS[0]);
 	const [customAmount, setCustomAmount] = useState<number>(0);
 	const [message, setMessage] = useState<string>('');
+
+	// Check active pending donation on mount
+	useEffect(() => {
+		if (!paymentData) return;
+
+		checkDonationStatus(paymentData.orderId)
+			.then((status) => {
+				if (status === 'confirmed' || status === 'finished') {
+					setPaymentStatus('finished');
+				} else if (['waiting', 'confirming', 'partially_paid'].includes(status)) {
+					setPaymentStatus(status);
+				} else {
+					setPaymentData(null);
+				}
+			})
+			.catch((error) => {
+				console.error('Failed to sync payment status:', error);
+				setPaymentData(null);
+				localStorage.removeItem('pendingDonation');
+			})
+			.finally(() => {
+				setIsLoading(false);
+			});
+	}, [paymentData]);
 
 	// Derived values
 	const finalAmount = selectedPreset || (customAmount ?? 0);
@@ -70,6 +96,10 @@ function DonationForm() {
 			setIsLoading(false);
 		}
 	};
+
+	if (isLoading) {
+		return <div style={{ textAlign: 'center' }}>{t('common.loading')}</div>;
+	}
 
 	if (paymentStatus === 'finished') {
 		return <DonationSuccess onClose={closeDialog} />;

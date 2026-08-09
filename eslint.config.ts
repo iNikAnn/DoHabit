@@ -168,6 +168,7 @@ export default defineConfig([
 						'getContext',
 						'buildStyles',
 						'useState',
+						/^set[A-Z]\w+/,
 						/^Intl\..+/,
 						/^localStorage\..+/,
 						/^console\..+/,
