@@ -3,16 +3,12 @@ import { useTranslation } from 'react-i18next';
 import QRCode from 'react-qr-code';
 import { toast } from 'sonner';
 import CheckStatusButton from '../check-status-button/CheckStatusButton';
+import type { PaymentData } from '../../model/types';
 import { copyToClipboard } from '@shared/lib/dom';
 import { Button } from '@shared/ui';
 
 interface DonationPaymentDetailsProps {
-	data: {
-		orderId: string;
-		address: string;
-		amount: number;
-		currency: string;
-	};
+	data: PaymentData;
 	status: string;
 	onStatusChange: (status: string) => void;
 	onClose: () => void;
@@ -40,9 +36,9 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 	} = props;
 
 	const { t } = useTranslation();
-	const { orderId, address, amount, currency } = data;
+	const { orderId, payAddress, payAmount, payCurrency } = data;
 
-	const currencyKey = currency ? currency.toLowerCase() : '';
+	const currencyKey = payCurrency ? payCurrency.toLowerCase() : '';
 	const currencyInfo = SUPPORTED_CURRENCIES[currencyKey];
 
 	const handleCopy = async (text: string) => {
@@ -61,7 +57,7 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 			<div className={styles.amountBlock}>
 				<div>
 					<h3 className={styles.amount}>
-						{amount}
+						{payAmount}
 					</h3>
 
 					<span className={styles.amountDescription}>
@@ -71,7 +67,7 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 
 				<Button
 					variant='text'
-					onClick={() => handleCopy(String(amount))}
+					onClick={() => handleCopy(String(payAmount))}
 				>
 					{t('support.actions.copyAmount')}
 				</Button>
@@ -88,18 +84,18 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 						size={256}
 						level='M'
 						style={{ height: 'auto', maxWidth: '100%', width: '100%' }}
-						value={address}
+						value={payAddress}
 						viewBox={`0 0 256 256`}
 					/>
 				</div>
 
 				<div className={styles.address}>
-					{address}
+					{payAddress}
 				</div>
 
 				<Button
 					variant='text'
-					onClick={() => handleCopy(address)}
+					onClick={() => handleCopy(payAddress)}
 				>
 					{t('support.actions.copyAddress')}
 				</Button>

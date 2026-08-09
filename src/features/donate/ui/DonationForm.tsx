@@ -5,15 +5,9 @@ import { toast } from 'sonner';
 import DonationPaymentDetails from './donation-payment-details/DonationPaymentDetails';
 import DonationSuccess from './donation-success/DonationSuccess';
 import { createDonation } from '../api/createDonation';
+import type { PaymentData } from '../model/types';
 import { useUserStore } from '@entities/user';
 import { Button, SectionHeader, useDialogStore } from '@shared/ui';
-
-interface PaymentData {
-	orderId: string;
-	address: string;
-	amount: number;
-	currency: string;
-}
 
 const PRESET_AMOUNTS = [10, 15, 25];
 const MIN_DONATION_FOR_MESSAGE = PRESET_AMOUNTS[1];
@@ -68,12 +62,7 @@ function DonationForm() {
 				isAnonymous: false
 			});
 
-			setPaymentData({
-				orderId: data.orderId,
-				address: data.payAddress,
-				amount: data.payAmount,
-				currency: data.payCurrency
-			});
+			setPaymentData(data);
 		} catch (error) {
 			console.error('Donation error:', error);
 			toast.error(t('support.notifications.donationError'));
