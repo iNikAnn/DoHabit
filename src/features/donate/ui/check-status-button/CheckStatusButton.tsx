@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { checkDonationStatus } from '../../api/checkDonationStatus';
+import type { PaymentStatus } from '@features/donate/model/types';
 import { Button } from '@shared/ui';
 
 interface CheckStatusButtonProps {
 	orderId: string;
-	onStatusChange: (status: string) => void;
+	onStatusChange: (status: PaymentStatus) => void;
 }
 
 const COOLDOWN_SECONDS = 10;

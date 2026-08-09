@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next';
 import QRCode from 'react-qr-code';
 import { toast } from 'sonner';
 import CheckStatusButton from '../check-status-button/CheckStatusButton';
-import type { PaymentData } from '../../model/types';
+import type { PaymentData, PaymentStatus } from '../../model/types';
 import { copyToClipboard } from '@shared/lib/dom';
 import { Button } from '@shared/ui';
 
 interface DonationPaymentDetailsProps {
 	data: PaymentData;
 	status: string;
-	onStatusChange: (status: string) => void;
+	onStatusChange: (status: PaymentStatus) => void;
 	onClose: () => void;
 }
 
