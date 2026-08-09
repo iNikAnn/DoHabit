@@ -17,6 +17,7 @@ interface NpRes {
 	pay_address: string;
 	pay_amount: number;
 	pay_currency: string;
+	expiration_estimate_date: string;
 }
 
 const NOWPAYMENTS_API_URL = 'https://api.nowpayments.io/v1';
@@ -95,6 +96,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 				payAddress: npData.pay_address,
 				payAmount: npData.pay_amount,
 				payCurrency: npData.pay_currency,
+				expiresAt: new Date(npData.expiration_estimate_date).getTime()
 			},
 			{
 				status: 200,
