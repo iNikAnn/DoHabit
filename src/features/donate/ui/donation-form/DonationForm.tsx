@@ -1,14 +1,14 @@
 import styles from './DonationForm.module.css';
 import { useEffect, useState, type SubmitEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
+import clsx from 'clsx';
 import { toast } from 'sonner';
-import { FaSpinner } from 'react-icons/fa';
-import DonationPaymentDetails from './donation-payment-details/DonationPaymentDetails';
-import DonationSuccess from './donation-success/DonationSuccess';
-import { checkDonationStatus } from '../api/checkDonationStatus';
-import { createDonation } from '../api/createDonation';
-import { getStoredDonation } from '../model/getStoredDonation';
-import type { PaymentData, PaymentStatus } from '../model/types';
+import { FaCheckDouble, FaSpinner } from 'react-icons/fa';
+import DonationPaymentDetails from '../donation-payment-details/DonationPaymentDetails';
+import { checkDonationStatus } from '../../api/checkDonationStatus';
+import { createDonation } from '../../api/createDonation';
+import { getStoredDonation } from '../../model/getStoredDonation';
+import type { PaymentData, PaymentStatus } from '../../model/types';
 import { useUserStore } from '@entities/user';
 import { Button, Placeholder, SectionHeader, useDialogStore } from '@shared/ui';
 
@@ -102,7 +102,7 @@ function DonationForm() {
 		return (
 			<Placeholder
 				content={{
-					image: <FaSpinner className={styles.spinner} />,
+					image: <FaSpinner className={clsx(styles.placeholderImage, styles.spinner)} />,
 					title: t('common.loading')
 				}}
 				variant='inline'
@@ -111,7 +111,20 @@ function DonationForm() {
 	}
 
 	if (paymentStatus === 'finished') {
-		return <DonationSuccess onClose={closeDialog} />;
+		return (
+			<Placeholder
+				content={{
+					image: <FaCheckDouble className={styles.placeholderImage} color='rgb(34 197 94)' />,
+					title: t('support.success.title')
+				}}
+				action={[{
+					label: t('common.continue'),
+					variant: 'secondary',
+					onClick: closeDialog
+				}]}
+				variant='inline'
+			/>
+		);
 	}
 
 	if (paymentData) {
@@ -203,9 +216,7 @@ function DonationForm() {
 					className={styles.submitButton}
 					disabled={isSubmitDisabled}
 				>
-					{isLoading
-						? t('common.loading')
-						: t('common.ok')}
+					{t('common.continue')}
 				</Button>
 			</div>
 		</form>

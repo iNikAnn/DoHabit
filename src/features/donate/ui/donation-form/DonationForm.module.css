@@ -73,9 +73,12 @@ label:has(input:disabled) {
 	flex: 2;
 }
 
-.spinner {
+.placeholderImage {
 	width: 40px !important;
 	height: 40px !important;
+}
+
+.spinner {
 	animation: spin 1s linear infinite;
 }
 
