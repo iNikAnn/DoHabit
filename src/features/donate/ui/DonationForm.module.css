@@ -72,3 +72,19 @@ label:has(input:disabled) {
 .submitButton {
 	flex: 2;
 }
+
+.spinner {
+	width: 40px !important;
+	height: 40px !important;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

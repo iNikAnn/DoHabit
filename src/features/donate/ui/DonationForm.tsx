@@ -2,6 +2,7 @@ import styles from './DonationForm.module.css';
 import { useEffect, useState, type SubmitEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
+import { FaSpinner } from 'react-icons/fa';
 import DonationPaymentDetails from './donation-payment-details/DonationPaymentDetails';
 import DonationSuccess from './donation-success/DonationSuccess';
 import { checkDonationStatus } from '../api/checkDonationStatus';
@@ -9,7 +10,7 @@ import { createDonation } from '../api/createDonation';
 import { getStoredDonation } from '../model/getStoredDonation';
 import type { PaymentData, PaymentStatus } from '../model/types';
 import { useUserStore } from '@entities/user';
-import { Button, SectionHeader, useDialogStore } from '@shared/ui';
+import { Button, Placeholder, SectionHeader, useDialogStore } from '@shared/ui';
 
 const PRESET_AMOUNTS = [10, 15, 25];
 const MIN_DONATION_FOR_MESSAGE = PRESET_AMOUNTS[1];
@@ -98,7 +99,15 @@ function DonationForm() {
 	};
 
 	if (isLoading) {
-		return <div style={{ textAlign: 'center' }}>{t('common.loading')}</div>;
+		return (
+			<Placeholder
+				content={{
+					image: <FaSpinner className={styles.spinner} />,
+					title: t('common.loading')
+				}}
+				variant='inline'
+			/>
+		);
 	}
 
 	if (paymentStatus === 'finished') {
