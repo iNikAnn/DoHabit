@@ -12,6 +12,7 @@ import { Button, SegmentedControl, useDialogStore } from '@shared/ui';
  */
 function SupportPage() {
 	const { t } = useTranslation();
+	const isDialogOpen = useDialogStore((s) => Boolean(s.content));
 	const openDialog = useDialogStore((s) => s.open);
 	const [activeTab, setActiveTab] = useState<'top' | 'recent'>('top');
 
@@ -38,11 +39,13 @@ function SupportPage() {
 			{activeTab === 'top' && <DonationListTop />}
 			{activeTab === 'recent' && <DonationListRecent />}
 
-			<div className={clsx('stuck-to-the-bottom', styles.actions)}>
-				<Button onClick={handleOpenDonateModal}>
-					{t('support.actions.donate')}
-				</Button>
-			</div>
+			{!isDialogOpen && (
+				<div className={clsx('stuck-to-the-bottom', styles.actions)}>
+					<Button onClick={handleOpenDonateModal}>
+						{t('support.actions.donate')}
+					</Button>
+				</div>
+			)}
 		</div>
 	);
 }
