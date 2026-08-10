@@ -7,15 +7,15 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 	try {
 		const { results } = await env.DB
 			.prepare(`--sql
-				  SELECT user_id,
-					     username,
+				  SELECT username,
 					     SUM(amount) as amount
 				    FROM donations
+				   WHERE status = 'finished'
 				GROUP BY user_id
 				ORDER BY amount DESC
 				   LIMIT 10
 			`)
-			.all();
+			.run();
 
 		return Response.json(results);
 	} catch (error) {

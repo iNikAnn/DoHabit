@@ -7,15 +7,16 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 	try {
 		const { results } = await env.DB
 			.prepare(`--sql
-				  SELECT user_id,
-					     username,
+				  SELECT username,
 						 amount,
-						 message
+						 message,
+						 created_at
 				    FROM donations
+				   WHERE status = 'finished'
 				ORDER BY created_at DESC
 				   LIMIT 10
 			`)
-			.all();
+			.run();
 
 		return Response.json(results);
 	} catch (error) {
