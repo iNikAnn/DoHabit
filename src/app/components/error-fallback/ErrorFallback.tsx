@@ -51,6 +51,7 @@ function ErrorFallback({ error }: ErrorFallbackProps) {
 					style: { width: '100%' }
 				}
 			]}
+			variant='absolute'
 		/>
 	);
 }

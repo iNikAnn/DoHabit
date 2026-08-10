@@ -67,11 +67,9 @@ function Drawer() {
 							)}
 
 							{content.placeholder && (
-								<div className={styles.placeholderWrapper}>
-									<Placeholder
-										content={content.placeholder.content}
-									/>
-								</div>
+								<Placeholder
+									content={content.placeholder.content}
+								/>
 							)}
 						</motion.div>,
 						document.body

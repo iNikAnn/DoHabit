@@ -22,7 +22,7 @@ function DonationStatus(props: DonationStatusProps) {
 	const { t } = useTranslation();
 
 	if (isPending) {
-		return <Placeholder content={{ title: t('common.loading') }} />;
+		return <Placeholder content={{ title: t('common.loading') }} variant='absolute' />;
 	}
 
 	if (isError) {
@@ -32,6 +32,7 @@ function DonationStatus(props: DonationStatusProps) {
 					title: t('support.errorTitle'),
 					description: t('support.errorDescription'),
 				}}
+				variant='absolute'
 			/>
 		);
 	}
@@ -43,6 +44,7 @@ function DonationStatus(props: DonationStatusProps) {
 					title: t('support.emptyTitle'),
 					description: t('support.emptyDescription'),
 				}}
+				variant='absolute'
 			/>
 		);
 	}

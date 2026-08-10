@@ -52,19 +52,6 @@
 	border-radius: 24px;
 }
 
-/* placeholderWrapper */
-.placeholderWrapper {
-	display: flex;
-	justify-content: center;
-}
-
-.placeholderWrapper > div {
-	position: static;
-	top: unset;
-	left: unset;
-	transform: unset;
-}
-
 @media screen and (min-width: 576px) {
 	.drawer {
 		left: calc(50% - 222px);

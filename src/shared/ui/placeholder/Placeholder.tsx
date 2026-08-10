@@ -1,4 +1,5 @@
 import styles from './Placeholder.module.css';
+import clsx from 'clsx';
 import type { PlaceholderProps } from './types';
 import { Button } from '@shared/ui';
 
@@ -13,7 +14,9 @@ function Placeholder(props: PlaceholderProps) {
 			title,
 			description
 		},
-		action
+		action,
+		variant = 'inline',
+		className
 	} = props;
 
 	const actions = action
@@ -21,7 +24,14 @@ function Placeholder(props: PlaceholderProps) {
 		: null;
 
 	return (
-		<div className={styles.placeholder}>
+		// <div className={styles.placeholder}>
+		<div
+			className={clsx(
+				styles.placeholder,
+				styles[variant],
+				className
+			)}
+		>
 			{image}
 
 			<div className={styles.textWrapper}>

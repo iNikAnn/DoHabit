@@ -15,4 +15,6 @@ export interface PlaceholderAction extends ButtonProps {
 export interface PlaceholderProps {
 	content: PlaceholderContent;
 	action?: PlaceholderAction | PlaceholderAction[];
+	variant?: 'inline' | 'absolute';
+	className?: string;
 }

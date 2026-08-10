@@ -143,6 +143,7 @@ function NoteList(props: NoteListProps) {
 					title: t('notes.list.emptyTitle'),
 					description: t('notes.list.emptyDesc')
 				}}
+				variant='absolute'
 			/>
 		);
 	}

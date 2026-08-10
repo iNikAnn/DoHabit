@@ -19,6 +19,7 @@ function HabitListEmpty({ isArchive }: Props) {
 				title: t('habits.list.emptyArchivedTitle'),
 				description: t('habits.list.emptyArchivedDesc')
 			}}
+			variant='absolute'
 		/>
 	) : (
 		<Placeholder
@@ -34,6 +35,7 @@ function HabitListEmpty({ isArchive }: Props) {
 					modalTitle: t('habits.list.createFirst')
 				})
 			}}
+			variant='absolute'
 		/>
 	);
 }
