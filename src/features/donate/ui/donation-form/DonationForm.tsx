@@ -7,13 +7,11 @@ import { FaCheckDouble, FaSpinner } from 'react-icons/fa';
 import DonationPaymentDetails from '../donation-payment-details/DonationPaymentDetails';
 import { checkDonationStatus } from '../../api/checkDonationStatus';
 import { createDonation } from '../../api/createDonation';
+import { DEFAULT_CURRENCY_ID, MIN_DONATION_FOR_MESSAGE, PRESET_AMOUNTS, SUPPORTED_CURRENCIES } from '../../model/constants';
 import { getStoredDonation } from '../../model/getStoredDonation';
-import type { PaymentData, PaymentStatus } from '../../model/types';
+import type { CryptoId, PaymentData, PaymentStatus } from '../../model/types';
 import { useUserStore } from '@entities/user';
 import { Button, Placeholder, SectionHeader, useDialogStore } from '@shared/ui';
-
-const PRESET_AMOUNTS = [10, 15, 25];
-const MIN_DONATION_FOR_MESSAGE = PRESET_AMOUNTS[1];
 
 /**
  * Donation form component with preset/custom amounts and dynamic message input.
@@ -31,6 +29,7 @@ function DonationForm() {
 	const [isLoading, setIsLoading] = useState(!!paymentData);
 	const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('waiting');
 
+	const [selectedCrypto, setSelectedCrypto] = useState<CryptoId>(DEFAULT_CURRENCY_ID);
 	const [selectedPreset, setSelectedPreset] = useState<number>(PRESET_AMOUNTS[0]);
 	const [customAmount, setCustomAmount] = useState<number>(0);
 	const [message, setMessage] = useState<string>('');
@@ -84,6 +83,7 @@ function DonationForm() {
 			const data = await createDonation({
 				clientId,
 				username,
+				currency: selectedCrypto,
 				amount: finalAmount,
 				message: finalMessage,
 				isAnonymous: false
@@ -141,6 +141,36 @@ function DonationForm() {
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<fieldset className={styles.fieldset} disabled={isLoading}>
+				{/* Crypto Section */}
+				<section className={styles.section}>
+					<SectionHeader
+						title={t('support.form.crypto.title')}
+						description={t('support.form.crypto.description')}
+						className={styles.sectionHeader}
+					/>
+
+					<div className={styles.cryptoRadioGroup}>
+						{Object.values(SUPPORTED_CURRENCIES).map((c) => (
+							<label key={c.id} className={styles.radioLabel}>
+								<input
+									type='radio'
+									name='crypto'
+									id={`crypto-${c.id}`}
+									value={c.id}
+									checked={c.id === selectedCrypto}
+									onChange={() => setSelectedCrypto(c.id)}
+									hidden
+								/>
+
+								<div>
+									<span>{c.label}</span>
+									<span style={{ color: 'var(--color-secondary)' }}>{` (${c.network})`}</span>
+								</div>
+							</label>
+						))}
+					</div>
+				</section>
+
 				{/* Amount Section */}
 				<section className={styles.section}>
 					<SectionHeader
@@ -151,7 +181,7 @@ function DonationForm() {
 
 					<div className={styles.amountRadioGroup}>
 						{PRESET_AMOUNTS.map((a) => (
-							<label key={`amount-${a}`} className={styles.amountLabel}>
+							<label key={`amount-${a}`} className={styles.radioLabel}>
 								<input
 									type='radio'
 									name='amount'

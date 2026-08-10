@@ -8,6 +8,7 @@ interface Env {
 interface CreateDonationBody {
 	clientId: string;
 	username?: string;
+	currency: string;
 	amount: number;
 	message?: string;
 	isAnonymous: boolean;
@@ -34,7 +35,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 		console.log('Calling NOWPayments', `${env.NOWPAYMENTS_API_URL}/payment`);
 
 		const body: CreateDonationBody = await request.json();
-		const { clientId, username, amount, message, isAnonymous } = body;
+		const { clientId, username, currency, amount, message, isAnonymous } = body;
 
 		// Validate payload
 		if (!clientId || !amount || amount <= 0) {
@@ -56,7 +57,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 			body: JSON.stringify({
 				price_amount: amount,
 				price_currency: 'usd',
-				pay_currency: 'usdttrc20',
+				pay_currency: currency,
 				order_id: orderId,
 				order_description: `Donation: ${donorName}`,
 				ipn_callback_url: env.NOWPAYMENTS_IPN_URL

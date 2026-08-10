@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import QRCode from 'react-qr-code';
 import { toast } from 'sonner';
 import CheckStatusButton from '../check-status-button/CheckStatusButton';
+import { SUPPORTED_CURRENCIES } from '../../model/constants';
 import type { PaymentData, PaymentStatus } from '../../model/types';
 import { copyToClipboard } from '@shared/lib/dom';
 import { Button } from '@shared/ui';
@@ -13,16 +14,6 @@ interface DonationPaymentDetailsProps {
 	onStatusChange: (status: PaymentStatus) => void;
 	onClose: () => void;
 }
-
-interface CryptoOption {
-	id: string;      // usdttrc20
-	label: string;   // USDT
-	network: string; // TRC-20
-}
-
-const SUPPORTED_CURRENCIES: Record<string, CryptoOption> = {
-	usdttrc20: { id: 'usdttrc20', label: 'USDT', network: 'TRC-20' }
-};
 
 /**
  * Display payment details.
@@ -38,8 +29,7 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 	const { t } = useTranslation();
 	const { orderId, payAddress, payAmount, payCurrency } = data;
 
-	const currencyKey = payCurrency ? payCurrency.toLowerCase() : '';
-	const currencyInfo = SUPPORTED_CURRENCIES[currencyKey];
+	const currencyInfo = SUPPORTED_CURRENCIES[payCurrency];
 
 	const handleCopy = async (text: string) => {
 		const success = await copyToClipboard({ text });

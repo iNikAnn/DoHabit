@@ -18,13 +18,7 @@
 	margin: 0;
 }
 
-.amountRadioGroup {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 8px;
-}
-
-.amountLabel {
+.radioLabel {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -33,10 +27,22 @@
 	border-radius: var(--border-radius-tertiary);
 }
 
-.amountLabel:has(input:checked) {
+.radioLabel:has(input:checked) {
 	font-weight: bold;
 	color: var(--accent-color);
 	background-color: var(--bg-color-tertiary);
+}
+
+.cryptoRadioGroup {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 8px;
+}
+
+.amountRadioGroup {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 8px;
 }
 
 .input {

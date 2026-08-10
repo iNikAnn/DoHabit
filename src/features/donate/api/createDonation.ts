@@ -1,8 +1,9 @@
-import type { PaymentData } from '../model/types';
+import type { CryptoId, PaymentData } from '../model/types';
 
 export interface CreateDonationPayload {
 	clientId: string;
 	username?: string;
+	currency: CryptoId;
 	amount: number;
 	message?: string;
 	isAnonymous: boolean;
