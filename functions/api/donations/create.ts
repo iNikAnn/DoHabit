@@ -1,5 +1,6 @@
 interface Env {
 	DB: D1Database;
+	NOWPAYMENTS_API_URL: string;
 	NOWPAYMENTS_API_KEY: string;
 	NOWPAYMENTS_IPN_URL: string;
 }
@@ -20,8 +21,6 @@ interface NpRes {
 	expiration_estimate_date: string;
 }
 
-const NOWPAYMENTS_API_URL = 'https://api.nowpayments.io/v1';
-
 /**
  * Handle donation creation.
  */
@@ -32,7 +31,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 	const timeoutId = setTimeout(() => controller.abort(), 10_000);
 
 	try {
-		console.log('Calling NOWPayments', `${NOWPAYMENTS_API_URL}/payment`);
+		console.log('Calling NOWPayments', `${env.NOWPAYMENTS_API_URL}/payment`);
 
 		const body: CreateDonationBody = await request.json();
 		const { clientId, username, amount, message, isAnonymous } = body;
@@ -47,7 +46,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 		const donorName = isAnonymous ? 'Anonymous' : (username || 'Anonymous');
 
 		// Create payment in NOWPayments
-		const npRes = await fetch(`${NOWPAYMENTS_API_URL}/payment`, {
+		const npRes = await fetch(`${env.NOWPAYMENTS_API_URL}/payment`, {
 			method: 'POST',
 			signal: controller.signal,
 			headers: {
