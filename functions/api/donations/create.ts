@@ -77,7 +77,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 		// Insert pending record into D1
 		await env.DB.prepare(`--sql
 			INSERT INTO donations (client_id, order_id, payment_id, username, amount, message, status)
-			VALUES (?, ?, ?, ?, ?, ?, 'pending')
+			VALUES (?, ?, ?, ?, ?, ?, 'waiting')
 		`)
 			.bind(
 				clientId,

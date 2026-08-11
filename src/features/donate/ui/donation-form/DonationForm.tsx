@@ -221,7 +221,7 @@ function DonationForm() {
 						type='text'
 						name='message'
 						id='message'
-						max={140}
+						maxLength={140}
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						placeholder={t('support.form.message.placeholder')}

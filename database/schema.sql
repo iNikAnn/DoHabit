@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS donations (
     username TEXT NOT NULL,
     amount REAL NOT NULL,
     message TEXT,
-	status TEXT NOT NULL DEFAULT 'pending',
+	status TEXT NOT NULL DEFAULT 'waiting',
     created_at INTEGER NOT NULL DEFAULT (unixepoch()) -- Unix timestamp in seconds
 );
