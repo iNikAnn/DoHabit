@@ -133,6 +133,7 @@
 		"showLess": "Show less",
 		"showMore": "Show more",
 		"start": "Start",
+		"status": "Status",
 		"support": "Support",
 		"theme": {
 			"auto": "Auto",
@@ -374,13 +375,48 @@
 		"warning": "If you use it through a regular browser, clearing history or cache will erase your habits."
 	},
 	"support": {
+		"actions": {
+			"checkingStatus": "Checking...",
+			"checkStatus": "Check Status",
+			"cooldownStatus": "Wait {{seconds}}s",
+			"copyAddress": "Copy address",
+			"copyAmount": "Copy amount",
+			"donate": "Make a Donation"
+		},
 		"allTimeTopTitle": "Top supporters",
 		"emptyDescription": "Be the first to support this project!",
 		"emptyTitle": "No donations yet",
 		"errorDescription": "Something went wrong. Please try again later.",
 		"errorTitle": "Failed to load data",
+		"form": {
+			"amount": {
+				"description": "Select amount or enter custom value",
+				"placeholder": "Enter custom amount",
+				"title": "Amount"
+			},
+			"crypto": {
+				"description": "Select cryptocurrency and network",
+				"title": "Payment Method"
+			},
+			"message": {
+				"description": "Available for donations of {{min}}$ or more",
+				"placeholder": "Enter message",
+				"title": "Message"
+			},
+			"title": "Support the Project"
+		},
+		"notifications": {
+			"copyError": "Failed to copy",
+			"copySuccess": "Copied to clipboard",
+			"donationError": "Failed to process donation. Please try again.",
+			"statusChecked": "Status: {{status}}",
+			"statusCheckError": "Failed to check status. Please try again."
+		},
 		"recentTab": "Recent",
 		"recentTitle": "Recent donations",
+		"success": {
+			"title": "Donation received!"
+		},
 		"topTab": "Top"
 	},
 	"user": {
