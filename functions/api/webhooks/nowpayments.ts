@@ -71,6 +71,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 		const signature = request.headers.get('x-nowpayments-sig');
 		const payload: WebhookPayload = await request.json();
 
+		// Log incoming event
+		console.log('[IPN Received]', {
+			order_id: payload?.order_id,
+			status: payload?.payment_status
+		});
+
 		const isValid = await verifySignature(
 			payload,
 			signature,
@@ -78,12 +84,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 		);
 
 		if (!isValid) {
+			console.error('[IPN Error] Invalid signature:', { order_id: payload?.order_id });
 			return Response.json({ error: 'Invalid signature' }, { status: 400 });
 		}
 
 		const { order_id, payment_status } = payload;
 
 		if (!order_id || !payment_status) {
+			console.error('[IPN Error] Missing fields:', { order_id, payment_status });
 			return Response.json({ error: 'Missing required fields' }, { status: 400 });
 		}
 
@@ -97,17 +105,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 			.run();
 
 		if (!result.success) {
+			console.error('[IPN Error] DB update failed:', { order_id, error: result.error });
 			return Response.json({ error: 'Database update failed' }, { status: 500 });
 		}
 
 		if (result.meta.changes === 0) {
-			console.error(`IPN for unknown order_id: ${order_id}`);
+			console.error('[IPN Error] Order not found in DB:', { order_id });
 			return Response.json({ error: 'Order not found' }, { status: 404 });
 		}
 
+		console.log('[IPN Success] Updated:', { order_id, status: payment_status });
+
 		return Response.json('OK', { status: 200 });
 	} catch (error) {
-		console.error(error);
+		console.error('[IPN Fatal Error]', error);
 		return Response.json({ error: 'Webhook processing error' }, { status: 500 });
 	}
 };
