@@ -11,7 +11,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 					     SUM(amount) as amount
 				    FROM donations
 				   WHERE status = 'finished'
-				GROUP BY user_id
+				GROUP BY client_id
 				ORDER BY amount DESC
 				   LIMIT 10
 			`)
