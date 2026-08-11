@@ -188,7 +188,7 @@ function DonationForm() {
 									id={`amount-${a}`}
 									value={a}
 									checked={a === selectedPreset}
-									onChange={(e) => handlePresetSelect(Number(e.target.value))}
+									onChange={() => handlePresetSelect(a)}
 									hidden
 								/>
 

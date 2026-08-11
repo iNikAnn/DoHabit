@@ -10,7 +10,7 @@ import { Button } from '@shared/ui';
 
 interface DonationPaymentDetailsProps {
 	data: PaymentData;
-	status: string;
+	status: PaymentStatus;
 	onStatusChange: (status: PaymentStatus) => void;
 	onClose: () => void;
 }
