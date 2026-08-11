@@ -16,7 +16,7 @@ function DonationListRecent() {
 		? data.map((donation) => ({
 			title: donation.username ?? 'username',
 			description: donation.message ?? undefined,
-			extra: donation.amount
+			extra: `${Math.round(donation.amount ?? 0)} $`
 		}))
 		: [];
 

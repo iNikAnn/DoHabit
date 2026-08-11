@@ -202,6 +202,7 @@ function DonationForm() {
 						name='custom-amount'
 						id='custom-amount'
 						min={PRESET_AMOUNTS[0]}
+						pattern='[0-9]*'
 						value={customAmount || ''}
 						onChange={(e) => handleCustomAmountChange(Number(e.target.value))}
 						placeholder={t('support.form.amount.placeholder')}

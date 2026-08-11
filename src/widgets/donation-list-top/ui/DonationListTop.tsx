@@ -40,7 +40,7 @@ function DonationListTop() {
 				),
 			title: donation.username ?? 'username',
 			description: donation.message ?? undefined,
-			extra: donation.amount
+			extra: `${Math.round(donation.amount ?? 0)} $`
 		}))
 		: [];
 
