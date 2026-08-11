@@ -175,7 +175,7 @@ function DonationForm() {
 				<section className={styles.section}>
 					<SectionHeader
 						title={t('support.form.amount.title')}
-						description={t('support.form.amount.description')}
+						description={t('support.form.amount.description', { min: PRESET_AMOUNTS[0] })}
 						className={styles.sectionHeader}
 					/>
 
