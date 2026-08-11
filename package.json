@@ -81,7 +81,7 @@
 		"vitest": "^4.1.9",
 		"workbox-core": "^7.4.1",
 		"workbox-window": "^7.4.1",
-		"wrangler": "^4.105.0"
+		"wrangler": "^4.120.1"
 	},
 	"overrides": {
 		"sharp": "^0.33.5",
