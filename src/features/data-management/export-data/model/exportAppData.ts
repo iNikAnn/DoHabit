@@ -9,13 +9,15 @@ import { formatDate } from '@shared/lib/date-time';
  */
 async function exportAppData(password?: string) {
 	// Collect data from all storage keys
-	const [habits, notes, achievements] = await Promise.all([
+	const [user, habits, notes, achievements] = await Promise.all([
+		get(STORAGE_KEYS.USER),
 		get(STORAGE_KEYS.HABITS),
 		get(STORAGE_KEYS.NOTES),
 		get(STORAGE_KEYS.ACHIEVEMENTS)
 	]);
 
 	const dataToExport = {
+		[STORAGE_KEYS.USER]: user,
 		[STORAGE_KEYS.HABITS]: habits,
 		[STORAGE_KEYS.NOTES]: notes,
 		[STORAGE_KEYS.ACHIEVEMENTS]: achievements
