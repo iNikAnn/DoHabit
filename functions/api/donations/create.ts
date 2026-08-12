@@ -56,7 +56,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 			},
 			body: JSON.stringify({
 				price_amount: amount,
-				price_currency: 'usd',
+				price_currency: currency,
 				pay_currency: currency,
 				order_id: orderId,
 				order_description: `Donation: ${donorName}`,
