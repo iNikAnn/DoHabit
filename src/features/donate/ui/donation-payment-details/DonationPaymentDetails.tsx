@@ -1,4 +1,5 @@
 import styles from './DonationPaymentDetails.module.css';
+import clsx from 'clsx';
 import type { CSSProperties } from 'react';
 import { FaCopy } from 'react-icons/fa6';
 import { useTranslation } from 'react-i18next';
@@ -56,7 +57,7 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 					<Button
 						variant='secondary'
 						icon={<FaCopy />}
-						className={styles.copyAmountButton}
+						className={clsx(styles.copyButton, styles.copyAmountButton)}
 						onClick={() => handleCopy(String(payAmount))}
 					>
 						{t('support.actions.copyAmount')}
@@ -106,12 +107,13 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 					/>
 				</div>
 
-				<div className={styles.address}>
+				<code className={styles.address}>
 					{payAddress}
-				</div>
+				</code>
 
 				<Button
-					variant='text'
+					icon={<FaCopy />}
+					className={clsx(styles.copyButton, styles.copyAddressButton)}
 					onClick={() => handleCopy(payAddress)}
 				>
 					{t('support.actions.copyAddress')}
