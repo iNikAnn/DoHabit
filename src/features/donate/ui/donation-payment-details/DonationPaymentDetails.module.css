@@ -6,6 +6,13 @@
 
 .amountBlock {
 	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.amountRow {
+	display: flex;
+	gap: 16px;
 	justify-content: space-between;
 }
 
@@ -14,7 +21,12 @@
 	font-weight: bold;
 }
 
-.amountDescription {
+.copyAmountButton {
+	height: auto;
+	border-radius: var(--border-radius-tertiary);
+}
+
+.metaRow {
 	display: flex;
 	gap: 8px;
 	align-items: center;

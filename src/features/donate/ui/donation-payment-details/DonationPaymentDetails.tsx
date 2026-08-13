@@ -8,6 +8,7 @@ import type { PaymentData, PaymentStatus } from '../../model/types';
 import { copyToClipboard } from '@shared/lib/dom';
 import { renderIcon } from '@shared/lib/react';
 import { Button } from '@shared/ui';
+import { FaCopy } from 'react-icons/fa6';
 
 interface DonationPaymentDetailsProps {
 	data: PaymentData;
@@ -46,34 +47,36 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 		<div className={styles.container}>
 			{/* Amount */}
 			<div className={styles.amountBlock}>
-				<div>
+				<div className={styles.amountRow}>
 					<h3 className={styles.amount}>
 						{payAmount}
 					</h3>
 
-					<div className={styles.amountDescription}>
-						<div className={styles.tokenWrapper}>
-							{renderIcon(TOKEN_ICONS[currencyInfo?.tokenKey])}
-							<span>{currencyInfo?.tokenLabel}</span>
-						</div>
-
-						<div style={{ fontWeight: 900 }}>
-							{`·`}
-						</div>
-
-						<div className={styles.networkWrapper}>
-							{renderIcon(NETWORK_ICONS[currencyInfo?.networkKey])}
-							<span>{currencyInfo?.networkLabel}</span>
-						</div>
-					</div>
+					<Button
+						variant='secondary'
+						icon={<FaCopy />}
+						className={styles.copyAmountButton}
+						onClick={() => handleCopy(String(payAmount))}
+					>
+						{t('support.actions.copyAmount')}
+					</Button>
 				</div>
 
-				<Button
-					variant='text'
-					onClick={() => handleCopy(String(payAmount))}
-				>
-					{t('support.actions.copyAmount')}
-				</Button>
+				<div className={styles.metaRow}>
+					<div className={styles.tokenWrapper}>
+						{renderIcon(TOKEN_ICONS[currencyInfo?.tokenKey], { size: 28 })}
+						<span>{currencyInfo?.tokenLabel}</span>
+					</div>
+
+					<div style={{ fontWeight: 900 }}>
+						{`·`}
+					</div>
+
+					<div className={styles.networkWrapper}>
+						{renderIcon(NETWORK_ICONS[currencyInfo?.networkKey], { size: 28 })}
+						<span>{currencyInfo?.networkLabel}</span>
+					</div>
+				</div>
 			</div>
 
 			{/* Address */}
