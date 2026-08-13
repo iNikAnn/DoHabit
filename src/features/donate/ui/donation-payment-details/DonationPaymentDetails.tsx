@@ -1,14 +1,15 @@
 import styles from './DonationPaymentDetails.module.css';
+import type { CSSProperties } from 'react';
+import { FaCopy } from 'react-icons/fa6';
 import { useTranslation } from 'react-i18next';
 import QRCode from 'react-qr-code';
 import { toast } from 'sonner';
 import CheckStatusButton from '../check-status-button/CheckStatusButton';
-import { NETWORK_ICONS, SUPPORTED_CURRENCIES, TOKEN_ICONS } from '../../model/constants';
+import { NETWORK_ICONS, PAYMENT_STATUS_CONFIG, SUPPORTED_CURRENCIES, TOKEN_ICONS } from '../../model/constants';
 import type { PaymentData, PaymentStatus } from '../../model/types';
 import { copyToClipboard } from '@shared/lib/dom';
 import { renderIcon } from '@shared/lib/react';
 import { Button } from '@shared/ui';
-import { FaCopy } from 'react-icons/fa6';
 
 interface DonationPaymentDetailsProps {
 	data: PaymentData;
@@ -81,8 +82,18 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 
 			{/* Address */}
 			<div className={styles.addressBlock}>
-				<div className={styles.status}>
-					{`${t('common.status')}: ${status}`}
+				{/* Status Badge */}
+				<div
+					className={styles.statusBadge}
+					style={{
+						'--badge-color': PAYMENT_STATUS_CONFIG[status]?.color
+					} as CSSProperties}
+				>
+					<span className={styles.statusDot} />
+
+					<span>
+						{t(`support.status.${PAYMENT_STATUS_CONFIG[status]?.key}`)}
+					</span>
 				</div>
 
 				<div className={styles.qrWrapper}>

@@ -33,6 +33,11 @@ export type PaymentStatus =
 	| 'failed'
 	| 'expired';
 
+export interface PaymentStatusConfig {
+	key: string;
+	color: string;
+}
+
 export interface PaymentData {
 	orderId: string;
 	payAddress: string;

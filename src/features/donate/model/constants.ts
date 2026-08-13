@@ -1,5 +1,5 @@
 import { NetworkEthereum, NetworkSolana, NetworkTron, TokenUSDC, TokenUSDT } from '@web3icons/react';
-import type { CryptoId, NetworkKey, SupportedCurrenciesMap, TokenKey } from './types';
+import type { CryptoId, NetworkKey, PaymentStatus, PaymentStatusConfig, SupportedCurrenciesMap, TokenKey } from './types';
 import type { ComponentType } from 'react';
 
 export const PRESET_AMOUNTS = [15, 20, 25];
@@ -68,3 +68,40 @@ export const SUPPORTED_CURRENCIES: SupportedCurrenciesMap = {
 };
 
 export const DEFAULT_CURRENCY_ID: CryptoId = 'usdttrc20';
+
+export const PAYMENT_STATUS_CONFIG = {
+	waiting: {
+		key: 'waiting',
+		color: '#f59e0b'
+	},
+
+	confirming: {
+		key: 'confirming',
+		color: '#3b82f6'
+	},
+
+	confirmed: {
+		key: 'confirmed',
+		color: '#10b981'
+	},
+
+	partially_paid: {
+		key: 'partiallyPaid',
+		color: '#f59e0b'
+	},
+
+	finished: {
+		key: 'finished',
+		color: '#10b981'
+	},
+
+	failed: {
+		key: 'failed',
+		color: '#f43f5e'
+	},
+
+	expired: {
+		key: 'expired',
+		color: '#64748b'
+	}
+} as const satisfies Record<PaymentStatus, PaymentStatusConfig>;

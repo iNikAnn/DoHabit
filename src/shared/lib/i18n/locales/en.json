@@ -414,6 +414,15 @@
 		},
 		"recentTab": "Recent",
 		"recentTitle": "Recent donations",
+		"status": {
+			"confirmed": "Confirmed",
+			"confirming": "Confirming...",
+			"expired": "Expired",
+			"failed": "Payment Failed",
+			"finished": "Completed",
+			"partiallyPaid": "Partially Paid",
+			"waiting": "Awaiting Payment"
+		},
 		"success": {
 			"title": "Donation received!"
 		},
