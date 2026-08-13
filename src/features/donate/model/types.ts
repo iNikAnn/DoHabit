@@ -4,12 +4,25 @@ export type CryptoId =
 	| 'usdc'
 	| 'usdcsol';
 
+export type TokenKey =
+	| 'USDT'
+	| 'USDC';
+
+export type NetworkKey =
+	| 'tron'
+	| 'ethereum'
+	| 'solana';
+
 export interface CryptoOption {
-	id: CryptoId;      // usdttrc20
-	label: string;     // USDT
-	network: string;   // TRC-20
-	minAmount: number; // 15
+	id: CryptoId;           // usdttrc20
+	tokenLabel: string;     // USDT
+	networkLabel: string;   // TRC-20
+	minAmount: number;      // 15
+	tokenKey: TokenKey;     // USDT
+	networkKey: NetworkKey; // tron
 }
+
+export type SupportedCurrenciesMap = Record<CryptoId, CryptoOption>;
 
 export type PaymentStatus =
 	| 'waiting'
