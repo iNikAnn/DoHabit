@@ -7,10 +7,11 @@ import { FaCheckDouble, FaSpinner } from 'react-icons/fa';
 import DonationPaymentDetails from '../donation-payment-details/DonationPaymentDetails';
 import { checkDonationStatus } from '../../api/checkDonationStatus';
 import { createDonation } from '../../api/createDonation';
-import { DEFAULT_CURRENCY_ID, MIN_DONATION_FOR_MESSAGE, PRESET_AMOUNTS, SUPPORTED_CURRENCIES } from '../../model/constants';
+import { DEFAULT_CURRENCY_ID, MIN_DONATION_FOR_MESSAGE, PRESET_AMOUNTS, SUPPORTED_CURRENCIES, TOKEN_ICONS } from '../../model/constants';
 import { getStoredDonation } from '../../model/getStoredDonation';
 import type { CryptoId, PaymentData, PaymentStatus } from '../../model/types';
 import { useUserStore } from '@entities/user';
+import { renderIcon } from '@shared/lib/react';
 import { Button, Placeholder, SectionHeader, useDialogStore } from '@shared/ui';
 
 /**
@@ -120,7 +121,10 @@ function DonationForm() {
 				action={[{
 					label: t('common.continue'),
 					variant: 'secondary',
-					onClick: closeDialog
+					onClick: () => {
+						setPaymentData(null);
+						closeDialog();
+					}
 				}]}
 				variant='inline'
 			/>
@@ -151,7 +155,7 @@ function DonationForm() {
 
 					<div className={styles.cryptoRadioGroup}>
 						{Object.values(SUPPORTED_CURRENCIES).map((c) => (
-							<label key={c.id} className={styles.radioLabel}>
+							<label key={c.id} className={clsx(styles.radioLabel, styles.cryptoLabel)}>
 								<input
 									type='radio'
 									name='crypto'
@@ -162,9 +166,10 @@ function DonationForm() {
 									hidden
 								/>
 
-								<div>
-									<span>{c.label}</span>
-									<span style={{ color: 'var(--color-secondary)' }}>{` (${c.network})`}</span>
+								<div className={styles.cryptoOption}>
+									{renderIcon(TOKEN_ICONS[c.tokenKey], { size: 28 })}
+									<span>{c.tokenLabel}</span>
+									<span style={{ color: 'var(--color-secondary)' }}>{`(${c.networkLabel})`}</span>
 								</div>
 							</label>
 						))}
@@ -181,7 +186,7 @@ function DonationForm() {
 
 					<div className={styles.amountRadioGroup}>
 						{PRESET_AMOUNTS.map((a) => (
-							<label key={`amount-${a}`} className={styles.radioLabel}>
+							<label key={`amount-${a}`} className={clsx(styles.radioLabel, styles.amountLabel)}>
 								<input
 									type='radio'
 									name='amount'

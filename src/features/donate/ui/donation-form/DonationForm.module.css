@@ -21,7 +21,6 @@
 .radioLabel {
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	height: 48px;
 	background-color: var(--bg-color-secondary);
 	border-radius: var(--border-radius-tertiary);
@@ -39,6 +38,16 @@
 	gap: 8px;
 }
 
+.cryptoLabel {
+	padding-inline: 8px;
+}
+
+.cryptoOption {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+}
+
 .amountRadioGroup {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -51,6 +60,10 @@
 	padding-inline: 16px;
 	background-color: var(--bg);
 	border: 1px solid var(--bg-color-secondary);
+}
+
+.amountLabel {
+	justify-content: center;
 }
 
 .input:focus {
