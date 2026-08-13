@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import QRCode from 'react-qr-code';
 import { toast } from 'sonner';
 import CheckStatusButton from '../check-status-button/CheckStatusButton';
-import { SUPPORTED_CURRENCIES } from '../../model/constants';
+import { NETWORK_ICONS, SUPPORTED_CURRENCIES, TOKEN_ICONS } from '../../model/constants';
 import type { PaymentData, PaymentStatus } from '../../model/types';
 import { copyToClipboard } from '@shared/lib/dom';
+import { renderIcon } from '@shared/lib/react';
 import { Button } from '@shared/ui';
 
 interface DonationPaymentDetailsProps {
@@ -50,9 +51,21 @@ function DonationPaymentDetails(props: DonationPaymentDetailsProps) {
 						{payAmount}
 					</h3>
 
-					<span className={styles.amountDescription}>
-						{`${currencyInfo?.label} · ${currencyInfo?.network}`}
-					</span>
+					<div className={styles.amountDescription}>
+						<div className={styles.tokenWrapper}>
+							{renderIcon(TOKEN_ICONS[currencyInfo?.tokenKey])}
+							<span>{currencyInfo?.tokenLabel}</span>
+						</div>
+
+						<div style={{ fontWeight: 900 }}>
+							{`·`}
+						</div>
+
+						<div className={styles.networkWrapper}>
+							{renderIcon(NETWORK_ICONS[currencyInfo?.networkKey])}
+							<span>{currencyInfo?.networkLabel}</span>
+						</div>
+					</div>
 				</div>
 
 				<Button

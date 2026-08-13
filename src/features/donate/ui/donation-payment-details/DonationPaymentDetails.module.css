@@ -15,7 +15,17 @@
 }
 
 .amountDescription {
+	display: flex;
+	gap: 8px;
+	align-items: center;
 	color: var(--color-secondary);
+}
+
+.tokenWrapper,
+.networkWrapper {
+	display: flex;
+	gap: 4px;
+	align-items: center;
 }
 
 .addressBlock {
