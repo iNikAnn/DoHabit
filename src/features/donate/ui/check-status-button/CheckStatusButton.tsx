@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
+import { useQueryClient } from '@tanstack/react-query';
 import { checkDonationStatus } from '../../api/checkDonationStatus';
 import type { PaymentStatus } from '@features/donate/model/types';
 import { Button } from '@shared/ui';
@@ -10,7 +11,7 @@ interface CheckStatusButtonProps {
 	onStatusChange: (status: PaymentStatus) => void;
 }
 
-const COOLDOWN_SECONDS = 10;
+const COOLDOWN_SECONDS = 30;
 
 /**
  * Button that triggers a manual donation status check.
@@ -22,6 +23,7 @@ function CheckStatusButton(props: CheckStatusButtonProps) {
 	} = props;
 
 	const { t } = useTranslation();
+	const queryClient = useQueryClient();
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [cooldownSeconds, setCooldownSeconds] = useState(0);
@@ -58,6 +60,11 @@ function CheckStatusButton(props: CheckStatusButtonProps) {
 			if (isMountedRef.current) {
 				onStatusChange(status);
 				toast.info(t('support.notifications.statusChecked', { status }));
+
+				// Revalidate donations cache to reflect new payment in lists
+				if (status === 'finished') {
+					queryClient.invalidateQueries({ queryKey: ['donations'] });
+				}
 			}
 		} catch (error) {
 			console.error('Status check failed:', error);
