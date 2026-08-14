@@ -224,7 +224,8 @@ function DonationForm() {
 					/>
 
 					<input
-						type='text'
+						type='search' // Using 'search' type to kill mobile autofill
+						enterKeyHint='enter'
 						name='message'
 						id='message'
 						maxLength={140}
