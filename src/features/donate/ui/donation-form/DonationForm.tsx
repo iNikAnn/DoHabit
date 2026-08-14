@@ -240,6 +240,12 @@ function DonationForm() {
 				</section>
 			</fieldset>
 
+			{!username && (
+				<div className={styles.anonymousNotice}>
+					{t('support.anonymousPaymentWarning')}
+				</div>
+			)}
+
 			{/* Form Actions */}
 			<div className={styles.actions}>
 				<Button
@@ -255,7 +261,7 @@ function DonationForm() {
 					className={styles.submitButton}
 					disabled={isSubmitDisabled}
 				>
-					{t('common.continue')}
+					{t('support.actions.submitPayment')}
 				</Button>
 			</div>
 		</form>

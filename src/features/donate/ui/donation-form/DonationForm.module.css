@@ -85,6 +85,12 @@ label:has(input:disabled) {
 	opacity: 0.5;
 }
 
+/* Anonymous Notice */
+.anonymousNotice {
+	color: darkorange;
+}
+
+/* Actions */
 .actions {
 	display: flex;
 	gap: 8px;

@@ -381,9 +381,11 @@
 			"cooldownStatus": "Wait {{seconds}}s",
 			"copyAddress": "Copy address",
 			"copyAmount": "Copy amount",
-			"donate": "Make a Donation"
+			"donate": "Make a Donation",
+			"submitPayment": "Proceed to Pay"
 		},
 		"allTimeTopTitle": "Top supporters",
+		"anonymousPaymentWarning": "Username not set. Payment will be anonymous.",
 		"emptyDescription": "Be the first to support this project!",
 		"emptyTitle": "No donations yet",
 		"errorDescription": "Something went wrong. Please try again later.",
