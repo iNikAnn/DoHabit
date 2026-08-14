@@ -1,5 +1,5 @@
 import styles from './DonationForm.module.css';
-import { useEffect, useState, type SubmitEventHandler } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import { toast } from 'sonner';
@@ -76,8 +76,7 @@ function DonationForm() {
 		setCustomAmount(amount);
 	};
 
-	const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
-		e.preventDefault();
+	const handleSubmit = async () => {
 		setIsLoading(true);
 
 		try {
@@ -143,7 +142,7 @@ function DonationForm() {
 	}
 
 	return (
-		<form className={styles.form} onSubmit={handleSubmit}>
+		<form autoComplete='off' className={styles.form}>
 			<fieldset className={styles.fieldset} disabled={isLoading}>
 				{/* Crypto Section */}
 				<section className={styles.section}>
@@ -203,7 +202,9 @@ function DonationForm() {
 
 						{/* Custom Amount */}
 						<input
-							type='number'
+							type='search'
+							inputMode='numeric'
+							enterKeyHint='next'
 							name='custom-amount'
 							id='custom-amount'
 							min={PRESET_AMOUNTS[0]}
@@ -257,9 +258,9 @@ function DonationForm() {
 				</Button>
 
 				<Button
-					type='submit'
 					className={styles.submitButton}
 					disabled={isSubmitDisabled}
+					onClick={handleSubmit}
 				>
 					{t('support.actions.submitPayment')}
 				</Button>
