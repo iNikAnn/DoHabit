@@ -197,22 +197,23 @@ function DonationForm() {
 									hidden
 								/>
 
-								<div>{a}$</div>
+								<div>${a}</div>
 							</label>
 						))}
-					</div>
 
-					<input
-						type='number'
-						name='custom-amount'
-						id='custom-amount'
-						min={PRESET_AMOUNTS[0]}
-						pattern='[0-9]*'
-						value={customAmount || ''}
-						onChange={(e) => handleCustomAmountChange(Number(e.target.value))}
-						placeholder={t('support.form.amount.placeholder')}
-						className={styles.input}
-					/>
+						{/* Custom Amount */}
+						<input
+							type='number'
+							name='custom-amount'
+							id='custom-amount'
+							min={PRESET_AMOUNTS[0]}
+							pattern='[0-9]*'
+							value={customAmount || ''}
+							onChange={(e) => handleCustomAmountChange(Number(e.target.value))}
+							placeholder={t('support.form.amount.placeholder')}
+							className={clsx(styles.input, styles.customAmountInput)}
+						/>
+					</div>
 				</section>
 
 				{/* Message Section */}
@@ -226,6 +227,7 @@ function DonationForm() {
 					<input
 						type='search' // Using 'search' type to kill mobile autofill
 						enterKeyHint='enter'
+						autoComplete='off'
 						name='message'
 						id='message'
 						maxLength={140}

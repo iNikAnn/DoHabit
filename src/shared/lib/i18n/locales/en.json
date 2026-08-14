@@ -391,7 +391,7 @@
 		"form": {
 			"amount": {
 				"description": "Select amount or enter custom value (min. {{min}})",
-				"placeholder": "Enter custom amount",
+				"placeholder": "Custom",
 				"title": "Amount"
 			},
 			"crypto": {

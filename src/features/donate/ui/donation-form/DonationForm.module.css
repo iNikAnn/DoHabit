@@ -14,6 +14,18 @@
 	gap: 16px;
 }
 
+.input {
+	width: 100%;
+	height: var(--input-height-primary);
+	padding-inline: 16px;
+	background-color: var(--bg);
+	border: 1px solid var(--bg-color-secondary);
+}
+
+.input:focus {
+	outline: none;
+}
+
 .sectionHeader {
 	margin: 0;
 }
@@ -32,6 +44,7 @@
 	background-color: var(--bg-color-tertiary);
 }
 
+/* Crypto */
 .cryptoRadioGroup {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -48,26 +61,23 @@
 	align-items: center;
 }
 
+/* Amount */
 .amountRadioGroup {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	display: flex;
 	gap: 8px;
 }
 
-.input {
-	width: 100%;
-	height: var(--input-height-primary);
-	padding-inline: 16px;
-	background-color: var(--bg);
-	border: 1px solid var(--bg-color-secondary);
-}
-
 .amountLabel {
+	flex: 1;
 	justify-content: center;
 }
 
-.input:focus {
-	outline: none;
+.customAmountInput {
+	flex: 1.25;
+	font-weight: bold;
+	color: var(--accent-color);
+	text-align: center;
+	border-radius: var(--border-radius-tertiary);
 }
 
 .input:disabled,
