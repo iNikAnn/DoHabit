@@ -111,9 +111,12 @@
 		}
 	},
 	"common": {
+		"loading": "読み込み中...",
 		"all": "全て",
+		"anonymous": "匿名",
 		"app": "アプリ",
 		"cancel": "キャンセル",
+		"clear": "クリア",
 		"close": "閉じる",
 		"continue": "続ける",
 		"day": "日",
@@ -122,6 +125,7 @@
 		"icon": "アイコン",
 		"info": "情報",
 		"logo": "ロゴ",
+		"ok": "OK",
 		"password": "パスワード",
 		"reload": "リロード",
 		"screenshot": "スクリーンショット",
@@ -129,6 +133,7 @@
 		"showLess": "詳細を隠す",
 		"showMore": "詳細を表示する",
 		"start": "スタート",
+		"status": "ステータス",
 		"support": "サポート",
 		"theme": {
 			"auto": "オート",
@@ -319,6 +324,10 @@
 			"gitHub": {
 				"desc": "このプロジェクトを閲覧、貢献する",
 				"title": "GitHubリポジトリ"
+			},
+			"support": {
+				"desc": "寄付とトップランキング",
+				"title": "プロジェクト支援"
 			}
 		},
 		"title": "メニュー"
@@ -364,6 +373,70 @@
 		"privacy": "完全なプライバシー: あなたのデータはあなたのものです。このアプリでは自動同期やリモートサーバーやトラッキング等を使用していません。",
 		"pwa": "より安全にするにはこのアプリをデバイスにインストールしてください。インストールされたPWAは端末にデータが保存されデータがOSによって削除されることは滅多にありません",
 		"warning": "通常のブラウザで使用する場合キャッシュや履歴を消すとデータが削除されます。"
+	},
+	"support": {
+		"actions": {
+			"checkingStatus": "確認中...",
+			"checkStatus": "ステータス確認",
+			"cooldownStatus": "残り {{seconds}} 秒",
+			"copyAddress": "アドレスをコピー",
+			"copyAmount": "金額をコピー",
+			"donate": "寄付する",
+			"submitPayment": "支払いに進む"
+		},
+		"allTimeTopTitle": "トップ支援者",
+		"anonymousPaymentWarning": "ユーザー名未設定。 匿名決済になります。",
+		"emptyDescription": "最初の支援者になりましょう！",
+		"emptyTitle": "まだ寄付はありません",
+		"errorDescription": "問題が発生しました。 後でお試しください。",
+		"errorTitle": "データの読み込みに失敗",
+		"form": {
+			"amount": {
+				"description": "金額を選択するかカスタム値を入力（最小 ${{min}}）",
+				"placeholder": "カスタム",
+				"title": "金額"
+			},
+			"crypto": {
+				"description": "暗号資産とネットワークを選択",
+				"title": "支払い方法"
+			},
+			"message": {
+				"description": "${{min}} 以上の寄付で利用可能",
+				"placeholder": "メッセージを入力",
+				"title": "メッセージ"
+			},
+			"title": "プロジェクトを支援"
+		},
+		"notifications": {
+			"copyError": "コピーに失敗しました",
+			"copySuccess": "クリップボードにコピーしました",
+			"donationError": "寄付の処理に失敗しました。再試行してください。",
+			"statusChecked": "ステータス: {{status}}",
+			"statusCheckError": "確認に失敗しました。再試行してください。"
+		},
+		"recentTab": "最新",
+		"recentTitle": "最近の寄付",
+		"status": {
+			"confirmed": "確認済み",
+			"confirming": "確認中...",
+			"expired": "期限切れ",
+			"failed": "決済失敗",
+			"finished": "完了",
+			"partiallyPaid": "一部支払い済み",
+			"waiting": "支払い待ち"
+		},
+		"success": {
+			"title": "寄付を受け取りました！"
+		},
+		"topTab": "トップ"
+	},
+	"user": {
+		"avatarUrl": "アバターURL",
+		"avatarUrlPlaceholder": "https://example.com/avatar.png",
+		"editProfile": "プロフィール編集",
+		"username": "ユーザー名",
+		"usernameHint": "英数字、-、_（2〜20文字）",
+		"usernamePlaceholder": "ユーザー名を入力"
 	},
 	"welcome": {
 		"actions": {

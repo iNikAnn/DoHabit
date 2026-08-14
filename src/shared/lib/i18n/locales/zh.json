@@ -112,8 +112,10 @@
 	},
 	"common": {
 		"all": "全部",
+		"anonymous": "匿名",
 		"app": "应用",
 		"cancel": "取消",
+		"clear": "清除",
 		"close": "关闭",
 		"continue": "继续",
 		"day": "天",
@@ -123,6 +125,7 @@
 		"info": "消息",
 		"loading": "加载中...",
 		"logo": "标志",
+		"ok": "确定",
 		"password": "密码",
 		"reload": "重载",
 		"screenshot": "截图",
@@ -130,6 +133,7 @@
 		"showLess": "收起",
 		"showMore": "展开",
 		"start": "开始",
+		"status": "状态",
 		"support": "支持",
 		"theme": {
 			"auto": "跟随系统",
@@ -371,14 +375,68 @@
 		"warning": "如果您通过普通浏览器使用它，清除历史记录或缓存将会抹除您的习惯数据。"
 	},
 	"support": {
+		"actions": {
+			"checkingStatus": "检查中...",
+			"checkStatus": "检查状态",
+			"cooldownStatus": "等待 {{seconds}} 秒",
+			"copyAddress": "复制地址",
+			"copyAmount": "复制金额",
+			"donate": "进行捐赠",
+			"submitPayment": "前往支付"
+		},
 		"allTimeTopTitle": "粉丝贡献榜",
+		"anonymousPaymentWarning": "未设置用户名。将进行匿名支付。",
 		"emptyDescription": "快来成为第一个支持该项目的人吧！",
 		"emptyTitle": "暂无赞助",
 		"errorDescription": "出错了，请稍后再试。",
 		"errorTitle": "数据加载失败",
+		"form": {
+			"amount": {
+				"description": "选择金额或输入自定义数值（最低 ${{min}}）",
+				"placeholder": "自定义",
+				"title": "金额"
+			},
+			"crypto": {
+				"description": "选择加密货币和网络",
+				"title": "支付方式"
+			},
+			"message": {
+				"description": "适用于 ${{min}} 及以上的捐赠",
+				"placeholder": "输入留言",
+				"title": "留言"
+			},
+			"title": "支持本项目"
+		},
+		"notifications": {
+			"copyError": "复制失败",
+			"copySuccess": "已复制到剪贴板",
+			"donationError": "处理捐赠失败，请重试。",
+			"statusChecked": "状态：{{status}}",
+			"statusCheckError": "检查状态失败，请重试。"
+		},
 		"recentTab": "最新",
 		"recentTitle": "近期赞助记录",
+		"status": {
+			"confirmed": "已确认",
+			"confirming": "确认中...",
+			"expired": "已超时",
+			"failed": "支付失败",
+			"finished": "已完成",
+			"partiallyPaid": "部分支付",
+			"waiting": "等待支付"
+		},
+		"success": {
+			"title": "收到捐赠！"
+		},
 		"topTab": "排行"
+	},
+	"user": {
+		"avatarUrl": "头像链接",
+		"avatarUrlPlaceholder": "https://example.com/avatar.png",
+		"editProfile": "编辑个人资料",
+		"username": "用户名",
+		"usernameHint": "字母 A-Z、数字、- 和 _（2-20字符）",
+		"usernamePlaceholder": "输入用户名"
 	},
 	"welcome": {
 		"actions": {

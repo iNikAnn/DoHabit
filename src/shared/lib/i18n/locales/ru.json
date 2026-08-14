@@ -112,8 +112,10 @@
 	},
 	"common": {
 		"all": "Все",
+		"anonymous": "Аноним",
 		"app": "Приложение",
 		"cancel": "Отменить",
+		"clear": "Очистить",
 		"close": "Закрыть",
 		"continue": "Продолжить",
 		"day": "День",
@@ -123,6 +125,7 @@
 		"info": "Информация",
 		"loading": "Загрузка...",
 		"logo": "Логотип",
+		"ok": "ОК",
 		"password": "Пароль",
 		"reload": "Обновить",
 		"screenshot": "Скриншот",
@@ -130,6 +133,7 @@
 		"showLess": "Свернуть",
 		"showMore": "Развернуть",
 		"start": "Старт",
+		"status": "Статус",
 		"support": "Помощь",
 		"theme": {
 			"auto": "Авто",
@@ -371,14 +375,68 @@
 		"warning": "Если вы пользуетесь им через обычный браузер, очистка истории или кэша полностью удалит ваши привычки."
 	},
 	"support": {
+		"actions": {
+			"checkingStatus": "Проверка...",
+			"checkStatus": "Проверить статус",
+			"cooldownStatus": "Ждите {{seconds}}с",
+			"copyAddress": "Скопировать адрес",
+			"copyAmount": "Скопировать сумму",
+			"donate": "Сделать донат",
+			"submitPayment": "Перейти к оплате"
+		},
 		"allTimeTopTitle": "Топ спонсоров",
+		"anonymousPaymentWarning": "Имя не указано. Оплата будет анонимной.",
 		"emptyDescription": "Стань первым, кто поддержит проект!",
 		"emptyTitle": "Здесь пока пусто",
 		"errorDescription": "Что-то пошло не так. Попробуйте позже.",
 		"errorTitle": "Не удалось загрузить данные",
+		"form": {
+			"amount": {
+				"description": "Выберите сумму или введите свою (мин. ${{min}})",
+				"placeholder": "Другая",
+				"title": "Сумма"
+			},
+			"crypto": {
+				"description": "Выберите криптовалюту и сеть",
+				"title": "Способ оплаты"
+			},
+			"message": {
+				"description": "Доступно для донатов от ${{min}}",
+				"placeholder": "Введите сообщение",
+				"title": "Сообщение"
+			},
+			"title": "Поддержать проект"
+		},
+		"notifications": {
+			"copyError": "Не удалось скопировать",
+			"copySuccess": "Скопировано в буфер",
+			"donationError": "Ошибка обработки доната. Попробуйте еще раз.",
+			"statusChecked": "Статус: {{status}}",
+			"statusCheckError": "Ошибка проверки статуса. Попробуйте еще раз."
+		},
 		"recentTab": "Недавние",
 		"recentTitle": "Последние донаты",
+		"status": {
+			"confirmed": "Подтверждено",
+			"confirming": "Подтверждение...",
+			"expired": "Время вышло",
+			"failed": "Ошибка оплаты",
+			"finished": "Оплачено",
+			"partiallyPaid": "Частично оплачено",
+			"waiting": "Ожидание оплаты"
+		},
+		"success": {
+			"title": "Донат получен!"
+		},
 		"topTab": "Топ"
+	},
+	"user": {
+		"avatarUrl": "URL аватарки",
+		"avatarUrlPlaceholder": "https://example.com/avatar.png",
+		"editProfile": "Редактировать профиль",
+		"username": "Имя пользователя",
+		"usernameHint": "Буквы A-Z, цифры, - и _ (2-20 симв.)",
+		"usernamePlaceholder": "Введите имя"
 	},
 	"welcome": {
 		"actions": {

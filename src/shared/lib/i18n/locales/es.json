@@ -112,8 +112,10 @@
 	},
 	"common": {
 		"all": "Todos",
+		"anonymous": "Anónimo",
 		"app": "App",
 		"cancel": "Cancelar",
+		"clear": "Limpiar",
 		"close": "Cerrar",
 		"continue": "Continuar",
 		"day": "Día",
@@ -121,7 +123,9 @@
 		"habits": "Hábitos",
 		"icon": "Icono",
 		"info": "Información",
+		"loading": "Cargando...",
 		"logo": "logo",
+		"ok": "Aceptar",
 		"password": "Contraseña",
 		"reload": "Recargar",
 		"screenshot": "captura de pantalla",
@@ -129,6 +133,7 @@
 		"showLess": "Ver menos",
 		"showMore": "Ver más",
 		"start": "Inicio",
+		"status": "Estado",
 		"support": "Apoyar",
 		"theme": {
 			"auto": "Automático",
@@ -319,6 +324,10 @@
 			"gitHub": {
 				"desc": "Ver el proyecto o contribuir a él",
 				"title": "Repositorio de GitHub"
+			},
+			"support": {
+				"desc": "Donaciones y clasificación",
+				"title": "Apoyar proyecto"
 			}
 		},
 		"title": "Menú"
@@ -364,6 +373,70 @@
 		"privacy": "Privacidad total: sin servidores remotos, sin sincronización en la nube y sin rastreadores. Tus datos son estrictamente tuyos.",
 		"pwa": "Para mayor seguridad, instala esta app en tu pantalla de inicio. El almacenamiento de una PWA instalada está protegido por el sistema operativo y rara vez se borra automáticamente.",
 		"warning": "Si la usas a través de un navegador normal, borrar el historial o la caché eliminará tus hábitos."
+	},
+	"support": {
+		"actions": {
+			"checkingStatus": "Comprobando...",
+			"checkStatus": "Ver estado",
+			"cooldownStatus": "Espera {{seconds}}s",
+			"copyAddress": "Copiar dirección",
+			"copyAmount": "Copiar monto",
+			"donate": "Hacer donación",
+			"submitPayment": "Proceder al pago"
+		},
+		"allTimeTopTitle": "Mejores donantes",
+		"anonymousPaymentWarning": "Sin usuario. El pago será anónimo.",
+		"emptyDescription": "¡Sé el primero en apoyar este proyecto!",
+		"emptyTitle": "Sin donaciones aún",
+		"errorDescription": "Algo salió mal. Inténtalo más tarde.",
+		"errorTitle": "Error al cargar datos",
+		"form": {
+			"amount": {
+				"description": "Elige un monto o ingresa otro (mín. ${{min}})",
+				"placeholder": "Otro",
+				"title": "Monto"
+			},
+			"crypto": {
+				"description": "Selecciona la criptomoneda y la red",
+				"title": "Método de pago"
+			},
+			"message": {
+				"description": "Disponible para donaciones de ${{min}} o más",
+				"placeholder": "Ingresa un mensaje",
+				"title": "Mensaje"
+			},
+			"title": "Apoyar el proyecto"
+		},
+		"notifications": {
+			"copyError": "Error al copiar",
+			"copySuccess": "Copiado al portapapeles",
+			"donationError": "Error al procesar la donación. Inténtalo de nuevo.",
+			"statusChecked": "Estado: {{status}}",
+			"statusCheckError": "Error al verificar estado. Inténtalo de nuevo."
+		},
+		"recentTab": "Recientes",
+		"recentTitle": "Donaciones recientes",
+		"status": {
+			"confirmed": "Confirmado",
+			"confirming": "Confirmando...",
+			"expired": "Expirado",
+			"failed": "Pago fallido",
+			"finished": "Completado",
+			"partiallyPaid": "Pago parcial",
+			"waiting": "Esperando pago"
+		},
+		"success": {
+			"title": "¡Donación recibida!"
+		},
+		"topTab": "Top"
+	},
+	"user": {
+		"avatarUrl": "URL del avatar",
+		"avatarUrlPlaceholder": "https://example.com/avatar.png",
+		"editProfile": "Editar perfil",
+		"username": "Nombre de usuario",
+		"usernameHint": "Letras A-Z, números, - y _ (2-20 caracteres)",
+		"usernamePlaceholder": "Ingresa un usuario"
 	},
 	"welcome": {
 		"actions": {

@@ -392,20 +392,20 @@
 		"errorTitle": "Failed to load data",
 		"form": {
 			"amount": {
-				"description": "Select amount or enter custom value (min. {{min}})",
+				"description": "Select amount or enter custom value (min. ${{min}})",
 				"placeholder": "Custom",
 				"title": "Amount"
 			},
 			"crypto": {
 				"description": "Select cryptocurrency and network",
-				"title": "Payment Method"
+				"title": "Payment method"
 			},
 			"message": {
-				"description": "Available for donations of {{min}}$ or more",
+				"description": "Available for donations of ${{min}} or more",
 				"placeholder": "Enter message",
 				"title": "Message"
 			},
-			"title": "Support the Project"
+			"title": "Support the project"
 		},
 		"notifications": {
 			"copyError": "Failed to copy",
