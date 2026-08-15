@@ -162,7 +162,6 @@ function DonationForm() {
 									value={c.id}
 									checked={c.id === selectedCrypto}
 									onChange={() => setSelectedCrypto(c.id)}
-									hidden
 								/>
 
 								<div className={styles.cryptoOption}>
@@ -193,7 +192,6 @@ function DonationForm() {
 									value={a}
 									checked={a === selectedPreset}
 									onChange={() => handlePresetSelect(a)}
-									hidden
 								/>
 
 								<div>${a}</div>
@@ -212,6 +210,7 @@ function DonationForm() {
 							value={customAmount || ''}
 							onChange={(e) => handleCustomAmountChange(Number(e.target.value))}
 							placeholder={t('support.form.amount.placeholder')}
+							style={{ color: customAmount ? 'var(--accent-color)' : '' }}
 							className={clsx(styles.input, styles.customAmountInput)}
 						/>
 					</div>

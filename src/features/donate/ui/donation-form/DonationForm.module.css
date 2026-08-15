@@ -31,17 +31,31 @@
 }
 
 .radioLabel {
+	position: relative;
 	display: flex;
 	align-items: center;
 	height: 48px;
+	cursor: pointer;
 	background-color: var(--bg-color-secondary);
 	border-radius: var(--border-radius-tertiary);
+}
+
+.radioLabel:has(input:focus-visible) {
+	outline: 2px solid var(--accent-color);
+	outline-offset: -2px;
 }
 
 .radioLabel:has(input:checked) {
 	font-weight: bold;
 	color: var(--accent-color);
 	background-color: var(--bg-color-tertiary);
+}
+
+.radioLabel input {
+	position: absolute;
+	left: 0;
+	appearance: none;
+	opacity: 0;
 }
 
 /* Crypto */
@@ -75,7 +89,6 @@
 .customAmountInput {
 	flex: 1.25;
 	font-weight: bold;
-	color: var(--accent-color);
 	text-align: center;
 	border-radius: var(--border-radius-tertiary);
 }
