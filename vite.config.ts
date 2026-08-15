@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react';
 import htmlPlugin from 'vite-plugin-html-config';
 import pkg from './package.json';
 
-const IS_TEST_BUILD = process.env.VITE_TEST_BUILD === 'true';
+const IS_TEST_BUILD = process.env.VITE_TEST_BUILD === 'test';
 
 const APP_NAME = IS_TEST_BUILD
 	? 'DoHabit Test'
