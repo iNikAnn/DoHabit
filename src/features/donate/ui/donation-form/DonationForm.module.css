@@ -38,6 +38,9 @@
 	cursor: pointer;
 	background-color: var(--bg-color-secondary);
 	border-radius: var(--border-radius-tertiary);
+
+	/* Light box-shadow visible only on light theme */
+	box-shadow: var(--shadow-lg);
 }
 
 .radioLabel:has(input:focus-visible) {
