@@ -39,6 +39,7 @@ function PasswordForm(props: PasswordFormProps) {
 
 	const handleSubmit: SubmitEventHandler = (e) => {
 		e.preventDefault();
+		setIsVisible(false);
 		onSubmit(trimmedPassword);
 		setPassword('');
 		closeDialog();
@@ -67,8 +68,8 @@ function PasswordForm(props: PasswordFormProps) {
 
 				<input
 					type={isVisible ? 'text' : 'password'}
-					name='password'
-					autoComplete='current-password'
+					name='backup-code'
+					autoComplete='one-time-code'
 					value={password}
 					className={styles.input}
 					onChange={(e) => setPassword(e.target.value)}
