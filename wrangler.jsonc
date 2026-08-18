@@ -17,6 +17,10 @@
 	"env": {
 		"production": {
 			"compatibility_date": "2026-06-16",
+			"vars": {
+				"NOWPAYMENTS_API_URL": "https://api.nowpayments.io/v1",
+				"NOWPAYMENTS_IPN_URL": "https://dohabit.app/api/webhooks/nowpayments"
+			},
 			"d1_databases": [
 				{
 					"database_id": "95bfddff-da37-442e-a736-127e685f0d0b",
