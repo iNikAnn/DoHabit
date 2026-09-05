@@ -16,41 +16,49 @@ describe('getYesterday', () => {
 	});
 
 	test('returns yesterday for a standard mid-month date', () => {
-		vi.setSystemTime(new Date('2026-06-15T14:30:00.000Z'));
+		vi.setSystemTime(new Date(2026, 5, 15, 14, 30));
 
 		const yesterday = getYesterday();
-		expect(yesterday.toISOString()).toBe('2026-06-14T14:30:00.000Z');
+		expect(yesterday.getFullYear()).toBe(2026);
+		expect(yesterday.getMonth()).toBe(5);
+		expect(yesterday.getDate()).toBe(14);
 	});
 
 	test('correctly rolls back across a month boundary in a non-leap year', () => {
-		vi.setSystemTime(new Date('2026-03-01T10:00:00.000Z'));
+		vi.setSystemTime(new Date(2026, 2, 1, 10, 0));
 
 		const yesterday = getYesterday();
-		expect(yesterday.toISOString()).toBe('2026-02-28T10:00:00.000Z');
+		expect(yesterday.getFullYear()).toBe(2026);
+		expect(yesterday.getMonth()).toBe(1);
+		expect(yesterday.getDate()).toBe(28);
 	});
 
 	test('correctly rolls back across a month boundary in a leap year', () => {
-		vi.setSystemTime(new Date('2024-03-01T12:00:00.000Z'));
+		vi.setSystemTime(new Date(2024, 2, 1, 12, 0));
 
 		const yesterday = getYesterday();
-		expect(yesterday.toISOString()).toBe('2024-02-29T12:00:00.000Z');
+		expect(yesterday.getFullYear()).toBe(2024);
+		expect(yesterday.getMonth()).toBe(1);
+		expect(yesterday.getDate()).toBe(29);
 	});
 
 	test('correctly rolls back across a year boundary', () => {
-		vi.setSystemTime(new Date('2026-01-01T08:15:00.000Z'));
+		vi.setSystemTime(new Date(2026, 0, 1, 8, 15));
 
 		const yesterday = getYesterday();
-		expect(yesterday.toISOString()).toBe('2025-12-31T08:15:00.000Z');
+		expect(yesterday.getFullYear()).toBe(2025);
+		expect(yesterday.getMonth()).toBe(11);
+		expect(yesterday.getDate()).toBe(31);
 	});
 
 	test('preserves hours, minutes, seconds, and milliseconds from current time', () => {
-		const fixedTime = new Date('2026-08-20T23:59:58.123Z');
+		const fixedTime = new Date(2026, 7, 20, 23, 59, 58, 123);
 		vi.setSystemTime(fixedTime);
 
 		const yesterday = getYesterday();
-		expect(yesterday.getUTCHours()).toBe(23);
-		expect(yesterday.getUTCMinutes()).toBe(59);
-		expect(yesterday.getUTCSeconds()).toBe(58);
-		expect(yesterday.getUTCMilliseconds()).toBe(123);
+		expect(yesterday.getHours()).toBe(23);
+		expect(yesterday.getMinutes()).toBe(59);
+		expect(yesterday.getSeconds()).toBe(58);
+		expect(yesterday.getMilliseconds()).toBe(123);
 	});
 });

@@ -12,7 +12,7 @@ describe('getDatesRange', () => {
 
 	describe('forward range with "from"', () => {
 		test('generates chronological range from a string date', () => {
-			const result = getDatesRange(3, { from: '2026-05-10' });
+			const result = getDatesRange(3, { from: '2026-05-10T00:00:00' });
 			expect(result).toEqual(['2026-05-10', '2026-05-11', '2026-05-12']);
 		});
 
@@ -22,24 +22,24 @@ describe('getDatesRange', () => {
 		});
 
 		test('handles month boundary transitions forward', () => {
-			const result = getDatesRange(4, { from: '2026-01-30' });
+			const result = getDatesRange(4, { from: new Date(2026, 0, 30) });
 			expect(result).toEqual(['2026-01-30', '2026-01-31', '2026-02-01', '2026-02-02']);
 		});
 
 		test('handles year boundary transitions forward', () => {
-			const result = getDatesRange(3, { from: '2025-12-30' });
+			const result = getDatesRange(3, { from: new Date(2025, 11, 30) });
 			expect(result).toEqual(['2025-12-30', '2025-12-31', '2026-01-01']);
 		});
 
 		test('handles leap years correctly', () => {
-			const result = getDatesRange(3, { from: '2024-02-28' });
+			const result = getDatesRange(3, { from: new Date(2024, 1, 28) });
 			expect(result).toEqual(['2024-02-28', '2024-02-29', '2024-03-01']);
 		});
 	});
 
 	describe('backward range with "to"', () => {
 		test('generates chronological range ending at "to" from a string date', () => {
-			const result = getDatesRange(4, { to: '2026-05-15' });
+			const result = getDatesRange(4, { to: '2026-05-15T00:00:00' });
 			expect(result).toEqual(['2026-05-12', '2026-05-13', '2026-05-14', '2026-05-15']);
 		});
 
@@ -49,12 +49,12 @@ describe('getDatesRange', () => {
 		});
 
 		test('handles month boundary transitions backward in a non-leap year', () => {
-			const result = getDatesRange(3, { to: '2026-03-02' });
+			const result = getDatesRange(3, { to: new Date(2026, 2, 2) });
 			expect(result).toEqual(['2026-02-28', '2026-03-01', '2026-03-02']);
 		});
 
 		test('handles year boundary transitions backward', () => {
-			const result = getDatesRange(3, { to: '2026-01-02' });
+			const result = getDatesRange(3, { to: new Date(2026, 0, 2) });
 			expect(result).toEqual(['2025-12-31', '2026-01-01', '2026-01-02']);
 		});
 	});
@@ -68,17 +68,17 @@ describe('getDatesRange', () => {
 		});
 
 		test('prioritizes "from" when both "from" and "to" are provided', () => {
-			const result = getDatesRange(3, { from: '2026-05-01', to: '2026-05-10' });
+			const result = getDatesRange(3, { from: new Date(2026, 4, 1), to: new Date(2026, 4, 10) });
 			expect(result).toEqual(['2026-05-01', '2026-05-02', '2026-05-03']);
 		});
 
 		test('returns empty array when count is 0', () => {
-			const result = getDatesRange(0, { from: '2026-05-10' });
+			const result = getDatesRange(0, { from: new Date(2026, 4, 10) });
 			expect(result).toEqual([]);
 		});
 
 		test('returns single date array when count is 1', () => {
-			const result = getDatesRange(1, { from: '2026-05-10' });
+			const result = getDatesRange(1, { from: new Date(2026, 4, 10) });
 			expect(result).toEqual(['2026-05-10']);
 		});
 	});
