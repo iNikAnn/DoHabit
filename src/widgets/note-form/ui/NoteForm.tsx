@@ -9,7 +9,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { IoSend } from "react-icons/io5";
 import { useNoteFormStore } from '@features/manage-note';
 import { useNotesStore } from '@entities/note';
-import { useNativeBackClose } from '@shared/lib/dom';
+import { useFocusTrap, useNativeBackClose } from '@shared/lib/dom';
 import { Button, Overlay } from '@shared/ui';
 
 interface Props {
@@ -45,6 +45,13 @@ function NoteForm(props: Props) {
 	useNativeBackClose(isOpen, () => closeForm(isEditMode));
 
 	const inputRef = useRef<HTMLTextAreaElement>(null);
+	const formRef = useRef<HTMLFormElement | null>(null);
+
+	useFocusTrap({
+		isActive: isOpen,
+		containerRef: formRef,
+		initialFocusRef: inputRef
+	});
 
 	// FIXME: Delay focus by 50ms to prevent the iOS keyboard from overlapping the form
 	useEffect(() => {
@@ -118,7 +125,12 @@ function NoteForm(props: Props) {
 
 					{createPortal(
 						<motion.form
+							ref={formRef}
 							key='note-form'
+							role='dialog'
+							aria-modal='true'
+							aria-label={t('notes.form.textPlaceholder')}
+							tabIndex={-1}
 
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
