@@ -8,11 +8,10 @@ describe('clearLocalStorage', () => {
     beforeEach(() => {
         vi.stubGlobal('localStorage', {
             removeItem,
-            clear,
+            clear
         });
 
-        removeItem.mockClear();
-        clear.mockClear();
+        vi.clearAllMocks();
     });
 
     afterEach(() => {
