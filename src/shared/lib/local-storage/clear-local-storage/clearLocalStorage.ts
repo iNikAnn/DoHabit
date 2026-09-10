@@ -1,6 +1,5 @@
 /**
- * Deletes specified keys or all data from localStorage after double confirmation.
- * Redirects the user to the home page upon success.
+ * Deletes specified keys or all data from localStorage.
  */
 function clearLocalStorage(keys?: string | string[]): void {
 	if (keys) {
