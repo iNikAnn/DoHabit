@@ -11,7 +11,7 @@ function getWeekdayLabels(locale: string, options?: GetWeekdayLabelsOptions) {
 	} = options ?? {};
 
 	const formatter = new Intl.DateTimeFormat(locale, { weekday: length });
-	const date = new Date('2000-05-01');
+	const date = new Date(2000, 4, 1);
 
 	const weekdays = Array.from({ length: 7 }, (_, i) => {
 		date.setDate(i + 1);

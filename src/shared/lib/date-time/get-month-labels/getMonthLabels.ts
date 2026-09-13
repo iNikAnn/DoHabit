@@ -11,7 +11,7 @@ function getMonthLabels(locale: string, options?: GetMonthLabelsOptions) {
 	} = options ?? {};
 
 	const formatter = new Intl.DateTimeFormat(locale, { month: length });
-	const date = new Date('2000-01-01');
+	const date = new Date(2000, 0, 1);
 
 	const months = Array.from({ length: 12 }, (_, i) => {
 		date.setMonth(i);
