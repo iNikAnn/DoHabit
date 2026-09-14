@@ -1,10 +1,11 @@
 import styles from './Dialog.module.css';
 import clsx from 'clsx';
+import { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useDialogStore } from '../model/store';
 import { variants } from '../model/animations';
-import { useNativeBackClose } from '@shared/lib/dom';
+import { useFocusTrap, useNativeBackClose } from '@shared/lib/dom';
 import { Button, Overlay } from '@shared/ui';
 
 /**
@@ -13,7 +14,13 @@ import { Button, Overlay } from '@shared/ui';
 function Dialog() {
 	const content = useDialogStore((s) => s.content);
 	const closeDialog = useDialogStore((s) => s.close);
+	const containerRef = useRef<HTMLDivElement | null>(null);
+
 	useNativeBackClose(Boolean(content), closeDialog);
+	useFocusTrap({
+		isActive: Boolean(content),
+		containerRef
+	});
 
 	return (
 		<AnimatePresence>
@@ -23,7 +30,12 @@ function Dialog() {
 
 					{createPortal(
 						<motion.div
+							ref={containerRef}
 							key='dialog'
+							role='dialog'
+							aria-modal='true'
+							aria-label={content.title || undefined}
+							tabIndex={-1}
 							className={clsx('bg-surface-bordered', styles.dialog)}
 							variants={variants}
 							initial='initial'
@@ -84,7 +96,7 @@ function Dialog() {
 					)}
 				</>
 			)}
-		</AnimatePresence >
+		</AnimatePresence>
 	);
 }
 
