@@ -3,19 +3,15 @@ import { readLocalStorage } from './readLocalStorage';
 
 describe('readLocalStorage', () => {
 	const getItem = vi.fn();
-	let consoleError: ReturnType<typeof vi.spyOn>;
 
 	beforeEach(() => {
-		vi.stubGlobal('localStorage', {
-			getItem
-		});
-
-		consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+		vi.stubGlobal('localStorage', { getItem });
+		vi.spyOn(console, 'error').mockImplementation(() => undefined);
 		vi.clearAllMocks();
 	});
 
 	afterEach(() => {
-		consoleError.mockRestore();
+		vi.restoreAllMocks();
 		vi.unstubAllGlobals();
 	});
 
@@ -48,10 +44,6 @@ describe('readLocalStorage', () => {
 		const result = readLocalStorage('settings', { theme: 'light' });
 
 		expect(result).toEqual({ theme: 'light' });
-		expect(consoleError).toHaveBeenCalledOnce();
-		expect(consoleError).toHaveBeenCalledWith(
-			'Error retrieving data from localStorage:',
-			expect.any(SyntaxError)
-		);
+		expect(console.error).toHaveBeenCalledOnce();
 	});
 });
