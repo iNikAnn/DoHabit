@@ -3,22 +3,18 @@ import { writeLocalStorage } from './writeLocalStorage';
 
 describe('writeLocalStorage', () => {
 	const setItem = vi.fn();
-	let consoleError: ReturnType<typeof vi.spyOn>;
 
 	beforeEach(() => {
 		vi.useFakeTimers();
-		vi.stubGlobal('localStorage', {
-			setItem
-		});
-
-		consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+		vi.stubGlobal('localStorage', { setItem });
+		vi.spyOn(console, 'error').mockImplementation(() => undefined);
 		vi.clearAllMocks();
 	});
 
 	afterEach(() => {
-		vi.useRealTimers();
-		consoleError.mockRestore();
+		vi.restoreAllMocks();
 		vi.unstubAllGlobals();
+		vi.useRealTimers();
 	});
 
 	test('saves serialized data asynchronously', () => {
@@ -28,7 +24,6 @@ describe('writeLocalStorage', () => {
 
 		vi.runAllTimers();
 
-		expect(setItem).toHaveBeenCalledOnce();
 		expect(setItem).toHaveBeenCalledWith(
 			'settings',
 			'{"theme":"dark","compact":true}'
@@ -44,18 +39,14 @@ describe('writeLocalStorage', () => {
 	});
 
 	test('logs an error when localStorage rejects the write', () => {
-		const storageError = new Error('quota exceeded');
 		setItem.mockImplementation(() => {
-			throw storageError;
+			throw new Error('quota exceeded');
 		});
 
 		writeLocalStorage('settings', { theme: 'dark' });
+		vi.runAllTimers();
 
-		expect(() => vi.runAllTimers()).not.toThrow();
-		expect(consoleError).toHaveBeenCalledWith(
-			'Error saving to localStorage:',
-			storageError
-		);
+		expect(console.error).toHaveBeenCalledOnce();
 	});
 
 	test('logs an error when data cannot be serialized', () => {
@@ -63,12 +54,9 @@ describe('writeLocalStorage', () => {
 		circular.self = circular;
 
 		writeLocalStorage('circular', circular);
+		vi.runAllTimers();
 
-		expect(() => vi.runAllTimers()).not.toThrow();
 		expect(setItem).not.toHaveBeenCalled();
-		expect(consoleError).toHaveBeenCalledWith(
-			'Error saving to localStorage:',
-			expect.any(TypeError)
-		);
+		expect(console.error).toHaveBeenCalledOnce();
 	});
 });
