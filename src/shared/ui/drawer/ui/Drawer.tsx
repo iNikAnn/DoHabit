@@ -1,10 +1,11 @@
 import styles from './Drawer.module.css';
 import clsx from 'clsx';
+import { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
 import { variants } from '../model/animations';
 import { useDrawerStore } from '../model/store';
-import { useNativeBackClose } from '@shared/lib/dom';
+import { useFocusTrap, useNativeBackClose } from '@shared/lib/dom';
 import { Button, Overlay, Placeholder } from '@shared/ui';
 
 /**
@@ -13,7 +14,13 @@ import { Button, Overlay, Placeholder } from '@shared/ui';
 function Drawer() {
 	const content = useDrawerStore((s) => s.content);
 	const closeDrawer = useDrawerStore((s) => s.close);
+	const containerRef = useRef<HTMLDivElement | null>(null);
+
 	useNativeBackClose(Boolean(content), closeDrawer);
+	useFocusTrap({
+		isActive: Boolean(content),
+		containerRef
+	});
 
 	const handleDragEnd = (_: any, info: PanInfo) => {
 		if (info.offset.y >= 100) {
@@ -30,7 +37,12 @@ function Drawer() {
 
 					{createPortal(
 						<motion.div
+							ref={containerRef}
 							key='drawer'
+							role='dialog'
+							aria-modal='true'
+							aria-label={content.title || undefined}
+							tabIndex={-1}
 							className={clsx('bg-surface-bordered', styles.drawer)}
 							variants={variants}
 							initial='initial'
@@ -75,9 +87,8 @@ function Drawer() {
 						document.body
 					)}
 				</>
-			)
-			}
-		</AnimatePresence >
+			)}
+		</AnimatePresence>
 	);
 }
 
