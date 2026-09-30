@@ -12,12 +12,18 @@ export const getInitialRouteState = <T extends AppRouteKey>(): PageState<T> | un
 	const pageState = rawState?.usr ?? rawState;
 
 	return pageState as PageState<T>;
-}
+};
 
 /**
  * Returns the absolute application path for a specific modal route.
  */
-export const getModalPath = (key: AppRouteKey) => {
+export const getModalPath = (key: AppRouteKey): string => {
+	const path = ROUTES[key];
+	if (!path) {
+		console.error(`Missing route mapping for key: ${key}`);
+		return '/';
+	}
+
 	return `/modal/${ROUTES[key]}`;
 };
 
@@ -29,4 +35,4 @@ export const getNavigationTarget = <T extends AppRouteKey>(route: T, state: Page
 		to: getModalPath(route),
 		state
 	};
-}
+};
