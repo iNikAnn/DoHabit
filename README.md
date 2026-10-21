@@ -32,6 +32,8 @@ Unlike bloated, subscription-based trackers, DoHabit focuses strictly on privacy
 
 ## 📲 Installation
 
+[![Launch on PicoRunner](https://picorunner.com/badges/launch.svg)](https://picorunner.com/launch/?repository=https%3A%2F%2Fgithub.com%2FiNikAnn%2FDoHabit)
+
 DoHabit is a Progressive Web App (PWA). Follow the instructions for your device:
 
 ### Android / Desktop (Chrome Required)
